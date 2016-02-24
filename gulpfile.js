@@ -27,6 +27,7 @@ gulp.task('scripts', function() {
   gulp.src(['./source/js/libraries/jquery.min.js', 
             './source/js/libraries/jquery.cycle2.min.js', 
             './source/js/libraries/foundation/foundation.core.js',
+            './source/js/libraries/foundation/foundation.util.mediaQuery.js',
             './source/js/app.js'])
     .pipe(concat('scripts.js'))
     .pipe(sourcemaps.write())
