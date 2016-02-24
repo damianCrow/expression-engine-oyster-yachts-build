@@ -1,0 +1,10 @@
+{% if total_results > 0 %}
+
+{% set resultWord = total_results > 1 ? ' results' : ' result' %}
+	
+<p>{{ "Showing results "|t ~ results_from ~ " to "|t ~ results_to ~ " out of "|t ~ total_results ~ resultWord|t}}</p>
+
+{{pagination}}
+<div class="clear"></div>
+
+{% endif %}

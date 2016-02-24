@@ -1,0 +1,12 @@
+{#
+//    ----------------------------------------
+//      Edit Date
+//    ----------------------------------------
+#}
+{% set dateFormat = display_settings.fields[loop.index].settings.dateFormat is defined ? display_settings.fields[loop.index].settings.dateFormat|replace({'%': ''}) : false %}
+
+{% if dateFormat %}
+	{{entry[col.handle]|date(dateFormat)}}
+{% else %}
+	{{entry[col.handle]|date()}}
+{% endif %}

@@ -1,0 +1,75 @@
+<div class="filterFields" style="display: none; overflow: auto">
+    <table>
+        {% for sectionId, entryTypeArray in firstFilterOptions %}
+            {% for entryTypeId, options in entryTypeArray %}
+            <tr><td class="firstFilter sectionId-{{sectionId}}">
+                {{ form_dropdown('filter[0][1st]', options, '', 'style=""') }}
+            </td>
+            </tr>
+            {% endfor %}
+        {% endfor %}
+
+        {% for index, options in secondFilterOptions %}
+            <tr><td class="secondFilter index_{{index}}">
+            {{ form_dropdown('filter[0][2nd]', options, '', 'style=""') }}
+            </td></tr>
+        {% endfor %}
+
+            <tr>
+                <td class="thirdFilter statusSelect">
+                    {{ form_dropdown('filter[0][3rd]', statusFilterOptions, '', 'style=""') }}
+                </td>
+            </tr>
+
+            <tr>
+                <td class="thirdFilter authorSelect">
+                    {{ form_dropdown('filter[0][3rd]', authors, '', 'style=""') }}
+                </td>
+            </tr>
+
+            <tr>
+                <td class="thirdFilter generalInput">
+                    <input type="text" class="text" name="filter[0][3rd]" />
+                </td>
+            </tr>
+
+            <tr>
+                <td class="thirdFilter datepicker">
+                    <input type="text" class="datepicker" name="filter[0][3rd]" />
+                </td>
+            </tr>
+
+            <tr>
+                <td class="thirdFilter datepicker-range">
+                    <input type="text" class="datepicker range" name="filter[0][3rd][]" /> {{'&'|t}}
+                    <input type="text" class="datepicker range" name="filter[0][3rd][]" />
+                </td>
+            </tr>
+
+            {% for index, options in orderby_options %}
+            <tr>
+                <td class="orderbyFilter sectionId-{{index}}">
+                    {{form_dropdown('orderby', options, '', 'style="width: 130%"')}}
+                </td>
+            </tr>
+            {% endfor %}
+
+            <tr>
+                <td class="fieldsSecondFilterTypes">
+                {% for field_id, filter_type in fields_2nd_filter_type %}
+                        <input type="text" name="{{field_id}}" value="{{filter_type}}">
+                {% endfor %}
+                </td>
+            </tr>
+
+            {% for sectionId, options in category_dropdowns %}
+            <tr>
+                <td class="categoryFilter sectionId-{{sectionId}}">
+                {{form_dropdown('filter[0][3rd]', options, 'style=""')}}
+                </td>
+            </tr>
+            {% endfor %}
+
+    </table>
+    <hr>
+</div>

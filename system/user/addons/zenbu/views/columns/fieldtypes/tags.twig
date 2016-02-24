@@ -1,0 +1,9 @@
+{#
+//    ----------------------------------------
+//      Tags
+//    ----------------------------------------
+#}
+{% for tag in entry[col.handle] %}
+    {{tag.title}}{{ not loop.last ? ', ' }}
+{% endfor %}
+{{entry[col.handle] | length == 0 ? '-'}}

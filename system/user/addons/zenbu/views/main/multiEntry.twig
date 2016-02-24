@@ -1,0 +1,34 @@
+<fieldset class="form-ctrls" style="display: none">
+    <div class="multi-entry">
+        
+        <div class="settings">
+            {# <span>{{'entries'|t}}</span> #}
+            {# <form action="{{multi_edit_action_url}}&action=edit" method="post" style="display: inline">
+                {{getCsrfInput()}}
+                <span class="entries"></span>
+                <button class="btn submit disable disabled-btn" disabled="disabled"><i class="fa fa-edit"></i> {{'edit'|t}}</button>
+            </form>
+            #}
+            <form action="{{multi_edit_action_url}}&action=delete" method="post" style="display: inline; margin-right: 20px">
+                {{getCsrfInput()}}
+                <span class="entries"></span>
+                <button class="btn submit disable disabled-btn" disabled="disabled"><i class="fa fa-times"></i> {{'delete'|t}}</button>
+            </form>
+            
+            {#
+            <span>{{'categories'|t}}</span>
+            <form action="{{multi_edit_action_url}}&action=category_add" method="post" style="display: inline">
+                {{getCsrfInput()}}
+                <span class="entries"></span>
+                <button class="btn submit disable disabled-btn" disabled="disabled"><i class="fa fa-plus"></i> {{'add'|t}}</button>
+            </form>
+
+            <form action="{{multi_edit_action_url}}&action=category_remove" method="post" style="display: inline">
+                {{getCsrfInput()}}
+                <span class="entries"></span>
+                <button class="btn submit disable disabled-btn" disabled="disabled"><i class="fa fa-minus"></i> {{'remove'|t}}</button>
+            </form>
+            #}
+        </div>
+    </div>
+</fieldset>

@@ -1,0 +1,13 @@
+;
+	/**
+	* -------------------------------------
+	* General link change throughout the CP
+	* -------------------------------------
+	* Attempts to change link to content_edit into zenbu links
+	* For example, should cover "Edit" links in Structure, link in Overview page, Accessories, Zoo Flexible Admin, etc.
+	*/
+	$("a[href*=\"cp/publish/edit\"]").each(function (){
+		$(this).attr("href", $(this).attr("href").replace(/cp\/publish\/edit(?!\/entry)/g, "cp/addons/settings/zenbu"));
+		$(this).attr("href", $(this).attr("href").replace(/filter_by_channel/, "channel_id"));
+	});
+

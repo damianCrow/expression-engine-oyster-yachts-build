@@ -1,0 +1,25 @@
+{#
+//    ----------------------------------------
+//      Assets
+//    ----------------------------------------
+#}
+{% set dimensions = settings.settings[col.id] is defined ? settings.settings[col.id] : false %}
+{% for asset in entry[col.handle] %}
+    {% if asset.kind == 'image' %}
+        {% set originalAssetWidth = asset.width %}
+        {% set originalAssetHeight = asset.height %}
+        {% set originalAssetUrl = asset.url %}
+        {% set transform = {
+            mode: 'crop',
+            width: dimensions.thumbWidth is defined and dimensions.thumbWidth is not empty ? dimensions.thumbWidth : 50,
+            height: dimensions.thumbHeight is defined and dimensions.thumbHeight is not empty ? dimensions.thumbHeight : 50
+        } %}
+        {% do asset.setTransform(transform) %}
+        <a href="{{originalAssetUrl}}" class="imageModal" data-original-width="{{originalAssetWidth}}" data-original-height="{{originalAssetHeight}}"><img src="{{ asset.url }}" alt="{{ asset.title }}"></a>
+        <div class="outerModal" style="display: none">
+            <div class="modal"></div>
+        </div>
+    {% else %}
+        <a href="{{asset.url}}">{{asset.filename}}</a>
+    {% endif %}
+{% endfor %}

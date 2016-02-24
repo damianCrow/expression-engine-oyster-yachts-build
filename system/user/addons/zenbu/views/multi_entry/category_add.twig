@@ -1,0 +1,57 @@
+<p><strong>{{'selected_entries'|t}}</strong>: 
+{% for entry in entries %}
+    {{entry.title}}{% if not loop.last %}, {% endif %} 
+{% endfor %}</p>
+
+{% if nested_categories|length == 0 %}
+
+	<p><?=lang('no_category_groups_found'); ?></p>
+	<a href="<?=BASE.AMP.'C=addons_modules&M=show_module_cp&module=zenbu&return_to_zenbu=y'?>" class="left cancel"><?=lang('cancel_and_return');?></a>
+
+{% else %}
+	<form action="{{action_url}}" method="post" id="multi_cat">
+		{{getCsrfInput()}}
+
+		{{form_hidden('type', action == 'category_remove' ? 'remove' : 'add')}}
+		{{form_hidden('entry_ids', array_helper.make_array_of('entry_id', entries)|join('|'))}}
+		
+		{% for channel_id, category_groups in nested_categories %}
+
+			{% for category_group_id, category_group in category_groups %}
+			<table class="mainTable" border="0" cellpadding="0" cellspacing="0">
+				<tr>
+					<th class="center" width="1%">{{form_checkbox('', '')}}</th>
+					<th width="50%">{{category_group_names[category_group_id]}}</th>
+					<th width="50%">{{'currently_assigned_entries'|t}}</th>
+				</tr>
+				{% for category_id, category in category_group %}
+				    <tr>
+				    	<td class="center clickable">{{form_checkbox('category[]', category_id, FALSE, category_entries[category_id]|length == 0 and action == 'category_remove' ? 'disabled="disabled"' : '')}}</td>
+				    	<td>{{category}}</td>
+				    	<td>
+				    		<span class="subtext">
+				    			{% for entry in category_entries[category_id] %}
+				    				{{entry.title}}{% if not loop.last %}, {% endif %} 
+				    			{% endfor %}
+				    		</span>
+				    	</td>
+				    </tr>
+				{% endfor %}
+			</table>
+			{% endfor %}
+		{% endfor %}
+
+		<br />
+
+		<button type="submit" class="submit left withloader" tabindex="1000">
+			<span>{{'save'|t}}</span>
+			<span class="onsubmit invisible">{{'saving'|t}} <i class="icon-spinner icon-spin"></i></span>
+		</button>
+
+		<a href="<?=BASE.AMP.'C=addons_modules&M=show_module_cp&module=zenbu&return_to_zenbu=y'?>" class="left cancel"><?=lang('cancel_and_return');?></a>
+
+	</form>
+
+
+
+{% endif %}

@@ -1,0 +1,58 @@
+;
+if ( /&D=cp&C=addons_modules&M=show_module_cp&module=zenbu/.test(window.location.href) || 
+	/\/cp\/addons_modules\/show_module_cp(\&|\?)module=zenbu/.test(window.location.href) )
+{
+	/**
+	* ---------------------------------------
+	* Remove Font Awesome <i> tags from top right nav 
+	* ---------------------------------------
+	*/
+	$("div.rightNav").find("span.button a").each(function(){
+		$(this).attr('title', $(this).text().trim());
+	});
+}
+
+
+
+if ( /&D=cp&C=addons_modules&M=show_module_cp&module=zenbu&method=multi_edit/.test(window.location.href) || 
+	/\/cp\/addons_modules\/show_module_cp(\&|\?)module=zenbu&method=multi_edit/.test(window.location.href) || 
+	/&D=cp&C=content_edit&M=multi_edit_form&from_zenbu=y/.test(window.location.href) || 
+	/\/cp\/content_edit\/multi_edit_form?from_zenbu=y/.test(window.location.href) ) 
+{
+	/** 
+	* ---------------------------------------
+	* Send category editing back to Zenbu. 
+	* ---------------------------------------
+	* More elegant solution: prevent default click, 
+	* send data to be saved through AJAX, then return to Zenbu
+	* "return_to_zenbu=y" attempts to fetch the latest rules saved in session if present
+	*
+	*/
+	if($("input[name='type']").val() == "add" || $("input[name='type']").val() == "remove")
+	{
+		var formURL = $(".pageContents").children("form").attr("action");
+		
+		$("input.submit, button.submit").click(function (event) {
+			//
+			// Prevent normal clicking of submit button, send through AJAX, 
+			// then redirect to Zenbu for a more seamless effect
+			//
+			event.preventDefault();
+			
+			var query = $(".pageContents").children("form").serialize();
+			
+			$.ajax({
+				type:     "POST",
+				//dataType: "json",
+				url:      formURL,
+				data: query,
+				success: function(results){
+							window.location = EE.BASE + "&C=addons_modules&M=show_module_cp&module=zenbu&return_to_zenbu=y";
+					     },
+				error: function(results){
+							$.ee_notice("{{'error'|t}}", {"type" : "error"});
+					     }
+			});
+		});
+	}
+};

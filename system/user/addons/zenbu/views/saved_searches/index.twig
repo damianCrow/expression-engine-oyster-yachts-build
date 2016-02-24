@@ -1,0 +1,97 @@
+{% extends "_layouts/main.twig" %}
+
+{% set content %}
+<div class="box">
+	<div class="tbl-ctrls">
+		{{message}}
+{% if savedSearches.items|length > 0 or groupSavedSearches.items|length > 0 %}
+<form id="resultList" action="{{ action_url }}" method="post">
+	{{ getCsrfInput() }}
+
+	{% if savedSearches.items|length > 0 %}	
+		<h1><i class="fa fa-user"></i> {{'your_searches'|t}}</h1>
+		<table class="data fullwidth sortable-table mainTable" cellspacing="0" cellpadding="0" border="0">
+			<thead>
+				<tr>
+					<th class="reorder-col"></th>
+					<th class="center"><input type="checkbox" /></th>
+					<th>{{"Name"|t}}</th>
+				</tr>
+			</thead>
+			<tbody>
+			{% for search in savedSearches.items %}
+				<tr>
+					<td class="reorder-col"><span class="ico reorder"></span></td>
+					<td width="1%" class="not-sortable clickable">
+						{{form_checkbox('search_ids_selected[]', search.id)}}
+					</td>
+					<td class="not-sortable"><input type="text" class="text" name="search_labels[{{search.id}}]" value="{{search.label | default('-')}}" size="100%" /></td>
+				</tr>
+			{% endfor %}
+			</tbody>
+		</table>
+	{% endif %}
+	
+	{% if groupSavedSearches.items|length > 0 and permissions.can_admin_group_searches == 'y' %}
+		<h1><i class="fa fa-group"></i> {{userGroupOptions[user.group_id]}} {{'searches'|t}}</h1>
+		<table class="data fullwidth sortable-table mainTable" cellspacing="0" cellpadding="0" border="0">
+			<thead>
+				<tr>
+					<th></th>
+					<th class="center"><input type="checkbox" /></th>
+					<th>{{"Name"|t}}</th>
+				</tr>
+			</thead>
+			<tbody>
+			{% for search in groupSavedSearches.items %}
+				<tr>
+					<td width="1%" class="center"><i class="fa fa-sort"></i></td>
+					<td width="1%" class="not-sortable clickable">
+						{{form_checkbox('search_ids_selected[]', search.id)}}
+					</td>
+					<td class="not-sortable"><input type="text" class="text" name="search_labels[{{search.id}}]" value="{{search.label | default('-')}}" size="100%" /></td>
+				</tr>
+			{% endfor %}
+			</tbody>
+		</table>
+	{% endif %}
+			
+	<div class="options" style="display: none">
+		{% if permissions.can_copy_profile == 'y' %}
+			<h2><i class="fa fa-copy"></i> {{'copy_selected_searches_to'|t}}</h2>
+				<ul class="unstyled">
+				{% for id, group in userGroupOptions %}
+				<li><label>{{form_checkbox('search_copy[]', id, FALSE)}} {{group}}</label></li>
+				{% endfor %}
+				</ul>
+		{% endif %}
+			
+		<h2><i class="fa fa-times-circle warning"></i> {{"Delete Selected Saved Searches"|t}}</h2>
+		<label>{{form_checkbox('delete', 'y')}} {{"Delete Selected Saved Searches"|t}}</label>
+	</div>
+	
+	<fieldset class="form-ctrls">
+		<button type="submit" class="btn submit"><span>{{"Update Saved Searches"|t}}</span><span style="display:none">{{"Updating"|t}} <i class="fa fa-spinner fa-spin"></i></span></button>
+	</fieldset>
+
+</form>
+{% else %}
+
+	<h1><i class="fa fa-user"></i> {{'your_searches'|t}}</h1>
+	<table cellspacing="0" class="empty no-results">
+		<tbody>
+			<tr>
+				<td>
+						<p>{{"You do not have any saved searches."|t}}</p>
+						<a href="{{ zenbuUrl() }}" class="btn submit">&laquo; {{"Return"|t}}</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+
+{% endif %}
+
+	</div>
+</div>
+{% endset %}

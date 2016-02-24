@@ -1,0 +1,29 @@
+{# 
+	matrix_option_1 is "Show matrix in row"
+	Not defined = don't show in row, make a link to it 
+#}
+{% if settings.matrix_option_1 is not defined %}
+	<a href="#e_{{entry_id}}_f_{{field_id}}" class="fancyboxmatrix">{{'show_'|t}}{{'matrix'|t}}</a>
+	<div style="display: none">
+		<div id="e_{{entry_id}}_f_{{field_id}}">
+{% endif %}
+		
+		<table class="mainTable matrixTable" cellspacing="0" cellpadding="0" border="0">
+			<tr>
+				{% for label in headers %}
+					<th>{{label}}</th>
+				 {% endfor %}
+			</tr>
+			{% for row in rows %}
+				<tr>
+					{% for item in row %}
+			    		<td>{{item}}</td>
+					{% endfor %}
+			    </tr>		    
+			{% endfor %}
+		</table>
+
+{% if settings.matrix_option_1 is not defined %}
+		</div>
+	</div>
+{% endif %}

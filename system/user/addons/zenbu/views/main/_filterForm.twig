@@ -1,0 +1,118 @@
+<fieldset class="tbl-search right">
+    <div class="filters">
+        <ul>
+            <li>
+                <a class="has-sub" href="">{{'create_new'|t}}</a>
+                <div class="sub-menu" style="display: none;">
+                    <ul>
+                        {% for id, name in section_dropdown_options if id not in [0] %}
+                        <li><a href="{{cpUrl('publish/create') ~ '/' ~ id}}">{{name}}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+</fieldset>
+
+
+<h1>{{'search_entries'|t}}
+<ul class="toolbar">
+    <li class="rte-order-list"><a href="" class="show-sidebar" title="{{'saved_searches_and_settings'|t}}"></a></li>
+</ul>
+</h1>
+<form action="{{ action_url }}" id="zenbuSearchFilter">
+    <div class="new-entry right">
+
+        {% for section in sections %}
+            {#
+            //    ----------------------------------------
+            //      Retrieve sectionId from filter cache,
+            //      if there's a filter cache
+            //    ----------------------------------------
+            #}
+            {% if storedFilterData is defined and storedFilterData is not empty %}
+                {% for filter in storedFilterData if filter.filterAttribute1 in ['sectionId'] %}
+                    {% set sectionId = filter.filterAttribute3 %}
+                {% endfor %}
+            {% endif %}
+
+            {#
+            //    ----------------------------------------
+            //      "New X Entry" button
+            //    ----------------------------------------
+            #}
+            {% if section.type != 'single' and section.id == sectionId %}
+                <div class="btngroup new-entry-sectionId-{{section.id}}"><a class="btn add icon" href="">{{ "New {section} Entry" | t({section: section.name})}}</a></div>
+            {% endif %}
+        {% endfor %}
+
+        {# {% if sectionId == 0 %}
+            <div class="btngroup new-entry-sectionId-0">
+                <div class="btn menubtn add icon savedSearchActions" role="button">{{ "New Entry"|t }}</div>
+                <div class="menu">
+                    <ul>
+                        {% for section in sections %}
+                            <li><a href="">{{section.name}}</a></li>               
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        {% endif %} #}
+    </div>
+
+    <div class="zenbu-filters">
+        <table>
+            {# <thead>
+                <tr>
+                    <th colspan="4"><a href="" class="show-sidebar" title="{{'saved_searches_list'|t}}"><i class="fa fa-angle-double-right" title="{{'saved_searches_list'|t}}"></i></a></th>
+                </tr>
+            </thead> #}
+            <tr>
+                <td colspan="4" style="background: transparent">
+                    <div class="section-filter">
+                        {{ form_dropdown(convert.string('sectionId'), section_dropdown_options, request.param(convert.string('sectionId'), 0), 'class="section_select" id="section_select"') }}
+                    </div>
+                </td>
+            </tr>
+        
+        <tr class="filter-params">
+            {% set sectionId = request.param(convert.string('sectionId'), 0) %}
+            {% set entryTypeId = request.param('entryTypeId', 0) %}
+            {% if (entryTypeId == 0 and sectionId != 0) or firstFilterOptions[sectionId][entryTypeId] is not defined %}
+                {% set entryTypeId = craft.sections.getSectionById(sectionId).getEntryTypes()[0].id %}
+            {% endif %}
+            {% set firstFilterOptionsList = firstFilterOptions[sectionId][0] %}
+            <td class="firstFilter sectionId-{{sectionId}} entryTypeId-{{entryTypeId}}">
+                {{ form_dropdown('filter[0][1st]', firstFilterOptionsList, '', 'class="firstFilter sectionId-' ~ sectionId ~ ' entryTypeId-' ~ entryTypeId ~ '"') }}
+            </td>
+            <td class="secondFilter index_1">
+                {{ form_dropdown('filter[0][2nd]', secondFilterOptions[3], '', 'class="secondFilter index_1"') }}
+            </td>
+
+            <td class="thirdFilter">
+                <input type="text" class="text thirdFilter" name="filter[0][3rd]" />
+            </td>
+            <td>
+                <button type="button" class="addFilterRule"><i class="fa fa-plus-circle fa-2x"></i></button>
+                <button type="button" class="removeFilterRule"><i class="fa fa-minus-circle fa-2x"></i></button>
+            </td>
+        </tr>
+
+            <tr class="limit-and-orderby">
+                <td class="limit">
+                    {{ form_dropdown('limit', limit_options, request.param('limit', general_settings.default_limit)) }}
+                </td>
+                <td class="sort">
+                    {{ form_dropdown('sort', sort_options, request.param('sort', general_settings.default_sort)) }}
+                </td>
+                <td class="orderbyFilter">
+                    {{ form_dropdown('orderby', orderby_options[sectionId], request.param('orderby', general_settings.default_order)) }}
+                </td>
+                <td>
+                    <i class="fa fa-spinner fa-lg fa-spin loading" style="display: none;"></i>
+                </td>
+            </tr>
+        </table>
+    </div>
+</form>

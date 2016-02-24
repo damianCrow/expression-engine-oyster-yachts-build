@@ -1,0 +1,60 @@
+{% extends "_layouts/main.twig" %}
+
+{% set content %}
+<div class="box">
+	<div class="tbl-ctrls">
+		<h1>{{'permissions'|t}}</h1>
+		{{message}}
+		<form action="{{action_url}}" method="POST">
+			{{getCsrfInput()}}
+			<table class="mainTable zenbuPermissionsTable" border="0" cellpadding="0" cellspacing="0">
+				<tr>
+					<th width="5%">{{'member_group_name'|t}}</th>
+					<th width="20%">
+						<input type="checkbox" /><br />{{'enable_module_for'|t}}
+						<a title="{{'enable_module_for_subtext'|t}}" class="help"><i class="fa fa-question-circle"></i></a>
+					</th>
+					{% for perm in permission_keys %}
+						<th width="10%" id="{{perm}}_toggle">
+							<input type="checkbox" /><br />{{perm|t}}
+							{% set subtext = perm ~ '_subtext' %}
+							<a title="{{subtext|t}}" class="help"><i class="fa fa-question-circle"></i></a>
+						</th>
+					{% endfor %}	
+				</tr>
+				{# <tr>
+					<td></td>
+					<td><a title="{{'enable_module_for_subtext'|t}}"><i class="fa fa-question-circle"></i></a></td>
+					{% for perm in permission_keys %}
+						{% set subtext = perm ~ '_subtext' %}
+						<td class="setting-txt"><em>{{subtext|t}}</em></td>
+					{% endfor %}
+				</tr> #}
+				{% for group in user_groups %}
+			    <tr>
+			    	<td>{{group.name}}</td>
+			    	<td class="hoverable clickable">
+			    		{% set checked = module_access[group.id] is defined or group.id == 1 ? TRUE : FALSE %}
+			    		{% set disabled = group.id == 1 ? 'disabled="disabled" ' : '' %}
+						{{form_checkbox('enable_module[]', group.id, checked, disabled)}}
+			    	</td>
+			    	{% for perm in permission_keys %}
+						<td class="hoverable clickable" style="cursor: auto">
+							{% set checked = permissions[group.id][perm] is defined and permissions[group.id][perm] == 'y' or group.id == 1 ? TRUE : FALSE %}
+							{% set disabled = group.id == 1 ? 'disabled="disabled" ' : '' %}
+							{{form_hidden('members['~ group.id ~ '][' ~ perm ~ ']', 'n')}}
+							{{form_checkbox('members['~ group.id ~ '][' ~ perm ~ ']', 'y', checked, disabled)}}
+						</td>
+					{% endfor %}	
+			    </tr>
+				{% endfor %}
+			</table>
+
+			<fieldset class="form-ctrls">
+				<button type="submit" class="btn submit"><span>{{"save_settings"|t}}</span><span style="display:none">{{"Saving"|t}} <i class="fa fa-spinner fa-spin"></i></span></button>
+			</fieldset>
+
+		</form>
+	</div>
+</div>
+{% endset %}

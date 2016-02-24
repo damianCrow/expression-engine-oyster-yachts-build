@@ -1,0 +1,29 @@
+{% extends "_layouts/main.twig" %}
+
+{% set selectedTab = 'main' %}
+
+{# Sidebar #}
+{% set sidebar %}
+    {% include "main/sidebar.twig" %}
+{% endset %}
+
+{% set content %}
+
+    <div class="box" style="position: relative">
+        <div class="tbl-ctrls mainZenbuArea">
+            {% include "main/_filterFields.twig" %}
+
+            {% include "main/_filterForm.twig" %}
+
+            <div class="resultArea">
+                {% if request.isAjax() %}
+                    {% include "main/results.twig" %}
+                {% endif %}
+            </div>
+
+            {% include "main/multiEntry.twig" %}
+
+        </div>
+    </div>
+
+{% endset %}

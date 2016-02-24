@@ -1,0 +1,81 @@
+{% include "main/pagination.twig" %}
+
+{% if total_results > 0 %}
+<div class="resultArea-inner">
+<form id="resultList" action="{{ action_url }}" method="post">
+
+<table class="data fullwidth mainTable resultsTable" cellpadding="0" cellspacing="0" width="100%" border="0">
+    <thead>
+    <tr>
+        <th class="center" width="1%">
+           {#  {{ forms.checkbox({
+                on:         false,
+                small:      false,
+                name:       'selectAll'
+            }) }} #}
+            <input type="checkbox">
+        </th>
+         {% for col in columns %}
+            <th data-fieldType="{{col.handle|default(col.field_id)}}">
+                <i class="icon
+                {% if col.handle|default(col.field_id) == request.param('orderby') and request.param('sort') == 'DESC' %}fa fa-sort-amount-desc{% endif %}
+                {% if col.handle|default(col.field_id) == request.param('orderby') and request.param('sort') == 'ASC' %}fa fa-sort-amount-asc{% endif %}"></i>
+                {% if col.name is defined %}
+                    {{col.name|t}}
+                {% else %}
+                    {{col|t}}
+                {% endif %}
+            </th>
+        {% endfor %}
+    </tr>
+    </thead>
+
+    <tbody>
+    {# {% paginate entries as entries %} #}
+    {% for result_key, entry in entries %}
+        <tr class="{{loop.index % 2 == 0 ? 'even' : 'odd'}}">
+            {#<td>{{entry.section}}</td>#}
+            <td class="clickable center">
+                <input type="checkbox" name="toggle[]" value="{{entry.entry_id}}" />
+            </td>
+
+            {% for key, col in columns %}
+                <td>
+                    {% if col.handle in ['id', 'title', 'url_title', 'entry_date', 'expiration_date', 'edit_date', 'author', 'status', 'channel', 'category'] %}
+
+                        {% include "columns/standard/" ~ col.handle ~ '.twig' %}
+
+                    {% else %}
+
+                        {% if entries_override[result_key]['field_id_' ~ col.field_id] is defined %}
+                            {{entries_override[result_key]['field_id_' ~ col.field_id]}}
+                        {% else %}
+                            {{entry['field_id_' ~ col.field_id]}}
+                        {% endif %}
+
+                    {% endif %}
+
+                </td>
+            {% endfor %}
+        </tr>
+    {% endfor %}
+    {# {% endpaginate %} #}
+    </tbody>
+</table>
+
+</form>
+</div>
+{% else %}
+    <table cellspacing="0" class="empty no-results">
+        <tbody>
+            <tr>
+                <td>{{'no_results'|t}}</td>
+            </tr>
+        </tbody>
+    </table>
+{% endif %}
+
+{% if debug_mode %}
+<h1>Main Query</h1>
+<pre style="overflow: auto"><code>{{result_array.main_query.queryString}}</code></pre>
+{% endif %}

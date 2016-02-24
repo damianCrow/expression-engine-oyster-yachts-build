@@ -1,0 +1,10 @@
+{#
+//    ----------------------------------------
+//      Relationships
+//    ----------------------------------------
+#}
+<ul>
+{% for relEntry in entry[col.handle] %}
+    <li><a href="{{relEntry.getCpEditUrl()}}">{{relEntry.getTitle()}}</a></li>
+{% endfor %}
+</ul>

@@ -1,0 +1,77 @@
+{% extends "_layouts/main.twig" %}
+
+{% set content %}
+<div class="box">
+	<div class="tbl-ctrls">
+		<form action="{{action_url}}" method="post">
+			{{getCsrfInput()}}
+
+			<h1>{{'multi_entry_editor'|t}}</h1>
+
+			<table width="100%" class="mainTable" cellpadding="0" cellspacing="0">
+				<tr>
+					<th width="1%" class="center">{{'id'|t}}</th>
+					<th>{{'title'|t}}</th>
+					<th>
+						{{'url_title'|t}}<br />
+					</th>
+					<th style="white-space: nowrap;">
+						{{'status'|t}}
+					</th>
+					<th>{{'entry_date'|t}}</th>
+					<th>{{form_checkbox('', '')}} {{'sticky'|t}}</th>
+					<th>{{form_checkbox('', '')}} {{'allow_comments'|t}}</th>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>
+						<span class="subtext">{{'multi_set_all_status_to'|t}} {{form_dropdown('status_toggler', {'':'---'}|merge(all_select_options))}}
+							&nbsp;</span></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				{% for entry in entries %}
+					<tr class="{{loop.index % 2 == 0 ? 'even' : 'odd'}}">
+						<td class="hoverable">
+							{{entry.entry_id}}
+							{{form_hidden('entry_id[' ~ entry.entry_id ~ ']', entry.entry_id)}}
+							{{form_hidden('channel_id[' ~ entry.entry_id ~ ']', entry.channel_id)}}
+						</td>
+						<td class="hoverable">
+							<input type="text" name="title[{{entry.entry_id}}]" value="{{entry.title}}">
+						</td>
+						<td class="hoverable">
+							<input type="text" name="url_title[{{entry.entry_id}}]" value="{{entry.url_title}}">
+						</td>
+						<td class="hoverable">
+							{{form_dropdown('status[' ~ entry.entry_id ~ ']', array_helper.flatten_to_key_val('status', 'status', select_options_by_channel[entry.channel_id]), entry.status, 'class="status_dropdown"')}}
+						</td>
+						<td class="hoverable">
+							<input type="text" name="entry_date[{{entry.entry_id}}]" class="datepicker" value="{{localize.format('%Y-%m-%d %H:%i', entry.entry_date)}}"> 
+						</td>
+						<td class="hoverable clickable">
+							{{form_checkbox('sticky[' ~ entry.entry_id ~ ']', 'y', entry.sticky == 'y' ? TRUE : FALSE)}}
+						</td>
+						<td class="hoverable clickable">
+							{{form_checkbox('allow_comments[' ~ entry.entry_id ~ ']', 'y', entry.allow_comments == 'y' ? TRUE : FALSE)}}
+						</td>
+					</tr>
+				{% endfor %}
+			</table>
+			
+			<fieldset class="form-ctrls">
+				<button type="submit" class="btn submit"><span>{{"submit"|t}}</span><span style="display:none">{{"saving"|t}} <i class="fa fa-spinner fa-spin"></i></span></button>
+			</fieldset>
+			
+		</form>
+	</div>
+</div>
+	
+	{% if debug_mode %}
+		<div style="clear: both; overflow: auto">{{dump()}}</div>
+	{% endif %}
+
+{% endset %}

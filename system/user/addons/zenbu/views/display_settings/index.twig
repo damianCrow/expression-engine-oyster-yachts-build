@@ -1,0 +1,112 @@
+{% extends "_layouts/main.twig" %}
+
+{% set content %}
+<div class="box">
+	<div class="tbl-ctrls">
+		<h1>{{'display_settings'|t}}</h1>
+		{{message}}
+		<form action="{{ section_select_action_url }}" method="post">
+			{{getCsrfInput()}}
+
+			<div class="zenbu-filters">
+				<p>
+				{{ form_dropdown(convert.string('sectionId'), section_dropdown_options, request.param(convert.string('sectionId'), 0), 'id="section_select" class="section_select" style="width: 25%"') }}&nbsp;
+				<i class="fa fa-spinner fa-lg fa-spin loading" style="display: none;"></i>
+				</p>
+		    </div>
+		</form>
+
+	    <form action="{{ action_url }}" method="post">
+	    	{{getCsrfInput()}}
+
+	    	<div class="resultArea">
+				{% if request.isAjax() %}
+	            	{# {% include "display_settings/settings.twig" %} #}
+				{% endif %}
+	        </div>
+
+	        <div class="editAccordion collapsed">
+				<h1 class="collapsed">{{'general_settings'|t}}</h1>
+				<table class="templateTable" cellpadding="0" cellspacing="0" border="0">
+					<thead>
+						<tr>
+							<th></th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+					{% for setting, value in general_settings %}
+						<tr>
+							<td>
+								<h3>{{setting|t}}</h3>
+								<div class="setting-txt"><em>{{(setting ~ '_note')|t}}</em></div>
+							</td>
+							<td>
+								{% if setting == 'default_1st_filter' %}
+									{{form_dropdown('general_settings['~setting~']', orderby_options[0], value)}}
+								{% endif %}
+								{% if setting == 'default_limit' %}
+									{{form_dropdown('general_settings['~setting~']', limit_options, value)}}
+								{% endif %}
+								{% if setting == 'default_sort' %}
+									{{form_dropdown('general_settings['~setting~']', sort_options, value)}}
+								{% endif %}
+								{% if setting == 'default_order' %}
+									{{form_dropdown('general_settings['~setting~']', orderby_options[0], value)}}
+								{% endif %}
+								{% if setting == 'enable_hidden_field_search' %}
+									<label>{{form_radio('general_settings['~setting~']', 'y', value == 'y')}} {{'yes'|t}}</label>&nbsp;&nbsp;&nbsp;
+									<label>{{form_radio('general_settings['~setting~']', 'n', value == 'n')}} {{'no'|t}}</label>
+								{% endif %}
+								{% if setting == 'max_results_per_page' %}
+									<input type="text" name="general_settings[{{setting}}]" value="{{value}}">
+								{% endif %}
+							</td>
+						</tr>
+					{% endfor %}
+					</tbody>
+				</table>
+			</div>
+
+			<div class="clear"><br></div>
+
+			{% if permissions.can_copy_profile == 'y' %}
+	        <h1>{{'copy_display_settings'|t}}</h1>
+	        <div class="copyToGroups">
+	        	{% if user_groups | length >= 1 %}
+	        		<table class="" cellspacing="0" cellpadding="0" border="0">
+	        			<tr>
+	        				<th width="1%" class="center">{{ form_checkbox('', '') }}</th>
+	        				<th>{{"Apply the above settings to members of the following selected groups:"|t}}</th>
+	        			</tr>
+	        			<tr>
+	        				<td colspan="2" class="alert inline issue">{{"WARNING! This overwrites any previous display settings for selected groups."|t}}</td>
+	        			</tr>
+	        			{% for group in user_groups %}
+			        	    <tr>
+			        	    	<td class="center">{{ form_checkbox('applyTo[' ~ group.id ~ ']', '1') }}</td>
+			        	    	<td>{{group.name}}</td>
+			        	    </tr>
+			        	{% endfor %}
+	        		</table>
+		        {% endif %}
+		        {# <hr />
+				<div class="field">
+		        {{ forms.checkbox({
+					on: 	    false,
+					small: 		false,
+					name:       'applyTo[all]',
+					label:      'Apply the above settings to <strong>all</strong> members of the site'|t
+				}) }}
+					<div class="instructions">{{"WARNING! This overwrites any previous display settings any user may have."|t}}</div>
+				</div> #}
+	        </div>
+	        {% endif %}
+
+	        <fieldset class="form-ctrls">
+				<button type="submit" class="btn submit"><span>{{"save_settings"|t}}</span><span style="display:none">{{"saving"|t}} <i class="fa fa-spinner fa-spin"></i></span></button>
+			</fieldset>
+	    </form>
+	</div>
+</div>
+{% endset %}

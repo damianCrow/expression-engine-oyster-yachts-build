@@ -1,0 +1,12 @@
+<div class="actionDisplay hideAfterAction" style="display: none">
+	<br />
+
+	{% if currentUser.can('deleteEntries') %}
+	<div class="btn menubtn" role="button">{{ "Action"|t }}</div>
+	<div class="menu">
+	    <ul>
+	        <li><a class="action" data-param="action" data-value="delete" data-confirm="{{"Are you sure you want to delete the selected entries?"|t}}">{{"Delete Selected Entries"|t}}</a></li>
+	    </ul>
+	</div>
+	{% endif %}
+</div>

@@ -1,0 +1,28 @@
+{#
+//    ----------------------------------------
+//      Other fields
+//    ----------------------------------------
+#}
+{% if entry[col.handle] is iterable %}
+    {#
+    // For Unknown field and its array data, display a dump
+    #}
+    <a href="#" class="showModal">{{"Show Raw Data"|t}}</a>
+    <div class="outerModal" style="display: none;">
+        <div class="modal" style="overflow: auto">
+           {{entry[col.handle]|zenbuDump}}
+        </div>
+    </div>
+{% else %}
+    {#
+    //    ----------------------------------------
+    //      Most regular string/text fields
+    //    ----------------------------------------
+    #}
+    {% set charLimit =  col.id is defined and settings.settings[col.id].charLimit is defined and settings.settings[col.id].charLimit is not empty ? settings.settings[col.id].charLimit : 0 %}
+    {% if charLimit != 0 %}
+        {{entry[col.handle] | striptags | default('-') | slice(0, charLimit)}}{{entry[col.handle] | default('-') | length > charLimit ?  '...' }}
+    {% else %}
+        {{entry[col.handle] | default('-')}}
+    {% endif %}
+{% endif %}

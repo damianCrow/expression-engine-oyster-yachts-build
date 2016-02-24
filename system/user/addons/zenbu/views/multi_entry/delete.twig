@@ -1,0 +1,43 @@
+{% extends "_layouts/main.twig" %}
+
+{% set content %}
+<div class="box">
+	<div class="tbl-ctrls">
+		<form action="{{action_url}}" method="post">
+			{{getCsrfInput()}}
+			{{form_hidden('bulk_action', 'remove')}}
+			
+			{% if entries|length == 1 %}
+				<h1>{{'delete_entry_confirm'|t}}</h1>
+			{% else %}
+				<h1>{{'delete_entries_confirm'|t}}</h1>
+			{% endif %}
+			<div class="alert issue inline">
+				<p>* {{'action_can_not_be_undone'|t}} *</p>
+			</div>
+			<table width="" class="mainTable" cellpadding="0" cellspacing="0">
+				<tr>
+					<th width="1%" class="center">{{'id'|t}}</th>
+					<th>{{'title'|t}}</th>
+					<th>{{'url_title'|t}}</th>
+					<th>{{'status'|t}}</th>
+				</tr>
+				{% for entry in entries %}
+					<tr class="{{loop.index % 2 == 0 ? 'even' : 'odd'}}">
+						<td>{{entry.entry_id}}{{form_hidden('selection[]', entry.entry_id)}}</td>
+						<td>{{entry.title}}</td>
+						<td>{{entry.url_title}}</td>
+						<td>{{entry.status|capitalize}}</td>
+					</tr>
+				{% endfor %}
+			</table>
+			
+			<fieldset class="form-ctrls">
+				<button type="submit" class="btn submit"><span><i class="fa fa-warning"></i> {{"delete"|t}}</span><span style="display:none">{{"delete"|t}} <i class="fa fa-spinner fa-spin"></i></span></button>
+				<a href="{{zenbuUrl()}}" class="btn action cancel">{{'cancel_and_return'|t}}</a>
+			</fieldset>
+			
+		</form>
+	</div>
+</div>
+{% endset %}

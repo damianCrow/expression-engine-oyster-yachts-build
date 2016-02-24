@@ -1,0 +1,15 @@
+{% block sidebar %}
+	{{sidebar}}
+{% endblock %}
+
+{% block content %}
+	{{content}}
+{% endblock %}
+
+{% if message is defined and message is not empty %}
+	<script>
+		$(document).ready(function (){
+			$.ee_notice("{{message}}", {open: false, type: '{{message_status|default("success")}}'});
+		})
+	</script>
+{% endif %}

@@ -1,0 +1,102 @@
+{% set sectionId = request.param(convert.string('sectionId'), 0) %}
+<input type="hidden" name="{{convert.string('sectionId')}}" value="{{sectionId}}" />
+
+<table class="data fullwidth sortable-table settingsTable" cellpadding="0" cellspacing="0" width="100%" border="0">
+	<thead>
+	    <tr>
+	    	<th class="reorder-col"></th>
+	        <th width="20%">{{"Field"|t}}</th>
+	        <th width="10%">{{"Field Type"|t}}</th>
+	        <th width="1%">{{"Order"|t}}</th>
+	        <th width="1%" class="nowrap">{{form_checkbox()}} {{"Show"|t}}</th>
+	        <th>{{"Settings"|t}}</th>
+	    </tr>
+    </thead>
+	{% set c = 1 %}
+	<tbody>
+	{% for handle, field in rows %}
+
+		<tr>
+			<td class="reorder-col"><span class="ico reorder"></span></td>
+			<td>{{field.name | default(field)}}</td>
+			<td>{{field.field_type | capitalize | default('-')}}</td>
+			<td class="order center">
+				{{c}}
+			</td>
+			<td class="not-sortable center clickable">
+				{% set show = false %}
+				{% for setting in settings.fields %}
+					{% if (setting.fieldType == handle or setting.fieldId == handle) and (setting.show is defined and setting.show == 1) %}
+						{% set show = true %}
+					{% endif %}
+				{% endfor %}
+
+				{{form_hidden('field[' ~ c ~ '][' ~ handle ~ ']', '0')}}
+				{{form_checkbox('field[' ~ c ~ '][' ~ handle ~ ']', '1', show)}}
+			</td>
+			<td class="not-sortable">
+
+				{% for extra_setting in extra_display_settings[handle] %}
+					{{extra_setting}}
+				{% endfor %}
+
+				{# <input type="hidden" name="settings[][{{handle}}]" value=""> #}
+
+				{% if handle == 'entry_date' %}
+					<label for="postDateFormat">{{"Date format"|t}}</label><br /> <input type="text" id="postDateFormat" class="text" name="settings[{{sectionId}}][{{handle}}][dateFormat]" value="{{settings.settings[handle].dateFormat is defined ? settings.settings[handle].dateFormat : ''}}" placeholder="%Y-%m-%d" />
+				{% endif %}
+
+				{% if handle == 'edit_date' %}
+					<label for="postDateFormat">{{"Date format"|t}}</label><br /> <input type="text" id="postDateFormat" class="text" name="settings[{{sectionId}}][{{handle}}][dateFormat]" value="{{settings.settings[handle].dateFormat is defined ? settings.settings[handle].dateFormat : ''}}" placeholder="%Y-%m-%d" />
+				{% endif %}
+
+				{% if handle == 'expiration_date' %}
+					<label for="postDateFormat">{{"Date format"|t}}</label><br /> <input type="text" id="postDateFormat" class="text" name="settings[{{sectionId}}][{{handle}}][dateFormat]" value="{{settings.settings[handle].dateFormat is defined ? settings.settings[handle].dateFormat : ''}}" placeholder="%Y-%m-%d" />
+				{% endif %}
+
+
+				{% if field.type == 'PlainText' %}
+					<div class="field has-instructions">
+						<label for="charLimit">{{"Character limit display"|t}}</label><br /> <input type="number" min="0" id="charLimit" class="text" name="settings[{{handle}}][charLimit]" value="{{settings.settings[handle].charLimit is defined ? settings.settings[handle].charLimit : ''}}" placeholder="eg. 50" />
+					</div>
+				{% endif %}
+
+				{% if field.type == 'RichText' %}
+					<div class="field has-instructions">
+						<label for="charLimit">{{"Character limit display"|t}}</label><br /> <input type="number" min="0" id="charLimit" class="text" name="settings[{{handle}}][charLimit]" value="{{settings.settings[handle].charLimit is defined ? settings.settings[handle].charLimit : ''}}" placeholder="eg. 50" />
+						<div class="instructions"><p>{{"Note: To avoid issues with truncated HTML, content will be converted to plain text before truncation."|t}}</p></div>
+					</div>
+				{% endif %}
+
+				{% if field.type == 'Matrix' %}
+					<div class="field has-instructions">
+						{{ forms.checkbox({
+							checked: (settings.settings[handle].useModal is defined and settings.settings[handle].useModal == 1) or settings.settings[handle].useModal is not defined ? true : false,
+					        name: 'settings[' ~ handle~ '][useModal]',
+							label: "Show Matrix in Modal Window"|t,
+					    }) }}
+						<div class="instructions"><p>{{"Displays a link which opens a modal window containing the Matrix field, instead of displaying the Matrix field inline."|t}}</p></div>
+					    <br />
+						<label for="viewHeight">{{"Max view height"|t}}</label><br />
+						<input type="number" min="0" id="viewHeight" class="text" name="settings[{{handle}}][viewHeight]" value="{{settings.settings[handle].viewHeight is defined ? settings.settings[handle].viewHeight : ''}}" placeholder="eg. 500" /> {{"px"|t}}
+						<div class="instructions"><p>{{"The maximum height of the viewable area for Matrix fields. Matrix data higher than the max view height will be scrollable. Set to empty for full height, always."|t}}</p></div>
+					</div>
+				{% endif %}
+
+				{% if field.type == 'Assets' %}
+					<div class="field has-instructions">
+						{{"Thumbnail dimensions"}}:<br />
+						<input type="number" min="0" id="thumbWidth" class="text" name="settings[{{handle}}][thumbWidth]" value="{{settings.settings[handle].thumbWidth is defined ? settings.settings[handle].thumbWidth : ''}}" placeholder="Width eg. 50 (default)" /> x
+						<input type="number" min="0" id="thumbHeight" class="text" name="settings[{{handle}}][thumbHeight]" value="{{settings.settings[handle].thumbHeight is defined ? settings.settings[handle].thumbHeight : ''}}" placeholder="Height, eg. 50 (default)" /> {{"px"|t}}
+					</div>
+				{% endif %}
+
+
+
+
+			</td>
+		</tr>
+		{% set c = c + 1 %}
+	{% endfor %}
+	</tbody>
+</table>

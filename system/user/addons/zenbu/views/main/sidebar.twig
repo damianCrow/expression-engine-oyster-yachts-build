@@ -1,0 +1,63 @@
+<div class="col w-4" style="display: none">
+	<div class="box sidebar">
+		<h2 class="{% if current is not defined %}act{% endif %}"><a href="{{zenbuUrl()}}">{{'entries'|t}}</a></h2>
+		<h2>{{'manage'|t}}</h2>
+		<ul>
+			<li class="{% if current == 'saved_searches' %}act{% endif %}"><a href="{{zenbuUrl('saved_searches')}}">{{'saved_searches'|t}}</a></li>
+			{% if permissions.can_access_settings == 'y' or user.group_id == 1 %}
+			<li class="{% if current == 'display_settings' %}act{% endif %}"><a href="{{zenbuUrl('display_settings')}}">{{'display_settings'|t}}</a></li>
+			{% endif %}
+			{% if permissions.can_admin == 'y' or user.group_id == 1  %}
+			<li class="{% if current == 'permissions' %}act{% endif %}"><a href="{{zenbuUrl('permissions')}}">{{'permissions'|t}}</a></li>
+			{% endif %}
+		</ul>
+		{% if savedSearches.items is not empty %}
+			<h2><i class="fa fa-search"></i> {{"Saved Searches"|t}}</h2>
+			<ul id="savedSearchesList">
+			{% for search in savedSearches.items %}
+				<li><a href="{{ savedSearches.base_url ~ '/fetch_search_filters&searchId='~search.id }}" data-searchId="{{search.id}}">{{search.label | default('-')}}</a></li>
+			{% endfor %}
+			</ul>
+		{% endif %}
+
+		<h2><i class="fa fa-save"></i> {{"Save this search"|t}}</h2>
+		<form id="saveSearch" action="{{save_search_action_url}}" method="post">		
+			<fieldset>
+				
+				<input type="text" class="text" name="label" value="" placeholder="{{'Search name'|t}}" />
+				
+				<button type="submit" class="btn submit small"><span>{{ "Save Search"|t }}</span><span style="display: none">{{"Saving"|t}} <i class="fa fa-spinner fa-pulse"></i></span></button>
+			</fieldset>
+		</form>
+
+		{{after_save_search}}
+	</div>
+</div>
+ {# <nav>
+	<ul>
+		<li class="heading savedSearches" {% if savedSearches is empty %}style="display: none"{% endif %}><span><i class="fa fa-list"></i> {{"Saved Searches"|t}}</span></li>
+	</ul>
+	<ul id="savedSearchesList">
+	{% if savedSearches is not empty %}
+		{% for search in savedSearches %}
+			<li><a href="{{ url('zenbu/searches/fetchFilters') }}" data-searchId="{{search.id}}">{{search.label | default('-')}}</a></li>
+		{% endfor %}
+	{% endif %}
+	</ul>
+
+
+	<ul>
+		<li class="heading"><span><i class="fa fa-save"></i> {{"Save this search"|t}}</span></li>
+	</ul>
+	<ul>
+		<li>
+			<form id="saveSearch" action="{{ url('zenbu/searches/save') }}" method="post">
+				{{ getCsrfInput() }}
+				<p>
+				<input type="text" class="text" name="label" value="" placeholder="{{'Search name'|t}}" />
+				</p>
+				<button type="submit" class="btn submit small"><span>{{ "Save Search"|t }}</span><span style="display: none">{{"Saving"|t}} <i class="fa fa-spinner fa-pulse"></i></span></button>
+			</form>
+		</li>
+	</ul>
+</nav> #}

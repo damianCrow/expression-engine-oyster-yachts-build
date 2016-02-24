@@ -1,0 +1,10 @@
+{#
+//    ----------------------------------------
+//      Categories
+//    ----------------------------------------
+#}
+{# {{dump(entry_categories[entry.entry_id])}} #}
+{% for category in entry_categories[entry.entry_id] %}
+    {{category.cat_name}}{{ not loop.last ? ', ' }}
+{% endfor %}
+{{entry_categories[entry.entry_id] | length == 0 ? '-'}}
