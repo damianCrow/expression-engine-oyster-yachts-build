@@ -113,7 +113,7 @@ $foundation-colors: (
 ) !default;
 
 @mixin foundation-global-styles {
-  @include -zf-normalize;
+  //@include -zf-normalize;
 
   // These styles are applied to a <meta> tag, which is read by the Foundation JavaScript
   .foundation-mq {
@@ -163,13 +163,13 @@ $foundation-colors: (
   textarea {
     height: auto;
     min-height: 50px;
-    border-radius: $global-radius;
+    //border-radius: $global-radius;
   }
 
   // Make select elements are 100% width by default
   select {
     width: 100%;
-    border-radius: $global-radius;
+    //border-radius: $global-radius;
   }
 
   // Styles Google Maps and MapQuest embeds properly
@@ -191,7 +191,7 @@ $foundation-colors: (
     background: transparent;
     padding: 0;
     border: 0;
-    border-radius: $global-radius;
+    //border-radius: $global-radius;
     line-height: 1;
   }
 

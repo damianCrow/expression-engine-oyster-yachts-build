@@ -24,24 +24,19 @@ gulp.task('css', function () {
 });
 
 gulp.task('scripts', function() {
-  gulp.src(['./wp-content/themes/oyster/js/jquery.min.js', 
-            './wp-content/themes/oyster/js/jquery.cycle2.min.js', 
-            './wp-content/themes/oyster/js/jquery.magnific-popup.min.js', 
-            './wp-content/themes/oyster/js/jquery.slimscroll.min.js', 
-            './wp-content/themes/oyster/js/jquery.fullpage.js', 
-            './wp-content/themes/oyster/js/flipclock.min.js',
-            './wp-content/themes/oyster/js/panzoom.js',
-            './wp-content/themes/oyster/js/jquery.mousewheel.js',
-            './wp-content/themes/oyster/js/app.js'])
+  gulp.src(['./source/js/libraries/jquery.min.js', 
+            './source/js/libraries/jquery.cycle2.min.js', 
+            './source/js/libraries/foundation/foundation.core.js',
+            './source/js/app.js'])
     .pipe(concat('scripts.js'))
     .pipe(sourcemaps.write())
     .pipe(uglify())
     .pipe(gulp.dest('./dist'))
 });
 
-gulp.task('default', ['css'/*, 'scripts'*/]);
+gulp.task('default', ['css', 'scripts']);
 
 gulp.task('watch', function () {
-  gulp.watch('./source/sass/*.scss', ['css']);
-  gulp.watch('./source/js/*.js', ['scripts']);
+  gulp.watch('./source/sass/**/*.scss', ['css']);
+  gulp.watch('./source/js/**/*.js', ['scripts']);
 });
