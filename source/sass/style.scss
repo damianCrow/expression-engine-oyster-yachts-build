@@ -1,4 +1,9 @@
-@import 'reset';
-@import 'foundation/app';
 @import 'bourbon/_bourbon';
+
+@import 'global/reset';
+@import 'global/variables';
+@import 'global/fonts';
+@import 'global/mixins';
+
+@import 'foundation/app';
 
