@@ -33,7 +33,7 @@
 			{/if}
 		</div>
 		<div class="large-offset-1 large-3 float">
-			<table class="table">
+			<table class="table definition-table">
 				<thead>
 					<tr>
 						<td colspan="2">{title} overview</td>
@@ -81,6 +81,10 @@
 				</tfoot>
 				{/if}
 			</table>
+
+			<div class="disclaimer">
+				The above price is given as an indication only and may be subject to exchange rate fluctuation , VAT or local taxes. Also please note that all dimensions are approximates.
+			</div>
 		</div>
 	</div>
 </section>
@@ -105,6 +109,53 @@
 
 <section id="specifications" class="specifications">
 	<div class="banner">Specifications</div>
+
+	<div class="content row row-pad">
+		<table class="table specs-table">
+			<thead>
+				<tr>
+					<td colspan="9">KEY SPECIFICATIONS</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th>LOA</th>
+					<th>LWL</th>
+					<th>BEAM</th>
+					<th>DRAFT STANDARD</th>
+					<th>{brokerage_draft}</th>
+					<th>DISPLACEMENT</th>
+					<th>RIG</th>
+					<th>JOINERY</th>
+					<th>CABINS</th>
+				</tr>
+
+				{brokerage_specifications limit="1"}
+				<tr>
+					<td>{brokerage_specifications:loa}</td>
+					<td>{brokerage_specifications:lwl}</td>
+					<td>{brokerage_specifications:beam}</td>
+					<td>{brokerage_specifications:draft_standard}</td>
+					<td>{brokerage_specifications:draft}</td>
+					<td>{brokerage_specifications:displacement}</td>
+					<td rowspan="2">{brokerage_rig}</td>
+					<td rowspan="2">{brokerage_joinery}</td>
+					<td rowspan="2">{brokerage_cabins}</td>
+				</tr>
+				{/brokerage_specifications}
+				{brokerage_specifications limit="1" offset="1"}
+				<tr>
+					<td>{brokerage_specifications:loa}</td>
+					<td>{brokerage_specifications:lwl}</td>
+					<td>{brokerage_specifications:beam}</td>
+					<td>{brokerage_specifications:draft_standard}</td>
+					<td>{brokerage_specifications:draft}</td>
+					<td>{brokerage_specifications:displacement}</td>
+				</tr>
+				{/brokerage_specifications}
+			</tbody>
+		</table>
+	</div>
 </section>
 
 <section id="yacht-layout" class="yacht-layout">
@@ -117,9 +168,7 @@
 			{/brokerage_layout}
 		</div>
 		<ul class="slider-pager large-10 large-offset-1 end">
-			{brokerage_layout}
-			<li><a href="" style="background-image:url('{image:url}');"></a></li>
-			{/brokerage_layout}
+			{brokerage_layout}<li><a href=""><span style="background-image:url('{image:url}');"></span></a></li>{/brokerage_layout}
 		</ul>
 	</div>
 </section>

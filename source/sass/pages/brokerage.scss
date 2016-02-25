@@ -4,6 +4,14 @@
 	a {
 		color: $blue;
 	}
+
+	.disclaimer {
+		@include omnes_light;
+		font-size: 0.75em;
+		line-height: 1.66666666em;
+		color: $blue;
+		margin-top: 16px;
+	}
 }
 
 .yacht-nav {
@@ -59,8 +67,8 @@
 }
 
 #layout-slider {
-	margin-top: 70px;
 	margin-bottom: 70px;
+	overflow: hidden;
 
 	div {
 		width: 100%;
@@ -79,23 +87,23 @@
 
 	a {
 		display: block;
-		height: 0;
 		width: 100%;
-		padding-bottom: 54%;
-		background-position: center center;
-		background-repeat: no-repeat;
-		background-size: contain;
+		padding: 12px 25px;
+		
+		
 		border: 1px solid $lightgrey;
 
-		@include transition(all 0.3s);
+		@include transition(all 0.1s);
 
 		span {
 			display: block;
 			width: 100%;
-			height: 100%;
+			height: 0;
+			padding-bottom: 54%;
+			background-position: center center;
+			background-repeat: no-repeat;
+			background-size: contain;
 		}
-
-		
 	}
 
 	.cycle-pager-active a {
@@ -105,6 +113,14 @@
 
 .yacht-layout {
 	.content {
-		
+		padding-top: 70px;
+		padding-bottom: 70px;
+	}
+}
+
+.specifications {
+	.content {
+		padding-top: 40px;
+		padding-bottom: 70px;
 	}
 }

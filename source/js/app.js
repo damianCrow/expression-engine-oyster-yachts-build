@@ -14,6 +14,7 @@ $(function() {
 		slides: '> div',
 		paused: true,
 		pager: '.slider-pager',
-		pagerTemplate: ''
+		pagerTemplate: '',
+		autoHeight: 'container'
 	});
 });

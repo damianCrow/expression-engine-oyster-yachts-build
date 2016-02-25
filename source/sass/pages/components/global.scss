@@ -5,7 +5,7 @@ body {
 }
 
 p {
-	font-size: 0.875em;
+	font-size: 0.9375em;
 	line-height: 1.73333333em;
 	margin-bottom: 1.73333333em;
 	color: $grey;
@@ -58,7 +58,6 @@ h4 {
 	border-collapse: collapse;
 	width: 100%;
 
-
 	thead {
 		td {
 			background: $blue;
@@ -73,7 +72,28 @@ h4 {
 	tbody {
 		td {
 			border: 1px solid $lightgrey;
-			
+			color: $lightblue;
+		}
+	}
+
+	td, th {
+		height: 50px;
+		vertical-align: middle;
+		padding: 0 10px 0 20px;
+		text-align: left;
+	}
+
+	th {
+		@include omnes_medium;
+		background: #f6f8f9;
+		color: $lightblue;
+		text-transform: uppercase;
+	}
+}
+
+.definition-table {
+	tbody {
+		td {		
 			span {
 				@include omnes_regular;
 			}
@@ -81,13 +101,17 @@ h4 {
 
 		td:nth-child(1) {
 			width: 44%;
-			color: $lightblue;          
 		}
 
 		td:nth-child(2) {
 			width: 56%;
 			color: $blue;
 			@include omnes_medium;
+		}
+
+		td, th {
+			font-size: 0.9375em;
+			line-height: 1.2em;
 		}
 	}
 
@@ -102,13 +126,21 @@ h4 {
 			@include omnes_medium;
 		}
 	}
+}
 
-	td {
-		height: 50px;
-		vertical-align: middle;
-		padding: 0 10px 0 28px;
-		font-size: 0.9375em;
-		line-height: 1.2em;
+.specs-table {
+	tbody {
+		td:nth-child(1), td:nth-child(2), td:nth-child(3), td:nth-child(7), td:nth-child(8), td:nth-child(9) {
+			width: 9.66666666%;
+		}
+		td:nth-child(4), td:nth-child(5), td:nth-child(6) {
+			width: 14%;
+		}
+
+		td, th {
+			font-size: 0.75em;
+			line-height: 1.25em;
+		}
 	}
 }
 
