@@ -3,7 +3,19 @@
 {exp:channel:entries}
 
 <section class="hero" style="background-image:url('{brokerage_main_image}{image:url}{/brokerage_main_image}');">
-
+	<div id="yacht-nav" class="yacht-nav">
+		<ul>
+			<li>
+				<a class="scroll" href="#design-features">Design Features</a>
+			</li>
+			<li>
+				<a class="scroll" href="#specifications">Specifications</a>
+			</li>
+			<li>
+				<a class="scroll" href="#yacht-layout">Yacht Layout</a>
+			</li>
+		</ul>
+	</div>
 </section>
 
 <section class="about-yacht">
@@ -12,10 +24,13 @@
 			<h2>{brokerage_model}</h2>
 			<h1>{title}</h1>
 
-
 			{brokerage_about}
 
-			{brokerage_further_information}
+			{if brokerage_further_information != ""}
+			<div class="further-info">
+				{brokerage_further_information}
+			</div>
+			{/if}
 		</div>
 		<div class="large-offset-1 large-3 float">
 			<table class="table">
@@ -70,25 +85,43 @@
 	</div>
 </section>
 
-<section class="design-features">
-	<div class="row row-pad">
+<section id="design-features" class="design-features">
+	<div class="banner">Design features</div>
 
-	Design features
-
-	{brokerage_design_features}
-		{brokerage_design_features:feature_title}
-		{brokerage_design_features:feature_description}
-		{brokerage_design_features:feature_image}
-	{/brokerage_design_features}
+	<div class="content row row-pad">
+		{brokerage_design_features}
+		<div class="large-4 content-col">
+			<div class="feature-image">
+				<img src="{brokerage_design_features:feature_image}">
+			</div>
+			<div class="feature-content">
+				<h4>{brokerage_design_features:feature_title}</h4>
+				{brokerage_design_features:feature_description}
+			</div>
+		</div>
+		{/brokerage_design_features}
 	</div>
 </section>
 
-<section class="specifications">
-
+<section id="specifications" class="specifications">
+	<div class="banner">Specifications</div>
 </section>
 
-<section class="yacht-layout">
+<section id="yacht-layout" class="yacht-layout">
+	<div class="banner">Yacht Layout</div>
 
+	<div class="content row row-pad">
+		<div id="layout-slider">
+			{brokerage_layout}
+			<div><img src="{image:url}"></div>
+			{/brokerage_layout}
+		</div>
+		<ul class="slider-pager large-10 large-offset-1 end">
+			{brokerage_layout}
+			<li><a href="" style="background-image:url('{image:url}');"></a></li>
+			{/brokerage_layout}
+		</ul>
+	</div>
 </section>
 
 {/exp:channel:entries}

@@ -1,0 +1,110 @@
+.about-yacht {
+	padding: 70px 0;
+
+	a {
+		color: $blue;
+	}
+}
+
+.yacht-nav {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	padding: 0 20px;
+	overflow: hidden;
+	background: #fff;
+
+	li {
+		float: left;
+
+		a {
+			display: block;
+			font-size: 0.75em;
+			line-height: 1.16666666em;
+			padding: 21px 20px 20px;
+			color: $grey;
+			@include omnes_medium;
+			text-transform: uppercase;
+			text-decoration: none;
+		}
+	}
+}
+
+.design-features {
+	.content {
+		padding-top: 50px;
+		padding-bottom: 70px;
+	}
+
+	.feature-content {
+		padding: 28px 20px 0;
+		border-right: 1px solid $lightgrey;
+		border-bottom: 1px solid $lightgrey;
+	}
+
+	.content-col:first-child .feature-content {
+		border-left: 1px solid $lightgrey;
+	}
+}
+
+.further-info {
+	border-top: 1px solid $lightgrey;
+	border-bottom: 1px solid $lightgrey;
+
+	padding-top: 23px;
+
+	p {
+		color: $blue;
+	}
+}
+
+#layout-slider {
+	margin-top: 70px;
+	margin-bottom: 70px;
+
+	div {
+		width: 100%;
+		text-align: center;
+	}
+}
+
+.slider-pager {
+	text-align: center;
+
+	li {
+		display: inline-block;
+		width: 25%;
+		padding: 0 25px;
+	}
+
+	a {
+		display: block;
+		height: 0;
+		width: 100%;
+		padding-bottom: 54%;
+		background-position: center center;
+		background-repeat: no-repeat;
+		background-size: contain;
+		border: 1px solid $lightgrey;
+
+		@include transition(all 0.3s);
+
+		span {
+			display: block;
+			width: 100%;
+			height: 100%;
+		}
+
+		
+	}
+
+	.cycle-pager-active a {
+		border-color: $blue;
+	}
+}
+
+.yacht-layout {
+	.content {
+		
+	}
+}
