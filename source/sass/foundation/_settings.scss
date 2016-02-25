@@ -45,7 +45,7 @@
 // ---------
 
 $global-font-size: 100%;
-$global-width: rem-calc(1200);
+$global-width: rem-calc(1366);
 $global-lineheight: 1.5;
 $primary-color: #2199e8;
 $secondary-color: #777;
@@ -87,7 +87,7 @@ $grid-row-width: $global-width;
 $grid-column-count: 12;
 $grid-column-responsive-gutter: (
   small: 20px,
-  medium: 30px,
+  medium: 20px,
 );
 $grid-column-align-edge: true;
 $block-grid-max: 8;

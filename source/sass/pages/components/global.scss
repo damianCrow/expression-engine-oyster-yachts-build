@@ -1,0 +1,85 @@
+p {
+	font-size: 0.875em;
+	line-height: 1.73333333em;
+	margin-bottom: 1.73333333em;
+	color: $grey;
+}
+
+body {
+	@include omnes_regular;
+}
+
+.row-pad {
+	padding-left: 2.5em;
+	padding-right: 2.5em;
+}
+
+.float {
+	float: left;
+}
+
+.table {
+	border-collapse: collapse;
+	width: 100%;
+
+
+	thead {
+		td {
+			background: $blue;
+			@include omnes_medium;
+			font-size: 0.75em;
+			line-height: 1em;
+			color: #fff;
+			text-transform: uppercase;
+		}
+	}
+
+	tbody {
+		td {
+			border: 1px solid $lightgrey;
+			
+			span {
+				@include omnes_regular;
+			}
+		}
+
+		td:nth-child(1) {
+			width: 44%;
+			color: $lightblue;          
+		}
+
+		td:nth-child(2) {
+			width: 56%;
+			color: $blue;
+			@include omnes_medium;
+		}
+	}
+
+	tfoot {
+		td {
+			background: $lightgrey;
+			text-align: center;
+			color: $blue;
+			padding: 0;
+			text-decoration: underline;
+			text-transform: uppercase;
+			@include omnes_medium;
+		}
+	}
+
+	td {
+		height: 50px;
+		vertical-align: middle;
+		padding: 0 10px 0 28px;
+		font-size: 0.9375em;
+		line-height: 1.2em;
+	}
+}
+
+
+.hero {
+	height: 640px;
+	background-position: center center;
+	background-size: cover;
+	background-attachment: fixed;
+}
