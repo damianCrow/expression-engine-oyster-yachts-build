@@ -17,4 +17,13 @@ $(function() {
 		pagerTemplate: '',
 		autoHeight: 'container'
 	});
+
+	/*$(window).scroll(function() {
+		var pos = $(document).scrollTop()/2;
+		$('#full-image').css({
+			'-ms-transform': 'translateY('+(pos)+'px)',
+			'-webkit-transform': 'translateY('+(pos)+'px)',
+			'transform': 'translateY('+(pos)+'px)'
+		});
+	});*/
 });

@@ -1,0 +1,175 @@
+{exp:channel:entries}
+
+<section class="hero full-screen">
+	<div id="full-image" style="background-image:url('{brokerage_main_image}{image:url}{/brokerage_main_image}');"></div>
+	<div id="yacht-nav" class="yacht-nav">
+		<ul>
+			<li>
+				<a class="scroll" href="#design-features">Design Features</a>
+			</li>
+			<li>
+				<a class="scroll" href="#specifications">Specifications</a>
+			</li>
+			<li>
+				<a class="scroll" href="#yacht-layout">Yacht Layout</a>
+			</li>
+		</ul>
+	</div>
+</section>
+
+<section class="about-yacht">
+	<div class="row row-pad">
+		<div class="large-offset-1 large-7 float">
+			<h2>{brokerage_model}</h2>
+			<h1>{title}</h1>
+
+			{brokerage_about}
+
+			{if brokerage_further_information != ""}
+			<div class="further-info">
+				{brokerage_further_information}
+			</div>
+			{/if}
+		</div>
+		<div class="large-offset-1 large-3 float">
+			<table class="table definition-table">
+				<thead>
+					<tr>
+						<td colspan="2">{title} overview</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Location</td>
+						<td>{brokerage_location}</td>
+					</tr>
+					<tr>
+						<td>Year Built</td>
+						<td>{brokerage_year_built}</td>
+					</tr>
+					<tr>
+						<td>Rig</td>
+						<td>{brokerage_rig}</td>
+					</tr>
+					<tr>
+						<td>Joinery</td>
+						<td>{brokerage_joinery}</td>
+					</tr>
+					<tr>
+						<td>Cabins</td>
+						<td>{brokerage_cabins}</td>
+					</tr>
+					<tr>
+						<td>Status</td>
+						<td>{brokerage_status}</td>
+					</tr>
+					<tr>
+						<td>Price</td>
+						<td>{brokerage_currency}<?php echo number_format({brokerage_price}); ?> <span>{brokerage_vat}</span></td>
+					</tr>	
+					<tr>
+						<td>Year Built</td>
+						<td>{brokerage_year_built}</td>
+					</tr>
+				</tbody>
+				{if brokerage_feature_text != ""}
+				<tfoot>
+					<tr>
+						<td colspan="2" class="table-footer">{brokerage_feature_text}</td>
+					</tr>
+				</tfoot>
+				{/if}
+			</table>
+
+			<div class="disclaimer">
+				The above price is given as an indication only and may be subject to exchange rate fluctuation , VAT or local taxes. Also please note that all dimensions are approximates.
+			</div>
+		</div>
+	</div>
+</section>
+
+<section id="design-features" class="design-features">
+	<div class="banner">Design features</div>
+
+	<div class="content row row-pad">
+		{brokerage_design_features}
+		<div class="large-4 content-col">
+			<div class="feature-image">
+				<img src="{brokerage_design_features:feature_image}">
+			</div>
+			<div class="feature-content">
+				<h4>{brokerage_design_features:feature_title}</h4>
+				{brokerage_design_features:feature_description}
+			</div>
+		</div>
+		{/brokerage_design_features}
+	</div>
+</section>
+
+<section id="specifications" class="specifications">
+	<div class="banner">Specifications</div>
+
+	<div class="content row row-pad">
+		<table class="table specs-table">
+			<thead>
+				<tr>
+					<td colspan="9">KEY SPECIFICATIONS</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th>LOA</th>
+					<th>LWL</th>
+					<th>BEAM</th>
+					<th>DRAFT STANDARD</th>
+					<th>{brokerage_draft}</th>
+					<th>DISPLACEMENT</th>
+					<th>RIG</th>
+					<th>JOINERY</th>
+					<th>CABINS</th>
+				</tr>
+
+				{brokerage_specifications limit="1"}
+				<tr>
+					<td>{brokerage_specifications:loa}</td>
+					<td>{brokerage_specifications:lwl}</td>
+					<td>{brokerage_specifications:beam}</td>
+					<td>{brokerage_specifications:draft_standard}</td>
+					<td>{brokerage_specifications:draft}</td>
+					<td>{brokerage_specifications:displacement}</td>
+					<td rowspan="2">{brokerage_rig}</td>
+					<td rowspan="2">{brokerage_joinery}</td>
+					<td rowspan="2">{brokerage_cabins}</td>
+				</tr>
+				{/brokerage_specifications}
+				{brokerage_specifications limit="1" offset="1"}
+				<tr>
+					<td>{brokerage_specifications:loa}</td>
+					<td>{brokerage_specifications:lwl}</td>
+					<td>{brokerage_specifications:beam}</td>
+					<td>{brokerage_specifications:draft_standard}</td>
+					<td>{brokerage_specifications:draft}</td>
+					<td>{brokerage_specifications:displacement}</td>
+				</tr>
+				{/brokerage_specifications}
+			</tbody>
+		</table>
+	</div>
+</section>
+
+<section id="yacht-layout" class="yacht-layout">
+	<div class="banner">Yacht Layout</div>
+
+	<div class="content row row-pad">
+		<div id="layout-slider">
+			{brokerage_layout}
+			<div><img src="{image:url}"></div>
+			{/brokerage_layout}
+		</div>
+		<ul class="slider-pager large-10 large-offset-1 end">
+			{brokerage_layout}<li><a href=""><span style="background-image:url('{image:url}');"></span></a></li>{/brokerage_layout}
+		</ul>
+	</div>
+</section>
+
+{/exp:channel:entries}

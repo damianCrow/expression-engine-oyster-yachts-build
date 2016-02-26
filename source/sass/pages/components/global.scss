@@ -1,5 +1,9 @@
 // Typography
 
+html, body {
+	height: 100%;
+}
+
 body {
 	@include omnes_regular;
 }
@@ -144,13 +148,30 @@ h4 {
 	}
 }
 
+section {
+	background: #fff;
+	position: relative;
+	z-index: 10;
+}
 
 .hero {
-	height: 640px;
+	position: relative;
+	z-index: 1;
+}
+
+.full-screen {
+	height: 100%;
+	width: 100%;
+}
+
+#full-image {
+	height: 100%;
 	background-position: center center;
 	background-size: cover;
 	background-attachment: fixed;
-	position: relative;
+	//@include transition-property(transform);
+	//@include transition-duration(0.1s);
+	//@include transition(transform 0.3s);
 }
 
 // banner
@@ -164,4 +185,17 @@ h4 {
 	text-align: center;
 	text-transform: uppercase;
 	padding: 19px 0;
+}
+
+
+.table1 {
+	border-right: 1px solid $lightgrey;
+	border-bottom: 1px solid $lightgrey;
+	color: $lightblue;
+
+	div {
+		float: left;
+		border-top: 1px solid $lightgrey;
+		border-left: 1px solid $lightgrey;
+	}
 }

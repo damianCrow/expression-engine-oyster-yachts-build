@@ -1,0 +1,38 @@
+<section class="hero">
+	
+</section>
+
+<section class="brokerage-fleet">
+	<div class="banner">Brokerage Fleet</div>
+
+	<div class="row row-pad">
+		<ul>
+			{exp:channel:entries}
+			<li class="column {if brokerage_listing_size == 'Large'}large-12{if:elseif brokerage_listing_size == 'Medium'}large-6{if:elseif brokerage_listing_size == 'Small'}large-4{/if}">
+				<div class="listing-images">
+					{brokerage_listing_images}
+					<div style="background-image:url('{image:url}');"></div>
+					{/brokerage_listing_images}
+				</div>
+				<div class="listing-content">
+					<table class="table">
+						<tbody>
+							<tr>
+								<td>Located <span>{brokerage_location}</span></td>
+								<td>Year Built <span>{brokerage_year_built}</span></td>
+								{if brokerage_feature_text != ""}
+								<td rowspan="2">{brokerage_feature_text}</td>
+								{/if}
+							</tr>
+							<tr>
+								<td>Price <span>{brokerage_currency}{brokerage_price} {brokerage_vat}</span></td>
+								<td>Status <span>{brokerage_status}</span></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</li>
+			{/exp:channel:entries}
+		</ul>
+	</div>
+</section>
