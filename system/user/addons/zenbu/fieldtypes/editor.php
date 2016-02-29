@@ -73,12 +73,12 @@ class Zenbu_editor_ft extends Base
 		$extra_text_option_2 = (isset($extra_options['text_option_2'])) ? $extra_options['text_option_2'] : 'html';
 
 		// Option: Text trimming option
-		$output['text_option_1'] = form_label($this->EE->lang->line('show').NBS.form_input('settings['.$channel_id.']['.$table_col.'][text_option_1]', $extra_text_option_1, 'size="2" maxlength="4" class="bottom-margin"').'&nbsp;'.$this->EE->lang->line('characters')) . BR;
+		$output['text_option_1'] = form_label(ee()->lang->line('show').NBS.form_input('settings['.$channel_id.']['.$table_col.'][text_option_1]', $extra_text_option_1, 'size="2" maxlength="4" class="bottom-margin"').'&nbsp;'.ee()->lang->line('characters')) . BR;
 
 		// Option: Text display (HTML/no HTML) option)
 		$text_option_2_dropdown = array(
-			"html" => $this->EE->lang->line("show_html"),
-			"nohtml" => $this->EE->lang->line("no_html"),
+			"html" => ee()->lang->line("show_html"),
+			"nohtml" => ee()->lang->line("no_html"),
 		);
 		$output['text_option_2'] = form_dropdown('settings['.$channel_id.']['.$table_col.'][text_option_2]', $text_option_2_dropdown, $extra_text_option_2, 'class="bottom-margin"' );
 
@@ -107,7 +107,7 @@ class Zenbu_editor_ft extends Base
 		if(isset($setting['text_option_1']) && ! is_numeric($setting['text_option_1']) && ! empty($setting['text_option_1']))
 		{
 			$this->EE->javascript->output('
-				$.ee_notice("'.$this->EE->lang->line("error_not_numeric").'", {"type" : "error"});
+				$.ee_notice("'.ee()->lang->line("error_not_numeric").'", {"type" : "error"});
 			');
 			$output['text_option_1'] = (int)$setting['text_option_1'];
 			return $output;

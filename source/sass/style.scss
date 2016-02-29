@@ -1,11 +1,13 @@
-@import 'bourbon/bourbon';
+@import 'libraries/bourbon/bourbon';
 
 @import 'setup/reset';
 @import 'setup/variables';
 @import 'setup/fonts';
 @import 'setup/mixins';
 
-@import 'foundation/app';
+@import 'libraries/foundation/app';
+@import 'libraries/lightgallery/lightgallery';
+@import 'libraries/lightgallery/lg-transitions';
 
 @import 'pages/components/global';
 @import 'pages/components/header';

@@ -33,4 +33,13 @@ $(function() {
 	}).on('mouseleave', '>li', function() {
 		$(this).removeClass('hover');
 	});
+
+
+	$("#lightgallery").lightGallery();
+
+	$('.gallery').on('click', function(e) {
+		e.preventDefault();
+
+		$("#lightgallery a:first").trigger('click');
+	});
 });

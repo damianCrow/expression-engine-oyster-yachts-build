@@ -182,6 +182,7 @@ section {
 .hero {
 	position: relative;
 	z-index: 1;
+	padding-top: 126px;
 }
 
 .full-screen {
@@ -197,6 +198,7 @@ section {
 	//@include transition-property(transform);
 	//@include transition-duration(0.1s);
 	//@include transition(transform 0.3s);
+	position: relative;
 }
 
 // banner

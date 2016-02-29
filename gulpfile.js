@@ -8,8 +8,8 @@ var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 
 var sassPaths = [
-  'source/sass/foundation/foundation_source',
-  'source/sass/foundation/motion_ui'
+  'source/sass/libraries/foundation/foundation_source',
+  'source/sass/libraries/foundation/motion_ui'
 ];
 
 gulp.task('css', function () {
@@ -28,6 +28,9 @@ gulp.task('scripts', function() {
             './source/js/libraries/jquery.cycle2.min.js', 
             './source/js/libraries/foundation/foundation.core.js',
             './source/js/libraries/foundation/foundation.util.mediaQuery.js',
+            './source/js/libraries/lightgallery/lightgallery.js',
+            './source/js/libraries/lightgallery/lg-thumbnail.min.js',
+            './source/js/libraries/lightgallery/lg-fullscreen.min.js',
             './source/js/app.js'])
     .pipe(concat('scripts.js'))
     .pipe(sourcemaps.write())

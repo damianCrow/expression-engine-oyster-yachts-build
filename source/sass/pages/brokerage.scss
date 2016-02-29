@@ -181,3 +181,56 @@
 		padding-bottom: 70px;
 	}
 }
+
+.yacht-name {
+	position: absolute;
+	display: table;
+	top: 0;
+	height: 100%;
+	left: 0;
+	padding-bottom: 55px;
+
+	div {
+		display: table-cell;
+		vertical-align: middle;
+	}
+
+	h1 {
+		color: #fff;
+		margin-bottom: 15px;
+	}
+
+	h2 {
+		color: #fff;
+		margin-bottom: 5px;
+	}
+
+	a {
+		font-size: 0.75em;
+		line-height: 1em;
+		color: #fff;
+		display: inline-block;
+		padding: 11px 15px 12px 40px;
+		text-decoration: none;
+		background: $blue;
+		border-radius: 3px;
+		@include omnes_medium;
+		text-transform: uppercase;
+		position: relative;
+
+		&:before {
+			content: "";
+			display: block;
+			width: 15px;
+			height: 15px;
+			background: url('../images/static/gallery_dots.png') no-repeat 0 0;
+			position: absolute;
+			left: 16px;
+			top: 10px;
+		}
+	}
+}
+
+#lightgallery {
+	display: none;
+}
