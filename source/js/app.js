@@ -26,4 +26,11 @@ $(function() {
 			'transform': 'translateY('+(pos)+'px)'
 		});
 	});*/
+
+	// main nav hover
+	$('#main-nav').on('mouseenter', '>li', function() {
+		$(this).addClass('hover');
+	}).on('mouseleave', '>li', function() {
+		$(this).removeClass('hover');
+	});
 });

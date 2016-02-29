@@ -142,5 +142,7 @@ $config['encryption_key'] = '';
 $config['rewrite_short_tags'] = TRUE;
 
 
+
+$config['hidden_template_indicator'] = '.';
 /* End of file config.php */
 /* Location: ./system/expressionengine/config/config.php */

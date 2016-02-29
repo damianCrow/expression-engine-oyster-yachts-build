@@ -1,4 +1,4 @@
-<section class="hero">
+<section class="hero after-nav">
 	
 </section>
 
@@ -10,9 +10,11 @@
 			{exp:channel:entries sort="asc"}
 			<li class="column {if brokerage_listing_size == 'Large'}large-12{if:elseif brokerage_listing_size == 'Medium'}large-6{if:elseif brokerage_listing_size == 'Small'}large-4{/if}{if count == total_results} end{/if}">
 				<div class="listing-images">
-					{brokerage_listing_images}
-					<div style="background-image:url('{image:url}');"></div>
-					{/brokerage_listing_images}
+					<a href="{url_title_path='brokerage'}">
+						{brokerage_listing_images}
+						<span style="background-image:url('{image:url}');"></span>
+						{/brokerage_listing_images}
+					</a>
 				</div>
 				<div class="listing-content">
 					<table class="table listing-table{if brokerage_feature_text != ""} feature-col{/if}">
@@ -34,6 +36,7 @@
 						</tbody>
 					</table>
 				</div>
+				{share_buttons}
 			</li>
 			{/exp:channel:entries}
 		</ul>

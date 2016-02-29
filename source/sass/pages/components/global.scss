@@ -41,6 +41,15 @@ h4 {
 	margin-bottom: 15px;
 }
 
+b, strong {
+	@include omnes_medium;
+	font-weight: normal;
+}
+
+a {
+	color: $blue;
+}
+
 // Utility
 
 .float {
@@ -62,22 +71,11 @@ h4 {
 	border-collapse: collapse;
 	width: 100%;
 
-	thead {
-		td {
-			background: $blue;
-			@include omnes_medium;
-			font-size: 0.75em;
-			line-height: 1em;
-			color: #fff;
-			text-transform: uppercase;
-		}
-	}
-
-	tbody {
-		td {
-			border: 1px solid $lightgrey;
-			color: $lightblue;
-		}
+	td {
+		border: 1px solid $lightgrey;
+		color: $lightblue;
+		font-size: 0.9375em;
+		line-height: 1.13333333em;
 	}
 
 	td, th {
@@ -92,6 +90,45 @@ h4 {
 		background: #f6f8f9;
 		color: $lightblue;
 		text-transform: uppercase;
+	}
+
+	td.heading {
+		background: $blue;
+		@include omnes_medium;
+		font-size: 0.75em;
+		line-height: 1em;
+		color: #fff;
+		text-transform: uppercase;
+	}
+
+	td.highlight {
+		background: $lightgrey;
+		text-align: center;
+		color: $blue;
+		padding: 0;
+		text-decoration: underline;
+		text-transform: uppercase;
+		@include omnes_medium;
+	}
+
+	td.title {
+		color: $blue;
+		font-size: 1.125em;
+		line-height: 1em;
+		text-transform: uppercase;
+	}
+
+	span {
+		color: $blue;
+		@include omnes_medium;
+
+		span {
+			@include omnes_regular;
+		}
+	}
+
+	a {
+		text-decoration: none;
 	}
 }
 
@@ -116,18 +153,6 @@ h4 {
 		td, th {
 			font-size: 0.9375em;
 			line-height: 1.2em;
-		}
-	}
-
-	tfoot {
-		td {
-			background: $lightgrey;
-			text-align: center;
-			color: $blue;
-			padding: 0;
-			text-decoration: underline;
-			text-transform: uppercase;
-			@include omnes_medium;
 		}
 	}
 }
@@ -198,4 +223,25 @@ section {
 		border-top: 1px solid $lightgrey;
 		border-left: 1px solid $lightgrey;
 	}
+}
+
+.share {
+	position: absolute;
+	right: 20px;
+	top: 10px;
+
+	img {
+		display: block;
+		margin-bottom: 5px;
+	}
+
+	.hero & {
+		top: 50%;
+		margin-top: -42px;
+		right: 40px;
+	}
+}
+
+.after-nav {
+	padding-top: 126px;
 }
