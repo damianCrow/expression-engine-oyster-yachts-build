@@ -34,7 +34,7 @@
         mousewheel: true,
 
         // .lg-item || '.lg-sub-html'
-        appendSubHtmlTo: '.lg-sub-html',
+        appendSubHtmlTo: '.gallery-caption',
 
         /**
          * @desc number of preload slides
@@ -229,14 +229,14 @@
             }
         }
 
-        _this.counter();
+        //_this.counter();
 
         _this.closeGallery();
 
         _this.$el.trigger('onAfterOpen.lg');
 
         // Hide controllers if mouse doesn't move for some period
-        _this.$outer.on('mousemove.lg click.lg touchstart.lg', function() {
+        /*_this.$outer.on('mousemove.lg click.lg touchstart.lg', function() {
 
             _this.$outer.removeClass('lg-hide-items');
 
@@ -247,7 +247,7 @@
                 _this.$outer.addClass('lg-hide-items');
             }, _this.s.hideBarsDelay);
 
-        });
+        });*/
 
     };
 
@@ -275,20 +275,29 @@
                 '</div>';
         }
 
-        if (this.s.appendSubHtmlTo === '.lg-sub-html') {
+        /*if (this.s.appendSubHtmlTo === '.lg-sub-html') {
             subHtmlCont = '<div class="lg-sub-html"></div>';
-        }
+        }*/
 
         template = '<div class="lg-outer ' + this.s.addClass + ' ' + this.s.startClass + '">' +
             '<div class="lg" style="width:' + this.s.width + '; height:' + this.s.height + '">' +
             '<div class="lg-inner">' + list + '</div>' +
             '<div class="lg-toolbar group">' +
             '<span class="lg-close lg-icon"></span>' +
+            '<span class="gallery-logo"></span>' +
+            '<span class="gallery-yacht"><span>'+$('.yacht-name h2').text()+'</span> '+$('.yacht-name h1').text()+'</span>' +
+            '</div>' +
+            '<div class="lg-toolbar-bot group">' +
+            '<div class="gallery-share"><a href=""></a></div>' +
+            '<div id="lg-counter"><span id="lg-counter-current">' + (parseInt(this.index, 10) + 1) + '</span> / <span id="lg-counter-all">' + this.$items.length + '</span></div>' +
+            '<div class="gallery-caption"></div>' +
+            '<div class="gallery-download"><a id="lg-download" target="_blank" download class="lg-download lg-icon">Download image</a></div>' +
             '</div>' +
             controls +
-            subHtmlCont +
             '</div>' +
             '</div>';
+
+
 
         $('body').append(template);
         this.$outer = $('.lg-outer');
@@ -346,9 +355,9 @@
             _this.$outer.addClass('lg-visible');
         }, this.s.backdropDuration);
 
-        if (this.s.download) {
+        /*if (this.s.download) {
             this.$outer.find('.lg-toolbar').append('<a id="lg-download" target="_blank" download class="lg-download lg-icon"></a>');
-        }
+        }*/
 
         // Store the current scroll top value to scroll back after closing the gallery..
         this.prevScrollTop = $(window).scrollTop();
@@ -477,7 +486,7 @@
             }
         }
 
-        if (this.s.appendSubHtmlTo === '.lg-sub-html') {
+        //if (this.s.appendSubHtmlTo === '.lg-sub-html') {
 
             if (subHtmlUrl) {
                 this.$outer.find(this.s.appendSubHtmlTo).load(subHtmlUrl);
@@ -485,14 +494,14 @@
                 this.$outer.find(this.s.appendSubHtmlTo).html(subHtml);
             }
 
-        } else {
+        /*} else {
 
             if (subHtmlUrl) {
                 this.$slide.eq(index).load(subHtmlUrl);
             } else {
                 this.$slide.eq(index).append(subHtml);
             }
-        }
+        }*/
 
         // Add lg-empty-html class if title doesn't exist
         if (typeof subHtml !== 'undefined' && subHtml !== null) {
@@ -662,9 +671,9 @@
                 }
             }
 
-            if (this.s.appendSubHtmlTo !== '.lg-sub-html') {
+            /*if (this.s.appendSubHtmlTo !== '.lg-sub-html') {
                 _this.addHtml(index);
-            }
+            }*/
 
             _this.$slide.eq(index).addClass('lg-loaded');
         }
@@ -767,13 +776,13 @@
             clearTimeout(_this.hideBartimeout);
 
             // Add title if this.s.appendSubHtmlTo === lg-sub-html
-            if (this.s.appendSubHtmlTo === '.lg-sub-html') {
+            //if (this.s.appendSubHtmlTo === '.lg-sub-html') {
 
                 // wait for slide animation to complete
                 setTimeout(function() {
                     _this.addHtml(index);
                 }, _time);
-            }
+            //}
 
             this.arrowDisable(index);
 

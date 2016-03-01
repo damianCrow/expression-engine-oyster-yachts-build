@@ -179,12 +179,11 @@
 </section>
 
 <div id="lightgallery">
-  <a href="{site_url}images/tmp/tmp1.png">
-      <img src="{site_url}images/tmp/tmp1.png" />
-  </a>
-  <a href="{site_url}images/tmp/tmp2.png">
-      <img src="{site_url}images/tmp/tmp2.png" />
-  </a>
+	{brokerage_gallery_interior}
+	<a href="{image:url}" data-sub-html="{image:description}">
+		<img src="{image:url:thumb}" />
+	</a>
+	{/brokerage_gallery_interior}
 </div>
 
 {/exp:channel:entries}

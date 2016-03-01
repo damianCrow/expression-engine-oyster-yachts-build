@@ -29,8 +29,8 @@ gulp.task('scripts', function() {
             './source/js/libraries/foundation/foundation.core.js',
             './source/js/libraries/foundation/foundation.util.mediaQuery.js',
             './source/js/libraries/lightgallery/lightgallery.js',
-            './source/js/libraries/lightgallery/lg-thumbnail.min.js',
-            './source/js/libraries/lightgallery/lg-fullscreen.min.js',
+            './source/js/libraries/lightgallery/lg-thumbnail.js',
+            //'./source/js/libraries/lightgallery/lg-fullscreen.js',
             './source/js/app.js'])
     .pipe(concat('scripts.js'))
     .pipe(sourcemaps.write())
@@ -42,5 +42,5 @@ gulp.task('default', ['css', 'scripts']);
 
 gulp.task('watch', function () {
   gulp.watch('./source/sass/**/*.scss', ['css']);
-  gulp.watch('./source/js/**/*.js', ['scripts']);
+  gulp.watch('./source/js/**/**/*.js', ['scripts']);
 });

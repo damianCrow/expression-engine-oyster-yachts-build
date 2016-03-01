@@ -172,12 +172,17 @@
 }
 
 #lg-counter {
-  color: #999;
-  display: inline-block;
-  font-size: 16px;
-  padding-left: 20px;
-  padding-top: 12px;
-  vertical-align: middle;
+  float: left;
+  padding: 22px 0 0 60px;
+  height: 100%;
+  font-size: 0.75em;
+  line-height: 1em;
+  @include omnes_medium;
+  color: $grey;
+  border-right: 1px solid $lightgrey;
+  margin-right: 40px;
+  width: 130px;
+  background: url('../images/static/arrow_up.png') no-repeat 40px center;
 }
 
 .lg-toolbar, .lg-prev, .lg-next {
@@ -224,18 +229,18 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
 }
 
 .lg-outer .lg-thumb-outer {
-  background-color: #0D0A0A;
-  bottom: 0;
+  background-color: $blue;
+  bottom: 55px;
   position: absolute;
   width: 100%;
   z-index: 1080;
-  max-height: 350px;
-  -webkit-transform: translate3d(0, 100%, 0);
+  height: 136px;
+  /*-webkit-transform: translate3d(0, 100%, 0);
   transform: translate3d(0, 100%, 0);
   -webkit-transition: -webkit-transform 0.25s cubic-bezier(0, 0, 0.25, 1) 0s;
   -moz-transition: -moz-transform 0.25s cubic-bezier(0, 0, 0.25, 1) 0s;
   -o-transition: -o-transform 0.25s cubic-bezier(0, 0, 0.25, 1) 0s;
-  transition: transform 0.25s cubic-bezier(0, 0, 0.25, 1) 0s;
+  transition: transform 0.25s cubic-bezier(0, 0, 0.25, 1) 0s;*/
 }
 .lg-outer .lg-thumb-outer.lg-grab .lg-thumb-item {
   cursor: -webkit-grab;
@@ -317,6 +322,7 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
   text-align: center;
   top: -39px;
   width: 50px;
+  display: none;
 }
 .lg-outer .lg-toogle-thumb:after {
   content: "\e1ff";
@@ -673,7 +679,7 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 0 5px;
+  padding: 55px 5px;
 }
 .lg-outer .lg-item.lg-complete {
   background-image: none;
@@ -712,7 +718,7 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
   right: 0;
   bottom: 0;
   z-index: 1040;
-  background-color: #000;
+  background-color: $blue;
   opacity: 0;
   -webkit-transition: opacity 0.15s ease 0s;
   -o-transition: opacity 0.15s ease 0s;
@@ -800,7 +806,86 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
   height: 22px;
   background: url('../images/static/cross.png') no-repeat 0 0;
   float: right;
-  margin: 17px 40px 0 0;
+  margin: 16px 40px 0 0;
+}
+
+.gallery-logo {
+  display: block;
+  width: 55px;
+  height: 55px;
+  background: url('../images/static/logo_small.png') no-repeat center center;
+  background-size: contain;
+  float: left;
+}
+
+.lg-toolbar-bot {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 55px;
+  width: 100%;
+  background-color: #fff;
+  z-index: 1080;
+}
+
+.gallery-yacht {
+  float: left;
+  display: block;
+  @include omnes_light;
+  line-height: 1em;
+  text-transform: uppercase;
+  padding: 19px 0 0 70px;
+
+  span {
+    @include trajan;
+    font-size: 0.9375em;
+  }
+}
+
+.gallery-share {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-left: 1px solid $lightgrey;
+  height: 100%;
+
+  a {
+    display: block;
+    width: 100px;
+    background: url('../images/static/share_light.png') no-repeat center center;
+    height: 100%;
+  }
+}
+
+.gallery-download {
+  position: absolute;
+  top: 0;
+  right: 101px;
+
+  border-left: 1px solid $lightgrey;
+  height: 100%;
+
+  a {
+    display: block;
+    padding: 22px 40px 22px 72px;
+    background: url('../images/static/download.png') no-repeat 39px center;
+    height: 100%;
+    @include omnes_medium;
+    font-size: 0.75em;
+    line-height: 1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: $grey;
+  }
+}
+
+.gallery-caption {
+  font-size: 0.75em;
+  line-height: 1.33333333em;
+  @include omnes_regular;
+  color: $grey;
+  padding-top: 20px;
+  float: left;
 }
 
 /*# sourceMappingURL=lightgallery.css.map */

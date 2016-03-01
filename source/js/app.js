@@ -35,7 +35,9 @@ $(function() {
 	});
 
 
-	$("#lightgallery").lightGallery();
+	$("#lightgallery").lightGallery({
+		thumbnail: false
+	});
 
 	$('.gallery').on('click', function(e) {
 		e.preventDefault();
