@@ -66,13 +66,15 @@ nav {
 			padding: 42px 0;
 		}
 
-		&.hover {
+		&.hover, &.active {
 			& > a {
 				padding-bottom: 40px;
 				border-bottom: 2px solid #00273e;
 				color: #375668;
 			}
+		}
 
+		&.hover {
 			ul {
 				display: block;
 			}
@@ -183,19 +185,19 @@ nav {
 	}
 }
 
-::-webkit-input-placeholder {
+/*::-webkit-input-placeholder {
    position: relative;
    top: 3px;
    color: #a7a9ac;
 }
 
-:-moz-placeholder { /* Firefox 18- */
+:-moz-placeholder {
    position: relative;
    top: 3px; 
    color: #a7a9ac;
 }
 
-::-moz-placeholder {  /* Firefox 19+ */
+::-moz-placeholder { 
    position: relative;
    top: 3px;
    color: #a7a9ac;
@@ -205,4 +207,4 @@ nav {
    position: relative;
    top: 3px;
    color: #a7a9ac;
-}
+}*/

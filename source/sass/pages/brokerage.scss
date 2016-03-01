@@ -91,6 +91,12 @@
 			@include omnes_medium;
 			text-transform: uppercase;
 			text-decoration: none;
+
+			&.contact {
+				border:1px solid #b5b6b7;
+				padding: 10px;
+				margin: 10px 0;
+			}
 		}
 	}
 }

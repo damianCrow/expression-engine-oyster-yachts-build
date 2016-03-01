@@ -289,7 +289,7 @@
             '</div>' +
             '<div class="lg-toolbar-bot group">' +
             '<div class="gallery-share"><a href=""></a></div>' +
-            '<div id="lg-counter"><span id="lg-counter-current">' + (parseInt(this.index, 10) + 1) + '</span> / <span id="lg-counter-all">' + this.$items.length + '</span></div>' +
+            '<a id="lg-counter" class="lg-counter" href=""><span id="lg-counter-current">' + (parseInt(this.index, 10) + 1) + '</span> / <span id="lg-counter-all">' + this.$items.length + '</span></a>' +
             '<div class="gallery-caption"></div>' +
             '<div class="gallery-download"><a id="lg-download" target="_blank" download class="lg-download lg-icon">Download image</a></div>' +
             '</div>' +
@@ -361,6 +361,13 @@
 
         // Store the current scroll top value to scroll back after closing the gallery..
         this.prevScrollTop = $(window).scrollTop();
+
+
+        $('#lg-counter').on('click.lg', function(e) {
+            e.preventDefault();
+
+            $('.lg-thumb-outer').toggleClass('lg-thumb-open');
+        });
 
     };
 

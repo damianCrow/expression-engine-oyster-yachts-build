@@ -36,12 +36,39 @@ $(function() {
 
 
 	$("#lightgallery").lightGallery({
-		thumbnail: false
+		thumbnail: true,
+		thumbContHeight: 136,
+		thumbWidth: 197,
+		thumbMargin: 14,
+		toogleThumb: false,
+		showThumbByDefault: false,
+		closable: false
 	});
 
 	$('.gallery').on('click', function(e) {
 		e.preventDefault();
 
 		$("#lightgallery a:first").trigger('click');
+	});
+
+
+	// site search open
+	$('.site-search-open').on('click', function(e) {
+		e.preventDefault();
+
+		$('.search-bar').show().find('input').animate({right:0}, 300);
+		$('.site-search-open').fadeOut(300);
+		$('.site-search-close').fadeIn(300);
+	});
+
+	// site search close
+	$('.site-search-close').on('click', function(e) {
+		e.preventDefault();
+
+		$('.search-bar').find('input').animate({right:'-100%'}, 300, function() {
+			$('.search-bar').hide();
+		});
+		$('.site-search-open').fadeIn(300);
+		$('.site-search-close').fadeOut(300);
 	});
 });

@@ -172,6 +172,7 @@
 }
 
 #lg-counter {
+  display: block;
   float: left;
   padding: 22px 0 0 60px;
   height: 100%;
@@ -183,6 +184,7 @@
   margin-right: 40px;
   width: 130px;
   background: url('../images/static/arrow_up.png') no-repeat 40px center;
+  text-decoration: none;
 }
 
 .lg-toolbar, .lg-prev, .lg-next {
@@ -233,15 +235,21 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
   bottom: 55px;
   position: absolute;
   width: 100%;
-  z-index: 1080;
+  z-index: 1079;
   height: 136px;
-  /*-webkit-transform: translate3d(0, 100%, 0);
+  -webkit-transform: translate3d(0, 100%, 0);
   transform: translate3d(0, 100%, 0);
   -webkit-transition: -webkit-transform 0.25s cubic-bezier(0, 0, 0.25, 1) 0s;
   -moz-transition: -moz-transform 0.25s cubic-bezier(0, 0, 0.25, 1) 0s;
   -o-transition: -o-transform 0.25s cubic-bezier(0, 0, 0.25, 1) 0s;
-  transition: transform 0.25s cubic-bezier(0, 0, 0.25, 1) 0s;*/
+  transition: transform 0.25s cubic-bezier(0, 0, 0.25, 1) 0s;
 }
+
+.lg-outer .lg-thumb-open {
+  -webkit-transform: translate3d(0, 0%, 0);
+  transform: translate3d(0, 0%, 0);
+}
+
 .lg-outer .lg-thumb-outer.lg-grab .lg-thumb-item {
   cursor: -webkit-grab;
   cursor: -moz-grab;
@@ -271,13 +279,10 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
   margin-bottom: -5px;
 }
 .lg-outer .lg-thumb-item {
-  border-radius: 5px;
   cursor: pointer;
   float: left;
   overflow: hidden;
   height: 100%;
-  border: 2px solid #FFF;
-  border-radius: 4px;
   margin-bottom: 5px;
 }
 @media (min-width: 1025px) {
@@ -651,7 +656,7 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
   white-space: nowrap;
 }
 .lg-outer .lg-item {
-  background: url("../img/loading.gif") no-repeat scroll center center transparent;
+  background: url("../images/static/loading.gif") no-repeat scroll center center transparent;
   display: none !important;
 }
 .lg-outer.lg-css3 .lg-prev-slide, .lg-outer.lg-css3 .lg-current, .lg-outer.lg-css3 .lg-next-slide {
@@ -886,6 +891,15 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
   color: $grey;
   padding-top: 20px;
   float: left;
+}
+
+.lg-thumb-item img {
+  opacity: 0.25;
+  @include transition(opacity 0.3s);
+}
+
+.lg-thumb .active img, .lg-thumb-item:hover img {
+  opacity: 1;
 }
 
 /*# sourceMappingURL=lightgallery.css.map */
