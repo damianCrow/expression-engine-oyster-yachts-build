@@ -195,9 +195,6 @@ section {
 	background-position: center center;
 	background-size: cover;
 	background-attachment: fixed;
-	//@include transition-property(transform);
-	//@include transition-duration(0.1s);
-	//@include transition(transform 0.3s);
 	position: relative;
 }
 
@@ -212,19 +209,6 @@ section {
 	text-align: center;
 	text-transform: uppercase;
 	padding: 19px 0;
-}
-
-
-.table1 {
-	border-right: 1px solid $lightgrey;
-	border-bottom: 1px solid $lightgrey;
-	color: $lightblue;
-
-	div {
-		float: left;
-		border-top: 1px solid $lightgrey;
-		border-left: 1px solid $lightgrey;
-	}
 }
 
 .share {
@@ -246,4 +230,19 @@ section {
 
 .after-nav {
 	padding-top: 126px;
+}
+
+.button {
+	width: 100%;
+	height: 45px;
+	display: block;
+	text-align: center;
+	background: $cyan;
+	@include omnes_medium;
+	color: #fff;
+	font-size: 0.875em;
+	line-height: 1em;
+	padding: 15px 0 16px;
+	text-decoration: none;
+	text-transform: uppercase;
 }
