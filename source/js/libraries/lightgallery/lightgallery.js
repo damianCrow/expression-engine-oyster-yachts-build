@@ -135,6 +135,8 @@
 
     Plugin.prototype.init = function() {
 
+        console.log('init');
+
         var _this = this;
 
         // s.preload should not be more than $item.length
@@ -175,6 +177,8 @@
             // Using different namespace for click because click event should not unbind if selector is same object('this')
             _this.$items.on('click.lgcustom', function(event) {
 
+                console.log('click');
+
                 // For IE8
                 try {
                     event.preventDefault();
@@ -188,10 +192,10 @@
                 _this.index = _this.s.index || _this.$items.index(this);
 
                 // prevent accidental double execution
-                if (!$('body').hasClass('lg-on')) {
+                //if (!$('body').hasClass('lg-on')) {
                     _this.build(_this.index);
                     $('body').addClass('lg-on');
-                }
+                //}
             });
         }
 
@@ -199,7 +203,11 @@
 
     Plugin.prototype.build = function(index) {
 
+        console.log('build', index);
+
         var _this = this;
+
+        _this.lGalleryOn = false;
 
         _this.structure();
 
@@ -252,6 +260,8 @@
     };
 
     Plugin.prototype.structure = function() {
+        console.log('structure');
+
         var list = '';
         var controls = '';
         var i = 0;
@@ -279,28 +289,37 @@
             subHtmlCont = '<div class="lg-sub-html"></div>';
         }*/
 
-        template = '<div class="lg-outer ' + this.s.addClass + ' ' + this.s.startClass + '">' +
-            '<div class="lg" style="width:' + this.s.width + '; height:' + this.s.height + '">' +
-            '<div class="lg-inner">' + list + '</div>' +
-            '<div class="lg-toolbar group">' +
-            '<span class="lg-close lg-icon"></span>' +
-            '<span class="gallery-logo"></span>' +
-            '<span class="gallery-yacht"><span>'+$('.yacht-name h2').text()+'</span> '+$('.yacht-name h1').text()+'</span>' +
-            '</div>' +
-            '<div class="lg-toolbar-bot group">' +
-            '<div class="gallery-share"><a href=""></a></div>' +
-            '<a id="lg-counter" class="lg-counter" href=""><span id="lg-counter-current">' + (parseInt(this.index, 10) + 1) + '</span> / <span id="lg-counter-all">' + this.$items.length + '</span></a>' +
-            '<div class="gallery-caption"></div>' +
-            '<div class="gallery-download"><a id="lg-download" target="_blank" download class="lg-download lg-icon">Download image</a></div>' +
-            '</div>' +
-            controls +
-            '</div>' +
-            '</div>';
+        if ($('.lg-outer').length === 0) {
+            template = '<div class="lg-outer ' + this.s.addClass + ' ' + this.s.startClass + '">' +
+                '<div class="lg" style="width:' + this.s.width + '; height:' + this.s.height + '">' +
+                '<div class="lg-inner"></div>' +
+                '<div class="lg-toolbar group">' +
+                '<span class="lg-close lg-icon"></span>' +
+                '<div class="gallery-sections">' +
+                '<a class="gallery-exterior gallery-active">Exterior</a>' +
+                '<a class="gallery-interior">Interior</a>' +
+                '</div>' +
+                '<span class="gallery-logo"></span>' +
+                '<span class="gallery-yacht"><span>'+$('.yacht-name h2').text()+'</span> '+$('.yacht-name h1').text()+'</span>' +
+                '</div>' +
+                '<div class="lg-toolbar-bot group">' +
+                //'<div class="gallery-share"><a href=""></a></div>' +
+                '<a class="lg-counter" href=""></a>' +
+                '<div class="gallery-caption"></div>' +
+                //'<div class="gallery-download"><a id="lg-download" target="_blank" download class="lg-download lg-icon">Download image</a></div>' +
+                '</div>' +
+                controls +
+                '</div>' +
+                '</div>';
 
+            $('body').append(template);
+        }
 
-
-        $('body').append(template);
         this.$outer = $('.lg-outer');
+
+        this.$outer.find('.lg-counter').html('<span id="lg-counter-current">' + (parseInt(this.index, 10) + 1) + '</span> / <span id="lg-counter-all">' + this.$items.length + '</span>');
+        this.$outer.find('.lg-inner').html(list);
+
         this.$slide = this.$outer.find('.lg-item');
 
         if (this.s.useLeft) {
@@ -314,7 +333,7 @@
 
         // For fixed height gallery
         _this.setTop();
-        $(window).on('resize.lg orientationchange.lg', function() {
+        $(window).unbind('resize.lg orientationchange.lg').on('resize.lg orientationchange.lg', function() {
             setTimeout(function() {
                 _this.setTop();
             }, 100);
@@ -363,10 +382,36 @@
         this.prevScrollTop = $(window).scrollTop();
 
 
-        $('#lg-counter').on('click.lg', function(e) {
+        $('.lg-counter').unbind('click.lg').on('click.lg', function(e) {
             e.preventDefault();
 
-            $('.lg-thumb-outer').toggleClass('lg-thumb-open');
+            _this.$outer.find('.lg-thumb-outer').toggleClass('lg-thumb-open');
+        });
+
+        $('.gallery-interior').unbind('click.lg').on('click.lg', function(e) {
+            e.preventDefault();
+
+            if ($(this).hasClass('gallery-active')) return;
+
+            _this.destroy(false, true);
+
+            $('#interior-gallery a:first').trigger('click');
+
+            $('.gallery-active').removeClass('gallery-active');
+            $(this).addClass('gallery-active');
+        });
+
+        $('.gallery-exterior').unbind('click.lg').on('click.lg', function(e) {
+            e.preventDefault();
+
+            if ($(this).hasClass('gallery-active')) return;
+
+            _this.destroy(false, true);
+
+            $('#exterior-gallery a:first').trigger('click');
+
+            $('.gallery-active').removeClass('gallery-active');
+            $(this).addClass('gallery-active');
         });
 
     };
@@ -686,6 +731,7 @@
         }
 
         _this.$slide.eq(index).find('.lg-object').on('load.lg error.lg', function() {
+            console.log('load error');
 
             // For first time add some delay for displaying the start animation.
             var _speed = 0;
@@ -746,11 +792,15 @@
         var _prevIndex = this.$outer.find('.lg-current').index();
         var _this = this;
 
+        /*console.log(_this.lGalleryOn, _prevIndex, index, _this.lGalleryOn);
+
         // Prevent if multiple call
         // Required for hsh plugin
         if (_this.lGalleryOn && (_prevIndex === index)) {
             return;
-        }
+        }*/
+
+        console.log('slide');
 
         var _length = this.$slide.length;
         var _time = _this.lGalleryOn ? this.s.speed : 0;
@@ -1235,7 +1285,7 @@
 
     };
 
-    Plugin.prototype.destroy = function(d) {
+    Plugin.prototype.destroy = function(d, changeGallery) {
 
         var _this = this;
 
@@ -1275,7 +1325,15 @@
 
         clearTimeout(_this.hideBartimeout);
         this.hideBartimeout = false;
+
+
         $(window).off('.lg');
+        
+        if (changeGallery) {
+            console.log('exit');
+            return;
+        }
+        
         $('body').removeClass('lg-on lg-from-hash');
 
         if (_this.$outer) {

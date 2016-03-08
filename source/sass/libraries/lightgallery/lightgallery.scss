@@ -171,7 +171,7 @@
   margin: 5px 0 0;
 }
 
-#lg-counter {
+.lg-counter {
   display: block;
   float: left;
   padding: 22px 0 0 60px;
@@ -900,6 +900,37 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
 
 .lg-thumb .active img, .lg-thumb-item:hover img {
   opacity: 1;
+}
+
+.gallery-sections {
+  float: right;
+  margin: 10px 40px 0 0;
+
+  a {
+    font-size: 0.75em;
+    line-height: 1em;
+    text-transform: uppercase;
+    color: $blue;
+    @include omnes_medium;
+    display: inline-block;
+    padding: 11px 40px 10px;
+    border: 1px solid $blue;
+    cursor: pointer;
+
+    &.gallery-exterior {
+      border-right: none;
+      @include border-left-radius(3px);
+    }
+
+    &.gallery-interior {
+      @include border-right-radius(3px);
+    }
+
+    &.gallery-active {
+      background: $blue;
+      color: #fff;
+    }
+  }
 }
 
 /*# sourceMappingURL=lightgallery.css.map */

@@ -28,18 +28,18 @@
 }
 
 .listing-images {
-	height: 192px;
 
 	a {
 		display: block;
 		width: 100%;
-		height: 100%;
+		overflow: hidden;
 	}
 
 	span {
 		display: block;
 		width: 100%;
-		height: 100%;
+		height: 0;
+		
 		float: left;
 
 		background-position: center center;
@@ -49,6 +49,15 @@
 	.large-12 & span {
 		width: 33.33333333%;
 	}
+
+	.size-large & span {
+		padding-bottom: 23.256%;
+	}
+
+	.size-medium & span, .size-small & span {
+		padding-bottom: 47.393%;
+	}
+
 }
 
 
@@ -235,8 +244,4 @@
 			top: 10px;
 		}
 	}
-}
-
-#lightgallery {
-	display: none;
 }

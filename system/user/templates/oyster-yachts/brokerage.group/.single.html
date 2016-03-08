@@ -173,18 +173,28 @@
 	<div class="banner">Yacht Layout</div>
 
 	<div class="content row row-pad">
-		<div id="layout-slider">
-			{brokerage_layout}
-			<div><img src="{image:url}"></div>
-			{/brokerage_layout}
+		<div class="large-10 large-offset-1 end">
+			<div id="layout-slider">
+				{brokerage_layout}
+				<div><img src="{image:url}"></div>
+				{/brokerage_layout}
+			</div>
+
+			<ul class="slider-pager">
+				{brokerage_layout}<li><a href=""><span style="background-image:url('{image:url:small}');"></span></a></li>{/brokerage_layout}
+			</ul>
 		</div>
-		<ul class="slider-pager large-10 large-offset-1 end">
-			{brokerage_layout}<li><a href=""><span style="background-image:url('{image:url}');"></span></a></li>{/brokerage_layout}
-		</ul>
 	</div>
 </section>
 
-<div id="lightgallery">
+<div id="exterior-gallery" class="gallery-content">
+	{brokerage_gallery_exterior}
+	<a href="{image:url}" data-sub-html="{image:description}">
+		<img src="{image:url:thumb}" />
+	</a>
+	{/brokerage_gallery_exterior}
+</div>
+<div id="interior-gallery" class="gallery-content">
 	{brokerage_gallery_interior}
 	<a href="{image:url}" data-sub-html="{image:description}">
 		<img src="{image:url:thumb}" />

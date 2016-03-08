@@ -106,7 +106,6 @@ a {
 		text-align: center;
 		color: $blue;
 		padding: 0;
-		text-decoration: underline;
 		text-transform: uppercase;
 		@include omnes_medium;
 	}
@@ -245,4 +244,8 @@ section {
 	padding: 15px 0 16px;
 	text-decoration: none;
 	text-transform: uppercase;
+}
+
+.gallery-content {
+	display: none;
 }

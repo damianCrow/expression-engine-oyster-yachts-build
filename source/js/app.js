@@ -34,22 +34,56 @@ $(function() {
 		$(this).removeClass('hover');
 	});
 
-
-	$("#lightgallery").lightGallery({
+	/*var $interiorGallery = $("#interior-gallery");
+	
+	$interiorGallery.lightGallery({
 		thumbnail: true,
 		thumbContHeight: 136,
 		thumbWidth: 197,
 		thumbMargin: 14,
 		toogleThumb: false,
 		showThumbByDefault: false,
-		closable: false
+		closable: false,
+		backdropDuration: 0
+	});
+
+	var $exteriorGallery = $("#exterior-gallery");
+
+	$exteriorGallery.lightGallery({
+		thumbnail: true,
+		thumbContHeight: 136,
+		thumbWidth: 197,
+		thumbMargin: 14,
+		toogleThumb: false,
+		showThumbByDefault: false,
+		closable: false,
+		backdropDuration: 0
+	});*/
+
+	$('.gallery-content').lightGallery({
+		thumbnail: true,
+		thumbContHeight: 136,
+		thumbWidth: 197,
+		thumbMargin: 14,
+		toogleThumb: false,
+		showThumbByDefault: false,
+		closable: false,
+		backdropDuration: 0
 	});
 
 	$('.gallery').on('click', function(e) {
 		e.preventDefault();
 
-		$("#lightgallery a:first").trigger('click');
+		$('#exterior-gallery a:first').trigger('click');
 	});
+
+	/*$('.gallery-interior').on('click', function(e) {
+		e.preventDefault();
+
+		$exteriorGallery.data('lightGallery').destroy();
+
+		console.log('close');
+	});*/
 
 
 	// site search open
