@@ -1,0 +1,220 @@
+/**
+ * Low Reorder CSS
+ *
+ * @package        low_reorder
+ * @author         Lodewijk Schutte <hi@gotolow.com>
+ * @link           http://gotolow.com/addons/low-reorder
+ * @copyright      Copyright (c) 2016, Low
+ */
+
+/* =Display List view
+------------------------------------------------- */
+
+.low-reorder-notes {
+	margin-bottom:20px;
+}
+
+.alert + .low-reorder-notes {
+	margin-top:0;
+}
+
+.low-reorder-entries {
+	list-style:none;
+	margin:0;
+}
+
+.low-reorder-select-cat {
+	margin-bottom:10px;
+}
+
+.low-reorder-select-cat + .low-reorder-entries {
+	margin-top:20px;
+}
+
+.low-reorder-entries li {
+	margin:0;
+	padding:5px 0;
+	overflow:hidden;
+	border:1px solid transparent;
+	color:gray;
+	color:rgba(0,0,0,0.3);
+	cursor:move;
+	cursor:-moz-grab;
+	cursor:-webkit-grab;
+	border:1px solid transparent;
+	text-shadow:1px 1px 1px #fff;
+	-webkit-border-radius:3px;
+	-moz-border-radius:3px;
+	border-radius:3px;
+}
+
+.low-reorder-entries div {
+	padding:0 10px;
+	float:left;
+}
+
+.low-reorder-entries .order {
+	width:2em;
+	text-align:right;
+}
+
+.low-reorder-entries .title {
+	color:#000;
+}
+
+.low-reorder-entries .hidden {
+	float:right;
+	display:none;
+}
+
+.low-reorder-entries li:hover {
+	border-color:#fff;
+
+	background:#f6f6f6;
+	background:-webkit-linear-gradient(top, rgba(250,250,250,0.85), rgba(240,240,240,0.85));
+	background:   -moz-linear-gradient(top, rgba(250,250,250,0.85), rgba(240,240,240,0.85));
+	background:    -ms-linear-gradient(top, rgba(250,250,250,0.85), rgba(240,240,240,0.85));
+	background:     -o-linear-gradient(top, rgba(250,250,250,0.85), rgba(240,240,240,0.85));
+	background:        linear-gradient(top, rgba(250,250,250,0.85), rgba(240,240,240,0.85));
+
+	-webkit-box-shadow:0 0 2px rgba(0,0,0,0.2);
+	-moz-box-shadow:0 0 2px rgba(0,0,0,0.2);
+	box-shadow:0 0 2px rgba(0,0,0,0.2);
+}
+
+.low-reorder-entries li:hover .hidden {
+	display:block;
+}
+
+.low-reorder-entries li.ui-sortable-helper {
+	margin:2px 0 0 2px;
+
+	-webkit-box-shadow:2px 2px 6px rgba(0,0,0,0.3);
+	-moz-box-shadow:2px 2px 6px rgba(0,0,0,0.3);
+	box-shadow:2px 2px 6px rgba(0,0,0,0.3);
+}
+
+.low-reorder-entries li.ui-sortable-placeholder {
+	visibility:visible !important;
+	border:1px dashed #cfcfcf;
+	background:#fff;
+}
+
+.low-reorder-entries li.grabbing {
+	cursor:-moz-grabbing;
+	cursor:-webkit-grabbing;
+	cursor:grabbing;
+}
+
+.low-reorder .form-ctrls label {
+	margin-left:10px;
+	cursor:pointer;
+}
+
+
+/* Multiple select field
+-------------------------------------------------*/
+
+.low-select-multiple {
+	display:block;
+	width:100%;
+	height:150px;
+	cursor:pointer;
+
+	border:1px solid;
+	border-color:#b3b3b3 #cdcdcd #cdcdcd #b3b3b3;
+
+	-webkit-border-radius:3px;
+	-moz-border-radius:3px;
+	border-radius:3px;
+
+	-webkit-box-shadow: 0 1px 3px 0 rgba(0,0,0,.1) inset;
+	-moz-box-shadow: 0 1px 3px 0 rgba(0,0,0,.1) inset;
+	box-shadow: 0 1px 3px 0 rgba(0,0,0,.1) inset;
+}
+
+.low-select-multiple option {
+	padding:3px 5px;
+	color:gray;
+}
+
+.low-select-multiple > optgroup {
+	padding:3px 3px 0;
+	margin:0;
+}
+
+.low-select-multiple optgroup option {
+	padding:3px 0;
+}
+
+.low-select-multiple option:hover {
+	background:#eee;
+	color:#000
+}
+
+/* =Settings table
+------------------------------------------------- */
+
+select[multiple] {
+	display:block;
+	width:100%;
+	border:1px solid #cdcdcd;
+}
+
+.low-category-option {
+	border-top:1px solid #e8e8e8;
+	padding-top:10px;
+}
+
+/* Search filter settings */
+
+.low-reorder-search-fields div {
+	margin-bottom:10px;
+}
+
+.low-reorder-search-fields > div input,
+.low-reorder-search-fields > div select {
+	width:35%;
+	margin:0 !important;
+}
+
+.low-reorder-search-fields button {
+	border:none;
+	background:none;
+	display:inline-block;
+	padding:0;
+	margin:0;
+	text-decoration:none;
+	color:gray;
+	outline:none;
+	cursor:pointer;
+}
+
+.low-reorder-search-fields > div button {
+	margin-left:5px;
+}
+
+.low-reorder-search-fields button:hover,
+.low-reorder-search-fields button:focus {
+	color:#000;
+}
+
+.low-reorder-search-fields button:before {
+	display:inline-block;
+	font-size:16px;
+	margin-right:5px;
+	position:relative;
+	top:1px;
+}
+
+.low-reorder-search-fields button.add:before {
+	content:'+';
+}
+
+.low-reorder-search-fields button.remove:before {
+	content:'×';
+}
+
+.low-reorder-search-fields button.add {
+	margin-bottom:10px;
+}

@@ -74,7 +74,7 @@ $(function() {
 	$('.gallery').on('click', function(e) {
 		e.preventDefault();
 
-		$('#exterior-gallery a:first').trigger('click');
+		$('.gallery-content a:first').trigger('click');
 	});
 
 	/*$('.gallery-interior').on('click', function(e) {
@@ -104,5 +104,45 @@ $(function() {
 		});
 		$('.site-search-open').fadeIn(300);
 		$('.site-search-close').fadeOut(300);
+	});
+
+
+	$('#brokerage-filters').on('change', 'select', function() {
+		//console.log($(this).val());
+
+		var data = {};
+		if ($('#filter-model').val() !== "") {
+			data.model = $('#filter-model').val();
+		}
+		if ($('#filter-status').val() !== "") {
+			data.status = $('#filter-status').val();
+		}
+		if ($('#filter-location').val() !== "") {
+			data.location = $('#filter-location').val();
+		}
+		if ($('#filter-price').val() !== "") {
+			var $selected = $('#filter-price option:selected');
+
+			if ($selected[0].hasAttribute('data-price-min')) {
+				data.price_min = $selected.attr('data-price-min');
+			}
+
+			if ($selected[0].hasAttribute('data-price-max')) {
+				data.price_max = $selected.attr('data-price-max');
+			}
+		}
+
+		console.log(data);
+
+		$.ajax({
+			method: 'GET',
+			url: '/oyster/ajax/brokerage-filter',
+			dataType: 'json',
+			data: data
+		}).done(function(data) {
+			console.log(data);
+		}).fail(function(error) {
+			console.log('error', error);
+		});
 	});
 });

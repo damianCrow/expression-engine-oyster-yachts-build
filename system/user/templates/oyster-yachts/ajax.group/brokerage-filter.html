@@ -1,0 +1,42 @@
+{if ajax}
+<?php 
+$search = '';
+
+if (isset($_GET['model'])) {
+	$search .= ' search:brokerage_model="='.$_GET['model'].'"';
+}
+
+if (isset($_GET['status'])) {
+	$search .= ' search:brokerage_status="='.$_GET['status'].'"';
+}
+
+if (isset($_GET['location'])) {
+	$search .= ' search:brokerage_location="='.$_GET['location'].'"';
+}
+
+if (isset($_GET['price_min'])) {
+	$search .= ' search:brokerage_price=">='.$_GET['price_min'].'"';
+}
+
+if (isset($_GET['price_max'])) {
+	$search .= ' search:brokerage_price="<='.$_GET['price_max'].'"';
+}
+
+?>
+[{exp:http_header content_type="application/json"}{exp:channel:entries channel="brokerage_yacht" dynamic="no"<?php echo $search; ?> backspace="1"}
+{
+"id": "{entry_id}",
+"title": "{title}",
+"model": "{brokerage_model}",
+"located": "{brokerage_location}",
+"year_built": "{brokerage_year_built}",
+"price": "{brokerage_currency}{exp:number_format}{brokerage_price}{/exp:number_format}",
+"vat": "{brokerage_vat}",
+"status": "{brokerage_status}",
+"feature_text": "{brokerage_feature_text}",
+"listing_size": "{brokerage_listing_size}",
+"listing_images": [{if brokerage_listing_size == "Large"}{brokerage_listing_images backspace="1"}"{image:url}",{/brokerage_listing_images}{if:else}{brokerage_main_image}"{image:url:medium}"{/brokerage_main_image}{/if}],
+"url": "{url_title_path='brokerage'}"
+},
+{/exp:channel:entries}]
+{/if}

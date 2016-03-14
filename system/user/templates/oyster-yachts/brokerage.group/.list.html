@@ -1,14 +1,47 @@
 <section class="hero after-nav">
+	<div id="brokerage-filters">
+	<select id="filter-model">
+	<option value="">All models</option>
+	{exp:query sql="SELECT DISTINCT field_id_39 AS model FROM exp_channel_data WHERE channel_id=1 AND field_id_39 != '---' ORDER BY field_id_39 ASC"}
+		<option vlaue="{model}">{model}</option>
+	{/exp:query}
+	</select>
+
+	<select id="filter-price">
+		<option value="">Any Price</option>
+		<option vlaue="priceband1" data-price-max="250000">Under £250,000</option>
+		<option vlaue="priceband2" data-price-min="250000" data-price-max="500000">£250,000 - £500,000</option>
+		<option vlaue="priceband3" data-price-min="500000" data-price-max="1000000">£500,000 - £1,000,000</option>
+		<option vlaue="priceband4" data-price-min="1000000" data-price-max="1500000">£1,000,000 - £1,500,000</option>
+		<option vlaue="priceband5" data-price-min="1500000" data-price-max="2000000">£1,500,000 - £2,000,000</option>
+		<option vlaue="priceband6" data-price-min="2000000">Over £2,000,000</option>
+	</select>
+
+	<select id="filter-location">
+	<option value="">Any location</option>
+	{exp:query sql="SELECT DISTINCT field_id_4 AS location FROM exp_channel_data WHERE channel_id=1 ORDER BY field_id_4 ASC"}
+		<option vlaue="{location}">{location}</option>
+	{/exp:query}
+	</select>
+
+	<select id="filter-status">
+	<option value="">Any status</option>
+	{exp:query sql="SELECT DISTINCT field_id_9 AS status FROM exp_channel_data WHERE channel_id=1 ORDER BY field_id_9 ASC"}
+		<option vlaue="{status}">{status}</option>
+	{/exp:query}
+	</select>
+
 	
+	</div>
 </section>
 
 <section class="brokerage-fleet">
 	<div class="banner">Brokerage Fleet</div>
 
 	<div class="row row-pad content">
-		<ul class="row">
-			{exp:channel:entries sort="asc"}
-			<li class="column {if brokerage_listing_size == 'Large'}large-12 size-large{if:elseif brokerage_listing_size == 'Medium'}large-6 size-medium{if:elseif brokerage_listing_size == 'Small'}large-4 size-small{/if}{if count == total_results} end{/if}">
+		<ul id="yacht-grid" class="row">
+			{exp:low_reorder:entries set="brokerage"}
+			<li data-id="{entry_id}" class="column {if brokerage_listing_size == 'Large'}large-12 size-large{if:elseif brokerage_listing_size == 'Medium'}large-6 size-medium{if:elseif brokerage_listing_size == 'Small'}large-4 size-small{/if}{if count == total_results} end{/if}">
 				<div class="listing-images">
 					<a href="{url_title_path='brokerage'}">
 						{if brokerage_listing_size == 'Large'}
@@ -44,7 +77,7 @@
 				</div>
 				{share_buttons}
 			</li>
-			{/exp:channel:entries}
+			{/exp:low_reorder:entries}
 		</ul>
 	</div>
 </section>

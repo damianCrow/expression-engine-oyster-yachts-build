@@ -289,6 +289,7 @@
             subHtmlCont = '<div class="lg-sub-html"></div>';
         }*/
 
+
         if ($('.lg-outer').length === 0) {
             template = '<div class="lg-outer ' + this.s.addClass + ' ' + this.s.startClass + '">' +
                 '<div class="lg" style="width:' + this.s.width + '; height:' + this.s.height + '">' +
@@ -296,8 +297,8 @@
                 '<div class="lg-toolbar group">' +
                 '<span class="lg-close lg-icon"></span>' +
                 '<div class="gallery-sections">' +
-                '<a class="gallery-exterior gallery-active">Exterior</a>' +
-                '<a class="gallery-interior">Interior</a>' +
+                ($('#exterior-gallery').length>0?'<a class="gallery-exterior gallery-active">Exterior</a>':'') +
+                ($('#interior-gallery').length>0?'<a class="gallery-interior'+($('#exterior-gallery').length===0?' gallery-active':'')+'">Interior</a>':'') +
                 '</div>' +
                 '<span class="gallery-logo"></span>' +
                 '<span class="gallery-yacht"><span>'+$('.yacht-name h2').text()+'</span> '+$('.yacht-name h1').text()+'</span>' +
