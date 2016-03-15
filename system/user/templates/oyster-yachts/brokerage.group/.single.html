@@ -1,5 +1,5 @@
-{exp:channel:entries}
-
+{exp:channel:entries disable="member_data|category_fields|pagination" cache="yes" refresh="60" require_entry="yes" status="open"}
+{if no_results}{redirect="404"}{/if}
 <?php
 $query = ee()->db->query('SELECT * FROM exp_channel_images WHERE entry_id={entry_id} AND field_id=14');
 $layoutImages = $query->num_rows();

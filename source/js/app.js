@@ -132,7 +132,7 @@ $(function() {
 			}
 		}
 
-		console.log(data);
+		console.log('Sent:', data);
 
 		$.ajax({
 			method: 'GET',
@@ -140,7 +140,12 @@ $(function() {
 			dataType: 'json',
 			data: data
 		}).done(function(data) {
-			console.log(data);
+			console.log('Received:', data);
+			$('#yacht-grid li').hide();
+			$.each(data, function(i, item) {
+				$('#yacht-grid').find('[data-id="'+item+'"]').show();
+			});
+
 		}).fail(function(error) {
 			console.log('error', error);
 		});

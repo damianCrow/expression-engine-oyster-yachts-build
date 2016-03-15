@@ -1,0 +1,169 @@
+a:3:{s:4:"time";i:1458035373;s:3:"ttl";i:0;s:4:"data";s:5898:"<li data-id="1" class="column large-12 size-large">
+				<div class="listing-images">
+					<a href="http://192.168.254.27/oyster/brokerage/penelope">
+						
+							
+								<span style="background-image:url('http://192.168.254.27/oyster/images/content/1/listing1_430x300-2.jpg');"></span>
+							
+								<span style="background-image:url('http://192.168.254.27/oyster/images/content/1/listing2_430x300-2.jpg');"></span>
+							
+								<span style="background-image:url('http://192.168.254.27/oyster/images/content/1/listing3_430x300-2.jpg');"></span>
+							
+						
+					</a>
+				</div>
+				<div class="listing-content">
+					<table class="table listing-table feature-col">
+						<tbody>
+							<tr>
+								<td class="title" colspan="3"><a href="http://192.168.254.27/oyster/brokerage/penelope">--- <span>// Penelope</span></a></td>
+							</tr>
+							<tr>
+								<td>Located: <span>Oyster Palma</span></td>
+								<td>Year Built: <span>2012</span></td>
+								
+								<td rowspan="2" class="highlight">Reduced Price</td>
+								
+							</tr>
+							<tr>
+								<td>Price: <span>£<?php echo number_format(6000000); ?> <span>inc VAT</span></span></td>
+								<td>Status: <span>Available</span></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="share">
+	<img src="{site_url}images/static/add.png">
+	<img src="{site_url}images/static/share.png">
+</div>{!-- ra:00000000160698d4000000010f1bace3 --}
+			</li><li data-id="2" class="column large-6 size-medium">
+				<div class="listing-images">
+					<a href="http://192.168.254.27/oyster/brokerage/test-medium-1">
+						
+							
+								<span style="background-image:url('http://192.168.254.27/oyster/images/content/2/cover_1366x650.jpg');"></span>
+							
+						
+					</a>
+				</div>
+				<div class="listing-content">
+					<table class="table listing-table feature-col">
+						<tbody>
+							<tr>
+								<td class="title" colspan="3"><a href="http://192.168.254.27/oyster/brokerage/test-medium-1">Model 1 <span>// Test medium 1</span></a></td>
+							</tr>
+							<tr>
+								<td>Located: <span>asd</span></td>
+								<td>Year Built: <span>1234</span></td>
+								
+								<td rowspan="2" class="highlight">Feature</td>
+								
+							</tr>
+							<tr>
+								<td>Price: <span>£<?php echo number_format(12345); ?> <span>exc VAT</span></span></td>
+								<td>Status: <span>Available</span></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="share">
+	<img src="{site_url}images/static/add.png">
+	<img src="{site_url}images/static/share.png">
+</div>{!-- ra:00000000160698d4000000010f1bace3 --}
+			</li><li data-id="3" class="column large-6 size-medium">
+				<div class="listing-images">
+					<a href="http://192.168.254.27/oyster/brokerage/test-medium-2">
+						
+							
+								<span style="background-image:url('http://192.168.254.27/oyster/images/content/3/cover_1366x650.jpg');"></span>
+							
+						
+					</a>
+				</div>
+				<div class="listing-content">
+					<table class="table listing-table">
+						<tbody>
+							<tr>
+								<td class="title" colspan="2"><a href="http://192.168.254.27/oyster/brokerage/test-medium-2">Model3 <span>// Test medium 2</span></a></td>
+							</tr>
+							<tr>
+								<td>Located: <span>asdfgh</span></td>
+								<td>Year Built: <span>1234</span></td>
+								
+							</tr>
+							<tr>
+								<td>Price: <span>$<?php echo number_format(32164987); ?> <span>inc VAT</span></span></td>
+								<td>Status: <span>Available</span></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="share">
+	<img src="{site_url}images/static/add.png">
+	<img src="{site_url}images/static/share.png">
+</div>{!-- ra:00000000160698d4000000010f1bace3 --}
+			</li><li data-id="4" class="column large-4 size-small">
+				<div class="listing-images">
+					<a href="http://192.168.254.27/oyster/brokerage/test-small-1">
+						
+							
+								<span style="background-image:url('http://192.168.254.27/oyster/images/content/4/cover_1366x650.jpg');"></span>
+							
+						
+					</a>
+				</div>
+				<div class="listing-content">
+					<table class="table listing-table">
+						<tbody>
+							<tr>
+								<td class="title" colspan="2"><a href="http://192.168.254.27/oyster/brokerage/test-small-1">Model3 <span>// Test small 1</span></a></td>
+							</tr>
+							<tr>
+								<td>Located: <span>The moon</span></td>
+								<td>Year Built: <span>3521</span></td>
+								
+							</tr>
+							<tr>
+								<td>Price: <span>£<?php echo number_format(568745); ?> <span>inc VAT</span></span></td>
+								<td>Status: <span>Available</span></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="share">
+	<img src="{site_url}images/static/add.png">
+	<img src="{site_url}images/static/share.png">
+</div>{!-- ra:00000000160698d4000000010f1bace3 --}
+			</li><li data-id="5" class="column large-4 size-small end">
+				<div class="listing-images">
+					<a href="http://192.168.254.27/oyster/brokerage/test-small-2">
+						
+							
+								<span style="background-image:url('http://192.168.254.27/oyster/images/content/5/cover_1366x650.jpg');"></span>
+							
+						
+					</a>
+				</div>
+				<div class="listing-content">
+					<table class="table listing-table">
+						<tbody>
+							<tr>
+								<td class="title" colspan="2"><a href="http://192.168.254.27/oyster/brokerage/test-small-2"> <span>// Test small 2</span></a></td>
+							</tr>
+							<tr>
+								<td>Located: <span>Atlantis</span></td>
+								<td>Year Built: <span>152</span></td>
+								
+							</tr>
+							<tr>
+								<td>Price: <span>£<?php echo number_format(857469); ?> <span>inc VAT</span></span></td>
+								<td>Status: <span>Under offer</span></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="share">
+	<img src="{site_url}images/static/add.png">
+	<img src="{site_url}images/static/share.png">
+</div>{!-- ra:00000000160698d4000000010f1bace3 --}
+			</li>";}

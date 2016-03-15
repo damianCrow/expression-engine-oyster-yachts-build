@@ -40,7 +40,7 @@
 
 	<div class="row row-pad content">
 		<ul id="yacht-grid" class="row">
-			{exp:low_reorder:entries set="brokerage"}
+			{exp:low_reorder:entries set="brokerage" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="open"}
 			<li data-id="{entry_id}" class="column {if brokerage_listing_size == 'Large'}large-12 size-large{if:elseif brokerage_listing_size == 'Medium'}large-6 size-medium{if:elseif brokerage_listing_size == 'Small'}large-4 size-small{/if}{if count == total_results} end{/if}">
 				<div class="listing-images">
 					<a href="{url_title_path='brokerage'}">
