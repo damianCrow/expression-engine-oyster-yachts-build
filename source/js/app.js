@@ -106,48 +106,41 @@ $(function() {
 		$('.site-search-close').fadeOut(300);
 	});
 
+	var $grid = $('#yacht-grid');
 
-	$('#brokerage-filters').on('change', 'select', function() {
-		//console.log($(this).val());
+	$('#submit').on('click', function(e) {
+		e.preventDefault();
 
-		var data = {};
+		$grid.find('li').show();
+
 		if ($('#filter-model').val() !== "") {
-			data.model = $('#filter-model').val();
+			$grid.find("li[data-model!='"+$('#filter-model').val()+"']").hide();
 		}
 		if ($('#filter-status').val() !== "") {
-			data.status = $('#filter-status').val();
+			$grid.find("li[data-status!='"+$('#filter-status').val()+"']").hide();
 		}
 		if ($('#filter-location').val() !== "") {
-			data.location = $('#filter-location').val();
+			$grid.find("li[data-location!='"+$('#filter-location').val()+"']").hide();
 		}
 		if ($('#filter-price').val() !== "") {
 			var $selected = $('#filter-price option:selected');
 
 			if ($selected[0].hasAttribute('data-price-min')) {
-				data.price_min = $selected.attr('data-price-min');
+				$grid.find('li').filter(function() {
+				    return $(this).data('price') < $selected.attr('data-price-min');
+				}).hide();
 			}
 
 			if ($selected[0].hasAttribute('data-price-max')) {
-				data.price_max = $selected.attr('data-price-max');
+				$grid.find('li').filter(function() {
+				    return $(this).data('price') > $selected.attr('data-price-max');
+				}).hide();
 			}
 		}
-
-		console.log('Sent:', data);
-
-		$.ajax({
-			method: 'GET',
-			url: '/oyster/ajax/brokerage-filter',
-			dataType: 'json',
-			data: data
-		}).done(function(data) {
-			console.log('Received:', data);
-			$('#yacht-grid li').hide();
-			$.each(data, function(i, item) {
-				$('#yacht-grid').find('[data-id="'+item+'"]').show();
-			});
-
-		}).fail(function(error) {
-			console.log('error', error);
-		});
 	});
+
+});
+
+$('select').select2({
+	minimumResultsForSearch: -1
 });

@@ -1,37 +1,45 @@
-<section class="hero after-nav">
-	<div id="brokerage-filters">
-	<select id="filter-model">
-	<option value="">All models</option>
-	{exp:query sql="SELECT DISTINCT field_id_39 AS model FROM exp_channel_data WHERE channel_id=1 AND field_id_39 != '---' ORDER BY field_id_39 ASC"}
-		<option vlaue="{model}">{model}</option>
-	{/exp:query}
-	</select>
-
-	<select id="filter-price">
-		<option value="">Any Price</option>
-		<option vlaue="priceband1" data-price-max="250000">Under £250,000</option>
-		<option vlaue="priceband2" data-price-min="250000" data-price-max="500000">£250,000 - £500,000</option>
-		<option vlaue="priceband3" data-price-min="500000" data-price-max="1000000">£500,000 - £1,000,000</option>
-		<option vlaue="priceband4" data-price-min="1000000" data-price-max="1500000">£1,000,000 - £1,500,000</option>
-		<option vlaue="priceband5" data-price-min="1500000" data-price-max="2000000">£1,500,000 - £2,000,000</option>
-		<option vlaue="priceband6" data-price-min="2000000">Over £2,000,000</option>
-	</select>
-
-	<select id="filter-location">
-	<option value="">Any location</option>
-	{exp:query sql="SELECT DISTINCT field_id_4 AS location FROM exp_channel_data WHERE channel_id=1 ORDER BY field_id_4 ASC"}
-		<option vlaue="{location}">{location}</option>
-	{/exp:query}
-	</select>
-
-	<select id="filter-status">
-	<option value="">Any status</option>
-	{exp:query sql="SELECT DISTINCT field_id_9 AS status FROM exp_channel_data WHERE channel_id=1 ORDER BY field_id_9 ASC"}
-		<option vlaue="{status}">{status}</option>
-	{/exp:query}
-	</select>
-
-	
+<section class="hero after-nav brokerage-hero">
+	<div id="brokerage-filters" class="filters">
+		<div class="row row-pad">
+			<div class="large-offset-1 large-10 end">
+				<div class="filter-dropdown">
+					<select id="filter-model">
+					<option value="">All models</option>
+					{exp:query sql="SELECT DISTINCT field_id_24 AS model FROM exp_channel_data WHERE channel_id=1 AND field_id_24 != '---' ORDER BY field_id_24 ASC"}
+						<option vlaue="{model}">{model}</option>
+					{/exp:query}
+					</select>
+				</div>
+				<div class="filter-dropdown">
+					<select id="filter-price">
+						<option value="">Any Price</option>
+						<option vlaue="priceband1" data-price-max="250000">Under £250,000</option>
+						<option vlaue="priceband2" data-price-min="250000" data-price-max="500000">£250,000 - £500,000</option>
+						<option vlaue="priceband3" data-price-min="500000" data-price-max="1000000">£500,000 - £1,000,000</option>
+						<option vlaue="priceband4" data-price-min="1000000" data-price-max="1500000">£1,000,000 - £1,500,000</option>
+						<option vlaue="priceband5" data-price-min="1500000" data-price-max="2000000">£1,500,000 - £2,000,000</option>
+						<option vlaue="priceband6" data-price-min="2000000">Over £2,000,000</option>
+					</select>
+				</div>
+				<div class="filter-dropdown">
+					<select id="filter-location">
+					<option value="">Any location</option>
+					{exp:query sql="SELECT DISTINCT field_id_4 AS location FROM exp_channel_data WHERE channel_id=1 ORDER BY field_id_4 ASC"}
+						<option vlaue="{location}">{location}</option>
+					{/exp:query}
+					</select>
+				</div>
+				<div class="filter-dropdown">
+					<select id="filter-status">
+					<option value="">Any status</option>
+					{exp:query sql="SELECT DISTINCT field_id_9 AS status FROM exp_channel_data WHERE channel_id=1 ORDER BY field_id_9 ASC"}
+						<option vlaue="{status}">{status}</option>
+					{/exp:query}
+					</select>
+				</div>
+				<a id="submit" class="button" href="#">Search</a>
+			</div>
+		</div>
 	</div>
 </section>
 
@@ -39,45 +47,112 @@
 	<div class="banner">Brokerage Fleet</div>
 
 	<div class="row row-pad content">
-		<ul id="yacht-grid" class="row">
-			{exp:low_reorder:entries set="brokerage" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="open"}
-			<li data-id="{entry_id}" class="column {if brokerage_listing_size == 'Large'}large-12 size-large{if:elseif brokerage_listing_size == 'Medium'}large-6 size-medium{if:elseif brokerage_listing_size == 'Small'}large-4 size-small{/if}{if count == total_results} end{/if}">
-				<div class="listing-images">
-					<a href="{url_title_path='brokerage'}">
-						{if brokerage_listing_size == 'Large'}
+
+		<div class="row" id="yacht-grid">
+			<ul>
+				{exp:channel:entries set="brokerage" disable="member_data|category_fields|pagination" cache="no" refresh="60" status="published" search:brokerage_listing_size="=Large" orderby="brokerage_status_changed" sort="desc"}
+				<li data-model="{brokerage_model}" data-price="{brokerage_price}" data-location="{brokerage_location}" data-status="{brokerage_status}" class="column large-12 size-large{if count == total_results} end{/if}">
+					<div class="listing-images">
+						<a href="{url_title_path='brokerage'}">
 							{brokerage_listing_images}
 								<span style="background-image:url('{image:url}');"></span>
 							{/brokerage_listing_images}
-						{if:else}
+						</a>
+					</div>
+					<div class="listing-content">
+						<table class="table listing-table{if brokerage_feature_text != ""} feature-col{/if}">
+							<tbody>
+								<tr>
+									<td class="title" colspan="{if brokerage_feature_text != ""}3{if:else}2{/if}"><a href="{url_title_path='brokerage'}">{brokerage_model} <span>// {title}</span></a></td>
+								</tr>
+								<tr>
+									<td>Located: <span>{brokerage_location}</span></td>
+									<td>Year Built: <span>{brokerage_year_built}</span></td>
+									{if brokerage_feature_text != ""}
+									<td rowspan="2" class="highlight">{brokerage_feature_text}</td>
+									{/if}
+								</tr>
+								<tr>
+									<td>Price: <span>{brokerage_currency}<?php echo number_format({brokerage_price}); ?> <span>{brokerage_vat}</span></span></td>
+									<td>Status: <span>{brokerage_status}</span></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					{share_buttons}
+				</li>
+				{/exp:channel:entries}
+			</ul>
+
+			<ul>
+				{exp:channel:entries set="brokerage" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published" search:brokerage_listing_size="=Medium" orderby="brokerage_status_changed" sort="desc"}
+				<li data-model="{brokerage_model}" data-price="{brokerage_price}" data-location="{brokerage_location}" data-status="{brokerage_status}" class="column large-6 size-medium{if count == total_results} end{/if}">
+					<div class="listing-images">
+						<a href="{url_title_path='brokerage'}">
 							{brokerage_main_image}
 								<span style="background-image:url('{image:url}');"></span>
 							{/brokerage_main_image}
-						{/if}
-					</a>
-				</div>
-				<div class="listing-content">
-					<table class="table listing-table{if brokerage_feature_text != ""} feature-col{/if}">
-						<tbody>
-							<tr>
-								<td class="title" colspan="{if brokerage_feature_text != ""}3{if:else}2{/if}"><a href="{url_title_path='brokerage'}">{brokerage_model} <span>// {title}</span></a></td>
-							</tr>
-							<tr>
-								<td>Located: <span>{brokerage_location}</span></td>
-								<td>Year Built: <span>{brokerage_year_built}</span></td>
-								{if brokerage_feature_text != ""}
-								<td rowspan="2" class="highlight">{brokerage_feature_text}</td>
-								{/if}
-							</tr>
-							<tr>
-								<td>Price: <span>{brokerage_currency}<?php echo number_format({brokerage_price}); ?> <span>{brokerage_vat}</span></span></td>
-								<td>Status: <span>{brokerage_status}</span></td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-				{share_buttons}
-			</li>
-			{/exp:low_reorder:entries}
-		</ul>
+						</a>
+					</div>
+					<div class="listing-content">
+						<table class="table listing-table{if brokerage_feature_text != ""} feature-col{/if}">
+							<tbody>
+								<tr>
+									<td class="title" colspan="{if brokerage_feature_text != ""}3{if:else}2{/if}"><a href="{url_title_path='brokerage'}">{brokerage_model} <span>// {title}</span></a></td>
+								</tr>
+								<tr>
+									<td>Located: <span>{brokerage_location}</span></td>
+									<td>Year Built: <span>{brokerage_year_built}</span></td>
+									{if brokerage_feature_text != ""}
+									<td rowspan="2" class="highlight">{brokerage_feature_text}</td>
+									{/if}
+								</tr>
+								<tr>
+									<td>Price: <span>{brokerage_currency}<?php echo number_format({brokerage_price}); ?> <span>{brokerage_vat}</span></span></td>
+									<td>Status: <span>{brokerage_status}</span></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					{share_buttons}
+				</li>
+				{/exp:channel:entries}
+			</ul>
+
+			<ul>
+				{exp:channel:entries set="brokerage" disable="member_data|category_fields|pagination" cache="no" refresh="60" status="published" search:brokerage_listing_size="=Small" orderby="brokerage_status_changed" sort="desc"}
+				<li data-model="{brokerage_model}" data-price="{brokerage_price}" data-location="{brokerage_location}" data-status="{brokerage_status}" class="column large-4 size-small{if count == total_results} end{/if}">
+					<div class="listing-images">
+						<a href="{url_title_path='brokerage'}">
+							{brokerage_main_image}
+								<span style="background-image:url('{image:url}');"></span>
+							{/brokerage_main_image}
+						</a>
+					</div>
+					<div class="listing-content">
+						<table class="table listing-table{if brokerage_feature_text != ""} feature-col{/if}">
+							<tbody>
+								<tr>
+									<td class="title" colspan="{if brokerage_feature_text != ""}3{if:else}2{/if}"><a href="{url_title_path='brokerage'}">{brokerage_model} <span>// {title}</span></a></td>
+								</tr>
+								<tr>
+									<td>Located: <span>{brokerage_location}</span></td>
+									<td>Year Built: <span>{brokerage_year_built}</span></td>
+									{if brokerage_feature_text != ""}
+									<td rowspan="2" class="highlight">{brokerage_feature_text}</td>
+									{/if}
+								</tr>
+								<tr>
+									<td>Price: <span>{brokerage_currency}<?php echo number_format({brokerage_price}); ?> <span>{brokerage_vat}</span></span></td>
+									<td>Status: <span>{brokerage_status}</span></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					{share_buttons}
+				</li>
+				{/exp:channel:entries}
+			</ul>
+		</div>
 	</div>
 </section>

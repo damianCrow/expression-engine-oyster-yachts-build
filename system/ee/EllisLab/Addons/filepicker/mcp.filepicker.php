@@ -5,9 +5,9 @@
  *
  * @package		ExpressionEngine
  * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2015, EllisLab, Inc.
- * @license		https://ellislab.com/expressionengine/user-guide/license.html
- * @link		http://ellislab.com
+ * @copyright	Copyright (c) 2003 - 2016, EllisLab, Inc.
+ * @license		https://expressionengine.com/license
+ * @link		https://ellislab.com
  * @since		Version 3.0
  * @filesource
  */
@@ -21,7 +21,7 @@
  * @subpackage	Modules
  * @category	Modules
  * @author		EllisLab Dev Team
- * @link		http://ellislab.com
+ * @link		https://ellislab.com
  */
 
 use EllisLab\ExpressionEngine\Model\File\UploadDestination;
@@ -370,6 +370,9 @@ class Filepicker_mcp {
 							'title' => array(
 								'type' => 'text',
 							)
+						),
+						'attrs' => array(
+							'class' => 'hidden-field'
 						)
 					),
 					array(
@@ -378,6 +381,9 @@ class Filepicker_mcp {
 							'description' => array(
 								'type' => 'textarea',
 							)
+						),
+						'attrs' => array(
+							'class' => 'hidden-field'
 						)
 					),
 					array(
@@ -386,6 +392,9 @@ class Filepicker_mcp {
 							'credit' => array(
 								'type' => 'text',
 							)
+						),
+						'attrs' => array(
+							'class' => 'hidden-field'
 						)
 					),
 					array(
@@ -394,6 +403,9 @@ class Filepicker_mcp {
 							'location' => array(
 								'type' => 'text',
 							)
+						),
+						'attrs' => array(
+							'class' => 'hidden-field'
 						)
 					),
 				)
@@ -499,4 +511,5 @@ class Filepicker_mcp {
 		return NULL;
 	}
 }
-?>
+
+// EOF

@@ -6,7 +6,7 @@
  *
  * @package		CodeIgniter
  * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc.
+ * @copyright	Copyright (c) 2008 - 2016, EllisLab, Inc.
  * @license		http://codeigniter.com/user_guide/license.html
  * @link		http://codeigniter.com
  * @since		Version 1.0
@@ -256,6 +256,7 @@ class CI_DB_active_record extends CI_DB_driver {
 	{
 		if ( ! is_bool($val))
 		{
+			ee()->load->library('logger');
 			ee()->logger->deprecated('3.2.0', 'Use CI_DB_active_rec::distinct() with a boolean parameter only.');
 		}
 
@@ -2228,5 +2229,4 @@ class CI_DB_active_record extends CI_DB_driver {
 
 }
 
-/* End of file DB_active_rec.php */
-/* Location: ./system/database/DB_active_rec.php */
+// EOF

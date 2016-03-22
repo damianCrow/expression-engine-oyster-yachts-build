@@ -11,9 +11,9 @@
 |
 */
 
-$config['app_version'] = '3.1.4';
+$config['app_version'] = '3.2.1';
 $config['debug'] = '1';
-$config['cp_url'] = 'http://192.168.254.27/oyster/admin.php';
+$config['cp_url'] = 'http://192.168.254.17/oyster/admin.php';
 $config['doc_url'] = 'https://ellislab.com/expressionengine/user-guide/';
 $config['is_system_on'] = 'y';
 $config['allow_extensions'] = 'y';

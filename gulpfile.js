@@ -30,6 +30,7 @@ gulp.task('scripts', function() {
             './source/js/libraries/foundation/foundation.util.mediaQuery.js',
             './source/js/libraries/lightgallery/lightgallery.js',
             './source/js/libraries/lightgallery/lg-thumbnail.js',
+            './source/js/libraries/select2.full.min.js',
             //'./source/js/libraries/lightgallery/lg-fullscreen.js',
             './source/js/app.js'])
     .pipe(concat('scripts.js'))

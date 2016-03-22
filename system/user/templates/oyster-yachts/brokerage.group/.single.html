@@ -1,4 +1,4 @@
-{exp:channel:entries disable="member_data|category_fields|pagination" cache="yes" refresh="60" require_entry="yes" status="open"}
+{exp:channel:entries disable="member_data|category_fields|pagination" cache="yes" refresh="60" require_entry="yes" status="published"}
 {if no_results}{redirect="404"}{/if}
 <?php
 $query = ee()->db->query('SELECT * FROM exp_channel_images WHERE entry_id={entry_id} AND field_id=14');
@@ -7,8 +7,8 @@ $layoutImages = $query->num_rows();
 $query = ee()->db->query('SELECT * FROM exp_channel_images WHERE entry_id={entry_id} AND field_id=20');
 $exteriorGalleryImages = $query->num_rows();
 
-$query = ee()->db->query('SELECT * FROM exp_channel_images WHERE entry_id={entry_id} AND field_id=15');
-$interiorGalleryImages = $query->num_rows();
+/*$query = ee()->db->query('SELECT * FROM exp_channel_images WHERE entry_id={entry_id} AND field_id=15');
+$interiorGalleryImages = $query->num_rows();*/
 ?>
 
 <section class="hero full-screen">
@@ -17,7 +17,7 @@ $interiorGalleryImages = $query->num_rows();
 			<div class="row-pad">
 				<h2>{brokerage_model}</h2>
 				<h1>{title}</h1>
-				<?php if ($exteriorGalleryImages > 0 || $interiorGalleryImages > 0): ?>
+				<?php if ($exteriorGalleryImages > 0): ?>
 				<a class="gallery" href="">View Gallery</a>
 				<?php endif; ?>
 			</div>
@@ -45,7 +45,7 @@ $interiorGalleryImages = $query->num_rows();
 			</li>
 			<?php endif; ?>
 
-			<?php if ($exteriorGalleryImages > 0 || $interiorGalleryImages > 0): ?>
+			<?php if ($exteriorGalleryImages > 0): ?>
 			<li>
 				<a class="gallery" href="">Gallery</a>
 			</li>
@@ -273,7 +273,7 @@ $interiorGalleryImages = $query->num_rows();
 				{/brokerage_layout}
 			</div>
 
-			<ul class="slider-pager">
+			<ul class="slider-pager<?php if ($layoutImages === 1): ?> hide<?php endif; ?>">
 				{brokerage_layout}<li><a href=""><span style="background-image:url('{image:url:small}');"></span></a></li>{/brokerage_layout}
 			</ul>
 		</div>
@@ -288,16 +288,6 @@ $interiorGalleryImages = $query->num_rows();
 		<img src="{image:url:thumb}" />
 	</a>
 	{/brokerage_gallery_exterior}
-</div>
-<?php endif; ?>
-
-<?php if ($interiorGalleryImages > 0): ?>
-<div id="interior-gallery" class="gallery-content">
-	{brokerage_gallery_interior}
-	<a href="{image:url}" data-sub-html="{image:description}">
-		<img src="{image:url:thumb}" />
-	</a>
-	{/brokerage_gallery_interior}
 </div>
 <?php endif; ?>
 

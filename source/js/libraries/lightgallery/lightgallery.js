@@ -135,8 +135,6 @@
 
     Plugin.prototype.init = function() {
 
-        console.log('init');
-
         var _this = this;
 
         // s.preload should not be more than $item.length
@@ -177,7 +175,7 @@
             // Using different namespace for click because click event should not unbind if selector is same object('this')
             _this.$items.on('click.lgcustom', function(event) {
 
-                console.log('click');
+                //console.log('click');
 
                 // For IE8
                 try {
@@ -203,7 +201,7 @@
 
     Plugin.prototype.build = function(index) {
 
-        console.log('build', index);
+        //console.log('build', index);
 
         var _this = this;
 
@@ -260,7 +258,7 @@
     };
 
     Plugin.prototype.structure = function() {
-        console.log('structure');
+        //console.log('structure');
 
         var list = '';
         var controls = '';
@@ -297,7 +295,7 @@
                 '<div class="lg-toolbar group">' +
                 '<span class="lg-close lg-icon"></span>' +
                 '<div class="gallery-sections">' +
-                ($('#exterior-gallery').length>0?'<a class="gallery-exterior gallery-active">Exterior</a>':'') +
+                ($('#exterior-gallery').length>0 && $('#interior-gallery').length>0 ?'<a class="gallery-exterior gallery-active">Exterior</a>':'') +
                 ($('#interior-gallery').length>0?'<a class="gallery-interior'+($('#exterior-gallery').length===0?' gallery-active':'')+'">Interior</a>':'') +
                 '</div>' +
                 '<span class="gallery-logo"></span>' +
@@ -732,7 +730,7 @@
         }
 
         _this.$slide.eq(index).find('.lg-object').on('load.lg error.lg', function() {
-            console.log('load error');
+            //console.log('load error');
 
             // For first time add some delay for displaying the start animation.
             var _speed = 0;
@@ -801,7 +799,7 @@
             return;
         }*/
 
-        console.log('slide');
+        //console.log('slide');
 
         var _length = this.$slide.length;
         var _time = _this.lGalleryOn ? this.s.speed : 0;
@@ -1331,7 +1329,7 @@
         $(window).off('.lg');
         
         if (changeGallery) {
-            console.log('exit');
+            //console.log('exit');
             return;
         }
         
