@@ -1,5 +1,6 @@
 {exp:channel:entries disable="member_data|category_fields|pagination" cache="yes" refresh="60" require_entry="yes" status="published"}
 {if no_results}{redirect="404"}{/if}
+
 <?php
 $query = ee()->db->query('SELECT * FROM exp_channel_images WHERE entry_id={entry_id} AND field_id=14');
 $layoutImages = $query->num_rows();
@@ -11,8 +12,12 @@ $exteriorGalleryImages = $query->num_rows();
 $interiorGalleryImages = $query->num_rows();*/
 ?>
 
+
 <section class="hero full-screen">
-	<div id="full-image" style="background-image:url('{brokerage_main_image}{image:url}{/brokerage_main_image}');">
+	<div id="full-image" style="background-image: url('{brokerage_main_image}{image:url}{/brokerage_main_image}')">
+		<div class="back-button">
+			<a class="button-clear-white"><i class="fa fa-angle-left"></i>Back</a>
+		</div>
 		<div class="yacht-name">
 			<div class="row-pad">
 				<h2>{brokerage_model}</h2>
@@ -24,37 +29,96 @@ $interiorGalleryImages = $query->num_rows();*/
 		</div>
 		{share_buttons}
 	</div>
-
-	<div id="yacht-nav" class="yacht-nav">
+	<div id="yacht-nav" data-local-subnav="data-local-subnav" class="yacht-nav">
 		<ul>
 			{if brokerage_design_features:total_rows > 0}
-			<li>
-				<a class="scroll" href="#design-features">Design Features</a>
-			</li>
+			<li class="active"><a href="#design-features" class="scroll">Design Features</a></li>
 			{/if}
 
 			{if brokerage_specifications:total_rows > 0}
-			<li>
-				<a class="scroll" href="#specifications">Specifications</a>
-			</li>
+			<li><a href="#specifications" class="scroll">Specifications</a></li>
 			{/if}
 
 			<?php if ($layoutImages > 0): ?>
-			<li>
-				<a class="scroll" href="#yacht-layout">Yacht Layout</a>
-			</li>
+			<li><a href="#yacht-layout" class="scroll">Yacht Layout</a></li>
 			<?php endif; ?>
 
 			<?php if ($exteriorGalleryImages > 0): ?>
-			<li>
-				<a class="gallery" href="">Gallery</a>
-			</li>
+			<li><a href="" class="gallery">Gallery</a></li>
 			<?php endif; ?>
 
-			<li>
-				<a class="contact" href="">Contact Brokerage</a>
-			</li>
+			<li><a href="" class="contact">Contact Brokerage</a></li>
 		</ul>
+		<section data-local-sidebar data-sticky-sidebar-at-bottom=".about-yacht" data-sticky-sidebar-offset="" class="sticky-sidebar-header hide float-right">
+			<div class="header">
+				<h4 class="text-uppercase float-left">{title} overview</h4>
+				<i class="fa fa-angle-down float-right"></i>
+			</div>
+			<div class="contents">
+				<table class="table definition-table">
+					<tbody>
+						<tr>
+							<td colspan="2" class="heading">{title} overview</td>
+						</tr>
+
+						{if brokerage_location != ""}
+						<tr>
+							<td>Location:</td>
+							<td>{brokerage_location}</td>
+						</tr>
+						{/if}
+
+						{if brokerage_year_built != ""}
+						<tr>
+							<td>Year:</td>
+							<td>{brokerage_year_built}</td>
+						</tr>
+						{/if}
+
+						{if brokerage_rig != ""}
+						<tr>
+							<td>Rig:</td>
+							<td>{brokerage_rig}</td>
+						</tr>
+						{/if}
+
+						{if brokerage_joinery != ""}
+						<tr>
+							<td>Joinery:</td>
+							<td>{brokerage_joinery}</td>
+						</tr>
+						{/if}
+
+						{if brokerage_cabins != ""}
+						<tr>
+							<td>Cabins:</td>
+							<td>{brokerage_cabins}</td>
+						</tr>
+						{/if}
+
+						{if brokerage_status != ""}
+						<tr>
+							<td>Status:</td>
+							<td>{brokerage_status}</td>
+						</tr>
+						{/if}
+
+						{if brokerage_price != ""}
+						<tr>
+							<td>Price:</td>
+							<td>{brokerage_currency}<?php echo number_format({brokerage_price}); ?> <span>{brokerage_vat}</span></td>
+						</tr>
+						{/if}
+
+						{if brokerage_feature_text != ""}
+						<tr>
+							<td colspan="2" class="highlight">{brokerage_feature_text}</td>
+						</tr>
+						{/if}
+					</tbody>
+				</table>
+			</div>
+		</section>
 	</div>
 </section>
 
@@ -63,199 +127,197 @@ $interiorGalleryImages = $query->num_rows();*/
 		<div class="large-offset-1 large-7 float">
 			<h2>{brokerage_model}</h2>
 			<h1>{title}</h1>
-
 			{brokerage_about}
-
 			{if brokerage_further_information != ""}
 			<div class="further-info">
 				{brokerage_further_information}
 			</div>
 			{/if}
 		</div>
-		<div class="large-offset-1 large-3 float">
-			<table class="table definition-table">
-			
-				<tr>
-					<td colspan="2" class="heading">{title} overview</td>
-				</tr>
-			
-				{if brokerage_location != ""}
-				<tr>
-					<td>Located</td>
-					<td>{brokerage_location}</td>
-				</tr>
-				{/if}
+		<div class="large-offset-1 large-3 float-left">
+			<div class="sticky-sidebar">
+				<table class="table definition-table">
+					<tbody>
+						<tr>
+							<td colspan="2" class="heading">{title} overview</td>
+						</tr>
 
-				{if brokerage_year_built != ""}
-				<tr>
-					<td>Year Built</td>
-					<td>{brokerage_year_built}</td>
-				</tr>
-				{/if}
+						{if brokerage_location != ""}
+						<tr>
+							<td>Location:</td>
+							<td>{brokerage_location}</td>
+						</tr>
+						{/if}
 
-				{if brokerage_rig != ""}
-				<tr>
-					<td>Rig</td>
-					<td>{brokerage_rig}</td>
-				</tr>
-				{/if}
+						{if brokerage_year_built != ""}
+						<tr>
+							<td>Year:</td>
+							<td>{brokerage_year_built}</td>
+						</tr>
+						{/if}
 
-				{if brokerage_joinery != ""}
-				<tr>
-					<td>Joinery</td>
-					<td>{brokerage_joinery}</td>
-				</tr>
-				{/if}
+						{if brokerage_rig != ""}
+						<tr>
+							<td>Rig:</td>
+							<td>{brokerage_rig}</td>
+						</tr>
+						{/if}
 
-				{if brokerage_cabins != ""}
-				<tr>
-					<td>Cabins</td>
-					<td>{brokerage_cabins}</td>
-				</tr>
-				{/if}
+						{if brokerage_joinery != ""}
+						<tr>
+							<td>Joinery:</td>
+							<td>{brokerage_joinery}</td>
+						</tr>
+						{/if}
 
-				{if brokerage_status != ""}
-				<tr>
-					<td>Status</td>
-					<td>{brokerage_status}</td>
-				</tr>
-				{/if}
+						{if brokerage_cabins != ""}
+						<tr>
+							<td>Cabins:</td>
+							<td>{brokerage_cabins}</td>
+						</tr>
+						{/if}
 
-				{if brokerage_price != ""}
-				<tr>
-					<td>Price</td>
-					<td>{brokerage_currency}<?php echo number_format({brokerage_price}); ?> <span>{brokerage_vat}</span></td>
-				</tr>
-				{/if}
-				
-				{if brokerage_feature_text != ""}
-				
-				<tr>
-					<td colspan="2" class="highlight">{brokerage_feature_text}</td>
-				</tr>
-				
-				{/if}
-			</table>
+						{if brokerage_status != ""}
+						<tr>
+							<td>Status:</td>
+							<td>{brokerage_status}</td>
+						</tr>
+						{/if}
 
-			<div class="disclaimer">
-				The above price is given as an indication only and may be subject to exchange rate fluctuation , VAT or local taxes. Also please note that all dimensions are approximates.
+						{if brokerage_price != ""}
+						<tr>
+							<td>Price:</td>
+							<td>{brokerage_currency}<?php echo number_format({brokerage_price}); ?> <span>{brokerage_vat}</span></td>
+						</tr>
+						{/if}
+
+						{if brokerage_feature_text != ""}
+						<tr>
+							<td colspan="2" class="highlight">{brokerage_feature_text}</td>
+						</tr>
+						{/if}
+					</tbody>
+				</table>
+				<div class="disclaimer">
+					The above price is given as an indication only and may be subject to exchange rate fluctuation , VAT or local taxes. Also please note that all dimensions are approximates.
+				</div>
 			</div>
 		</div>
 	</div>
 </section>
 
+
 {if brokerage_design_features:total_rows > 0}
 <section id="design-features" class="design-features">
 	<div class="banner">Design features</div>
-
 	<div class="content row row-pad">
+
 		{brokerage_design_features}
-		<div class="large-4 content-col">
-			<div class="feature-image">
-				<img src="{brokerage_design_features:feature_image}">
-			</div>
+		<div class="large-4 small-6 content-col">
+			<div style="background-image:url('{brokerage_design_features:feature_image}')" class="feature-image"></div>
 			<div class="feature-content">
 				<h4>{brokerage_design_features:feature_title}</h4>
 				{brokerage_design_features:feature_description}
 			</div>
 		</div>
 		{/brokerage_design_features}
+
 	</div>
 </section>
 {/if}
 
 {if brokerage_specifications:total_rows > 0}
-<section id="specifications" class="specifications">
+<section id="specifications" class="specifications yachts-yacht-spec">
 	<div class="banner">Specifications</div>
-
 	<div class="content row row-pad">
 		<table class="table specs-table">
-			<tr>
-				<td colspan="{if brokerage_specifications:draft_centreboard_up != ""}10{if:else}9{/if}" class="heading">KEY SPECIFICATIONS</td>
-			</tr>
+			<tbody>
+				<tr>
+					<td colspan="{if brokerage_specifications:draft_centreboard_up != ""}10{if:else}9{/if}" class="heading text-uppercase">KEY SPECIFICATIONS</td>
+				</tr>
+				<tr>
+					<th class="text-uppercase">LOA</th>
+					<th class="text-uppercase">LWL</th>
+					<th class="text-uppercase">BEAM</th>
 
-			<tr>
-				<th>LOA</th>
-				<th>LWL</th>
-				<th>BEAM</th>
-
-				{brokerage_specifications limit="1"}
+					{brokerage_specifications limit="1"}
 					{if brokerage_specifications:draft_standard != ""}
-					<th>DRAFT STANDARD</th>
+					<th class="text-uppercase">DRAFT STANDARD</th>
 					{/if}
 
 					{if brokerage_specifications:draft_shoal != ""}
-					<th>DRAFT SHOAL</th>
+					<th class="text-uppercase">DRAFT SHOAL</th>
 					{/if}
 
 					{if brokerage_specifications:draft_centreboard_up != ""}
-					<th>DRAFT CENTREBOARD UP</th>
+					<th class="text-uppercase">DRAFT CENTREBOARD UP</th>
 					{/if}
 
 					{if brokerage_specifications:draft_centreboard_down != ""}
-					<th>DRAFT CENTREBOARD DOWN</th>
+					<th class="text-uppercase">DRAFT CENTREBOARD DOWN</th>
 					{/if}
+					{/brokerage_specifications}
+
+					<th class="text-uppercase">DISPLACEMENT</th>
+					<th class="text-uppercase">RIG</th>
+					<th class="text-uppercase">JOINERY</th>
+					<th class="text-uppercase">CABINS</th>
+				</tr>
+				{brokerage_specifications limit="1"}
+				<tr>
+					<td>{brokerage_specifications:loa}</td>
+					<td>{brokerage_specifications:lwl}</td>
+					<td>{brokerage_specifications:beam}</td>
+
+					{if brokerage_specifications:draft_standard != ""}
+					<td>{brokerage_specifications:draft_standard}</td>
+					{/if}
+
+					{if brokerage_specifications:draft_shoal != ""}
+					<td>{brokerage_specifications:draft_shoal}</td>
+					{/if}
+
+					{if brokerage_specifications:draft_centreboard_up != ""}
+					<td>{brokerage_specifications:draft_centreboard_up}</td>
+					{/if}
+
+					{if brokerage_specifications:draft_centreboard_down != ""}
+					<td>{brokerage_specifications:draft_centreboard_down}</td>
+					{/if}
+
+					<td>{brokerage_specifications:displacement}</td>
+					<td rowspan="2">{brokerage_rig}</td>
+					<td rowspan="2">{brokerage_joinery}</td>
+					<td rowspan="2">{brokerage_cabins}</td>
+				</tr>
 				{/brokerage_specifications}
-				
-				<th>DISPLACEMENT</th>
-				<th>RIG</th>
-				<th>JOINERY</th>
-				<th>CABINS</th>
-			</tr>
 
-			{brokerage_specifications limit="1"}
-			<tr>
-				<td>{brokerage_specifications:loa}</td>
-				<td>{brokerage_specifications:lwl}</td>
-				<td>{brokerage_specifications:beam}</td>
+				{brokerage_specifications limit="1" offset="1"}
+				<tr>
+					<td>{brokerage_specifications:loa}</td>
+					<td>{brokerage_specifications:lwl}</td>
+					<td>{brokerage_specifications:beam}</td>
 
-				{if brokerage_specifications:draft_standard != ""}
-				<td>{brokerage_specifications:draft_standard}</td>
-				{/if}
+					{if brokerage_specifications:draft_standard != ""}
+					<td>{brokerage_specifications:draft_standard}</td>
+					{/if}
 
-				{if brokerage_specifications:draft_shoal != ""}
-				<td>{brokerage_specifications:draft_shoal}</td>
-				{/if}
+					{if brokerage_specifications:draft_shoal != ""}
+					<td>{brokerage_specifications:draft_shoal}</td>
+					{/if}
 
-				{if brokerage_specifications:draft_centreboard_up != ""}
-				<td>{brokerage_specifications:draft_centreboard_up}</td>
-				{/if}
+					{if brokerage_specifications:draft_centreboard_up != ""}
+					<td>{brokerage_specifications:draft_centreboard_up}</td>
+					{/if}
 
-				{if brokerage_specifications:draft_centreboard_down != ""}
-				<td>{brokerage_specifications:draft_centreboard_down}</td>
-				{/if}
+					{if brokerage_specifications:draft_centreboard_down != ""}
+					<td>{brokerage_specifications:draft_centreboard_down}</td>
+					{/if}
 
-				<td>{brokerage_specifications:displacement}</td>
-				<td rowspan="2">{brokerage_rig}</td>
-				<td rowspan="2">{brokerage_joinery}</td>
-				<td rowspan="2">{brokerage_cabins}</td>
-			</tr>
-			{/brokerage_specifications}
-			{brokerage_specifications limit="1" offset="1"}
-			<tr>
-				<td>{brokerage_specifications:loa}</td>
-				<td>{brokerage_specifications:lwl}</td>
-				<td>{brokerage_specifications:beam}</td>
-				
-				{if brokerage_specifications:draft_standard != ""}
-				<td>{brokerage_specifications:draft_standard}</td>
-				{/if}
-
-				{if brokerage_specifications:draft_shoal != ""}
-				<td>{brokerage_specifications:draft_shoal}</td>
-				{/if}
-
-				{if brokerage_specifications:draft_centreboard_up != ""}
-				<td>{brokerage_specifications:draft_centreboard_up}</td>
-				{/if}
-
-				{if brokerage_specifications:draft_centreboard_down != ""}
-				<td>{brokerage_specifications:draft_centreboard_down}</td>
-				{/if}
-
-				<td>{brokerage_specifications:displacement}</td>
-			</tr>
-			{/brokerage_specifications}
+					<td>{brokerage_specifications:displacement}</td>
+				</tr>
+				{/brokerage_specifications}
+			</tbody>
 		</table>
 	</div>
 </section>
@@ -264,22 +326,23 @@ $interiorGalleryImages = $query->num_rows();*/
 <?php if ($layoutImages > 0): ?>
 <section id="yacht-layout" class="yacht-layout">
 	<div class="banner">Yacht Layout</div>
-
 	<div class="content row row-pad">
 		<div class="large-10 large-offset-1 end">
 			<div id="layout-slider">
 				{brokerage_layout}
-				<div><img src="{image:url}"></div>
+				<div class="cycle-slide"><img src="{image:url}"></div>
 				{/brokerage_layout}
 			</div>
-
 			<ul class="slider-pager<?php if ($layoutImages === 1): ?> hide<?php endif; ?>">
-				{brokerage_layout}<li><a href=""><span style="background-image:url('{image:url:small}');"></span></a></li>{/brokerage_layout}
+				{brokerage_layout}
+				<li><a><span style="background-image:url('{image:url:small}');"></span></a></li>
+				{/brokerage_layout}
 			</ul>
 		</div>
 	</div>
 </section>
 <?php endif; ?>
+
 
 <?php if ($exteriorGalleryImages > 0): ?>
 <div id="exterior-gallery" class="gallery-content">
@@ -290,5 +353,6 @@ $interiorGalleryImages = $query->num_rows();*/
 	{/brokerage_gallery_exterior}
 </div>
 <?php endif; ?>
+
 
 {/exp:channel:entries}

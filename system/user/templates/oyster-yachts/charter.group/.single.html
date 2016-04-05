@@ -1,0 +1,247 @@
+{exp:channel:entries disable="member_data|category_fields|pagination" cache="yes" refresh="60" require_entry="yes" status="published"}
+{if no_results}{redirect="404"}{/if}
+
+<?php
+$query = ee()->db->query('SELECT * FROM exp_channel_images WHERE entry_id={entry_id} AND field_id=33');
+$layoutImages = $query->num_rows();
+
+$query = ee()->db->query('SELECT * FROM exp_channel_images WHERE entry_id={entry_id} AND field_id=43');
+$exteriorGalleryImages = $query->num_rows();
+
+$query = ee()->db->query('SELECT * FROM exp_channel_images WHERE entry_id={entry_id} AND field_id=42');
+$interiorGalleryImages = $query->num_rows();
+?>
+
+<section class="hero full-screen">
+	<div id="full-image" style="background-image: url('{charter_main_image}{image:url}{/charter_main_image}')">
+		<div class="back-button">
+			<a href="{path='charter/fleet'}" class="button-clear-white">
+				<i class="fa fa-angle-left"></i>Back
+			</a>
+		</div>
+		<div class="yacht-name">
+			<div class="row-pad">
+				<h2>{charter_model}</h2>
+				<h1>{title}</h1>
+				<?php if ($exteriorGalleryImages > 0 || $interiorGalleryImages > 0): ?>
+				<a class="gallery" href="">View Gallery</a>
+				<?php endif; ?>
+			</div>
+		</div>
+		{share_buttons}
+	</div>
+	<div id="yacht-nav" data-local-subnav="data-local-subnav" class="yacht-nav">
+		<ul>
+			<?php if ($layoutImages > 0): ?>
+			<li class="active"><a href="#yacht-layout" class="scroll">Yacht layout</a></li>
+			<?php endif; ?>
+
+			<li><a href="#activities" class="scroll">activities &amp; entertainment</a></li>
+
+			{if charter_crew:total_rows > 0}
+			<li><a href="" class="scroll">the crew</a></li>
+			{/if}
+
+			<?php if ($exteriorGalleryImages > 0 || $interiorGalleryImages > 0): ?>
+			<li><a href="" class="gallery">Gallery</a></li>
+			<?php endif; ?>
+
+			<li><a href="" class="contact">Contact Charter</a></li>
+		</ul>
+		<section data-local-sidebar data-sticky-sidebar-at-bottom=".about-yacht" data-sticky-sidebar-offset="" class="sticky-sidebar-header hide float-right">
+			<div class="header">
+				<h4 class="text-uppercase float-left">lush overview</h4>
+				<i class="fa fa-angle-down float-right"></i>
+			</div>
+			<div class="contents">
+				<table class="table definition-table charter-fleet-sidetable">
+					<tbody>
+						<tr>
+							<td colspan="2" class="heading">{title} overview</td>
+						</tr>
+						<tr>
+							<td>Year:</td>
+							<td>{charter_year}</td>
+						</tr>
+						<tr>
+							<td>No. Guests:</td>
+							<td>{charter_guests}</td>
+						</tr>
+						<tr>
+							<td>Summer:</td>
+							<td>{charter_summer}</td>
+						</tr>
+						<tr>
+							<td>Winter:</td>
+							<td>{charter_winter}</td>
+						</tr>
+						{if charter_brochure:total_rows > 0}
+						<tr>
+							<td colspan="2">
+								{charter_brochure}
+								<figure class="download-pdf">
+									<img src="{charter_brochure:thumbnail}" class="download-thumb">
+									<div class="description-download">
+										<figcaption>
+											<a href="{charter_brochure:file}" target="_blank">{charter_brochure:title} </a><!--<span>(2.3MB)</span>-->
+										</figcaption>
+										<a href="{charter_brochure:file}" class="button-clear-invert text-uppercase">Download</a>
+									</div>
+								</figure>
+								{/charter_brochure}
+							</td>
+						</tr>
+						{/if}
+					</tbody>
+				</table>
+			</div>
+		</section>
+	</div>
+</section>
+
+<section class="about-yacht">
+	<div class="row row-pad">
+		<div class="large-offset-1 large-7 float">
+			<h2>{charter_model}</h2>
+			<h1>{title}</h1>
+			{charter_about}
+		</div>
+		<div class="large-offset-1 large-3 float-left">
+			<div class="sticky-sidebar">
+				<table class="table definition-table charter-fleet-sidetable">
+					<tbody>
+						<tr>
+							<td colspan="2" class="heading">{title} overview</td>
+						</tr>
+						<tr>
+							<td>Year:</td>
+							<td>{charter_year}</td>
+						</tr>
+						<tr>
+							<td>No. Guests:</td>
+							<td>{charter_guests}</td>
+						</tr>
+						<tr>
+							<td>Summer:</td>
+							<td>{charter_summer}</td>
+						</tr>
+						<tr>
+							<td>Winter:</td>
+							<td>{charter_winter}</td>
+						</tr>
+						<tr>
+							<td colspan="2">
+								{charter_brochure}
+								<figure class="download-pdf">
+									<img src="{charter_brochure:thumbnail}" class="download-thumb">
+									<div class="description-download">
+										<figcaption>
+											<a href="{charter_brochure:file}" target="_blank">{charter_brochure:title} </a><!--<span>(2.3MB)</span>-->
+										</figcaption>
+										<a href="{charter_brochure:file}" class="button-clear-invert text-uppercase">Download</a>
+									</div>
+								</figure>
+								{/charter_brochure}
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</section>
+
+<?php if ($layoutImages > 0): ?>
+<section id="yacht-layout" class="yacht-layout">
+	<div class="banner">Yacht Layout</div>
+	<div class="content row row-pad">
+		<div class="large-10 large-offset-1 end">
+			<div id="layout-slider">
+				{brokerage_layout}
+				<div class="cycle-slide">
+					<img src="{image:url}">
+				</div>
+				{/brokerage_layout}
+			</div>
+		</div>
+	</div>
+</section>
+<?php endif; ?>
+
+<section id="charter-activities" class="charter-activities">
+	<div class="banner">activities &amp; entertainment</div>
+	<div class="content row row-pad">
+		<table class="table specs-table tmp-table">
+			<tbody>
+				<tr class="header">
+					<th>specifications</th>
+					<th>GUEST AMENITIES</th>
+					<th>AV ENTERTAINMENT</th>
+					<th>WATERSPORTS ACTIVITIES</th>
+				</tr>
+				<tr>
+					<td>
+						<table>
+							<tr><td>Model: {charter_model}</td></tr>
+							<tr><td>Year: {charter_year}</td></tr>
+							<tr><td>No. Guests: {charter_guests}</td></tr>
+							<tr><td>No. Guest Cabins: {charter_cabins}</td></tr>
+							<tr><td>No. Guest Heads: {charter_guest_heads}</td></tr>
+						</table>
+					</td>
+					<td>
+						<table>
+							{charter_guest_amenities}
+							<tr><td>{charter_guest_amenities:item}</td></tr>
+							{/charter_guest_amenities}
+						</table>
+					</td>
+					<td>
+						<table>
+							{charter_av_entertainment}
+							<tr><td>{charter_av_entertainment:item}</td></tr>
+							{/charter_av_entertainment}
+						</table>
+					</td>
+					<td>
+						<table>
+							{charter_watersports_activities}
+							<tr><td>{charter_watersports_activities:item}</td></tr>
+							{/charter_watersports_activities}
+						</table>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</section>
+
+{if charter_crew:total_rows > 0}
+<section id="charter-activities" class="charter-activities">
+	<div class="banner">The crew</div>
+	<div class="row">
+		<div class="small-12">
+			<div class="charter-activities-bg" style="background-image:url('{charter_activities_entertainment}{image:url}{/charter_activities_entertainment}');"></div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="charter-activities-crew">
+
+			{charter_crew}
+			<div class="large-4 content-col">
+				<div class="feature-content">
+					{if charter_crew:image}
+					<img src="{charter_crew:image}" class="crew-member-img">
+					{/if}
+					<h4>{charter_crew:name}</h4>
+					{charter_crew:about}
+				</div>
+			</div>
+			{/charter_crew}
+			
+		</div>
+	</div>
+</section>
+{/if}
+
+{/exp:channel:entries}

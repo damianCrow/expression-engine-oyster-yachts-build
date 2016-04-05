@@ -1,0 +1,7 @@
+{
+    "require": {
+        "abraham/twitteroauth": "^0.6.2",
+        "cosenary/instagram": "^2.3",
+        "simplepie/simplepie": "^1.3"
+    }
+}

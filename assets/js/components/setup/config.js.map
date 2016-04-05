@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../client/components/setup/config.js"],"names":[],"mappings":"AAAA,YAAY,CAAC;;;AAGb,MAAM,CAAC;AACN,UAAS,EAAE,EAAE;CACb,CAAC,CAAA","file":"config.js","sourcesContent":["'use strict';\n\n// config\ndefine({\n\tnavHeight: 55\n})"]}

@@ -1,0 +1,376 @@
+a:3:{s:4:"time";i:1459431875;s:3:"ttl";i:0;s:4:"data";a:4:{s:5:"child";a:1:{s:27:"http://www.w3.org/2005/Atom";a:1:{s:4:"feed";a:1:{i:0;a:6:{s:4:"data";s:45:"
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:2:{s:27:"http://www.w3.org/2005/Atom";a:6:{s:4:"link";a:2:{i:0;a:5:{s:4:"data";s:0:"";s:7:"attribs";a:1:{s:0:"";a:2:{s:3:"rel";s:4:"self";s:4:"href";s:57:"http://www.youtube.com/feeds/videos.xml?user=oystermarine";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}i:1;a:5:{s:4:"data";s:0:"";s:7:"attribs";a:1:{s:0:"";a:2:{s:3:"rel";s:9:"alternate";s:4:"href";s:55:"http://www.youtube.com/channel/UCWbKU0WXPwqj1GKaF2G6gng";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:2:"id";a:1:{i:0;a:5:{s:4:"data";s:35:"yt:channel:UCWbKU0WXPwqj1GKaF2G6gng";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:5:"title";a:1:{i:0;a:5:{s:4:"data";s:13:"Oyster Yachts";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:6:"author";a:1:{i:0;a:6:{s:4:"data";s:8:"
+  
+  
+ ";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:1:{s:27:"http://www.w3.org/2005/Atom";a:2:{s:4:"name";a:1:{i:0;a:5:{s:4:"data";s:13:"Oyster Yachts";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:3:"uri";a:1:{i:0;a:5:{s:4:"data";s:55:"http://www.youtube.com/channel/UCWbKU0WXPwqj1GKaF2G6gng";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}}}}s:9:"published";a:1:{i:0;a:5:{s:4:"data";s:25:"2011-07-08T11:45:11+00:00";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:5:"entry";a:15:{i:0;a:6:{s:4:"data";s:29:"
+  
+  
+  
+  
+  
+  
+  
+  
+  
+ ";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:3:{s:27:"http://www.w3.org/2005/Atom";a:6:{s:2:"id";a:1:{i:0;a:5:{s:4:"data";s:20:"yt:video:AsoSSJQDuhg";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:5:"title";a:1:{i:0;a:5:{s:4:"data";s:29:"Oyster 118 - The Build So Far";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:4:"link";a:1:{i:0;a:5:{s:4:"data";s:0:"";s:7:"attribs";a:1:{s:0:"";a:2:{s:3:"rel";s:9:"alternate";s:4:"href";s:42:"http://www.youtube.com/watch?v=AsoSSJQDuhg";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:6:"author";a:1:{i:0;a:6:{s:4:"data";s:11:"
+   
+   
+  ";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:1:{s:27:"http://www.w3.org/2005/Atom";a:2:{s:4:"name";a:1:{i:0;a:5:{s:4:"data";s:13:"Oyster Yachts";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:3:"uri";a:1:{i:0;a:5:{s:4:"data";s:55:"http://www.youtube.com/channel/UCWbKU0WXPwqj1GKaF2G6gng";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}}}}s:9:"published";a:1:{i:0;a:5:{s:4:"data";s:25:"2016-03-18T12:00:41+00:00";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:7:"updated";a:1:{i:0;a:5:{s:4:"data";s:25:"2016-03-25T21:52:07+00:00";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}s:39:"http://www.youtube.com/xml/schemas/2015";a:2:{s:7:"videoId";a:1:{i:0;a:5:{s:4:"data";s:11:"AsoSSJQDuhg";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:9:"channelId";a:1:{i:0;a:5:{s:4:"data";s:24:"UCWbKU0WXPwqj1GKaF2G6gng";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}s:29:"http://search.yahoo.com/mrss/";a:1:{s:5:"group";a:1:{i:0;a:6:{s:4:"data";s:23:"
+   
+   
+   
+   
+   
+  ";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:1:{s:29:"http://search.yahoo.com/mrss/";a:5:{s:5:"title";a:1:{i:0;a:5:{s:4:"data";s:29:"Oyster 118 - The Build So Far";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:7:"content";a:1:{i:0;a:5:{s:4:"data";s:0:"";s:7:"attribs";a:1:{s:0:"";a:4:{s:3:"url";s:47:"https://www.youtube.com/v/AsoSSJQDuhg?version=3";s:4:"type";s:29:"application/x-shockwave-flash";s:5:"width";s:3:"640";s:6:"height";s:3:"390";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:9:"thumbnail";a:1:{i:0;a:5:{s:4:"data";s:0:"";s:7:"attribs";a:1:{s:0:"";a:3:{s:3:"url";s:49:"https://i2.ytimg.com/vi/AsoSSJQDuhg/hqdefault.jpg";s:5:"width";s:3:"480";s:6:"height";s:3:"360";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:11:"description";a:1:{i:0;a:5:{s:4:"data";s:409:"The new flagship of the Oyster range – the Oyster 118 – commenced her build in the UK in 2015 and will be sailing in the Solent at the end of 2017. Her owners and their family will set off for their exciting global adventure in Spring 2018. Watch the story of the build so far. To find out further information about the Oyster 118, please click here: http://bit.ly/1BPaAfJ
+
+With thanks to Waterline Media.";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:9:"community";a:1:{i:0;a:6:{s:4:"data";s:14:"
+    
+    
+   ";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:1:{s:29:"http://search.yahoo.com/mrss/";a:2:{s:10:"starRating";a:1:{i:0;a:5:{s:4:"data";s:0:"";s:7:"attribs";a:1:{s:0:"";a:4:{s:5:"count";s:1:"0";s:7:"average";s:4:"0.00";s:3:"min";s:1:"1";s:3:"max";s:1:"5";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:10:"statistics";a:1:{i:0;a:5:{s:4:"data";s:0:"";s:7:"attribs";a:1:{s:0:"";a:1:{s:5:"views";s:3:"982";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}}}}}}}}}}}i:1;a:6:{s:4:"data";s:29:"
+  
+  
+  
+  
+  
+  
+  
+  
+  
+ ";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:3:{s:27:"http://www.w3.org/2005/Atom";a:6:{s:2:"id";a:1:{i:0;a:5:{s:4:"data";s:20:"yt:video:8awxyelrLWQ";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:5:"title";a:1:{i:0;a:5:{s:4:"data";s:31:"Watch the Oyster 745-01 launch!";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:4:"link";a:1:{i:0;a:5:{s:4:"data";s:0:"";s:7:"attribs";a:1:{s:0:"";a:2:{s:3:"rel";s:9:"alternate";s:4:"href";s:42:"http://www.youtube.com/watch?v=8awxyelrLWQ";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:6:"author";a:1:{i:0;a:6:{s:4:"data";s:11:"
+   
+   
+  ";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:1:{s:27:"http://www.w3.org/2005/Atom";a:2:{s:4:"name";a:1:{i:0;a:5:{s:4:"data";s:13:"Oyster Yachts";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:3:"uri";a:1:{i:0;a:5:{s:4:"data";s:55:"http://www.youtube.com/channel/UCWbKU0WXPwqj1GKaF2G6gng";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}}}}s:9:"published";a:1:{i:0;a:5:{s:4:"data";s:25:"2016-03-10T13:52:59+00:00";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:7:"updated";a:1:{i:0;a:5:{s:4:"data";s:25:"2016-03-26T00:06:39+00:00";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}s:39:"http://www.youtube.com/xml/schemas/2015";a:2:{s:7:"videoId";a:1:{i:0;a:5:{s:4:"data";s:11:"8awxyelrLWQ";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:9:"channelId";a:1:{i:0;a:5:{s:4:"data";s:24:"UCWbKU0WXPwqj1GKaF2G6gng";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}s:29:"http://search.yahoo.com/mrss/";a:1:{s:5:"group";a:1:{i:0;a:6:{s:4:"data";s:23:"
+   
+   
+   
+   
+   
+  ";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:1:{s:29:"http://search.yahoo.com/mrss/";a:5:{s:5:"title";a:1:{i:0;a:5:{s:4:"data";s:31:"Watch the Oyster 745-01 launch!";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:7:"content";a:1:{i:0;a:5:{s:4:"data";s:0:"";s:7:"attribs";a:1:{s:0:"";a:4:{s:3:"url";s:47:"https://www.youtube.com/v/8awxyelrLWQ?version=3";s:4:"type";s:29:"application/x-shockwave-flash";s:5:"width";s:3:"640";s:6:"height";s:3:"390";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:9:"thumbnail";a:1:{i:0;a:5:{s:4:"data";s:0:"";s:7:"attribs";a:1:{s:0:"";a:3:{s:3:"url";s:49:"https://i1.ytimg.com/vi/8awxyelrLWQ/hqdefault.jpg";s:5:"width";s:3:"480";s:6:"height";s:3:"360";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:11:"description";a:1:{i:0;a:5:{s:4:"data";s:238:"Watch Hull No. 1 of the Oyster 745 hitting the water for the first time earlier this week. 
+Congratulations to the owner and his crew! Well done to all the team at Oyster too. Find out more about the Oyster 745 here: http://bit.ly/1NIFb3d";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:9:"community";a:1:{i:0;a:6:{s:4:"data";s:14:"
+    
+    
+   ";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:1:{s:29:"http://search.yahoo.com/mrss/";a:2:{s:10:"starRating";a:1:{i:0;a:5:{s:4:"data";s:0:"";s:7:"attribs";a:1:{s:0:"";a:4:{s:5:"count";s:2:"14";s:7:"average";s:4:"5.00";s:3:"min";s:1:"1";s:3:"max";s:1:"5";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:10:"statistics";a:1:{i:0;a:5:{s:4:"data";s:0:"";s:7:"attribs";a:1:{s:0:"";a:1:{s:5:"views";s:3:"439";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}}}}}}}}}}}i:2;a:6:{s:4:"data";s:29:"
+  
+  
+  
+  
+  
+  
+  
+  
+  
+ ";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:3:{s:27:"http://www.w3.org/2005/Atom";a:6:{s:2:"id";a:1:{i:0;a:5:{s:4:"data";s:20:"yt:video:dUmz8QanwWQ";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:5:"title";a:1:{i:0;a:5:{s:4:"data";s:60:"See the latest developments of the first Oyster 675 in build";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:4:"link";a:1:{i:0;a:5:{s:4:"data";s:0:"";s:7:"attribs";a:1:{s:0:"";a:2:{s:3:"rel";s:9:"alternate";s:4:"href";s:42:"http://www.youtube.com/watch?v=dUmz8QanwWQ";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:6:"author";a:1:{i:0;a:6:{s:4:"data";s:11:"
+   
+   
+  ";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:1:{s:27:"http://www.w3.org/2005/Atom";a:2:{s:4:"name";a:1:{i:0;a:5:{s:4:"data";s:13:"Oyster Yachts";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:3:"uri";a:1:{i:0;a:5:{s:4:"data";s:55:"http://www.youtube.com/channel/UCWbKU0WXPwqj1GKaF2G6gng";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}}}}s:9:"published";a:1:{i:0;a:5:{s:4:"data";s:25:"2016-01-07T08:44:58+00:00";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:7:"updated";a:1:{i:0;a:5:{s:4:"data";s:25:"2016-03-25T16:53:29+00:00";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}s:39:"http://www.youtube.com/xml/schemas/2015";a:2:{s:7:"videoId";a:1:{i:0;a:5:{s:4:"data";s:11:"dUmz8QanwWQ";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:9:"channelId";a:1:{i:0;a:5:{s:4:"data";s:24:"UCWbKU0WXPwqj1GKaF2G6gng";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}s:29:"http://search.yahoo.com/mrss/";a:1:{s:5:"group";a:1:{i:0;a:6:{s:4:"data";s:23:"
+   
+   
+   
+   
+   
+  ";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:1:{s:29:"http://search.yahoo.com/mrss/";a:5:{s:5:"title";a:1:{i:0;a:5:{s:4:"data";s:60:"See the latest developments of the first Oyster 675 in build";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:7:"content";a:1:{i:0;a:5:{s:4:"data";s:0:"";s:7:"attribs";a:1:{s:0:"";a:4:{s:3:"url";s:47:"https://www.youtube.com/v/dUmz8QanwWQ?version=3";s:4:"type";s:29:"application/x-shockwave-flash";s:5:"width";s:3:"640";s:6:"height";s:3:"390";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:9:"thumbnail";a:1:{i:0;a:5:{s:4:"data";s:0:"";s:7:"attribs";a:1:{s:0:"";a:3:{s:3:"url";s:49:"https://i1.ytimg.com/vi/dUmz8QanwWQ/hqdefault.jpg";s:5:"width";s:3:"480";s:6:"height";s:3:"360";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:11:"description";a:1:{i:0;a:5:{s:4:"data";s:1261:"At the start of 2016, hull no. one of the Oyster 675 saw her deck being fitted by the skilled team at our Wroxham yard in Norfolk. Watch the video below of the deck being fitted ready for bonding. 
+
+Designed in line with her larger sleek sister, the Oyster 745, the all new Oyster 675 offers two layout choices based around either the open-plan, linear galley or an enclosed, highly efficient and seaworthy galley just aft of the main saloon. With two spacious double guest ensuite cabins complementing the full beam master suite and a fourth cabin for crew (with options for ensuite facilities), the Oyster 675 brings together choices to detail the yacht for family, for occasional charter, or for long-distance exploring and adventure, with professional help aboard. As with the Oyster 745, there is a choice of rigs, choice of windows and an extended transom version and with either the swinging centreboard or standard keel, comfortable performance is guaranteed, with reassuring, stable control from twin rudders. She is fast, comfortable and equally suited to long passages and ‘bit between the teeth’ day racing on the Oyster regatta circuit.
+
+The first Oyster 675 is due for launch later in 2016 and if you would like to know more please contact us.";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:9:"community";a:1:{i:0;a:6:{s:4:"data";s:14:"
+    
+    
+   ";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:1:{s:29:"http://search.yahoo.com/mrss/";a:2:{s:10:"starRating";a:1:{i:0;a:5:{s:4:"data";s:0:"";s:7:"attribs";a:1:{s:0:"";a:4:{s:5:"count";s:2:"13";s:7:"average";s:4:"4.69";s:3:"min";s:1:"1";s:3:"max";s:1:"5";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:10:"statistics";a:1:{i:0;a:5:{s:4:"data";s:0:"";s:7:"attribs";a:1:{s:0:"";a:1:{s:5:"views";s:4:"2834";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}}}}}}}}}}}i:3;a:6:{s:4:"data";s:29:"
+  
+  
+  
+  
+  
+  
+  
+  
+  
+ ";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:3:{s:27:"http://www.w3.org/2005/Atom";a:6:{s:2:"id";a:1:{i:0;a:5:{s:4:"data";s:20:"yt:video:8xK88rYDJKc";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:5:"title";a:1:{i:0;a:5:{s:4:"data";s:25:"Cambria Launch Time Lapse";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:4:"link";a:1:{i:0;a:5:{s:4:"data";s:0:"";s:7:"attribs";a:1:{s:0:"";a:2:{s:3:"rel";s:9:"alternate";s:4:"href";s:42:"http://www.youtube.com/watch?v=8xK88rYDJKc";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:6:"author";a:1:{i:0;a:6:{s:4:"data";s:11:"
+   
+   
+  ";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:1:{s:27:"http://www.w3.org/2005/Atom";a:2:{s:4:"name";a:1:{i:0;a:5:{s:4:"data";s:13:"Oyster Yachts";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:3:"uri";a:1:{i:0;a:5:{s:4:"data";s:55:"http://www.youtube.com/channel/UCWbKU0WXPwqj1GKaF2G6gng";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}}}}s:9:"published";a:1:{i:0;a:5:{s:4:"data";s:25:"2015-10-23T13:55:54+00:00";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:7:"updated";a:1:{i:0;a:5:{s:4:"data";s:25:"2016-02-27T19:57:29+00:00";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}s:39:"http://www.youtube.com/xml/schemas/2015";a:2:{s:7:"videoId";a:1:{i:0;a:5:{s:4:"data";s:11:"8xK88rYDJKc";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:9:"channelId";a:1:{i:0;a:5:{s:4:"data";s:24:"UCWbKU0WXPwqj1GKaF2G6gng";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}s:29:"http://search.yahoo.com/mrss/";a:1:{s:5:"group";a:1:{i:0;a:6:{s:4:"data";s:23:"
+   
+   
+   
+   
+   
+  ";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:1:{s:29:"http://search.yahoo.com/mrss/";a:5:{s:5:"title";a:1:{i:0;a:5:{s:4:"data";s:25:"Cambria Launch Time Lapse";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:7:"content";a:1:{i:0;a:5:{s:4:"data";s:0:"";s:7:"attribs";a:1:{s:0:"";a:4:{s:3:"url";s:47:"https://www.youtube.com/v/8xK88rYDJKc?version=3";s:4:"type";s:29:"application/x-shockwave-flash";s:5:"width";s:3:"640";s:6:"height";s:3:"390";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:9:"thumbnail";a:1:{i:0;a:5:{s:4:"data";s:0:"";s:7:"attribs";a:1:{s:0:"";a:3:{s:3:"url";s:49:"https://i1.ytimg.com/vi/8xK88rYDJKc/hqdefault.jpg";s:5:"width";s:3:"480";s:6:"height";s:3:"360";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:11:"description";a:1:{i:0;a:5:{s:4:"data";s:161:"Time lapse of the 114ft Fife yacht, Cambria, launched after her refit by Southampton Yacht Services, part of the Oyster Group, together with the crew of Cambria.";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:9:"community";a:1:{i:0;a:6:{s:4:"data";s:14:"
+    
+    
+   ";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:1:{s:29:"http://search.yahoo.com/mrss/";a:2:{s:10:"starRating";a:1:{i:0;a:5:{s:4:"data";s:0:"";s:7:"attribs";a:1:{s:0:"";a:4:{s:5:"count";s:1:"8";s:7:"average";s:4:"5.00";s:3:"min";s:1:"1";s:3:"max";s:1:"5";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:10:"statistics";a:1:{i:0;a:5:{s:4:"data";s:0:"";s:7:"attribs";a:1:{s:0:"";a:1:{s:5:"views";s:4:"1516";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}}}}}}}}}}}i:4;a:6:{s:4:"data";s:29:"
+  
+  
+  
+  
+  
+  
+  
+  
+  
+ ";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:3:{s:27:"http://www.w3.org/2005/Atom";a:6:{s:2:"id";a:1:{i:0;a:5:{s:4:"data";s:20:"yt:video:F2fQytFKRBE";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:5:"title";a:1:{i:0;a:5:{s:4:"data";s:42:"Oyster 118 Hull Moulds Arrival - TimeLapse";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:4:"link";a:1:{i:0;a:5:{s:4:"data";s:0:"";s:7:"attribs";a:1:{s:0:"";a:2:{s:3:"rel";s:9:"alternate";s:4:"href";s:42:"http://www.youtube.com/watch?v=F2fQytFKRBE";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:6:"author";a:1:{i:0;a:6:{s:4:"data";s:11:"
+   
+   
+  ";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:1:{s:27:"http://www.w3.org/2005/Atom";a:2:{s:4:"name";a:1:{i:0;a:5:{s:4:"data";s:13:"Oyster Yachts";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:3:"uri";a:1:{i:0;a:5:{s:4:"data";s:55:"http://www.youtube.com/channel/UCWbKU0WXPwqj1GKaF2G6gng";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}}}}s:9:"published";a:1:{i:0;a:5:{s:4:"data";s:25:"2015-10-22T14:40:34+00:00";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:7:"updated";a:1:{i:0;a:5:{s:4:"data";s:25:"2016-03-25T13:08:37+00:00";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}s:39:"http://www.youtube.com/xml/schemas/2015";a:2:{s:7:"videoId";a:1:{i:0;a:5:{s:4:"data";s:11:"F2fQytFKRBE";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:9:"channelId";a:1:{i:0;a:5:{s:4:"data";s:24:"UCWbKU0WXPwqj1GKaF2G6gng";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}s:29:"http://search.yahoo.com/mrss/";a:1:{s:5:"group";a:1:{i:0;a:6:{s:4:"data";s:23:"
+   
+   
+   
+   
+   
+  ";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:1:{s:29:"http://search.yahoo.com/mrss/";a:5:{s:5:"title";a:1:{i:0;a:5:{s:4:"data";s:42:"Oyster 118 Hull Moulds Arrival - TimeLapse";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:7:"content";a:1:{i:0;a:5:{s:4:"data";s:0:"";s:7:"attribs";a:1:{s:0:"";a:4:{s:3:"url";s:47:"https://www.youtube.com/v/F2fQytFKRBE?version=3";s:4:"type";s:29:"application/x-shockwave-flash";s:5:"width";s:3:"640";s:6:"height";s:3:"390";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:9:"thumbnail";a:1:{i:0;a:5:{s:4:"data";s:0:"";s:7:"attribs";a:1:{s:0:"";a:3:{s:3:"url";s:49:"https://i3.ytimg.com/vi/F2fQytFKRBE/hqdefault.jpg";s:5:"width";s:3:"480";s:6:"height";s:3:"360";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:11:"description";a:1:{i:0;a:5:{s:4:"data";s:1143:"In early October the foreshore of Lee-on-Solent’s former Royal Naval Air Station, HMS Daedalus, witnessed the extraordinary beach landing by barge of the canoe body tooling for the Oyster 118 en route to contracted composite specialists MonsterCam for the moulding of hull and deck in their vast, former aircraft hangar.
+
+The two 38m long canoe body mould sections, constructed by MouldCam in Poole, and too large for end access in Lee-on-Solent by road, began their journey setting a haulage record for size on a Dorset highway, before transferring to the Blade Runner barge in Southampton docks bound for Lee-on-Solent. 
+
+With military precision on the peak of spring tides, the barge edged into the shallow beach below the former naval base, now industrial estate, where the specially prepared long reach crane and adapted low loader waited to lift and trail the tooling into the construction hall, a final few hundred metres away.
+
+Extraordinary steps and an important milestone in the journey of the Oyster 118, announced just eight months ago and set to launch in spring 2018. Read more about the Oyster 118 here: http://bit.ly/1BPaAfJ";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:9:"community";a:1:{i:0;a:6:{s:4:"data";s:14:"
+    
+    
+   ";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:1:{s:29:"http://search.yahoo.com/mrss/";a:2:{s:10:"starRating";a:1:{i:0;a:5:{s:4:"data";s:0:"";s:7:"attribs";a:1:{s:0:"";a:4:{s:5:"count";s:1:"8";s:7:"average";s:4:"5.00";s:3:"min";s:1:"1";s:3:"max";s:1:"5";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:10:"statistics";a:1:{i:0;a:5:{s:4:"data";s:0:"";s:7:"attribs";a:1:{s:0:"";a:1:{s:5:"views";s:3:"623";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}}}}}}}}}}}i:5;a:6:{s:4:"data";s:29:"
+  
+  
+  
+  
+  
+  
+  
+  
+  
+ ";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:3:{s:27:"http://www.w3.org/2005/Atom";a:6:{s:2:"id";a:1:{i:0;a:5:{s:4:"data";s:20:"yt:video:HwS2CGMERjo";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:5:"title";a:1:{i:0;a:5:{s:4:"data";s:25:"Oyster 575 BVI Regatta HD";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:4:"link";a:1:{i:0;a:5:{s:4:"data";s:0:"";s:7:"attribs";a:1:{s:0:"";a:2:{s:3:"rel";s:9:"alternate";s:4:"href";s:42:"http://www.youtube.com/watch?v=HwS2CGMERjo";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:6:"author";a:1:{i:0;a:6:{s:4:"data";s:11:"
+   
+   
+  ";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:1:{s:27:"http://www.w3.org/2005/Atom";a:2:{s:4:"name";a:1:{i:0;a:5:{s:4:"data";s:13:"Oyster Yachts";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:3:"uri";a:1:{i:0;a:5:{s:4:"data";s:55:"http://www.youtube.com/channel/UCWbKU0WXPwqj1GKaF2G6gng";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}}}}s:9:"published";a:1:{i:0;a:5:{s:4:"data";s:25:"2015-09-24T11:43:11+00:00";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:7:"updated";a:1:{i:0;a:5:{s:4:"data";s:25:"2016-03-26T13:57:57+00:00";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}s:39:"http://www.youtube.com/xml/schemas/2015";a:2:{s:7:"videoId";a:1:{i:0;a:5:{s:4:"data";s:11:"HwS2CGMERjo";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:9:"channelId";a:1:{i:0;a:5:{s:4:"data";s:24:"UCWbKU0WXPwqj1GKaF2G6gng";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}s:29:"http://search.yahoo.com/mrss/";a:1:{s:5:"group";a:1:{i:0;a:6:{s:4:"data";s:23:"
+   
+   
+   
+   
+   
+  ";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:1:{s:29:"http://search.yahoo.com/mrss/";a:5:{s:5:"title";a:1:{i:0;a:5:{s:4:"data";s:25:"Oyster 575 BVI Regatta HD";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:7:"content";a:1:{i:0;a:5:{s:4:"data";s:0:"";s:7:"attribs";a:1:{s:0:"";a:4:{s:3:"url";s:47:"https://www.youtube.com/v/HwS2CGMERjo?version=3";s:4:"type";s:29:"application/x-shockwave-flash";s:5:"width";s:3:"640";s:6:"height";s:3:"390";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:9:"thumbnail";a:1:{i:0;a:5:{s:4:"data";s:0:"";s:7:"attribs";a:1:{s:0:"";a:3:{s:3:"url";s:49:"https://i1.ytimg.com/vi/HwS2CGMERjo/hqdefault.jpg";s:5:"width";s:3:"480";s:6:"height";s:3:"360";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:11:"description";a:1:{i:0;a:5:{s:4:"data";s:0:"";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:9:"community";a:1:{i:0;a:6:{s:4:"data";s:14:"
+    
+    
+   ";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:1:{s:29:"http://search.yahoo.com/mrss/";a:2:{s:10:"starRating";a:1:{i:0;a:5:{s:4:"data";s:0:"";s:7:"attribs";a:1:{s:0:"";a:4:{s:5:"count";s:2:"19";s:7:"average";s:4:"5.00";s:3:"min";s:1:"1";s:3:"max";s:1:"5";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:10:"statistics";a:1:{i:0;a:5:{s:4:"data";s:0:"";s:7:"attribs";a:1:{s:0:"";a:1:{s:5:"views";s:4:"1814";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}}}}}}}}}}}i:6;a:6:{s:4:"data";s:29:"
+  
+  
+  
+  
+  
+  
+  
+  
+  
+ ";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:3:{s:27:"http://www.w3.org/2005/Atom";a:6:{s:2:"id";a:1:{i:0;a:5:{s:4:"data";s:20:"yt:video:X0NGizE7nO8";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:5:"title";a:1:{i:0;a:5:{s:4:"data";s:18:"745 deck timelapse";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:4:"link";a:1:{i:0;a:5:{s:4:"data";s:0:"";s:7:"attribs";a:1:{s:0:"";a:2:{s:3:"rel";s:9:"alternate";s:4:"href";s:42:"http://www.youtube.com/watch?v=X0NGizE7nO8";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:6:"author";a:1:{i:0;a:6:{s:4:"data";s:11:"
+   
+   
+  ";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:1:{s:27:"http://www.w3.org/2005/Atom";a:2:{s:4:"name";a:1:{i:0;a:5:{s:4:"data";s:13:"Oyster Yachts";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:3:"uri";a:1:{i:0;a:5:{s:4:"data";s:55:"http://www.youtube.com/channel/UCWbKU0WXPwqj1GKaF2G6gng";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}}}}s:9:"published";a:1:{i:0;a:5:{s:4:"data";s:25:"2015-09-24T08:44:59+00:00";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:7:"updated";a:1:{i:0;a:5:{s:4:"data";s:25:"2015-11-06T10:07:40+00:00";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}s:39:"http://www.youtube.com/xml/schemas/2015";a:2:{s:7:"videoId";a:1:{i:0;a:5:{s:4:"data";s:11:"X0NGizE7nO8";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:9:"channelId";a:1:{i:0;a:5:{s:4:"data";s:24:"UCWbKU0WXPwqj1GKaF2G6gng";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}s:29:"http://search.yahoo.com/mrss/";a:1:{s:5:"group";a:1:{i:0;a:6:{s:4:"data";s:23:"
+   
+   
+   
+   
+   
+  ";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:1:{s:29:"http://search.yahoo.com/mrss/";a:5:{s:5:"title";a:1:{i:0;a:5:{s:4:"data";s:18:"745 deck timelapse";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:7:"content";a:1:{i:0;a:5:{s:4:"data";s:0:"";s:7:"attribs";a:1:{s:0:"";a:4:{s:3:"url";s:47:"https://www.youtube.com/v/X0NGizE7nO8?version=3";s:4:"type";s:29:"application/x-shockwave-flash";s:5:"width";s:3:"640";s:6:"height";s:3:"390";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:9:"thumbnail";a:1:{i:0;a:5:{s:4:"data";s:0:"";s:7:"attribs";a:1:{s:0:"";a:3:{s:3:"url";s:49:"https://i1.ytimg.com/vi/X0NGizE7nO8/hqdefault.jpg";s:5:"width";s:3:"480";s:6:"height";s:3:"360";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:11:"description";a:1:{i:0;a:5:{s:4:"data";s:0:"";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:9:"community";a:1:{i:0;a:6:{s:4:"data";s:14:"
+    
+    
+   ";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:1:{s:29:"http://search.yahoo.com/mrss/";a:2:{s:10:"starRating";a:1:{i:0;a:5:{s:4:"data";s:0:"";s:7:"attribs";a:1:{s:0:"";a:4:{s:5:"count";s:1:"4";s:7:"average";s:4:"5.00";s:3:"min";s:1:"1";s:3:"max";s:1:"5";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:10:"statistics";a:1:{i:0;a:5:{s:4:"data";s:0:"";s:7:"attribs";a:1:{s:0:"";a:1:{s:5:"views";s:3:"419";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}}}}}}}}}}}i:7;a:6:{s:4:"data";s:29:"
+  
+  
+  
+  
+  
+  
+  
+  
+  
+ ";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:3:{s:27:"http://www.w3.org/2005/Atom";a:6:{s:2:"id";a:1:{i:0;a:5:{s:4:"data";s:20:"yt:video:Z7HdvjA4Dgw";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:5:"title";a:1:{i:0;a:5:{s:4:"data";s:38:"Oyster 475 & 545 Yachting World Review";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:4:"link";a:1:{i:0;a:5:{s:4:"data";s:0:"";s:7:"attribs";a:1:{s:0:"";a:2:{s:3:"rel";s:9:"alternate";s:4:"href";s:42:"http://www.youtube.com/watch?v=Z7HdvjA4Dgw";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:6:"author";a:1:{i:0;a:6:{s:4:"data";s:11:"
+   
+   
+  ";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:1:{s:27:"http://www.w3.org/2005/Atom";a:2:{s:4:"name";a:1:{i:0;a:5:{s:4:"data";s:13:"Oyster Yachts";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:3:"uri";a:1:{i:0;a:5:{s:4:"data";s:55:"http://www.youtube.com/channel/UCWbKU0WXPwqj1GKaF2G6gng";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}}}}s:9:"published";a:1:{i:0;a:5:{s:4:"data";s:25:"2015-09-24T08:42:38+00:00";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:7:"updated";a:1:{i:0;a:5:{s:4:"data";s:25:"2016-03-26T00:08:39+00:00";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}s:39:"http://www.youtube.com/xml/schemas/2015";a:2:{s:7:"videoId";a:1:{i:0;a:5:{s:4:"data";s:11:"Z7HdvjA4Dgw";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:9:"channelId";a:1:{i:0;a:5:{s:4:"data";s:24:"UCWbKU0WXPwqj1GKaF2G6gng";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}s:29:"http://search.yahoo.com/mrss/";a:1:{s:5:"group";a:1:{i:0;a:6:{s:4:"data";s:23:"
+   
+   
+   
+   
+   
+  ";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:1:{s:29:"http://search.yahoo.com/mrss/";a:5:{s:5:"title";a:1:{i:0;a:5:{s:4:"data";s:38:"Oyster 475 & 545 Yachting World Review";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:7:"content";a:1:{i:0;a:5:{s:4:"data";s:0:"";s:7:"attribs";a:1:{s:0:"";a:4:{s:3:"url";s:47:"https://www.youtube.com/v/Z7HdvjA4Dgw?version=3";s:4:"type";s:29:"application/x-shockwave-flash";s:5:"width";s:3:"640";s:6:"height";s:3:"390";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:9:"thumbnail";a:1:{i:0;a:5:{s:4:"data";s:0:"";s:7:"attribs";a:1:{s:0:"";a:3:{s:3:"url";s:49:"https://i3.ytimg.com/vi/Z7HdvjA4Dgw/hqdefault.jpg";s:5:"width";s:3:"480";s:6:"height";s:3:"360";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:11:"description";a:1:{i:0;a:5:{s:4:"data";s:0:"";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:9:"community";a:1:{i:0;a:6:{s:4:"data";s:14:"
+    
+    
+   ";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:1:{s:29:"http://search.yahoo.com/mrss/";a:2:{s:10:"starRating";a:1:{i:0;a:5:{s:4:"data";s:0:"";s:7:"attribs";a:1:{s:0:"";a:4:{s:5:"count";s:2:"10";s:7:"average";s:4:"4.60";s:3:"min";s:1:"1";s:3:"max";s:1:"5";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:10:"statistics";a:1:{i:0;a:5:{s:4:"data";s:0:"";s:7:"attribs";a:1:{s:0:"";a:1:{s:5:"views";s:4:"1130";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}}}}}}}}}}}i:8;a:6:{s:4:"data";s:29:"
+  
+  
+  
+  
+  
+  
+  
+  
+  
+ ";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:3:{s:27:"http://www.w3.org/2005/Atom";a:6:{s:2:"id";a:1:{i:0;a:5:{s:4:"data";s:20:"yt:video:gzuYeTxet2Q";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:5:"title";a:1:{i:0;a:5:{s:4:"data";s:35:"Oyster Regatta  BVI 2015 Highlights";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:4:"link";a:1:{i:0;a:5:{s:4:"data";s:0:"";s:7:"attribs";a:1:{s:0:"";a:2:{s:3:"rel";s:9:"alternate";s:4:"href";s:42:"http://www.youtube.com/watch?v=gzuYeTxet2Q";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:6:"author";a:1:{i:0;a:6:{s:4:"data";s:11:"
+   
+   
+  ";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:1:{s:27:"http://www.w3.org/2005/Atom";a:2:{s:4:"name";a:1:{i:0;a:5:{s:4:"data";s:13:"Oyster Yachts";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:3:"uri";a:1:{i:0;a:5:{s:4:"data";s:55:"http://www.youtube.com/channel/UCWbKU0WXPwqj1GKaF2G6gng";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}}}}s:9:"published";a:1:{i:0;a:5:{s:4:"data";s:25:"2015-07-07T15:34:37+00:00";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:7:"updated";a:1:{i:0;a:5:{s:4:"data";s:25:"2016-03-18T15:06:41+00:00";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}s:39:"http://www.youtube.com/xml/schemas/2015";a:2:{s:7:"videoId";a:1:{i:0;a:5:{s:4:"data";s:11:"gzuYeTxet2Q";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:9:"channelId";a:1:{i:0;a:5:{s:4:"data";s:24:"UCWbKU0WXPwqj1GKaF2G6gng";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}s:29:"http://search.yahoo.com/mrss/";a:1:{s:5:"group";a:1:{i:0;a:6:{s:4:"data";s:23:"
+   
+   
+   
+   
+   
+  ";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:1:{s:29:"http://search.yahoo.com/mrss/";a:5:{s:5:"title";a:1:{i:0;a:5:{s:4:"data";s:35:"Oyster Regatta  BVI 2015 Highlights";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:7:"content";a:1:{i:0;a:5:{s:4:"data";s:0:"";s:7:"attribs";a:1:{s:0:"";a:4:{s:3:"url";s:47:"https://www.youtube.com/v/gzuYeTxet2Q?version=3";s:4:"type";s:29:"application/x-shockwave-flash";s:5:"width";s:3:"640";s:6:"height";s:3:"390";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:9:"thumbnail";a:1:{i:0;a:5:{s:4:"data";s:0:"";s:7:"attribs";a:1:{s:0:"";a:3:{s:3:"url";s:49:"https://i4.ytimg.com/vi/gzuYeTxet2Q/hqdefault.jpg";s:5:"width";s:3:"480";s:6:"height";s:3:"360";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:11:"description";a:1:{i:0;a:5:{s:4:"data";s:287:"Watch the highlights from our Oyster Regatta  BVI 2015. To see some of the photos from the regatta click here: http://bit.ly/1yDK4b4 
+To find out more about the forthcoming Palma Regatta (29 Sep - 03 Oct), please click here: http://bit.ly/1AI50z3.
+Filmed and produced by Waterline Media.";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:9:"community";a:1:{i:0;a:6:{s:4:"data";s:14:"
+    
+    
+   ";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:1:{s:29:"http://search.yahoo.com/mrss/";a:2:{s:10:"starRating";a:1:{i:0;a:5:{s:4:"data";s:0:"";s:7:"attribs";a:1:{s:0:"";a:4:{s:5:"count";s:2:"11";s:7:"average";s:4:"5.00";s:3:"min";s:1:"1";s:3:"max";s:1:"5";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:10:"statistics";a:1:{i:0;a:5:{s:4:"data";s:0:"";s:7:"attribs";a:1:{s:0:"";a:1:{s:5:"views";s:4:"1669";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}}}}}}}}}}}i:9;a:6:{s:4:"data";s:29:"
+  
+  
+  
+  
+  
+  
+  
+  
+  
+ ";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:3:{s:27:"http://www.w3.org/2005/Atom";a:6:{s:2:"id";a:1:{i:0;a:5:{s:4:"data";s:20:"yt:video:zh1_MlWu43s";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:5:"title";a:1:{i:0;a:5:{s:4:"data";s:38:"Oyster 885/04 Mast Stepping Time Lapse";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:4:"link";a:1:{i:0;a:5:{s:4:"data";s:0:"";s:7:"attribs";a:1:{s:0:"";a:2:{s:3:"rel";s:9:"alternate";s:4:"href";s:42:"http://www.youtube.com/watch?v=zh1_MlWu43s";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:6:"author";a:1:{i:0;a:6:{s:4:"data";s:11:"
+   
+   
+  ";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:1:{s:27:"http://www.w3.org/2005/Atom";a:2:{s:4:"name";a:1:{i:0;a:5:{s:4:"data";s:13:"Oyster Yachts";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:3:"uri";a:1:{i:0;a:5:{s:4:"data";s:55:"http://www.youtube.com/channel/UCWbKU0WXPwqj1GKaF2G6gng";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}}}}s:9:"published";a:1:{i:0;a:5:{s:4:"data";s:25:"2015-03-30T15:45:57+00:00";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:7:"updated";a:1:{i:0;a:5:{s:4:"data";s:25:"2015-10-31T02:06:23+00:00";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}s:39:"http://www.youtube.com/xml/schemas/2015";a:2:{s:7:"videoId";a:1:{i:0;a:5:{s:4:"data";s:11:"zh1_MlWu43s";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:9:"channelId";a:1:{i:0;a:5:{s:4:"data";s:24:"UCWbKU0WXPwqj1GKaF2G6gng";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}s:29:"http://search.yahoo.com/mrss/";a:1:{s:5:"group";a:1:{i:0;a:6:{s:4:"data";s:23:"
+   
+   
+   
+   
+   
+  ";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:1:{s:29:"http://search.yahoo.com/mrss/";a:5:{s:5:"title";a:1:{i:0;a:5:{s:4:"data";s:38:"Oyster 885/04 Mast Stepping Time Lapse";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:7:"content";a:1:{i:0;a:5:{s:4:"data";s:0:"";s:7:"attribs";a:1:{s:0:"";a:4:{s:3:"url";s:47:"https://www.youtube.com/v/zh1_MlWu43s?version=3";s:4:"type";s:29:"application/x-shockwave-flash";s:5:"width";s:3:"640";s:6:"height";s:3:"390";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:9:"thumbnail";a:1:{i:0;a:5:{s:4:"data";s:0:"";s:7:"attribs";a:1:{s:0:"";a:3:{s:3:"url";s:49:"https://i3.ytimg.com/vi/zh1_MlWu43s/hqdefault.jpg";s:5:"width";s:3:"480";s:6:"height";s:3:"360";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:11:"description";a:1:{i:0;a:5:{s:4:"data";s:154:"The beautifully finished Oyster 885 had her mast stepped last week. Captured via GoPro mounted on the masthead, the logistics of the stepping are amazing!";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:9:"community";a:1:{i:0;a:6:{s:4:"data";s:14:"
+    
+    
+   ";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:1:{s:29:"http://search.yahoo.com/mrss/";a:2:{s:10:"starRating";a:1:{i:0;a:5:{s:4:"data";s:0:"";s:7:"attribs";a:1:{s:0:"";a:4:{s:5:"count";s:1:"2";s:7:"average";s:4:"3.00";s:3:"min";s:1:"1";s:3:"max";s:1:"5";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:10:"statistics";a:1:{i:0;a:5:{s:4:"data";s:0:"";s:7:"attribs";a:1:{s:0:"";a:1:{s:5:"views";s:4:"1749";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}}}}}}}}}}}i:10;a:6:{s:4:"data";s:29:"
+  
+  
+  
+  
+  
+  
+  
+  
+  
+ ";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:3:{s:27:"http://www.w3.org/2005/Atom";a:6:{s:2:"id";a:1:{i:0;a:5:{s:4:"data";s:20:"yt:video:T2vaQv4nzzM";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:5:"title";a:1:{i:0;a:5:{s:4:"data";s:26:"Introducing the Oyster 118";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:4:"link";a:1:{i:0;a:5:{s:4:"data";s:0:"";s:7:"attribs";a:1:{s:0:"";a:2:{s:3:"rel";s:9:"alternate";s:4:"href";s:42:"http://www.youtube.com/watch?v=T2vaQv4nzzM";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:6:"author";a:1:{i:0;a:6:{s:4:"data";s:11:"
+   
+   
+  ";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:1:{s:27:"http://www.w3.org/2005/Atom";a:2:{s:4:"name";a:1:{i:0;a:5:{s:4:"data";s:13:"Oyster Yachts";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:3:"uri";a:1:{i:0;a:5:{s:4:"data";s:55:"http://www.youtube.com/channel/UCWbKU0WXPwqj1GKaF2G6gng";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}}}}s:9:"published";a:1:{i:0;a:5:{s:4:"data";s:25:"2015-03-18T13:09:07+00:00";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:7:"updated";a:1:{i:0;a:5:{s:4:"data";s:25:"2016-03-25T13:07:18+00:00";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}s:39:"http://www.youtube.com/xml/schemas/2015";a:2:{s:7:"videoId";a:1:{i:0;a:5:{s:4:"data";s:11:"T2vaQv4nzzM";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:9:"channelId";a:1:{i:0;a:5:{s:4:"data";s:24:"UCWbKU0WXPwqj1GKaF2G6gng";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}s:29:"http://search.yahoo.com/mrss/";a:1:{s:5:"group";a:1:{i:0;a:6:{s:4:"data";s:23:"
+   
+   
+   
+   
+   
+  ";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:1:{s:29:"http://search.yahoo.com/mrss/";a:5:{s:5:"title";a:1:{i:0;a:5:{s:4:"data";s:26:"Introducing the Oyster 118";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:7:"content";a:1:{i:0;a:5:{s:4:"data";s:0:"";s:7:"attribs";a:1:{s:0:"";a:4:{s:3:"url";s:47:"https://www.youtube.com/v/T2vaQv4nzzM?version=3";s:4:"type";s:29:"application/x-shockwave-flash";s:5:"width";s:3:"640";s:6:"height";s:3:"390";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:9:"thumbnail";a:1:{i:0;a:5:{s:4:"data";s:0:"";s:7:"attribs";a:1:{s:0:"";a:3:{s:3:"url";s:49:"https://i1.ytimg.com/vi/T2vaQv4nzzM/hqdefault.jpg";s:5:"width";s:3:"480";s:6:"height";s:3:"360";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:11:"description";a:1:{i:0;a:5:{s:4:"data";s:361:"We are delighted to announce the new Oyster 118. Drawn in partnership with Humphreys Yacht Design​, we are proud to announce the contract to start work and the commencement of build ready for launch in spring 2018. For further information: http://bit.ly/1EqwK6A. Commentary by Oyster Yachts CEO, David Tydeman. Music licensed from http:/www.purple-planet.com.";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:9:"community";a:1:{i:0;a:6:{s:4:"data";s:14:"
+    
+    
+   ";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:1:{s:29:"http://search.yahoo.com/mrss/";a:2:{s:10:"starRating";a:1:{i:0;a:5:{s:4:"data";s:0:"";s:7:"attribs";a:1:{s:0:"";a:4:{s:5:"count";s:2:"15";s:7:"average";s:4:"5.00";s:3:"min";s:1:"1";s:3:"max";s:1:"5";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:10:"statistics";a:1:{i:0;a:5:{s:4:"data";s:0:"";s:7:"attribs";a:1:{s:0:"";a:1:{s:5:"views";s:4:"7797";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}}}}}}}}}}}i:11;a:6:{s:4:"data";s:29:"
+  
+  
+  
+  
+  
+  
+  
+  
+  
+ ";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:3:{s:27:"http://www.w3.org/2005/Atom";a:6:{s:2:"id";a:1:{i:0;a:5:{s:4:"data";s:20:"yt:video:1giGvCS53i4";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:5:"title";a:1:{i:0;a:5:{s:4:"data";s:33:"Oyster World Rally - East To West";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:4:"link";a:1:{i:0;a:5:{s:4:"data";s:0:"";s:7:"attribs";a:1:{s:0:"";a:2:{s:3:"rel";s:9:"alternate";s:4:"href";s:42:"http://www.youtube.com/watch?v=1giGvCS53i4";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:6:"author";a:1:{i:0;a:6:{s:4:"data";s:11:"
+   
+   
+  ";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:1:{s:27:"http://www.w3.org/2005/Atom";a:2:{s:4:"name";a:1:{i:0;a:5:{s:4:"data";s:13:"Oyster Yachts";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:3:"uri";a:1:{i:0;a:5:{s:4:"data";s:55:"http://www.youtube.com/channel/UCWbKU0WXPwqj1GKaF2G6gng";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}}}}s:9:"published";a:1:{i:0;a:5:{s:4:"data";s:25:"2014-08-19T14:31:21+00:00";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:7:"updated";a:1:{i:0;a:5:{s:4:"data";s:25:"2016-03-26T17:29:52+00:00";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}s:39:"http://www.youtube.com/xml/schemas/2015";a:2:{s:7:"videoId";a:1:{i:0;a:5:{s:4:"data";s:11:"1giGvCS53i4";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:9:"channelId";a:1:{i:0;a:5:{s:4:"data";s:24:"UCWbKU0WXPwqj1GKaF2G6gng";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}s:29:"http://search.yahoo.com/mrss/";a:1:{s:5:"group";a:1:{i:0;a:6:{s:4:"data";s:23:"
+   
+   
+   
+   
+   
+  ";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:1:{s:29:"http://search.yahoo.com/mrss/";a:5:{s:5:"title";a:1:{i:0;a:5:{s:4:"data";s:33:"Oyster World Rally - East To West";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:7:"content";a:1:{i:0;a:5:{s:4:"data";s:0:"";s:7:"attribs";a:1:{s:0:"";a:4:{s:3:"url";s:47:"https://www.youtube.com/v/1giGvCS53i4?version=3";s:4:"type";s:29:"application/x-shockwave-flash";s:5:"width";s:3:"640";s:6:"height";s:3:"390";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:9:"thumbnail";a:1:{i:0;a:5:{s:4:"data";s:0:"";s:7:"attribs";a:1:{s:0:"";a:3:{s:3:"url";s:49:"https://i2.ytimg.com/vi/1giGvCS53i4/hqdefault.jpg";s:5:"width";s:3:"480";s:6:"height";s:3:"360";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:11:"description";a:1:{i:0;a:5:{s:4:"data";s:0:"";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:9:"community";a:1:{i:0;a:6:{s:4:"data";s:14:"
+    
+    
+   ";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:1:{s:29:"http://search.yahoo.com/mrss/";a:2:{s:10:"starRating";a:1:{i:0;a:5:{s:4:"data";s:0:"";s:7:"attribs";a:1:{s:0:"";a:4:{s:5:"count";s:2:"14";s:7:"average";s:4:"4.43";s:3:"min";s:1:"1";s:3:"max";s:1:"5";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:10:"statistics";a:1:{i:0;a:5:{s:4:"data";s:0:"";s:7:"attribs";a:1:{s:0:"";a:1:{s:5:"views";s:4:"2297";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}}}}}}}}}}}i:12;a:6:{s:4:"data";s:29:"
+  
+  
+  
+  
+  
+  
+  
+  
+  
+ ";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:3:{s:27:"http://www.w3.org/2005/Atom";a:6:{s:2:"id";a:1:{i:0;a:5:{s:4:"data";s:20:"yt:video:IgpLbgr-YcM";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:5:"title";a:1:{i:0;a:5:{s:4:"data";s:34:"The Oyster 125 by Dubois, Twilight";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:4:"link";a:1:{i:0;a:5:{s:4:"data";s:0:"";s:7:"attribs";a:1:{s:0:"";a:2:{s:3:"rel";s:9:"alternate";s:4:"href";s:42:"http://www.youtube.com/watch?v=IgpLbgr-YcM";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:6:"author";a:1:{i:0;a:6:{s:4:"data";s:11:"
+   
+   
+  ";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:1:{s:27:"http://www.w3.org/2005/Atom";a:2:{s:4:"name";a:1:{i:0;a:5:{s:4:"data";s:13:"Oyster Yachts";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:3:"uri";a:1:{i:0;a:5:{s:4:"data";s:55:"http://www.youtube.com/channel/UCWbKU0WXPwqj1GKaF2G6gng";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}}}}s:9:"published";a:1:{i:0;a:5:{s:4:"data";s:25:"2014-03-04T08:46:27+00:00";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:7:"updated";a:1:{i:0;a:5:{s:4:"data";s:25:"2016-03-24T02:52:02+00:00";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}s:39:"http://www.youtube.com/xml/schemas/2015";a:2:{s:7:"videoId";a:1:{i:0;a:5:{s:4:"data";s:11:"IgpLbgr-YcM";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:9:"channelId";a:1:{i:0;a:5:{s:4:"data";s:24:"UCWbKU0WXPwqj1GKaF2G6gng";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}s:29:"http://search.yahoo.com/mrss/";a:1:{s:5:"group";a:1:{i:0;a:6:{s:4:"data";s:23:"
+   
+   
+   
+   
+   
+  ";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:1:{s:29:"http://search.yahoo.com/mrss/";a:5:{s:5:"title";a:1:{i:0;a:5:{s:4:"data";s:34:"The Oyster 125 by Dubois, Twilight";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:7:"content";a:1:{i:0;a:5:{s:4:"data";s:0:"";s:7:"attribs";a:1:{s:0:"";a:4:{s:3:"url";s:47:"https://www.youtube.com/v/IgpLbgr-YcM?version=3";s:4:"type";s:29:"application/x-shockwave-flash";s:5:"width";s:3:"640";s:6:"height";s:3:"390";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:9:"thumbnail";a:1:{i:0;a:5:{s:4:"data";s:0:"";s:7:"attribs";a:1:{s:0:"";a:3:{s:3:"url";s:49:"https://i2.ytimg.com/vi/IgpLbgr-YcM/hqdefault.jpg";s:5:"width";s:3:"480";s:6:"height";s:3:"360";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:11:"description";a:1:{i:0;a:5:{s:4:"data";s:398:"The Oyster 125 by Dubois, Twilight was designed with two specific design requests from an experienced owner who has built more than a thousand yachts, make it fast and comfortable. Dubios certainly exceeded the brief in this luxurious and powerful high performance Superyacht.
+
+For more information about this charter yacht, please visit: http://www.oysteryachts.com/charter/charter_fleet/twilight/";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:9:"community";a:1:{i:0;a:6:{s:4:"data";s:14:"
+    
+    
+   ";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:1:{s:29:"http://search.yahoo.com/mrss/";a:2:{s:10:"starRating";a:1:{i:0;a:5:{s:4:"data";s:0:"";s:7:"attribs";a:1:{s:0:"";a:4:{s:5:"count";s:2:"33";s:7:"average";s:4:"4.52";s:3:"min";s:1:"1";s:3:"max";s:1:"5";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:10:"statistics";a:1:{i:0;a:5:{s:4:"data";s:0:"";s:7:"attribs";a:1:{s:0:"";a:1:{s:5:"views";s:5:"10486";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}}}}}}}}}}}i:13;a:6:{s:4:"data";s:29:"
+  
+  
+  
+  
+  
+  
+  
+  
+  
+ ";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:3:{s:27:"http://www.w3.org/2005/Atom";a:6:{s:2:"id";a:1:{i:0;a:5:{s:4:"data";s:20:"yt:video:eEJ6f-wtDWw";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:5:"title";a:1:{i:0;a:5:{s:4:"data";s:13:"Oyster 575/20";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:4:"link";a:1:{i:0;a:5:{s:4:"data";s:0:"";s:7:"attribs";a:1:{s:0:"";a:2:{s:3:"rel";s:9:"alternate";s:4:"href";s:42:"http://www.youtube.com/watch?v=eEJ6f-wtDWw";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:6:"author";a:1:{i:0;a:6:{s:4:"data";s:11:"
+   
+   
+  ";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:1:{s:27:"http://www.w3.org/2005/Atom";a:2:{s:4:"name";a:1:{i:0;a:5:{s:4:"data";s:13:"Oyster Yachts";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:3:"uri";a:1:{i:0;a:5:{s:4:"data";s:55:"http://www.youtube.com/channel/UCWbKU0WXPwqj1GKaF2G6gng";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}}}}s:9:"published";a:1:{i:0;a:5:{s:4:"data";s:25:"2014-01-15T11:06:34+00:00";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:7:"updated";a:1:{i:0;a:5:{s:4:"data";s:25:"2015-11-13T03:30:09+00:00";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}s:39:"http://www.youtube.com/xml/schemas/2015";a:2:{s:7:"videoId";a:1:{i:0;a:5:{s:4:"data";s:11:"eEJ6f-wtDWw";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:9:"channelId";a:1:{i:0;a:5:{s:4:"data";s:24:"UCWbKU0WXPwqj1GKaF2G6gng";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}s:29:"http://search.yahoo.com/mrss/";a:1:{s:5:"group";a:1:{i:0;a:6:{s:4:"data";s:23:"
+   
+   
+   
+   
+   
+  ";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:1:{s:29:"http://search.yahoo.com/mrss/";a:5:{s:5:"title";a:1:{i:0;a:5:{s:4:"data";s:13:"Oyster 575/20";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:7:"content";a:1:{i:0;a:5:{s:4:"data";s:0:"";s:7:"attribs";a:1:{s:0:"";a:4:{s:3:"url";s:47:"https://www.youtube.com/v/eEJ6f-wtDWw?version=3";s:4:"type";s:29:"application/x-shockwave-flash";s:5:"width";s:3:"640";s:6:"height";s:3:"390";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:9:"thumbnail";a:1:{i:0;a:5:{s:4:"data";s:0:"";s:7:"attribs";a:1:{s:0:"";a:3:{s:3:"url";s:49:"https://i2.ytimg.com/vi/eEJ6f-wtDWw/hqdefault.jpg";s:5:"width";s:3:"480";s:6:"height";s:3:"360";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:11:"description";a:1:{i:0;a:5:{s:4:"data";s:37:"Oyster 575 on route to Hanseboot 2013";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:9:"community";a:1:{i:0;a:6:{s:4:"data";s:14:"
+    
+    
+   ";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:1:{s:29:"http://search.yahoo.com/mrss/";a:2:{s:10:"starRating";a:1:{i:0;a:5:{s:4:"data";s:0:"";s:7:"attribs";a:1:{s:0:"";a:4:{s:5:"count";s:2:"10";s:7:"average";s:4:"5.00";s:3:"min";s:1:"1";s:3:"max";s:1:"5";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:10:"statistics";a:1:{i:0;a:5:{s:4:"data";s:0:"";s:7:"attribs";a:1:{s:0:"";a:1:{s:5:"views";s:4:"5828";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}}}}}}}}}}}i:14;a:6:{s:4:"data";s:29:"
+  
+  
+  
+  
+  
+  
+  
+  
+  
+ ";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:3:{s:27:"http://www.w3.org/2005/Atom";a:6:{s:2:"id";a:1:{i:0;a:5:{s:4:"data";s:20:"yt:video:YHTovzT-IBU";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:5:"title";a:1:{i:0;a:5:{s:4:"data";s:33:"Oyster World Rally in Musket Cove";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:4:"link";a:1:{i:0;a:5:{s:4:"data";s:0:"";s:7:"attribs";a:1:{s:0:"";a:2:{s:3:"rel";s:9:"alternate";s:4:"href";s:42:"http://www.youtube.com/watch?v=YHTovzT-IBU";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:6:"author";a:1:{i:0;a:6:{s:4:"data";s:11:"
+   
+   
+  ";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:1:{s:27:"http://www.w3.org/2005/Atom";a:2:{s:4:"name";a:1:{i:0;a:5:{s:4:"data";s:13:"Oyster Yachts";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:3:"uri";a:1:{i:0;a:5:{s:4:"data";s:55:"http://www.youtube.com/channel/UCWbKU0WXPwqj1GKaF2G6gng";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}}}}s:9:"published";a:1:{i:0;a:5:{s:4:"data";s:25:"2013-07-23T13:57:17+00:00";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:7:"updated";a:1:{i:0;a:5:{s:4:"data";s:25:"2015-10-30T17:57:41+00:00";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}s:39:"http://www.youtube.com/xml/schemas/2015";a:2:{s:7:"videoId";a:1:{i:0;a:5:{s:4:"data";s:11:"YHTovzT-IBU";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:9:"channelId";a:1:{i:0;a:5:{s:4:"data";s:24:"UCWbKU0WXPwqj1GKaF2G6gng";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}s:29:"http://search.yahoo.com/mrss/";a:1:{s:5:"group";a:1:{i:0;a:6:{s:4:"data";s:23:"
+   
+   
+   
+   
+   
+  ";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:1:{s:29:"http://search.yahoo.com/mrss/";a:5:{s:5:"title";a:1:{i:0;a:5:{s:4:"data";s:33:"Oyster World Rally in Musket Cove";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:7:"content";a:1:{i:0;a:5:{s:4:"data";s:0:"";s:7:"attribs";a:1:{s:0:"";a:4:{s:3:"url";s:47:"https://www.youtube.com/v/YHTovzT-IBU?version=3";s:4:"type";s:29:"application/x-shockwave-flash";s:5:"width";s:3:"640";s:6:"height";s:3:"390";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:9:"thumbnail";a:1:{i:0;a:5:{s:4:"data";s:0:"";s:7:"attribs";a:1:{s:0:"";a:3:{s:3:"url";s:49:"https://i2.ytimg.com/vi/YHTovzT-IBU/hqdefault.jpg";s:5:"width";s:3:"480";s:6:"height";s:3:"360";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:11:"description";a:1:{i:0;a:5:{s:4:"data";s:130:"The Oyster World Rally participants enjoy a gathering in Musket Cove.
+
+http://www.oysteryachts.com/worldrally/news/62/Musket-Cove/";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:9:"community";a:1:{i:0;a:6:{s:4:"data";s:14:"
+    
+    
+   ";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:1:{s:29:"http://search.yahoo.com/mrss/";a:2:{s:10:"starRating";a:1:{i:0;a:5:{s:4:"data";s:0:"";s:7:"attribs";a:1:{s:0:"";a:4:{s:5:"count";s:1:"2";s:7:"average";s:4:"5.00";s:3:"min";s:1:"1";s:3:"max";s:1:"5";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:10:"statistics";a:1:{i:0;a:5:{s:4:"data";s:0:"";s:7:"attribs";a:1:{s:0:"";a:1:{s:5:"views";s:4:"1786";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}}}}}}}}}}}}}s:39:"http://www.youtube.com/xml/schemas/2015";a:1:{s:9:"channelId";a:1:{i:0;a:5:{s:4:"data";s:24:"UCWbKU0WXPwqj1GKaF2G6gng";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}}}}}}s:4:"type";i:512;s:7:"headers";a:12:{s:12:"content-type";s:23:"text/xml; charset=UTF-8";s:4:"date";s:29:"Thu, 31 Mar 2016 13:38:02 GMT";s:7:"expires";s:29:"Thu, 31 Mar 2016 13:53:02 GMT";s:16:"content-encoding";s:4:"gzip";s:6:"server";s:24:"YouTube RSS Feeds server";s:14:"content-length";s:4:"4215";s:16:"x-xss-protection";s:13:"1; mode=block";s:15:"x-frame-options";s:10:"SAMEORIGIN";s:13:"cache-control";s:19:"public, max-age=900";s:3:"age";s:3:"393";s:18:"alternate-protocol";s:12:"443:quic,p=1";s:7:"alt-svc";s:48:"quic=:443; ma=2592000; v=32,31,30,29,28,27,26,25";}s:5:"build";s:14:"20160316141102";}}
