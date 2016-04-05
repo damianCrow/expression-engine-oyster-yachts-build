@@ -1,0 +1,420 @@
+a:3:{s:4:"time";i:1459875328;s:3:"ttl";i:0;s:4:"data";s:11287:"<?php
+$query = ee()->db->query('SELECT * FROM exp_channel_images WHERE entry_id=1 AND field_id=14');
+$layoutImages = $query->num_rows();
+
+$query = ee()->db->query('SELECT * FROM exp_channel_images WHERE entry_id=1 AND field_id=20');
+$exteriorGalleryImages = $query->num_rows();
+
+/*$query = ee()->db->query('SELECT * FROM exp_channel_images WHERE entry_id=1 AND field_id=15');
+$interiorGalleryImages = $query->num_rows();*/
+?>
+
+
+<section class="hero full-screen">
+	<div id="full-image" style="background-image: url('http://192.168.254.30/oyster/images/content/1/cover_1366x650.jpg')">
+		<div class="back-button">
+			<a class="button-clear-white"><i class="fa fa-angle-left"></i>Back</a>
+		</div>
+		<div class="yacht-name">
+			<div class="row-pad">
+				<h2>---</h2>
+				<h1>Penelope</h1>
+				<?php if ($exteriorGalleryImages > 0): ?>
+				<a class="gallery" href="">View Gallery</a>
+				<?php endif; ?>
+			</div>
+		</div>
+		<div class="share">
+	<img src="/assets/images/add.png">
+	<img src="/assets/images/share.png">
+</div>{!-- ra:0000000045461120000000013c064eb7 --}
+	</div>
+	<div id="yacht-nav" data-local-subnav="data-local-subnav" class="yacht-nav">
+		<ul>
+			
+			<li class="active"><a href="#design-features" class="scroll">Design Features</a></li>
+			
+
+			
+			<li><a href="#specifications" class="scroll">Specifications</a></li>
+			
+
+			<?php if ($layoutImages > 0): ?>
+			<li><a href="#yacht-layout" class="scroll">Yacht Layout</a></li>
+			<?php endif; ?>
+
+			<?php if ($exteriorGalleryImages > 0): ?>
+			<li><a href="" class="gallery">Gallery</a></li>
+			<?php endif; ?>
+
+			<li><a href="" class="contact">Contact Brokerage</a></li>
+		</ul>
+		<section data-local-sidebar data-sticky-sidebar-at-bottom=".about-yacht" data-sticky-sidebar-offset="" class="sticky-sidebar-header hide float-right">
+			<div class="header">
+				<h4 class="text-uppercase float-left">Penelope overview</h4>
+				<i class="fa fa-angle-down float-right"></i>
+			</div>
+			<div class="contents">
+				<table class="table definition-table">
+					<tbody>
+						<tr>
+							<td colspan="2" class="heading">Penelope overview</td>
+						</tr>
+
+						
+						<tr>
+							<td>Location:</td>
+							<td>Oyster Palma</td>
+						</tr>
+						
+
+						
+						<tr>
+							<td>Year:</td>
+							<td>2012</td>
+						</tr>
+						
+
+						
+						<tr>
+							<td>Rig:</td>
+							<td>Cutter</td>
+						</tr>
+						
+
+						
+						<tr>
+							<td>Joinery:</td>
+							<td> Crown Cut Cherry</td>
+						</tr>
+						
+
+						
+						<tr>
+							<td>Cabins:</td>
+							<td>Eight berths in four cabins</td>
+						</tr>
+						
+
+						
+						<tr>
+							<td>Status:</td>
+							<td>Available</td>
+						</tr>
+						
+
+						
+						<tr>
+							<td>Price:</td>
+							<td>£<?php echo number_format(6000000); ?> <span>inc VAT</span></td>
+						</tr>
+						
+
+						
+						<tr>
+							<td colspan="2" class="highlight">Reduced Price</td>
+						</tr>
+						
+					</tbody>
+				</table>
+			</div>
+		</section>
+	</div>
+</section>
+
+<section class="about-yacht">
+	<div class="row row-pad">
+		<div class="large-offset-1 large-7 float">
+			<h2>---</h2>
+			<h1>Penelope</h1>
+			<p>An exclusive listing with Oyster Brokerage and a rare opportunity for the discerning Superyacht enthusiast to own the second in class Oyster 100. Penelope has recently completed her flag, class and 3 year docking surveys, which she passed with flying colours. This, along with many other maintenance projects mean that she is truly 'ready to sail away'. She is currently lying in Palma and intends to stay all winter. Penelope has enjoyed many successes since her launch in 2013 including: Finalist in the Boat International World Superyacht Awards 2013, first place in the 2014 Oyster regatta in Antigua and flourishing charter seasons in the Caribbean and Mediterranean – all forming an attractive offering in the pre-owned Superyacht arena.</p>
+
+<p>Penelope is designed with the specification, features and classification of very much larger yachts. Her accommodation layout offers three sumptuous staterooms aft and two crew cabins forward. With panoramic views from the raised saloon which leads forward and down to a further lounge and separate dining area. Forward of the main living arrangement is the crew mess, galley and two crew cabins.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>Penelope couldn’t be in a finer condition since her launch in 2012. The Southampton yard visit in early 2014 ensured the warranty list was ticked off, systems thoroughly serviced and allowed some owner modifications. Along with the highest possible Lloyds certification the Oyster 100 is designed and built to 'go places' and when compared to other like sized sailing yachts, the amount of light and space available will certainly ensure that she is one not to be missed.</p>
+			
+			<div class="further-info">
+				<p>For further details please contact Jamie Collins - <a href="mailto:jamie.collins@oysteryachts.com">jamie.collins@oysteryachts.com</a> <br>For general information about the history of this Oyster model, please go to the Oyster Fleet Overview</p>
+			</div>
+			
+		</div>
+		<div class="large-offset-1 large-3 float-left">
+			<div class="sticky-sidebar">
+				<table class="table definition-table">
+					<tbody>
+						<tr>
+							<td colspan="2" class="heading">Penelope overview</td>
+						</tr>
+
+						
+						<tr>
+							<td>Location:</td>
+							<td>Oyster Palma</td>
+						</tr>
+						
+
+						
+						<tr>
+							<td>Year:</td>
+							<td>2012</td>
+						</tr>
+						
+
+						
+						<tr>
+							<td>Rig:</td>
+							<td>Cutter</td>
+						</tr>
+						
+
+						
+						<tr>
+							<td>Joinery:</td>
+							<td> Crown Cut Cherry</td>
+						</tr>
+						
+
+						
+						<tr>
+							<td>Cabins:</td>
+							<td>Eight berths in four cabins</td>
+						</tr>
+						
+
+						
+						<tr>
+							<td>Status:</td>
+							<td>Available</td>
+						</tr>
+						
+
+						
+						<tr>
+							<td>Price:</td>
+							<td>£<?php echo number_format(6000000); ?> <span>inc VAT</span></td>
+						</tr>
+						
+
+						
+						<tr>
+							<td colspan="2" class="highlight">Reduced Price</td>
+						</tr>
+						
+					</tbody>
+				</table>
+				<div class="disclaimer">
+					The above price is given as an indication only and may be subject to exchange rate fluctuation , VAT or local taxes. Also please note that all dimensions are approximates.
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+
+
+<section id="design-features" class="design-features">
+	<div class="banner">Design features</div>
+	<div class="content row row-pad">
+
+		
+		<div class="large-4 small-6 content-col">
+			<div style="background-image:url('http://192.168.254.30/oyster/images/content/feature_430x245.jpg')" class="feature-image"></div>
+			<div class="feature-content">
+				<h4>Design Feature 1</h4>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit</p>
+			</div>
+		</div>
+		
+		<div class="large-4 small-6 content-col">
+			<div style="background-image:url('http://192.168.254.30/oyster/images/content/feature_430x245.jpg')" class="feature-image"></div>
+			<div class="feature-content">
+				<h4>Design Feature 1</h4>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit</p>
+			</div>
+		</div>
+		
+		<div class="large-4 small-6 content-col">
+			<div style="background-image:url('http://192.168.254.30/oyster/images/content/feature_430x245.jpg')" class="feature-image"></div>
+			<div class="feature-content">
+				<h4>Design Feature 1</h4>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit</p>
+			</div>
+		</div>
+		
+
+	</div>
+</section>
+
+
+
+<section id="specifications" class="specifications yachts-yacht-spec">
+	<div class="banner">Specifications</div>
+	<div class="content row row-pad">
+		<table class="table specs-table">
+			<tbody>
+				<tr>
+					<td colspan="9" class="heading text-uppercase">KEY SPECIFICATIONS</td>
+				</tr>
+				<tr>
+					<th class="text-uppercase">LOA</th>
+					<th class="text-uppercase">LWL</th>
+					<th class="text-uppercase">BEAM</th>
+
+					<th class="text-uppercase">DRAFT STANDARD</th>
+					
+
+					
+					<th class="text-uppercase">DRAFT SHOAL</th>
+					
+
+					
+
+					<th class="text-uppercase">DISPLACEMENT</th>
+					<th class="text-uppercase">RIG</th>
+					<th class="text-uppercase">JOINERY</th>
+					<th class="text-uppercase">CABINS</th>
+				</tr>
+				<tr>
+					<td>17.89 m</td>
+					<td>15.72 m</td>
+					<td>5.00 m</td>
+
+					
+					<td>2.70 m</td>
+					
+
+					
+					<td>2.06 m</td>
+					
+
+					
+
+					
+
+					<td>27,500 kg</td>
+					<td rowspan="2">Cutter</td>
+					<td rowspan="2"> Crown Cut Cherry</td>
+					<td rowspan="2">Eight berths in four cabins</td>
+				</tr>
+
+				<tr>
+					<td>58.8 ft</td>
+					<td>51.7 ft</td>
+					<td>16.5 ft</td>
+
+					
+					<td>8.10 ft</td>
+					
+
+					
+					<td>6.9 ft</td>
+					
+
+					
+
+					
+
+					<td>60,627 lb</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</section>
+
+
+<?php if ($layoutImages > 0): ?>
+<section id="yacht-layout" class="yacht-layout">
+	<div class="banner">Yacht Layout</div>
+	<div class="content row row-pad">
+		<div class="large-10 large-offset-1 end">
+			<div id="layout-slider">
+				
+				<div class="cycle-slide"><img src="http://192.168.254.30/oyster/images/content/1/layout1-4.jpg"></div>
+				
+			</div>
+			<ul class="slider-pager<?php if ($layoutImages === 1): ?> hide<?php endif; ?>">
+				
+				<li><a><span style="background-image:url('http://192.168.254.30/oyster/images/content/1/layout1-4__small.jpg');"></span></a></li>
+				
+			</ul>
+		</div>
+	</div>
+</section>
+<?php endif; ?>
+
+
+<?php if ($exteriorGalleryImages > 0): ?>
+<div id="exterior-gallery" class="gallery-content">
+	
+	<a href="http://192.168.254.30/oyster/images/content/1/layout1.jpg" data-sub-html="Caption 3">
+		<img src="http://192.168.254.30/oyster/images/content/1/layout1__thumb.jpg" />
+	</a>
+	
+	<a href="http://192.168.254.30/oyster/images/content/1/layout3.jpg" data-sub-html="Caption 4">
+		<img src="http://192.168.254.30/oyster/images/content/1/layout3__thumb.jpg" />
+	</a>
+	
+	<a href="http://192.168.254.30/oyster/images/content/1/cover_1366x650-3.jpg" data-sub-html="">
+		<img src="http://192.168.254.30/oyster/images/content/1/cover_1366x650-3__thumb.jpg" />
+	</a>
+	
+</div>
+<?php endif; ?>";}
