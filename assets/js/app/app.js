@@ -1,20 +1,20 @@
 'use strict';
 
-define(['jquery', 'cycle', 'ScrollMagic', 'foundation', 'lightgallery', 'select2', 'owlcarousel', 'components/header/header', './brokerage/brokerage', './index'], function ($, cycle, ScrollMagic) {
+define(['jquery', 'cycle', 'ScrollMagic', 'foundation', 'lightgallery', 'lightgalleryThumbs', 'select2', 'owlcarousel', 'components/header/header', './brokerage/brokerage', './index'], function ($, cycle, ScrollMagic) {
 
 	// initilise foundation
 	$(document).foundation();
+
+	// --- BACK BUTTON ON HEADERS ----
+	$('#page-back-button').on('click', function (evt) {
+		evt.preventDefault();
+		history.back(1);
+	});
 
 	// Yacht nav - scroll to section
 	$('#yacht-nav').on('click', '.scroll', function (e) {
 		e.preventDefault();
 		$('html, body').animate({ scrollTop: $($(this).attr('href')).position().top }, 700);
-	});
-
-	$('.scroll-message').click(function () {
-		$('html, body').animate({
-			scrollTop: $(".yacht-feature").offset().top - $('header').height()
-		}, 1000);
 	});
 
 	$('#layout-slider').cycle({
@@ -25,20 +25,21 @@ define(['jquery', 'cycle', 'ScrollMagic', 'foundation', 'lightgallery', 'select2
 		autoHeight: 'container'
 	});
 
-	$("#lightgallery").lightGallery({
+	$('.gallery-content').lightGallery({
 		thumbnail: true,
 		thumbContHeight: 136,
 		thumbWidth: 197,
 		thumbMargin: 14,
 		toogleThumb: false,
 		showThumbByDefault: false,
-		closable: false
+		closable: false,
+		backdropDuration: 0
 	});
 
 	$('.gallery').on('click', function (e) {
 		e.preventDefault();
 
-		$("#lightgallery a:first").trigger('click');
+		$('.gallery-content a:first').trigger('click');
 	});
 
 	// site search open
@@ -98,6 +99,7 @@ define(['jquery', 'cycle', 'ScrollMagic', 'foundation', 'lightgallery', 'select2
 		minimumResultsForSearch: -1
 	});
 
+	// ---- GLOBAL STICKY SIDEBAR ----
 	var controller = new ScrollMagic.Controller(),
 	    $elem = $('.about-yacht'),
 	    _sideBarScene = function _sideBarScene(elem) {
@@ -124,6 +126,56 @@ define(['jquery', 'cycle', 'ScrollMagic', 'foundation', 'lightgallery', 'select2
 		if (item.length) return item;
 	});
 
-	
+	// Watch for breakpoint changes
+	$(window).on('changed.zf.mediaquery', function (event, newSize, oldSize) {
+		// newSize is the name of the now-current breakpoint, oldSize is the previous breakpoint
+		if (newSize !== "small" && newSize !== "medium") {
+			$sideBarScene = _sideBarScene($elem);
+			$sideBarScene.addTo(controller);
+		} else {
+			$sideBarScene.enabled(false);
+			$sideBarScene.destroy(true);
+		}
+	});
+
+	if (!_.isEmpty($elem) && Foundation.MediaQuery.atLeast("large")) $sideBarScene.addTo(controller);
+
+	// opens and closes the the table when snapped on the header
+	$('.sticky-sidebar-header .header').on('click', function (e) {
+		$(this).next().toggle(0);
+	});
+
+	// Simple Scroll spy for the Local SubNAV
+	$(window).scroll(function () {
+		// Get container scroll position
+		var fromTop = $(this).scrollTop() + $locaSubNavHeight;
+
+		// Get id of current scroll item
+		var cur = $localSubNavItemsMap.map(function () {
+			if ($(this).offset().top < fromTop) return this;
+		});
+
+		// Get the id of the current element
+		cur = cur[cur.length - 1];
+		var id = cur && cur.length ? cur[0].id : "";
+
+		if ($lastId !== id) {
+			$lastId = id;
+
+			// Set/remove active class
+			$localSubNavItems.parent().removeClass("active").end().filter("[href='#" + id + "']").parent().addClass("active");
+		}
+	});
+
+	// Yacht nav - scroll to section
+	$locaSubNav.on('click', '.scroll', function (e) {
+		e.preventDefault();
+
+		$('html, body').animate({
+			scrollTop: $($(this).attr('href')).position().top
+		}, 700);
+	});
+
+	// ---- GLOBAL STICKY SIDEBAR End----	
 });
 //# sourceMappingURL=app.js.map

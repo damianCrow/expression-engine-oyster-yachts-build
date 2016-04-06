@@ -7,11 +7,11 @@ require.config({
     lodash: '/bower_components/lodash/dist/lodash.compat',
     cycle: '/bower_components/jquery-cycle2/build/jquery.cycle2.min',
     foundation: '/bower_components/foundation-sites/dist/foundation.min',
-    lightgallery: '/bower_components/lightgallery/dist/js/lightgallery-all.min',
+    lightgallery: 'lib/lightgallery/lightgallery',
+    lightgalleryThumbs: 'lib/lightgallery/lg-thumbnail',
     ScrollMagic: '/bower_components/scrollmagic/scrollmagic/minified/ScrollMagic.min',
     select2: '/bower_components/select2/dist/js/select2.full.min',
-    owlcarousel: '/bower_components/owl.carousel/dist/owl.carousel.min',
-    lightgallery: '/bower_components/lightgallery/dist/js/lightgallery-all.min'
+    owlcarousel: '/bower_components/owl.carousel/dist/owl.carousel.min'
   },
   shim: {
     'jquery': {
@@ -31,6 +31,10 @@ require.config({
     ],
     'lightgallery': [
       'jquery'
+    ],
+    'lightgalleryThumbs': [
+      'jquery',
+      'lightgallery'
     ],
     'select2': [
       'jquery'

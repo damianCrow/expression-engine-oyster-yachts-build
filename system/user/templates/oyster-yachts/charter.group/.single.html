@@ -2,7 +2,7 @@
 {if no_results}{redirect="404"}{/if}
 
 <?php
-$query = ee()->db->query('SELECT * FROM exp_channel_images WHERE entry_id={entry_id} AND field_id=33');
+$query = ee()->db->query('SELECT * FROM exp_channel_images WHERE entry_id={entry_id} AND field_id=35');
 $layoutImages = $query->num_rows();
 
 $query = ee()->db->query('SELECT * FROM exp_channel_images WHERE entry_id={entry_id} AND field_id=43');
@@ -79,15 +79,15 @@ $interiorGalleryImages = $query->num_rows();
 						<tr>
 							<td colspan="2">
 								{charter_brochure}
-								<figure class="download-pdf">
+								<!-- <figure class="download-pdf">
 									<img src="{charter_brochure:thumbnail}" class="download-thumb">
 									<div class="description-download">
 										<figcaption>
-											<a href="{charter_brochure:file}" target="_blank">{charter_brochure:title} </a><!--<span>(2.3MB)</span>-->
+											<a href="{charter_brochure:file}" target="_blank">{charter_brochure:title} </a>
 										</figcaption>
 										<a href="{charter_brochure:file}" class="button-clear-invert text-uppercase">Download</a>
 									</div>
-								</figure>
+								</figure> -->
 								{/charter_brochure}
 							</td>
 						</tr>
@@ -157,12 +157,17 @@ $interiorGalleryImages = $query->num_rows();
 	<div class="content row row-pad">
 		<div class="large-10 large-offset-1 end">
 			<div id="layout-slider">
-				{brokerage_layout}
+				{charter_layout}
 				<div class="cycle-slide">
 					<img src="{image:url}">
 				</div>
-				{/brokerage_layout}
+				{/charter_layout}
 			</div>
+			<ul class="slider-pager<?php if ($layoutImages === 1): ?> hide<?php endif; ?>">
+				{charter_layout}
+				<li><a><span style="background-image:url('{image:url:small}');"></span></a></li>
+				{/charter_layout}
+			</ul>
 		</div>
 	</div>
 </section>
@@ -243,5 +248,26 @@ $interiorGalleryImages = $query->num_rows();
 	</div>
 </section>
 {/if}
+
+<?php if ($exteriorGalleryImages > 0): ?>
+<div id="exterior-gallery" class="gallery-content">
+	{charter_exterior_gallery}
+	<a href="{image:url}" data-sub-html="{image:description}">
+		<img src="{image:url:thumb}" />
+	</a>
+	{/charter_exterior_gallery}
+</div>
+<?php endif; ?>
+
+<?php if ($interiorGalleryImages > 0): ?>
+<div id="interior-gallery" class="gallery-content">
+	{charter_interior_gallery}
+	<a href="{image:url}" data-sub-html="{image:description}">
+		<img src="{image:url:thumb}" />
+	</a>
+	{/charter_interior_gallery}
+</div>
+<?php endif; ?>
+
 
 {/exp:channel:entries}

@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/app/app.css">
   </head>
   <body>
-        <header data-snap-to-min-nav="undefined" data-snap-offset="undefined" class="global-header">
+        <header data-snap-to-min-nav="90" data-snap-offset="undefined" class="global-header">
           <div class="owners-area"><a href="" class="text-uppercase float-right owners-area-text">owners area</a>
             <div class="follow float-right">
               <div class="social-links">
@@ -23,7 +23,7 @@
           <nav class="navigation row">
             <div class="global-header-top-nav hide-for-large"><a href="/oyster" class="logo-tiny"><img src="/assets/images/logo_small.png" alt="logo mini"></a>
               <div class="small-8 small-centered columns">
-                <h4 data-open="global-navigation-modal" class="text-center"></h4>
+                <h4 data-open="global-navigation-modal" class="text-center">Brokerage</h4>
               </div><a data-open="global-navigation-modal" class="site-menu"><i class="fa fa-bars"></i></a>
             </div>
             <div class="global-header-top-nav-large show-for-large"><a href="/oyster" class="logo-large"><img src="/assets/images/logo.png" alt="logo mini"></a><a href="/oyster" class="logo-tiny"><img src="/assets/images/logo_small.png" alt="logo mini"></a>
@@ -52,7 +52,7 @@
                         <div style="background-position: 0px 945px" class="sub-nav-image"></div><span class="text-uppercase">contact sales</span></a></li>
                   </ul>
                 </li>
-                <li><a href="/oyster/brokerage" class="text-uppercase">brokerage</a>
+                <li class="active is-active"><a href="/oyster/brokerage" class="text-uppercase">brokerage</a>
                   <ul>
                     <li><a href="/oyster/brokerage/fleet">
                         <div style="background-position: 0px 28.5%" class="sub-nav-image"></div><span class="text-uppercase">brokerage fleet</span></a></li>
@@ -64,7 +64,7 @@
                         <div style="background-position: 0px 945px" class="sub-nav-image"></div><span class="text-uppercase">contact brokerage</span></a></li>
                   </ul>
                 </li>
-                <li class="active is-active"><a href="/oyster/charter" class="text-uppercase">charter</a>
+                <li><a href="/oyster/charter" class="text-uppercase">charter</a>
                   <ul class="five">
                     <li><a href="/oyster/charter/fleet">
                         <div style="background-position: 0px 43%" class="sub-nav-image"></div><span class="text-uppercase">charter fleet</span></a></li>
@@ -133,7 +133,7 @@
           <div id="global-navigation-modal" data-reveal class="full reveal">
             <header class="top-nav-modal"><a href="/" class="logo-wrapper"><img src="/assets/images/logo_small.png" alt="logo mini"></a>
               <div class="small-8 small-centered columns">
-                <h4 class="text-center"></h4>
+                <h4 class="text-center">Brokerage</h4>
               </div>
               <div data-close aria-label="Close modal" class="close-button-wrapper"><a class="site-search-close"></a></div>
             </header>
@@ -168,7 +168,7 @@
                         </ul>
                       </div>
                     </li>
-                    <li data-accordion-item class="accordion-item"><a class="text-uppercase accordion-title">Brokerage<i class="fa fa-angle-up float-right"></i><i class="fa fa-angle-down float-right"></i></a>
+                    <li data-accordion-item class="accordion-item active is-active"><a class="text-uppercase accordion-title">Brokerage<i class="fa fa-angle-up float-right"></i><i class="fa fa-angle-down float-right"></i></a>
                       <div data-tab-content class="accordion-content">
                         <ul class="sub-navigation">
                           <li class="sub-navigation-item"><a href="/oyster/brokerage" class="text-uppercase">Brokerage fleet</a></li>
@@ -178,7 +178,7 @@
                         </ul>
                       </div>
                     </li>
-                    <li data-accordion-item class="accordion-item active is-active"><a class="text-uppercase accordion-title">charter<i class="fa fa-angle-up float-right"></i><i class="fa fa-angle-down float-right"></i></a>
+                    <li data-accordion-item class="accordion-item"><a class="text-uppercase accordion-title">charter<i class="fa fa-angle-up float-right"></i><i class="fa fa-angle-down float-right"></i></a>
                       <div data-tab-content class="accordion-content">
                         <ul class="sub-navigation">
                           <li class="sub-navigation-item"><a href="#" class="text-uppercase">charter fleet</a></li>
@@ -249,35 +249,99 @@
             </footer>
           </div>
         </header>
-    <section class="after-nav"></section>
-    
-    <section class="news-filter row">
-      <ul class="grid-m small-block-grid-1 medium-block-grid-2 large-block-grid-3">
-        <li class="grid-item">
-          <p>aaa</p>
-          <p>bbb</p>
-          <p>ccc</p>
-          <p>ddd</p>
-        </li>
-        <li class="grid-item">
-          <p>aaa</p>
-          <p>bbb</p>
-          <p>ccc</p>
-          <p>ddd</p>
-        </li>
-        <li class="grid-item">
-          <p>aaa</p>
-          <p>bbb</p>
-          <p>ccc</p>
-          <p>ddd</p>
-        </li>
-        <li class="grid-item">
-          <p>aaa</p>
-          <p>bbb</p>
-          <p>ccc</p>
-          <p>ddd</p>
-        </li>
-      </ul>
+    <section style="background-image: url('http://oysteryachts.interstateteam.com/images/static/brokerage_header.jpg')" class="hero after-nav global-page-hero global-page-hero--small">
+      <div id="page-back-button" class="back-button"><a class="button-clear-white"><i class="fa fa-angle-left"></i>Back</a></div>
+    </section>
+    <section class="page-fleet brokerage-fleet">
+      <div class="banner">Brokerage Fleet</div>
+      <div class="row row-pad content">
+        <div id="yacht-grid" class="row">
+          <ul>
+            <li class="column large-12 size-large">
+              <div class="listing-images"><a href="/oyster/brokerage/yacht"><span style="background-image:url('http://oysteryachts.interstateteam.com/images/content/1/listing1_430x300-2.jpg')"></span><span style="background-image:url('http://oysteryachts.interstateteam.com/images/content/1/listing2_430x300-2.jpg')"></span><span style="background-image:url('http://oysteryachts.interstateteam.com/images/content/1/listing3_430x300-2.jpg')"></span></a></div>
+              <div class="listing-content">
+                <table class="table listing-table feature-col">
+                  <tbody>
+                    <tr><td class="title" colspan='3'><a href="/oyster/brokerage/yacht"><span>Oyster 885 </span>// Penelope</a></td></tr>
+                    <tr>
+                      <td>Located: <span>Oyster Palma</span></td>
+                      <td>Year: <span>2012</span></td>
+                      <td rowspan="2" class="highlight">Reduced Price</td>
+                    </tr>
+                    <tr>
+                      <td>Price: <span>6,000,000 <span>inc VAT</span></span></td>
+                      <td>Status: <span>Available</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="share"><img src="/assets/images/add.png"><img src="/assets/images/share.png"></div>
+            </li>
+          </ul>
+          <ul>
+            <li class="column large-6 size-medium">
+              <div class="listing-images"><a href="/oyster/brokerage/yacht"><span style="background-image:url('http://oysteryachts.interstateteam.com/images/content/3/cover_1366x650.jpg')"></span></a></div>
+              <div class="listing-content">
+                <table class="table listing-table feature-col">
+                  <tbody>
+                    <tr><td class="title" colspan='3'><a href="/oyster/brokerage/yacht"><span>The  </span>// Penelope</a></td></tr>
+                    <tr>
+                      <td>Located: <span>Caribean</span></td>
+                      <td>Year: <span>2015</span></td>
+                      <td rowspan="2" class="highlight">Reduced Price</td>
+                    </tr>
+                    <tr>
+                      <td>Price: <span>£12,345 <span>inc VAT</span></span></td>
+                      <td>Status: <span>Available</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="share"><img src="/assets/images/add.png"><img src="/assets/images/share.png"></div>
+            </li>
+            <li class="column large-6 size-medium">
+              <div class="listing-images"><a href="/oyster/brokerage/yacht"><span style="background-image:url('http://oysteryachts.interstateteam.com/images/content/3/cover_1366x650.jpg')"></span></a></div>
+              <div class="listing-content">
+                <table class="table listing-table feature-col">
+                  <tbody>
+                    <tr><td class="title" colspan='3'><a href="/oyster/brokerage/yacht"><span>Bad boy </span>// Special</a></td></tr>
+                    <tr>
+                      <td>Located: <span>England</span></td>
+                      <td>Year: <span>2005</span></td>
+                    </tr>
+                    <tr>
+                      <td>Price: <span>£1,300,345 <span>inc VAT</span></span></td>
+                      <td>Status: <span>Now Sold</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="share"><img src="/assets/images/add.png"><img src="/assets/images/share.png"></div>
+            </li>
+          </ul>
+          <ul>
+            <li class="column large-4 size-small end">
+              <div class="listing-images"><a href="/oyster/brokerage/yacht"><span style="background-image: url('http://oysteryachts.interstateteam.com/images/content/3/cover_1366x650.jpg')"></span></a></div>
+              <div class="listing-content">
+                <table class="table listing-table feature-col">
+                  <tbody>
+                    <tr><td class="title" colspan='2'><a href="/oyster/brokerage/yacht"><span>Stevenage </span>// Lala</a></td></tr>
+                    <tr>
+                      <td>Located: <span>United States</span></td>
+                      <td>Year: <span>2005</span></td>
+                    </tr>
+                    <tr>
+                      <td>Price: <span>£10,322,345 <span>inc VAT</span></span></td>
+                      <td>Status: <span>Under offer</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="share"><img src="/assets/images/add.png"><img src="/assets/images/share.png"></div>
+            </li>
+          </ul>
+        </div>
+      </div>
     </section>
     <section class="newsletter">
       <div class="row">

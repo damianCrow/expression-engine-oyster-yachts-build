@@ -5,7 +5,11 @@ class Social_feed {
     public function update_youtube() {
     	$url = "https://www.youtube.com/feeds/videos.xml?user=oystermarine";
 
-		$stream = file_get_contents($url);
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, $url);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		$stream = curl_exec($ch);
+		curl_close($ch);
 
 		$xml = simplexml_load_string($stream);
 		$ns = $xml->getNamespaces(true);
@@ -27,7 +31,11 @@ class Social_feed {
     public function update_instagram() {
     	$url = "https://www.instagram.com/oysteryachts/media/";
 
-		$stream = file_get_contents($url);
+    	$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, $url);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		$stream = curl_exec($ch);
+		curl_close($ch);
 
 		$streamDecoded = json_decode($stream);
 
