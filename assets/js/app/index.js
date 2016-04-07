@@ -1,6 +1,9 @@
 'use strict';
 
-define(['jquery', 'owlcarousel', 'foundation', 'ScrollMagic'], function ($) {
+define(['jquery', 'foundation', 'components/util/social-grid', 'owlcarousel', 'ScrollMagic'], function ($, Foundation, SocialGrid) {
+
+	// ----- HOME PAGE SOCIAL GRID ----
+	new SocialGrid();
 
 	$('.scroll-message').click(function () {
 		$('html, body').animate({
@@ -12,7 +15,7 @@ define(['jquery', 'owlcarousel', 'foundation', 'ScrollMagic'], function ($) {
 	// - CSS VH works great, but with jump on mobile (Chrome on Android for example)
 	heroSlideHeight();
 	function heroSlideHeight() {
-		$('.hero-home .hero-slide').height($(window).height() - $('.global-header').height());
+		$('.hero-home .hero-slide, .hero-home .hero-slides').height($(window).height() - $('.global-header').height());
 	}
 
 	$(window).resize(function () {
@@ -129,45 +132,19 @@ define(['jquery', 'owlcarousel', 'foundation', 'ScrollMagic'], function ($) {
 	});
 
 	// Autoplay all videos in carousels, else delete it.
-	$('.owl-carousel').find('video').each(function () {
-		var videoFound = this;
-		$(this).get(0).play();
-		if (Foundation.MediaQuery.atLeast('medium')) {
-			$(videoFound).get(0).play();
-			$(videoFound).get(0).onplay = function () {
-				console.log('playing video');
-				$(videoFound).siblings('.slide-image').remove();
-			};
-		} else {
-			$(videoFound).remove();
-		}
-	});
-
-	$(".social-slider").each(function (index, element) {
-		// console.log(element);
-
-		var randomTime = Math.floor(Math.random() * 16000) + 10000;
-
-		// $(element).addClass('owl-carousel');
-
-		$(element).owlCarousel({
-			loop: true,
-			mouseDrag: false,
-			touchDrag: false,
-			pullDrag: false,
-			freeDrag: false,
-			nav: false,
-			dots: false,
-			autoplay: true,
-			autoplayTimeout: randomTime,
-			autoplaySpeed: randomTime,
-			autoplayHoverPause: true,
-			margin: 0,
-			items: 1,
-			animateOut: 'fadeOut',
-			animateIn: 'fadeIn'
-		});
-	});
+	/*$('.owl-carousel').find('video').each(function() {
+ 	var videoFound = this;
+ 	$(this).get(0).play();
+ 		if(Foundation.MediaQuery.atLeast('medium')) {
+ 		$(videoFound).get(0).play();
+ 			$(videoFound).get(0).onplay = function() {
+ 			console.log('playing video');
+ 			$(videoFound).siblings('.slide-image').remove();
+ 		}
+ 	} else {
+ 		$(videoFound).remove();
+ 	}
+ });*/
 
 	var newsPreviewCarousel = $('.news-preview .owl-carousel');
 

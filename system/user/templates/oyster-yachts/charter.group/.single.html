@@ -12,6 +12,8 @@ $query = ee()->db->query('SELECT * FROM exp_channel_images WHERE entry_id={entry
 $interiorGalleryImages = $query->num_rows();
 ?>
 
+{header}
+
 <section class="hero full-screen">
 	<div id="full-image" style="background-image: url('{charter_main_image}{image:url}{/charter_main_image}')">
 		<div class="back-button">
@@ -269,5 +271,6 @@ $interiorGalleryImages = $query->num_rows();
 </div>
 <?php endif; ?>
 
+{footer}
 
 {/exp:channel:entries}

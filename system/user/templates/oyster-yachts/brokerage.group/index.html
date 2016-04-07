@@ -1,3 +1,65 @@
+{exp:channel:entries channel="brokerage_landing_page" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published" limit="1"}
+{if no_results}{redirect="404"}{/if}
+
 {header}
 
+<section style="background-image: url('{brokerage_header_image}{image:url}{/brokerage_header_image}')" class="hero after-nav global-page-hero global-page-hero--medium">
+	<div id="page-back-button" class="back-button"><a href="{site_url}" class="button-clear-white"><i class="fa fa-angle-left"></i>Back</a></div>
+	{embed="brokerage/.filters"}
+</section>
+
+<section class="page-home-about brokerage-home-about">
+	<div class="row">
+		<div class="medium-12 large-2 large-offset-1 column about-heading"><span class="text-uppercase">
+			{brokerage_intro_heading}
+		</span></div>
+		<div class="medium-12 large-8 end column intro">
+			{brokerage_intro_content}
+		</div>
+	</div>
+</section>
+
+<section id="brokerage-home-local-nav" class="page-home-local-nav brokerage-home-local-nav">
+	<div class="content row row-pad">
+		<div class="large-4 content-col">
+			<a href="{path='brokerage/fleet'}" class="localnav-anchor">
+				<div style="background-image: url('http://oysteryachts.interstateteam.com/images/static/brokerage_header.jpg')" class="feature-image"></div>
+				<div class="feature-content">
+					<h4>brokerage fleet</h4>
+				</div>
+			</a>
+		</div>
+		<div class="large-4 content-col">
+			<a href="" class="localnav-anchor">
+				<div style="background-image: url('http://oysteryachts.interstateteam.com/images/content/1/listing2_430x300-2.jpg')" class="feature-image"></div>
+				<div class="feature-content">
+					<h4>Brokerage Events</h4>
+				</div>
+			</a>
+		</div>
+		<div class="large-4 content-col">
+			<a href="" class="localnav-anchor">
+				<div style="background-image: url('http://oysteryachts.interstateteam.com/images/content/feature_430x245.jpg')" class="feature-image"></div>
+				<div class="feature-content">
+					<h4>brokerage team</h4>
+				</div>
+			</a>
+		</div>
+	</div>
+</section>
+
+<section class="page-fleet brokerage-home-featured-yachts">
+	<div class="banner">featured yachts</div>
+
+	<div class="row row-pad content">
+		<div id="yacht-grid" class="row">
+			<ul>
+			{embed="brokerage/.featured" ids="{brokerage_featured_yachts:entry_ids}"}
+			</ul>
+		</div>
+	</div>
+</section>
+
 {footer}
+
+{/exp:channel:entries}

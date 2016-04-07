@@ -5,43 +5,35 @@ define(['jquery', 'cycle', 'ScrollMagic', 'foundation', 'lightgallery', 'lightga
 	// initilise foundation
 	$(document).foundation();
 
-	// --- BACK BUTTON ON HEADERS ----
+	//  ---- BACK BUTTON ON HERO BANNERS FUNCTIONALITY -----  //
 	$('#page-back-button').on('click', function (evt) {
 		evt.preventDefault();
 		history.back(1);
 	});
+	//  ---- *end* BACK BUTTON ON HERO BANNERS FUNCTIONALITY *end* -----  //
 
+	//  ---- LOCAL SUB-NAVIGATION SCROLL ON CLICK FUNCTIONALITY -----  //
 	// Yacht nav - scroll to section
 	$('#yacht-nav').on('click', '.scroll', function (e) {
 		e.preventDefault();
-		$('html, body').animate({ scrollTop: $($(this).attr('href')).position().top }, 700);
+
+		$('html, body').animate({
+			scrollTop: $($(this).attr('href')).position().top
+		}, 700);
 	});
+	//  ---- *end* LOCAL SUB-NAVIGATION SCROLL ON CLICK FUNCTIONALITY *end* -----  //
 
-	$('#layout-slider').cycle({
-		slides: '> div',
-		paused: true,
-		pager: '.slider-pager',
-		pagerTemplate: '',
-		autoHeight: 'container'
+	//  ---- GLOBAL TESTIMONIALS SLIDESHOW CYCLE -----  //
+	$('#page-testimonials .testimonials').cycle({
+		autoHeight: 'calc',
+		pager: '> .pager',
+		pagerTemplate: '<span><span></span></span>',
+		slides: '> .testimonials-inner',
+		timeout: 4000
 	});
+	//  ---- *end* GLOBAL TESTIMONIALS SLIDESHOW CYCLE *end* -----  //
 
-	$('.gallery-content').lightGallery({
-		thumbnail: true,
-		thumbContHeight: 136,
-		thumbWidth: 197,
-		thumbMargin: 14,
-		toogleThumb: false,
-		showThumbByDefault: false,
-		closable: false,
-		backdropDuration: 0
-	});
-
-	$('.gallery').on('click', function (e) {
-		e.preventDefault();
-
-		$('.gallery-content a:first').trigger('click');
-	});
-
+	//  ---- GLOBAL MAIN FIXED HEADER SEARCH BAR TOGGLE SEARCH ICON -----  //
 	// site search open
 	$('.site-search-open').on('click', function (e) {
 		e.preventDefault();
@@ -61,7 +53,9 @@ define(['jquery', 'cycle', 'ScrollMagic', 'foundation', 'lightgallery', 'lightga
 		$('.site-search-open').fadeIn(300);
 		$('.site-search-close').fadeOut(300);
 	});
+	//  ---- *end* GLOBAL MAIN FIXED HEADER SEARCH BAR TOGGLE SEARCH ICON *end* -----  //
 
+	//  ---- GLOBAL FILTER SEARCH INSIDE HERO HEADER -----  //
 	var $grid = $('#yacht-grid');
 
 	$('#submit').on('click', function (e) {
@@ -98,6 +92,7 @@ define(['jquery', 'cycle', 'ScrollMagic', 'foundation', 'lightgallery', 'lightga
 	$('select').select2({
 		minimumResultsForSearch: -1
 	});
+	//  ---- *end* GLOBAL FILTER SEARCH INSIDE HERO HEADER *end* -----  //
 
 	// ---- GLOBAL STICKY SIDEBAR ----
 	var controller = new ScrollMagic.Controller(),
@@ -105,7 +100,7 @@ define(['jquery', 'cycle', 'ScrollMagic', 'foundation', 'lightgallery', 'lightga
 	    _sideBarScene = function _sideBarScene(elem) {
 		// if elem doesnt exist, this will prevent the error
 		if (_.isEmpty(elem)) elem = { offset: $.noop, height: $.noop };
-		if (_.isEmpty(elem.offset())) return {};
+		if (_.isEmpty(elem.offset())) return { addTo: $.noop, enabled: $.noop, destroy: $.noop };
 
 		var _scene = new ScrollMagic.Scene({
 			duration: elem.height(),
@@ -176,6 +171,31 @@ define(['jquery', 'cycle', 'ScrollMagic', 'foundation', 'lightgallery', 'lightga
 		}, 700);
 	});
 
-	// ---- GLOBAL STICKY SIDEBAR End----	
+	// ---- *end* GLOBAL STICKY SIDEBAR *end* ----	
+
+	$('#layout-slider').cycle({
+		slides: '> div',
+		paused: true,
+		pager: '.slider-pager',
+		pagerTemplate: '',
+		autoHeight: 'container'
+	});
+
+	$("#lightgallery").lightGallery({
+		thumbnail: true,
+		thumbContHeight: 136,
+		thumbWidth: 197,
+		thumbMargin: 14,
+		toogleThumb: false,
+		showThumbByDefault: false,
+		closable: false,
+		backdropDuration: 0
+	});
+
+	$('.gallery').on('click', function (e) {
+		e.preventDefault();
+
+		$("#lightgallery a:first").trigger('click');
+	});
 });
 //# sourceMappingURL=app.js.map

@@ -1,3 +1,93 @@
+{exp:channel:entries channel="charter_landing_page" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published" limit="1"}
+{if no_results}{redirect="404"}{/if}
+
 {header}
 
+<section style="background-image: url('{charter_header_image}{image:url}{/charter_header_image}')" class="hero after-nav global-page-hero global-page-hero--medium">
+{embed="charter/.filters"}
+</section>
+
+<section class="page-home-about charter-home-about">
+	<div class="row">
+		<div class="medium-12 large-2 large-offset-1 column about-heading"><span class="text-uppercase">
+			{charter_intro_heading}
+		</span></div>
+		<div class="medium-12 large-8 end column intro">
+			{charter_intro_content}
+		</div>
+	</div>
+</section>
+<section id="charter-home-local-nav" class="page-home-local-nav charter-home-local-nav">
+	<div class="content row row-pad">
+		<div class="large-4 content-col">
+			<a href="{path='charter/fleet'}" class="localnav-anchor">
+				<div style="background-image: url('http://oysteryachts.interstateteam.com/images/content/3/cover_1366x650.jpg')" class="feature-image"></div>
+				<div class="feature-content">
+					<h4>charter fleet</h4>
+				</div>
+			</a>
+		</div>
+		<div class="large-4 content-col">
+			<a href="" class="localnav-anchor">
+				<div style="background-image: url('http://oysteryachts.interstateteam.com/images/content/1/listing2_430x300-2.jpg')" class="feature-image"></div>
+				<div class="feature-content">
+					<h4>Charter guide</h4>
+				</div>
+			</a>
+		</div>
+		<div class="large-4 content-col">
+			<a href="" class="localnav-anchor">
+				<div style="background-image: url('http://oysteryachts.interstateteam.com/images/content/feature_430x245.jpg')" class="feature-image"></div>
+				<div class="feature-content">
+					<h4>destinations</h4>
+				</div>
+			</a>
+		</div>
+	</div>
+</section>
+
+<section id="page-testimonials" class="page-testimonials charter-home-testimonials">
+	<div class="row">
+		<div class="small-12 medium-8 medium-centered column">
+			<div class="testimonials">
+				{charter_testimonials}
+				<div class="testimonials-inner">
+					<p class="text-uppercase">{charter_testimonials:testimonial}</p><span class="text-uppercase">{charter_testimonials:by_whom}</span>
+				</div>
+				{/charter_testimonials}
+				<span class="pager"></span>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="charter-home-featured-yachts">
+	<div class="banner">featured yachts</div>
+	<div class="row row-pad content">
+		<div id="yacht-grid" class="row">
+			<ul>
+				{embed="charter/.featured" ids="{charter_featured_yachts:entry_ids}"}
+			</ul>
+		</div>
+	</div>
+</section>
+
+<section class="charter-home-your-yacht">
+	<div class="row row-pad">
+		<div class="your-yacht-background">
+			<div class="medium-6 medium-offset-5 column end">
+				<div class="your-yacht-content">
+					<h2 class="text-uppercase">INTERESTED IN CHARTERING YOUR YACHT</h2>
+					<p>
+						If you’re already an Oyster yacht owner and considering offering it for charter, we can assist you in making the most of this valuable opportunity. We provide a first class charter management service to owners of Oyster Yachts.
+
+					</p><a href="" class="button-solid-white text-uppercase">CONTACT MOLLY MARSTON</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
 {footer}
+
+{/exp:channel:entries}
