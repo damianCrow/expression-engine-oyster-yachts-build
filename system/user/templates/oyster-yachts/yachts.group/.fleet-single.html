@@ -1,0 +1,370 @@
+{exp:channel:entries disable="member_data|category_fields|pagination" cache="yes" refresh="60" require_entry="yes" status="published"}
+{if no_results}{redirect="404"}{/if}
+
+<?php
+$query = ee()->db->query('SELECT * FROM exp_channel_images WHERE entry_id={entry_id} AND field_id=70');
+$layoutImages = $query->num_rows();
+
+$query = ee()->db->query('SELECT * FROM exp_channel_images WHERE entry_id={entry_id} AND field_id=69');
+$exteriorGalleryImages = $query->num_rows();
+
+$query = ee()->db->query('SELECT * FROM exp_channel_images WHERE entry_id={entry_id} AND field_id=68');
+$interiorGalleryImages = $query->num_rows();
+?>
+
+{header}
+
+<section class="hero full-screen">
+	<div id="full-image" style="background-image: url('{yacht_main_image}{image:url}{/yacht_main_image}')">
+		<div id="page-back-button" class="back-button"><a class="button-clear-white"><i class="fa fa-angle-left"></i>Back</a></div>
+		<div class="yacht-name">
+			<div class="row-pad">
+				<h2>{yacht_tagline}</h2>
+				<h1>{title}</h1>
+
+				<?php if ($exteriorGalleryImages > 0 || $interiorGalleryImages > 0): ?>
+				<a class="gallery" href="">View Gallery</a>
+				<?php endif; ?>
+			</div>
+		</div>
+		{share_buttons}
+	</div>
+	<div id="yacht-nav" data-local-subnav="data-local-subnav" class="yacht-nav">
+		<ul>
+			{if yacht_design_features:total_rows > 0}
+			<li class="active"><a href="#design-features" class="scroll">Design Features</a></li>
+			{/if}
+
+			<li><a href="#specifications" class="scroll">Specifications</a></li>
+
+			<?php if ($layoutImages > 0): ?>
+			<li><a href="#yacht-layout" class="scroll">Yacht Layout</a></li>
+			<?php endif; ?>
+
+			{if yacht_documents:total_rows > 0}
+			<li><a href="#download-documents" class="scroll">Documents</a></li>
+			{/if}
+
+			<li><a href="#news-thumbs" class="scroll">News</a></li>
+
+			<?php if ($exteriorGalleryImages > 0 || $interiorGalleryImages > 0): ?>
+			<li><a href="" class="gallery">Gallery</a></li>
+			<?php endif; ?>
+
+			<li><a href="" class="contact">Contact Sales</a></li>
+		</ul>
+		<section data-local-sidebar data-sticky-sidebar-at-bottom=".about-yacht" data-sticky-sidebar-offset="" class="yachts-yacht-sticky-header sticky-sidebar-header hide float-right">
+			<div class="header">
+				<h4 class="text-uppercase float-left">{title} overview</h4><i class="fa fa-angle-down float-right"></i>
+			</div>
+			<div class="contents">
+				<aside class="overview-download columns">
+					<h3 class="text-uppercase">{title} Overview</h3>
+					<div class="overview-contents">
+						<section class="overview columns small-6 medium-12">
+							{yacht_overview}
+						</section>
+						
+						
+
+					</div>
+				</aside>
+			</div>
+		</section>
+	</div>
+</section>
+
+<section class="about-yacht">
+	<div class="row row-pad">
+		<div class="large-offset-1 large-7 float">
+			<h2>{yacht_tagline}</h2>
+			<h1>{title}</h1>
+			{yacht_about}
+		</div>
+		<div class="large-offset-1 large-3 float-left">
+			<div class="sticky-sidebar">
+				<aside class="overview-download columns">
+					<h3 class="text-uppercase">{title} Overview</h3>
+					<div class="overview-contents">
+						<section class="overview columns small-6 medium-12">
+							{yacht_overview}
+						</section>
+						{yacht_brochure}
+						<figure class="download-pdf">
+							<img src="{yacht_brochure:thumbnail}" class="download-thumb">
+							<div class="description-download">
+								<figcaption>
+									<a href="{yacht_brochure:file}" target="_blank">{yacht_brochure:title} </a>{yacht_brochure:file}<span>(<?php echo number_format({file_size} / (1024*1024), 1); ?>MB)</span>{/yacht_brochure:file}
+								</figcaption>
+								<a href="{yacht_brochure:file}" target="_blank" class="button-clear-invert text-uppercase">Download Brochure</a>
+							</div>
+						</figure>
+						{/yacht_brochure}
+					</div>
+				</aside>
+			</div>
+		</div>
+	</div>
+</section>
+
+{if yacht_testimonials:total_rows > 0}
+<!--<section class="quote row">
+	<div class="testimonials">
+		{yacht_testimonials}
+		<div class="testimonials-inner">
+			<p class="text-uppercase">{yacht_testimonials:testimonial}</p><span class="text-uppercase">{yacht_testimonials:by_whom}</span>
+		</div>
+		{/yacht_testimonials}
+		<span class="pager"></span>
+	</div>
+</section>-->
+
+<section class="quote row">
+	<blockquote class="text-uppercase">
+		<p>As we tacked back and forth the 575 proved herself a very comfortable boat to sail. I can well imagine doing a round the world trip in this boat.</p>
+		<footer>
+			<cite>
+				Barry Henson, Sail &amp; Yachting, Australia
+			</cite>
+		</footer>
+	</blockquote>
+</section>
+{/if}
+
+
+<section id="design-features" class="design-features">
+	<div class="banner">Design features</div>
+	<div class="content row row-pad">
+		<div class="large-4 small-6 content-col">
+			<div style="background-image:url('/assets/images/design-feature-1of3.jpg')" class="feature-image"></div>
+			<div class="feature-content">
+				<h4>Design Feature 1</h4>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
+
+				</p>
+			</div>
+		</div>
+		<div class="large-4 small-6 content-col">
+			<div style="background-image:url('/assets/images/design-feature-2of3.jpg')" class="feature-image"></div>
+			<div class="feature-content">
+				<h4>Design Feature 1</h4>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
+
+				</p>
+			</div>
+		</div>
+		<div class="large-4 small-6 content-col">
+			<div style="background-image:url('/assets/images/design-feature-3of3.jpg')" class="feature-image"></div>
+			<div class="feature-content">
+				<h4>Design Feature 1</h4>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
+
+				</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section id="specifications" class="specifications yachts-yacht-spec">
+	<div class="banner">Specifications</div>
+	<div class="content row row-pad">
+		<table class="table specs-table">
+			<tbody>
+				<tr>
+					<td colspan="9" class="heading text-uppercase">Dimensions</td>
+				</tr>
+				<tr>
+					<th class="text-uppercase">LENGTH OVERALL- INC. PULPIT</th>
+					<th class="text-uppercase">LENGTH OF HULL</th>
+					<th class="text-uppercase">LENGTH OF WATERLINE</th>
+					<th class="text-uppercase">DRAFT STANDARD</th>
+					<th class="text-uppercase">LENGTH OF BEAM</th>
+					<th class="text-uppercase">Draft Standard</th>
+				</tr>
+				<tr>
+					<td>17.89 m</td>
+					<td>15.72 m</td>
+					<td>5.00 m</td>
+					<td>2.70 m</td>
+					<td>2.06 m</td>
+					<td>27,500 kg</td>
+				</tr>
+				<tr>
+					<td>58.8 ft</td>
+					<td>51.7 ft</td>
+					<td>16.5 ft</td>
+					<td>8.10 ft</td>
+					<td>6.9 ft</td>
+					<td>60,627 lb</td>
+				</tr>
+				<tr>
+					<th class="text-uppercase">DRAFT CENTREBOARD UP</th>
+					<th class="text-uppercase">DRAFT CENTREBOARD DOWN</th>
+					<th class="text-uppercase">Standard rig  and spar type</th>
+					<th class="text-uppercase">RIG OPTIONS</th>
+					<th class="text-uppercase">Ballast keel type</th>
+				</tr>
+				<tr>
+					<td>17.89 m</td>
+					<td>15.72 m</td>
+					<td>5.00 m</td>
+					<td>2.70 m</td>
+					<td>2.06 m</td>
+					<td>27,500 kg</td>
+				</tr>
+				<tr>
+					<td>58.8 ft</td>
+					<td>51.7 ft</td>
+					<td>16.5 ft</td>
+					<td>8.10 ft</td>
+					<td>6.9 ft</td>
+					<td>60,627 lb</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="content row row-pad">
+		<table class="table specs-table">
+			<tbody>
+				<tr>
+					<td colspan="9" class="heading text-uppercase">Preformance Features</td>
+				</tr>
+				<tr>
+					<th class="text-uppercase">LENGTH OVERALL- INC. PULPIT</th>
+					<th class="text-uppercase">LENGTH OF HULL</th>
+					<th class="text-uppercase">LENGTH OF WATERLINE</th>
+					<th class="text-uppercase">DRAFT STANDARD</th>
+					<th class="text-uppercase">LENGTH OF BEAM</th>
+					<th class="text-uppercase">Draft Standard</th>
+				</tr>
+				<tr>
+					<td>17.89 m</td>
+					<td>15.72 m</td>
+					<td>5.00 m</td>
+					<td>2.70 m</td>
+					<td>2.06 m</td>
+					<td>27,500 kg</td>
+				</tr>
+				<tr>
+					<td>58.8 ft</td>
+					<td>51.7 ft</td>
+					<td>16.5 ft</td>
+					<td>8.10 ft</td>
+					<td>6.9 ft</td>
+					<td>60,627 lb</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</section>
+
+<?php if ($layoutImages > 0): ?>
+<section id="yacht-layout" class="yacht-layout">
+	<div class="banner">Yacht Layout</div>
+	<div class="content row row-pad">
+		<div class="large-10 large-offset-1 end">
+			<div id="layout-slider">
+				{yacht_layout}
+				<div class="cycle-slide"><img src="{image:url}"></div>
+				{/yacht_layout}
+			</div>
+			<ul class="slider-pager<?php if ($layoutImages === 1): ?> hide<?php endif; ?>">
+				{yacht_layout}
+				<li><a><span style="background-image:url('{image:url:small}');"></span></a></li>
+				{/yacht_layout}
+			</ul>
+		</div>
+	</div>
+</section>
+<?php endif; ?>
+
+{if yacht_documents:total_rows > 0}
+<section id="download-documents" class="download-documents">
+	<div class="banner">Documents</div>
+	<div class="row content">
+		<ul>
+			{yacht_documents}
+			<li class="columns medium-4 small-6">
+				<figure class="download-pdf"><img src="{yacht_documents:thumbnail}" class="download-thumb">
+					<div class="description-download">
+						<figcaption><a>{yacht_documents:title}</a>{yacht_documents:file}<span>(<?php echo number_format({file_size} / (1024*1024), 1); ?>MB)</span>{/yacht_documents:file}<a href="{yacht_documents:file}" target="_blank" class="button-clear-invert text-uppercase">Download</a>
+						</figcaption>
+					</div>
+				</figure>
+			</li>
+			{/yacht_documents}
+		</ul>
+	</div>
+</section>
+{/if}
+
+<section id="news-thumbs" class="news-thumbs">
+	<div class="banner">News</div>
+	<div class="row wrapper">
+		<ul>
+			<li class="columns medium-4 small-6">
+				<div class="content">
+					<div style="background-image:url('/assets/images/news-preview1of3.jpg')" class="news-thumb-image">
+						<div class="share"><img src="/assets/images/share.png"></div>
+					</div>
+					<div class="news-details">
+						<time datetime="2015-08-09 20:00" class="text-uppercase">04 August 2015</time>
+						<h3 class="text-uppercase"><a>Oyster Yachts at Boot Dusseldorf 2016</a></h3>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris <a class="read-more">READ MORE</a></p>
+					</div>
+				</div>
+			</li>
+			<li class="columns medium-4 small-6">
+				<div class="content">
+					<div style="background-image:url('/assets/images/news-preview2of3.jpg')" class="news-thumb-image">
+						<div class="share"><img src="/assets/images/share.png"></div>
+					</div>
+					<div class="news-details">
+						<time datetime="2015-08-09 20:00" class="text-uppercase">04 August 2015</time>
+						<h3 class="text-uppercase"><a>Oyster Yachts at Boot Dusseldorf 2016</a></h3>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris <a class="read-more">READ MORE</a></p>
+					</div>
+				</div>
+			</li>
+			<li class="columns medium-4 small-6">
+				<div class="content">
+					<div style="background-image:url('/assets/images/news-preview3of3.jpg')" class="news-thumb-image">
+						<div class="share"><img src="/assets/images/share.png"></div>
+					</div>
+					<div class="news-details">
+						<time datetime="2015-08-09 20:00" class="text-uppercase">04 August 2015</time>
+						<h3 class="text-uppercase"> <a>Oyster Yachts at Boot Dusseldorf 2016</a></h3>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris <a class="read-more">READ MORE</a></p>
+					</div>
+				</div>
+			</li>
+		</ul>
+	</div>
+</section>
+
+<?php if ($exteriorGalleryImages > 0): ?>
+<div id="exterior-gallery" class="gallery-content">
+	{yacht_exterior_gallery}
+	<a href="{image:url}" data-sub-html="{image:description}">
+		<img src="{image:url:thumb}" />
+	</a>
+	{/yacht_exterior_gallery}
+</div>
+<?php endif; ?>
+
+<?php if ($interiorGalleryImages > 0): ?>
+<div id="interior-gallery" class="gallery-content">
+	{yacht_interior_gallery}
+	<a href="{image:url}" data-sub-html="{image:description}">
+		<img src="{image:url:thumb}" />
+	</a>
+	{/yacht_interior_gallery}
+</div>
+<?php endif; ?>
+
+{footer}
+
+{/exp:channel:entries}

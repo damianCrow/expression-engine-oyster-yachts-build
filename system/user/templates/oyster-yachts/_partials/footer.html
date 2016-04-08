@@ -1,15 +1,36 @@
 	<section class="newsletter">
-		<div class="row">
-			<div class="small-11 small-centered medium-4 medium-uncentered newsletter-text-wrapper large-3 large-offset-1">
-				<span>Register for the Latest News and Updates from Oyster</span>
+		<h2></h2>
+		<div class="row row-pad new-sign-up">
+			<div class="column text-center newsletter-header">
+				<h2 class="text-uppercase">Subscribe to our newsletter</h2><span>Subscribe to our email newsletter for the latest news and updates from Oyster Yachts</span>
 			</div>
-			<div class="small-11 small-centered medium-8 medium-uncentered newsletter-input-wrapper end large-7">
-				<form class="input-group">
-					<input type="text" placeholder="Email Address" class="input-group-field">
-					<div class="input-group-button">
-						<a href="" class="button-solid-cyan">Register</a>
+			<div class="column medium-12">
+				<div class="sign-up">
+					<div class="flipsies">
+						<form id="signup-home-footer" method="post" name="sign-up-form" class="sign-up-form">
+							<div class="field">
+								<input type="text" placeholder="First Name" name="fname" required="">
+							</div>
+							<div class="field">
+								<input type="text" placeholder="Last Name" name="sname" required="">
+							</div>
+							<div class="field">
+								<input type="email" placeholder="Email Address" name="email" required="">
+							</div>
+							<button type="submit" class="sign-up-btn button-solid-cyan button-chubby">Subscribe
+								<div class="loader-container">
+									<div class="loader">Loading...
+										<div class="ball"></div>
+										<div class="ball"></div>
+										<div class="ball"></div>
+									</div>
+								</div>
+							</button>
+						</form>
+						<div aria-hidden="true" class="sign-up-success"><span><strong>Thank you. </strong> You have sucessfully subscribed to the Oyster Yachts newsletter.</span></div>
 					</div>
-				</form>
+				</div>
+				<div class="form-error text-center text-uppercase"><span>ERROR: Invalid Email or incomplete fields</span></div>
 			</div>
 		</div>
 	</section>
@@ -17,16 +38,14 @@
 	<footer>
 		<div class="footer-nav show-for-medium">
 			<div class="row">
-				<div class="medium-2 footer-nav-first-column columns">
-					<span class="text-uppercase">About Us</span>
+				<div class="medium-2 footer-nav-first-column columns"><span class="text-uppercase">About Us</span>
 					<ul>
 						<li><a href="" class="text-uppercase">Why Buy</a></li>
 						<li><a href="" class="text-uppercase">Heritage</a></li>
 						<li><a href="" class="text-uppercase">Locations</a></li>
 						<li><a href="" class="text-uppercase">Team</a></li>
 						<li><a href="" class="text-uppercase">Partners</a></li>
-					</ul>
-					<span class="text-uppercase">Yachts </span>
+					</ul><span class="text-uppercase">Yachts </span>
 					<ul>
 						<li><a href="" class="text-uppercase">yacht fleet</a></li>
 						<li><a href="" class="text-uppercase">previous models</a></li>
@@ -39,8 +58,7 @@
 						<li><a href="" class="text-uppercase">my shortlist</a></li>
 						<li><a href="" class="text-uppercase">the team</a></li>
 						<li><a href="" class="text-uppercase">brokerage contact</a></li>
-					</ul>
-					<span class="text-uppercase">charter</span>
+					</ul><span class="text-uppercase">charter</span>
 					<ul>
 						<li><a href="" class="text-uppercase">charter fleet</a></li>
 						<li><a href="" class="text-uppercase">how to charter</a></li>
@@ -49,45 +67,34 @@
 						<li><a href="" class="text-uppercase">charter contact</a></li>
 					</ul>
 				</div>
-				<div class="medium-2 columns">
-					<span class="text-uppercase">Events</span>
+				<div class="medium-2 columns"><span class="text-uppercase">Events</span>
 					<ul>
 						<li><a href="" class="text-uppercase">world rally</a></li>
 						<li><a href="" class="text-uppercase">regattas</a></li>
 						<li><a href="" class="text-uppercase">boat shows</a></li>
 						<li><a href="" class="text-uppercase">owners' dinners</a></li>
 						<li><a href="" class="text-uppercase">events gallery</a></li>
-					</ul>
-					<span class="text-uppercase">News</span>
+					</ul><span class="text-uppercase">News</span>
 					<ul>
 						<li><a href="" class="text-uppercase">News library</a></li>
 						<li><a href="" class="text-uppercase">Oyster magazine</a></li>
 						<li><a href="" class="text-uppercase">press coverage</a></li>
 					</ul>
 				</div>
-				<div class="medium-2 columns">
-					<span class="text-uppercase">Contact </span>
+				<div class="medium-2 columns"><span class="text-uppercase">Contact </span>
 					<ul>
 						<li><a href="" class="text-uppercase">office contact</a></li>
 						<li><a href="" class="text-uppercase">sales team</a></li>
 						<li><a href="" class="text-uppercase">contact form</a></li>
-					</ul>
-					<span class="text-uppercase">Media centre </span>
+					</ul><span class="text-uppercase">Media centre </span>
 					<ul>
 						<li><a href="" class="text-uppercase">press releases</a></li>
 						<li><a href="" class="text-uppercase">press images</a></li>
 						<li><a href="" class="text-uppercase">media toolkit</a></li>
-					</ul>
-					<span class="text-uppercase">Owners area</span>
+					</ul><span class="text-uppercase">Owners area</span>
 				</div>
-				<div class="medium-3 columns end float-right social-wrapper">
-					<span class="text-uppercase">Connect with us</span>
-					<div class="social social-large">
-						<a href="" class="facebook"></a>
-						<a href="" class="twitter"></a>
-						<a href="" class="youtube"></a>
-						<a href="" class="instagram"></a>
-					</div>
+				<div class="medium-3 columns end float-right social-wrapper"><span class="text-uppercase">Connect with us</span>
+					<div class="social-icons social-invert social-large"><a href="" class="facebook"><i class="fa fa-facebook-official"></i></a><a href="" class="twitter"><i class="fa fa-twitter"></i></a><a href="" class="youtube"><i class="fa fa-youtube-play"></i></a><a href="" class="instagram"><i class="fa fa-instagram"></i></a></div>
 				</div>
 			</div>
 		</div>
@@ -101,21 +108,13 @@
 						<li>Custom &amp; Refit</li>
 					</ul>
 				</div>
-				<div class="small-11 small-centered medium-3 footer-logo-wrapper columns end">
-					<img src="/assets/images/logo_white.png">
-				</div>
+				<div class="small-11 small-centered medium-3 footer-logo-wrapper columns end"><img src="/assets/images/logo_white.png"></div>
 			</div>
 		</div>
 		<div class="show-for-small-only social-media-mobile">
 			<div class="row">
-				<div class="small-11 small-centered">
-					<span class="show-for-medium text-uppercase">Connect with us</span>
-					<div class="social row">
-						<a href="" class="facebook small-3 columns"></a>
-						<a href="" class="twitter small-3 columns"></a>
-						<a href="" class="youtube small-3 columns"></a>
-						<a href="" class="instagram small-3 columns"></a>
-					</div>
+				<div class="small-11 small-centered"><span class="show-for-medium text-uppercase">Connect with us</span>
+					<div class="social row"><a href="https://www.facebook.com/oystermarine" target="_blank" class="facebook small-3 columns"></a><a href="https://twitter.com/OysterMarine" target="_blank" class="twitter small-3 columns"></a><a href="https://www.youtube.com/user/oystermarine" target="_blank" class="youtube small-3 columns"></a><a href="https://www.instagram.com/oysteryachts/" target="_blank" class="instagram small-3 columns"></a></div>
 				</div>
 			</div>
 		</div>
@@ -132,12 +131,13 @@
 						<li><a href="" class="text-uppercase">Cookies Policy</a></li>
 					</ul>
 				</div>
-				<div class="show-for-medium float-right medium-3 designed-by">
-					<span class="text-uppercase">DESIGN BY INTERSTATE, London</span>
-				</div>
+				<div class="show-for-medium float-right medium-3 designed-by"><span class="text-uppercase">DESIGN BY INTERSTATE, London</span></div>
 			</div>
 		</div>
 	</footer>
+
+
+    
 	<script text="text/javascript">
 		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

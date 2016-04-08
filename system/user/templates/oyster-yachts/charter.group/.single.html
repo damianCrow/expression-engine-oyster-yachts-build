@@ -138,7 +138,7 @@ $interiorGalleryImages = $query->num_rows();
 									<img src="{charter_brochure:thumbnail}" class="download-thumb">
 									<div class="description-download">
 										<figcaption>
-											<a href="{charter_brochure:file}" target="_blank">{charter_brochure:title} </a><!--<span>(2.3MB)</span>-->
+											<a href="{charter_brochure:file}" target="_blank">{charter_brochure:title} </a>{charter_brochure:file}<span>(<?php echo number_format({file_size} / (1024*1024), 1); ?>MB)</span>{/charter_brochure:file}
 										</figcaption>
 										<a href="{charter_brochure:file}" class="button-clear-invert text-uppercase">Download</a>
 									</div>

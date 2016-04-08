@@ -11,7 +11,8 @@ require.config({
     lightgalleryThumbs: 'lib/lightgallery/lg-thumbnail',
     ScrollMagic: '/bower_components/scrollmagic/scrollmagic/minified/ScrollMagic.min',
     select2: '/bower_components/select2/dist/js/select2.full.min',
-    owlcarousel: '/bower_components/owl.carousel/dist/owl.carousel.min'
+    owlcarousel: '/bower_components/owl.carousel/dist/owl.carousel.min',
+    masonry: '/bower_components/masonry/dist/masonry.pkgd'
   },
   shim: {
     'jquery': {
@@ -43,10 +44,14 @@ require.config({
       deps: ['jquery'],
       exports: 'Foundation'
     },
+    'ScrollMagic': {
+      deps: ['jquery'],
+      exports: 'ScrollMagic'
+    },
     'owlcarousel': [
       'jquery'
     ],
-    'foundation': [
+    'masonry': [
       'jquery'
     ],
     'typekit': {

@@ -1,0 +1,85 @@
+{exp:channel:entries disable="member_data|category_fields|pagination" cache="yes" refresh="60" require_entry="yes" status="published"}
+{if no_results}{redirect="404"}{/if}
+
+<?php
+$query = ee()->db->query('SELECT * FROM exp_channel_images WHERE entry_id={entry_id} AND field_id=76');
+$galleryImages = $query->num_rows();
+?>
+
+{header}
+
+<section class="hero full-screen">
+	<div id="full-image"{yacht_prev_main_image} style="background-image: url('{image:url}');"{/yacht_prev_main_image}>
+		<div id="page-back-button" class="back-button"><a class="button-clear-white"><i class="fa fa-angle-left"></i>Back</a></div>
+		<div class="yacht-name">
+			<div class="row-pad">
+				<h2>Previous Models</h2>
+				<h1>{title}</h1>
+
+				<?php if ($galleryImages > 0): ?>
+				<a href="" class="gallery">View Gallery</a>
+				<?php endif; ?>
+			</div>
+		</div>
+	</div>
+	<div id="yacht-nav" data-local-subnav="data-local-subnav" class="yacht-nav">
+		<section data-local-sidebar data-sticky-sidebar-at-bottom=".about-yacht" data-sticky-sidebar-offset="450" class="yachts-yacht-sticky-header sticky-sidebar-header hide float-right">
+			<div class="header">
+				<h4 class="text-uppercase float-left">Yachts</h4><i class="fa fa-angle-down float-right"></i>
+			</div>
+			<div class="contents">
+				<aside class="overview-download columns show-for-large">
+					<h3 class="text-uppercase">Yachts</h3>
+					<div class="overview-contents prev-models">
+						<section class="overview columns small-6 medium-12">
+							<ul>
+								<li><a href="{path='yachts/fleet'}">Fleet</a></li>
+								<li class="active-page"><a href="{path='yachts/previous-models'}">Previous Models</a></li>
+								<li><a href="{path='yachts/special-projects'}">Special Projects</a></li>
+							</ul>
+						</section>
+					</div>
+				</aside>
+			</div>
+		</section>
+	</div>
+</section>
+<section class="about-yacht">
+	<div class="row row-pad">
+		<div class="large-offset-1 large-7 float">
+			<h2>Previous Models</h2>
+			<h1>{title}</h1>
+			{yacht_prev_about}
+		</div>
+		<div class="large-offset-1 large-3 float-left">
+			<div class="sticky-sidebar">
+				<aside class="overview-download columns show-for-large">
+					<h3 class="text-uppercase">Yachts</h3>
+					<div class="overview-contents prev-models">
+						<section class="overview columns small-6 medium-12">
+							<ul>
+								<li><a href="{path='yachts/fleet'}">Fleet</a></li>
+								<li class="active-page"><a href="{path='yachts/previous-models'}">Previous Models</a></li>
+								<li><a href="{path='yachts/special-projects'}">Special Projects</a></li>
+							</ul>
+						</section>
+					</div>
+				</aside>
+			</div>
+		</div>
+	</div>
+</section>
+
+<?php if ($galleryImages > 0): ?>
+<div id="exterior-gallery" class="gallery-content">
+	{yacht_prev_gallery}
+	<a href="{image:url}" data-sub-html="{image:description}">
+		<img src="{image:url:thumb}" />
+	</a>
+	{/yacht_prev_gallery}
+</div>
+<?php endif; ?>
+
+{footer}
+
+{/exp:channel:entries}

@@ -60,9 +60,9 @@ define(['jquery', 'ScrollMagic'], function ($, ScrollMagic) {
 	});
 
 	$('.global-header .follow-oyster').on('click', function () {
-		followHeader.addClass('follow-on');
+		followHeader.toggleClass('follow-on');
 	});
-	$('.global-header .back-btn .fa').on('click', function () {
+	$('.global-header .back-btn').on('click', function () {
 		followHeader.removeClass('follow-on');
 	});
 });

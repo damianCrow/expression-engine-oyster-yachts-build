@@ -1,6 +1,6 @@
 'use strict';
 
-define(['jquery', 'cycle', 'ScrollMagic', 'foundation', 'lightgallery', 'lightgalleryThumbs', 'select2', 'owlcarousel', 'components/header/header', './brokerage/brokerage', './index'], function ($, cycle, ScrollMagic) {
+define(['jquery', 'cycle', 'ScrollMagic', 'foundation', 'masonry', 'lightgallery', 'lightgalleryThumbs', 'select2', 'owlcarousel', 'components/header/header', './brokerage/brokerage', './index'], function ($, cycle, ScrollMagic, Foundation, masonry) {
 
 	// initilise foundation
 	$(document).foundation();
@@ -77,6 +77,7 @@ define(['jquery', 'cycle', 'ScrollMagic', 'foundation', 'lightgallery', 'lightga
 
 			if ($selected[0].hasAttribute('data-price-min')) {
 				$grid.find('li').filter(function () {
+					return $(this).data('price') < $selected.attr('data-price-min');
 					return $(this).data('price') < $selected.attr('data-price-min');
 				}).hide();
 			}
@@ -173,6 +174,72 @@ define(['jquery', 'cycle', 'ScrollMagic', 'foundation', 'lightgallery', 'lightga
 
 	// ---- *end* GLOBAL STICKY SIDEBAR *end* ----	
 
+	//  ---- GLOBAL FOOTER SIGN UP BOX -----  //
+
+	$('.sign-up-btn').on('click', function () {
+		var btn = this;
+		var nope = false;
+
+		$(':input[required]').each(function () {
+			if (!$(this).val()) {
+				nope = true;
+				console.log('error');
+				$(this).parent('.field').addClass('error');
+				$('.new-sign-up .form-error').addClass('visible');
+			} else {
+				$(this).parent('.field').removeClass('error');
+				$('.new-sign-up .form-error').removeClass('visible');
+			}
+		});
+
+		if (!validateEmail($(':input[type="email"]').val())) {
+			nope = true;
+
+			$(':input[type="email"]').parent('.field').addClass('error');
+			$('.new-sign-up .form-error').addClass('visible');
+		} else {
+			console.log('correct email:', validateEmail($(':input[type="email"]').val()));
+
+			$(':input[type="email"]').parent('.field').removeClass('error');
+			$('.new-sign-up .form-error').removeClass('visible');
+		};
+
+		console.log('nope = ', nope);
+		if (!nope) {
+			console.log('should be false, nope = ', nope);
+			$('.sign-up-btn').addClass('is-loading');
+			setTimeout(function () {
+				$('.sign-up').addClass('is-complete');
+			}, 3000);
+		}
+	});
+
+	$('#signup-home-footer').submit(function (e) {
+		e.preventDefault();
+	});
+
+	// $('.sign-up-btn').on('click', function() {
+	//   $(':input[required]').each(function() {
+	//     if (!$(this).val()) {
+	//       return $(this).parent('.field').addClass('error');
+	//     } else {
+	//       $('.sign-up-btn').addClass('is-loading');
+	//       return setTimeout((function() {
+	//         return $('.sign-up').addClass('is-complete');
+	//       }), 3000);
+	//     }
+	//   });
+	//   console.log('going to return false');
+	//   return false;
+	// });
+
+	function validateEmail(email) {
+		var re = /\S+@\S+\.\S+/;
+		return re.test(email);
+	}
+
+	//  ---- *end* GLOBAL FOOTER SIGN UP BOX *end* -----  //
+
 	$('#layout-slider').cycle({
 		slides: '> div',
 		paused: true,
@@ -181,7 +248,8 @@ define(['jquery', 'cycle', 'ScrollMagic', 'foundation', 'lightgallery', 'lightga
 		autoHeight: 'container'
 	});
 
-	$("#lightgallery").lightGallery({
+	// init gallery
+	$('.gallery-content').lightGallery({
 		thumbnail: true,
 		thumbContHeight: 136,
 		thumbWidth: 197,
@@ -192,10 +260,18 @@ define(['jquery', 'cycle', 'ScrollMagic', 'foundation', 'lightgallery', 'lightga
 		backdropDuration: 0
 	});
 
+	// trigger first slide to open in gallery
 	$('.gallery').on('click', function (e) {
 		e.preventDefault();
 
-		$("#lightgallery a:first").trigger('click');
+		$('.gallery-content a:first').trigger('click');
 	});
+
+	/*$('.grid').masonry({
+ 	// options...
+ 	itemSelector: '.grid-item',
+ 	columnWidth: 200
+ });
+ */
 });
 //# sourceMappingURL=app.js.map
