@@ -155,5 +155,32 @@
             "feeds",
             "rss"
         ]
+    },
+    {
+        "name": "eecli/bootstrap",
+        "version": "v1.4.0",
+        "version_normalized": "1.4.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/rsanchez/ExpressionEngine-Bootstrap.git",
+            "reference": "9dfde8c4a70c170cdeb07ccc1b299a70d5c08973"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/rsanchez/ExpressionEngine-Bootstrap/zipball/9dfde8c4a70c170cdeb07ccc1b299a70d5c08973",
+            "reference": "9dfde8c4a70c170cdeb07ccc1b299a70d5c08973",
+            "shasum": ""
+        },
+        "time": "2016-01-14 22:38:29",
+        "type": "library",
+        "installation-source": "dist",
+        "notification-url": "https://packagist.org/downloads/",
+        "authors": [
+            {
+                "name": "Rob Sanchez",
+                "email": "info@robsanchez.com"
+            }
+        ],
+        "description": "Bootstrap the ExpressionEngine environment"
     }
 ]

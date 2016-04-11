@@ -1,6 +1,55 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Social_feed {
+
+	private function getTwitter($limit = 10) {
+    	$data = array();
+
+    	$query = ee()->db->get('social_twitter', $limit);
+
+    	foreach ($query->result() as $row) {
+		    $data[] = array(
+		    	'tweet' => $row->tweet,
+		    	'url' => $row->url
+		    );
+		}
+
+		return $data;
+    }
+
+    private function getYoutube($limit = 10) {
+    	$data = array();
+
+    	$query = ee()->db->get('social_youtube', $limit);
+
+    	foreach ($query->result() as $row) {
+		    $data[] = array(
+		    	'image' => $row->image,
+		    	'url' => $row->url
+		    );
+		}
+
+		return $data;
+    }
+
+    private function getInstagram($limit = 10) {
+    	$data = array();
+
+    	$query = ee()->db->get('social_instagram', $limit);
+
+    	foreach ($query->result() as $row) {
+		    $data[] = array(
+		    	'image' => $row->image,
+		    	'url' => $row->url
+		    );
+		}
+
+		return $data;
+    }
+
+
+
+
     // update youtube
     public function update_youtube() {
     	$url = "https://www.youtube.com/feeds/videos.xml?user=oystermarine";
@@ -56,10 +105,10 @@ class Social_feed {
     public function update_twitter() {
     	require "libraries/twitteroauth/autoload.php";
 
-		$consumerKey = 'YNjvlEk1W699d7ZizPqmgE4D1';
-		$consumerSecret = '7Z4PmOlvuS3dl1Gxzo8H7Dix2AIZE6NYk4y56N7cSAQrgoZ9yA';
-		$accessToken = '122032530-46fb61LeusIszAyXoZtYmUD08aDI0BxOVz3kkIv2';
-		$accessTokenSecret = 'ONXKkCIIOCHSjTz3zoCc4sGtqOA9QnkqToAOJZULvRNLZ';
+		$consumerKey = '4d5WcS1Nj20iI7pqqND9c3j8i';
+		$consumerSecret = 'pZbqkByjZN29Ae5UZwjX43v2GAFkltwuW1l9rLh8DaoJG2vmyE';
+		$accessToken = '180814823-PU4jndLWWLn0ByzOkStD49fae6KA70ePCQmexTGb';
+		$accessTokenSecret = 'RVc2tgdHfBlINwBZUVKhmgGUYhcewDyxugir9y5vaN8o7';
 
 		$connection = new Abraham\TwitterOAuth\TwitterOAuth($consumerKey, $consumerSecret, $accessToken, $accessTokenSecret);
 		//$content = $connection->get("account/verify_credentials");
@@ -84,19 +133,9 @@ class Social_feed {
 
     	$limit = ee()->TMPL->fetch_param('limit', $defaultLimit);
 
-    	$variables = array();
+    	$data = $this->getYoutube($limit);
 
-    	$query = ee()->db->get('social_youtube', $limit);
-
-    	foreach ($query->result() as $row) {
-		    $variables[] = array(
-		    	'title' => $row->title,
-		    	'image' => $row->image,
-		    	'url' => $row->url
-		    );
-		}
-
-		return ee()->TMPL->parse_variables(ee()->TMPL->tagdata, $variables);
+		return ee()->TMPL->parse_variables(ee()->TMPL->tagdata, $data);
     }
 
     // get instagram
@@ -105,19 +144,9 @@ class Social_feed {
 
     	$limit = ee()->TMPL->fetch_param('limit', $defaultLimit);
 
-    	$variables = array();
+    	$data = $this->getInstagram($limit);
 
-    	$query = ee()->db->get('social_instagram', $limit);
-
-    	foreach ($query->result() as $row) {
-		    $variables[] = array(
-		    	'title' => $row->title,
-		    	'image' => $row->image,
-		    	'url' => $row->url
-		    );
-		}
-
-		return ee()->TMPL->parse_variables(ee()->TMPL->tagdata, $variables);
+		return ee()->TMPL->parse_variables(ee()->TMPL->tagdata, $data);
     }
 
     // get twitter
@@ -126,17 +155,21 @@ class Social_feed {
 
     	$limit = ee()->TMPL->fetch_param('limit', $defaultLimit);
 
-    	$variables = array();
+    	$data = $this->getTwitter($limit);
 
-    	$query = ee()->db->get('social_twitter', $limit);
+		return ee()->TMPL->parse_variables(ee()->TMPL->tagdata, $data);
+    }
 
-    	foreach ($query->result() as $row) {
-		    $variables[] = array(
-		    	'tweet' => $row->tweet,
-		    	'url' => $row->url
-		    );
-		}
+    
 
-		return ee()->TMPL->parse_variables(ee()->TMPL->tagdata, $variables);
+
+    public function to_json() {
+    	$data = [];
+
+    	$data["youtube"] = $this->getYoutube(10);
+    	$data["instagram"] = $this->getInstagram(10);
+    	$data["twitter"] = $this->getTwitter(10);
+
+		return json_encode($data);
     }
 }

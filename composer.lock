@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ee214f95b6706e06ee76c595a1b9657a",
-    "content-hash": "0ad1af6846de5a3bc7b773beff209b12",
+    "hash": "a4d0b53981cfe79c392b15cda164707a",
+    "content-hash": "a51d885340bb10f3bb66907d0d1c2153",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -103,6 +103,31 @@
                 "instagram"
             ],
             "time": "2014-11-29 13:10:42"
+        },
+        {
+            "name": "eecli/bootstrap",
+            "version": "v1.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rsanchez/ExpressionEngine-Bootstrap.git",
+                "reference": "9dfde8c4a70c170cdeb07ccc1b299a70d5c08973"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rsanchez/ExpressionEngine-Bootstrap/zipball/9dfde8c4a70c170cdeb07ccc1b299a70d5c08973",
+                "reference": "9dfde8c4a70c170cdeb07ccc1b299a70d5c08973",
+                "shasum": ""
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Rob Sanchez",
+                    "email": "info@robsanchez.com"
+                }
+            ],
+            "description": "Bootstrap the ExpressionEngine environment",
+            "time": "2016-01-14 22:38:29"
         },
         {
             "name": "simplepie/simplepie",
