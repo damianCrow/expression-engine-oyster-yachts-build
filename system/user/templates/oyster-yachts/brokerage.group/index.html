@@ -4,24 +4,24 @@
 {header}
 
 <section style="background-image: url('{brokerage_header_image}{image:url}{/brokerage_header_image}')" class="hero after-nav global-page-hero global-page-hero--medium">
-	<div id="page-back-button" class="back-button"><a href="{site_url}" class="button-clear-white"><i class="fa fa-angle-left"></i>Back</a></div>
+	{back_button}
 	{embed="brokerage/.filters"}
 </section>
 
 <section class="page-home-about brokerage-home-about">
-	<div class="row">
-		<div class="medium-12 large-2 large-offset-1 column about-heading"><span class="text-uppercase">
+	<div class="row padded-full-width-row">
+		<div class="small-12 medium-3 large-2 large-offset-1 column about-heading"><span class="text-uppercase">
 			{brokerage_intro_heading}
 		</span></div>
-		<div class="medium-12 large-8 end column intro">
+		<div class="small-12 medium-9 large-8 end column intro">
 			{brokerage_intro_content}
 		</div>
 	</div>
 </section>
 
 <section id="brokerage-home-local-nav" class="page-home-local-nav brokerage-home-local-nav">
-	<div class="content row row-pad">
-		<div class="large-4 content-col">
+	<div class="content row padded-full-width-row">
+		<div class="small-12 medium-4 large-4 content-col">
 			<a href="{path='brokerage/fleet'}" class="localnav-anchor">
 				<div style="background-image: url('/assets/images/oysteryachts-brokerage-brokerage_fleet-feature.jpg')" class="feature-image"></div>
 				<div class="feature-content">
@@ -29,7 +29,7 @@
 				</div>
 			</a>
 		</div>
-		<div class="large-4 content-col">
+		<div class="small-12 medium-4 large-4 content-col">
 			<a href="" class="localnav-anchor">
 				<div style="background-image: url('/assets/images/oysteryachts-brokerage-brokerage_events-feature.jpg')" class="feature-image"></div>
 				<div class="feature-content">
@@ -37,7 +37,7 @@
 				</div>
 			</a>
 		</div>
-		<div class="large-4 content-col">
+		<div class="small-12 medium-4 large-4 content-col">
 			<a href="" class="localnav-anchor">
 				<div style="background-image: url('/assets/images/oysteryachts-brokerage-brokerage_team-feature.jpg')" class="feature-image"></div>
 				<div class="feature-content">
@@ -48,10 +48,10 @@
 	</div>
 </section>
 
-<section class="page-fleet brokerage-home-featured-yachts">
+<section class="brokerage-home-featured-yachts">
 	<div class="banner">featured yachts</div>
 
-	<div class="row row-pad content">
+	<div class="row padded-full-width-row content">
 		<div id="yacht-grid" class="row">
 			<ul>
 			{embed="brokerage/.featured" ids="{brokerage_featured_yachts:entry_ids}"}

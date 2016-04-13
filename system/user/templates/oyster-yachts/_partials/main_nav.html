@@ -6,7 +6,7 @@
 	</div>
 	<div class="global-header-top-nav-large show-for-large"><a href="{site_url}" class="logo-large"><img src="/assets/images/logo.png" alt="logo mini"></a><a href="{site_url}" class="logo-tiny"><img src="/assets/images/logo_small.png" alt="logo mini"></a>
 		<ul id="main-nav" class="main-nav small-8">
-			<li>
+			<li{if segment_1 == "about-us"} class="active is-active"{/if}>
 				<a href="" class="text-uppercase">about us</a>
 				<ul>
 					<li>
@@ -103,13 +103,13 @@
 						</a>
 					</li>
 					<li>
-						<a href="">
+						<a href="{path='charter/how-to-charter'}">
 							<div style="background-position: 0px 315px" class="sub-nav-image"></div>
 							<span class="text-uppercase">how to charter</span>
 						</a>
 					</li>
 					<li>
-						<a href="">
+						<a href="{path='charter/destinations'}">
 							<div style="background-position: 0px 630px" class="sub-nav-image"></div>
 							<span class="text-uppercase">destinations</span>
 						</a>
@@ -128,8 +128,8 @@
 					</li>
 				</ul>
 			</li>
-			<li>
-				<a href="" class="text-uppercase">world rally</a>
+			<li{if segment_1 == "world-rally"} class="active is-active"{/if}>
+				<a href="{path='world-rally'}" class="text-uppercase">world rally</a>
 				<ul class="five">
 					<li>
 						<a href="">
@@ -163,7 +163,7 @@
 					</li>
 				</ul>
 			</li>
-			<li>
+			<li{if segment_1 == "events"} class="active is-active"{/if}>
 				<a href="" class="text-uppercase">events</a>
 				<ul>
 					<li>
@@ -192,7 +192,7 @@
 					</li>
 				</ul>
 			</li>
-			<li>
+			<li{if segment_1 == "news"} class="active is-active"{/if}>
 				<a href="{path='news'}" class="text-uppercase">news</a>
 				<ul class="three">
 					<li>
@@ -202,13 +202,13 @@
 						</a>
 					</li>
 					<li>
-						<a href="">
+						<a href="{path='news/magazine'}">
 							<div style="background-position: 0px 315px" class="sub-nav-image"></div>
 							<span class="text-uppercase">oyster magazine</span>
 						</a>
 					</li>
 					<li>
-						<a href="">
+						<a href="{path='news/press-coverage'}">
 							<div style="background-position: 0px 630px" class="sub-nav-image"></div>
 							<span class="text-uppercase">press coverage</span>
 						</a>

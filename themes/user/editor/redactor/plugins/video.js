@@ -66,7 +66,7 @@
 				}
 
 				this.modal.close();
-				this.placeholder.remove();
+				//this.placeholder.remove();
 
 				// buffer
 				this.buffer.set();

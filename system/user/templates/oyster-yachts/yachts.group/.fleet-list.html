@@ -1,12 +1,12 @@
 {header}
 
-<section class="page-fleet after-nav yachts-fleet">
+<section class="page-fleet after-nav yachts-fleet-home-landing">
 	<div class="content">
-		<div id="yachts-fleet">
-			<ul>
+		<div class="yachts-fleet-inner">
+			<ul data-equalizer data-equalize-by-row="true" class="row top small-up-1 medium-up-2 large-up-3">
 
-				{exp:channel:entries channel="yacht" disable="member_data|category_fields|pagination" cache="no" refresh="60" status="published" sort="desc"}
-				<li class="float-left large-4 medium-6 small-12 size-small">
+				{exp:low_reorder:entries set="yachts" disable="member_data|category_fields|pagination" cache="no" refresh="60" status="published"}
+				<li class="float-left large-4 medium-6 small-12 size-small{if count == total_results} end{/if}">
 					<div class="listing-images">
 						<a href="{url_title_path='yachts/fleet'}">
 							{yacht_listing_image}
@@ -14,28 +14,29 @@
 							{/yacht_listing_image}
 						</a>
 					</div>
-					<div class="listing-content">
+					<div data-equalizer-watch class="listing-content">
 						<h2>{title}</h2>
 						{yacht_excerpt}
-						<a href="{url_title_path='yachts/fleet'}" class="button-solid-white">View Yacht Overview</a>
+						<a href="{url_title_path='yachts/fleet'}" class="button-transparent">View Yacht Overview</a>
 					</div>
 				</li>
-				{/exp:channel:entries}
+				{/exp:low_reorder:entries}
 
 			</ul>
-			<ul>
+
+			<ul data-equalizer data-equalize-by-row="true" class="row bottom small-up-1 medium-up-1 large-up-2">
 				<li class="float-left medium-6 small-12 size-small">
 					<div class="listing-images"><a href="{path='yachts/special-projects'}"><span style="background-image: url('/assets/images/special-projects.jpg')"></span></a></div>
-					<div class="listing-content">
+					<div data-equalizer-watch class="listing-content">
 						<h2>Special Projects</h2>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et.</p><a href="{path='yachts/special-projects'}" class="button-solid-white">View Special Projects</a>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et.</p><a href="{path='yachts/special-projects'}" class="button-transparent">View Special Projects</a>
 					</div>
 				</li>
 				<li class="float-left medium-6 small-12 size-small">
 					<div class="listing-images"><a href="{path='yachts/previous-models'}"><span style="background-image: url('/assets/images/previous-models.jpg')"></span></a></div>
-					<div class="listing-content">
+					<div data-equalizer-watch class="listing-content">
 						<h2>Previous Models</h2>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et.</p><a href="{path='yachts/previous-models'}" class="button-solid-white">View Previous Models</a>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et.</p><a href="{path='yachts/previous-models'}" class="button-transparent">View Previous Models</a>
 					</div>
 				</li>
 			</ul>

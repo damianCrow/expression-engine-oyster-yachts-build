@@ -25,13 +25,13 @@ define(['jquery', 'ScrollMagic'], function ($, ScrollMagic) {
 		if (scroll >= parseInt(scrollToPoint, 10)) {
 			header.addClass(headerClass);
 
-			localSubNav.addClass('local-subnav').parent().css({
+			localSubNav.addClass('global-local-subnav-fixed').parent().css({
 				position: 'static'
 			});
 		} else {
 			header.removeClass(headerClass);
 
-			localSubNav.removeClass('local-subnav').parent().css({
+			localSubNav.removeClass('global-local-subnav-fixed').parent().css({
 				position: 'relative'
 			});
 		}

@@ -16,11 +16,7 @@ $interiorGalleryImages = $query->num_rows();
 
 <section class="hero full-screen">
 	<div id="full-image" style="background-image: url('{charter_main_image}{image:url}{/charter_main_image}')">
-		<div class="back-button">
-			<a href="{path='charter/fleet'}" class="button-clear-white">
-				<i class="fa fa-angle-left"></i>Back
-			</a>
-		</div>
+		{back_button}
 		<div class="yacht-name">
 			<div class="row-pad">
 				<h2>{charter_model}</h2>
@@ -38,10 +34,10 @@ $interiorGalleryImages = $query->num_rows();
 			<li class="active"><a href="#yacht-layout" class="scroll">Yacht layout</a></li>
 			<?php endif; ?>
 
-			<li><a href="#activities" class="scroll">activities &amp; entertainment</a></li>
+			<li><a href="#charter-activities" class="scroll">activities &amp; entertainment</a></li>
 
 			{if charter_crew:total_rows > 0}
-			<li><a href="" class="scroll">the crew</a></li>
+			<li><a href="#the-crew" class="scroll">the crew</a></li>
 			{/if}
 
 			<?php if ($exteriorGalleryImages > 0 || $interiorGalleryImages > 0): ?>
@@ -108,7 +104,7 @@ $interiorGalleryImages = $query->num_rows();
 			<h1>{title}</h1>
 			{charter_about}
 		</div>
-		<div class="large-offset-1 large-3 float-left">
+		<div class="large-offset-1 large-3 small-12 float-left">
 			<div class="sticky-sidebar">
 				<table class="table definition-table charter-fleet-sidetable">
 					<tbody>
@@ -224,29 +220,27 @@ $interiorGalleryImages = $query->num_rows();
 </section>
 
 {if charter_crew:total_rows > 0}
-<section id="charter-activities" class="charter-activities">
+<section id="the-crew" class="charter-yacht-crew charter-activities">
 	<div class="banner">The crew</div>
 	<div class="row">
 		<div class="small-12">
 			<div class="charter-activities-bg" style="background-image:url('{charter_activities_entertainment}{image:url}{/charter_activities_entertainment}');"></div>
 		</div>
 	</div>
-	<div class="row">
-		<div class="charter-activities-crew">
+	<div data-equalizer data-equalize-by-row="true" class="row row-pad charter-activities-crew small-up-1 medium-up-2 large-up-3">
 
-			{charter_crew}
-			<div class="large-4 content-col">
-				<div class="feature-content">
-					{if charter_crew:image}
-					<img src="{charter_crew:image}" class="crew-member-img">
-					{/if}
-					<h4>{charter_crew:name}</h4>
-					{charter_crew:about}
-				</div>
+		{charter_crew}
+		<div data-equalizer-watch class="column">
+			<div class="feature-content">
+				{if charter_crew:image}
+				<img src="{charter_crew:image}" class="crew-member-img">
+				{/if}
+				<h4>{charter_crew:name}</h4>
+				{charter_crew:about}
 			</div>
-			{/charter_crew}
-			
 		</div>
+		{/charter_crew}
+
 	</div>
 </section>
 {/if}

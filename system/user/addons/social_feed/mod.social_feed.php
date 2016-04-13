@@ -167,7 +167,7 @@ class Social_feed {
     	$data = [];
 
     	$data["youtube"] = $this->getYoutube(10);
-    	$data["instagram"] = $this->getInstagram(10);
+    	$data["instagram"] = $this->getInstagram(15);
     	$data["twitter"] = $this->getTwitter(10);
 
 		return json_encode($data);

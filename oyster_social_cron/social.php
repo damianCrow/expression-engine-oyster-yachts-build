@@ -39,10 +39,4 @@ try {
 	send_email('twitter');
 }
 
-try {
-	write_file();
-} catch (SomeException $e) {
-	send_email('write to file');
-}
-
 ?>

@@ -1,48 +1,31 @@
 {header}
 
 <section style="background-image: url('/assets/images/news-hero.jpg'); " class="hero after-nav global-page-hero global-page-hero--medium">
-      <div id="page-back-button" class="back-button"><a class="button-clear-white"><i class="fa fa-angle-left"></i>Back</a></div>
+      {back_button}
     </section>
         <section id="news-thumbs" class="news-thumbs">
           <div class="banner">Latest News</div>
           <div class="row wrapper">
             <ul>
+
+              {exp:channel:entries channel="news" disable="member_data|category_fields|pagination" cache="no" refresh="60" status="published" sort="desc"}
+
               <li class="columns medium-4 small-6">
                 <div class="content">
-                  <div style="background-image:url('/assets/images/news-preview1of3.jpg')" class="news-thumb-image">
+                  <div {article_main_image}style="background-image:url('{image:url}')"{/article_main_image} class="news-thumb-image">
                     <div class="share"><img src="/assets/images/share.png"></div>
                   </div>
                   <div class="news-details">
-                    <time datetime="2015-08-09 20:00" class="text-uppercase">04 August 2015</time>
-                    <h3 class="text-uppercase"><a>Oyster Yachts at Boot Dusseldorf 2016</a></h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris <a class="read-more">READ MORE</a></p>
-                  </div>
+                    <time datetime="{entry_date format="%Y-%m-%d %H:%i"}" class="text-uppercase">{entry_date format="%d %F %Y"}</time>
+                    <h3 class="text-uppercase"><a href="{url_title_path='news/article'}">{title}</a></h3>
+                    {article_excerpt}
+                    <a href="{url_title_path='news/article'}" class="read-more">READ MORE</a>
+                     </div>
                 </div>
               </li>
-              <li class="columns medium-4 small-6">
-                <div class="content">
-                  <div style="background-image:url('/assets/images/news-preview2of3.jpg')" class="news-thumb-image">
-                    <div class="share"><img src="/assets/images/share.png"></div>
-                  </div>
-                  <div class="news-details">
-                    <time datetime="2015-08-09 20:00" class="text-uppercase">04 August 2015</time>
-                    <h3 class="text-uppercase"><a>Oyster Yachts at Boot Dusseldorf 2016</a></h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris <a class="read-more">READ MORE</a></p>
-                  </div>
-                </div>
-              </li>
-              <li class="columns medium-4 small-6">
-                <div class="content">
-                  <div style="background-image:url('/assets/images/news-preview3of3.jpg')" class="news-thumb-image">
-                    <div class="share"><img src="/assets/images/share.png"></div>
-                  </div>
-                  <div class="news-details">
-                    <time datetime="2015-08-09 20:00" class="text-uppercase">04 August 2015</time>
-                    <h3 class="text-uppercase"> <a>Oyster Yachts at Boot Dusseldorf 2016</a></h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris <a class="read-more">READ MORE</a></p>
-                  </div>
-                </div>
-              </li>
+
+              {/exp:channel:entries}
+
             </ul>
           </div>
           <div class="text-center"><a href="" class="button-solid-blue">View News Library</a></div>
@@ -61,27 +44,18 @@
     <section class="press-articles">
       <div class="banner">Latest Press Articles</div>
       <div class="row press-list">
-            <figure class="external-file column large-4 medium-6 small-12">
-              <div style="background-image:url('/assets/images/boat-magazine-2.jpg')" class="external-file-thumb"></div>
-              <figcaption class="external-file-info">
-                    <time datetime="2016-1" class="text-uppercase">January 2016</time><a class="external-file-name text-uppercase">Asia Pacific Boating</a>
-                    <p>The British may have a reputation for reserve and restraint, but beneath this there’s often a cunning stealth...</p><a href="" class="button-solid-white external-file-btn text-uppercase">Read Article <span class="external-file-size">(2.3MB)</span></a>
-              </figcaption>
-            </figure>
-            <figure class="external-file column large-4 medium-6 small-12">
-              <div style="background-image:url('/assets/images/boat-magazine.jpg')" class="external-file-thumb"></div>
-              <figcaption class="external-file-info">
-                    <time datetime="2016-1" class="text-uppercase">January 2016</time><a class="external-file-name text-uppercase">Asia Pacific Boating</a>
-                    <p>The British may have a reputation for reserve and restraint, but beneath this there’s often a cunning stealth...</p><a href="" class="button-solid-white external-file-btn text-uppercase">Read Article <span class="external-file-size">(2.3MB)</span></a>
-              </figcaption>
-            </figure>
-            <figure class="external-file column large-4 medium-6 small-12">
-              <div style="background-image:url('/assets/images/boat-magazine.jpg')" class="external-file-thumb"></div>
-              <figcaption class="external-file-info">
-                    <time datetime="2016-1" class="text-uppercase">January 2016</time><a class="external-file-name text-uppercase">Asia Pacific Boating</a>
-                    <p>The British may have a reputation for reserve and restraint, but beneath this there’s often a cunning stealth...</p><a href="" class="button-solid-white external-file-btn text-uppercase">Read Article <span class="external-file-size">(2.3MB)</span></a>
-              </figcaption>
-            </figure>
+            {exp:channel:entries channel="press_coverage" disable="member_data|category_fields|pagination" cache="no" refresh="60" status="published" sort="desc" limit="3"}
+
+    <figure class="external-file column large-4 medium-6 small-12">
+      <div {press_image}style="background-image:url('{image:url}')"{/press_image} class="external-file-thumb"></div>
+      <figcaption class="external-file-info">
+        <time datetime="{entry_date format="%Y-%m"}" class="text-uppercase">{entry_date format="%F %Y"}</time><a class="external-file-name text-uppercase">{title}</a>
+        {press_about}
+        <a href="{press_pdf}" target="_blank" class="button-solid-white external-file-btn text-uppercase">Read Article <span class="external-file-size">{press_pdf}<span>(<?php echo number_format({file_size} / (1024*1024), 1); ?>MB)</span>{/press_pdf}</span></a>
+      </figcaption>
+    </figure>
+
+    {/exp:channel:entries}
       </div>
       <div class="text-center"><a href="" class="button-solid-blue">View Press Articles</a></div>
     </section>

@@ -41,7 +41,7 @@
 	    <meta name="theme-color" content="#ffffff">
 	</head>
 	<body>
-		<header {if segment_2 == "fleet" && segment_3 != ""}data-snap-to-min-nav=".full-screen #yacht-nav" data-snap-offset="55"{if:else}data-snap-to-min-nav="90" data-snap-offset="undefined"{/if} class="global-header">
+		<header {if segment_2 == "fleet" && segment_3 != ""}data-snap-to-min-nav=".hero #global-page-filters" data-snap-offset="55"{if:elseif segment_1 == "world-rally"}data-snap-to-min-nav="undefined" data-snap-offset="undefined"{if:else}data-snap-to-min-nav="90" data-snap-offset="undefined"{/if} class="global-header">
 			<div class="owners-area"><a href="" class="text-uppercase float-right owners-area-text">owners area</a>
 				<div class="follow float-right">
 					<div class="social-links">

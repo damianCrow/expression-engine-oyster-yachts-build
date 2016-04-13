@@ -1,9 +1,12 @@
 'use strict';
 
-define(['jquery', 'cycle', 'ScrollMagic', 'foundation', 'masonry', 'lightgallery', 'lightgalleryThumbs', 'select2', 'owlcarousel', 'components/header/header', './brokerage/brokerage', './index'], function ($, cycle, ScrollMagic, Foundation, masonry) {
+define(['jquery', 'cycle', 'ScrollMagic', 'foundation', 'masonry', /*'jquery-bridget',*/'lightgallery', 'lightgalleryThumbs', 'select2', 'owlcarousel', 'components/header/header', './brokerage/brokerage', './index'], function ($, cycle, ScrollMagic, Foundation, Masonry /*, jQueryBridget*/) {
 
 	// initilise foundation
 	$(document).foundation();
+
+	/*// make Masonry a jQuery plugin
+    jQueryBridget( 'masonry', Masonry, $ );*/
 
 	//  ---- BACK BUTTON ON HERO BANNERS FUNCTIONALITY -----  //
 	$('#page-back-button').on('click', function (evt) {
@@ -175,7 +178,6 @@ define(['jquery', 'cycle', 'ScrollMagic', 'foundation', 'masonry', 'lightgallery
 	// ---- *end* GLOBAL STICKY SIDEBAR *end* ----	
 
 	//  ---- GLOBAL FOOTER SIGN UP BOX -----  //
-
 	$('.sign-up-btn').on('click', function () {
 		var btn = this;
 		var nope = false;
@@ -240,6 +242,7 @@ define(['jquery', 'cycle', 'ScrollMagic', 'foundation', 'masonry', 'lightgallery
 
 	//  ---- *end* GLOBAL FOOTER SIGN UP BOX *end* -----  //
 
+	//  ---- VIEW GALLERY (lightgallery) POP UP -----  //
 	$('#layout-slider').cycle({
 		slides: '> div',
 		paused: true,
@@ -266,12 +269,18 @@ define(['jquery', 'cycle', 'ScrollMagic', 'foundation', 'masonry', 'lightgallery
 
 		$('.gallery-content a:first').trigger('click');
 	});
+	// ---- *end* VIEW GALLERY (lightgallery) POP UP *end* ----	
 
-	/*$('.grid').masonry({
- 	// options...
- 	itemSelector: '.grid-item',
+	//  ---- MASONRY.JS CONFIGUARATION -----  //
+
+	// World rally news page masonry config
+	/*var $worldRallyNews = $(".news-panes");
+ console.log($worldRallyNews);
+ 	var $msnry = new Masonry($worldRallyNews, {
+ 	// options
+ 	itemSelector: '.news-pane',
  	columnWidth: 200
- });
- */
+ });*/
+	// ---- *end* MASONRY.JS CONFIGUARATION *end* ----	
 });
 //# sourceMappingURL=app.js.map
