@@ -1,12 +1,12 @@
 'use strict';
 
-define(['jquery', 'cycle', 'ScrollMagic', 'foundation', 'masonry', /*'jquery-bridget',*/'lightgallery', 'lightgalleryThumbs', 'select2', 'owlcarousel', 'components/header/header', './brokerage/brokerage', './index'], function ($, cycle, ScrollMagic, Foundation, Masonry /*, jQueryBridget*/) {
+define(['jquery', 'cycle', 'ScrollMagic', 'foundation', 'masonry', /*'jquery-bridget',*/'lightgallery', 'lightgalleryThumbs', 'select2', 'jqueryValidation', 'owlcarousel', 'components/header/header', './brokerage/brokerage', './index'], function ($, cycle, ScrollMagic, Foundation, Masonry /*, jQueryBridget*/) {
 
 	// initilise foundation
 	$(document).foundation();
 
 	/*// make Masonry a jQuery plugin
-    jQueryBridget( 'masonry', Masonry, $ );*/
+ jQueryBridget( 'masonry', Masonry, $ );*/
 
 	//  ---- BACK BUTTON ON HERO BANNERS FUNCTIONALITY -----  //
 	$('#page-back-button').on('click', function (evt) {
@@ -241,6 +241,110 @@ define(['jquery', 'cycle', 'ScrollMagic', 'foundation', 'masonry', /*'jquery-bri
 	}
 
 	//  ---- *end* GLOBAL FOOTER SIGN UP BOX *end* -----  //
+
+	//  ---- YACHTS REGISTER FORM -----  //
+
+	$('.address-fill-out').on('click', '.add-address-line', function () {
+		var addressLineLength = $('.address-line').length;
+		var newAddressLineNum = addressLineLength + 1;
+		if (addressLineLength < 5) {
+			var newClone = $('.last-address-line').clone();
+			newClone.insertAfter('.last-address-line');
+			if (addressLineLength > 3) {
+				$('.last-address-line button').css('display', 'none');
+			} else {
+				// For whatever reason, the modal closes when removing the button, so hiding it instead.
+				$('.last-address-line:eq(0) button').css('display', 'none');
+				$('.last-address-line:eq(0)').removeClass('last-address-line');
+			};
+
+			$('.last-address-line:last label').attr({
+				'for': 'addressline' + newAddressLineNum
+			});
+
+			$('.last-address-line:last input').attr({
+				name: 'addressline' + newAddressLineNum,
+				id: 'addressline' + newAddressLineNum,
+				placeholder: 'Address Line ' + newAddressLineNum
+			});
+		}
+	});
+
+	$('#spec-form').validate({
+		// errorPlacement: function(error, element) {
+		// 	console.log('error placement');
+		// 	error.appendTo( element.parent("td").next("td") );
+		// },
+		// showErrors: function(errorMap, errorList) {
+
+		// 	$("#spec-form .form-error").addClass('visible');
+		// 	$("#spec-form .form-error").html("Error: "
+		// 		+ this.numberOfInvalids()
+		// 		+ " invalid or incomplete fields");
+		// },
+		errorLabelContainer: "#spec-form .form-error .error-messages",
+		showErrors: function showErrors(errorMap, errorList) {
+			if (this.numberOfInvalids() == 0) {
+				$("#spec-form .form-error").removeClass('visible');
+			} else {
+				$("#spec-form .form-error").addClass('visible');
+				$("#spec-form .form-error > span").html("Your form contains " + this.numberOfInvalids() + " errors, see highlighted fields below.");
+				this.defaultShowErrors();
+			}
+		},
+		highlight: function highlight(element, errorClass, validClass) {
+			console.log('highlight boom');
+			// $("#spec-form .form-error").addClass('visible');
+			$(element).parent('li').addClass('error').removeClass(validClass);
+			$(element.form).find("label[for=" + element.id + "]").addClass(errorClass);
+		},
+		unhighlight: function unhighlight(element, errorClass, validClass) {
+			console.log('unhighlight');
+			console.log('this', this);
+
+			console.log('allFalse(this.invalid)', allFalse(this.invalid));
+
+			$(element).parent('li').removeClass('error').addClass(validClass);
+			$(element.form).find("label[for=" + element.id + "]").removeClass(errorClass);
+		},
+		submitHandler: function submitHandler(form) {
+			// do other things for a valid form
+			form.submit();
+		},
+		rules: {
+			rules: {
+				maxlength: 800
+			},
+			email: {
+				required: true,
+				email: true
+			},
+			tel: {
+				maxlength: 15
+			},
+			'current-yacht-make': {
+				maxlength: 300
+			},
+			'current-yacht-model': {
+				maxlength: 300
+			},
+			postcode: {
+				maxlength: 100
+			}
+		}
+	});
+
+	function allFalse(obj) {
+		for (var i in obj) {
+			if (obj[i] === false) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+	}
+
+	//  ---- *end* YACHTS REGISTER FORM *end* -----  //
 
 	//  ---- VIEW GALLERY (lightgallery) POP UP -----  //
 	$('#layout-slider').cycle({

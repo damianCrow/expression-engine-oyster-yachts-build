@@ -11,6 +11,7 @@ require.config({
     lightgalleryThumbs: 'lib/lightgallery/lg-thumbnail',
     ScrollMagic: '/bower_components/scrollmagic/scrollmagic/minified/ScrollMagic.min',
     select2: '/bower_components/select2/dist/js/select2.full.min',
+    jqueryValidation: '/bower_components/jquery-validation/dist/jquery.validate.min',
     owlcarousel: '/bower_components/owl.carousel/dist/owl.carousel.min',
     masonry: '/bower_components/masonry/dist/masonry.pkgd'
   },

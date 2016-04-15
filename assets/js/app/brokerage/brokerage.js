@@ -1,4 +1,6 @@
 'use strict';
 
-define(['jquery', 'ScrollMagic', "foundation", "lodash"], function ($, ScrollMagic, Foundation) {});
+define(['jquery', 'components/util/filters'], function ($, Filters) {
+	new Filters();
+});
 //# sourceMappingURL=brokerage.js.map

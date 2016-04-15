@@ -1,0 +1,39 @@
+<?php 
+
+$filter = false;
+
+if (isset($_POST['model'])) {
+	if ($_POST['model'] !== "" && "{embed:model}" !== $_POST['model']) {
+		$filter = true;
+	}
+}
+
+if (isset($_POST['location'])) {
+	if ($_POST['location'] !== "" && "{embed:location}" !== $_POST['location']) {
+		$filter = true;
+	}
+}
+
+if (isset($_POST['status'])) {
+	if ($_POST['status'] !== "" && "{embed:status}" !== $_POST['status']) {
+		$filter = true;
+	}
+}
+
+if (isset($_POST['price'])) {
+	if ($_POST['price'] != "") {
+		$priceRange = explode('-', $_POST['price']);
+		$priceRange[0] = (int) $priceRange[0];
+		$priceRange[1] = (int) $priceRange[1];
+
+		if (($priceRange[0] > 0 && (int) {embed:price} < $priceRange[0]) || ($priceRange[1] > 0 && (int) {embed:price} > $priceRange[1])) {
+			$filter = true;
+		}
+	}
+}
+
+if ($filter) {
+	echo ' hide';
+}
+
+?>
