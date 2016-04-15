@@ -1,10 +1,9 @@
 {exp:channel:entries channel="brokerage_landing_page" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published" limit="1"}
 {if no_results}{redirect="404"}{/if}
 
-{header}
+{embed="site/.header" snap_to=".hero #global-page-filters" snap_offset="55"}
 
-<section style="background-image: url('{brokerage_header_image}{image:url}{/brokerage_header_image}')" class="hero after-nav global-page-hero global-page-hero--medium">
-	{back_button}
+<section style="background-image: url('{brokerage_header_image}{image:url}{/brokerage_header_image}')" class="hero after-nav global-page-hero yacht-listing-photo global-page-hero--medium">
 	{embed="brokerage/.filters" post="true"}
 </section>
 

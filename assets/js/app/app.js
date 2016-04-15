@@ -1,12 +1,9 @@
 'use strict';
 
-define(['jquery', 'cycle', 'ScrollMagic', 'foundation', 'masonry', /*'jquery-bridget',*/'lightgallery', 'lightgalleryThumbs', 'select2', 'jqueryValidation', 'owlcarousel', 'components/header/header', './brokerage/brokerage', './index'], function ($, cycle, ScrollMagic, Foundation, Masonry /*, jQueryBridget*/) {
+define(['jquery', 'cycle', 'ScrollMagic', 'foundation', 'salvattore', 'lightgallery', 'lightgalleryThumbs', 'select2', 'jqueryValidation', 'owlcarousel', 'components/header/header', './brokerage/brokerage', './index'], function ($, cycle, ScrollMagic, Foundation, Salvattore) {
 
 	// initilise foundation
 	$(document).foundation();
-
-	/*// make Masonry a jQuery plugin
- jQueryBridget( 'masonry', Masonry, $ );*/
 
 	//  ---- BACK BUTTON ON HERO BANNERS FUNCTIONALITY -----  //
 	$('#page-back-button').on('click', function (evt) {
@@ -271,17 +268,6 @@ define(['jquery', 'cycle', 'ScrollMagic', 'foundation', 'masonry', /*'jquery-bri
 	});
 
 	$('#spec-form').validate({
-		// errorPlacement: function(error, element) {
-		// 	console.log('error placement');
-		// 	error.appendTo( element.parent("td").next("td") );
-		// },
-		// showErrors: function(errorMap, errorList) {
-
-		// 	$("#spec-form .form-error").addClass('visible');
-		// 	$("#spec-form .form-error").html("Error: "
-		// 		+ this.numberOfInvalids()
-		// 		+ " invalid or incomplete fields");
-		// },
 		errorLabelContainer: "#spec-form .form-error .error-messages",
 		showErrors: function showErrors(errorMap, errorList) {
 			if (this.numberOfInvalids() == 0) {
@@ -293,17 +279,10 @@ define(['jquery', 'cycle', 'ScrollMagic', 'foundation', 'masonry', /*'jquery-bri
 			}
 		},
 		highlight: function highlight(element, errorClass, validClass) {
-			console.log('highlight boom');
-			// $("#spec-form .form-error").addClass('visible');
 			$(element).parent('li').addClass('error').removeClass(validClass);
 			$(element.form).find("label[for=" + element.id + "]").addClass(errorClass);
 		},
 		unhighlight: function unhighlight(element, errorClass, validClass) {
-			console.log('unhighlight');
-			console.log('this', this);
-
-			console.log('allFalse(this.invalid)', allFalse(this.invalid));
-
 			$(element).parent('li').removeClass('error').addClass(validClass);
 			$(element.form).find("label[for=" + element.id + "]").removeClass(errorClass);
 		},
@@ -334,17 +313,139 @@ define(['jquery', 'cycle', 'ScrollMagic', 'foundation', 'masonry', /*'jquery-bri
 		}
 	});
 
-	function allFalse(obj) {
-		for (var i in obj) {
-			if (obj[i] === false) {
-				return true;
-			} else {
-				return false;
-			}
+	//  ---- *end* YACHTS REGISTER FORM *end* -----  //
+
+	//  ---- SHORTLIST LOGIC -----  //
+
+	var shortlistYachts = [];
+
+	$('.add-to-shortlist').on('click', function () {
+
+		var localStorageSl = JSON.parse(localStorage.getItem("localShortlist"));
+		console.log('localStorageSl', localStorageSl);
+		// Is there a local storage list?
+
+		// if (localStorageSl != null){
+		if (localStorageSl != null && localStorageSl.length > 0) {
+			console.log('localStorageSl is not null');
+			console.log('pulling local storage list: ', localStorageSl);
+			shortlistYachts = localStorageSl;
 		}
+		// };
+
+		console.log("Checking new item with list");
+		addToShortlist(this);
+
+		console.log('Saving new list to localStorage');
+		// if($(shortlistYachts).length > 0){
+		if ($(shortlistYachts).length > 0) {
+			localStorage.setItem("localShortlist", JSON.stringify(shortlistYachts));
+		};
+	});
+
+	// Pull the info, check it and put it in the object if it's not already
+	function addToShortlist(item) {
+		var yachtContainer = $(item).parents('[data-yachtid]'),
+		    yachtId = $(yachtContainer).data('yachtid'),
+		    yachtImage = $(yachtContainer).find('.yacht-listing-photo'),
+		    yachtModal = $(yachtContainer).find('.yacht-list-modal').text(),
+		    yachtName = $(yachtContainer).find('.yacht-list-name').text(),
+		    yachtSection = $(yachtContainer).data('yachtsection');
+
+		console.log('yachtImage.length', yachtImage.length);
+
+		if (yachtImage.length == 0) {
+			console.log('yes hero');
+			yachtImage = ripBgUrl(yachtContainer);
+		} else {
+			yachtImage = ripBgUrl(yachtImage);
+		}
+
+		// yachtImage = ripBgUrl($(yachtContainer).find('.yacht-listing-photo')),
+
+		console.log('yachtName', yachtName);
+		console.log('yachtModal', yachtModal);
+
+		// Check if this yacht is on the shortlist already
+		var shortlistCheck = $.grep(shortlistYachts, function (e) {
+			console.log(e);
+			return e.yachtid == yachtId;
+		});
+
+		if (shortlistCheck.length) {
+			// This is already on the shortlist
+			console.log('this item is already on the list, not adding', shortlistCheck.length);
+			// console.log('shortlistCheck', shortlistCheck);
+		} else {
+				var ripYachtDetails = new yachtDetails(yachtId, yachtImage, yachtModal, yachtName, yachtSection);
+
+				console.log('this item is new, add it to the list.');
+				// Push the yacht details into the shortlist array.
+				shortlistYachts.push(ripYachtDetails);
+				// Now push it to the dom.
+			}
+
+		// Now add the items emptied from the DOM onto the list
+		displayOnShortlist();
+
+		console.log('Saved yachts', shortlistYachts);
 	}
 
-	//  ---- *end* YACHTS REGISTER FORM *end* -----  //
+	function yachtDetails(yachtid, image, yachtmodal, name, yachtSection) {
+		this.yachtid = yachtid;
+		this.image = image;
+		this.yachtmodal = yachtmodal;
+		this.name = name;
+		this.yachtSection = yachtSection;
+	};
+
+	function ripBgUrl(container) {
+		var bgCss = $(container).css('background-image');
+		return bgCss.replace('url(', '').replace(')', '').replace(/['"]+/g, '');
+	}
+
+	// Display the yachts saved in the shortlist array into a list in the DOM
+	function displayOnShortlist() {
+
+		// Empty what might be there
+		$('#shortlistModal .yachts-shortlist').empty();
+
+		console.log('each loop of shortlistYachts');
+		$.each(shortlistYachts, function (key, yachtOnList) {
+
+			var backgroundImage = '<div class="yacht-listing-photo" style="background-image: url(' + yachtOnList.image + ')"></div>';
+			var removeButton = '<button class="remove-button"></button>';
+			var completeYachtList = '<li class="column medium-6 small-12"><div data-yachtid=' + yachtOnList.yachtid + ' data-yachtsection=' + yachtOnList.yachtSection + ' class="yacht-list-item"><a href="">' + backgroundImage + '<div class="yacht-listing-title"><span class="yacht-list-modal">' + yachtOnList.yachtmodal + '</span><span class="yacht-list-name double-slash">' + yachtOnList.name + '</span></div></a>' + removeButton + '</div></li>';
+
+			$('#shortlistModal .yachts-shortlist').append(completeYachtList);
+		});
+		enableRemoveFromList();
+	}
+
+	function enableRemoveFromList() {
+		$('.yachts-shortlist').on('click', '.remove-button', function (e) {
+			e.preventDefault();
+
+			var yachtToRemove = $(this).parents('[data-yachtid]');
+			var yachtToRemoveId = $(yachtToRemove).data('yachtid');
+
+			console.log('yachtToRemoveId = ', yachtToRemoveId);
+
+			var refinedList = $.grep(shortlistYachts, function (e) {
+				console.log('e', e);
+				return e.yachtid != yachtToRemoveId;
+			});
+
+			shortlistYachts = refinedList;
+
+			localStorage.setItem("localShortlist", JSON.stringify(shortlistYachts));
+
+			$(yachtToRemove).parent('.column').css('display', 'none');
+			// $(yachtToRemove).parent().html('test');
+		});
+	}
+
+	//  ---- *end* SHORTLIST LOGIC *end* -----  //
 
 	//  ---- VIEW GALLERY (lightgallery) POP UP -----  //
 	$('#layout-slider').cycle({
@@ -375,16 +476,7 @@ define(['jquery', 'cycle', 'ScrollMagic', 'foundation', 'masonry', /*'jquery-bri
 	});
 	// ---- *end* VIEW GALLERY (lightgallery) POP UP *end* ----	
 
-	//  ---- MASONRY.JS CONFIGUARATION -----  //
-
-	// World rally news page masonry config
-	/*var $worldRallyNews = $(".news-panes");
- console.log($worldRallyNews);
- 	var $msnry = new Masonry($worldRallyNews, {
- 	// options
- 	itemSelector: '.news-pane',
- 	columnWidth: 200
- });*/
-	// ---- *end* MASONRY.JS CONFIGUARATION *end* ----	
+	//  ---- salvattore.JS CONFIGUARATION -----  //
+	// ---- *end* salvattore.JS CONFIGUARATION *end* ----	
 });
 //# sourceMappingURL=app.js.map

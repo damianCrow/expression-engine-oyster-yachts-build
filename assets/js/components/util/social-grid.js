@@ -1,6 +1,6 @@
 'use strict';
 
-define(['jquery', './social-mock-data'], function ($, socialItems) {
+define(['jquery'], function ($) {
 
 	/**
   * Social Item object

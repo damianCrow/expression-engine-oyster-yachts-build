@@ -1,7 +1,7 @@
 <nav class="navigation row">
 	<div class="global-header-top-nav hide-for-large"><a href="{site_url}" class="logo-tiny"><img src="/assets/images/logo_small.png" alt="logo mini"></a>
 		<div class="small-8 small-centered columns">
-			<h4 data-open="global-navigation-modal" class="text-center">Brokerage</h4>
+			<h4 data-open="global-navigation-modal" class="text-center"></h4>
 		</div><a data-open="global-navigation-modal" class="site-menu"><i class="fa fa-bars"></i></a>
 	</div>
 	<div class="global-header-top-nav-large show-for-large"><a href="{site_url}" class="logo-large"><img src="/assets/images/logo.png" alt="logo mini"></a><a href="{site_url}" class="logo-tiny"><img src="/assets/images/logo_small.png" alt="logo mini"></a>
@@ -164,10 +164,10 @@
 				</ul>
 			</li>
 			<li{if segment_1 == "events"} class="active is-active"{/if}>
-				<a href="" class="text-uppercase">events</a>
+				<a href="{path='events'}" class="text-uppercase">events</a>
 				<ul>
 					<li>
-						<a href="">
+						<a href="{path='events/regatta-calendar'}">
 							<div style="background-position: 0px 71.5%" class="sub-nav-image"></div>
 							<span class="text-uppercase">regatta calendar</span>
 						</a>
@@ -250,7 +250,7 @@
 <div id="global-navigation-modal" data-reveal class="full reveal">
 	<header class="top-nav-modal"><a href="/" class="logo-wrapper"><img src="/assets/images/logo_small.png" alt="logo mini"></a>
 		<div class="small-8 small-centered columns">
-			<h4 class="text-center">Brokerage</h4>
+			<h4 class="text-center"></h4>
 		</div>
 		<div data-close aria-label="Close modal" class="close-button-wrapper"><a class="site-search-close"></a></div>
 	</header>
@@ -355,13 +355,13 @@
 				<button type="button" class="button follow-btn text-uppercase">Follow oyster</button>
 			</div>
 			<div class="medium-9 columns show-for-medium">
-				<div class="social-icons"><i class="fa fa-facebook"> </i><i class="fa fa-twitter"></i><i class="fa fa-youtube-play"></i><i class="fa fa-instagram"></i></div>
-			</div>
+				<div class="social-icons social-invert social-background"><a href="https://www.facebook.com/oystermarine" target="_blank" class="facebook-icon"><i class="fa fa-facebook-official"></i></a><a href="https://twitter.com/OysterMarine" target="_blank" class="twitter-icon"><i class="fa fa-twitter"></i></a><a href="https://www.youtube.com/user/oystermarine" target="_blank" class="youtube-icon"><i class="fa fa-youtube-play"></i></a><a href="https://www.instagram.com/oysteryachts/" target="_blank" class="instagram-icon"><i class="fa fa-instagram"></i></a></div>
+            </div>
 			<div class="small-6 medium-3 columns"><a href="#" class="button text-uppercase">owners' area</a></div>
 			<div class="small-12 columns social-links end">
 				<div class="back-btn"><img src="/assets/images/arrow_left.png"></div>
-				<div class="social-icons"><i class="fa fa-facebook"> </i><i class="fa fa-twitter"></i><i class="fa fa-youtube-play"></i><i class="fa fa-instagram"></i></div>
-			</div>
+				<div class="social-icons social-invert social-background"><a href="https://www.facebook.com/oystermarine" target="_blank" class="facebook-icon"><i class="fa fa-facebook-official"></i></a><a href="https://twitter.com/OysterMarine" target="_blank" class="twitter-icon"><i class="fa fa-twitter"></i></a><a href="https://www.youtube.com/user/oystermarine" target="_blank" class="youtube-icon"><i class="fa fa-youtube-play"></i></a><a href="https://www.instagram.com/oysteryachts/" target="_blank" class="instagram-icon"><i class="fa fa-instagram"></i></a></div>
+            </div>
 		</div>
 	</footer>
 </div>

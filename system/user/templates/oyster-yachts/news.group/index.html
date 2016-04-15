@@ -1,63 +1,66 @@
-{header}
+{embed="site/.header" snap_to="undefined" snap_offset="undefined"}
 
-<section style="background-image: url('/assets/images/news-hero.jpg'); " class="hero after-nav global-page-hero global-page-hero--medium">
-      {back_button}
-    </section>
-        <section id="news-thumbs" class="news-thumbs">
-          <div class="banner">Latest News</div>
-          <div class="row wrapper">
-            <ul>
+<section style="background-image: url('/assets/images/news-hero.jpg'); " class="hero after-nav global-page-hero yacht-listing-photo global-page-hero--medium">
+	{back_button}
+</section>
 
-              {exp:channel:entries channel="news" disable="member_data|category_fields|pagination" cache="no" refresh="60" status="published" sort="desc"}
+<section id="news-thumbs" class="news-thumbs">
+	<div class="banner">Latest News</div>
+	<div class="row wrapper">
+		<ul>
 
-              <li class="columns medium-4 small-6">
-                <div class="content">
-                  <div {article_main_image}style="background-image:url('{image:url}')"{/article_main_image} class="news-thumb-image">
-                    <div class="share"><img src="/assets/images/share.png"></div>
-                  </div>
-                  <div class="news-details">
-                    <time datetime="{entry_date format="%Y-%m-%d %H:%i"}" class="text-uppercase">{entry_date format="%d %F %Y"}</time>
-                    <h3 class="text-uppercase"><a href="{url_title_path='news/article'}">{title}</a></h3>
-                    {article_excerpt}
-                    <a href="{url_title_path='news/article'}" class="read-more">READ MORE</a>
-                     </div>
-                </div>
-              </li>
+			{exp:channel:entries channel="news" disable="member_data|category_fields|pagination" cache="no" refresh="60" status="published" sort="desc"}
 
-              {/exp:channel:entries}
+			<li class="columns medium-4 small-6">
+				<div class="content">
+					<div {article_main_image}style="background-image:url('{image:url}')"{/article_main_image} class="news-thumb-image">
+						{share_buttons}
+					</div>
+					<div class="news-details">
+						<time datetime="{entry_date format="%Y-%m-%d %H:%i"}" class="text-uppercase">{entry_date format="%d %F %Y"}</time>
+						<h3 class="text-uppercase"><a href="{url_title_path='news/article'}">{title}</a></h3>
+						{article_excerpt}
+						<a href="{url_title_path='news/article'}" class="read-more">READ MORE</a>
+					</div>
+				</div>
+			</li>
 
-            </ul>
-          </div>
-          <div class="text-center"><a href="" class="button-solid-blue">View News Library</a></div>
-        </section>
-    <section class="magazine-feature">
-      <div style="background-image: url('/assets/images/water-bg.jpg')" class="magazine-full-feature">
-        <div class="magazine-content row row-pad">
-          <div class="description medium-7 small-12">
-            <h2>Oyster Magazine<span>Issue 77</span></h2>
-            <p>Issue 77 of our Oyster magazine is now available. This issue includes Lorem ipsum do sit amet, consectetur adipiscing elit. Maecenas eget neque rhoncus, molestie massa eu, accumsan felis. Nam arcu justo, mollis in varius at, commodo eget quam. Read the digital version of the magazine by clicking the link below.</p><a class="button-solid-white">Read on Issuu</a>
-          </div><img src="/assets/images/magazines.png" class="magazine-thumb medium-5 small-12">
-        </div>
-      </div>
-      <div class="text-center"><a href="" class="button-solid-blue">View Magazine Archive</a></div>
-    </section>
-    <section class="press-articles">
-      <div class="banner">Latest Press Articles</div>
-      <div class="row press-list">
-            {exp:channel:entries channel="press_coverage" disable="member_data|category_fields|pagination" cache="no" refresh="60" status="published" sort="desc" limit="3"}
+			{/exp:channel:entries}
 
-    <figure class="external-file column large-4 medium-6 small-12">
-      <div {press_image}style="background-image:url('{image:url}')"{/press_image} class="external-file-thumb"></div>
-      <figcaption class="external-file-info">
-        <time datetime="{entry_date format="%Y-%m"}" class="text-uppercase">{entry_date format="%F %Y"}</time><a class="external-file-name text-uppercase">{title}</a>
-        {press_about}
-        <a href="{press_pdf}" target="_blank" class="button-solid-white external-file-btn text-uppercase">Read Article <span class="external-file-size">{press_pdf}<span>(<?php echo number_format({file_size} / (1024*1024), 1); ?>MB)</span>{/press_pdf}</span></a>
-      </figcaption>
-    </figure>
+		</ul>
+	</div>
+	<div class="text-center"><a href="" class="button-solid-blue">View News Library</a></div>
+</section>
 
-    {/exp:channel:entries}
-      </div>
-      <div class="text-center"><a href="" class="button-solid-blue">View Press Articles</a></div>
-    </section>
+<section class="magazine-feature">
+	<div style="background-image: url('/assets/images/water-bg.jpg')" class="magazine-full-feature">
+		<div class="magazine-content row row-pad">
+			<div class="description medium-7 small-12">
+				<h2>Oyster Magazine<span>Issue 77</span></h2>
+				<p>Issue 77 of our Oyster magazine is now available. This issue includes Lorem ipsum do sit amet, consectetur adipiscing elit. Maecenas eget neque rhoncus, molestie massa eu, accumsan felis. Nam arcu justo, mollis in varius at, commodo eget quam. Read the digital version of the magazine by clicking the link below.</p><a class="button-solid-white">Read on Issuu</a>
+			</div><img src="/assets/images/magazines.png" class="magazine-thumb medium-5 small-12">
+		</div>
+	</div>
+	<div class="text-center"><a href="" class="button-solid-blue">View Magazine Archive</a></div>
+</section>
+
+<section class="press-articles">
+	<div class="banner">Latest Press Articles</div>
+	<div class="row press-list">
+		{exp:channel:entries channel="press_coverage" disable="member_data|category_fields|pagination" cache="no" refresh="60" status="published" sort="desc" limit="3"}
+
+		<figure class="external-file column large-4 medium-6 small-12">
+			<div {press_image}style="background-image:url('{image:url}')"{/press_image} class="external-file-thumb"></div>
+			<figcaption class="external-file-info">
+				<time datetime="{entry_date format="%Y-%m"}" class="text-uppercase">{entry_date format="%F %Y"}</time><a class="external-file-name text-uppercase">{title}</a>
+				{press_about}
+				<a href="{press_pdf}" target="_blank" class="button-solid-white external-file-btn text-uppercase">Read Article <span class="external-file-size">{press_pdf}<span>(<?php echo number_format({file_size} / (1024*1024), 1); ?>MB)</span>{/press_pdf}</span></a>
+			</figcaption>
+		</figure>
+
+		{/exp:channel:entries}
+	</div>
+	<div class="text-center"><a href="" class="button-solid-blue">View Press Articles</a></div>
+</section>
 
 {footer}

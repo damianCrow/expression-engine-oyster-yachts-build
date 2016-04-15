@@ -1,4 +1,4 @@
-<div id="brokerage-filters" class="filters">
+<div id="global-page-filters" data-local-subnav="data-local-subnav" class="filters">
 	<div class="row row-pad">
 		<div class="large-offset-1 large-10 end">
 			<form id="filters-form" method="POST" action="{path='brokerage/fleet'}"{if embed:post == "true"} data-post="true"{/if}>
@@ -29,8 +29,8 @@
 					<option value="2000000-0"{if post:price == "2000000-0"} selected="selected"{/if}>Over £2,000,000</option>
 				</select>
 			</div>
-			<div tabindex="-1" aria-hidden="true" class="filter-dropdown">
-				<select name="location" id="filter-location">
+			<div class="filter-dropdown">
+				<select name="location" id="filter-location" tabindex="-1" aria-hidden="true">
 					<option value="">Any location</option>
 					{exp:query sql="
 						SELECT DISTINCT field_id_4 AS location 
@@ -44,8 +44,8 @@
 					{/exp:query}
 				</select>
 			</div>
-			<div tabindex="-1" aria-hidden="true" class="filter-dropdown">
-				<select name="status" id="filter-status">
+			<div class="filter-dropdown">
+				<select name="status" id="filter-status" tabindex="-1" aria-hidden="true">
 					<option value="">Any status</option>
 					{exp:query sql="
 						SELECT DISTINCT cd.field_id_9 AS status 

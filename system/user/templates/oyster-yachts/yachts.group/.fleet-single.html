@@ -12,10 +12,10 @@ $query = ee()->db->query('SELECT * FROM exp_channel_images WHERE entry_id={entry
 $interiorGalleryImages = $query->num_rows();
 ?>
 
-{header}
+{embed="site/.header" snap_to=".full-screen #yacht-nav" snap_offset="55"}
 
 <section class="hero full-screen">
-	<div id="full-image" style="background-image: url('{yacht_main_image}{image:url}{/yacht_main_image}')">
+	<div id="full-image" style="background-image: url('{yacht_main_image}{image:url}{/yacht_main_image}');" class="yacht-listing-photo">
 		{back_button}
 		<div class="yacht-name">
 			<div class="row-pad">
@@ -312,7 +312,7 @@ $interiorGalleryImages = $query->num_rows();
 			<li class="columns medium-4 small-6">
 				<div class="content">
 					<div {parents:article_main_image}style="background-image:url('{image:url}')"{/parents:article_main_image} class="news-thumb-image">
-						<div class="share"><img src="/assets/images/share.png"></div>
+						{share_buttons}
 					</div>
 					<div class="news-details">
 						<time datetime="{parents:entry_date format="%Y-%m-%d %H:%i"}" class="text-uppercase">{parents:entry_date format="%d %F %Y"}</time>

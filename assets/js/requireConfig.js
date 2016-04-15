@@ -13,14 +13,11 @@ require.config({
     select2: '/bower_components/select2/dist/js/select2.full.min',
     jqueryValidation: '/bower_components/jquery-validation/dist/jquery.validate.min',
     owlcarousel: '/bower_components/owl.carousel/dist/owl.carousel.min',
-    masonry: '/bower_components/masonry/dist/masonry.pkgd'
+    salvattore: '/bower_components/salvattore/dist/salvattore.min'
   },
   shim: {
     'jquery': {
       exports: '$'
-    },
-    'lodash': {
-      exports: '_'
     },
     'lodash': {
       exports: '_'
@@ -41,6 +38,9 @@ require.config({
     'select2': [
       'jquery'
     ],
+    'jqueryValidation': [
+      'jquery'
+    ],
     'foundation': {
       deps: ['jquery'],
       exports: 'Foundation'
@@ -52,9 +52,10 @@ require.config({
     'owlcarousel': [
       'jquery'
     ],
-    'masonry': [
-      'jquery'
-    ],
+    'salvattore': {
+      deps: ['jquery'],
+      exports: 'Salvattore'
+    },
     'typekit': {
       exports: 'Typekit'
     }

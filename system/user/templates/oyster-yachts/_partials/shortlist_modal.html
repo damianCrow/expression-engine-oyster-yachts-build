@@ -1,0 +1,118 @@
+<div id="shortlistModal" role="dialog" aria-labelledby="dialog1Title" aria-describedby="dialog1Desc" data-reveal="" class="full-modal reveal brokerage-modal">
+	<h2 id="dialog1Title">Brokerage Shortlist</h2>
+	<div class="modal-content">
+		<p id="dialog1Desc" class="modal-instructions">For specifications on the following yachts please click the ‘Request’ button below. To add more to your shortlist please continue browsing the brokerage fleet.</p>
+		<ul class="yachts-shortlist row">
+		</ul>
+	</div>
+	<div class="modal-footer">
+		<div class="float-right"><a href="{path='brokerage/fleet'}" class="button-solid-lightgrey">Browse Fleet</a>
+			<button data-close data-open="formModal" aria-controls="formModal" aria-haspopup="true" tabindex="0" class="button-solid-blue">Request Specifications</button>
+		</div>
+	</div>
+	<button data-close aria-label="Close modal" type="button" class="close-button"><span aria-hidden="true">×</span></button>
+</div>
+<div id="formModal" role="dialog" aria-labelledby="dialog1Title" aria-describedby="dialog1Desc" data-reveal="" class="full-modal reveal brokerage-modal">
+	<h2 id="dialog1Title"></h2>
+	<form id="spec-form">
+		<div class="modal-content">
+			<p id="dialog1Desc" class="modal-instructions">Please complete the form below to receive your selected yacht specifications via email.</p>
+			<div class="request-spec">
+				<div class="form-error text-center text-uppercase"><span>ERROR: Invalid or incomplete fields</span><span class="error-messages"></span></div>
+				<fieldset>
+					<ol>
+						<li class="required-input">
+							<label for="titlename">Title *</label>
+							<input id="titlename" type="text" name="titlename" placeholder="Title" required="">
+						</li>
+						<li class="required-input">
+							<label for="firstname">First Name *</label>
+							<input id="firstname" type="text" name="firstname" placeholder="First Name" required="">
+						</li>
+						<li class="required-input">
+							<label for="lastname">Last Name *</label>
+							<input id="firstname" type="text" name="lastname" placeholder="Last Name" required="">
+						</li>
+					</ol>
+				</fieldset>
+				<fieldset class="address-fill-out">
+					<ol>
+						<li class="address-line first-address-line">
+							<label for="addressline1">Address Line 1 *</label>
+							<input id="addressline1" type="text" name="addressline1" placeholder="Address Line 1" required="">
+						</li>
+						<li class="address-line last-address-line">
+							<label for="addressline2">Address Line 2 *</label>
+							<input id="addressline2" type="text" name="addressline2" placeholder="Address Line 2">
+							<button type="button" class="add-address-line"><i class="add fa fa-plus"></i><span class="add-line">Add Address Line</span></button>
+						</li>
+						<li class="required-input column large-5">
+							<label for="country-slection">Country</label>
+							<select id="country-slection" name="country-slection">
+								<option>Africa</option>
+								<option>America</option>
+								<option>Australia</option>
+								<option>China</option>
+								<option selected>United Kingdom</option>
+								<option>Japan</option>
+								<option>India</option>
+								<option>Indonesia</option>
+							</select>
+						</li>
+						<li class="spec-postcode required-input column float-right">
+							<label for="postcode">Postcode / Zip code*</label>
+							<input id="postcode" name="postcode" required="" placeholder="Postcode / Zip code" type="text" class="column">
+						</li>
+					</ol>
+				</fieldset>
+				<fieldset>
+					<ol>
+						<li>
+							<label for="email">Email *</label>
+							<input id="email" type="email" name="email" placeholder="Email Address" title="Please enter a valid email" required="" class="required-input">
+						</li>
+						<li class="required-input">
+							<label for="tel">Phone Number *</label>
+							<input id="tel" type="tel" name="tel" pattern="d{10}" placeholder="Phone Number" required="" class="required-input">
+						</li>
+					</ol>
+				</fieldset>
+				<fieldset class="spec-current-yacht">
+					<ol>
+						<li>
+							<label for="current-yacht-make">Current Yacht Make *</label>
+							<input id="current-yacht-make" type="text" name="current-yacht-make" placeholder="Current Yacht Make">
+						</li>
+						<li>
+							<label for="current-yacht-model">Current Yacht Model *</label>
+							<input id="current-yacht-model" type="text" name="current-yacht-model" placeholder="Current Yacht Model">
+						</li>
+					</ol>
+				</fieldset>
+				<fieldset class="spec-additional-yacht">
+					<ol>
+						<li>
+							<label for="more-information">More Information *</label>
+							<textarea id="more-information" name="more-information" type="text" placeholder="Additional Information"></textarea>
+						</li>
+						<li class="row">
+							<label for="allow-more-information" class="request-more-info-confirmation required-input column large-8">Would you like to receive information and updates from Oyster Yachts via email?*</label>
+							<select id="request-information" name="request-information" required="" class="column large-2 float-right">
+								<option value="">Select</option>
+								<option value="Yes">Yes</option>
+								<option value="No">No</option>
+							</select>
+						</li>
+					</ol>
+				</fieldset>
+			</div><small>Your information will never be sold to any other company. Your data will be treated in accordance with the Data Protection Act 1998. Please see our Privacy Policy for more details. If you wish to update or delete the data you have voluntarily given us please contact us on +44 2380 831 010 or email sales@oysteryachts.com</small>
+		</div>
+		<div class="modal-footer">
+			<div class="modal-buttons">
+				<button href="" data-close data-open="shortlistModal" aria-controls="shortlistModal" id="cwf2f6-reveal" aria-haspopup="true" tabindex="0" aria-label="" type="button" class="button-solid-lightgrey show-for-medium">Edit Shortlist</button>
+				<button tabindex="0" type="submit" value="Submit" class="button-solid-blue request-spec-button">Request Specifications</button>
+			</div>
+		</div>
+		<button data-close aria-label="Close modal" type="button" class="close-button"><span aria-hidden="true">×</span></button>
+	</form>
+</div>

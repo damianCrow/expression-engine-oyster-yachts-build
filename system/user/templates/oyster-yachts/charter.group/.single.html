@@ -12,9 +12,9 @@ $query = ee()->db->query('SELECT * FROM exp_channel_images WHERE entry_id={entry
 $interiorGalleryImages = $query->num_rows();
 ?>
 
-{header}
+{embed="site/.header" snap_to=".full-screen #yacht-nav" snap_offset="55"}
 
-<section class="hero full-screen">
+<section class="hero full-screen yacht-listing-photo">
 	<div id="full-image" style="background-image: url('{charter_main_image}{image:url}{/charter_main_image}')">
 		{back_button}
 		<div class="yacht-name">
