@@ -64,9 +64,6 @@ $interiorGalleryImages = $query->num_rows();
 						<section class="overview columns small-6 medium-12">
 							{yacht_overview}
 						</section>
-						
-						
-
 					</div>
 				</aside>
 			</div>
@@ -132,44 +129,29 @@ $interiorGalleryImages = $query->num_rows();
 {/if}
 
 
+{if yacht_design_features:total_rows > 0}
 <section id="design-features" class="design-features">
 	<div class="banner">Design features</div>
 	<div class="content row row-pad">
-		<div class="large-4 small-6 content-col">
-			<div style="background-image:url('/assets/images/design-feature-1of3.jpg')" class="feature-image"></div>
-			<div class="feature-content">
-				<h4>Design Feature 1</h4>
-				<p>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
 
-				</p>
+		{yacht_design_features}
+		<div class="large-4 small-6 content-col">
+			<div style="background-image:url('{yacht_design_features:feature_image}')" class="feature-image"></div>
+			<div class="feature-content">
+				<h4>{yacht_design_features:feature_title}</h4>
+				{yacht_design_features:feature_description}
 			</div>
 		</div>
-		<div class="large-4 small-6 content-col">
-			<div style="background-image:url('/assets/images/design-feature-2of3.jpg')" class="feature-image"></div>
-			<div class="feature-content">
-				<h4>Design Feature 1</h4>
-				<p>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
+		{/yacht_design_features}
 
-				</p>
-			</div>
-		</div>
-		<div class="large-4 small-6 content-col">
-			<div style="background-image:url('/assets/images/design-feature-3of3.jpg')" class="feature-image"></div>
-			<div class="feature-content">
-				<h4>Design Feature 1</h4>
-				<p>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
-
-				</p>
-			</div>
-		</div>
 	</div>
 </section>
+{/if}
+
 
 <section id="specifications" class="specifications yachts-yacht-spec">
 	<div class="banner">Specifications</div>
+	{if yacht_dimensions:total_rows > 0}
 	<div class="content row row-pad">
 		<table class="table specs-table">
 			<tbody>
@@ -177,55 +159,33 @@ $interiorGalleryImages = $query->num_rows();
 					<td colspan="9" class="heading text-uppercase">Dimensions</td>
 				</tr>
 				<tr>
-					<th class="text-uppercase">LENGTH OVERALL- INC. PULPIT</th>
-					<th class="text-uppercase">LENGTH OF HULL</th>
-					<th class="text-uppercase">LENGTH OF WATERLINE</th>
-					<th class="text-uppercase">DRAFT STANDARD</th>
-					<th class="text-uppercase">LENGTH OF BEAM</th>
+					<th class="text-uppercase">Length Overall - Inc. Pulpit</th>
+					<th class="text-uppercase">Length of Hull</th>
+					<th class="text-uppercase">Length of Waterline</th>
+					<th class="text-uppercase">Beam</th>
 					<th class="text-uppercase">Draft Standard</th>
+					<th class="text-uppercase">Draft Shoal</th>
+					<th class="text-uppercase">Draft Centreboard Up</th>
+					<th class="text-uppercase">Draft Centreboard Down</th>
 				</tr>
+				{yacht_dimensions}
 				<tr>
-					<td>17.89 m</td>
-					<td>15.72 m</td>
-					<td>5.00 m</td>
-					<td>2.70 m</td>
-					<td>2.06 m</td>
-					<td>27,500 kg</td>
+					<td>{yacht_dimensions:length_overall}</td>
+					<td>{yacht_dimensions:length_of_hull}</td>
+					<td>{yacht_dimensions:length_of_waterline}</td>
+					<td>{yacht_dimensions:beam}</td>
+					<td>{yacht_dimensions:draft_standard}</td>
+					<td>{yacht_dimensions:draft_shoal}</td>
+					<td>{yacht_dimensions:draft_centreboard_up}</td>
+					<td>{yacht_dimensions:draft_centreboard_down}</td>
 				</tr>
-				<tr>
-					<td>58.8 ft</td>
-					<td>51.7 ft</td>
-					<td>16.5 ft</td>
-					<td>8.10 ft</td>
-					<td>6.9 ft</td>
-					<td>60,627 lb</td>
-				</tr>
-				<tr>
-					<th class="text-uppercase">DRAFT CENTREBOARD UP</th>
-					<th class="text-uppercase">DRAFT CENTREBOARD DOWN</th>
-					<th class="text-uppercase">Standard rig  and spar type</th>
-					<th class="text-uppercase">RIG OPTIONS</th>
-					<th class="text-uppercase">Ballast keel type</th>
-				</tr>
-				<tr>
-					<td>17.89 m</td>
-					<td>15.72 m</td>
-					<td>5.00 m</td>
-					<td>2.70 m</td>
-					<td>2.06 m</td>
-					<td>27,500 kg</td>
-				</tr>
-				<tr>
-					<td>58.8 ft</td>
-					<td>51.7 ft</td>
-					<td>16.5 ft</td>
-					<td>8.10 ft</td>
-					<td>6.9 ft</td>
-					<td>60,627 lb</td>
-				</tr>
+				{/yacht_dimensions}
 			</tbody>
 		</table>
 	</div>
+	{/if}
+
+	{if yacht_performance_features:total_rows > 0}
 	<div class="content row row-pad">
 		<table class="table specs-table">
 			<tbody>
@@ -233,32 +193,29 @@ $interiorGalleryImages = $query->num_rows();
 					<td colspan="9" class="heading text-uppercase">Preformance Features</td>
 				</tr>
 				<tr>
-					<th class="text-uppercase">LENGTH OVERALL- INC. PULPIT</th>
-					<th class="text-uppercase">LENGTH OF HULL</th>
-					<th class="text-uppercase">LENGTH OF WATERLINE</th>
-					<th class="text-uppercase">DRAFT STANDARD</th>
-					<th class="text-uppercase">LENGTH OF BEAM</th>
-					<th class="text-uppercase">Draft Standard</th>
+					<th class="text-uppercase">Displacement - Standard Keel</th>
+					<th class="text-uppercase">Typical Engine</th>
+					<th class="text-uppercase">Tanks - Fuel</th>
+					<th class="text-uppercase">Tanks - Water</th>
+					<th class="text-uppercase">Sail Area - Inc. 150% Foretriangle</th>
+					<th class="text-uppercase">Air Draft Approx - exc. Antennae</th>
 				</tr>
+				{yacht_performance_features}
 				<tr>
-					<td>17.89 m</td>
-					<td>15.72 m</td>
-					<td>5.00 m</td>
-					<td>2.70 m</td>
-					<td>2.06 m</td>
-					<td>27,500 kg</td>
+					<td>{yacht_performance_features:displacement_standard_keel}</td>
+					{if yacht_performance_features:count == 1}
+						<td rowspan="2">{yacht_performance_features:typical_engine}</td>
+					{/if}
+					<td>{yacht_performance_features:tanks_fuel}</td>
+					<td>{yacht_performance_features:tanks_water}</td>
+					<td>{yacht_performance_features:sail_area}</td>
+					<td>{yacht_performance_features:air_draft}</td>
 				</tr>
-				<tr>
-					<td>58.8 ft</td>
-					<td>51.7 ft</td>
-					<td>16.5 ft</td>
-					<td>8.10 ft</td>
-					<td>6.9 ft</td>
-					<td>60,627 lb</td>
-				</tr>
+				{/yacht_performance_features}
 			</tbody>
 		</table>
 	</div>
+	{/if}
 </section>
 
 <?php if ($layoutImages > 0): ?>

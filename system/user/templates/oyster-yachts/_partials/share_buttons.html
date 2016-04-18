@@ -1,3 +1,29 @@
 <div class="share">
-	<img src="/assets/images/share.png">
+	{if segment_1 == "brokerage"}
+	<button data-open="shortlistModal" class="add-to-shortlist tooltip-left add-to-shortlist-tooltip"><img src="/assets/images/add.png"></button>
+	{/if}
+
+	<button class="share-icon tooltip-left share-icon-tooltip"><img src="/assets/images/share.png"></button>
+	<ul class="share-list social-background hide">
+		<li class="twitter-icon">
+			<a href="http://twitter.com/share?text=Check out this yacht! &amp;url={url_title}&amp;hashtags=oysteryachts,boats,yachts" target="_blank" class="row collapse">
+				<div class="share-list-icon column small-3"><i class="fa fa-twitter"></i></div>
+				<div class="column small-9">Share on Twitter</div>
+			</a>
+		</li>
+		<li class="facebook-icon">
+			<a href="https://www.facebook.com/sharer/sharer.php?u={url_title}" target="_blank" class="row collapse">
+				<div class="share-list-icon column small-3"><i class="fa fa-facebook"></i></div>
+				<div class="column small-9">Share on Facebook</div>
+			</a>
+		</li>
+		<li class="email-icon">
+			<a href="mailto:?to=&amp;body=Here is the link: {url_title},&amp;subject=Check out this yacht" target="_blank" class="row collapse">
+				<div class="share-list-icon column small-3"><i class="fa fa-envelope"></i></div>
+				<div class="column small-9">Share via Email</div>
+			</a>
+		</li>
+	</ul>
+
+	
 </div>

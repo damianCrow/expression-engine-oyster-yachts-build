@@ -315,6 +315,27 @@ define(['jquery', 'cycle', 'ScrollMagic', 'foundation', 'salvattore', 'lightgall
 
 	//  ---- *end* YACHTS REGISTER FORM *end* -----  //
 
+	//  ---- SHARE BUTTON -----  //
+
+	$('.share .share-icon').on('click', function () {
+		var shareListBtn = this;
+		var shareListChosen = $(this).next('.share-list');
+		if ($(shareListChosen).hasClass('share-list-visible')) {
+			$(shareListChosen).removeClass('share-list-visible');
+			setTimeout(function () {
+				$(shareListChosen).addClass('hide');
+				// Remove the tooltip while the share-list is open.
+				$(shareListBtn).addClass('tooltip-left share-icon-tooltip');
+			}, 250);
+		} else {
+			$(shareListBtn).removeClass('tooltip-left share-icon-tooltip');
+			$(shareListChosen).removeClass('hide');
+			$(shareListChosen).addClass('share-list-visible');
+		}
+	});
+
+	//  ---- *end* SHARE BUTTON *end* -----  //
+
 	//  ---- SHORTLIST LOGIC -----  //
 
 	var shortlistYachts = [];
