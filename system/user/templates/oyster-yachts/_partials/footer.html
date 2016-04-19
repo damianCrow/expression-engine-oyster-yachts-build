@@ -155,6 +155,17 @@
 		ga('create', 'UA-XXXXX-X');
 		ga('send', 'pageview');
 	</script>
-	<script src="{site_url}bower_components/requirejs/require.js" data-main="{site_url}assets/js/requireConfig.js"></script>
+	<script src="{site_url}bower_components/requirejs/require.js"></script>
+	<script>
+	requirejs(['{site_url}assets/js/requireConfig.js'], function() {
+		{if segment_1 == ""}
+		requirejs(['oyster_home']);
+		{if:elseif segment_1 == "brokerage"}
+		requirejs(['oyster_brokerage']);
+		{if:elseif segment_1 == "charter"}
+		requirejs(['oyster_charter']);
+		{/if}
+	});
+	</script>
 </body>
 </html>

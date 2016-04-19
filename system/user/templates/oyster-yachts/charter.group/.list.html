@@ -11,7 +11,7 @@
 		<div id="yacht-grid" class="row">
 			<ul>
 				{exp:channel:entries channel="charter" disable="member_data|category_fields|pagination" cache="no" refresh="60" status="published" sort="desc"}
-				<li class="column large-4 size-small{if count == total_results} end{/if}">
+				<li class="column large-4 size-small{if count == total_results} end{/if}{embed="charter/.filter_hide" model="{charter_model}" guests="{charter_guests}" summer="{charter_summer}" winter="{charter_winter}"}" data-model="{charter_model}" data-guests="{charter_guests}" data-winter="{charter_winter}" data-summer="{charter_summer}">
 					<div class="listing-images">
 						<a href="{url_title_path='charter/fleet'}">
 							{charter_main_image}

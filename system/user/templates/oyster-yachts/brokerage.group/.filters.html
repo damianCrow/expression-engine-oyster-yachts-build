@@ -2,64 +2,65 @@
 	<div class="row row-pad">
 		<div class="large-offset-1 large-10 end">
 			<form id="filters-form" method="POST" action="{path='brokerage/fleet'}"{if embed:post == "true"} data-post="true"{/if}>
-			<div class="filter-dropdown">
-				<select id="filter-model" name="model" tabindex="-1" aria-hidden="true">
-					<option value="">All models</option>
-					{exp:query sql="
-						SELECT DISTINCT cd.field_id_24 AS model 
-						FROM exp_channel_data cd 
-						LEFT JOIN exp_channel_titles ct 
-							ON cd.entry_id = ct.entry_id 
-						WHERE cd.channel_id=1 
-							AND cd.field_id_24 != '---'
-							AND ct.status = 'Published'
-						ORDER BY cd.field_id_24 ASC"}
-						<option value="{model}"{if post:model == model} selected="selected"{/if}>{model}</option>
-					{/exp:query}
-				</select>
-			</div>
-			<div class="filter-dropdown">
-				<select name="price" id="filter-price" tabindex="-1" aria-hidden="true">
-					<option value="">Any Price</option>
-					<option value="0-250000"{if post:price == "0-250000"} selected="selected"{/if}>Under £250,000</option>
-					<option value="250000-500000"{if post:price == "250000-500000"} selected="selected"{/if}>£250,000 - £500,000</option>
-					<option value="500000-1000000"{if post:price == "500000-1000000"} selected="selected"{/if}>£500,000 - £1,000,000</option>
-					<option value="1000000-1500000"{if post:price == "1000000-1500000"} selected="selected"{/if}>£1,000,000 - £1,500,000</option>
-					<option value="1500000-2000000"{if post:price == "1500000-2000000"} selected="selected"{/if}>£1,500,000 - £2,000,000</option>
-					<option value="2000000-0"{if post:price == "2000000-0"} selected="selected"{/if}>Over £2,000,000</option>
-				</select>
-			</div>
-			<div class="filter-dropdown">
-				<select name="location" id="filter-location" tabindex="-1" aria-hidden="true">
-					<option value="">Any location</option>
-					{exp:query sql="
-						SELECT DISTINCT field_id_4 AS location 
-						FROM exp_channel_data cd
-						LEFT JOIN exp_channel_titles ct 
-							ON cd.entry_id = ct.entry_id 
-						WHERE cd.channel_id=1 
-							AND ct.status = 'Published'
-						ORDER BY cd.field_id_4 ASC"}
-						<option value="{location}"{if post:location == location} selected="selected"{/if}>{location}</option>
-					{/exp:query}
-				</select>
-			</div>
-			<div class="filter-dropdown">
-				<select name="status" id="filter-status" tabindex="-1" aria-hidden="true">
-					<option value="">Any status</option>
-					{exp:query sql="
-						SELECT DISTINCT cd.field_id_9 AS status 
-						FROM exp_channel_data cd
-						LEFT JOIN exp_channel_titles ct 
-							ON cd.entry_id = ct.entry_id 
-						WHERE cd.channel_id=1 
-							AND ct.status = 'Published'
-						ORDER BY cd.field_id_9 ASC"}
-						<option value="{status}"{if post:status == status} selected="selected"{/if}>{status}</option>
-					{/exp:query}
-				</select>
-			</div><a id="submit" href="#" class="button filters-submit">Search</a>
-			<input type="hidden" name="csrf_token" value="{csrf_token}">
+				<div class="filter-dropdown">
+					<select id="filter-model" name="model" tabindex="-1" aria-hidden="true">
+						<option value="">All models</option>
+						{exp:query sql="
+							SELECT DISTINCT cd.field_id_24 AS model 
+							FROM exp_channel_data cd 
+							LEFT JOIN exp_channel_titles ct 
+								ON cd.entry_id = ct.entry_id 
+							WHERE cd.channel_id=1 
+								AND cd.field_id_24 != '---'
+								AND ct.status = 'Published'
+							ORDER BY cd.field_id_24 ASC"}
+							<option value="{model}"{if post:model == model} selected="selected"{/if}>{model}</option>
+						{/exp:query}
+					</select>
+				</div>
+				<div class="filter-dropdown">
+					<select name="price" id="filter-price" tabindex="-1" aria-hidden="true">
+						<option value="">Any Price</option>
+						<option value="0-250000"{if post:price == "0-250000"} selected="selected"{/if}>Under £250,000</option>
+						<option value="250000-500000"{if post:price == "250000-500000"} selected="selected"{/if}>£250,000 - £500,000</option>
+						<option value="500000-1000000"{if post:price == "500000-1000000"} selected="selected"{/if}>£500,000 - £1,000,000</option>
+						<option value="1000000-1500000"{if post:price == "1000000-1500000"} selected="selected"{/if}>£1,000,000 - £1,500,000</option>
+						<option value="1500000-2000000"{if post:price == "1500000-2000000"} selected="selected"{/if}>£1,500,000 - £2,000,000</option>
+						<option value="2000000-0"{if post:price == "2000000-0"} selected="selected"{/if}>Over £2,000,000</option>
+					</select>
+				</div>
+				<div class="filter-dropdown">
+					<select name="location" id="filter-location" tabindex="-1" aria-hidden="true">
+						<option value="">Any location</option>
+						{exp:query sql="
+							SELECT DISTINCT field_id_4 AS location 
+							FROM exp_channel_data cd
+							LEFT JOIN exp_channel_titles ct 
+								ON cd.entry_id = ct.entry_id 
+							WHERE cd.channel_id=1 
+								AND ct.status = 'Published'
+							ORDER BY cd.field_id_4 ASC"}
+							<option value="{location}"{if post:location == location} selected="selected"{/if}>{location}</option>
+						{/exp:query}
+					</select>
+				</div>
+				<div class="filter-dropdown">
+					<select name="status" id="filter-status" tabindex="-1" aria-hidden="true">
+						<option value="">Any status</option>
+						{exp:query sql="
+							SELECT DISTINCT cd.field_id_9 AS status 
+							FROM exp_channel_data cd
+							LEFT JOIN exp_channel_titles ct 
+								ON cd.entry_id = ct.entry_id 
+							WHERE cd.channel_id=1 
+								AND ct.status = 'Published'
+							ORDER BY cd.field_id_9 ASC"}
+							<option value="{status}"{if post:status == status} selected="selected"{/if}>{status}</option>
+						{/exp:query}
+					</select>
+				</div>
+				<a id="submit" href="#" class="button filters-submit">Search</a>
+				<input type="hidden" name="csrf_token" value="{csrf_token}">
 			</form>
 		</div>
 	</div>

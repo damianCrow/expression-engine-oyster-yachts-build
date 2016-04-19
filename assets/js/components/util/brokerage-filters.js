@@ -79,4 +79,4 @@ define(['jquery'], function ($) {
 
 	return Filters;
 });
-//# sourceMappingURL=filters.js.map
+//# sourceMappingURL=brokerage-filters.js.map

@@ -1,6 +1,6 @@
 'use strict';
 
-define(['jquery', 'cycle', 'ScrollMagic', 'foundation', 'salvattore', 'lightgallery', 'lightgalleryThumbs', 'select2', 'jqueryValidation', 'owlcarousel', 'components/header/header', './brokerage/brokerage', './index'], function ($, cycle, ScrollMagic, Foundation, Salvattore) {
+define(['jquery', 'cycle', 'ScrollMagic', 'foundation', 'salvattore', 'lightgallery', 'lightgalleryThumbs', 'select2', 'jqueryValidation', 'owlcarousel', 'oyster_header'], function ($, cycle, ScrollMagic, Foundation, Salvattore) {
 
 	// initilise foundation
 	$(document).foundation();
@@ -55,40 +55,6 @@ define(['jquery', 'cycle', 'ScrollMagic', 'foundation', 'salvattore', 'lightgall
 	});
 	//  ---- *end* GLOBAL MAIN FIXED HEADER SEARCH BAR TOGGLE SEARCH ICON *end* -----  //
 
-	//  ---- GLOBAL FILTER SEARCH INSIDE HERO HEADER -----  //
-	var $grid = $('#yacht-grid');
-
-	$('#submit').on('click', function (e) {
-		e.preventDefault();
-
-		$grid.find('li').show();
-
-		if ($('#filter-model').val() !== "") {
-			$grid.find("li[data-model!='" + $('#filter-model').val() + "']").hide();
-		}
-		if ($('#filter-status').val() !== "") {
-			$grid.find("li[data-status!='" + $('#filter-status').val() + "']").hide();
-		}
-		if ($('#filter-location').val() !== "") {
-			$grid.find("li[data-location!='" + $('#filter-location').val() + "']").hide();
-		}
-		if ($('#filter-price').val() !== "") {
-			var $selected = $('#filter-price option:selected');
-
-			if ($selected[0].hasAttribute('data-price-min')) {
-				$grid.find('li').filter(function () {
-					return $(this).data('price') < $selected.attr('data-price-min');
-					return $(this).data('price') < $selected.attr('data-price-min');
-				}).hide();
-			}
-
-			if ($selected[0].hasAttribute('data-price-max')) {
-				$grid.find('li').filter(function () {
-					return $(this).data('price') > $selected.attr('data-price-max');
-				}).hide();
-			}
-		}
-	});
 
 	$('select').select2({
 		minimumResultsForSearch: -1

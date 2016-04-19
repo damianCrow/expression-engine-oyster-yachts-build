@@ -1,6 +1,6 @@
 'use strict';
 
-define(['jquery', 'foundation', 'components/util/social-grid', 'owlcarousel', 'ScrollMagic'], function ($, Foundation, SocialGrid) {
+define(['jquery', 'foundation', 'oyster_social_grid', 'owlcarousel', 'ScrollMagic'], function ($, Foundation, SocialGrid) {
 
 	// ----- HOME PAGE SOCIAL GRID ----
 	new SocialGrid();

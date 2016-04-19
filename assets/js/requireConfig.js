@@ -7,13 +7,22 @@ require.config({
     lodash: '/bower_components/lodash/dist/lodash.compat',
     cycle: '/bower_components/jquery-cycle2/build/jquery.cycle2.min',
     foundation: '/bower_components/foundation-sites/dist/foundation.min',
-    lightgallery: 'lib/lightgallery/lightgallery',
-    lightgalleryThumbs: 'lib/lightgallery/lg-thumbnail',
+    lightgallery: '/assets/js/lib/lightgallery/lightgallery',
+    lightgalleryThumbs: '/assets/js/lib/lightgallery/lg-thumbnail',
     ScrollMagic: '/bower_components/scrollmagic/scrollmagic/minified/ScrollMagic.min',
     select2: '/bower_components/select2/dist/js/select2.full.min',
     jqueryValidation: '/bower_components/jquery-validation/dist/jquery.validate.min',
     owlcarousel: '/bower_components/owl.carousel/dist/owl.carousel.min',
-    salvattore: '/bower_components/salvattore/dist/salvattore.min'
+    salvattore: '/bower_components/salvattore/dist/salvattore.min',
+    
+    oyster_global: '/assets/js/app/app',
+    oyster_header: '/assets/js/components/header/header',
+    oyster_home: '/assets/js/app/index',
+    oyster_brokerage: '/assets/js/app/brokerage/brokerage',
+    oyster_charter: '/assets/js/app/charter/charter',
+    oyster_brokerage_filters: '/assets/js/components/util/brokerage-filters',
+    oyster_charter_filters: '/assets/js/components/util/charter-filters',
+    oyster_social_grid: '/assets/js/components/util/social-grid'
   },
   shim: {
     'jquery': {
@@ -60,8 +69,7 @@ require.config({
       exports: 'Typekit'
     }
   },
-  priority: ['jquery', 'lodash'],
-  packages: []
+  priority: ['jquery', 'lodash']
 });
 
 //http://code.angularjs.org/1.2.1/docs/guide/bootstrap#overview_deferred-bootstrap
@@ -72,9 +80,8 @@ require([
   'lodash',
   'typekit',
   'foundation',
-  'ScrollMagic',
-  'app/app',
-  'store'
+  'owlcarousel',
+  'oyster_global'
 ], function($, _, Typekit ) {
   'use strict';
 

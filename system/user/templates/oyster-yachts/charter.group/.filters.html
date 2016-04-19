@@ -1,42 +1,58 @@
 <div id="global-page-filters" data-local-subnav="data-local-subnav" class="filters">
 	<div class="row row-pad">
 		<div class="large-offset-1 large-10 end">
-			<div class="filter-dropdown">
-				<select id="filter-model" tabindex="-1" aria-hidden="true">
-					<option value="">All models</option>
-					{exp:query sql="SELECT DISTINCT field_id_50 AS model FROM exp_channel_data WHERE channel_id=2 AND field_id_50 != '---' ORDER BY field_id_50 ASC"}
-					<option vlaue="{model}">{model}</option>
-					{/exp:query}
-				</select>
-			</div>
-			<div class="filter-dropdown">
-				<select id="filter-price" tabindex="-1" aria-hidden="true">
-					<option value="">Any Price</option>
-					<option vlaue="priceband1" data-price-max="250000">Under £250,000</option>
-					<option vlaue="priceband2" data-price-min="250000" data-price-max="500000">£250,000 - £500,000</option>
-					<option vlaue="priceband3" data-price-min="500000" data-price-max="1000000">£500,000 - £1,000,000</option>
-					<option vlaue="priceband4" data-price-min="1000000" data-price-max="1500000">£1,000,000 - £1,500,000</option>
-					<option vlaue="priceband5" data-price-min="1500000" data-price-max="2000000">£1,500,000 - £2,000,000</option>
-					<option vlaue="priceband6" data-price-min="2000000">Over £2,000,000</option>
-				</select>
-			</div>
-			<div tabindex="-1" aria-hidden="true" class="filter-dropdown">
-				<select id="filter-location">
-					<option value="">Any location</option>
-					{exp:query sql="SELECT DISTINCT field_id_4 AS location FROM exp_channel_data WHERE channel_id=1 ORDER BY field_id_4 ASC"}
-					<option vlaue="{location}">{location}</option>
-					{/exp:query}
-				</select>
-			</div>
-			<div tabindex="-1" aria-hidden="true" class="filter-dropdown">
-				<select id="filter-status">
-					<option value="">Any status</option>
-					{exp:query sql="SELECT DISTINCT field_id_9 AS status FROM exp_channel_data WHERE channel_id=1 ORDER BY field_id_9 ASC"}
-					<option vlaue="{status}">{status}</option>
-					{/exp:query}
-				</select>
-			</div>
-			<a id="submit" href="#" class="button">Search</a>
+			<form id="filters-form" method="POST" action="{path='charter/fleet'}"{if embed:post == "true"} data-post="true"{/if}>
+				<div class="filter-dropdown">
+					<select id="filter-model" name="model" tabindex="-1" aria-hidden="true">
+						<option value="">All models</option>
+						{exp:query sql="
+							SELECT DISTINCT cd.field_id_31 AS model 
+							FROM exp_channel_data cd 
+							LEFT JOIN exp_channel_titles ct 
+								ON cd.entry_id = ct.entry_id 
+							WHERE cd.channel_id=2 
+								AND cd.field_id_31 != '---'
+								AND ct.status = 'Published'
+							ORDER BY cd.field_id_31 ASC"}
+							<option value="{model}"{if post:model == model} selected="selected"{/if}>{model}</option>
+						{/exp:query}
+					</select>
+				</div>
+				<div class="filter-dropdown">
+					<select id="filter-guests" name="guests" tabindex="-1" aria-hidden="true">
+						<option value="">Any No. Guests</option>
+						<option value="4"{if post:guests == "4"} selected="selected"{/if}>4 Guests</option>
+						<option value="6"{if post:guests == "6"} selected="selected"{/if}>6 Guests</option>
+						<option value="8"{if post:guests == "8"} selected="selected"{/if}>8 Guests</option>
+					</select>
+				</div>
+				<div class="filter-dropdown">
+					<select id="filter-season" name="season" tabindex="-1" aria-hidden="true">
+						<option value="">All seasons</option>
+						<option value="winter"{if post:season == "winter"} selected="selected"{/if}>Winter</option>
+						<option value="summer"{if post:guests == "summer"} selected="selected"{/if}>Summer</option>
+					</select>
+				</div>
+				<div class="filter-dropdown">
+					<select id="filter-destination" name="destination" tabindex="-1" aria-hidden="true">
+						<option value="">Any destination</option>
+						{exp:query sql="
+						SELECT DISTINCT cd.destination FROM
+						(SELECT DISTINCT field_id_32 destination, entry_id FROM exp_channel_data WHERE channel_id=2 
+						UNION
+						SELECT DISTINCT field_id_33 destination, entry_id FROM exp_channel_data WHERE channel_id=2) cd
+						LEFT JOIN exp_channel_titles ct 
+							ON cd.entry_id = ct.entry_id 
+						WHERE cd.destination != ''
+							AND ct.status = 'Published'
+						ORDER BY cd.destination ASC"}
+							<option value="{destination}"{if post:destination == destination} selected="selected"{/if}>{destination}</option>
+						{/exp:query}
+					</select>
+				</div>
+				<a id="submit" href="#" class="button filters-submit">Search</a>
+				<input type="hidden" name="csrf_token" value="{csrf_token}">
+			</form>
 		</div>
 	</div>
 </div>
