@@ -30,7 +30,7 @@ $interiorGalleryImages = $query->num_rows();
 		{share_buttons}
 	</div>
 	<div id="yacht-nav" data-local-subnav="data-local-subnav" class="yacht-nav">
-		<ul>
+		<ul class="local-subnav">
 			{if yacht_design_features:total_rows > 0}
 			<li class="active"><a href="#design-features" class="scroll">Design Features</a></li>
 			{/if}
@@ -53,17 +53,29 @@ $interiorGalleryImages = $query->num_rows();
 
 			<li><a href="" class="contact">Contact Sales</a></li>
 		</ul>
+
 		<section data-local-sidebar data-sticky-sidebar-at-bottom=".about-yacht" data-sticky-sidebar-offset="" class="yachts-yacht-sticky-header sticky-sidebar-header hide float-right">
 			<div class="header">
 				<h4 class="text-uppercase float-left">{title} overview</h4><i class="fa fa-angle-down float-right"></i>
 			</div>
 			<div class="contents">
 				<aside class="overview-download columns">
-					<h3 class="text-uppercase">{title} Overview</h3>
 					<div class="overview-contents">
 						<section class="overview columns small-6 medium-12">
-							{yacht_overview}
+							<p>To find out more about the {title} model, you can download the {title} Brochure below.</p>
+							<p>If you would like more information, please complete the Contact Sales form or alternatively call us on <a href="tel:+442380831010">+44 (0)2380 831 010</a></p>
 						</section>
+						{yacht_brochure}
+						<figure class="download-pdf">
+							<img src="{yacht_brochure:thumbnail}" class="download-thumb">
+							<div class="description-download">
+								<figcaption>
+									<a href="{yacht_brochure:file}" target="_blank">{yacht_brochure:title} </a>{yacht_brochure:file}<span>(<?php echo number_format({file_size} / (1024*1024), 1); ?>MB)</span>{/yacht_brochure:file}
+								</figcaption>
+								<a href="{yacht_brochure:file}" target="_blank" class="button-clear-invert text-uppercase">Download Brochure</a>
+							</div>
+						</figure>
+						{/yacht_brochure}
 					</div>
 				</aside>
 			</div>
@@ -84,14 +96,15 @@ $interiorGalleryImages = $query->num_rows();
 					<h3 class="text-uppercase">{title} Overview</h3>
 					<div class="overview-contents">
 						<section class="overview columns small-6 medium-12">
-							{yacht_overview}
+							<p>To find out more about the {title} model, you can download the {title} Brochure below.</p>
+							<p>If you would like more information, please complete the Contact Sales form or alternatively call us on <a href="tel:+442380831010">+44 (0)2380 831 010</a></p>
 						</section>
 						{yacht_brochure}
 						<figure class="download-pdf">
 							<img src="{yacht_brochure:thumbnail}" class="download-thumb">
 							<div class="description-download">
 								<figcaption>
-									<a href="{yacht_brochure:file}" target="_blank">{yacht_brochure:title} </a>{yacht_brochure:file}<span>(<?php echo number_format({file_size} / (1024*1024), 1); ?>MB)</span>{/yacht_brochure:file}
+									<a href="{yacht_brochure:file}" target="_blank">{yacht_brochure:title}</a> {yacht_brochure:file}<span>(<?php echo number_format({file_size} / (1024*1024), 1); ?>MB)</span>{/yacht_brochure:file}
 								</figcaption>
 								<a href="{yacht_brochure:file}" target="_blank" class="button-clear-invert text-uppercase">Download Brochure</a>
 							</div>
@@ -149,6 +162,7 @@ $interiorGalleryImages = $query->num_rows();
 {/if}
 
 
+{if yacht_dimensions:total_rows > 0 OR yacht_performance_features:total_rows > 0}
 <section id="specifications" class="specifications yachts-yacht-spec">
 	<div class="banner">Specifications</div>
 	{if yacht_dimensions:total_rows > 0}
@@ -217,6 +231,7 @@ $interiorGalleryImages = $query->num_rows();
 	</div>
 	{/if}
 </section>
+{/if}
 
 <?php if ($layoutImages > 0): ?>
 <section id="yacht-layout" class="yacht-layout">
@@ -228,11 +243,7 @@ $interiorGalleryImages = $query->num_rows();
 				<div class="cycle-slide"><img src="{image:url}"></div>
 				{/yacht_layout}
 			</div>
-			<ul class="slider-pager<?php if ($layoutImages === 1): ?> hide<?php endif; ?>">
-				{yacht_layout}
-				<li><a><span style="background-image:url('{image:url:small}');"></span></a></li>
-				{/yacht_layout}
-			</ul>
+			<ul class="slider-pager<?php if ($layoutImages === 1): ?> hide<?php endif; ?>">{yacht_layout}<li><a><span style="background-image:url('{image:url:small}');"></span></a></li>{/yacht_layout}</ul>
 		</div>
 	</div>
 </section>

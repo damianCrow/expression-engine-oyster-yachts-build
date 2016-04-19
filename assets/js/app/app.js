@@ -115,7 +115,7 @@ define(['jquery', 'cycle', 'ScrollMagic', 'foundation', 'salvattore', 'lightgall
 	    $sideBarScene = _sideBarScene($elem),
 	    $locaSubNav = $("[data-local-subnav]") || {},
 	    $locaSubNavHeight = $locaSubNav.outerHeight(),
-	    $localSubNavItems = $locaSubNav.find("a"),
+	    $localSubNavItems = $locaSubNav.find(".local-subnav a"),
 	    $localSubNavItemsMap = $localSubNavItems.map(function () {
 		var item = $($(this).attr("href"));
 

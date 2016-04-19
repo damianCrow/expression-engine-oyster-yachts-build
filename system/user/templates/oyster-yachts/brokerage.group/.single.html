@@ -26,10 +26,10 @@ $interiorGalleryImages = $query->num_rows();*/
 				<?php endif; ?>
 			</div>
 		</div>
-		{share_buttons}
+		{embed="site/.share_buttons" brokerage="true"}
 	</div>
 	<div id="yacht-nav" data-local-subnav="data-local-subnav" class="yacht-nav">
-		<ul>
+		<ul class="local-subnav">
 			{if brokerage_design_features:total_rows > 0}
 			<li class="active"><a href="#design-features" class="scroll">Design Features</a></li>
 			{/if}
