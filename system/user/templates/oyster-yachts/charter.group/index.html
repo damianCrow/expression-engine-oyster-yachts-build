@@ -47,20 +47,19 @@
 	</div>
 </section>
 
-<section id="page-testimonials" class="page-testimonials charter-home-testimonials">
-	<div class="row padded-full-width-row">
-		<div class="small-12 medium-8 medium-centered column">
-			<div class="testimonials">
-				{charter_testimonials}
-				<div class="testimonials-inner">
-					<p class="text-uppercase">{charter_testimonials:testimonial}</p><span class="text-uppercase">{charter_testimonials:by_whom}</span>
-				</div>
-				{/charter_testimonials}
-				<span class="pager"></span>
-			</div>
-		</div>
-	</div>
+
+<section id="page-testimonials" class="quote-testimonials row">
+	{charter_testimonials}
+	<blockquote class="text-uppercase">
+		<p>{charter_testimonials:testimonial}</p>
+		<footer>
+			<cite>{charter_testimonials:by_whom}</cite>
+		</footer>
+	</blockquote>
+	{/charter_testimonials}
+	<div class="nav-points"></div>
 </section>
+
 
 <section class="charter-home-featured-yachts">
 	<div class="banner">featured yachts</div>

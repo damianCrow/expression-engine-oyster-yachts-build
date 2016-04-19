@@ -70,7 +70,7 @@ $interiorGalleryImages = $query->num_rows();
 							<div class="download-thumb column small-3"><img src="{yacht_brochure:thumbnail}"></div>
 							<figcaption class="description-download column small-9">
 								<a class="title text-uppercase" href="{yacht_brochure:file}" target="_blank">{yacht_brochure:title} </a>
-								<a class="external-file-btn button-solid-white text-uppercase" href="{yacht_brochure:file}" target="_blank">Download Brochure &nbsp;{yacht_brochure:file}<span>(<?php echo number_format({file_size} / (1024*1024), 1); ?>MB)</span>{/yacht_brochure:file}</a>
+								<a class="external-file-btn button-solid-white text-uppercase" href="{yacht_brochure:file}" target="_blank">Download Brochure &nbsp;{yacht_brochure:file}<span class="size text-uppercase">(<?php echo number_format({file_size} / (1024*1024), 1); ?>MB)</span>{/yacht_brochure:file}</a>
 							</figcaption>
 						</figure>
 						{/yacht_brochure}
@@ -102,7 +102,7 @@ $interiorGalleryImages = $query->num_rows();
 							<div class="download-thumb column small-3"><img src="{yacht_brochure:thumbnail}"></div>
 							<figcaption class="description-download column small-9">
 								<a class="title text-uppercase" href="{yacht_brochure:file}" target="_blank">{yacht_brochure:title} </a>
-								<a class="external-file-btn button-solid-white text-uppercase" href="{yacht_brochure:file}" target="_blank">Download Brochure &nbsp;{yacht_brochure:file}<span>(<?php echo number_format({file_size} / (1024*1024), 1); ?>MB)</span>{/yacht_brochure:file}</a>
+								<a class="external-file-btn button-solid-white text-uppercase" href="{yacht_brochure:file}" target="_blank">Download Brochure &nbsp;{yacht_brochure:file}<span class="size text-uppercase">(<?php echo number_format({file_size} / (1024*1024), 1); ?>MB)</span>{/yacht_brochure:file}</a>
 							</figcaption>
 						</figure>
 						{/yacht_brochure}
@@ -264,16 +264,16 @@ $interiorGalleryImages = $query->num_rows();
 {if parents:entry_ids}
 <section id="news-thumbs" class="news-thumbs">
 	<div class="banner">News</div>
-	<div class="row wrapper">
+	<div data-equalizer data-equalize-on="medium" class="row wrapper">
 		<ul>
 
 			{parents field="article_yacht" status="published"}
-			<li class="columns medium-4 small-6">
+			<li class="columns medium-4 small-6 small-12">
 				<div class="content">
 					<div {parents:article_main_image}style="background-image:url('{image:url}')"{/parents:article_main_image} class="news-thumb-image">
 						{share_buttons}
 					</div>
-					<div class="news-details">
+					<div data-equalizer-watch class="news-details">
 						<time datetime="{parents:entry_date format="%Y-%m-%d %H:%i"}" class="text-uppercase">{parents:entry_date format="%d %F %Y"}</time>
 						<h3 class="text-uppercase"><a href="{parents:url_title_path='news/article'}">{parents:title}</a></h3>
 						{parents:article_excerpt}
