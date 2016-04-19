@@ -9,7 +9,7 @@
 	<div class="row wrapper">
 		<ul>
 
-			{exp:channel:entries channel="news" disable="member_data|category_fields|pagination" cache="no" refresh="60" status="published" sort="desc"}
+			{exp:channel:entries channel="news" disable="member_data|category_fields|pagination" cache="no" refresh="60" status="published" sort="desc" limit="3"}
 
 			<li class="columns medium-4 small-6">
 				<div class="content">
@@ -29,7 +29,7 @@
 
 		</ul>
 	</div>
-	<div class="text-center"><a href="" class="button-solid-blue">View News Library</a></div>
+	<div class="text-center"><a href="{path='news/news-library'}" class="button-solid-blue">View News Library</a></div>
 </section>
 
 <section class="magazine-feature">

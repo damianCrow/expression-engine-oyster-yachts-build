@@ -5,6 +5,8 @@ require.config({
     jquery: '/bower_components/jquery/dist/jquery',
     store: '/bower_components/store2/dist/store2.min',
     lodash: '/bower_components/lodash/dist/lodash.compat',
+    TweenMax: '/bower_components/gsap/src/minified/TweenMax.min',
+    jquerygsap: '/bower_components/gsap/src/minified/jquery.gsap.min',
     cycle: '/bower_components/jquery-cycle2/build/jquery.cycle2.min',
     foundation: '/bower_components/foundation-sites/dist/foundation.min',
     lightgallery: '/assets/js/lib/lightgallery/lightgallery',
@@ -14,6 +16,7 @@ require.config({
     jqueryValidation: '/bower_components/jquery-validation/dist/jquery.validate.min',
     owlcarousel: '/bower_components/owl.carousel/dist/owl.carousel.min',
     salvattore: '/bower_components/salvattore/dist/salvattore.min',
+    foundationInit: '/assets/js/components/setup/foundationInit',
     
     oyster_global: '/assets/js/app/app',
     oyster_header: '/assets/js/components/header/header',
@@ -31,6 +34,12 @@ require.config({
     'lodash': {
       exports: '_'
     },
+    'TweenMax': [
+      'jquery'
+    ],
+    'jquerygsap': [
+      'jquery'
+    ],
     'store': {
       exports: '__store'
     },
@@ -77,10 +86,13 @@ window.name = 'NG_DEFER_BOOTSTRAP!';
 
 require([
   'jquery',
+  'TweenMax',
+  'jquerygsap',
   'lodash',
   'typekit',
   'foundation',
   'owlcarousel',
+  'foundationInit',
   'oyster_global'
 ], function($, _, Typekit ) {
   'use strict';

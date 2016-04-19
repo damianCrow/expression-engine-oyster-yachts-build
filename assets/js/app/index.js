@@ -54,97 +54,50 @@ define(['jquery', 'foundation', 'oyster_social_grid', 'owlcarousel', 'ScrollMagi
 		prevActiveClasses = $('.hero-slides .slide-' + classesOfActive);
 	});
 
-	// Featured yachts sliding boxes
-	var $yachtDet = $(".yacht-feature .details"),
-	    $mediaCaro = $(".yacht-feature-large-media, .yacht-feature-small-media"),
-	    flag = false,
-	    duration = 300;
+	
+	// Yacht slideshows
+	
+	var timer = 100;
 
-	// Speed is controlled within CSS (.owl-item)
-	$yachtDet.owlCarousel({
-		loop: true,
-		dots: true,
-		dotsContainer: '.yacht-feature-nav-points .nav-points',
-		autoplay: true,
-		autoplayTimeout: 10000,
-		autoplayHoverPause: true,
-		margin: 0,
-		autoHeight: true,
-		items: 1
-	}).on('changed.owl.carousel', function (e) {
-		// console.log('change1, flag = ', flag);
-		if (!flag) {
-			//console.log('change1-inside, flag = ', flag);
-			flag = true;
-			// console.log('yachtDet e.item.index', e.item);
+	$(".yacht-feature .details").cycle({
+		pager: '.nav-points',
+		pagerTemplate: '<div class="nav-point"></div>',
+		pagerActiveClass: 'active',
+		slides: '> .slide',
+		prev: '.yacht-left',
+		next: '.yacht-right',
+		fx: 'scrollHorz',
+		speed: 500
+	}).on('cycle-before', function() {
+		// Top row image
+		setTimeout(function() {
+			$('.yacht-feature-large-media').cycle('next');
+		}, timer);
+		
+		// Bottom row image 1
+		setTimeout(function() {
+			$('.yacht-feature-small-media:eq(0)').cycle('next');
+		}, timer*2);
 
-			// Remove the -1 to support sync'd none looping.
-			var slideIndex = e.item.index - 1;
+		// Bottom row image 2
+		setTimeout(function() {
+			$('.yacht-feature-small-media:eq(1)').cycle('next');
+		}, timer*3);
 
-			// Each loop
-			$mediaCaro.each(function (index, element) {
-				setTimeout(function () {
-					$(element).trigger('to.owl.carousel', [slideIndex, duration, true]);
-				}, (index + 1) * 150);
-			});
-
-			flag = false;
-		}
-	}).on('drag.owl.carousel, click.owl.carousel', function (e) {
-		//Kill autoplay on drag.
-		$yachtDet.trigger('autoplay.stop.owl');
+		// Bottom row image 3
+		setTimeout(function() {
+			$('.yacht-feature-small-media:eq(2)').cycle('next');
+		}, timer*4);
 	});
 
-	$mediaCaro.each(function (index, element) {
-		// Speed is controlled with CSS animation on (.owl-item)
-		$(element).owlCarousel({
-			loop: true,
-			mouseDrag: false,
-			touchDrag: false,
-			pullDrag: false,
-			freeDrag: false,
-			margin: 0,
-			autoHeight: true,
-			items: 1,
-			animateOut: 'slideOutLeft',
-			animateIn: 'slideInRight'
-		}).on('changed.owl.carousel', function (e) {
-			// console.log('change2, flag = ', flag);
-			// console.log('sync2 e.item.index', e.item);
-
-			if (!flag) {
-				flag = true;
-				var slideIndex = e.item.index;
-				$yachtDet.trigger('to.owl.carousel', [slideIndex, duration, true]);
-
-				// Sync properties for syncing control via the media slides.
-				// $mediaCaro.trigger('to.owl.carousel', [slideIndex, duration, true]);
-
-				// $mediaCaro.each(function(index, element) {
-				// 	setTimeout(function(){
-				// 		console.log('element', element);
-				// 		$(element).trigger('to.owl.carousel', [slideIndex, duration, true]);
-				// 	}, (index + 1) * 250);
-				// })
-				flag = false;
-			}
-		});
+	$('.yacht-feature-large-media, .yacht-feature-small-media').cycle({
+		paused: true,
+		speed: 500,
+		fx: 'scrollHorz',
+		slides: '> .slide'
 	});
 
-	// Autoplay all videos in carousels, else delete it.
-	/*$('.owl-carousel').find('video').each(function() {
- 	var videoFound = this;
- 	$(this).get(0).play();
- 		if(Foundation.MediaQuery.atLeast('medium')) {
- 		$(videoFound).get(0).play();
- 			$(videoFound).get(0).onplay = function() {
- 			console.log('playing video');
- 			$(videoFound).siblings('.slide-image').remove();
- 		}
- 	} else {
- 		$(videoFound).remove();
- 	}
- });*/
+
 
 	var newsPreviewCarousel = $('.news-preview .owl-carousel');
 
@@ -159,8 +112,7 @@ define(['jquery', 'foundation', 'oyster_social_grid', 'owlcarousel', 'ScrollMagi
 		nav: false
 	});
 
-	// animateOut: 'fadeOut',
-	// animateIn: 'fadeIn'
+
 	$('.news-preview .cheveron-nav-left').on('click', function () {
 		newsPreviewCarousel.trigger('prev.owl.carousel');
 	});
