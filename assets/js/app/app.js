@@ -1,6 +1,6 @@
 'use strict';
 
-define(['jquery', 'TweenMax', 'jquerygsap', 'cycle', 'ScrollMagic', 'foundation', 'salvattore', 'lightgallery', 'lightgalleryThumbs', 'select2', 'jqueryValidation', 'owlcarousel', 'oyster_header'], function ($, TweenMax, jquerygsap, cycle, ScrollMagic, Foundation, Salvattore) {
+define(['jquery', 'ScrollMagic', 'TweenMax', 'jquerygsap', 'cycle', 'foundation', 'salvattore', 'lightgallery', 'lightgalleryThumbs', 'select2', 'jqueryValidation', 'owlcarousel', 'googleMaps', 'simpleWeather', 'weather_icons', 'oyster_header'], function ($, ScrollMagic) {
 
 	//  ---- BACK BUTTON ON HERO BANNERS FUNCTIONALITY -----  //
 	$('#page-back-button').on('click', function (evt) {
@@ -63,7 +63,6 @@ define(['jquery', 'TweenMax', 'jquerygsap', 'cycle', 'ScrollMagic', 'foundation'
 	$('select').select2({
 		minimumResultsForSearch: -1
 	});
-	//  ---- *end* GLOBAL FILTER SEARCH INSIDE HERO HEADER *end* -----  //
 
 	// ---- GLOBAL STICKY SIDEBAR ----
 	var controller = new ScrollMagic.Controller(),
@@ -160,7 +159,7 @@ define(['jquery', 'TweenMax', 'jquerygsap', 'cycle', 'ScrollMagic', 'foundation'
 		$(':input[required]').each(function() {
 			if (!$(this).val()) {
 				nope = true;
-				console.log('error');
+
 				$(this).parent('.field').addClass('error');
 				$('.new-sign-up .form-error').addClass('visible');
 			}else{
@@ -177,16 +176,13 @@ define(['jquery', 'TweenMax', 'jquerygsap', 'cycle', 'ScrollMagic', 'foundation'
 			$('.new-sign-up .form-error').addClass('visible');
 
 		}else{
-			console.log('correct email:', validateEmail($(':input[type="email"]').val()));
 
 			$(':input[type="email"]').parent('.field').removeClass('error');
 			$('.new-sign-up .form-error').removeClass('visible');
 
 		};
 
-		console.log('nope = ', nope);
 		if (!nope) {
-			console.log('should be false, nope = ', nope);
 			$('.sign-up-btn').addClass('is-loading');
 			setTimeout((function() {
 				$('.sign-up').addClass('is-complete');
@@ -199,20 +195,7 @@ define(['jquery', 'TweenMax', 'jquerygsap', 'cycle', 'ScrollMagic', 'foundation'
 		e.preventDefault();
 	});
 
-	// $('.sign-up-btn').on('click', function() {
-	//   $(':input[required]').each(function() {
-	//     if (!$(this).val()) {
-	//       return $(this).parent('.field').addClass('error');
-	//     } else {
-	//       $('.sign-up-btn').addClass('is-loading');
-	//       return setTimeout((function() {
-	//         return $('.sign-up').addClass('is-complete');
-	//       }), 3000);
-	//     }
-	//   });
-	//   console.log('going to return false');
-	//   return false;
-	// });
+	
 
 	function validateEmail(email) {
 		var re = /\S+@\S+\.\S+/;
@@ -325,22 +308,14 @@ define(['jquery', 'TweenMax', 'jquerygsap', 'cycle', 'ScrollMagic', 'foundation'
 	$('.add-to-shortlist').on('click', function () {
 
 		var localStorageSl = JSON.parse(localStorage.getItem("localShortlist"));
-		console.log('localStorageSl', localStorageSl);
 		// Is there a local storage list?
 
-		// if (localStorageSl != null){
 		if (localStorageSl != null && localStorageSl.length > 0) {
-			console.log('localStorageSl is not null');
-			console.log('pulling local storage list: ', localStorageSl);
 			shortlistYachts = localStorageSl;
 		}
-		// };
 
-		console.log("Checking new item with list");
 		addToShortlist(this);
 
-		console.log('Saving new list to localStorage');
-		// if($(shortlistYachts).length > 0){
 		if ($(shortlistYachts).length > 0) {
 			localStorage.setItem("localShortlist", JSON.stringify(shortlistYachts));
 		};
@@ -355,34 +330,21 @@ define(['jquery', 'TweenMax', 'jquerygsap', 'cycle', 'ScrollMagic', 'foundation'
 		    yachtName = $(yachtContainer).find('.yacht-list-name').text(),
 		    yachtSection = $(yachtContainer).data('yachtsection');
 
-		console.log('yachtImage.length', yachtImage.length);
-
 		if (yachtImage.length == 0) {
-			console.log('yes hero');
 			yachtImage = ripBgUrl(yachtContainer);
 		} else {
 			yachtImage = ripBgUrl(yachtImage);
 		}
 
-		// yachtImage = ripBgUrl($(yachtContainer).find('.yacht-listing-photo')),
-
-		console.log('yachtName', yachtName);
-		console.log('yachtModal', yachtModal);
-
 		// Check if this yacht is on the shortlist already
 		var shortlistCheck = $.grep(shortlistYachts, function (e) {
-			console.log(e);
 			return e.yachtid == yachtId;
 		});
 
 		if (shortlistCheck.length) {
 			// This is already on the shortlist
-			console.log('this item is already on the list, not adding', shortlistCheck.length);
-			// console.log('shortlistCheck', shortlistCheck);
 		} else {
 				var ripYachtDetails = new yachtDetails(yachtId, yachtImage, yachtModal, yachtName, yachtSection);
-
-				console.log('this item is new, add it to the list.');
 				// Push the yacht details into the shortlist array.
 				shortlistYachts.push(ripYachtDetails);
 				// Now push it to the dom.
@@ -390,8 +352,6 @@ define(['jquery', 'TweenMax', 'jquerygsap', 'cycle', 'ScrollMagic', 'foundation'
 
 		// Now add the items emptied from the DOM onto the list
 		displayOnShortlist();
-
-		console.log('Saved yachts', shortlistYachts);
 	}
 
 	function yachtDetails(yachtid, image, yachtmodal, name, yachtSection) {
@@ -413,7 +373,6 @@ define(['jquery', 'TweenMax', 'jquerygsap', 'cycle', 'ScrollMagic', 'foundation'
 		// Empty what might be there
 		$('#shortlistModal .yachts-shortlist').empty();
 
-		console.log('each loop of shortlistYachts');
 		$.each(shortlistYachts, function (key, yachtOnList) {
 
 			var backgroundImage = '<div class="yacht-listing-photo" style="background-image: url(' + yachtOnList.image + ')"></div>';
@@ -432,10 +391,7 @@ define(['jquery', 'TweenMax', 'jquerygsap', 'cycle', 'ScrollMagic', 'foundation'
 			var yachtToRemove = $(this).parents('[data-yachtid]');
 			var yachtToRemoveId = $(yachtToRemove).data('yachtid');
 
-			console.log('yachtToRemoveId = ', yachtToRemoveId);
-
 			var refinedList = $.grep(shortlistYachts, function (e) {
-				console.log('e', e);
 				return e.yachtid != yachtToRemoveId;
 			});
 
@@ -479,7 +435,123 @@ define(['jquery', 'TweenMax', 'jquerygsap', 'cycle', 'ScrollMagic', 'foundation'
 	});
 	// ---- *end* VIEW GALLERY (lightgallery) POP UP *end* ----	
 
-	//  ---- salvattore.JS CONFIGUARATION -----  //
-	// ---- *end* salvattore.JS CONFIGUARATION *end* ----	
+	//  ---- LISTING STAGGERED FADE IN -----  //
+
+	// This is done in CSS, this JS is only for the staggered effect delay times.
+	var staggerTime = 0;
+
+	$('.list-entrance > li').each(function (index, element) {
+		staggerTime = staggerTime + 200;
+		$(element).css('animation-delay', staggerTime + 'ms');
+	});
+
+	$('.list-entrance > li').addClass('list-entrance-animations');
+
+	// ---- *end* LISTING STAGGERED FADE IN *end* ----	
+
+	//  ---- GOOGLE MAPS EMBEDS -----  //
+
+	var googleMapStyle = [
+			{
+			"featureType": "water",
+			"elementType": "geometry.fill",
+			"stylers": [
+				{ "color": "#004363" }
+			]
+			},{
+			"featureType": "water",
+			"elementType": "labels.text.fill",
+			"stylers": [
+				{ "color": "#000000" }
+			]
+			},{
+			"featureType": "landscape",
+			"elementType": "geometry.fill",
+			"stylers": [
+				{ "color": "#5a7c8c" }
+			]
+			},{
+			"featureType": "landscape",
+			"elementType": "geometry.fill",
+			"stylers": [
+				{ "color": "#5b7e8d" }
+			]
+			},{
+			"featureType": "poi",
+			"elementType": "geometry.fill",
+			"stylers": [
+				{ "color": "#53636b" }
+			]
+			}
+			]
+
+	initMap();
+
+	function initMap() {
+		var customMapType = new google.maps.StyledMapType(googleMapStyle);
+		var customMapTypeId = 'custom_style';
+
+		$('.destination-map-container').each(function(index, element) {
+
+			var locationLat = $(element).data('lat'),
+			locationLng = $(element).data('lng'),
+			defaultZoom = 10;
+
+			if ($(element).data('default-zoom')){
+				defaultZoom = $(this).data('default-zoom');
+			}
+			
+			var map = new google.maps.Map(element, {
+				zoom: defaultZoom,
+				center: {lat: locationLat, lng: locationLng},  // British Virgin Islands
+				streetViewControl: false,
+				mapTypeControl: false,
+				scrollwheel: false
+			});
+
+			map.mapTypes.set(customMapTypeId, customMapType);
+			map.setMapTypeId(customMapTypeId);			
+		});
+	}
+
+// ---- *end* GOOGLE MAPS EMBEDS *end* ----	
+
+//  ---- simpleWeather.js CONFIG -----  //
+
+	$('.destination-todays-temp').each(function(index, element) {
+		var weatherLocaiton = $(element).data('weather-location');
+		$.simpleWeather({
+				zipcode: '',
+				woeid: '', //2357536
+				location: weatherLocaiton,
+				unit: 'c',
+				success: function(weather) {
+					$('.destination-temp span', element).html(weather.temp);
+					$('.destination-date-time time', element).html(weather.forecast[0].date);
+					$('.destination-date-time time', element).data('cel', weather.temp);
+					$('.destination-date-time time', element).data('fanren', weather.alt.temp);
+					$('.weather-icon', element).html(weatherIconIds[weather.code]).promise().done(function(){
+						$('.destination-temp').addClass('destination-temp-loaded');
+					});
+				},
+				error: function(error) {
+				}
+			});
+	});
+
+	$('.temperature-setting-label').on('click', function(){
+		var weatherBox = $(this).parents('.destination-todays-temp');
+		if($('input', this).prop("checked")) {
+			var faran = $(weatherBox).find('.destination-date-time time').data('fanren');
+			$('.destination-temp span', weatherBox).html(faran);
+		} else {
+			var cel = $(weatherBox).find('.destination-date-time time').data('cel');			
+			$('.destination-temp span', weatherBox).html(cel);
+
+		}
+	});
+
+// ---- *end* simpleWeather.js CONFIG *end* ----	
+
 });
 //# sourceMappingURL=app.js.map

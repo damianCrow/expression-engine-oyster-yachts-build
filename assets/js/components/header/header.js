@@ -1,6 +1,6 @@
 'use strict';
 
-define(['jquery', 'ScrollMagic'], function ($, ScrollMagic) {
+define(['jquery', 'ScrollMagic', 'foundation'], function ($, ScrollMagic, foundation) {
 	// Global header
 	var header = $("header.global-header"),
 	    scrollToPoint = header.attr('data-snap-to-min-nav'),
@@ -48,6 +48,13 @@ define(['jquery', 'ScrollMagic'], function ($, ScrollMagic) {
 		}
 	});
 
+	// OVVERIDE MOBILE ACCORDION TEXT TO BE LINKS
+	$('#global-navigation-modal a.accordion-title span').on('click', function (evt) {
+		evt.preventDefault();
+		location.href = $(this).parent().attr('href');
+		return false;
+	});
+
 	// Toggle follow oyster social buttons
 	var navFooter = $('#global-navigation-modal .nav-footer-modal'),
 	    followHeader = $(".global-header .follow");
@@ -64,6 +71,12 @@ define(['jquery', 'ScrollMagic'], function ($, ScrollMagic) {
 	});
 	$('.global-header .back-btn').on('click', function () {
 		followHeader.removeClass('follow-on');
+	});
+
+	// close foundation modal
+	$('.global-modals .close-button-wrapper a.site-search-close').on('click', function (evnt) {
+		// if a modal is full screen and has the combination of ".close-button-wrapper a.site-search-close", manually close it
+		$('.global-modals.full').foundation('close');
 	});
 });
 //# sourceMappingURL=header.js.map

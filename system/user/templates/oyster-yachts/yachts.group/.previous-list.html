@@ -7,9 +7,9 @@
 	<div class="banner">Previous Models</div>
 	<div class="row row-pad content">
 		<div id="yacht-grid" class="row">
-			<ul>
+			<ul class="row full-width-row top small-up-1 medium-up-2 large-up-3 list-entrance">
 
-				{exp:channel:entries channel="yacht_previous_models" disable="member_data|category_fields|pagination" cache="no" refresh="60" status="published" sort="desc"}
+				{exp:channel:entries channel="yacht_previous_models" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published" sort="desc"}
 				<li class="column large-4 medium-6 small-12 size-small">
 					<div class="yacht-list-item">
 						<a href="{url_title_path='yachts/previous-models'}">

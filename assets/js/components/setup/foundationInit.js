@@ -1,7 +1,7 @@
 'use strict';
 
 // Foundation.js init
-define(['foundation'], function(Foundation) {
+define(['foundation'], function() {
   // initilise foundation
   $(document).foundation();
 });

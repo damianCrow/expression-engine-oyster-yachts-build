@@ -3,20 +3,23 @@ require.config({
   paths: {
     typekit: 'https://use.typekit.net/htg3ydj',
     jquery: '/bower_components/jquery/dist/jquery',
-    store: '/bower_components/store2/dist/store2.min',
-    lodash: '/bower_components/lodash/dist/lodash.compat',
+    lodash: '/bower_components/lodash/dist/lodash.core.min',
     TweenMax: '/bower_components/gsap/src/minified/TweenMax.min',
     jquerygsap: '/bower_components/gsap/src/minified/jquery.gsap.min',
-    cycle: '/bower_components/jquery-cycle2/build/jquery.cycle2.min',
     foundation: '/bower_components/foundation-sites/dist/foundation.min',
+    cycle: '/bower_components/jquery-cycle2/build/jquery.cycle2.min',
     lightgallery: '/assets/js/lib/lightgallery/lightgallery',
     lightgalleryThumbs: '/assets/js/lib/lightgallery/lg-thumbnail',
     ScrollMagic: '/bower_components/scrollmagic/scrollmagic/minified/ScrollMagic.min',
-    select2: '/bower_components/select2/dist/js/select2.full.min',
     jqueryValidation: '/bower_components/jquery-validation/dist/jquery.validate.min',
     owlcarousel: '/bower_components/owl.carousel/dist/owl.carousel.min',
+    select2: '/bower_components/select2/dist/js/select2.full.min',
+    simpleWeather: '/bower_components/simpleWeather/jquery.simpleWeather.min',
+    googleMaps: 'https://maps.googleapis.com/maps/api/js?key=AIzaSyC4Ctq_b0K3ygkut_DEJ4YFyuGkcWKvM68',
     salvattore: '/bower_components/salvattore/dist/salvattore.min',
+
     foundationInit: '/assets/js/components/setup/foundationInit',
+    weather_icons: '/assets/js/components/util/weather-icons',
     
     oyster_global: '/assets/js/app/app',
     oyster_header: '/assets/js/components/header/header',
@@ -70,6 +73,9 @@ require.config({
     'owlcarousel': [
       'jquery'
     ],
+    'simpleWeather': [
+      'jquery'
+    ],
     'salvattore': {
       deps: ['jquery'],
       exports: 'Salvattore'
@@ -86,17 +92,21 @@ window.name = 'NG_DEFER_BOOTSTRAP!';
 
 require([
   'jquery',
-  'TweenMax',
-  'jquerygsap',
   'lodash',
   'typekit',
+  'TweenMax',
+  'jquerygsap',
   'foundation',
   'owlcarousel',
+  'googleMaps',
   'foundationInit',
   'oyster_global'
 ], function($, _, Typekit ) {
   'use strict';
 
   // load typekit fonts
-  try{Typekit.load({ async: true });}catch(e){}
+  try{Typekit.load({ async: true });}catch(e){console.log(e)}
+
+  // load googleMaps
+  try{googleMaps.load({ async: true });}catch(e){console.log(e)}
 });

@@ -7,7 +7,7 @@
 <section class="press-articles">
 	<div class="row press-list">
 
-		{exp:channel:entries channel="press_coverage" disable="member_data|category_fields|pagination" cache="no" refresh="60" status="published" sort="desc"}
+		{exp:channel:entries channel="press_coverage" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published" sort="desc"}
 
 		<figure class="external-file column large-4 medium-6 small-12">
 			<div {press_image}style="background-image:url('{image:url}')"{/press_image} class="external-file-thumb"></div>

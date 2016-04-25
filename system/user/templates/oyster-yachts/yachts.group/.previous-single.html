@@ -1,4 +1,4 @@
-{exp:channel:entries disable="member_data|category_fields|pagination" cache="yes" refresh="60" require_entry="yes" status="published"}
+{exp:channel:entries channel="yacht_previous_models" disable="member_data|category_fields|pagination" cache="yes" refresh="60" require_entry="yes" status="published"}
 {if no_results}{redirect="404"}{/if}
 
 <?php
@@ -6,44 +6,22 @@ $query = ee()->db->query('SELECT * FROM exp_channel_images WHERE entry_id={entry
 $galleryImages = $query->num_rows();
 ?>
 
-{embed="site/.header" snap_to=".full-screen #yacht-nav" snap_offset="55"}
+{embed="site/.header" snap_to="undefined" snap_offset="undefined"}
 
-<section class="hero full-screen">
-	<div id="full-image"{yacht_prev_main_image} style="background-image: url('{image:url}');"{/yacht_prev_main_image} class="yacht-listing-photo">
-		{back_button}
-		<div class="yacht-name">
-			<div class="row-pad">
-				<h2>Previous Models</h2>
-				<h1>{title}</h1>
+<section {yacht_prev_main_image}style="background-image: url('{image:url}');"{/yacht_prev_main_image} class="hero after-nav global-page-hero yacht-listing-photo global-page-hero--medium">
+	{back_button}
+	<div class="yacht-name">
+		<div class="row-pad">
+			<h1 class="hero-title yacht-list-name text-uppercase">{title}</h1>
 
-				<?php if ($galleryImages > 0): ?>
-				<a href="" class="gallery">View Gallery</a>
-				<?php endif; ?>
-			</div>
+			<?php if ($galleryImages > 0): ?>
+			<a href="" class="gallery">View Gallery</a>
+			<?php endif; ?>
 		</div>
 	</div>
-	<div id="yacht-nav" data-local-subnav="data-local-subnav" class="yacht-nav">
-		<section data-local-sidebar data-sticky-sidebar-at-bottom=".about-yacht" data-sticky-sidebar-offset="450" class="yachts-yacht-sticky-header sticky-sidebar-header hide float-right">
-			<div class="header">
-				<h4 class="text-uppercase float-left">Yachts</h4><i class="fa fa-angle-down float-right"></i>
-			</div>
-			<div class="contents">
-				<aside class="overview-download columns show-for-large">
-					<h3 class="text-uppercase">Yachts</h3>
-					<div class="overview-contents prev-models">
-						<section class="overview columns small-6 medium-12">
-							<ul>
-								<li><a href="{path='yachts/fleet'}">Fleet</a></li>
-								<li class="active-page"><a href="{path='yachts/previous-models'}">Previous Models</a></li>
-								<li><a href="{path='yachts/special-projects'}">Special Projects</a></li>
-							</ul>
-						</section>
-					</div>
-				</aside>
-			</div>
-		</section>
-	</div>
+	<div id="yacht-nav" data-local-subnav="data-local-subnav" class="yacht-nav"></div>
 </section>
+
 <section class="about-yacht">
 	<div class="row row-pad">
 		<div class="large-offset-1 large-7 float">
@@ -74,7 +52,7 @@ $galleryImages = $query->num_rows();
 <div id="exterior-gallery" class="gallery-content">
 	{yacht_prev_gallery}
 	<a href="{image:url}" data-sub-html="{image:description}">
-		<img src="{image:url:thumb}" />
+		<img src="{image:url:gallery_thumb}" />
 	</a>
 	{/yacht_prev_gallery}
 </div>

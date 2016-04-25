@@ -1,47 +1,17 @@
-{embed="site/.header" snap_to="90" snap_offset="undefined"}
-
-<section class="after-nav world-rally-landing">
-      <div class="row full-width-row">
-        <div class="small-12 medium-6 large-7 float-left">
-          <div style="background-image: url('/assets/images/bg-images/world-rally-bg-1.jpg')" class="world-rally-landing-left">
-            <div class="inner">
-              <h2 class="text-uppercase">
-                WORLD RALLY 
-                <span>2017-19</span>
-              </h2>
-              <p>
-                Explore some of the most beautiful regions of the world. Make your dreams come true and join the Oyster World Rally 2017-19.
-                
-              </p><a href="http://www.oysterworldrally.com/" target="_blank" class="button-solid-yellow text-uppercase">discover more</a>
-            </div>
-          </div>
-        </div>
-        <div class="small-12 medium-6 large-5 float-right">
-          <div class="world-rally-landing-right">
-            <div style="background-image: url('/assets/images/bg-images/world-rally-bg-2.jpg')" class="world-rally-landing-previous-rally">
-              <div class="inner">
-                <h2 class="text-uppercase">
-                  WORLD RALLY 
-                  <span>2013-14</span>
-                </h2>
-                <p>
-                  Look back at the successful inaugural Oyster World Rally 2013-14, organised exclusively for the owners of Oyster Yachts.
-                  
-                </p><a href="{path='world-rally/previous-rally'}" class="button-solid-yellow text-uppercase">view previous rally</a>
-              </div>
-            </div>
-            <div style="background-image: url('/assets/images/bg-images/world-rally-bg-3.jpg')" class="world-rally-landing-contact">
-              <div class="inner">
-                <h2 class="text-uppercase">contact</h2>
-                <p>
-                  To find out more about the Oyster World Rally 2017-19 please click the link below to get in contact with a member of our team.
-                  
-                </p><a href="" class="button-transparent text-uppercase">contact</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-{footer}
+{if !segment_2}
+	{embed="world-rally/.landing"}
+{if:elseif !segment_3}
+	{embed="world-rally/.previous-rally"}
+{if:elseif segment_3 == "gallery"}
+	{embed="world-rally/.previous-rally-gallery"}
+{if:elseif segment_3 == "entries"}
+	{embed="world-rally/.previous-rally-entries"}
+{if:elseif segment_3 == "news"}
+	{if !segment_4}
+		{embed="world-rally/.previous-rally-news"}
+	{if:else}
+		{embed="world-rally/.previous-rally-article"}
+	{/if}
+{if:else}
+	{redirect="404"}
+{/if}

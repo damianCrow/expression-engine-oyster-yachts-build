@@ -23,7 +23,6 @@
 				var $box = $('<div  style="overflow: auto; height: 300px; display: none;" class="redactor-modal-tab" data-title="Choose">').hide();
 				this.modal.getModal().append($box);
 
-
 				$.ajax({
 				  dataType: "json",
 				  cache: false,

@@ -1,0 +1,44 @@
+{embed="site/.header" snap_to="undefined" snap_offset="undefined"}
+
+{embed="world-rally/.previous-rally-subnav" page="entries"}
+
+<section style="background-image: url('/assets/images/bg-images/world-rally-entries-bg.jpg'); " class="hero after-nav global-page-hero global-page-hero--small global-page-hero-adjust-subnav">
+	{back_button}
+</section>
+<section id="world-rally-entries" class="world-rally-entries global-padding-top-only--small">
+	<div class="banner">world rally 2013/14 entries</div>
+	<div class="content row padded-full-width-row"> 
+		<table class="table specs-table">
+			<tbody>
+				<tr class="heading">
+					<th class="text-uppercase">entry name</th>
+					<th class="text-uppercase">yacht image</th>
+					<th class="text-uppercase">model</th>
+					<th class="text-uppercase">hull number</th>
+					<th class="text-uppercase">owner</th>
+					<th class="text-uppercase">nationality</th>
+					<th class="text-uppercase">blog</th>
+				</tr>
+
+				{exp:channel:entries channel="previous_rally_entry" dynamic="no" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published" sort="desc"}
+				<tr>
+					<td>{title}</td>
+					<td {prev_entry_image}style="background-image:url('{image:url}')"{/prev_entry_image} class="image"> </td>
+					<td>{prev_entry_model}</td>
+					<td>{prev_entry_hull_number}</td>
+					<td>{prev_entry_owner}</td>
+					<td>{prev_entry_nationality}</td>
+					<td class="link">
+						{if prev_entry_website_link != ""}
+						<a href="{prev_entry_website_link}" target="_blank">{prev_entry_website_link_label}</a>
+						{/if}
+					</td>
+				</tr>
+				{/exp:channel:entries}
+
+			</tbody>
+		</table>
+	</div>
+</section>
+
+{footer}

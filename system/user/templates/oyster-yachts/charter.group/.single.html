@@ -1,4 +1,4 @@
-{exp:channel:entries disable="member_data|category_fields|pagination" cache="yes" refresh="60" require_entry="yes" status="published"}
+{exp:channel:entries channel="charter" disable="member_data|category_fields|pagination" cache="yes" refresh="60" require_entry="yes" status="published"}
 {if no_results}{redirect="404"}{/if}
 
 <?php
@@ -15,7 +15,7 @@ $interiorGalleryImages = $query->num_rows();
 {embed="site/.header" snap_to=".full-screen #yacht-nav" snap_offset="55"}
 
 <section class="hero full-screen yacht-listing-photo">
-	<div id="full-image" style="background-image: url('{charter_main_image}{image:url}{/charter_main_image}')">
+	<div id="full-image" class="yacht-listing-photo add-full-background-overlay" style="background-image: url('{charter_main_image}{image:url}{/charter_main_image}')">
 		{back_button}
 		<div class="yacht-name">
 			<div class="row-pad">
@@ -243,7 +243,7 @@ $interiorGalleryImages = $query->num_rows();
 <div id="exterior-gallery" class="gallery-content">
 	{charter_exterior_gallery}
 	<a href="{image:url}" data-sub-html="{image:description}">
-		<img src="{image:url:thumb}" />
+		<img src="{image:url:gallery_thumb}" />
 	</a>
 	{/charter_exterior_gallery}
 </div>
@@ -253,7 +253,7 @@ $interiorGalleryImages = $query->num_rows();
 <div id="interior-gallery" class="gallery-content">
 	{charter_interior_gallery}
 	<a href="{image:url}" data-sub-html="{image:description}">
-		<img src="{image:url:thumb}" />
+		<img src="{image:url:gallery_thumb}" />
 	</a>
 	{/charter_interior_gallery}
 </div>

@@ -15,7 +15,7 @@ $interiorGalleryImages = $query->num_rows();
 {embed="site/.header" snap_to=".full-screen #yacht-nav" snap_offset="55"}
 
 <section class="hero full-screen">
-	<div id="full-image" style="background-image: url('{yacht_main_image}{image:url}{/yacht_main_image}');" class="yacht-listing-photo">
+	<div id="full-image" class="yacht-listing-photo add-full-background-overlay" style="background-image: url('{yacht_main_image}{image:url}{/yacht_main_image}');">
 		{back_button}
 		<div class="yacht-name">
 			<div class="row-pad">
@@ -261,7 +261,7 @@ $interiorGalleryImages = $query->num_rows();
 {/if}
  
 
-{if parents:entry_ids}
+{if "{parents:entry_ids}" != ""}
 <section id="news-thumbs" class="news-thumbs">
 	<div class="banner">News</div>
 	<div data-equalizer data-equalize-on="medium" class="row wrapper">
@@ -292,7 +292,7 @@ $interiorGalleryImages = $query->num_rows();
 <div id="exterior-gallery" class="gallery-content">
 	{yacht_exterior_gallery}
 	<a href="{image:url}" data-sub-html="{image:description}">
-		<img src="{image:url:thumb}" />
+		<img src="{image:url:gallery_thumb}" />
 	</a>
 	{/yacht_exterior_gallery}
 </div>
@@ -302,7 +302,7 @@ $interiorGalleryImages = $query->num_rows();
 <div id="interior-gallery" class="gallery-content">
 	{yacht_interior_gallery}
 	<a href="{image:url}" data-sub-html="{image:description}">
-		<img src="{image:url:thumb}" />
+		<img src="{image:url:gallery_thumb}" />
 	</a>
 	{/yacht_interior_gallery}
 </div>

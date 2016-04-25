@@ -1,13 +1,13 @@
 {embed="site/.header" snap_to="undefined" snap_offset="undefined"}
 
 <section style="background-image: url('/assets/images/bg-images/news-news-library-bg.jpg'); " class="hero after-nav global-page-hero yacht-listing-photo global-page-hero--small">
-	<div id="page-back-button" class="back-button"><a class="button-clear-white"><i class="fa fa-angle-left"></i>Back</a></div>
+	{back_button}
 </section>
 <section id="news-news-library" class="world-rally-news news-news-library">
 	<div class="row padded-full-width-row">
 		<div data-columns class="news-panes">
 
-		{exp:channel:entries channel="news" disable="member_data|category_fields|pagination" cache="no" refresh="60" status="published" sort="desc"}
+			{exp:channel:entries channel="news" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published" sort="desc"}
 			<div class="news-pane columns">
 				<div class="news-pane-inner">
 					<div class="news-pane-header" {article_main_image}style="background-image:url('{image:url}')"{/article_main_image}></div>

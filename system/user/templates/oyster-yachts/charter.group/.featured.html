@@ -1,21 +1,28 @@
-{exp:channel:entries disable="member_data|category_fields|pagination" dynamic="no" cache="no" refresh="60" entry_id="{embed:ids}" status="published"}
+{exp:channel:entries disable="member_data|category_fields|pagination" dynamic="no" cache="yes" refresh="60" entry_id="{embed:ids}" status="published"}
 <li class="column large-4 size-small">
-	<div class="listing-images"><a href="{url_title_path='charter/fleet'}">{charter_main_image}<span style="background-image: url('{image:url}')"></span>{/charter_main_image}</a></div>
-	<div class="listing-content">
-		<table class="table listing-table feature-col">
-			<tbody>
-				<tr><td class="title" colspan='2'><a href="{url_title_path='charter/fleet'}"><span>{charter_model} </span>// {title}</a></td></tr>
-				<tr>
-					<td>Year: <span>{charter_year}</span></td>
-					<td>Number of Guests: <span>{charter_guests}</span></td>
-				</tr>
-				<tr>
-					<td>Summer: <span>{charter_summer}</span></td>
-					<td>Winter: <span>{charter_winter}</span></td>
-				</tr>
-			</tbody>
-		</table>
+	<div class="yacht-list-item">
+		<a href="{url_title_path='charter/fleet'}">
+			<div {charter_main_image}style="background-image:url('{image:url}')"{/charter_main_image} class="yacht-listing-photo"></div>
+			<div class="yacht-listing-title">
+				<span class="yacht-list-modal">{charter_model}</span>
+				<span class="yacht-list-name double-slash">{title}</span>
+			</div>
+		</a>
+		<div class="listing-content">
+			<table class="table listing-table feature-col">
+				<tbody>
+					<tr>
+						<td>Year: <span>{charter_year}</span></td>
+						<td>Number of Guests: <span>{charter_guests}</span></td>
+					</tr>
+					<tr>
+						<td>Summer: <span>{charter_summer}</span></td>
+						<td>Winter: <span>{charter_winter}</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		{share_buttons}
 	</div>
-	{share_buttons}
 </li>
 {/exp:channel:entries}

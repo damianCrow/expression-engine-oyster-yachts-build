@@ -1,4 +1,4 @@
-{exp:channel:entries disable="member_data|category_fields|pagination" cache="yes" refresh="60" require_entry="yes" status="published"}
+{exp:channel:entries channel="brokerage" disable="member_data|category_fields|pagination" cache="yes" refresh="60" require_entry="yes" status="published"}
 {if no_results}{redirect="404"}{/if}
 
 <?php
@@ -15,7 +15,7 @@ $interiorGalleryImages = $query->num_rows();*/
 {embed="site/.header" snap_to=".full-screen #yacht-nav" snap_offset="55"}
 
 <section data-yachtid="{entry_id}" data-yachtsection="brokerage" class="hero full-screen">
-	<div id="full-image" class="yacht-listing-photo" style="background-image: url('{brokerage_main_image}{image:url}{/brokerage_main_image}');">
+	<div id="full-image" class="yacht-listing-photo add-full-background-overlay" style="background-image: url('{brokerage_main_image}{image:url}{/brokerage_main_image}');">
 		{back_button}
 		<div class="yacht-name">
 			<div class="row-pad">
@@ -347,7 +347,7 @@ $interiorGalleryImages = $query->num_rows();*/
 <div id="exterior-gallery" class="gallery-content">
 	{brokerage_gallery_exterior}
 	<a href="{image:url}" data-sub-html="{image:description}">
-		<img src="{image:url:thumb}" />
+		<img src="{image:url:gallery_thumb}" />
 	</a>
 	{/brokerage_gallery_exterior}
 </div>
