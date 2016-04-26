@@ -10,7 +10,6 @@
 		<ul>
 
 			{exp:channel:entries channel="news" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published" sort="desc" limit="3"}
-
 			<li class="columns medium-4 small-6">
 				<div class="content">
 					<div {article_main_image}style="background-image:url('{image:url}')"{/article_main_image} class="news-thumb-image">
@@ -24,7 +23,6 @@
 					</div>
 				</div>
 			</li>
-
 			{/exp:channel:entries}
 
 		</ul>
@@ -32,23 +30,27 @@
 	<div class="text-center"><a href="{path='news/news-library'}" class="button-solid-blue">View News Library</a></div>
 </section>
 
+{exp:channel:entries channel="magazine" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published" sort="desc" limit="1"}
 <section class="magazine-feature">
 	<div style="background-image: url('/assets/images/water-bg.jpg')" class="magazine-full-feature">
 		<div class="magazine-content row row-pad">
 			<div class="description medium-7 small-12">
-				<h2>Oyster Magazine<span>Issue 77</span></h2>
-				<p>Issue 77 of our Oyster magazine is now available. This issue includes Lorem ipsum do sit amet, consectetur adipiscing elit. Maecenas eget neque rhoncus, molestie massa eu, accumsan felis. Nam arcu justo, mollis in varius at, commodo eget quam. Read the digital version of the magazine by clicking the link below.</p><a class="button-solid-white">Read on Issuu</a>
-			</div><img src="/assets/images/magazines.png" class="magazine-thumb medium-5 small-12">
+				<h2>{title}</h2>
+				{magazine_description}
+				<a href="{magazine_link}" class="button-solid-white" target="_blank">Read on Issuu</a>
+			</div>
+			{magazine_rendered_image}<img src="{image:url}" class="magazine-thumb medium-5 small-12">{/magazine_rendered_image}
 		</div>
 	</div>
-	<div class="text-center"><a href="" class="button-solid-blue">View Magazine Archive</a></div>
+	<div class="text-center"><a href="{path='news/magazine'}" class="button-solid-blue">View Magazine Archive</a></div>
 </section>
+{/exp:channel:entries}
 
 <section class="press-articles">
 	<div class="banner">Latest Press Articles</div>
 	<div class="row press-list">
+		
 		{exp:channel:entries channel="press_coverage" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published" sort="desc" limit="3"}
-
 		<figure class="external-file column large-4 medium-6 small-12">
 			<div {press_image}style="background-image:url('{image:url}')"{/press_image} class="external-file-thumb"></div>
 			<figcaption class="external-file-info">
@@ -57,10 +59,10 @@
 				<a href="{press_pdf}" target="_blank" class="button-solid-white external-file-btn text-uppercase">Read Article <span class="external-file-size">{press_pdf}<span>(<?php echo number_format({file_size} / (1024*1024), 1); ?>MB)</span>{/press_pdf}</span></a>
 			</figcaption>
 		</figure>
-
 		{/exp:channel:entries}
+		
 	</div>
-	<div class="text-center"><a href="" class="button-solid-blue">View Press Articles</a></div>
+	<div class="text-center"><a href="{path='news/press-coverage'}" class="button-solid-blue">View Press Articles</a></div>
 </section>
 
 {footer}

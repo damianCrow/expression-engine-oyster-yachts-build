@@ -1,0 +1,9 @@
+{exp:channel:entries channel="event" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published"}
+	{if no_results}{redirect="404"}{/if}
+
+	{if current_time > event_end_date}
+		{embed="events/.past_event"}
+	{if:else}
+		{embed="events/.future_event"}
+	{/if}
+{/exp:channel:entries}

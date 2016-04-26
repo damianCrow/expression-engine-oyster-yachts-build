@@ -68,10 +68,8 @@ $interiorGalleryImages = $query->num_rows();
 						{yacht_brochure}
 						<figure class="download-pdf clearfix">
 							<div class="download-thumb column small-3"><img src="{yacht_brochure:thumbnail}"></div>
-							<figcaption class="description-download column small-9">
-								<a class="title text-uppercase" href="{yacht_brochure:file}" target="_blank">{yacht_brochure:title} </a>
-								<a class="external-file-btn button-solid-white text-uppercase" href="{yacht_brochure:file}" target="_blank">Download Brochure &nbsp;{yacht_brochure:file}<span class="size text-uppercase">(<?php echo number_format({file_size} / (1024*1024), 1); ?>MB)</span>{/yacht_brochure:file}</a>
-							</figcaption>
+							
+							{embed="site/.download_file" title="{yacht_brochure:title}" file="{yacht_brochure:file}" filesize="{yacht_brochure:file}{file_size}{/yacht_brochure:file}" label="Download Brochure"}
 						</figure>
 						{/yacht_brochure}
 					</div>
@@ -100,10 +98,8 @@ $interiorGalleryImages = $query->num_rows();
 						{yacht_brochure}
 						<figure class="download-pdf clearfix">
 							<div class="download-thumb column small-3"><img src="{yacht_brochure:thumbnail}"></div>
-							<figcaption class="description-download column small-9">
-								<a class="title text-uppercase" href="{yacht_brochure:file}" target="_blank">{yacht_brochure:title} </a>
-								<a class="external-file-btn button-solid-white text-uppercase" href="{yacht_brochure:file}" target="_blank">Download Brochure &nbsp;{yacht_brochure:file}<span class="size text-uppercase">(<?php echo number_format({file_size} / (1024*1024), 1); ?>MB)</span>{/yacht_brochure:file}</a>
-							</figcaption>
+							
+							{embed="site/.download_file" title="{yacht_brochure:title}" file="{yacht_brochure:file}" filesize="{yacht_brochure:file}{file_size}{/yacht_brochure:file}" label="Download Brochure"}
 						</figure>
 						{/yacht_brochure}
 					</div>

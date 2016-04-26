@@ -77,10 +77,8 @@ $interiorGalleryImages = $query->num_rows();
 								{charter_brochure}
 								<figure class="download-pdf clearfix">
 									<div class="download-thumb column small-3"><img src="{charter_brochure:thumbnail}"></div>
-									<figcaption class="description-download column small-9">
-										<a class="title text-uppercase" href="{charter_brochure:file}" target="_blank">{charter_brochure:title}</a>
-										<a class="external-file-btn button-solid-white text-uppercase" href="{charter_brochure:file}">Download Brochure &nbsp;{charter_brochure:file}<span class="size text-uppercase">(<?php echo number_format({file_size} / (1024*1024), 1); ?>MB)</span>{/charter_brochure:file}</a>
-									</figcaption>
+									
+									{embed="site/.download_file" title="{charter_brochure:title}" file="{charter_brochure:file}" filesize="{charter_brochure:file}{file_size}{/charter_brochure:file}" label="Download Brochure"}
 								</figure>
 								{/charter_brochure}
 							</td>
@@ -128,10 +126,8 @@ $interiorGalleryImages = $query->num_rows();
 								{charter_brochure}
 								<figure class="download-pdf clearfix">
 									<div class="download-thumb column small-3"><img src="{charter_brochure:thumbnail}"></div>
-									<figcaption class="description-download column small-9">
-										<a class="title text-uppercase" href="{charter_brochure:file}" target="_blank">{charter_brochure:title}</a>
-										<a class="external-file-btn button-solid-white text-uppercase" href="{charter_brochure:file}">Download Brochure &nbsp;{charter_brochure:file}<span class="size text-uppercase">(<?php echo number_format({file_size} / (1024*1024), 1); ?>MB)</span>{/charter_brochure:file}</a>
-									</figcaption>
+									
+									{embed="site/.download_file" title="{charter_brochure:title}" file="{charter_brochure:file}" filesize="{charter_brochure:file}{file_size}{/charter_brochure:file}" label="Download Brochure"}
 								</figure>
 								{/charter_brochure}
 							</td>

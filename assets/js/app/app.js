@@ -428,10 +428,12 @@ define(['jquery', 'ScrollMagic', 'TweenMax', 'jquerygsap', 'cycle', 'foundation'
 	});
 
 	// trigger first slide to open in gallery
-	$('.gallery').on('click', function (e) {
+	$('.button-view-gallery').on('click', function (e) {
 		e.preventDefault();
 
-		$('.gallery-content a:first').trigger('click');
+		var gallery = $(this).attr('data-gallery');
+
+		$('.gallery-content[data-gallery="'+gallery+'"] a:first').trigger('click');
 	});
 	// ---- *end* VIEW GALLERY (lightgallery) POP UP *end* ----	
 

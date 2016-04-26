@@ -1,0 +1,223 @@
+{exp:channel:entries channel="event" disable="member_data|category_fields|pagination" cache="yes" refresh="60" require_entry="yes" status="published"}
+{if no_results}{redirect="404"}{/if}
+
+{embed="site/.header" snap_to=".full-screen #yacht-nav" snap_offset="55"}
+
+<section class="hero full-screen yacht-listing-photo">
+	<div id="full-image" {event_main_image}style="background-image: url('{image:url}');"{/event_main_image} class="yacht-listing-photo">
+		{back_button}
+		<div class="yacht-name">
+			<div class="row-pad">
+				<h2 class="yacht-list-modal">{event_start_date format="%d %F %Y"} - {event_end_date format="%d %F %Y"} | {event_location}</h2>
+				<h1 class="yacht-list-name">{title}</h1>
+				<a href="" class="gallery">View Gallery</a>
+			</div>
+		</div>
+		{share_buttons}
+	</div>
+	<div id="yacht-nav" data-local-subnav="data-local-subnav" class="yacht-nav">
+		<ul>
+			{parents field="event_day_event" status="published"}
+			<li {if parents:count == 1}class="active"{/if}><a href="#events-previous-regattas-{parents:url_title}" class="scroll">{parents:event_day_number}</a></li>
+			{/parents}
+
+
+			{parents field="event_results_event" status="published"}
+			<li><a href="#events-previous-regattas-overall-results" class="scroll">Overall results</a></li>
+			{/parents}
+		</ul>
+	</div>
+</section>
+
+
+{parents field="event_day_event" status="published"}
+<section id="events-previous-regattas-{parents:url_title}" class="page-home-about event-previous-regattas-about">
+	<div class="row padded-full-width-row">
+		<div class="large-offset-1 large-7 float-left">
+			<div class="day-header clearfix">{event_logo}<img src="{image:url}" class="regatta-bvi-logo float-left">{/event_logo}
+				<div class="header-text float-left">
+					<h2 class="text-uppercase">{parents:event_day_date format="%d%S %F %Y"} - {parents:event_day_number}</h2>
+					<h1 class="text-uppercase">{parents:event_day_report_title}</h1>
+				</div>
+			</div>
+			{parents:event_day_description}
+			<div class="further-info">
+				<p>
+					Written by <b>{parents:author}</b>
+					{if parents:event_day_images_by != ""}<br/>Images by <b>{parents:event_day_images_by}</b>{/if}
+				</p>
+			</div>
+		</div>
+		<div class="large-offset-1 large-3 small-12 float-left">
+			<ul class="event-gallery">
+				<li style="background-image: url('/assets/images/bg-images/events-previous-bg-5.jpg')"></li>
+				<li class="view-gallery-btn">
+					<a href="" class="text-uppercase button-view-gallery" data-gallery="{parents:url_title}"><i class="fa fa-th"></i><span>view gallery</span></a>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	{if parents:event_day_class_1_results:total_rows > 0}
+	<div class="row padded-full-width-row content">
+		<table class="table specs-table">
+			<thead>
+				<tr>
+					<td colspan="6" class="heading text-uppercase">{parents:event_day_number} results - sponsered by {parents:event_day_results_sponsor} (class 1)</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th class="text-uppercase">yacht name</th>
+					<th class="text-uppercase">model</th>
+					<th class="text-uppercase">owner/skipper</th>
+					<th class="text-uppercase">finished</th>
+					<th class="text-uppercase">elapse</th>
+					<th class="text-uppercase">corrected</th>
+				</tr>
+				{parents:event_day_class_1_results}
+				<tr>
+					<td>{yacht_name}</td>
+					<td>{model}</td>
+					<td>{owner_skipper}</td>
+					<td>{finished}</td>
+					<td>{elapse}</td>
+					<td>{corrected}</td>
+				</tr>
+				{/parents:event_day_class_1_results}
+			</tbody>
+		</table>
+	</div>
+	{/if}
+
+	{if parents:event_day_class_2_results:total_rows > 0}
+	<div class="row padded-full-width-row content">
+		<table class="table specs-table">
+			<thead>
+				<tr>
+					<td colspan="6" class="heading text-uppercase">{parents:event_day_number} results - sponsered by {parents:event_day_results_sponsor} (class 2)</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th class="text-uppercase">yacht name</th>
+					<th class="text-uppercase">model</th>
+					<th class="text-uppercase">owner/skipper</th>
+					<th class="text-uppercase">finished</th>
+					<th class="text-uppercase">elapse</th>
+					<th class="text-uppercase">corrected</th>
+				</tr>
+
+				{parents:event_day_class_2_results}
+				<tr>
+					<td>{yacht_name}</td>
+					<td>{model}</td>
+					<td>{owner_skipper}</td>
+					<td>{finished}</td>
+					<td>{elapse}</td>
+					<td>{corrected}</td>
+				</tr>
+				{/parents:event_day_class_2_results}
+
+			</tbody>
+		</table>
+	</div>
+	{/if}
+</section>
+{/parents}
+
+{parents field="event_results_event" status="published"}
+<section id="events-previous-regattas-overall-results" class="page-home-about event-previous-regattas-about">
+
+	{if parents:event_results_class_1_results:total_rows > 0}
+	<div class="row padded-full-width-row content">
+		<table class="table specs-table">
+			<thead>
+				<tr>
+					<td colspan="6" class="heading cyan-background text-uppercase">overall results - with discard (class 1) </td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th class="text-uppercase">yacht name</th>
+					<th class="text-uppercase">model</th>
+					<th class="text-uppercase">owner/skipper</th>
+					<th class="text-uppercase">finished</th>
+					<th class="text-uppercase">elapse</th>
+					<th class="text-uppercase">corrected</th>
+				</tr>
+
+				{parents:event_results_class_1_results}
+				<tr>
+					<td>{yacht_name}</td>
+					<td>{model}</td>
+					<td>{owner_skipper}</td>
+					<td>{finished}</td>
+					<td>{elapse}</td>
+					<td>{corrected}</td>
+				</tr>
+				{/parents:event_results_class_1_results}
+				
+			</tbody>
+		</table>
+	</div>
+	{/if}
+
+	{if parents:event_results_class_2_results:total_rows > 0}
+	<div class="row padded-full-width-row content">
+		<table class="table specs-table">
+			<thead>
+				<tr>
+					<td colspan="6" class="heading cyan-background text-uppercase">overall results - with discard (class 2) </td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th class="text-uppercase">yacht name</th>
+					<th class="text-uppercase">model</th>
+					<th class="text-uppercase">owner/skipper</th>
+					<th class="text-uppercase">finished</th>
+					<th class="text-uppercase">elapse</th>
+					<th class="text-uppercase">corrected</th>
+				</tr>
+
+				{parents:event_results_class_2_results}
+				<tr>
+					<td>{yacht_name}</td>
+					<td>{model}</td>
+					<td>{owner_skipper}</td>
+					<td>{finished}</td>
+					<td>{elapse}</td>
+					<td>{corrected}</td>
+				</tr>
+				{/parents:event_results_class_2_results}
+				
+			</tbody>
+		</table>
+	</div>
+	{/if}
+</section>
+
+{/parents}
+
+{footer}
+
+<section id="galleries" data-title="{title}">
+{parents field="event_day_event" status="published"}
+
+	{parents:event_day_gallery}
+
+	{if image:count == 1}
+	<div class="gallery-content" data-gallery="{parents:url_title}" data-title="{parents:event_day_number}">
+	{/if}
+		<a href="{image:url}" data-sub-html="{image:description}">
+			<img src="{image:url:gallery_thumb}" />
+		</a>
+	{if image:count == image:total}
+	</div>
+	{/if}
+	{/parents:event_day_gallery}
+{/parents}
+</section>
+
+{/exp:channel:entries}
