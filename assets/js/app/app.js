@@ -1,6 +1,6 @@
 'use strict';
 
-define(['jquery', 'ScrollMagic', 'TweenMax', 'jquerygsap', 'cycle', 'foundation', 'salvattore', 'lightgallery', 'lightgalleryThumbs', 'select2', 'jqueryValidation', 'owlcarousel', 'googleMaps', 'simpleWeather', 'weather_icons', 'oyster_header'], function ($, ScrollMagic) {
+define(['jquery', 'ScrollMagic', 'jquerygsap', 'cycle', 'foundation', 'salvattore', 'lightgallery', 'lightgalleryThumbs', 'select2', 'jqueryValidation', 'owlcarousel', 'googleMaps', 'simpleWeather', 'weather_icons', 'oyster_header'], function ($, ScrollMagic) {
 
 	//  ---- BACK BUTTON ON HERO BANNERS FUNCTIONALITY -----  //
 	$('#page-back-button').on('click', function (evt) {
@@ -27,6 +27,7 @@ define(['jquery', 'ScrollMagic', 'TweenMax', 'jquerygsap', 'cycle', 'foundation'
 		pagerActiveClass: 'active',
 		pagerTemplate: '<div class="nav-point"></div>',
 		slides: '> blockquote',
+		log: false,
 		timeout: 4000
 	});
 	//  ---- *end* GLOBAL TESTIMONIALS SLIDESHOW CYCLE *end* -----  //
@@ -60,9 +61,12 @@ define(['jquery', 'ScrollMagic', 'TweenMax', 'jquerygsap', 'cycle', 'foundation'
 	//  ---- *end* GLOBAL MAIN FIXED HEADER SEARCH BAR TOGGLE SEARCH ICON *end* -----  //
 
 
-	$('select').select2({
-		minimumResultsForSearch: -1
-	});
+	enableSelect2();
+	function enableSelect2() {
+		$('select').select2({
+			minimumResultsForSearch: -1
+		});
+	};
 
 	// ---- GLOBAL STICKY SIDEBAR ----
 	var controller = new ScrollMagic.Controller(),
@@ -169,17 +173,15 @@ define(['jquery', 'ScrollMagic', 'TweenMax', 'jquerygsap', 'cycle', 'foundation'
 			}
 		});
 
-		if(!validateEmail($(':input[type="email"]').val())){
+		if (!validateEmail($(':input[type="email"]').val())) {
 			nope = true;
 
 			$(':input[type="email"]').parent('.field').addClass('error');
 			$('.new-sign-up .form-error').addClass('visible');
 
-		}else{
-
+		} else {
 			$(':input[type="email"]').parent('.field').removeClass('error');
 			$('.new-sign-up .form-error').removeClass('visible');
-
 		};
 
 		if (!nope) {
@@ -206,78 +208,96 @@ define(['jquery', 'ScrollMagic', 'TweenMax', 'jquerygsap', 'cycle', 'foundation'
 
 	//  ---- YACHTS REGISTER FORM -----  //
 
-	$('.address-fill-out').on('click', '.add-address-line', function () {
-		var addressLineLength = $('.address-line').length;
-		var newAddressLineNum = addressLineLength + 1;
-		if (addressLineLength < 5) {
-			var newClone = $('.last-address-line').clone();
-			newClone.insertAfter('.last-address-line');
-			if (addressLineLength > 3) {
-				$('.last-address-line button').css('display', 'none');
-			} else {
-				// For whatever reason, the modal closes when removing the button, so hiding it instead.
-				$('.last-address-line:eq(0) button').css('display', 'none');
-				$('.last-address-line:eq(0)').removeClass('last-address-line');
-			};
+	validateForm();
+	// This will also get called from ajax modals, so will need to be called again.
+	function validateForm() {
 
-			$('.last-address-line:last label').attr({
-				'for': 'addressline' + newAddressLineNum
-			});
+		$('.address-fill-out').on('click', '.add-address-line', function () {
+			console.log('clicked');
+			var addressLineLength = $('.address-line').length;
+			var newAddressLineNum = addressLineLength + 1;
+			if (addressLineLength < 5) {
+				var newClone = $('.last-address-line').clone();
+				newClone.insertAfter('.last-address-line');
+				if (addressLineLength > 3) {
+					$('.last-address-line button').css('display', 'none');
+				} else {
+					// For whatever reason, the modal closes when removing the button, so hiding it instead.
+					$('.last-address-line:eq(0) button').css('display', 'none');
+					$('.last-address-line:eq(0)').removeClass('last-address-line');
+				};
 
-			$('.last-address-line:last input').attr({
-				name: 'addressline' + newAddressLineNum,
-				id: 'addressline' + newAddressLineNum,
-				placeholder: 'Address Line ' + newAddressLineNum
-			});
-		}
-	});
+				$('.last-address-line:last label').attr({
+					'for': 'addressline' + newAddressLineNum
+				});
 
-	$('#spec-form').validate({
-		errorLabelContainer: "#spec-form .form-error .error-messages",
-		showErrors: function showErrors(errorMap, errorList) {
-			if (this.numberOfInvalids() == 0) {
-				$("#spec-form .form-error").removeClass('visible');
-			} else {
-				$("#spec-form .form-error").addClass('visible');
-				$("#spec-form .form-error > span").html("Your form contains " + this.numberOfInvalids() + " errors, see highlighted fields below.");
-				this.defaultShowErrors();
+				$('.last-address-line:last input').attr({
+					name: 'addressline' + newAddressLineNum,
+					id: 'addressline' + newAddressLineNum,
+					placeholder: 'Address Line ' + newAddressLineNum
+				});
 			}
-		},
-		highlight: function highlight(element, errorClass, validClass) {
-			$(element).parent('li').addClass('error').removeClass(validClass);
-			$(element.form).find("label[for=" + element.id + "]").addClass(errorClass);
-		},
-		unhighlight: function unhighlight(element, errorClass, validClass) {
-			$(element).parent('li').removeClass('error').addClass(validClass);
-			$(element.form).find("label[for=" + element.id + "]").removeClass(errorClass);
-		},
-		submitHandler: function submitHandler(form) {
-			// do other things for a valid form
-			form.submit();
-		},
-		rules: {
-			rules: {
-				maxlength: 800
-			},
-			email: {
-				required: true,
-				email: true
-			},
-			tel: {
-				maxlength: 15
-			},
-			'current-yacht-make': {
-				maxlength: 300
-			},
-			'current-yacht-model': {
-				maxlength: 300
-			},
-			postcode: {
-				maxlength: 100
-			}
-		}
-	});
+		});
 
+		$('.sign-up-modal-form').each(function (index, element) {
+			$(element).validate({
+				errorLabelContainer: ".sign-up-modal-form:eq(" + index + ") .form-error .error-messages",
+				showErrors: function showErrors(errorMap, errorList) {
+					if (this.numberOfInvalids() == 0) {
+						$(".sign-up-modal-form:eq(" + index + ") .form-error").removeClass('visible');
+						$(".sign-up-modal-form:eq(" + index + ") li").removeClass('error');
+
+						// $(errorList).each(function(index, element) {
+						// 	$(element.element).parent('li').addClass('error');
+						// })
+					} else {
+							$(".sign-up-modal-form:eq(" + index + ") .form-error").addClass('visible');
+							$(".sign-up-modal-form:eq(" + index + ") .form-error > span").html("Your form contains " + this.numberOfInvalids() + " errors, see highlighted fields below.");
+							this.defaultShowErrors();
+
+							console.log('errorList', errorList);
+						}
+				},
+				highlight: function highlight(element, errorClass, validClass) {
+					$(element).parent('li').addClass('error').removeClass(validClass);
+					$(element.form).find("label[for=" + element.id + "]").addClass(errorClass);
+					console.log("highlight");
+					console.log("$('#' + element.id).parent('li')", $('#' + element.id).parent('li'));
+				},
+				unhighlight: function unhighlight(element, errorClass, validClass) {
+					$(element).parent('li').removeClass('error').addClass(validClass);
+					$(element.form).find("label[for=" + element.id + "]").removeClass(errorClass);
+					console.log("unhighlight");
+					console.log("$('#' + element.id).parent('li')", $('#' + element.id).parent('li'));
+				},
+				submitHandler: function submitHandler(form) {
+					// do other things for a valid form
+					form.submit();
+				},
+				rules: {
+					rules: {
+						maxlength: 800
+					},
+					email: {
+						required: true,
+						email: true
+					},
+					tel: {
+						maxlength: 15
+					},
+					'current-yacht-make': {
+						maxlength: 300
+					},
+					'current-yacht-model': {
+						maxlength: 300
+					},
+					postcode: {
+						maxlength: 100
+					}
+				}
+			});
+		});
+	};
 	//  ---- *end* YACHTS REGISTER FORM *end* -----  //
 
 	//  ---- SHARE BUTTON -----  //
@@ -412,7 +432,8 @@ define(['jquery', 'ScrollMagic', 'TweenMax', 'jquerygsap', 'cycle', 'foundation'
 		paused: true,
 		pager: '.slider-pager',
 		pagerTemplate: '',
-		autoHeight: 'container'
+		autoHeight: 'container',
+		log: false
 	});
 
 	// init gallery
@@ -453,39 +474,27 @@ define(['jquery', 'ScrollMagic', 'TweenMax', 'jquerygsap', 'cycle', 'foundation'
 
 	//  ---- GOOGLE MAPS EMBEDS -----  //
 
-	var googleMapStyle = [
-			{
-			"featureType": "water",
-			"elementType": "geometry.fill",
-			"stylers": [
-				{ "color": "#004363" }
-			]
-			},{
-			"featureType": "water",
-			"elementType": "labels.text.fill",
-			"stylers": [
-				{ "color": "#000000" }
-			]
-			},{
-			"featureType": "landscape",
-			"elementType": "geometry.fill",
-			"stylers": [
-				{ "color": "#5a7c8c" }
-			]
-			},{
-			"featureType": "landscape",
-			"elementType": "geometry.fill",
-			"stylers": [
-				{ "color": "#5b7e8d" }
-			]
-			},{
-			"featureType": "poi",
-			"elementType": "geometry.fill",
-			"stylers": [
-				{ "color": "#53636b" }
-			]
-			}
-			]
+	var googleMapStyle = [{
+		"featureType": "water",
+		"elementType": "geometry.fill",
+		"stylers": [{ "color": "#004363" }]
+	}, {
+		"featureType": "water",
+		"elementType": "labels.text.fill",
+		"stylers": [{ "color": "#000000" }]
+	}, {
+		"featureType": "landscape",
+		"elementType": "geometry.fill",
+		"stylers": [{ "color": "#5a7c8c" }]
+	}, {
+		"featureType": "landscape",
+		"elementType": "geometry.fill",
+		"stylers": [{ "color": "#5b7e8d" }]
+	}, {
+		"featureType": "poi",
+		"elementType": "geometry.fill",
+		"stylers": [{ "color": "#53636b" }]
+	}];
 
 	initMap();
 
@@ -552,6 +561,69 @@ define(['jquery', 'ScrollMagic', 'TweenMax', 'jquerygsap', 'cycle', 'foundation'
 
 		}
 	});
+
+	$('.owners-area-text').on('click', function (event) {
+		event.preventDefault();
+		// var popup = new Foundation.Reveal($('#popup-modal'));
+
+		if ($('#login-page').length !== 0) {
+			console.log($('#login-page').length);
+			$('#login-page').foundation('open');
+		} else {
+			$.ajax('/owners-area/login').done(function (resp) {
+				$('body').prepend(resp);
+				$('#login-page').foundation();
+				enableSelect2();
+				validateForm();
+				// console.log($('#login-page'));
+
+				$('#login-page').foundation('open');
+				// $('#login-page').open();
+
+				slidingTabs();
+
+				$('#login-page .close-button, #login-page [data-close="data-close"]').on('click', function () {
+					$('#login-page').foundation('close');
+				});
+				// modalLogin.prepend(resp)
+			});
+		}
+	});
+
+	//  ---- SLIDING TABS -----  //
+	if ($('.sliding-tabs').length >= 1) {
+		slidingTabs();
+	}
+
+	function slidingTabs() {
+		var tabs = $('.sliding-tabs li'),
+		    numOfTabs = $(tabs).length,
+		    tabWidth = 100 / numOfTabs + 25 + '%',
+		    positionUnderTab,
+		    firstPositionUnderTab;
+
+		$('.sliding-tabs .tab-slider').css({ width: tabWidth });
+
+		$(tabs).each(function (index, element) {
+			positionUnderTab = 100 * index + '%';
+			$(element).data('transform-pos', positionUnderTab);
+			if ($(element).hasClass('is-active')) {
+				if (index !== 0) {
+					firstPositionUnderTab = positionUnderTab;
+				} else {
+					firstPositionUnderTab = 0 + '%';
+				}
+			}
+		});
+
+		$('.sliding-tabs .tab-slider').css({ transform: 'translateX(' + firstPositionUnderTab + ')' });
+
+		$(tabs).on('click', function () {
+			var moveHere = $(this).data('transform-pos');
+			$('.sliding-tabs .tab-slider').css({ transform: 'translateX(' + moveHere + ')' });
+			$(this).data('transform-pos');
+		});
+	}
 
 // ---- *end* simpleWeather.js CONFIG *end* ----	
 

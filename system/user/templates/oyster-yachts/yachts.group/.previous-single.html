@@ -15,7 +15,7 @@ $galleryImages = $query->num_rows();
 			<h1 class="hero-title yacht-list-name text-uppercase">{title}</h1>
 
 			<?php if ($galleryImages > 0): ?>
-			<a href="" class="gallery">View Gallery</a>
+			<a href="" class="gallery button-view-gallery" data-gallery="external">View Gallery</a>
 			<?php endif; ?>
 		</div>
 	</div>
@@ -48,15 +48,17 @@ $galleryImages = $query->num_rows();
 	</div>
 </section>
 
-<?php if ($galleryImages > 0): ?>
-<div id="exterior-gallery" class="gallery-content">
-	{yacht_prev_gallery}
-	<a href="{image:url}" data-sub-html="{image:description}">
-		<img src="{image:url:gallery_thumb}" />
-	</a>
-	{/yacht_prev_gallery}
+<div id="galleries" data-title="{title}">
+	<?php if ($galleryImages > 0): ?>
+	<div class="gallery-content" data-gallery="external" data-title="External">
+		{yacht_prev_gallery}
+		<a href="{image:url}" data-sub-html="{image:description}">
+			<img src="{image:url:gallery_thumb}" />
+		</a>
+		{/yacht_prev_gallery}
+	</div>
+	<?php endif; ?>
 </div>
-<?php endif; ?>
 
 {footer}
 

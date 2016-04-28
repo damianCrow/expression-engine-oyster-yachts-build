@@ -175,8 +175,6 @@
             // Using different namespace for click because click event should not unbind if selector is same object('this')
             _this.$items.on('click.lgcustom', function(event) {
 
-                //console.log('click');
-
                 // For IE8
                 try {
                     event.preventDefault();
@@ -287,6 +285,14 @@
             subHtmlCont = '<div class="lg-sub-html"></div>';
         }*/
 
+        var self = this;
+
+        var galleryHtml = '';
+        if ($('.gallery-content').length > 1) {
+            $('.gallery-content').each(function(i, gallery) {
+                galleryHtml += '<a'+($(self.el).attr('data-gallery')==$(gallery).attr('data-gallery')?' class="gallery-active"':'')+' data-gallery="'+$(gallery).attr('data-gallery')+'">'+$(gallery).attr('data-title')+'</a>';
+            });
+        }
 
         if ($('.lg-outer').length === 0) {
             template = '<div class="lg-outer ' + this.s.addClass + ' ' + this.s.startClass + '">' +
@@ -295,11 +301,10 @@
                 '<div class="lg-toolbar group">' +
                 '<span class="lg-close lg-icon"></span>' +
                 '<div class="gallery-sections">' +
-                ($('#exterior-gallery').length>0 && $('#interior-gallery').length>0 ?'<a class="gallery-exterior gallery-active">Exterior</a>':'') +
-                ($('#interior-gallery').length>0?'<a class="gallery-interior'+($('#exterior-gallery').length===0?' gallery-active':'')+'">Interior</a>':'') +
+                galleryHtml +
                 '</div>' +
                 '<span class="gallery-logo"></span>' +
-                '<span class="gallery-yacht"><span>'+$('.yacht-name h2').text()+'</span> '+$('.yacht-name h1').text()+'</span>' +
+                '<span class="gallery-yacht"><span>'+$('#galleries').attr('data-title')+'</span>' +
                 '</div>' +
                 '<div class="lg-toolbar-bot group">' +
                 //'<div class="gallery-share"><a href=""></a></div>' +
@@ -387,27 +392,16 @@
             _this.$outer.find('.lg-thumb-outer').toggleClass('lg-thumb-open');
         });
 
-        $('.gallery-interior').unbind('click.lg').on('click.lg', function(e) {
+        $('.gallery-sections').unbind('click.lg').on('click.lg', 'a', function(e) {
             e.preventDefault();
 
             if ($(this).hasClass('gallery-active')) return;
 
             _this.destroy(false, true);
 
-            $('#interior-gallery a:first').trigger('click');
+            var gallery = $(this).attr('data-gallery');
 
-            $('.gallery-active').removeClass('gallery-active');
-            $(this).addClass('gallery-active');
-        });
-
-        $('.gallery-exterior').unbind('click.lg').on('click.lg', function(e) {
-            e.preventDefault();
-
-            if ($(this).hasClass('gallery-active')) return;
-
-            _this.destroy(false, true);
-
-            $('#exterior-gallery a:first').trigger('click');
+            $('.gallery-content[data-gallery="'+gallery+'"] a:first').trigger('click');
 
             $('.gallery-active').removeClass('gallery-active');
             $(this).addClass('gallery-active');

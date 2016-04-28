@@ -1,6 +1,6 @@
 'use strict';
 
-define(['jquery', 'foundation', 'oyster_social_grid', 'owlcarousel', 'ScrollMagic'], function ($, Foundation, SocialGrid) {
+define(['jquery', 'foundation', 'oyster_social_grid', 'owlcarousel'], function ($, Foundation, SocialGrid) {
 
 	// ----- HOME PAGE SOCIAL GRID ----
 	new SocialGrid();
@@ -67,7 +67,8 @@ define(['jquery', 'foundation', 'oyster_social_grid', 'owlcarousel', 'ScrollMagi
 		prev: '.yacht-left',
 		next: '.yacht-right',
 		fx: 'scrollHorz',
-		speed: 500
+		speed: 500,
+		log: false
 	}).on('cycle-before', function() {
 		// Top row image
 		setTimeout(function() {
@@ -94,7 +95,8 @@ define(['jquery', 'foundation', 'oyster_social_grid', 'owlcarousel', 'ScrollMagi
 		paused: true,
 		speed: 500,
 		fx: 'scrollHorz',
-		slides: '> .slide'
+		slides: '> .slide',
+		log: false
 	});
 
 

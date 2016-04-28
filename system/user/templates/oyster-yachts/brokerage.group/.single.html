@@ -22,7 +22,7 @@ $interiorGalleryImages = $query->num_rows();*/
 				<h2>{brokerage_model}</h2>
 				<h1>{title}</h1>
 				<?php if ($exteriorGalleryImages > 0): ?>
-				<a class="gallery" href="">View Gallery</a>
+				<a class="gallery button-view-gallery" href="" data-gallery="external">View Gallery</a>
 				<?php endif; ?>
 			</div>
 		</div>
@@ -342,16 +342,17 @@ $interiorGalleryImages = $query->num_rows();*/
 </section>
 <?php endif; ?>
 
-
+<div id="galleries" data-title="{title}">
 <?php if ($exteriorGalleryImages > 0): ?>
-<div id="exterior-gallery" class="gallery-content">
-	{brokerage_gallery_exterior}
-	<a href="{image:url}" data-sub-html="{image:description}">
-		<img src="{image:url:gallery_thumb}" />
-	</a>
-	{/brokerage_gallery_exterior}
-</div>
+	<div class="gallery-content" data-gallery="external" data-title="External">
+		{brokerage_gallery_exterior}
+		<a href="{image:url}" data-sub-html="{image:description}">
+			<img src="{image:url:gallery_thumb}" />
+		</a>
+		{/brokerage_gallery_exterior}
+	</div>
 <?php endif; ?>
+</div>
 
 {footer}
 

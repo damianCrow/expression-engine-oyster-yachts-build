@@ -22,7 +22,7 @@ $interiorGalleryImages = $query->num_rows();
 				<h2>{charter_model}</h2>
 				<h1>{title}</h1>
 				<?php if ($exteriorGalleryImages > 0 || $interiorGalleryImages > 0): ?>
-				<a class="gallery" href="">View Gallery</a>
+				<a class="gallery button-view-gallery" href="" data-gallery="<?php if ($exteriorGalleryImages > 0): ?>external<?php else: ?>internal<?php endif; ?>">View Gallery</a>
 				<?php endif; ?>
 			</div>
 		</div>
@@ -235,25 +235,27 @@ $interiorGalleryImages = $query->num_rows();
 </section>
 {/if}
 
-<?php if ($exteriorGalleryImages > 0): ?>
-<div id="exterior-gallery" class="gallery-content">
-	{charter_exterior_gallery}
-	<a href="{image:url}" data-sub-html="{image:description}">
-		<img src="{image:url:gallery_thumb}" />
-	</a>
-	{/charter_exterior_gallery}
-</div>
-<?php endif; ?>
+<div id="galleries" data-title="{title}">
+	<?php if ($exteriorGalleryImages > 0): ?>
+	<div class="gallery-content" data-gallery="external" data-title="External">
+		{charter_exterior_gallery}
+		<a href="{image:url}" data-sub-html="{image:description}">
+			<img src="{image:url:gallery_thumb}" />
+		</a>
+		{/charter_exterior_gallery}
+	</div>
+	<?php endif; ?>
 
-<?php if ($interiorGalleryImages > 0): ?>
-<div id="interior-gallery" class="gallery-content">
-	{charter_interior_gallery}
-	<a href="{image:url}" data-sub-html="{image:description}">
-		<img src="{image:url:gallery_thumb}" />
-	</a>
-	{/charter_interior_gallery}
+	<?php if ($interiorGalleryImages > 0): ?>
+	<div class="gallery-content" data-gallery="internal" data-title="Internal">
+		{charter_interior_gallery}
+		<a href="{image:url}" data-sub-html="{image:description}">
+			<img src="{image:url:gallery_thumb}" />
+		</a>
+		{/charter_interior_gallery}
+	</div>
+	<?php endif; ?>
 </div>
-<?php endif; ?>
 
 {footer}
 
