@@ -48,76 +48,6 @@ $interiorGalleryImages = $query->num_rows();*/
 
 			<li><a href="" class="contact">Contact Brokerage</a></li>
 		</ul>
-		<section data-local-sidebar data-sticky-sidebar-at-bottom=".about-yacht" data-sticky-sidebar-offset="" class="sticky-sidebar-header hide float-right">
-			<div class="header">
-				<h4 class="text-uppercase float-left">{title} overview</h4>
-				<i class="fa fa-angle-down float-right"></i>
-			</div>
-			<div class="contents">
-				<table class="table definition-table">
-					<tbody>
-						<tr>
-							<td colspan="2" class="heading">{title} overview</td>
-						</tr>
-
-						{if brokerage_location != ""}
-						<tr>
-							<td>Location:</td>
-							<td>{brokerage_location}</td>
-						</tr>
-						{/if}
-
-						{if brokerage_year_built != ""}
-						<tr>
-							<td>Year:</td>
-							<td>{brokerage_year_built}</td>
-						</tr>
-						{/if}
-
-						{if brokerage_rig != ""}
-						<tr>
-							<td>Rig:</td>
-							<td>{brokerage_rig}</td>
-						</tr>
-						{/if}
-
-						{if brokerage_joinery != ""}
-						<tr>
-							<td>Joinery:</td>
-							<td>{brokerage_joinery}</td>
-						</tr>
-						{/if}
-
-						{if brokerage_cabins != ""}
-						<tr>
-							<td>Cabins:</td>
-							<td>{brokerage_cabins}</td>
-						</tr>
-						{/if}
-
-						{if brokerage_status != ""}
-						<tr>
-							<td>Status:</td>
-							<td>{brokerage_status}</td>
-						</tr>
-						{/if}
-
-						{if brokerage_price != ""}
-						<tr>
-							<td>Price:</td>
-							<td>{brokerage_currency}<?php echo number_format({brokerage_price}); ?> <span>{brokerage_vat}</span></td>
-						</tr>
-						{/if}
-
-						{if brokerage_feature_text != ""}
-						<tr>
-							<td colspan="2" class="highlight">{brokerage_feature_text}</td>
-						</tr>
-						{/if}
-					</tbody>
-				</table>
-			</div>
-		</section>
 	</div>
 </section>
 
@@ -133,73 +63,83 @@ $interiorGalleryImages = $query->num_rows();*/
 			</div>
 			{/if}
 		</div>
-		<div class="large-offset-1 large-3 float-left">
-			<div class="sticky-sidebar">
-				<table class="table definition-table">
-					<tbody>
-						<tr>
-							<td colspan="2" class="heading">{title} overview</td>
-						</tr>
-
-						{if brokerage_location != ""}
-						<tr>
-							<td>Location:</td>
-							<td>{brokerage_location}</td>
-						</tr>
-						{/if}
-
-						{if brokerage_year_built != ""}
-						<tr>
-							<td>Year:</td>
-							<td>{brokerage_year_built}</td>
-						</tr>
-						{/if}
-
-						{if brokerage_rig != ""}
-						<tr>
-							<td>Rig:</td>
-							<td>{brokerage_rig}</td>
-						</tr>
-						{/if}
-
-						{if brokerage_joinery != ""}
-						<tr>
-							<td>Joinery:</td>
-							<td>{brokerage_joinery}</td>
-						</tr>
-						{/if}
-
-						{if brokerage_cabins != ""}
-						<tr>
-							<td>Cabins:</td>
-							<td>{brokerage_cabins}</td>
-						</tr>
-						{/if}
-
-						{if brokerage_status != ""}
-						<tr>
-							<td>Status:</td>
-							<td>{brokerage_status}</td>
-						</tr>
-						{/if}
-
-						{if brokerage_price != ""}
-						<tr>
-							<td>Price:</td>
-							<td>{brokerage_currency}<?php echo number_format({brokerage_price}); ?> <span>{brokerage_vat}</span></td>
-						</tr>
-						{/if}
-
-						{if brokerage_feature_text != ""}
-						<tr>
-							<td colspan="2" class="highlight">{brokerage_feature_text}</td>
-						</tr>
-						{/if}
-					</tbody>
-				</table>
-				<div class="disclaimer">
-					The above price is given as an indication only and may be subject to exchange rate fluctuation , VAT or local taxes. Also please note that all dimensions are approximates.
+		<div class="large-offset-1 large-3 medium-12 float-left">
+			<aside class="overview-download columns sticky-sidebar brokerage-style">
+                <div class="aside-header">
+                	<h3 class="text-uppercase">{title} Overview</h3>
+					<svg id="svg-arrow" version="1.1" baseprofile="tiny" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewbox="0 -20 100 100" xml:space="preserve">
+						<g>
+							<line x1="10" y1="10" x2="53" y2="53" stroke="#454646" stroke-width="10"></line>
+							<line x1="90" y1="10" x2="47" y2="53" stroke="#454646" stroke-width="10"></line>
+						</g>
+					</svg>
 				</div>
+				<div class="overview-contents prev-models">
+					<div class="overview columns small-12">
+						<table class="table definition-table">
+							<tbody>
+
+								{if brokerage_location != ""}
+								<tr>
+									<td>Location:</td>
+									<td>{brokerage_location}</td>
+								</tr>
+								{/if}
+
+								{if brokerage_year_built != ""}
+								<tr>
+									<td>Year:</td>
+									<td>{brokerage_year_built}</td>
+								</tr>
+								{/if}
+
+								{if brokerage_rig != ""}
+								<tr>
+									<td>Rig:</td>
+									<td>{brokerage_rig}</td>
+								</tr>
+								{/if}
+
+								{if brokerage_joinery != ""}
+								<tr>
+									<td>Joinery:</td>
+									<td>{brokerage_joinery}</td>
+								</tr>
+								{/if}
+
+								{if brokerage_cabins != ""}
+								<tr>
+									<td>Cabins:</td>
+									<td>{brokerage_cabins}</td>
+								</tr>
+								{/if}
+
+								{if brokerage_status != ""}
+								<tr>
+									<td>Status:</td>
+									<td>{brokerage_status}</td>
+								</tr>
+								{/if}
+
+								{if brokerage_price != ""}
+								<tr>
+									<td>Price:</td>
+									<td>{brokerage_currency}<?php echo number_format({brokerage_price}); ?> <span>{brokerage_vat}</span></td>
+								</tr>
+								{/if}
+
+								{if brokerage_feature_text != ""}
+								<tr>
+									<td colspan="2" class="highlight">{brokerage_feature_text}</td>
+								</tr>
+								{/if}
+							</tbody>
+						</table>
+						<div class="disclaimer">
+							<small>The above price is given as an indication only and may be subject to exchange rate fluctuation , VAT or local taxes. Also please note that all dimensions are approximates.</small>
+						</div>
+					</div>
+            	</aside>
 			</div>
 		</div>
 	</div>

@@ -58,6 +58,32 @@ class Event_to_news_ext {
         );
 
         ee()->db->insert('extensions', $data);
+
+        // Update Event News after update
+        $data = array(
+            'class'     => __CLASS__,
+            'method'    => 'updateNews',
+            'hook'      => 'after_channel_entry_update',
+            'settings'  => '',
+            'priority'  => 1,
+            'version'   => $this->version,
+            'enabled'   => 'y'
+        );
+
+        ee()->db->insert('extensions', $data);
+
+        // Delete Event News after delete
+        $data = array(
+            'class'     => __CLASS__,
+            'method'    => 'deleteNews',
+            'hook'      => 'before_channel_entry_delete',
+            'settings'  => '',
+            'priority'  => 1,
+            'version'   => $this->version,
+            'enabled'   => 'y'
+        );
+
+        ee()->db->insert('extensions', $data);
     }
 
 
@@ -195,6 +221,87 @@ class Event_to_news_ext {
         // {
         //     show_error(implode('<br />', ee()->api_channel_entries->errors));
         // }
+    }
+
+    function updateNews($entry, $values, $modified) {
+
+        // if not "Event Day Report" channel then exit
+        if ($values['channel_id'] !== "16") return;
+
+        // Get the event ID via the relationship field
+        // field_id_120 => relationship to Event channel
+        $eventId = $_POST['field_id_120']['data'][0];
+
+        // Get the title field of the Event
+        $query = ee()->db->query("SELECT title FROM exp_channel_titles WHERE entry_id=".$eventId);
+
+        if ($query->num_rows() > 0) {
+            $row = $query->row();
+        }
+
+        $data = array();
+
+        // Set title of Event News item to be "{Event name} - {Event Day Report day label}"
+        $data['title'] = $row->title.' - '.$values['field_id_122'];
+
+        
+        // We want the first sentence as the excerpt, so break up content into sentences
+        $sentences = explode(".", $values['field_id_115']);
+
+        // Add . at end
+        $excerpt = $sentences[0];
+        if (count($sentences) > 1) {
+            $excerpt .= '.';
+        }
+        
+
+        // Close off any open HTML tags which may have been cut
+        // DOMDocument adds html so we need to trim it => http://php.net/manual/en/domdocument.savehtml.php
+        $doc = new DOMDocument();
+        $doc->loadHTML($excerpt);
+        $data['field_id_127'] = preg_replace('/^<!DOCTYPE.+?>/', '', str_replace( array('<html>', '</html>', '<body>', '</body>'), array('', '', '', ''), $doc->saveHTML()));
+
+        // Set the Event Report field to be a relationship to this Event Report being created
+        $data['field_id_128'] = array(
+            'data' => array(
+                0 => $values['entry_id']
+            )
+        );
+        
+        // Set status
+        $data['status'] = 'Published';
+
+        // Load API
+        ee()->load->library('api');
+        ee()->legacy_api->instantiate('channel_entries');
+        ee()->legacy_api->instantiate('channel_fields');
+
+
+        $query = ee()->db->query("SELECT parent_id FROM exp_relationships WHERE child_id=".$values['entry_id']);
+
+        if ($query->num_rows() > 0) {
+            $row = $query->row();
+
+            // Add entry to Event News channel
+            ee()->api_channel_fields->setup_entry_settings(17, $data);
+            $success = ee()->api_channel_entries->save_entry($data, 17, $row->parent_id);
+        }
+
+        // TODO: Update images
+    }
+
+    function deleteNews($entry, $values) {
+        // if not "Event Day Report" channel then exit
+        if ($values['channel_id'] !== "16") return;
+
+        $query = ee()->db->query("SELECT parent_id FROM exp_relationships WHERE child_id=".$values['entry_id']);
+
+        if ($query->num_rows() > 0) {
+            die('yup');
+            $row = $query->row();
+
+            $success = ee()->api_channel_entries->delete_entry($row->parent_id);
+        }
     }
 
     function copyImages($entry, $values) {

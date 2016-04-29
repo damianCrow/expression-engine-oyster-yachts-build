@@ -1,6 +1,6 @@
 'use strict';
 
-define(['jquery', 'ScrollMagic', 'jquerygsap', 'cycle', 'foundation', 'salvattore', 'lightgallery', 'lightgalleryThumbs', 'select2', 'jqueryValidation', 'owlcarousel', 'googleMaps', 'simpleWeather', 'weather_icons', 'oyster_header'], function ($, ScrollMagic) {
+define(['jquery', 'jquerygsap', 'cycle', 'foundation', 'salvattore', 'lightgallery', 'lightgalleryThumbs', 'select2', 'jqueryValidation', 'owlcarousel', 'googleMaps', 'simpleWeather', 'weather_icons', 'oyster_header', 'oyster_map', 'oyster_sidebar'], function ($) {
 
 	//  ---- BACK BUTTON ON HERO BANNERS FUNCTIONALITY -----  //
 	$('#page-back-button').on('click', function (evt) {
@@ -68,92 +68,7 @@ define(['jquery', 'ScrollMagic', 'jquerygsap', 'cycle', 'foundation', 'salvattor
 		});
 	};
 
-	// ---- GLOBAL STICKY SIDEBAR ----
-	var controller = new ScrollMagic.Controller(),
-	    $elem = $('.about-yacht'),
-	    _sideBarScene = function(elem) {
-			// if elem doesnt exist, this will prevent the error
-			if ( _.isEmpty(elem) ) elem = { offset: $.noop, height: $.noop };
-			if ( _.isEmpty(elem.offset()) ) return { addTo: $.noop, enabled: $.noop, destroy: $.noop };
-			
-			var _scene = new ScrollMagic.Scene({
-				duration: elem.height(),
-				offset: elem.offset().top - 50
-			});
-
-			_scene.setPin('section.about-yacht .sticky-sidebar');
-			return _scene;
-		},
-	    $lastId = null,
-		$sideBarScene = _sideBarScene($elem),
-		$locaSubNav = $("[data-local-subnav]") || {},
-		$locaSubNavHeight = $locaSubNav.outerHeight(),
-		$localSubNavItems = $locaSubNav.find(".local-subnav a"),
-
-		$localSubNavItemsMap =  $localSubNavItems.map(function(){
-			var item = $( $(this).attr("href") );
-
-			if (item.length) return item;
-		});
-
-	// Watch for breakpoint changes
-	$(window).on('changed.zf.mediaquery', function(event, newSize, oldSize) {
-		// newSize is the name of the now-current breakpoint, oldSize is the previous breakpoint
-		if (newSize !== "small" && newSize !== "medium") {
-			$sideBarScene = _sideBarScene($elem);
-			$sideBarScene.addTo(controller);
-		} else {
-			$sideBarScene.enabled(false);
-			$sideBarScene.destroy(true);
-		}
-	});
-
-	if ( !_.isEmpty($elem) && Foundation.MediaQuery.atLeast("large") ) $sideBarScene.addTo(controller);
-
-	// opens and closes the the table when snapped on the header
-	$('.sticky-sidebar-header .header').on('click', function(e) {
-		$(this).next().toggle(0);
-	});
-
-	// Simple Scroll spy for the Local SubNAV
-	$(window).scroll(function(){
-		// Get container scroll position
-		var fromTop = $(this).scrollTop() + $locaSubNavHeight;
-
-		// Get id of current scroll item
-		var cur = $localSubNavItemsMap.map(function() {
-			if ( $(this).offset().top < fromTop ) return this;
-		});
-
-		// Get the id of the current element
-		cur = cur[ cur.length - 1 ];
-		var id = cur && cur.length ? cur[0].id : "";
-
-		if ($lastId !== id) {
-			$lastId = id;
-
-			// Set/remove active class
-			$localSubNavItems
-				.parent()
-				.removeClass("active")
-				.end()
-
-				.filter("[href='#" + id + "']")
-				.parent()
-				.addClass("active");
-		}
-	});
-
-	// Yacht nav - scroll to section
-	$locaSubNav.on('click', '.scroll', function(e) {
-		e.preventDefault();
-
-		$('html, body').animate({
-			scrollTop: $( $(this).attr('href') ).position().top
-		}, 700);
-	});
-
-	// ---- *end* GLOBAL STICKY SIDEBAR *end* ----	
+		
 
 	//  ---- GLOBAL FOOTER SIGN UP BOX -----  //
 	$('.sign-up-btn').on('click', function() {
@@ -472,60 +387,7 @@ define(['jquery', 'ScrollMagic', 'jquerygsap', 'cycle', 'foundation', 'salvattor
 
 	// ---- *end* LISTING STAGGERED FADE IN *end* ----	
 
-	//  ---- GOOGLE MAPS EMBEDS -----  //
 
-	var googleMapStyle = [{
-		"featureType": "water",
-		"elementType": "geometry.fill",
-		"stylers": [{ "color": "#004363" }]
-	}, {
-		"featureType": "water",
-		"elementType": "labels.text.fill",
-		"stylers": [{ "color": "#000000" }]
-	}, {
-		"featureType": "landscape",
-		"elementType": "geometry.fill",
-		"stylers": [{ "color": "#5a7c8c" }]
-	}, {
-		"featureType": "landscape",
-		"elementType": "geometry.fill",
-		"stylers": [{ "color": "#5b7e8d" }]
-	}, {
-		"featureType": "poi",
-		"elementType": "geometry.fill",
-		"stylers": [{ "color": "#53636b" }]
-	}];
-
-	initMap();
-
-	function initMap() {
-		var customMapType = new google.maps.StyledMapType(googleMapStyle);
-		var customMapTypeId = 'custom_style';
-
-		$('.destination-map-container').each(function(index, element) {
-
-			var locationLat = $(element).data('lat'),
-			locationLng = $(element).data('lng'),
-			defaultZoom = 10;
-
-			if ($(element).data('default-zoom')){
-				defaultZoom = $(this).data('default-zoom');
-			}
-			
-			var map = new google.maps.Map(element, {
-				zoom: defaultZoom,
-				center: {lat: locationLat, lng: locationLng},  // British Virgin Islands
-				streetViewControl: false,
-				mapTypeControl: false,
-				scrollwheel: false
-			});
-
-			map.mapTypes.set(customMapTypeId, customMapType);
-			map.setMapTypeId(customMapTypeId);			
-		});
-	}
-
-// ---- *end* GOOGLE MAPS EMBEDS *end* ----	
 
 //  ---- simpleWeather.js CONFIG -----  //
 

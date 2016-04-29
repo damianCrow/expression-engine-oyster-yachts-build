@@ -28,9 +28,12 @@ require.config({
     oyster_home: '/assets/js/app/index',
     oyster_brokerage: '/assets/js/app/brokerage/brokerage',
     oyster_charter: '/assets/js/app/charter/charter',
+    
     oyster_brokerage_filters: '/assets/js/components/util/brokerage-filters',
     oyster_charter_filters: '/assets/js/components/util/charter-filters',
-    oyster_social_grid: '/assets/js/components/util/social-grid'
+    oyster_social_grid: '/assets/js/components/util/social-grid',
+    oyster_map: '/assets/js/components/util/map',
+    oyster_sidebar: '/assets/js/components/util/sidebar'
   },
   shim: {
     'jquery': {
@@ -95,7 +98,6 @@ require([
   'jquerygsap',
   'foundation',
   'owlcarousel',
-  'googleMaps',
 
   'appInit',
   'oyster_global'

@@ -53,29 +53,6 @@ $interiorGalleryImages = $query->num_rows();
 
 			<li><a href="" class="contact">Contact Sales</a></li>
 		</ul>
-
-		<section data-local-sidebar data-sticky-sidebar-at-bottom=".about-yacht" data-sticky-sidebar-offset="" class="yachts-yacht-sticky-header sticky-sidebar-header hide float-right">
-			<div class="header">
-				<h4 class="text-uppercase float-left">{title} overview</h4><i class="fa fa-angle-down float-right"></i>
-			</div>
-			<div class="contents">
-				<aside class="overview-download columns">
-					<div class="overview-contents">
-						<section class="overview columns small-6 medium-12">
-							<p>To find out more about the {title} model, you can download the {title} Brochure below.</p>
-							<p>If you would like more information, please complete the Contact Sales form or alternatively call us on <a href="tel:+442380831010">+44 (0)2380 831 010</a></p>
-						</section>
-						{yacht_brochure}
-						<figure class="download-pdf clearfix">
-							<div class="download-thumb column small-3"><img src="{yacht_brochure:thumbnail}"></div>
-							
-							{embed="site/.download_file" title="{yacht_brochure:title}" file="{yacht_brochure:file}" filesize="{yacht_brochure:file}{file_size}{/yacht_brochure:file}" label="Download Brochure"}
-						</figure>
-						{/yacht_brochure}
-					</div>
-				</aside>
-			</div>
-		</section>
 	</div>
 </section>
 
@@ -86,25 +63,33 @@ $interiorGalleryImages = $query->num_rows();
 			<h1>{title}</h1>
 			{yacht_about}
 		</div>
-		<div class="large-offset-1 large-3 float-left">
-			<div class="sticky-sidebar">
-				<aside class="overview-download columns">
+		<div class="large-offset-1 large-3 medium-12 float-left">
+
+			<aside class="overview-download columns sticky-sidebar yachts-yacht-theme">
+				<div class="aside-header">
 					<h3 class="text-uppercase">{title} Overview</h3>
-					<div class="overview-contents">
-						<section class="overview columns small-6 medium-12">
-							<p>To find out more about the {title} model, you can download the {title} Brochure below.</p>
-							<p>If you would like more information, please complete the Contact Sales form or alternatively call us on <a href="tel:+442380831010">+44 (0)2380 831 010</a></p>
-						</section>
+					<svg id="svg-arrow" version="1.1" baseprofile="tiny" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewbox="0 -20 100 100" xml:space="preserve">
+						<g>
+							<line x1="10" y1="10" x2="53" y2="53" stroke="#454646" stroke-width="10"></line>
+							<line x1="90" y1="10" x2="47" y2="53" stroke="#454646" stroke-width="10"></line>
+						</g>
+					</svg>
+				</div>
+				<div class="overview-contents prev-models">
+					<div class="overview columns small-12">
+						<p>To find out more about the {title} model, you can download the {title} Brochure below.</p>
+						<p>If you would like more information, please complete the Contact Sales form or alternatively call us on <a href="tell:442380831010" class="phone-number">+44 (0)2380 831 010</a></p>
 						{yacht_brochure}
 						<figure class="download-pdf clearfix">
-							<div class="download-thumb column small-3"><img src="{yacht_brochure:thumbnail}"></div>
-							
+							<div class="download-thumb column small-3">
+								<img src="{yacht_brochure:thumbnail}">
+							</div>
 							{embed="site/.download_file" title="{yacht_brochure:title}" file="{yacht_brochure:file}" filesize="{yacht_brochure:file}{file_size}{/yacht_brochure:file}" label="Download Brochure"}
 						</figure>
 						{/yacht_brochure}
 					</div>
-				</aside>
-			</div>
+				</div>
+			</aside>
 		</div>
 	</div>
 </section>

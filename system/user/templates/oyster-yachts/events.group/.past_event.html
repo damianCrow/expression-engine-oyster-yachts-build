@@ -45,7 +45,7 @@
 			{parents:event_day_description}
 			<div class="further-info">
 				<p>
-					Written by <b>{parents:author}</b>
+					{if parents:event_day_written_by != ""}Written by <b>{parents:event_day_written_by}</b>{/if}
 					{if parents:event_day_images_by != ""}<br/>Images by <b>{parents:event_day_images_by}</b>{/if}
 				</p>
 			</div>
