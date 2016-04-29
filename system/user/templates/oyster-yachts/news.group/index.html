@@ -9,9 +9,10 @@
 	<div class="row wrapper">
 		<ul>
 
-			{exp:channel:entries channel="news" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published" sort="desc" limit="3"}
+			{exp:channel:entries channel="news|event_news" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published" limit="3"}
 			<li class="columns medium-4 small-6">
 				<div class="content">
+					{if channel_short_name == "news"}
 					<div {article_main_image}style="background-image:url('{image:url}')"{/article_main_image} class="news-thumb-image">
 						{share_buttons}
 					</div>
@@ -21,6 +22,21 @@
 						{article_excerpt}
 						<a href="{url_title_path='news/article'}" class="read-more">READ MORE</a>
 					</div>
+					{if:elseif channel_short_name == "event_news"}
+					<div {event_news_image}style="background-image:url('{image:url}')"{/event_news_image} class="news-thumb-image">
+						{share_buttons}
+					</div>
+					<div class="news-details">
+						{event_news_report status="published"}
+						{event_news_report:event_day_event status="published"}
+						<time datetime="{entry_date format="%Y-%m-%d %H:%i"}" class="text-uppercase">{entry_date format="%d %F %Y"}</time>
+						<h3 class="text-uppercase"><a href="{path='events/event/{event_news_report:event_day_event:url_title}'}">{title}</a></h3>
+						{event_news_content}
+						<a href="{path='events/event/{event_news_report:event_day_event:url_title}'}" class="read-more">READ MORE</a>
+						{/event_news_report:event_day_event}
+						{/event_news_report}
+					</div>
+					{/if}
 				</div>
 			</li>
 			{/exp:channel:entries}

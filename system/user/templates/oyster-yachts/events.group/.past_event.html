@@ -10,27 +10,29 @@
 			<div class="row-pad">
 				<h2 class="yacht-list-modal">{event_start_date format="%d %F %Y"} - {event_end_date format="%d %F %Y"} | {event_location}</h2>
 				<h1 class="yacht-list-name">{title}</h1>
-				<a href="" class="gallery">View Gallery</a>
+				{parents field="event_day_event" status="published" orderby="date" sort="ASC" limit="1"}
+				{parents:event_day_gallery limit="1"}
+				<a href="" class="gallery button-view-gallery" data-gallery="{parents:url_title}">View Gallery</a>
+				{/parents:event_day_gallery}
+				{/parents}
 			</div>
 		</div>
 		{share_buttons}
 	</div>
 	<div id="yacht-nav" data-local-subnav="data-local-subnav" class="yacht-nav">
 		<ul>
-			{parents field="event_day_event" status="published"}
+			{parents field="event_day_event" status="published" orderby="date" sort="ASC"}
 			<li {if parents:count == 1}class="active"{/if}><a href="#events-previous-regattas-{parents:url_title}" class="scroll">{parents:event_day_number}</a></li>
 			{/parents}
 
-
-			{parents field="event_results_event" status="published"}
+			{if event_class_1_overall_results:total_rows > 0 || event_class_2_overall_results:total_rows > 0}
 			<li><a href="#events-previous-regattas-overall-results" class="scroll">Overall results</a></li>
-			{/parents}
+			{/if}
 		</ul>
 	</div>
 </section>
 
-
-{parents field="event_day_event" status="published"}
+{parents field="event_day_event" status="published" orderby="date" sort="ASC"}
 <section id="events-previous-regattas-{parents:url_title}" class="page-home-about event-previous-regattas-about">
 	<div class="row padded-full-width-row">
 		<div class="large-offset-1 large-7 float-left">
@@ -49,16 +51,18 @@
 			</div>
 		</div>
 		<div class="large-offset-1 large-3 small-12 float-left">
+			{parents:event_day_gallery limit="1"}
 			<ul class="event-gallery">
-				<li style="background-image: url('/assets/images/bg-images/events-previous-bg-5.jpg')"></li>
+				<li style="background-image: url('{image:url}')"></li>
 				<li class="view-gallery-btn">
 					<a href="" class="text-uppercase button-view-gallery" data-gallery="{parents:url_title}"><i class="fa fa-th"></i><span>view gallery</span></a>
 				</li>
 			</ul>
+			{/parents:event_day_gallery}
 		</div>
 	</div>
 
-	{if parents:event_day_class_1_results:total_rows > 0}
+	{if "{parents:event_day_class_1_results:total_rows}" != "0"}
 	<div class="row padded-full-width-row content">
 		<table class="table specs-table">
 			<thead>
@@ -77,12 +81,12 @@
 				</tr>
 				{parents:event_day_class_1_results}
 				<tr>
-					<td>{yacht_name}</td>
-					<td>{model}</td>
-					<td>{owner_skipper}</td>
-					<td>{finished}</td>
-					<td>{elapse}</td>
-					<td>{corrected}</td>
+					<td>{event_day_class_1_results:yacht_name}</td>
+					<td>{event_day_class_1_results:model}</td>
+					<td>{event_day_class_1_results:owner_skipper}</td>
+					<td>{event_day_class_1_results:finished}</td>
+					<td>{event_day_class_1_results:elapse}</td>
+					<td>{event_day_class_1_results:corrected}</td>
 				</tr>
 				{/parents:event_day_class_1_results}
 			</tbody>
@@ -90,7 +94,7 @@
 	</div>
 	{/if}
 
-	{if parents:event_day_class_2_results:total_rows > 0}
+	{if "{parents:event_day_class_2_results:total_rows}" > "0"}
 	<div class="row padded-full-width-row content">
 		<table class="table specs-table">
 			<thead>
@@ -110,12 +114,12 @@
 
 				{parents:event_day_class_2_results}
 				<tr>
-					<td>{yacht_name}</td>
-					<td>{model}</td>
-					<td>{owner_skipper}</td>
-					<td>{finished}</td>
-					<td>{elapse}</td>
-					<td>{corrected}</td>
+					<td>{event_day_class_2_results:yacht_name}</td>
+					<td>{event_day_class_2_results:model}</td>
+					<td>{event_day_class_2_results:owner_skipper}</td>
+					<td>{event_day_class_2_results:finished}</td>
+					<td>{event_day_class_2_results:elapse}</td>
+					<td>{event_day_class_2_results:corrected}</td>
 				</tr>
 				{/parents:event_day_class_2_results}
 
@@ -126,10 +130,10 @@
 </section>
 {/parents}
 
-{parents field="event_results_event" status="published"}
+{if event_class_1_overall_results:total_rows > 0 || event_class_2_overall_results:total_rows > 0}
 <section id="events-previous-regattas-overall-results" class="page-home-about event-previous-regattas-about">
 
-	{if parents:event_results_class_1_results:total_rows > 0}
+	{if event_class_1_overall_results:total_rows > 0}
 	<div class="row padded-full-width-row content">
 		<table class="table specs-table">
 			<thead>
@@ -147,7 +151,7 @@
 					<th class="text-uppercase">corrected</th>
 				</tr>
 
-				{parents:event_results_class_1_results}
+				{event_class_1_overall_results}
 				<tr>
 					<td>{yacht_name}</td>
 					<td>{model}</td>
@@ -156,14 +160,14 @@
 					<td>{elapse}</td>
 					<td>{corrected}</td>
 				</tr>
-				{/parents:event_results_class_1_results}
+				{/event_class_1_overall_results}
 				
 			</tbody>
 		</table>
 	</div>
 	{/if}
 
-	{if parents:event_results_class_2_results:total_rows > 0}
+	{if event_class_2_overall_results:total_rows > 0}
 	<div class="row padded-full-width-row content">
 		<table class="table specs-table">
 			<thead>
@@ -181,7 +185,7 @@
 					<th class="text-uppercase">corrected</th>
 				</tr>
 
-				{parents:event_results_class_2_results}
+				{event_class_2_overall_results}
 				<tr>
 					<td>{yacht_name}</td>
 					<td>{model}</td>
@@ -190,20 +194,19 @@
 					<td>{elapse}</td>
 					<td>{corrected}</td>
 				</tr>
-				{/parents:event_results_class_2_results}
+				{/event_class_2_overall_results}
 				
 			</tbody>
 		</table>
 	</div>
 	{/if}
 </section>
-
-{/parents}
+{/if}
 
 {footer}
 
 <section id="galleries" data-title="{title}">
-{parents field="event_day_event" status="published"}
+{parents field="event_day_event" status="published" orderby="date" sort="ASC"}
 
 	{parents:event_day_gallery}
 

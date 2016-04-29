@@ -7,9 +7,11 @@
 	<div class="row padded-full-width-row">
 		<div data-columns class="news-panes">
 
-			{exp:channel:entries channel="news" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published" sort="desc"}
+			{exp:channel:entries channel="news|event_news" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published" sort="desc"}
 			<div class="news-pane columns">
 				<div class="news-pane-inner">
+					
+					{if channel_short_name == "news"}
 					<div class="news-pane-header" {article_main_image}style="background-image:url('{image:url}')"{/article_main_image}></div>
 					<div class="news-pane-content">
 						<h5 class="text-uppercase date">{entry_date format="%d %F %Y"}</h5>
@@ -17,6 +19,19 @@
 						{article_excerpt}
 						<a href="{url_title_path='news/article'}" class="read-more">READ MORE</a>
 					</div>
+					{if:elseif channel_short_name == "event_news"}
+					<div class="news-pane-header" {event_news_image}style="background-image:url('{image:url}')"{/event_news_image}></div>
+					<div class="news-pane-content">
+						<h5 class="text-uppercase date">{entry_date format="%d %F %Y"}</h5>
+						<h4 class="text-uppercase title">{title}</h4>
+						{event_news_content}
+						{event_news_report status="published"}
+						{event_news_report:event_day_event status="published"}
+						<a href="{path='events/event/{event_news_report:event_day_event:url_title}'}" class="read-more">READ MORE</a>
+						{/event_news_report:event_day_event}
+						{/event_news_report}
+					</div>
+					{/if}
 				</div>
 			</div>
 			{/exp:channel:entries}
