@@ -172,6 +172,14 @@
 		requirejs(['oyster_brokerage']);
 		{if:elseif segment_1 == "charter"}
 		requirejs(['oyster_charter']);
+		{if:elseif segment_1 == "charter"}
+		requirejs(['oyster_yachts']);
+		{if:elseif segment_1 == "events"}
+			{if segment_2 == "gallery"}
+				requirejs(['oyster_gallery_fullscreen']);
+			{if:else}
+				requirejs(['oyster_gallery_modal']);
+			{/if}
 		{/if}
 	});
 	</script>

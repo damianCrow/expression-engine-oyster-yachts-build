@@ -33,7 +33,9 @@ require.config({
     oyster_charter_filters: '/assets/js/components/util/charter-filters',
     oyster_social_grid: '/assets/js/components/util/social-grid',
     oyster_map: '/assets/js/components/util/map',
-    oyster_sidebar: '/assets/js/components/util/sidebar'
+    oyster_sidebar: '/assets/js/components/util/sidebar',
+    oyster_gallery_fullscreen: '/assets/js/components/util/gallery-full',
+    oyster_gallery_modal: '/assets/js/components/util/gallery-modal'
   },
   shim: {
     'jquery': {

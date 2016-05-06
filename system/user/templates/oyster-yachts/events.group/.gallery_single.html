@@ -13,21 +13,23 @@
 </section>
 
 <section id="galleries" data-full-screen="true" data-title="{title}" class="full-screen-media after-nav full-screen">
-{parents field="event_day_event" status="published" orderby="date" sort="ASC"}
+	<div class="gallery-container">
+	{parents field="event_day_event" status="published" orderby="date" sort="ASC"}
 
-	{parents:event_day_gallery}
+		{parents:event_day_gallery}
 
-	{if image:count == 1}
-	<div class="gallery-content" data-gallery="{parents:url_title}" data-title="{parents:event_day_number}">
-	{/if}
-		<a href="{image:url}" data-sub-html="{image:description}">
-			<img src="{image:url:gallery_thumb}" />
-		</a>
-	{if image:count == image:total}
+		{if image:count == 1}
+		<div class="gallery-content" data-gallery="{parents:url_title}" data-title="{parents:event_day_number}">
+		{/if}
+			<a href="{image:url}" data-sub-html="{image:description}">
+				<img src="{image:url:gallery_thumb}" />
+			</a>
+		{if image:count == image:total}
+		</div>
+		{/if}
+		{/parents:event_day_gallery}
+	{/parents}
 	</div>
-	{/if}
-	{/parents:event_day_gallery}
-{/parents}
 </section>
 
 {footer}

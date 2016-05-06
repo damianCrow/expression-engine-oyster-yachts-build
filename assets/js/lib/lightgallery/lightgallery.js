@@ -67,7 +67,9 @@
 
         dynamic: false,
         dynamicEl: [],
-        galleryId: 1
+        galleryId: 1,
+
+        startOnClick: true
     };
 
     function Plugin(element, options) {
@@ -265,8 +267,10 @@
         var template;
         var _this = this;
 
-        $('body').append('<div class="lg-backdrop"></div>');
-        $('.lg-backdrop').css('transition-duration', this.s.backdropDuration + 'ms');
+        if (_this.s.startOnClick) {
+            $('body').append('<div class="lg-backdrop"></div>');
+            $('.lg-backdrop').css('transition-duration', this.s.backdropDuration + 'ms');
+        } 
 
         // Create gallery items
         for (i = 0; i < this.$items.length; i++) {
@@ -299,11 +303,17 @@
                 '<div class="lg" style="width:' + this.s.width + '; height:' + this.s.height + '">' +
                 '<div class="lg-inner"></div>' +
                 '<div class="lg-toolbar group">' +
-                '<span class="lg-close lg-icon"></span>' +
-                '<div class="gallery-sections">' +
-                galleryHtml +
-                '</div>' +
-                '<span class="gallery-logo"></span>' +
+                '<span class="lg-close lg-icon"></span>';
+
+                if (_this.s.startOnClick) {
+                    template += '<div class="gallery-sections">' +
+                    galleryHtml +
+                    '</div>';
+                } else {
+                    $('.global-local-subnav').append('<div class="gallery-sections">' + galleryHtml + '</div>');
+                }
+                
+                template += '<span class="gallery-logo"></span>' +
                 '<span class="gallery-yacht"><span>'+$('#galleries').attr('data-title')+'</span>' +
                 '</div>' +
                 '<div class="lg-toolbar-bot group">' +
@@ -316,7 +326,11 @@
                 '</div>' +
                 '</div>';
 
-            $('body').append(template);
+            if (_this.s.startOnClick) {
+                $('body').append(template);
+            } else {
+                $('.gallery-container').append(template);
+            }
         }
 
         this.$outer = $('.lg-outer');

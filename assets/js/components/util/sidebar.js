@@ -72,8 +72,6 @@ define(['jquery', 'ScrollMagic'], function ($, ScrollMagic) {
 		}
 	});
 
-	$('.gallery-container').lightGallery({ closable: false, startOnClick: false, mousewheel: false });
-
 	// opens and closes the the table when snapped on the header
 	$('.sticky-sidebar-header .header').on('click', function (e) {
 		$(this).next().toggle(0);
