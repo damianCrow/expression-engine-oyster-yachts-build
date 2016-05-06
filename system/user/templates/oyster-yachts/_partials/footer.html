@@ -180,6 +180,8 @@
 			{if:else}
 				requirejs(['gallery_modal']);
 			{/if}
+		{if:elseif segment_1 == "world-rally"}
+			requirejs(['gallery_fullscreen']);
 		{/if}
 	});
 	</script>

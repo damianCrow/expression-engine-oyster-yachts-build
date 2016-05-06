@@ -3,7 +3,11 @@
 {if:elseif !segment_3}
 	{embed="world-rally/.previous-rally"}
 {if:elseif segment_3 == "gallery"}
-	{embed="world-rally/.previous-rally-gallery"}
+	{if !segment_4}
+		{embed="world-rally/.previous-rally-gallery"}
+	{if:else}
+		{embed="world-rally/.previous-rally-gallery-single"}
+	{/if}
 {if:elseif segment_3 == "entries"}
 	{embed="world-rally/.previous-rally-entries"}
 {if:elseif segment_3 == "news"}

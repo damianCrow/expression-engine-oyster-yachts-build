@@ -6,17 +6,17 @@
 
 <section id="news-thumbs" class="news-thumbs global-padding-top-only--small">
 	<div class="banner">Latest News</div>
-	<div class="row wrapper">
+	<div data-equalizer data-equalize-on="medium" class="row wrapper">
 		<ul>
 
 			{exp:channel:entries channel="news|event_news" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published" limit="3"}
-			<li class="columns medium-4 small-6">
+			<li class="columns medium-4 small-6 small-12">
 				<div class="content">
 					{if channel_short_name == "news"}
 					<div {article_main_image}style="background-image:url('{image:url}')"{/article_main_image} class="news-thumb-image">
 						{share_buttons}
 					</div>
-					<div class="news-details">
+					<div data-equalizer-watch class="news-details">
 						<time datetime="{entry_date format="%Y-%m-%d %H:%i"}" class="text-uppercase">{entry_date format="%d %F %Y"}</time>
 						<h3 class="text-uppercase"><a href="{url_title_path='news/article'}">{title}</a></h3>
 						{article_excerpt}
@@ -26,7 +26,7 @@
 					<div {event_news_image}style="background-image:url('{image:url}')"{/event_news_image} class="news-thumb-image">
 						{share_buttons}
 					</div>
-					<div class="news-details">
+					<div data-equalizer-watch class="news-details">
 						{event_news_report status="published"}
 						{event_news_report:event_day_event status="published"}
 						<time datetime="{entry_date format="%Y-%m-%d %H:%i"}" class="text-uppercase">{entry_date format="%d %F %Y"}</time>

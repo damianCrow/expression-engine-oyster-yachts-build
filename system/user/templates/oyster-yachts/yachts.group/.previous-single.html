@@ -30,20 +30,26 @@ $galleryImages = $query->num_rows();
 			{yacht_prev_about}
 		</div>
 		<div class="large-offset-1 large-3 float-left">
-			<div class="sticky-sidebar">
-				<aside class="overview-download columns show-for-large">
+			<aside class="overview-download columns">
+				<div class="aside-header">
 					<h3 class="text-uppercase">Yachts</h3>
-					<div class="overview-contents prev-models">
-						<section class="overview columns small-6 medium-12">
-							<ul>
-								<li><a href="{path='yachts/fleet'}">Fleet</a></li>
-								<li class="active-page"><a href="{path='yachts/previous-models'}">Previous Models</a></li>
-								<li><a href="{path='yachts/special-projects'}">Special Projects</a></li>
-							</ul>
-						</section>
+					<svg id="svg-arrow" version="1.1" baseprofile="tiny" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewbox="0 -20 100 100" xml:space="preserve">
+						<g>
+							<line x1="10" y1="10" x2="53" y2="53" stroke="#454646" stroke-width="10"></line>
+							<line x1="90" y1="10" x2="47" y2="53" stroke="#454646" stroke-width="10"></line>
+						</g>
+					</svg>
+				</div>
+				<div class="overview-contents prev-models">
+					<div class="overview columns small-12">
+						<ul>
+							<li><a href="{path='yachts/fleet'}">Fleet</a></li>
+							<li class="active-page"><a href="{path='yachts/previous-models'}">Previous Models</a></li>
+							<li><a href="{path='yachts/special-projects'}">Special Projects</a></li>
+						</ul>
 					</div>
-				</aside>
-			</div>
+				</div>
+			</aside>
 		</div>
 	</div>
 </section>
