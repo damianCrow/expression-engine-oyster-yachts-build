@@ -1,6 +1,6 @@
 'use strict';
 
-define(['jquery', 'ScrollMagic', 'foundation'], function ($, ScrollMagic, foundation) {
+define(['jquery', 'ScrollMagic', 'foundation', 'ownersAreaModal'], function ($, ScrollMagic) {
 	// Global header
 	var header = $("header.global-header"),
 	    scrollToPoint = header.attr('data-snap-to-min-nav'),
@@ -78,5 +78,37 @@ define(['jquery', 'ScrollMagic', 'foundation'], function ($, ScrollMagic, founda
 		// if a modal is full screen and has the combination of ".close-button-wrapper a.site-search-close", manually close it
 		$('.global-modals.full').foundation('close');
 	});
+
+	//  ---- GLOBAL MAIN FIXED HEADER SEARCH BAR TOGGLE SEARCH ICON -----  //
+	// site search open
+	var $siteSearchOpen = $('.global-header-top-nav-large .site-search-open'),
+		$siteSearchClose = $('.global-header-top-nav-large .site-search-close'),
+		$siteSearchBar = $('.global-header-top-nav-large .search-bar');
+
+	// site search open
+	$siteSearchOpen.on('click', function(e) {
+		e.preventDefault();
+
+		$siteSearchBar.show().find('input').animate({right:0}, 300);
+		$siteSearchOpen.fadeOut(300);
+		$siteSearchClose.fadeIn(300);
+	});
+
+	// site search close
+	$siteSearchClose.on('click', function(e) {
+		e.preventDefault();
+
+		$siteSearchBar.find('input').animate({right:'-100%'}, 300, function() {
+			$siteSearchBar.hide();
+		});
+
+		$siteSearchOpen.fadeIn(300);
+		$siteSearchClose.fadeOut(300);
+	});
+	//  ---- *end* GLOBAL MAIN FIXED HEADER SEARCH BAR TOGGLE SEARCH ICON *end* -----  //
+
+
+
+
 });
 //# sourceMappingURL=header.js.map

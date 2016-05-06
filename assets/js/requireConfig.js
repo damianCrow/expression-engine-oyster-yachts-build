@@ -22,6 +22,8 @@ require.config({
 
     weather_icons: '/assets/js/components/util/weather-icons',
     appInit: '/assets/js/components/setup/init',
+    validateForm: '/assets/js/components/util/validate-form',
+    ownersAreaModal: '/assets/js/components/util/owners-area-modal',
 
     oyster_global: '/assets/js/app/app',
     oyster_header: '/assets/js/components/header/header',
