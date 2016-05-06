@@ -1,10 +1,9 @@
 'use strict';
 
-define(['jquery'], function ($) {
+define(['jquery', 'jqueryValidation'], function ($) {
 	function validateForm() {
 
 		$('.address-fill-out').on('click', '.add-address-line', function () {
-			console.log('clicked');
 			var addressLineLength = $('.address-line').length;
 			var newAddressLineNum = addressLineLength + 1;
 			if (addressLineLength < 5) {

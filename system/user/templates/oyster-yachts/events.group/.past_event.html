@@ -24,7 +24,7 @@
 		{share_buttons}
 	</div>
 	<div id="yacht-nav" data-local-subnav="data-local-subnav" class="yacht-nav">
-		<ul>
+		<ul class="local-subnav">
 			{parents field="event_day_event" status="published" orderby="date" sort="ASC"}
 			<li {if parents:count == 1}class="active"{/if}><a href="#events-previous-regattas-{parents:url_title}" class="scroll">{parents:event_day_number}</a></li>
 			{/parents}

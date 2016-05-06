@@ -1,7 +1,7 @@
 'use strict';
 
 // ADD Here any Libraries and Other things that need to be initialised first before loading anything else.
-define(['foundation', 'typekit'], function (Foundation, typekit, googleMaps) {
+define(['foundation', 'typekit'], function (Foundation, typekit) {
   // initilise foundation
   $(document).foundation();
 

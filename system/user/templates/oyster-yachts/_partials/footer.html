@@ -167,18 +167,18 @@
 	<script>
 	requirejs(['{site_url}assets/js/requireConfig.js'], function() {
 		{if segment_1 == ""}
-		requirejs(['oyster_home']);
+		requirejs(['home']);
 		{if:elseif segment_1 == "brokerage"}
-		requirejs(['oyster_brokerage']);
+		requirejs(['brokerage']);
 		{if:elseif segment_1 == "charter"}
-		requirejs(['oyster_charter']);
-		{if:elseif segment_1 == "charter"}
-		requirejs(['oyster_yachts']);
+		requirejs(['charter']);
+		{if:elseif segment_1 == "yachts"}
+		requirejs(['yachts']);
 		{if:elseif segment_1 == "events"}
 			{if segment_2 == "gallery"}
-				requirejs(['oyster_gallery_fullscreen']);
+				requirejs(['gallery_fullscreen']);
 			{if:else}
-				requirejs(['oyster_gallery_modal']);
+				requirejs(['gallery_modal']);
 			{/if}
 		{/if}
 	});

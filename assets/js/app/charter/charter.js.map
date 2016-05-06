@@ -1,1 +1,0 @@
-{"version":3,"sources":["../../../client/app/charter/charter.js"],"names":[],"mappings":"AAAA,YAAY,CAAC;;AAEb,MAAM,CAAC,CAAC,QAAQ,EAAE,iCAAiC,CAAC,EAAE,UAAS,CAAC,EAAE,OAAO,EAAE;AAC1E,KAAI,OAAO,EAAE,CAAC;CACd,CAAC,CAAC","file":"charter.js","sourcesContent":["'use strict';\n\ndefine(['jquery', 'components/util/charter-filters'], function($, Filters) {\n\tnew Filters();\n});"]}

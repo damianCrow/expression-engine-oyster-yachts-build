@@ -1,6 +1,8 @@
 'use strict';
 
-define(['jquery', 'ScrollMagic', 'foundation', 'ownersAreaModal'], function ($, ScrollMagic) {
+define(['jquery', 'ScrollMagic', 'validateForm', 'foundation', 'ownersAreaModal'], function ($, ScrollMagic, validateForm) {
+	validateForm();
+
 	// Global header
 	var header = $("header.global-header"),
 	    scrollToPoint = header.attr('data-snap-to-min-nav'),

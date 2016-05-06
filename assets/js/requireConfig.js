@@ -20,24 +20,27 @@ require.config({
     googleMaps: 'https://maps.googleapis.com/maps/api/js?key=AIzaSyC4Ctq_b0K3ygkut_DEJ4YFyuGkcWKvM68',
     salvattore: '/bower_components/salvattore/dist/salvattore.min',
 
-    weather_icons: '/assets/js/components/util/weather-icons',
     appInit: '/assets/js/components/setup/init',
-    validateForm: '/assets/js/components/util/validate-form',
-    ownersAreaModal: '/assets/js/components/util/owners-area-modal',
-
-    oyster_global: '/assets/js/app/app',
-    oyster_header: '/assets/js/components/header/header',
-    oyster_home: '/assets/js/app/index',
-    oyster_brokerage: '/assets/js/app/brokerage/brokerage',
-    oyster_charter: '/assets/js/app/charter/charter',
+    global: '/assets/js/app/app',
+    header: '/assets/js/components/header/header',
+    footer: '/assets/js/components/footer/footer',
+    home: '/assets/js/app/index',
+    brokerage: '/assets/js/app/brokerage',
+    charter: '/assets/js/app/charter',
+    yachts: '/assets/js/app/yachts',
     
-    oyster_brokerage_filters: '/assets/js/components/util/brokerage-filters',
-    oyster_charter_filters: '/assets/js/components/util/charter-filters',
-    oyster_social_grid: '/assets/js/components/util/social-grid',
-    oyster_map: '/assets/js/components/util/map',
-    oyster_sidebar: '/assets/js/components/util/sidebar',
-    oyster_gallery_fullscreen: '/assets/js/components/util/gallery-full',
-    oyster_gallery_modal: '/assets/js/components/util/gallery-modal'
+    brokerage_filters: '/assets/js/components/util/brokerage-filters',
+    charter_filters: '/assets/js/components/util/charter-filters',
+    social_grid: '/assets/js/components/util/social-grid',
+    map: '/assets/js/components/util/map',
+    sidebar: '/assets/js/components/util/sidebar',
+    gallery_fullscreen: '/assets/js/components/util/gallery-full',
+    gallery_modal: '/assets/js/components/util/gallery-modal',
+    shortlist: '/assets/js/components/util/shortlist',
+    weather: '/assets/js/components/util/weather',
+    validateForm: '/assets/js/components/util/validate-form',
+    weather_icons: '/assets/js/components/util/weather-icons',
+    ownersAreaModal: '/assets/js/components/util/owners-area-modal'
   },
   shim: {
     'jquery': {
@@ -104,5 +107,5 @@ require([
   'owlcarousel',
 
   'appInit',
-  'oyster_global'
+  'global'
 ]);
