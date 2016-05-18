@@ -20,7 +20,7 @@
 					<th class="text-uppercase">blog</th>
 				</tr>
 
-				{exp:channel:entries channel="previous_rally_entry" dynamic="no" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published" sort="desc"}
+				{exp:low_reorder:entries set="world_rally_entries" dynamic="no" disable="member_data|category_fields|pagination" cache="yes" refresh="60"}
 				<tr>
 					<td>{title}</td>
 					<td {prev_entry_image}style="background-image:url('{image:url}')"{/prev_entry_image} class="image"> </td>
@@ -34,7 +34,7 @@
 						{/if}
 					</td>
 				</tr>
-				{/exp:channel:entries}
+				{/exp:low_reorder:entries}
 
 			</tbody>
 		</table>

@@ -8,7 +8,7 @@
 	<div class="banner">Boat Shows</div>
 	<div data-equalizer data-equalize-by-row="true" class="row padded-full-width-row small-up-1 medium-up-2 large-up-3">
 		
-		{exp:channel:entries channel="boat_show" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published" sort="desc" search:boatshow_end_date=">{current_time}"}
+		{exp:channel:entries channel="boat_show" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published" orderby="boatshow_end_date" sort="desc" search:boatshow_end_date=">{current_time}"}
 		<div class="small-12 medium-6 large-4 columns">
 			<div class="gallery-pane">
 				<div class="gallery-pane-header images" {boatshow_main_image}style="background-image: url('{image:url}');"{/boatshow_main_image}>

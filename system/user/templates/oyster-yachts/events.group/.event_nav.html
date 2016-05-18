@@ -1,5 +1,12 @@
-{exp:channel:categories category_group="1" style="linear"}
-<tr>
-	<td{if category_id == embed:id} class="active"{/if}><a href="">{category_name}</a></td>
-</tr>
-{/exp:channel:categories}
+<table class="table definition-table events-home-sidetable">
+	<tbody>
+		<tr>
+			<td colspan="2" class="text-uppercase heading">Event types</td>
+		</tr>
+		{exp:channel:categories category_group="1" style="linear" status="published"}
+		<tr>
+			<td{if category_id == embed:id} class="active"{/if}><a href="{path='events/{category_url_title}'}">{category_name}</a></td>
+		</tr>
+		{/exp:channel:categories}
+	</tbody>
+</table>

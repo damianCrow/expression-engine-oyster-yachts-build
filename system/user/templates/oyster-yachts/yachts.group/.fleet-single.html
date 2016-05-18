@@ -251,7 +251,7 @@ $interiorGalleryImages = $query->num_rows();
 			{parents field="article_yacht" status="published"}
 			<li class="columns medium-4 small-6 small-12">
 				<div class="content">
-					<div {parents:article_main_image}style="background-image:url('{image:url}')"{/parents:article_main_image} class="news-thumb-image">
+					<div {parents:article_main_image}style="background-image:url('{image:url:small}')"{/parents:article_main_image} class="news-thumb-image">
 						{share_buttons}
 					</div>
 					<div data-equalizer-watch class="news-details">
@@ -289,6 +289,16 @@ $interiorGalleryImages = $query->num_rows();
 		{/yacht_interior_gallery}
 	</div>
 	<?php endif; ?>
+
+	{yacht_videos}
+	{if yacht_videos:count == 1}
+	<div class="gallery-content" data-gallery="videos" data-title="Videos">
+	{/if}
+		<a href="{yacht_videos:video}" data-sub-html="{yacht_videos:caption}"></a>
+	{if yacht_videos:count == yacht_videos:total_rows}
+	</div>
+	{/if}
+	{/yacht_videos}
 </div>
 
 {footer}

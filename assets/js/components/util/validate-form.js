@@ -18,11 +18,11 @@ define(['jquery', 'jqueryValidation'], function ($) {
 				};
 
 				$('.last-address-line:last label').attr({
-					'for': 'addressline' + newAddressLineNum
+					'for': 'member_address_line_' + newAddressLineNum
 				});
 
 				$('.last-address-line:last input').attr({
-					name: 'addressline' + newAddressLineNum,
+					name: 'member_address_line_' + newAddressLineNum,
 					id: 'addressline' + newAddressLineNum,
 					placeholder: 'Address Line ' + newAddressLineNum
 				});

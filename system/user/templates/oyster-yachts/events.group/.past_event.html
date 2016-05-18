@@ -47,12 +47,14 @@
 				</div>
 			</div>
 			{parents:event_day_description}
+			{if parents:event_day_written_by != "" OR parents:event_day_images_by != ""}
 			<div class="further-info">
 				<p>
 					{if parents:event_day_written_by != ""}Written by <b>{parents:event_day_written_by}</b>{/if}
 					{if parents:event_day_images_by != ""}<br/>Images by <b>{parents:event_day_images_by}</b>{/if}
 				</p>
 			</div>
+			{/if}
 		</div>
 		<div class="large-offset-1 large-3 small-12 float-left">
 			{parents:event_day_gallery limit="1"}
@@ -66,7 +68,7 @@
 		</div>
 	</div>
 
-	{if "{parents:event_day_class_1_results:total_rows}" != "0"}
+	{if parents:event_day_class_1_results:total_rows > 0}
 	<div class="row padded-full-width-row content">
 		<table class="table specs-table">
 			<thead>
@@ -98,7 +100,7 @@
 	</div>
 	{/if}
 
-	{if "{parents:event_day_class_2_results:total_rows}" > "0"}
+	{if parents:event_day_class_2_results:total_rows > 0}
 	<div class="row padded-full-width-row content">
 		<table class="table specs-table">
 			<thead>
@@ -217,7 +219,7 @@
 	{if image:count == 1}
 	<div class="gallery-content" data-gallery="{parents:url_title}" data-title="{parents:event_day_number}">
 	{/if}
-		<a href="{image:url}" data-sub-html="{image:description}">
+		<a href="{image:url}" data-sub-html="{parents:event_day_report_title}">
 			<img src="{image:url:gallery_thumb}" />
 		</a>
 	{if image:count == image:total}

@@ -10,7 +10,8 @@ require.config({
     foundation: '/bower_components/foundation-sites/dist/foundation.min',
     cycle: '/bower_components/jquery-cycle2/build/jquery.cycle2.min',
     lightgallery: '/assets/js/lib/lightgallery/lightgallery',
-    lightgalleryThumbs: '/assets/js/lib/lightgallery/lg-thumbnail',
+    lightgalleryThumbs: '/assets/js/lib/lightgallery/lg-thumbnail.min',
+    lightgalleryVideo: '/assets/js/lib/lightgallery/lg-video.min',
     ScrollMagic: '/bower_components/scrollmagic/scrollmagic/minified/ScrollMagic.min',
     jqueryValidation: '/bower_components/jquery-validation/dist/jquery.validate.min',
     owlcarousel: '/bower_components/owl.carousel/dist/owl.carousel.min',
@@ -19,6 +20,7 @@ require.config({
     simpleWeather: '/bower_components/simpleWeather/jquery.simpleWeather.min',
     googleMaps: 'https://maps.googleapis.com/maps/api/js?key=AIzaSyC4Ctq_b0K3ygkut_DEJ4YFyuGkcWKvM68',
     salvattore: '/bower_components/salvattore/dist/salvattore.min',
+    froogaloop: 'https://f.vimeocdn.com/js/froogaloop2.min',
 
     appInit: '/assets/js/components/setup/init',
     global: '/assets/js/app/app',
@@ -67,6 +69,11 @@ require.config({
     'lightgalleryThumbs': [
       'jquery',
       'lightgallery'
+    ],
+    'lightgalleryVideo': [
+      'jquery',
+      'lightgallery',
+      'froogaloop'
     ],
     'select2': [
       'jquery'

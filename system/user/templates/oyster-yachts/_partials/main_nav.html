@@ -6,31 +6,31 @@
 	</div>
 	<div class="global-header-top-nav-large show-for-large"><a href="{site_url}" class="logo-large"><img src="/assets/images/logo.png" alt="logo mini"></a><a href="{site_url}" class="logo-tiny"><img src="/assets/images/logo_small.png" alt="logo mini"></a>
 		<ul id="main-nav" class="main-nav small-8">
-			<li{if segment_1 == "about-us"} class="active is-active"{/if}>
-				<a href="" class="text-uppercase">about us</a>
+			<li{if segment_1 == "about"} class="active is-active"{/if}>
+				<a href="{path='about'}" class="text-uppercase">about us</a>
 				<ul class="four">
 					<li>
-						<a href="">
+						<a href="{path='about/why-oyster'}"{if segment_1 == "about" && segment_2 == "why-oyster"} class="active-subnav"{/if}>
 							<div style="background-position: 0px 0px" class="sub-nav-image"></div>
 							<span class="text-uppercase">Why buy</span>
 						</a>
 					</li>
 					<li>
-						<a href="">
+						<a href="{path='about/what-we-offer'}"{if segment_1 == "about" && segment_2 == "what-we-offer"} class="active-subnav"{/if}>
 							<div style="background-position: 0px 315px" class="sub-nav-image"></div>
-							<span class="text-uppercase">Heritage</span>
+							<span class="text-uppercase">What We Offer</span>
 						</a>
 					</li>
 					<li>
-						<a href="">
+						<a href="{path='about/team'}"{if segment_1 == "about" && segment_2 == "team"} class="active-subnav"{/if}>
 							<div style="background-position: 0px 630px" class="sub-nav-image"></div>
-							<span class="text-uppercase">Locations</span>
+							<span class="text-uppercase">Our team</span>
 						</a>
 					</li>
 					<li>
-						<a href="">
+						<a href="{path='about/heritage'}"{if segment_1 == "about" && segment_2 == "heritage"} class="active-subnav"{/if}>
 							<div style="background-position: 0px 945px" class="sub-nav-image"></div>
-							<span class="text-uppercase">Our team</span>
+							<span class="text-uppercase">Heritage</span>
 						</a>
 					</li>
 				</ul>
@@ -206,7 +206,9 @@
 		<a href="" class="site-search-open"></a>
 		<a href="" class="site-search-close"></a>
 		<div class="search-bar">
-			<input type="text" placeholder="What are you looking for?">
+		{exp:super_search:form return="search/index"}
+			<input type="text" placeholder="What are you looking for?" name="keywords" id="keywords">
+		{/exp:super_search:form}
 		</div>
 	</div>
 </nav>
@@ -221,9 +223,12 @@
 	<section class="nav-body-modal">
 		<div class="row">
 			<div class="small-11 small-centered">
-				<form class="input-group search-box"><span class="input-group-label"><i class="fa fa-search"></i></span>
-					<input type="text" placeholder="Help me find..." class="input-group-field">
-				</form>
+				<div class="input-group search-box">
+					{exp:super_search:form return="search/index"}
+					<span class="input-group-label"><i class="fa fa-search"></i></span>
+					<input type="text" placeholder="Help me find..." class="input-group-field" name="keywords">
+					{/exp:super_search:form}
+				</div>
 			</div>
 		</div>
 		<div class="row">

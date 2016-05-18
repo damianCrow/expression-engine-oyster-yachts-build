@@ -1,6 +1,6 @@
 'use strict';
 
-define(['jquery', 'lightgallery', 'lightgalleryThumbs'], function ($) {
+define(['jquery', 'lightgallery', 'lightgalleryThumbs', 'lightgalleryVideo'], function ($) {
 	// init gallery
 	$('.gallery-content').lightGallery({
 		thumbnail: true,
@@ -10,7 +10,15 @@ define(['jquery', 'lightgallery', 'lightgalleryThumbs'], function ($) {
 		toogleThumb: false,
 		showThumbByDefault: false,
 		closable: false,
-		backdropDuration: 0
+		backdropDuration: 0,
+		loadVimeoThumbnail: true,
+    	vimeoThumbSize: 'thumbnail_medium',
+    	vimeoPlayerParams: {
+	        byline : 0,
+	        portrait : 0,
+	        color : '003145'
+	    },
+	    videoMaxWidth: '100%'
 	});
 
 	// trigger first slide to open in gallery

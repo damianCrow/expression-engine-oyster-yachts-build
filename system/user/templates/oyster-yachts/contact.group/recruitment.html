@@ -1,0 +1,87 @@
+{embed="site/.header" snap_to="undefined" snap_offset="undefined"}
+
+    <section style="background-image: url('/assets/images/_SUZ54831-recruitment.jpg'); " class="hero after-nav global-page-hero yacht-listing-photo global-page-hero--medium full-screen">
+      <div id="page-back-button" class="back-button"><a class="button-clear-white"><i class="fa fa-angle-left"></i>Back</a></div>
+    </section>
+    <article class="global-padding-top-only--large">
+      <section class="contact-recruitment">
+        <div class="row padded-full-width-row">
+          <div class="large-offset-1 large-7 float-left">
+            <h2 class="text-uppercase">Oyster Yachts</h2>
+            <h1 class="text-uppercase">Recruitment</h1>
+            <p>
+              As one of the world's most successful yacht builders, Oyster offers a range of career opportunities, covering every process of the sales, marketing, project management, build and customer service of our yachts. Although throughout the Oyster Group we have a very low employee turnover rate, and vacancies are often filled without advertising, we are always happy to hear from anyone who considers they have what it takes to be part of the Oyster Team.
+              
+              
+            </p>
+          </div>
+          <div class="large-offset-1 large-3 small-12 float-left">
+                <aside class="overview-download columns recruitment-aside">
+                      <div class="block-section-header aside-header">
+                        <h3 class="text-uppercase">Recruitment</h3>
+                        <svg id="svg-arrow" version="1.1" baseprofile="tiny" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewbox="0 -20 100 100" xml:space="preserve">
+                          <g>
+                            <line x1="10" y1="10" x2="53" y2="53" stroke="#454646" stroke-width="10"></line>
+                            <line x1="90" y1="10" x2="47" y2="53" stroke="#454646" stroke-width="10"></line>
+                          </g>
+                        </svg>
+                      </div>
+                  <div class="overview-contents prev-models">
+                    <div class="overview columns small-12">
+                      <p>If you are interested in working for Oyster, please email your CV to: <a href="mailto:Judy.GarrettJenkins@oysteryachts.com">Judy.GarrettJenkins@oysteryachts.com</a></p>
+                    </div>
+                  </div>
+                </aside>
+          </div>
+        </div>
+      </section>
+      <section id="recruitment-roles" class="recruitment-tables">
+        <div class="content row row-pad">
+
+
+          <table class="table specs-table recruitment-table">
+            <tbody>
+              <tr>
+                <td colspan="9" class="heading text-uppercase">
+                  <h3>Oyster Yachts Wroxham</h3>
+                </td>
+              </tr>
+
+              <tr>
+                <th class="text-uppercase">Job Role</th>
+                <th class="text-uppercase">Department</th>
+              </tr>
+                     {exp:channel:entries channel="recruitment" disable="member_data|category_fields|pagination" search:job_location="=Wroxham" cache="yes" refresh="60" status="published" sort="desc"}
+              <tr>
+                <td><a href="{url_title_path='contact/job-specific'}">{title}</a></td>
+                <td>{department}</td>
+              </tr>
+             {/exp:channel:entries}
+            </tbody>
+          </table>
+          <table class="table specs-table recruitment-table">
+            <tbody>
+              <tr>
+                <td colspan="9" class="heading text-uppercase">
+                  <h3>Oyster Yachts Southampton</h3>
+                </td>
+              </tr>
+              <tr>
+                <th class="text-uppercase">Job Role</th>
+                <th class="text-uppercase">Department</th>
+              </tr>
+              {exp:channel:entries channel="recruitment" disable="member_data|category_fields|pagination" search:job_location="=Southampton" cache="yes" refresh="60" status="published" sort="desc"}
+              <tr>
+                <td><a href="{url_title_path='contact/job-specific'}">{title}</a></td>
+                <td>{department}</td>
+              </tr>
+             {/exp:channel:entries}
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </article>
+    <style>
+    .recruitment-table{margin-top:2rem;margin-bottom:2rem}.recruitment-table tbody th{background-color:#f2f5f6;border-left:1px solid #c7c8ca;border-right:1px solid #c7c8ca}.recruitment-table a{text-decoration:underline}.recruitment-aside{overflow-wrap:break-word;word-wrap:break-word;-webkit-hyphens:auto;-ms-hyphens:auto;hyphens:auto}.job-spec-list{font-size:0.9375em;line-height:1.73333333em;margin-bottom:1.73333333em;color:#747678;list-style-type:none}.job-spec-list>li:before{content:"-";margin-right:5px}.contact-job-specfic h3,.contact-job-specfic .news-preview h2,.news-preview .contact-job-specfic h2{color:#747678;line-height:2rem;font-family:'omnes_mediumregular', sans-serif}.job-specfic-aside{margin-bottom:2rem;margin-top:1rem}.boat-yard-aside{overflow-wrap:break-word;word-wrap:break-word;-webkit-hyphens:auto;-ms-hyphens:auto;hyphens:auto;margin-bottom:2rem;margin-top:1rem}.boat-yard-jobs a{text-decoration:underline}
+    </style>
+ {footer}

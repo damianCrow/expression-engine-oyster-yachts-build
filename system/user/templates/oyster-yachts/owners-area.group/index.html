@@ -1,0 +1,7 @@
+{exp:user:has_role roles="owners_area"}
+    {if has_roles}
+        logged in
+    {if:else}
+        {redirect="owners-area/login" status_code="403"}
+    {/if}
+{/exp:user:has_role}

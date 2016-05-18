@@ -1,0 +1,32 @@
+{embed="site/.header" snap_to="undefined" snap_offset="undefined"}
+<section style="background-image: url('/assets/images/about-us-heritage-header.jpg'); " class="hero after-nav global-page-hero yacht-listing-photo global-page-hero--medium">
+	<div id="page-back-button" class="back-button"><a class="button-clear-white"><i class="fa fa-angle-left"></i>Back</a></div>
+	<div class="yacht-name">
+		<div class="row-pad">
+			<h1 class="hero-title yacht-list-name text-uppercase">The Journey Begins</h1>
+			<p class="hero-subtext">Founded in 1973, the company's early years were spent developing and marketing a range of cruiser racers, with the emphasis on performance.</p>
+		</div>
+	</div>
+</section>
+<article class="heritage-blocks">
+	<div class="banner">
+		<h1>Our Heritage</h1>
+	</div>
+	<div class="row stacked-blocks">
+		
+		{exp:channel:entries channel="heritage" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published" sort="desc"}
+		<figure class="stacked-block{if heritage_featured == 'Featured'} stacked-block-dark{/if}">
+			<div class="stacked-block-image"><img src="{heritage_image}">
+				{share_buttons}
+			</div>
+			<figcaption>
+				<div class="yacht-listing-title"><span class="yacht-list-modal">{heritage_year}</span><span class="yacht-list-name double-slash">{title}</span><span class="yacht-list-subtitle">{heritage_designedby}</span>
+				</div>
+				{heritage_description}
+			</figcaption>
+		</figure>
+		{/exp:channel:entries}
+		
+	</div>
+</article>
+{footer}

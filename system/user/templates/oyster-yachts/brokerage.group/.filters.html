@@ -39,6 +39,7 @@
 								ON cd.entry_id = ct.entry_id 
 							WHERE cd.channel_id=1 
 								AND ct.status = 'Published'
+								AND field_id_4 != ''
 							ORDER BY cd.field_id_4 ASC"}
 							<option value="{location}"{if post:location == location} selected="selected"{/if}>{location}</option>
 						{/exp:query}
