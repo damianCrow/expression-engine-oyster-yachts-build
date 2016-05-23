@@ -27,7 +27,7 @@ define(['jquery', 'foundation', 'social_grid', 'owlcarousel', 'cycle'], function
 	var prevActiveClasses;
 	$('.hero-slides').on('initialized.owl.carousel', function (e) {
 		// Apply event before the carousel is initialized and add the zooming animation class to all.
-		$('.owl-item').find('.hero-image').addClass('zooming-in');
+		$('.hero-slide').find('.hero-image').addClass('zooming-in');
 	}).owlCarousel({
 		loop: true,
 		autoplay: true,
@@ -37,12 +37,13 @@ define(['jquery', 'foundation', 'social_grid', 'owlcarousel', 'cycle'], function
 		autoHeight: true,
 		items: 1,
 		dotsContainer: '.hero-controls',
+		dotClass: 'nav-point',
 		animateOut: 'fadeOut',
 		animateIn: 'fadeIn'
 
 	}).on('translate.owl.carousel', function (e, info) {
 		// On each change make sure every carousel item is animating (with this class).
-		$('.owl-item').find('.hero-image').addClass('zooming-in');
+		$('.hero-slide').find('.hero-image').addClass('zooming-in');
 
 		// Remove the class from the last active item (to allow the animation to reset next time round)
 		$(prevActiveClasses).removeClass('zooming-in');
@@ -99,7 +100,21 @@ define(['jquery', 'foundation', 'social_grid', 'owlcarousel', 'cycle'], function
 		log: false
 	});
 
+	// Autoplay all videos in carousels, else delete it.
+	$('.yacht-feature').find('video').each(function () {
+		var videoFound = this;
+		// $(this).get(0).play();
 
+		if (Foundation.MediaQuery.atLeast('medium')) {
+			$(videoFound).get(0).play();
+
+			$(videoFound).get(0).onplay = function () {
+				$(videoFound).siblings('.slide-image').remove();
+			};
+		} else {
+			$(videoFound).remove();
+		}
+	});
 
 	var newsPreviewCarousel = $('.news-preview .owl-carousel');
 

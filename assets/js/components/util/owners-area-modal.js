@@ -2,12 +2,7 @@
 
 define(['jquery', 'validateForm', 'select2'], function ($, validateForm) {
 
-	enableSelect2();
-	function enableSelect2() {
-		$('select').select2({
-			minimumResultsForSearch: -1
-		});
-	};
+	
 
 	$('.owners-area-text').on('click', function (event) {
 		event.preventDefault();

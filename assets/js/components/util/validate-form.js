@@ -23,7 +23,7 @@ define(['jquery', 'jqueryValidation'], function ($) {
 
 				$('.last-address-line:last input').attr({
 					name: 'member_address_line_' + newAddressLineNum,
-					id: 'addressline' + newAddressLineNum,
+					id: 'member_address_line_' + newAddressLineNum,
 					placeholder: 'Address Line ' + newAddressLineNum
 				});
 			}

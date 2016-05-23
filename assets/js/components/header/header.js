@@ -1,6 +1,6 @@
 'use strict';
 
-define(['jquery', 'ScrollMagic', 'validateForm', 'foundation', 'ownersAreaModal'], function ($, ScrollMagic, validateForm) {
+define(['jquery', 'ScrollMagic', 'validateForm', 'foundation'], function ($, ScrollMagic, validateForm) {
 	validateForm();
 
 	// Global header
@@ -9,11 +9,23 @@ define(['jquery', 'ScrollMagic', 'validateForm', 'foundation', 'ownersAreaModal'
 	    snapOffset = parseInt(header.attr('data-snap-offset'), 10) || 0,
 	   
 	// local-nav
-	localSubNav = $("[data-local-subnav]"),
-	    headerClass = "global-header-mini",
+
+	headerClass = "global-header-mini",
 	   
 	// local-sidebar
-	localSidebar = $("[data-local-sidebar]");
+	localSidebar = $("[data-local-sidebar]"),
+	    stickySidebar = $('.sticky-sidebar'),
+	    expandHeaderBuffer = $(header).height() * 1.5;
+
+	var yachtNav = $("[data-local-subnav]"),
+	    localSubNav = $(".global-local-subnav");
+
+	if ($("[data-local-subnav]")[0]) {
+		var localSubNav = $("[data-local-subnav]");
+	} else if ($(".global-local-subnav")[0]) {
+		var localSubNav = $(".global-local-subnav");
+	}
+
 
 	// if the scroll point is a div id, get its index point
 	if (isNaN(parseInt(scrollToPoint), 10) && scrollToPoint != "undefined") scrollToPoint = $(scrollToPoint).offset().top - snapOffset;
@@ -22,39 +34,80 @@ define(['jquery', 'ScrollMagic', 'validateForm', 'foundation', 'ownersAreaModal'
 		var scroll = $(window).scrollTop();
 
 		// if the subnav and the header exists, remove the box shadow
-		if (localSubNav !== [] && header !== []) headerClass = "global-header-mini no-boxshadow";
+		if (localSubNav.length !== 0 && header.length !== 0) headerClass = "global-header-mini no-boxshadow";
 
 		if (scroll >= parseInt(scrollToPoint, 10)) {
-			header.addClass(headerClass);
 
-			localSubNav.addClass('global-local-subnav-fixed').parent().css({
+			if ($(header).hasClass(headerClass)) {
+				// $('.main-nav li ul').removeClass('hidden-animation');
+			} else {
+					$('.main-nav li ul').addClass('hidden-animation');
+					header.addClass(headerClass);
+				}
+
+			localSubNav.addClass('global-local-subnav-mini').parent().css({
 				position: 'static'
 			});
+
+			// A buffer zone for expanding the header.
 		} else {
-			header.removeClass(headerClass);
 
-			localSubNav.removeClass('global-local-subnav-fixed').parent().css({
-				position: 'relative'
-			});
-		}
+				yachtNav.removeClass('global-local-subnav-mini').parent().css({
+					position: 'relative'
+				});
+			}
 
-		var sidebarElem = $(localSidebar.attr('data-sticky-sidebar-at-bottom')) || { offset: $.noop },
-		    sidebarElemOffset = sidebarElem.offset() || {},
-		    sidebarScrollToPoint = sidebarElemOffset.top + sidebarElem.height();
+		if (scroll <= parseInt(expandHeaderBuffer, 10)) {
 
-		// table sidenav sticky nav
-		if (scroll >= sidebarScrollToPoint) {
-			localSidebar.removeClass('hide').parent().addClass('adjust-height-width-sidebar');
-		} else {
-			localSidebar.addClass('hide').parent().removeClass('adjust-height-width-sidebar');
+			if ($(header).hasClass(headerClass)) {
+				$('.main-nav li ul').addClass('hidden-animation');
+
+				header.removeClass(headerClass);
+			} else {
+				// $('.main-nav li ul').removeClass('hidden-animation');
+			}
+
+			localSubNav.removeClass('global-local-subnav-mini');
 		}
 	});
+
+
+	/* From Modernizr */
+	function whichTransitionEvent() {
+		var t;
+		var el = document.createElement('fakeelement');
+		var transitions = {
+			'transition': 'transitionend',
+			'OTransition': 'oTransitionEnd',
+			'MozTransition': 'transitionend',
+			'WebkitTransition': 'webkitTransitionEnd'
+		};
+
+		for (t in transitions) {
+			if (el.style[t] !== undefined) {
+				return transitions[t];
+			}
+		}
+	}
+
+	/* Listen for a transition! */
+	var e = document.getElementsByClassName('logo-o')[0];
+
+	var transitionEvent = whichTransitionEvent();
+	transitionEvent && e.addEventListener(transitionEvent, function () {
+		$('.main-nav li ul').removeClass('hidden-animation');
+	});
+
 
 	// OVVERIDE MOBILE ACCORDION TEXT TO BE LINKS
 	$('#global-navigation-modal a.accordion-title span').on('click', function (evt) {
 		evt.preventDefault();
 		location.href = $(this).parent().attr('href');
 		return false;
+	});
+
+	$('.site-menu').on('click', function () {
+		$(this).toggleClass('active-burger');
 	});
 
 	// Toggle follow oyster social buttons
@@ -82,35 +135,15 @@ define(['jquery', 'ScrollMagic', 'validateForm', 'foundation', 'ownersAreaModal'
 	});
 
 	//  ---- GLOBAL MAIN FIXED HEADER SEARCH BAR TOGGLE SEARCH ICON -----  //
-	// site search open
-	var $siteSearchOpen = $('.global-header-top-nav-large .site-search-open'),
-		$siteSearchClose = $('.global-header-top-nav-large .site-search-close'),
-		$siteSearchBar = $('.global-header-top-nav-large .search-bar');
+	var $siteSearchOpen = $('.global-header-top-nav-large .site-search'),
+	    $siteSearchBar = $('.global-header-top-nav-large .search-bar');
 
 	// site search open
-	$siteSearchOpen.on('click', function(e) {
+	$siteSearchOpen.on('click', function (e) {
 		e.preventDefault();
 
-		$siteSearchBar.show().find('input').animate({right:0}, 300);
-		$siteSearchOpen.fadeOut(300);
-		$siteSearchClose.fadeIn(300);
+		$('.global-header-top-nav-large').toggleClass('search-bar-open');
 	});
-
-	// site search close
-	$siteSearchClose.on('click', function(e) {
-		e.preventDefault();
-
-		$siteSearchBar.find('input').animate({right:'-100%'}, 300, function() {
-			$siteSearchBar.hide();
-		});
-
-		$siteSearchOpen.fadeIn(300);
-		$siteSearchClose.fadeOut(300);
-	});
-	//  ---- *end* GLOBAL MAIN FIXED HEADER SEARCH BAR TOGGLE SEARCH ICON *end* -----  //
-
-
-
 
 });
 //# sourceMappingURL=header.js.map

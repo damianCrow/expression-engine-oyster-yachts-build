@@ -1,167 +1,171 @@
+{embed="site/.header" snap_to=".login-page" snap_offset="55"}
 
-<div id="login-page" data-reveal-id="login-page" data-reveal-ajax="true" role="dialog" aria-labelledby="" aria-describedby="" data-reveal="" data-hide-delay="650" class="full-modal reveal">
-  <h2>Oyster Owners Area</h2>
-  <div class="sliding-tabs login-tab-container">
-    <ul id="login-tabs" data-tabs="" class="tabs">
-      <li class="tabs-title is-active"><a href="#login-panel" aria-selected="true">Login</a></li>
-      <li class="tabs-title"><a href="#new-account">Create a New Account</a></li>
-    </ul>
-    <div class="tab-slider"></div>
-  </div>
-  <div data-tabs-content="login-tabs" class="login-tabs-content">
-    <div id="login-panel" class="tabs-panel is-active sign-up-modal-form">
-    {exp:member:login_form}
-      <div class="modal-content">
-        <div class="form-error text-center text-uppercase"><span>ERROR: Invalid or incomplete fields</span><span class="error-messages"></span></div>
-        <fieldset>
-          <legend class="show-for-sr">Login</legend>
-          <ol>
-            <li class="required-input">
-              <label for="username" class="show-for-sr">Email *</label>
-              <input id="username" type="email" name="username" placeholder="Email Address" title="Please enter a valid email" required="" class="required-input"/>
-            </li>
-            <li class="required-input">
-              <label for="login-password" class="show-for-sr">Password</label>
-              <input id="login-password" type="password" name="password" placeholder="Password" required=""/>
-            </li>
-          </ol>
-          <div class="extra-login-content"><a href="" class="login-forgot-password">Forgot Password?</a>
-            <div class="login-remember-me">					
-              <input id="login-remember-me" type="checkbox" name="auto_login" value="1" class="show-for-sr"/>
-              <label for="login-remember-me" class="material-icons">Remember Me</label>
-            </div>
-          </div>
-        </fieldset>
-      </div>
-      <div class="modal-footer">
-        <div class="float-right">
-          <button data-close="data-close" aria-label="Close modal" type="button" class="button-solid-lightgrey">Cancel</button>
-          <button aria-controls="formModal" aria-haspopup="true" tabindex="0" type="submit" value="Submit" class="button-solid-blue">Submit	</button>
-        </div>
-      </div>
-      {/exp:member:login_form}
-    </div>
-    <div id="new-account" class="tabs-panel">
-      
-        {exp:user:register admin_register="yes" assign_roles="1" return="site/index"}
-        <div class="modal-content">
-          <div class="request-spec">
-            <div class="form-error text-center text-uppercase"><span>ERROR: Invalid or incomplete fields</span><span class="error-messages"></span></div>
-            <fieldset>
-              <ol>
-                <li class="required-input">
-                  <label for="titlename" class="show-for-sr">Title *</label>
-                  <input id="titlename" type="text" name="member_title" placeholder="Title" required=""/>
-                </li>
-                <li class="required-input">
-                  <label for="firstname" class="show-for-sr">First Name *</label>
-                  <input id="firstname" type="text" name="member_first_name" placeholder="First Name" required=""/>
-                </li>
-                <li class="required-input">
-                  <label for="lastname" class="show-for-sr">Last Name *</label>
-                  <input id="firstname" type="text" name="member_last_name" placeholder="Last Name" required=""/>
-                </li>
-              </ol>
-            </fieldset>
-            <fieldset class="address-fill-out">
-              <ol>
-                <li class="address-line first-address-line">
-                  <label for="addressline1" class="show-for-sr">Address Line 1 *</label>
-                  <input id="addressline1" type="text" name="member_address_line_1" placeholder="Address Line 1" required=""/>
-                </li>
-                <li class="address-line last-address-line">
-                  <label for="addressline2" class="show-for-sr">Address Line 2 *</label>
-                  <input id="addressline2" type="text" name="member_address_line_2" placeholder="Address Line 2"/>
-                  <button type="button" class="add-address-line"><i class="add fa fa-plus"></i><span class="add-line">Add Address Line</span></button>
-                </li>
-                <li class="required-input column large-5">
-                  <label for="country-slection" class="show-for-sr">Country</label>
-                  <select id="country-slection" name="member_country">
-                    {country_list}
-                  </select>
-                </li>
-                <li class="spec-postcode required-input column float-right">
-                  <label for="postcode" class="show-for-sr">Postcode / Zip code*</label>
-                  <input id="postcode" name="member_postcode" required="" placeholder="Postcode / Zip code" type="text" class="column"/>
-                </li>
-              </ol>
-            </fieldset>
-            <fieldset>
-              <ol>
-                <li class="required-input">
-                  <label for="email" class="show-for-sr">Email *</label>
-                  <input id="email" type="email" name="username" placeholder="Email Address" title="Please enter a valid email" required="" class="required-input"/>
-                </li>
-                <li class="required-input">
-                  <label for="tel" class="show-for-sr">Phone Number *</label>
-                  <input id="tel" type="tel" name="member_phone_number" placeholder="Phone Number" required="" class="required-input"/>
-                </li>
-                <li class="required-input">
-                  <label for="password" class="show-for-sr">Password *</label>
-                  <input id="password" type="password" name="password" placeholder="Password" required="" class="required-input"/>
-                </li>
-              </ol>
-            </fieldset>
-            <fieldset class="form-account-type">
-              <legend class="required-input">Please select the appropriate account type</legend>
-              <ol>
-                <li>
-                  <input id="oyster-owner-check" type="checkbox" name="member_account_type" value="Owner" class="show-for-sr"/>
-                  <label for="oyster-owner-check">Owner</label>
-                </li>
-                <li>
-                  <input id="oyster-skipper-check" type="checkbox" name="member_account_type" value="Skipper" class="show-for-sr"/>
-                  <label for="oyster-skipper-check">Skipper</label>
-                </li>
-                <li>
-                  <input id="oyster-crew-check" type="checkbox" name="member_account_type" value="Crew" class="show-for-sr"/>
-                  <label for="oyster-crew-check">Crew</label>
-                </li>
-                <li>
-                  <input id="oyster-rep-check" type="checkbox" name="member_account_type" value="Rep" class="show-for-sr"/>
-                  <label for="oyster-rep-check">Rep</label>
-                </li>
-              </ol>
-            </fieldset>
-            <fieldset class="spec-current-yacht">
-              <ol>
-                <li>
-                  <label for="current-yacht-make" class="show-for-sr">Current Yacht Make *</label>
-                  <input id="current-yacht-make" type="text" name="member_current_yacht_make" placeholder="Current Yacht Make" required="" class="required-input"/>
-                </li>
-                <li>
-                  <label for="current-yacht-model" class="show-for-sr">Current Yacht Model *</label>
-                  <input id="current-yacht-model" type="text" name="member_current_yacht_model" placeholder="Current Yacht Model" required="" class="required-input"/>
-                </li>
-              </ol>
-            </fieldset>
-            <fieldset class="spec-additional-yacht">
-              <ol>
-                <li>
-                  <label for="more-information" class="show-for-sr">More Information *</label>
-                  <textarea id="more-information" name="member_more_information" type="text" placeholder="Additional Information"></textarea>
-                </li>
-                <li class="row">
-                  <label for="allow-more-information" class="request-more-info-confirmation required-input column large-8">Would you like to receive information and updates from Oyster Yachts via email?*</label>
-                  <select id="request-information" name="member_receive_updates" required="" class="column large-2 float-right">
-                    <option value="">Select</option>
-                    <option value="Yes">Yes</option>
-                    <option value="No">No</option>
-                  </select>
-                </li>
-              </ol>
-            </fieldset>
-          </div><small>Your information will never be sold to any other company. Your data will be treated in accordance with the Data Protection Act 1998. Please see our Privacy Policy for more details. If you wish to update or delete the data you have voluntarily given us please contact us on +44 2380 831 010 or email sales@oysteryachts.com</small>
-        </div>
-        <div class="modal-footer">
-          <div class="float-right">
-            <button data-close="data-close" aria-label="Close modal" type="button" class="button-solid-lightgrey">Cancel</button>
-            <button aria-controls="formModal" aria-haspopup="true" tabindex="0" type="submit" value="Submit" class="button-solid-blue">Submit</button>
-          </div>
-        </div>
-      
-      {/exp:user:register}
-    </div>
-  </div>
-  <button data-close="data-close" aria-label="Close modal" type="button" class="close-button"><span aria-hidden="true">×</span></button>
-</div>
+<article style="background-image: url('/assets/images/login-bg-min.jpg')" class="login-page after-nav">
+	<div id="login-page" class="full-modal reveal">
+		<h2>Oyster Owners Area</h2>
+		<div class="sliding-tabs login-tab-container">
+			<ul id="login-tabs" data-tabs="" class="tabs">
+				<li class="tabs-title is-active"><a href="#login-panel" aria-selected="true">Login</a></li>
+				<li class="tabs-title"><a href="#new-account">Create a New Account</a></li>
+			</ul>
+			<div class="tab-slider"></div>
+		</div>
+		<div data-tabs-content="login-tabs" class="login-tabs-content">
+			<div id="login-panel" class="tabs-panel is-active">
+				{exp:member:login_form return="owners-area/index" form_class="sign-up-modal-form"}
+				<div class="modal-content">
+					<div class="form-error text-center text-uppercase"><span>ERROR: Invalid or incomplete fields</span><span class="error-messages"></span></div>
+					<fieldset>
+						<legend class="show-for-sr">Login</legend>
+						<ol>
+							<li class="required-input">
+								<label for="login_username" class="show-for-sr">Email *</label>
+								<input id="login_username" type="email" name="username" placeholder="Email Address" title="Please enter a valid email" required="" class="required-input">
+							</li>
+							<li class="required-input">
+								<label for="login_password" class="show-for-sr">Password</label>
+								<input id="login_password" type="password" name="password" placeholder="Password" required="">
+							</li>
+						</ol>
+						<div class="extra-login-content"><a href="" class="login-forgot-password">Forgot Password?</a>
+							<div class="login-remember-me">
+								<input id="auto_login" type="checkbox" name="auto_login" value="1" class="show-for-sr">
+								<label for="auto_login" class="material-icons">Remember Me</label>
+							</div>
+						</div>
+					</fieldset>
+				</div>
+				<div class="modal-footer">
+					<div class="float-right">
+						<button data-close aria-label="Close modal" type="button" class="button-solid-lightgrey">Cancel</button>
+						<button aria-controls="formModal" aria-haspopup="true" tabindex="0" type="submit" value="Submit" class="button-solid-blue">Submit </button>
+					</div>
+				</div>
+				{/exp:member:login_form}
+			</div>
+			<div id="new-account" class="tabs-panel">
+				<div id="new-account-form" class="new-account-form">
+					{exp:user:register admin_register="yes" assign_roles="1" override_return="owners-area/thanks-for-registering" form:class="sign-up-modal-form"}
+					<div class="modal-content">
+						<div class="request-spec">
+							<div class="form-error text-center text-uppercase"><span>ERROR: Invalid or incomplete fields</span><span class="error-messages"></span></div>
+							<fieldset>
+								<ol>
+									<li class="required-input">
+										<label for="member_title" class="show-for-sr">Title *</label>
+										<input id="member_title" type="text" name="member_title" placeholder="Title" required="">
+									</li>
+									<li class="required-input">
+										<label for="member_first_name" class="show-for-sr">First Name *</label>
+										<input id="member_first_name" type="text" name="member_first_name" placeholder="First Name" required="">
+									</li>
+									<li class="required-input">
+										<label for="member_last_name" class="show-for-sr">Last Name *</label>
+										<input id="member_last_name" type="text" name="member_last_name" placeholder="Last Name" required="">
+									</li>
+								</ol>
+							</fieldset>
+							<fieldset class="address-fill-out">
+								<ol>
+									<li class="address-line first-address-line required-input">
+										<label for="member_address_line_1" class="show-for-sr">Address Line 1 *</label>
+										<input id="member_address_line_1" type="text" name="member_address_line_1" placeholder="Address Line 1" required="">
+									</li>
+									<li class="address-line last-address-line">
+										<label for="member_address_line_2" class="show-for-sr">Address Line 2 *</label>
+										<input id="member_address_line_2" type="text" name="member_address_line_2" placeholder="Address Line 2">
+										<button type="button" class="add-address-line"><i class="add fa fa-plus"></i><span class="add-line">Add Address Line</span></button>
+									</li>
+									<li class="required-input column large-5">
+										<label for="member_country" class="show-for-sr">Country</label>
+										<select id="member_country" name="member_country">
+											{country_list}
+										</select>
+									</li>
+									<li class="spec-postcode required-input column float-right">
+										<label for="member_postcode" class="show-for-sr">Postcode / Zip code*</label>
+										<input id="member_postcode" name="member_postcode" required="" placeholder="Postcode / Zip code" type="text" class="column">
+									</li>
+								</ol>
+							</fieldset>
+							<fieldset>
+								<ol>
+									<li class="required-input">
+										<label for="register_username" class="show-for-sr">Email *</label>
+										<input id="register_username" type="email" name="username" placeholder="Email Address" title="Please enter a valid email" required="" class="required-input">
+									</li>
+									<li class="required-input">
+										<label for="member_phone_number" class="show-for-sr">Phone Number *</label>
+										<input id="member_phone_number" type="tel" name="member_phone_number" placeholder="Phone Number" required="" class="required-input">
+									</li>
+									<li class="required-input">
+					                	<label for="register_password" class="show-for-sr">Password *</label>
+					                	<input id="register_password" type="password" name="password" placeholder="Password" required="" class="required-input"/>
+					                </li>
+								</ol>
+							</fieldset>
+							<fieldset class="form-account-type">
+								<legend class="required-input">Please select the appropriate account type</legend>
+								<ol>
+									<li>
+										<input id="oyster-owner-check" type="checkbox" name="member_account_type" value="oyster-owner-check" class="show-for-sr">
+										<label for="oyster-owner-check">Owner</label>
+									</li>
+									<li>
+										<input id="oyster-skipper-check" type="checkbox" name="member_account_type" value="oyster-skipper-check" class="show-for-sr">
+										<label for="oyster-skipper-check">Skipper</label>
+									</li>
+									<li>
+										<input id="oyster-crew-check" type="checkbox" name="member_account_type" value="oyster-crew-check" class="show-for-sr">
+										<label for="oyster-crew-check">Crew</label>
+									</li>
+									<li>
+										<input id="oyster-rep-check" type="checkbox" name="member_account_type" value="oyster-rep-check" class="show-for-sr">
+										<label for="oyster-rep-check">Rep</label>
+									</li>
+								</ol>
+							</fieldset>
+							<fieldset class="spec-current-yacht">
+								<ol>
+									<li class="required-input">
+										<label for="member_current_yacht_make" class="show-for-sr">Current Yacht Make *</label>
+										<input id="member_current_yacht_make" type="text" name="member_current_yacht_make" placeholder="Current Yacht Make" required="">
+									</li>
+									<li class="required-input">
+										<label for="member_current_yacht_model" class="show-for-sr">Current Yacht Model *</label>
+										<input id="member_current_yacht_model" type="text" name="member_current_yacht_model" placeholder="Current Yacht Model" required="">
+									</li>
+								</ol>
+							</fieldset>
+							<fieldset class="spec-additional-yacht">
+								<ol>
+									<li>
+										<label for="member_more_information" class="show-for-sr">More Information</label>
+										<textarea id="member_more_information" name="member_more_information" type="text" placeholder="Additional Information"></textarea>
+									</li>
+									<li class="row">
+										<label for="member_receive_updates" class="request-more-info-confirmation required-input column large-8">Would you like to receive information and updates from Oyster Yachts via email?*</label>
+										<select id="member_receive_updates" name="member_receive_updates" required="" class="column large-2 float-right">
+											<option value="">Select</option>
+											<option value="Yes">Yes</option>
+											<option value="No">No</option>
+										</select>
+									</li>
+								</ol>
+							</fieldset><small>Your information will never be sold to any other company. Your data will be treated in accordance with the Data Protection Act 1998. Please see our Privacy Policy for more details. If you wish to update or delete the data you have voluntarily given us please contact us on +44 2380 831 010 or email sales@oysteryachts.com</small>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<div class="float-right">
+							<button data-close aria-label="Close modal" type="button" class="button-solid-lightgrey">Cancel</button>
+							<button aria-controls="formModal" aria-haspopup="true" tabindex="0" type="submit" value="Submit" class="button-solid-blue">Submit </button>
+						</div>
+					</div>
+					{/exp:user:register}
+				</div>
+			</div>
+		</div>
+	</div>
+</article>
+
+{footer}

@@ -1,4 +1,4 @@
-{embed="site/.header" snap_to="undefined" snap_offset="undefined"}
+{embed="site/.header" snap_to=".world-rally-news" snap_offset="55"}
 
 {embed="world-rally/.previous-rally-subnav" page="news"}
 
@@ -14,7 +14,7 @@
 			{exp:channel:entries channel="previous_rally_news" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published" sort="desc"}
 			<div class="news-pane columns">
 				<div class="news-pane-inner">
-					<div class="news-pane-header" {prev_news_main_image}style="background-image:url('{image:url}')"{/prev_news_main_image}></div>
+					<div class="news-pane-header" {prev_news_main_image}style="background-image:url('{image:url:small}')"{/prev_news_main_image}></div>
 					<div class="news-pane-content">
 						<h5 class="text-uppercase date">{entry_date format="%d %F %Y"}</h5>
 						<h4 class="text-uppercase title">{title}</h4>
