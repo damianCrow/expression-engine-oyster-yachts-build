@@ -290,7 +290,7 @@
         <div class="news-slides medium-10 small-12 columns">
           <div class="owl-carousel">
             
-            {exp:channel:entries channel="news|event_news" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published" sort="desc" limit="3"}
+            {exp:channel:entries channel="news|event_news" dynamic="no" disable="member_data|categories|category_fields|pagination|member_data" cache="yes" refresh="60" status="published" sort="desc" limit="3"}
             <div class="slide news-preview-text-container">
               <time datetime="{entry_date format="%Y-%m-%d %H:%i"}" class="text-uppercase columns medium-2 small-4"><span class="month-year">{entry_date format="%F"}</span><span class="date">{entry_date format="%d"}</span></time>
               <div class="snippet-title medium-10 small-8">

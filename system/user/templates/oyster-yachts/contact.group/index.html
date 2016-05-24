@@ -1,3 +1,5 @@
+{exp:channel:entries channel="contact_page" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published" limit="1"}
+
 {embed="site/.header" snap_to=".full-screen #yacht-nav" snap_offset="55"}
 
 <section class="after-nav"></section>
@@ -5,182 +7,195 @@
 	{back_button}
 	<div id="yacht-nav" data-local-subnav="data-local-subnav" class="yacht-nav">
 		<ul>
-			<li class="active"><a href="#oyster-sales" class="scroll">Sales</a></li>
-			<li><a href="#oyster-brokerage" class="scroll">Brokerage</a></li>
-			<li><a href="#oyster-charter" class="scroll">Charter</a></li>
-			<li><a href="#oyster-custom" class="scroll">Custom &amp; Refit</a></li>
-			<li><a href="#oyster-service" class="scroll">Service Centres</a></li>
-			<li><a href="#oyster-representatives" class="scroll">Representatives</a></li>
+			{if sales_contacts:total_rows != 0}<li class="active"><a href="#oyster-sales" class="scroll">Sales</a></li>{/if}
+			{if brokerage_contacts:total_rows != 0}<li><a href="#oyster-brokerage" class="scroll">Brokerage</a></li>{/if}
+			{if charter_contacts:total_rows != 0}<li><a href="#oyster-charter" class="scroll">Charter</a></li>{/if}
+			{if custom_contacts:total_rows != 0}<li><a href="#oyster-custom" class="scroll">Custom &amp; Refit</a></li>{/if}
+			{if service_centers_contacts:total_rows != 0}<li><a href="#oyster-service" class="scroll">Service Centres</a></li>{/if}
+			{if representatives:total_rows != 0}<li><a href="#oyster-representatives" class="scroll">Representatives</a></li>{/if}
 		</ul>
 	</div>
 </section>
+{if sales_contacts:total_rows != 0}
 <section id="oyster-sales" class="contact-group">
 	<div class="banner">Oyster Sales</div>
 	<div class="row">
+		{sales_contacts}
 		<div class="location-contents column large-6 small-12">
 			<div class="location-box">
-				<div style="background-image:url('/assets/images/contact-uk.jpg')" class="location-image medium-4 small-12 column"></div>
+				<div style="background-image:url('{sales_contacts:image}')" class="location-image medium-4 small-12 column"></div>
 				<div class="location-details medium-8 small-12 column">
-					<address><strong class="text-uppercase">Oyster <abbr title="United Kingdom">UK</abbr></strong><br>Saxon Wharf, Lower York Street<br>Northam, Southampton<br>Hampsire, SO14 5QF<br>
+					<address><strong class="text-uppercase">Oyster <abbr title="{sales_contacts:office}">{sales_contacts:office}</abbr></strong><br>{sales_contacts:address}<br>
 					</address>
-					<address class="digital-contact"><abbr title="Telephone">Tel: </abbr><a href="tel:+442380336011">+44 (0)23 8033 6011</a><br>Fax: +44 (0)23 8063 4275<br>Email: <a href="mailto:southampton@oysteryachts.com">southampton@oysteryachts.com</a></address><a class="google-map-link text-uppercase">
+					<address class="digital-contact">
+						{if sales_contacts:telephone != ""}
+							<abbr title="Telephone">Tel: </abbr><a href="tel:{sales_contacts:telephone}">{sales_contacts:telephone}</a><br>
+						{/if}
+						{if sales_contacts:fax != ""}
+							Fax: {sales_contacts:fax}<br>Email: <a href="{sales_contacts:email}">{sales_contacts:email}</a>
+						{/if}
+					</address>
+					{if sales_contacts:map != ""}
+					<a class="google-map-link text-uppercase" href="{sales_contacts:map}" target="_blank">
 					<div class="fa fa-map-marker"></div>Google Maps</a>
+					{/if}
 				</div>
 			</div>
 		</div>
-		<div class="location-contents column large-6 small-12">
-			<div class="location-box">
-				<div style="background-image:url('/assets/images/contact-usa.jpg')" class="location-image medium-4 small-12 column"></div>
-				<div class="location-details medium-8 small-12 column">
-					<address><strong class="text-uppercase">Oyster <abbr title="">USA</abbr></strong><br>Saxon Wharf, Lower York Street<br>Northam, Southampton<br>Hampsire, SO14 5QF<br>
-					</address>
-					<address class="digital-contact"><abbr title="Telephone">Tel: </abbr><a href="tel:+442380336011">+44 (0)23 8033 6011</a><br>Fax: +44 (0)23 8063 4275<br>Email: <a href="mailto:southampton@oysteryachts.com">southampton@oysteryachts.com</a></address><a class="google-map-link text-uppercase">
-					<div class="fa fa-map-marker"></div>Google Maps</a>
-				</div>
-			</div>
-		</div>
-		<div class="location-contents column large-6 small-12">
-			<div class="location-box">
-				<div style="background-image:url('/assets/images/palma.jpg')" class="location-image medium-4 small-12 column"></div>
-				<div class="location-details medium-8 small-12 column">
-					<address><strong class="text-uppercase">Oyster <abbr title="">Palma</abbr></strong><br>Saxon Wharf, Lower York Street<br>Northam, Southampton<br>Hampsire, SO14 5QF<br>
-					</address>
-					<address class="digital-contact"><abbr title="Telephone">Tel: </abbr><a href="tel:+442380336011">+44 (0)23 8033 6011</a><br>Fax: +44 (0)23 8063 4275<br>Email: <a href="mailto:southampton@oysteryachts.com">southampton@oysteryachts.com</a></address><a class="google-map-link text-uppercase">
-					<div class="fa fa-map-marker"></div>Google Maps</a>
-				</div>
-			</div>
-		</div>
-		<div class="location-contents column large-6 small-12">
-			<div class="location-box">
-				<div style="background-image:url('/assets/images/contact-usa.jpg')" class="location-image medium-4 small-12 column"></div>
-				<div class="location-details medium-8 small-12 column">
-					<address><strong class="text-uppercase">Oyster <abbr title="">Germany</abbr></strong><br>Saxon Wharf, Lower York Street<br>Northam, Southampton<br>Hampsire, SO14 5QF<br>
-					</address>
-					<address class="digital-contact"><abbr title="Telephone">Tel: </abbr><a href="tel:+442380336011">+44 (0)23 8033 6011</a><br>Fax: +44 (0)23 8063 4275<br>Email: <a href="mailto:southampton@oysteryachts.com">southampton@oysteryachts.com</a></address><a class="google-map-link text-uppercase">
-					<div class="fa fa-map-marker"></div>Google Maps</a>
-				</div>
-			</div>
-		</div>
+		{/sales_contacts}
 	</div>
 </section>
+{/if}
+{if brokerage_contacts:total_rows != 0}
 <section id="oyster-brokerage" class="contact-group">
 	<div class="banner">Oyster Brokerage</div>
 	<div class="row">
+		{brokerage_contacts}
 		<div class="location-contents column large-6 small-12">
 			<div class="location-box">
-				<div style="background-image:url('/assets/images/contact-uk.jpg')" class="location-image medium-4 small-12 column"></div>
+				<div style="background-image:url('{brokerage_contacts:image}')" class="location-image medium-4 small-12 column"></div>
 				<div class="location-details medium-8 small-12 column">
-					<address><strong class="text-uppercase">Oyster <abbr title="United Kingdom">UK</abbr></strong><br>Saxon Wharf, Lower York Street<br>Northam, Southampton<br>Hampsire, SO14 5QF<br>
+					<address><strong class="text-uppercase">Oyster <abbr title="{brokerage_contacts:office}">{brokerage_contacts:office}</abbr></strong><br>{brokerage_contacts:address}<br>
 					</address>
-					<address class="digital-contact"><abbr title="Telephone">Tel: </abbr><a href="tel:+442380336011">+44 (0)23 8033 6011</a><br>Fax: +44 (0)23 8063 4275<br>Email: <a href="mailto:southampton@oysteryachts.com">southampton@oysteryachts.com</a></address><a class="google-map-link text-uppercase">
+					<address class="digital-contact">
+						{if brokerage_contacts:telephone != ""}
+							<abbr title="Telephone">Tel: </abbr><a href="tel:{brokerage_contacts:telephone}">{brokerage_contacts:telephone}</a><br>
+						{/if}
+						{if brokerage_contacts:fax != ""}
+							Fax: {brokerage_contacts:fax}<br>Email: <a href="{brokerage_contacts:email}">{brokerage_contacts:email}</a>
+						{/if}
+					</address>
+					{if brokerage_contacts:map != ""}
+					<a class="google-map-link text-uppercase" href="{brokerage_contacts:map}" target="_blank">
 					<div class="fa fa-map-marker"></div>Google Maps</a>
+					{/if}
 				</div>
 			</div>
 		</div>
-		<div class="location-contents column large-6 small-12">
-			<div class="location-box">
-				<div style="background-image:url('/assets/images/contact-usa.jpg')" class="location-image medium-4 small-12 column"></div>
-				<div class="location-details medium-8 small-12 column">
-					<address><strong class="text-uppercase">Oyster <abbr title="United Kingdom">UK</abbr></strong><br>Saxon Wharf, Lower York Street<br>Northam, Southampton<br>Hampsire, SO14 5QF<br>
-					</address>
-					<address class="digital-contact"><abbr title="Telephone">Tel: </abbr><a href="tel:+442380336011">+44 (0)23 8033 6011</a><br>Fax: +44 (0)23 8063 4275<br>Email: <a href="mailto:southampton@oysteryachts.com">southampton@oysteryachts.com</a></address><a class="google-map-link text-uppercase">
-					<div class="fa fa-map-marker"></div>Google Maps</a>
-				</div>
-			</div>
-		</div>
-		<div class="location-contents column large-6 small-12">
-			<div class="location-box">
-				<div style="background-image:url('/assets/images/contact-uk.jpg')" class="location-image medium-4 small-12 column"></div>
-				<div class="location-details medium-8 small-12 column">
-					<address><strong class="text-uppercase">Oyster <abbr title="United Kingdom">UK</abbr></strong><br>Saxon Wharf, Lower York Street<br>Northam, Southampton<br>Hampsire, SO14 5QF<br>
-					</address>
-					<address class="digital-contact"><abbr title="Telephone">Tel: </abbr><a href="tel:+442380336011">+44 (0)23 8033 6011</a><br>Fax: +44 (0)23 8063 4275<br>Email: <a href="mailto:southampton@oysteryachts.com">southampton@oysteryachts.com</a></address><a class="google-map-link text-uppercase">
-					<div class="fa fa-map-marker"></div>Google Maps</a>
-				</div>
-			</div>
-		</div>
+		{/brokerage_contacts}
 	</div>
 </section>
+{/if}
+{if charter_contacts:total_rows != 0}
+<section id="oyster-charter" class="contact-group">
+	<div class="banner">Oyster Charter</div>
+	<div class="row">
+		{charter_contacts}
+		<div class="location-contents column large-6 small-12">
+			<div class="location-box">
+				<div style="background-image:url('{charter_contacts:image}')" class="location-image medium-4 small-12 column"></div>
+				<div class="location-details medium-8 small-12 column">
+					<address><strong class="text-uppercase">Oyster <abbr title="{charter_contacts:office}">{charter_contacts:office}</abbr></strong><br>{charter_contacts:address}<br>
+					</address>
+					<address class="digital-contact">
+						{if charter_contacts:telephone != ""}
+							<abbr title="Telephone">Tel: </abbr><a href="tel:{charter_contacts:telephone}">{charter_contacts:telephone}</a><br>
+						{/if}
+						{if charter_contacts:fax != ""}
+							Fax: {charter_contacts:fax}<br>Email: <a href="{charter_contacts:email}">{charter_contacts:email}</a>
+						{/if}
+					</address>
+					{if charter_contacts:map != ""}
+					<a class="google-map-link text-uppercase" href="{charter_contacts:map}" target="_blank">
+					<div class="fa fa-map-marker"></div>Google Maps</a>
+					{/if}
+				</div>
+			</div>
+		</div>
+		{/charter_contacts}
+	</div>
+</section>
+{/if}
+{if custom_contacts:total_rows != 0}
 <section id="oyster-custom" class="contact-group">
 	<div class="banner">Oyster Custom &amp; Refit</div>
 	<div class="row">
+	{custom_contacts}
 		<div class="location-contents column large-6 small-12">
 			<div class="location-box">
-				<div style="background-image:url('/assets/images/contact-uk.jpg')" class="location-image medium-4 small-12 column"></div>
+				<div style="background-image:url('{custom_contacts:image}')" class="location-image medium-4 small-12 column"></div>
 				<div class="location-details medium-8 small-12 column">
-					<address><strong class="text-uppercase">Oyster <abbr title="United Kingdom">UK</abbr></strong><br>Saxon Wharf, Lower York Street<br>Northam, Southampton<br>Hampsire, SO14 5QF<br>
+					<address><strong class="text-uppercase">Oyster <abbr title="{custom_contacts:office}">{custom_contacts:office}</abbr></strong><br>{custom_contacts:address}<br>
 					</address>
-					<address class="digital-contact"><abbr title="Telephone">Tel: </abbr><a href="tel:+442380336011">+44 (0)23 8033 6011</a><br>Fax: +44 (0)23 8063 4275<br>Email: <a href="mailto:southampton@oysteryachts.com">southampton@oysteryachts.com</a></address><a class="google-map-link text-uppercase">
+					<address class="digital-contact">
+						{if custom_contacts:telephone != ""}
+							<abbr title="Telephone">Tel: </abbr><a href="tel:{custom_contacts:telephone}">{custom_contacts:telephone}</a><br>
+						{/if}
+						{if custom_contacts:fax != ""}
+							Fax: {custom_contacts:fax}<br>Email: <a href="{custom_contacts:email}">{custom_contacts:email}</a>
+						{/if}
+					</address>
+					{if custom_contacts:map != ""}
+					<a class="google-map-link text-uppercase" href="{custom_contacts:map}" target="_blank">
 					<div class="fa fa-map-marker"></div>Google Maps</a>
+					{/if}
 				</div>
 			</div>
 		</div>
+		{/custom_contacts}
 	</div>
 </section>
-<section id="oyster-service" class="contact-group">
-	<div class="banner">Oyster Service Centres</div>
-	<div class="row">
-		<div class="location-contents column large-6 small-12">
-			<div class="location-box">
-				<div style="background-image:url('/assets/images/contact-uk.jpg')" class="location-image medium-4 small-12 column"></div>
-				<div class="location-details medium-8 small-12 column">
-					<address><strong class="text-uppercase">Oyster <abbr title="United Kingdom">UK</abbr></strong><br>Saxon Wharf, Lower York Street<br>Northam, Southampton<br>Hampsire, SO14 5QF<br>
-					</address>
-					<address class="digital-contact"><abbr title="Telephone">Tel: </abbr><a href="tel:+442380336011">+44 (0)23 8033 6011</a><br>Fax: +44 (0)23 8063 4275<br>Email: <a href="mailto:southampton@oysteryachts.com">southampton@oysteryachts.com</a></address><a class="google-map-link text-uppercase">
-					<div class="fa fa-map-marker"></div>Google Maps</a>
+{/if}
+{if service_centers_contacts:total_rows != 0}
+	<section id="oyster-service" class="contact-group">
+		<div class="banner">Oyster Service Centres</div>
+		<div class="row">
+		{service_centers_contacts}
+			<div class="location-contents column large-6 small-12">
+				<div class="location-box">
+					<div style="background-image:url('{service_centers_contacts:image}')" class="location-image medium-4 small-12 column"></div>
+					<div class="location-details medium-8 small-12 column">
+						<address><strong class="text-uppercase">Oyster <abbr title="{service_centers_contacts:office}">{service_centers_contacts:office}</abbr></strong><br>{service_centers_contacts:address}<br>
+						</address>
+						<address class="digital-contact">
+							{if service_centers_contacts:telephone != ""}
+								<abbr title="Telephone">Tel: </abbr><a href="tel:{service_centers_contacts:telephone}">{service_centers_contacts:telephone}</a><br>
+							{/if}
+							{if service_centers_contacts:fax != ""}
+								Fax: {service_centers_contacts:fax}<br>Email: <a href="{service_centers_contacts:email}">{service_centers_contacts:email}</a>
+							{/if}
+						</address>
+						{if service_centers_contacts:map != ""}
+						<a class="google-map-link text-uppercase" href="{service_centers_contacts:map}" target="_blank">
+						<div class="fa fa-map-marker"></div>Google Maps</a>
+						{/if}
+					</div>
 				</div>
 			</div>
+			{/service_centers_contacts}
 		</div>
-		<div class="location-contents column large-6 small-12">
-			<div class="location-box">
-				<div style="background-image:url('/assets/images/contact-usa.jpg')" class="location-image medium-4 small-12 column"></div>
-				<div class="location-details medium-8 small-12 column">
-					<address><strong class="text-uppercase">Oyster <abbr title="United Kingdom">UK</abbr></strong><br>Saxon Wharf, Lower York Street<br>Northam, Southampton<br>Hampsire, SO14 5QF<br>
-					</address>
-					<address class="digital-contact"><abbr title="Telephone">Tel: </abbr><a href="tel:+442380336011">+44 (0)23 8033 6011</a><br>Fax: +44 (0)23 8063 4275<br>Email: <a href="mailto:southampton@oysteryachts.com">southampton@oysteryachts.com</a></address><a class="google-map-link text-uppercase">
-					<div class="fa fa-map-marker"></div>Google Maps</a>
+	</section>
+{/if}
+{if representatives:total_rows != 0}
+	<section id="oyster-representatives" class="contact-group">
+		<div class="banner">Oyster Representatives</div>
+		<div class="row">
+			{representatives}
+			<div class="location-contents column large-6 small-12">
+				<div class="location-box">
+					<div style="background-image:url('{representatives:image}')" class="location-image medium-4 small-12 column"></div>
+					<div class="location-details medium-8 small-12 column">
+						<address><strong class="text-uppercase">Oyster <abbr title="{representatives:office}">{representatives:office}</abbr></strong><br>{representatives:address}<br>
+						</address>
+						<address class="digital-contact">
+							{if representatives:telephone != ""}
+								<abbr title="Telephone">Tel: </abbr><a href="tel:{representatives:telephone}">{representatives:telephone}</a><br>
+							{/if}
+							{if representatives:fax != ""}
+								Fax: {representatives:fax}<br>Email: <a href="{representatives:email}">{representatives:email}</a>
+							{/if}
+						</address>
+						{if representatives:map != ""}
+						<a class="google-map-link text-uppercase" href="{representatives:map}" target="_blank">
+						<div class="fa fa-map-marker"></div>Google Maps</a>
+						{/if}
+					</div>
 				</div>
 			</div>
+			{/representatives}
 		</div>
-		<div class="location-contents column large-6 small-12">
-			<div class="location-box">
-				<div style="background-image:url('/assets/images/contact-uk.jpg')" class="location-image medium-4 small-12 column"></div>
-				<div class="location-details medium-8 small-12 column">
-					<address><strong class="text-uppercase">Oyster <abbr title="United Kingdom">UK</abbr></strong><br>Saxon Wharf, Lower York Street<br>Northam, Southampton<br>Hampsire, SO14 5QF<br>
-					</address>
-					<address class="digital-contact"><abbr title="Telephone">Tel: </abbr><a href="tel:+442380336011">+44 (0)23 8033 6011</a><br>Fax: +44 (0)23 8063 4275<br>Email: <a href="mailto:southampton@oysteryachts.com">southampton@oysteryachts.com</a></address><a class="google-map-link text-uppercase">
-					<div class="fa fa-map-marker"></div>Google Maps</a>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
-<section id="oyster-representatives" class="contact-group">
-	<div class="banner">Oyster Representatives</div>
-	<div class="row">
-		<div class="location-contents column large-6 small-12">
-			<div class="location-box">
-				<div style="background-image:url('/assets/images/contact-uk.jpg')" class="location-image medium-4 small-12 column"></div>
-				<div class="location-details medium-8 small-12 column">
-					<address><strong class="text-uppercase">Oyster <abbr title="United Kingdom">UK</abbr></strong><br>Saxon Wharf, Lower York Street<br>Northam, Southampton<br>Hampsire, SO14 5QF<br>
-					</address>
-					<address class="digital-contact"><abbr title="Telephone">Tel: </abbr><a href="tel:+442380336011">+44 (0)23 8033 6011</a><br>Fax: +44 (0)23 8063 4275<br>Email: <a href="mailto:southampton@oysteryachts.com">southampton@oysteryachts.com</a></address><a class="google-map-link text-uppercase">
-					<div class="fa fa-map-marker"></div>Google Maps</a>
-				</div>
-			</div>
-		</div>
-		<div class="location-contents column large-6 small-12">
-			<div class="location-box">
-				<div style="background-image:url('/assets/images/contact-usa.jpg')" class="location-image medium-4 small-12 column"></div>
-				<div class="location-details medium-8 small-12 column">
-					<address><strong class="text-uppercase">Oyster <abbr title="United Kingdom">UK</abbr></strong><br>Saxon Wharf, Lower York Street<br>Northam, Southampton<br>Hampsire, SO14 5QF<br>
-					</address>
-					<address class="digital-contact"><abbr title="Telephone">Tel: </abbr><a href="tel:+442380336011">+44 (0)23 8033 6011</a><br>Fax: +44 (0)23 8063 4275<br>Email: <a href="mailto:southampton@oysteryachts.com">southampton@oysteryachts.com</a></address><a class="google-map-link text-uppercase">
-					<div class="fa fa-map-marker"></div>Google Maps</a>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
-
+	</section>
+{/if}
 {footer}
+
+{/exp:channel:entries}

@@ -71,11 +71,20 @@ define(['jquery', 'cycle', 'salvattore', 'lightgallery', 'lightgalleryThumbs', '
 	var staggerTime = 0;
 
 	$('.list-entrance > li').each(function (index, element) {
-		staggerTime = staggerTime + 200;
-		$(element).css('animation-delay', staggerTime + 'ms');
+		//$(element).css('animation-delay', staggerTime + 'ms');
+		
+		fadeEl($(element), staggerTime);
+
+		staggerTime = staggerTime + 300;
 	});
 
-	$('.list-entrance > li').addClass('list-entrance-animations');
+	function fadeEl($el, staggerTime) {
+		setTimeout(function() {
+			$el.addClass('fadein');
+		}, staggerTime);
+	}
+
+	//$('.list-entrance > li').addClass('list-entrance-animations');
 
 	// ---- *end* LISTING STAGGERED FADE IN *end* ----	
 

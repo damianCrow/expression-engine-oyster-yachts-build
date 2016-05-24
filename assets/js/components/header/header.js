@@ -143,6 +143,10 @@ define(['jquery', 'ScrollMagic', 'validateForm', 'foundation'], function ($, Scr
 		e.preventDefault();
 
 		$('.global-header-top-nav-large').toggleClass('search-bar-open');
+
+		if ($('.global-header-top-nav-large').hasClass('search-bar-open')) {
+			$('.search-bar input').focus();
+		}
 	});
 
 });

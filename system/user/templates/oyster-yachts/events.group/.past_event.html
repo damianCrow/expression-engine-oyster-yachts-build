@@ -26,7 +26,7 @@
 	<div id="yacht-nav" data-local-subnav="data-local-subnav" class="yacht-nav">
 		<ul class="local-subnav">
 			{parents field="event_day_event" status="published" orderby="date" sort="ASC"}
-			<li {if parents:count == 1}class="active"{/if}><a href="#events-previous-regattas-{parents:url_title}" class="scroll">{parents:event_day_number}</a></li>
+			<li {if parents:count == 1}class="active"{/if}><a href="#events-previous-regattas-{parents:url_title}" class="scroll">{parents:event_day_numberr}</a></li>
 			{/parents}
 
 			{if event_class_1_overall_results:total_rows > 0 || event_class_2_overall_results:total_rows > 0}
@@ -42,7 +42,7 @@
 		<div class="large-offset-1 large-7 float-left">
 			<div class="day-header clearfix">{event_logo}<img src="{image:url}" class="regatta-bvi-logo float-left">{/event_logo}
 				<div class="header-text float-left">
-					<h2 class="text-uppercase">{parents:event_day_date format="%d%S %F %Y"} - {parents:event_day_number}</h2>
+					<h2 class="text-uppercase">{parents:event_day_date format="%d%S %F %Y"} - {parents:event_day_numberr}</h2>
 					<h1 class="text-uppercase">{parents:event_day_report_title}</h1>
 				</div>
 			</div>

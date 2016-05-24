@@ -27,7 +27,6 @@
 			<p>
 				Welcome to the Owners Area of our website, which we hope you will find helpful and which is only accessible by fellow owners. We are always looking for ways to improve our service to owners and plan to develop the owners area of our website over the coming months. We would welcome your feedback and ideas for additional features. 
 				If you are planning to take part in our regattas, we will post all the information and regatta booking forms in this area so you can easily access this information from anywhere in the world. If you are away from your Oyster and need to refer to the Owners’ Manual, the latest version is stored here for your reference. In addition, our Aftersales Advisory Notes are stored online, ensuring that you always have access to any relevant technical information. We are pleased to offer you our exclusive range of Oyster merchandise and gifts together with customised clothing by special order. Please contact us if you have any queries or comments.
-
 			</p>
 		</div>
 		<div class="large-offset-1 large-3 small-12 float-left">
@@ -41,30 +40,36 @@
 						</g>
 					</svg>
 				</div>
+				{exp:member:custom_profile_data}
+				<?php ob_start(); ?>{member_first_name}<?php $firstName = ob_get_contents(); ob_end_clean(); ?>
+				<?php ob_start(); ?>{member_last_name}<?php $lastName = ob_get_contents(); ob_end_clean(); ?>
+				
 				<div class="overview-contents prev-models">
 					<div class="overview columns small-12">
 						<div class="side-profile">
-							<div class="side-profile-image"><span>KP</span></div>
-							<div class="side-profile-details"><span class="side-profile-name">Kate Porteous</span><a href="/oyster/owners-area/profile" class="side-profile-view">View Profile</a></div>
+							<div class="side-profile-image"><span><?php echo substr($firstName, 0, 1).substr($lastName, 0, 1); ?></span></div>
+							<div class="side-profile-details"><span class="side-profile-name">{member_first_name} {member_last_name}</span><a href="/oyster/owners-area/profile" class="side-profile-view">View Profile</a></div>
 						</div>
 						<table class="table definition-table">
 							<tbody>
 								<tr>
 									<td>Account:</td>
-									<td>Owner</td>
+									<td>{member_account_type}</td>
 								</tr>
 								<tr>
 									<td>Yacht Model:</td>
-									<td>Oyster 100</td>
+									<td>{member_current_yacht_make}</td>
 								</tr>
 								<tr>
 									<td>Boat Name:</td>
-									<td>Penelope</td>
+									<td>{member_current_yacht_model}</td>
 								</tr>
+								
 							</tbody>
 						</table>
 					</div>
 				</div>
+				{/exp:member:custom_profile_data}
 			</aside>
 		</div>
 	</section>

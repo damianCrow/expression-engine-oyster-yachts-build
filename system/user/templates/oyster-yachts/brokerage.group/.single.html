@@ -19,14 +19,14 @@ $interiorGalleryImages = $query->num_rows();*/
 		{back_button}
 		<div class="yacht-name">
 			<div class="row-pad">
-				<h2>{brokerage_model}</h2>
-				<h1>{title}</h1>
+				<h2 class="yacht-list-modal">{brokerage_model}</h2>
+				<h1 class="yacht-list-name">{title}</h1>
 				<?php if ($exteriorGalleryImages > 0): ?>
 				<a class="gallery button-view-gallery" href="" data-gallery="external">View Gallery</a>
 				<?php endif; ?>
 			</div>
 		</div>
-		{embed="site/.share_buttons" brokerage="true"}
+		{share_buttons}
 	</div>
 	<div id="yacht-nav" data-local-subnav="data-local-subnav" class="yacht-nav">
 		<ul class="local-subnav">

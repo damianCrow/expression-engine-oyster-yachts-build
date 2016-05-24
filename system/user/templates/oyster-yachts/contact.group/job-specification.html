@@ -1,0 +1,41 @@
+{exp:channel:entries disable="member_data|category_fields|pagination" cache="yes" refresh="60" require_entry="yes" status="published"}
+{if no_results}{redirect="404"}{/if}
+
+{embed="site/.header" snap_to="undefined" snap_offset="undefined"}
+    <section style="{if segment_3 == "various-southampton"} background-image: url('/assets/images/boat-yard-min.jpg'); {if:else} background-image: url('/assets/images/_SUZ54831-recruitment.jpg'); {/if}" class="hero after-nav global-page-hero yacht-listing-photo global-page-hero--medium full-screen">
+      <div id="page-back-button" class="back-button"><a class="button-clear-white"><i class="fa fa-angle-left"></i>Back</a></div>
+    </section>
+    <article class="contact-job-specfic global-padding-top-only--large">
+      <section>
+        <div class="row padded-full-width-row">
+          <div class="large-offset-1 large-7 float-left">
+            <h2 class="text-uppercase">Oyster Yachts {job_location}</h2>
+            <h1 class="text-uppercase">{title}</h1>
+           {job_description}
+          </div>
+          <div class="large-offset-1 large-3 medium-12 float-left">
+                <aside class="overview-download columns job-specfic-aside">
+                      <div class="block-section-header aside-header">
+                        <h3 class="text-uppercase">Recruitment Contact</h3>
+                        <svg id="svg-arrow" version="1.1" baseprofile="tiny" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewbox="0 -20 100 100" xml:space="preserve">
+                          <g>
+                            <line x1="10" y1="10" x2="53" y2="53" stroke="#454646" stroke-width="10"></line>
+                            <line x1="90" y1="10" x2="47" y2="53" stroke="#454646" stroke-width="10"></line>
+                          </g>
+                        </svg>
+                      </div>
+                  <div class="overview-contents prev-models">
+                    <div class="overview columns small-12">
+                      <p>Please email your CV along with a covering letter highlighting your key experience and work history to: <a href="mailto:Kristye.little@oysteryachts.com">Kristye.little@oysteryachts.com</a></p>
+                    </div>
+                  </div>
+                </aside>
+          </div>
+        </div>
+      </section>
+    </article>
+            <style>
+            .recruitment-table{margin-top:2rem;margin-bottom:2rem}.recruitment-table tbody th{background-color:#f2f5f6;border-left:1px solid #c7c8ca;border-right:1px solid #c7c8ca}.recruitment-table a{text-decoration:underline}.recruitment-aside{overflow-wrap:break-word;word-wrap:break-word;-webkit-hyphens:auto;-ms-hyphens:auto;hyphens:auto}.contact-job-specfic ul{font-size:0.9375em;line-height:1.73333333em;margin-bottom:1.73333333em;color:#747678;list-style-type:none}.contact-job-specfic ul>li:before{content:"-";margin-right:5px}.contact-job-specfic h3,.contact-job-specfic .news-preview h2,.news-preview .contact-job-specfic h2{color:#747678;line-height:2rem;font-family:'omnes_mediumregular', sans-serif}.job-specfic-aside{margin-bottom:2rem;margin-top:1rem}.boat-yard-aside{overflow-wrap:break-word;word-wrap:break-word;-webkit-hyphens:auto;-ms-hyphens:auto;hyphens:auto;margin-bottom:2rem;margin-top:1rem}.boat-yard-jobs a{text-decoration:underline}
+            </style>
+   {footer}
+  {/exp:channel:entries}

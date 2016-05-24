@@ -1,27 +1,33 @@
 {embed="site/.header" snap_to="undefined" snap_offset="undefined"}
     <article class="blocks-on-blocks after-nav row">
-          <section style="background-image: url('/assets/images/about-us-why-us.jpg')" class="block-on-block">
+      {exp:channel:entries channel="about" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published"}
+
+    {about_sections}
+
+          <section style="" class="block-on-block">
             <div class="block-on-block-info">
-              <h1>Why Oyster</h1>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim venia</p><a href="/about/why-oyster" class="button-solid-blue button-chubby">Discover Our Fleet</a>
+              <h1>{about_sections:title}</h1>
+              {about_sections:description}<a href="/{about_sections:link}" class="button-solid-blue button-chubby">{about_sections:link_label}</a>
             </div>
           </section>
-          <section style="background-image: url('/assets/images/yachts_4.jpg')" class="block-on-block">
-            <div class="block-on-block-info">
-              <h1>What We Offer</h1>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim venia</p><a href="/about/what-we-offer" class="button-solid-blue button-chubby">Discover Our Fleet</a>
-            </div>
-          </section>
-          <section style="background-image: url('/assets/images/about_us_3.jpg')" class="block-on-block">
-            <div class="block-on-block-info">
-              <h1>Our Team</h1>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim venia</p><a href="/about/team" class="button-solid-blue button-chubby">Discover Our Fleet</a>
-            </div>
-          </section>
-          <section style="background-image: url('/assets/images/about-us-heritage.jpg')" class="block-on-block">
-            <div class="block-on-block-info">
-              <h1>Our Heritage</h1>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim venia</p><a href="/about/heritage" class="button-solid-blue button-chubby">Discover Our Fleet</a>
-            </div>
-          </section>
+              {/about_sections}
+
+    {/exp:channel:entries}
+       
+        </article>
+        <style>
+article section:nth-child(1) {
+  background-image: url('/assets/images/about-us-why-us.jpg');
+}
+
+article section:nth-child(2) {
+  background-image: url('/assets/images/yachts_4.jpg');
+}
+article section:nth-child(3) {
+ background-image: url('/assets/images/about_us_3.jpg');
+}
+article section:nth-child(4) {
+background-image: url('/assets/images/about-us-heritage.jpg')
+}
+        </style>
     {footer}

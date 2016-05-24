@@ -29,9 +29,14 @@
 
 	{if prev_news_content:media != ""}
 	<div class="featured-media row row-pad">
+		<?php ob_start(); ?>{prev_news_content:media}<?php $content = ob_get_contents(); ob_end_clean(); ?>
+		<?php if (strpos($content, 'iframe')): ?>
 		<div class="video-embed-container">
 			{prev_news_content:media}
 		</div>
+		<?php else: ?>
+		{prev_news_content:media}
+		<?php endif; ?>
 	</div>
 	{/if}
 

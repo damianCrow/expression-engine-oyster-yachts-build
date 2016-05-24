@@ -42,7 +42,8 @@ require.config({
     weather: '/assets/js/components/util/weather',
     validateForm: '/assets/js/components/util/validate-form',
     weather_icons: '/assets/js/components/util/weather-icons',
-    ownersAreaModal: '/assets/js/components/util/owners-area-modal'
+    ownersAreaModal: '/assets/js/components/util/owners-area-modal',
+    average_climate_data: '/assets/js/components/util/average-climate-data'
   },
   shim: {
     'jquery': {

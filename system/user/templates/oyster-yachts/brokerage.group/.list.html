@@ -11,7 +11,7 @@
 	<div class="row row-pad content">
 		<div id="yacht-grid" class="row">
 			<ul class="list-entrance">
-				{exp:channel:entries set="brokerage" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published" search:brokerage_listing_size="=Large" orderby="brokerage_status_changed" sort="desc"}
+				{exp:channel:entries channel="brokerage" dynamic="no" disable="member_data|categories|category_fields|pagination|member_data" cache="yes" refresh="60" status="published" search:brokerage_listing_size="=Large" orderby="brokerage_status_changed" sort="desc"}
 				<li class="column large-12 size-large{embed="brokerage/.filter_hide" model="{brokerage_model}" price="{brokerage_price}" location="{brokerage_location}" status="{brokerage_status}"}" data-model="{brokerage_model}" data-price="{brokerage_price}" data-location="{brokerage_location}" data-status="{brokerage_status}">
 					<div data-yachtid="{entry_id}" data-yachttype="brokerage" class="yacht-list-item<?php if (time() - (int) '{brokerage_status_changed}' < 60*60*24*30): ?> updated-listing<?php endif; ?>">
 						<a href="{url_title_path='brokerage/fleet'}">
@@ -51,7 +51,7 @@
 				{/exp:channel:entries}
 			</ul>
 			<ul class="list-entrance">
-				{exp:channel:entries set="brokerage" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published" search:brokerage_listing_size="=Medium" orderby="brokerage_status_changed" sort="desc"}
+				{exp:channel:entries channel="brokerage" dynamic="no" disable="member_data|categories|category_fields|pagination|member_data" cache="yes" refresh="60" status="published" search:brokerage_listing_size="=Medium" orderby="brokerage_status_changed" sort="desc"}
 				<li class="column large-6 size-medium{embed="brokerage/.filter_hide" model="{brokerage_model}" price="{brokerage_price}" location="{brokerage_location}" status="{brokerage_status}"}{if count == total_results} end{/if}" data-model="{brokerage_model}" data-price="{brokerage_price}" data-location="{brokerage_location}" data-status="{brokerage_status}">
 					<div data-yachtid="{entry_id}" data-yachttype="brokerage" class="yacht-list-item<?php if (time() - (int) '{brokerage_status_changed}' < 60*60*24*30): ?> updated-listing<?php endif; ?>">
 						<a href="{url_title_path='brokerage/fleet'}">
@@ -90,7 +90,7 @@
 				{/exp:channel:entries}
 			</ul>
 			<ul class="list-entrance">
-				{exp:channel:entries set="brokerage" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published" search:brokerage_listing_size="=Small" orderby="brokerage_status_changed" sort="desc"}
+				{exp:channel:entries channel="brokerage" dynamic="no" disable="member_data|categories|category_fields|pagination|member_data" cache="yes" refresh="60" status="published" search:brokerage_listing_size="=Small" orderby="brokerage_status_changed" sort="desc"}
 				<li class="column large-4 size-small{embed="brokerage/.filter_hide" model="{brokerage_model}" price="{brokerage_price}" location="{brokerage_location}" status="{brokerage_status}"}{if count == total_results} end{/if}" data-model="{brokerage_model}" data-price="{brokerage_price}" data-location="{brokerage_location}" data-status="{brokerage_status}">
 					<div data-yachtid="{entry_id}" data-yachttype="brokerage" class="yacht-list-item<?php if (time() - (int) '{brokerage_status_changed}' < 60*60*24*30): ?> updated-listing<?php endif; ?>">
 						<a href="{url_title_path='brokerage/fleet'}">

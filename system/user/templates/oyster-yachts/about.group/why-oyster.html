@@ -1,8 +1,6 @@
-{exp:channel:entries channel="why_oyster_page" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published" limit="1"}
-
 {embed="site/.header" snap_to="undefined" snap_offset="undefined"}
 <section style="background-image: url('/assets/images/about-us-why-us.jpg'); " class="hero after-nav global-page-hero yacht-listing-photo global-page-hero--medium">
-	{back_button}
+	<div id="page-back-button" class="back-button"><a class="button-clear-white"><i class="fa fa-angle-left"></i>Back</a></div>
 </section>
 
 <article class="why-oyster row">
@@ -11,44 +9,45 @@
 	</div>
 
 	<section class="staggered-features stagger-split">
-		
-	{why_oyster_sections}
+		{exp:channel:entries channel="why_oyster_page" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published"}
 
-		{if why_oyster_sections:count % 2 == 0}
+		{why_oyster_sections}
 
-		<div class="row">
-			<div class="staggered-image medium-7 small-12 columns"><img src="{why_oyster_sections:image}"></div>
-			<div class="staggered-details medium-5 small-12 columns">
-				<div class="staggered-details-contents">
-					<h2>{why_oyster_sections:title}</h2>
-					{why_oyster_sections:description}
+			{if why_oyster_sections:count % 2 == 0}
+
+			<div class="row">
+				<div class="staggered-image medium-7 small-12 columns"><img src="{why_oyster_sections:image}"></div>
+				<div class="staggered-details medium-5 small-12 columns">
+					<div class="staggered-details-contents">
+						<h2>{why_oyster_sections:title}</h2>
+						{why_oyster_sections:description}
+					</div>
 				</div>
 			</div>
-		</div>
 
-		{if:else}
+			{if:else}
 
-		<div class="row staggered-row-reverse">
-			<div class="staggered-details medium-7 small-12 columns">
-				<div class="staggered-details-contents">
-					<h2>{why_oyster_sections:title}</h2>
-					{why_oyster_sections:description}
-					<!-- <div class="staggered-button-group">
-					<a class="button-solid-white button-chubby">British Virgin Islands</a>
-					<a class="button-solid-white button-chubby">ANTIGUA & BARBUDA</a>
-					<a class="button-solid-white button-chubby">A longish button to see how it strechs</a>
-					</div> -->
+			<div class="row staggered-row-reverse">
+				<div class="staggered-details medium-7 small-12 columns">
+					<div class="staggered-details-contents">
+						<h2>{why_oyster_sections:title}</h2>
+						{why_oyster_sections:description}
+						<!-- <div class="staggered-button-group">
+						<a class="button-solid-white button-chubby">British Virgin Islands</a>
+						<a class="button-solid-white button-chubby">ANTIGUA & BARBUDA</a>
+						<a class="button-solid-white button-chubby">A longish button to see how it strechs</a>
+						</div> -->
+					</div>
 				</div>
+				<div class="staggered-image medium-5 small-12 columns"><img src="{why_oyster_sections:image}"></div>
 			</div>
-			<div class="staggered-image medium-5 small-12 columns"><img src="{why_oyster_sections:image}"></div>
-		</div>
 
-		{/if}
+			{/if}
 
-	{/why_oyster_sections}
+		{/why_oyster_sections}
+
+		{/exp:channel:entries}
 
 	</section>
 </article>
 {footer}
-
-{/exp:channel:entries}
