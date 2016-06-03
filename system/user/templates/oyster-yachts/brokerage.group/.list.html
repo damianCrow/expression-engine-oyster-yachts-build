@@ -1,14 +1,14 @@
 {embed="site/.header" snap_to=".hero #global-page-filters" snap_offset="55"}
 
-<section style="background-image: url('http://oysteryachts.interstateteam.com/images/static/brokerage_header.jpg')" class="hero after-nav global-page-hero global-page-hero--small">
+<section style="background-image: url('/images/static/brokerage_header.jpg')" class="hero after-nav global-page-hero global-page-hero--small">
 	{back_button}
 	
 	{embed="brokerage/.filters"}
 </section>
 
-<section class="page-fleet brokerage-fleet">
+<section class="page-fleet brokerage-fleet global-padding-top-only--small">
 	<div class="banner">Brokerage Fleet</div>
-	<div class="row row-pad content">
+	<div class="row row-pad content global-padding-top-only--small">
 		<div id="yacht-grid" class="row">
 			<ul class="list-entrance">
 				{exp:channel:entries channel="brokerage" dynamic="no" disable="member_data|categories|category_fields|pagination|member_data" cache="yes" refresh="60" status="published" search:brokerage_listing_size="=Large" orderby="brokerage_status_changed" sort="desc"}

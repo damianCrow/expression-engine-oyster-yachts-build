@@ -3,7 +3,7 @@
 	<div id="page-back-button" class="back-button"><a class="button-clear-white"><i class="fa fa-angle-left"></i>Back</a></div>
 </section>
 
-<article class="why-oyster row">
+<article class="why-oyster">
 	<div class="banner">
 		<h1>Why Oyster Yachts</h1>
 	</div>
@@ -15,7 +15,7 @@
 
 			{if why_oyster_sections:count % 2 == 0}
 
-			<div class="row">
+			<div class="row row-pad">
 				<div class="staggered-image medium-7 small-12 columns"><img src="{why_oyster_sections:image}"></div>
 				<div class="staggered-details medium-5 small-12 columns">
 					<div class="staggered-details-contents">
@@ -27,7 +27,7 @@
 
 			{if:else}
 
-			<div class="row staggered-row-reverse">
+			<div class="row staggered-row-reverse row-pad">
 				<div class="staggered-details medium-7 small-12 columns">
 					<div class="staggered-details-contents">
 						<h2>{why_oyster_sections:title}</h2>

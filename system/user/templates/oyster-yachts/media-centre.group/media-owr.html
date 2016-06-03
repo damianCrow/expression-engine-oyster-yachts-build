@@ -1,0 +1,35 @@
+{embed="site/.header" snap_to=".full-screen #yacht-nav" snap_offset="55"}
+
+    <section style="background-image: url('/assets/images/bg-images/media-centre-press-images-bg.jpg'); background-position: center 40%;" class="hero after-nav global-page-hero yacht-listing-photo global-page-hero--small add-full-background-overlay">
+      <div id="page-back-button" class="back-button"><a class="button-clear-white"><i class="fa fa-angle-left"></i>Back</a></div>
+      <div class="yacht-name">
+        <div class="row-pad">
+          <h1 class="hero-title yacht-list-name text-uppercase">{title}</h1>
+        </div>
+      </div>
+    </section>
+    <section id="media-press-exterior" class="world-rally-gallery media-press-exterior">
+      <div class="row padded-full-width-row small-up-1 medium-up-3 large-up-4">
+       {exp:channel:entries channel="media_centre_owr" dynamic="no" url_title="{segment_2}" disable="member_data|category_fields|pagination" cache="yes" refresh="60" require_entry="yes" status="published"}
+{if no_results}{redirect="404"}{/if}
+{media_owr_images}
+          <div class="small-12 medium-4 large-3 columns">
+            <div class="gallery-pane">
+              <div style="background-image: url('{media_owr_images:image}')" class="gallery-pane-header"></div>
+              <div data-equalizer-watch="data-equalizer-watch" class="gallery-pane-content">
+                <p>
+                  &copy; {media_owr_images:copyright} <br/>{media_owr_images:author}
+                  
+                </p><a href="{media_owr_images:image}" target="_blank" download="" class="text-uppercase button-transparent">download</a>
+              </div>
+            </div>
+          </div>
+          {/media_owr_images}
+    {/exp:channel:entries}
+
+        </div>
+      </div>
+    </section>
+
+
+   {footer}

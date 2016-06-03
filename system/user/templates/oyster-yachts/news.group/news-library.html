@@ -12,7 +12,9 @@
 				<div class="news-pane-inner">
 					
 					{if channel_short_name == "news"}
+					<a href="{url_title_path='news/article'}">
 					<div class="news-pane-header" {article_main_image}style="background-image:url('{image:url:small}')"{/article_main_image}></div>
+				</a>
 					<div class="news-pane-content">
 						<h5 class="text-uppercase date">{entry_date format="%d %F %Y"}</h5>
 						<h4 class="text-uppercase title">{title}</h4>
@@ -20,7 +22,13 @@
 						<a href="{url_title_path='news/article'}" class="read-more">READ MORE</a>
 					</div>
 					{if:elseif channel_short_name == "event_news"}
+					{event_news_report status="published"}
+						{event_news_report:event_day_event status="published"}
+						<a href="{path='events/regattas/{event_news_report:event_day_event:url_title}'}" class="read-more">
 					<div class="news-pane-header" {event_news_image}style="background-image:url('{image:url:small}')"{/event_news_image}></div>
+					</a>
+						{/event_news_report:event_day_event}
+						{/event_news_report}
 					<div class="news-pane-content">
 						<h5 class="text-uppercase date">{entry_date format="%d %F %Y"}</h5>
 						<h4 class="text-uppercase title">{title}</h4>

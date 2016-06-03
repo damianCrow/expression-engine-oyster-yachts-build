@@ -26,7 +26,11 @@
                       </div>
                   <div class="overview-contents prev-models">
                     <div class="overview columns small-12">
-                      <p>Please email your CV along with a covering letter highlighting your key experience and work history to: <a href="mailto:Kristye.little@oysteryachts.com">Kristye.little@oysteryachts.com</a></p>
+                      {if job_location =="Wroxham"}
+                      <p>Please email your CV along with a covering letter highlighting your key experience and work history to: <a href="mailto:kristye.little@oysteryachts.com">kristye.little@oysteryachts.com</a></p>
+                      {if:elseif job_location =="Southampton"}
+                        <p>Please email your CV along with a covering letter highlighting your key experience and work history to: <a href="mailto:judy.garrettjenkins@oysteryachts.com">judy.garrettjenkins@oysteryachts.com</a></p>
+                      {/if}
                     </div>
                   </div>
                 </aside>

@@ -2,7 +2,7 @@
     <section style="background-image: url('/assets/images/about-us-why-us.jpg'); " class="hero after-nav global-page-hero yacht-listing-photo global-page-hero--medium">
       <div id="page-back-button" class="back-button"><a class="button-clear-white"><i class="fa fa-angle-left"></i>Back</a></div>
     </section>
-    <article class="why-oyster row">
+    <article class="why-oyster">
       <div class="banner">
         <h1>What We Offer</h1>
       </div>
@@ -12,7 +12,7 @@
       <section class="staggered-features stagger-split">
               {what_we_offer}
          {if what_we_offer:count % 2 == 0}
-           <div class="row">
+           <div class="row row-pad">
           <div class="staggered-image medium-7 small-12 columns"><img src="{what_we_offer:image}"></div>
           <div class="staggered-details medium-5 small-12 columns">
             <div class="staggered-details-contents">
@@ -26,7 +26,7 @@
         </div>
 
         {if:else}
-        <div class="row staggered-row-reverse">
+        <div class="staggered-row-reverse row row-pad">
           <div class="staggered-details medium-7 small-12 columns">
             <div class="staggered-details-contents">
               <h2>{what_we_offer:title}</h2>

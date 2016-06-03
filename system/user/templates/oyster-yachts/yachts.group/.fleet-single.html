@@ -62,6 +62,7 @@ $interiorGalleryImages = $query->num_rows();
 			<h2>{yacht_tagline}</h2>
 			<h1>{title}</h1>
 			{yacht_about}
+			{if awards !=""}<img src="{awards}" style="max-height:80px;">{/if}
 		</div>
 		<div class="large-offset-1 large-3 medium-12 float-left">
 
@@ -84,7 +85,7 @@ $interiorGalleryImages = $query->num_rows();
 							<div class="download-thumb column small-3">
 								<img src="{yacht_brochure:thumbnail}">
 							</div>
-							{embed="site/.download_file" title="{yacht_brochure:title}" file="{yacht_brochure:file}" filesize="{yacht_brochure:file}{file_size}{/yacht_brochure:file}" label="Download Brochure"}
+							{embed="site/.download_file" title="{yacht_brochure:title}" file="{yacht_brochure:file}" filesize="{yacht_brochure:file}{file_size}{/yacht_brochure:file}" label="Download"}
 						</figure>
 						{/yacht_brochure}
 					</div>
@@ -221,7 +222,7 @@ $interiorGalleryImages = $query->num_rows();
 {if yacht_documents:total_rows > 0}
 <section id="download-documents" class="download-documents">
 	<div class="banner">Documents</div>
-	<div class="row content">
+	<div class="row content row-pad">
 		<ul>
 			{yacht_documents}
 			<li class="columns medium-4 small-6">
@@ -243,9 +244,9 @@ $interiorGalleryImages = $query->num_rows();
  
 
 {if "{parents:entry_ids}" != ""}
-<section id="news-thumbs" class="news-thumbs">
+<section id="news-thumbs" class="news-thumbs global-padding-top-only--small">
 	<div class="banner">News</div>
-	<div data-equalizer data-equalize-on="medium" class="row wrapper">
+	<div data-equalizer data-equalize-on="medium" class="row wrapper row-pad">
 		<ul>
 
 			{parents field="article_yacht" status="published"}
@@ -271,7 +272,7 @@ $interiorGalleryImages = $query->num_rows();
 
 <div id="galleries" data-title="{title}">
 	<?php if ($exteriorGalleryImages > 0): ?>
-	<div class="gallery-content" data-gallery="external" data-title="External">
+	<div class="gallery-content" data-gallery="external" data-title="Exterior">
 		{yacht_exterior_gallery}
 		<a href="{image:url}" data-sub-html="{image:description}">
 			<img src="{image:url:gallery_thumb}" />
@@ -281,7 +282,7 @@ $interiorGalleryImages = $query->num_rows();
 	<?php endif; ?>
 
 	<?php if ($interiorGalleryImages > 0): ?>
-	<div class="gallery-content" data-gallery="interior" data-title="Internal">
+	<div class="gallery-content" data-gallery="interior" data-title="Interior">
 		{yacht_interior_gallery}
 		<a href="{image:url}" data-sub-html="{image:description}">
 			<img src="{image:url:gallery_thumb}" />

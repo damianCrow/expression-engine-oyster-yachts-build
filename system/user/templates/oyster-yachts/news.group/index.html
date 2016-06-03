@@ -28,10 +28,11 @@
 					</div>
 					<div data-equalizer-watch class="news-details">
 						{event_news_report status="published"}
-						{event_news_report:event_day_event status="published"}
+						
 						<time datetime="{entry_date format="%Y-%m-%d %H:%i"}" class="text-uppercase">{entry_date format="%d %F %Y"}</time>
 						<h3 class="text-uppercase"><a href="{path='events/event/{event_news_report:event_day_event:url_title}'}">{title}</a></h3>
 						{event_news_content}
+						{event_news_report:event_day_event status="published"}
 						<a href="{path='events/event/{event_news_report:event_day_event:url_title}'}" class="read-more">READ MORE</a>
 						{/event_news_report:event_day_event}
 						{/event_news_report}

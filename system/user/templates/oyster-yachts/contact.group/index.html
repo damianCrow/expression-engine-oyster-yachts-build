@@ -21,27 +21,30 @@
 	<div class="banner">Oyster Sales</div>
 	<div class="row">
 		{sales_contacts}
+
 		<div class="location-contents column large-6 small-12">
 			<div class="location-box">
-				<div style="background-image:url('{sales_contacts:image}')" class="location-image medium-4 small-12 column"></div>
-				<div class="location-details medium-8 small-12 column">
-					<address><strong class="text-uppercase">Oyster <abbr title="{sales_contacts:office}">{sales_contacts:office}</abbr></strong><br>{sales_contacts:address}<br>
-					</address>
-					<address class="digital-contact">
+				<div style="background-image:url('{sales_contacts:image}')" class="location-image medium-6 small-12 column"></div>
+					<address class="location-details medium-6 small-12 column"><strong class="text-uppercase">Oyster <abbr title="{sales_contacts:office}">{sales_contacts:office}</abbr></strong> 
+					<div class="written-address">{sales_contacts:address}<br></div>
+					<div class="contact-phone-email">
 						{if sales_contacts:telephone != ""}
-							<abbr title="Telephone">Tel: </abbr><a href="tel:{sales_contacts:telephone}">{sales_contacts:telephone}</a><br>
+							<span class="contact-phone"><abbr title="Telephone">Tel: </abbr><a href="tel:{sales_contacts:telephone}">{sales_contacts:telephone}</a></span>
 						{/if}
 						{if sales_contacts:fax != ""}
-							Fax: {sales_contacts:fax}<br>Email: <a href="{sales_contacts:email}">{sales_contacts:email}</a>
+							<span class="contact-fax"><abbr title="Fax">F: </abbr> {sales_contacts:fax}</span>
+							<span class="contact-email"><abbr title="Email">E: </abbr> <a href="{sales_contacts:email}">{sales_contacts:email}</a></span>
 						{/if}
-					</address>
+					</div>
 					{if sales_contacts:map != ""}
 					<a class="google-map-link text-uppercase" href="{sales_contacts:map}" target="_blank">
-					<div class="fa fa-map-marker"></div>Google Maps</a>
+						<div class="fa fa-map-marker"></div>
+					Google Maps</a>
 					{/if}
+					</address>
 				</div>
-			</div>
 		</div>
+
 		{/sales_contacts}
 	</div>
 </section>
@@ -51,27 +54,30 @@
 	<div class="banner">Oyster Brokerage</div>
 	<div class="row">
 		{brokerage_contacts}
+
 		<div class="location-contents column large-6 small-12">
 			<div class="location-box">
-				<div style="background-image:url('{brokerage_contacts:image}')" class="location-image medium-4 small-12 column"></div>
-				<div class="location-details medium-8 small-12 column">
-					<address><strong class="text-uppercase">Oyster <abbr title="{brokerage_contacts:office}">{brokerage_contacts:office}</abbr></strong><br>{brokerage_contacts:address}<br>
-					</address>
-					<address class="digital-contact">
+				<div style="background-image:url('{brokerage_contacts:image}')" class="location-image medium-6 small-12 column"></div>
+				<address class="location-details medium-6 small-12 column"><strong class="text-uppercase">Oyster <abbr title="{brokerage_contacts:office}">{brokerage_contacts:office}</abbr></strong> 
+					<div class="written-address">{brokerage_contacts:address}<br></div>
+					<div class="contact-phone-email">
 						{if brokerage_contacts:telephone != ""}
-							<abbr title="Telephone">Tel: </abbr><a href="tel:{brokerage_contacts:telephone}">{brokerage_contacts:telephone}</a><br>
+							<span class="contact-phone"><abbr title="Telephone">Tel: </abbr><a href="tel:{brokerage_contacts:telephone}">{brokerage_contacts:telephone}</a></span>
 						{/if}
 						{if brokerage_contacts:fax != ""}
-							Fax: {brokerage_contacts:fax}<br>Email: <a href="{brokerage_contacts:email}">{brokerage_contacts:email}</a>
+							<span class="contact-fax"><abbr title="Fax">F: </abbr> {brokerage_contacts:fax}</span>
+							<span class="contact-email"><abbr title="Email">E: </abbr> <a href="{brokerage_contacts:email}">{brokerage_contacts:email}</a></span>
 						{/if}
-					</address>
+					</div>
 					{if brokerage_contacts:map != ""}
 					<a class="google-map-link text-uppercase" href="{brokerage_contacts:map}" target="_blank">
-					<div class="fa fa-map-marker"></div>Google Maps</a>
+						<div class="fa fa-map-marker"></div>
+					Google Maps</a>
 					{/if}
-				</div>
+				</address>
 			</div>
 		</div>
+
 		{/brokerage_contacts}
 	</div>
 </section>
@@ -81,27 +87,30 @@
 	<div class="banner">Oyster Charter</div>
 	<div class="row">
 		{charter_contacts}
-		<div class="location-contents column large-6 small-12">
+
+<div class="location-contents column large-6 small-12">
 			<div class="location-box">
-				<div style="background-image:url('{charter_contacts:image}')" class="location-image medium-4 small-12 column"></div>
-				<div class="location-details medium-8 small-12 column">
-					<address><strong class="text-uppercase">Oyster <abbr title="{charter_contacts:office}">{charter_contacts:office}</abbr></strong><br>{charter_contacts:address}<br>
-					</address>
-					<address class="digital-contact">
+				<div style="background-image:url('{charter_contacts:image}')" class="location-image medium-6 small-12 column"></div>
+					<address class="location-details medium-6 small-12 column"><strong class="text-uppercase">Oyster <abbr title="{charter_contacts:office}">{charter_contacts:office}</abbr></strong> 
+					<div class="written-address">{charter_contacts:address}<br></div>
+					<div class="contact-phone-email">
 						{if charter_contacts:telephone != ""}
-							<abbr title="Telephone">Tel: </abbr><a href="tel:{charter_contacts:telephone}">{charter_contacts:telephone}</a><br>
+							<span class="contact-phone"><abbr title="Telephone">Tel: </abbr><a href="tel:{charter_contacts:telephone}">{charter_contacts:telephone}</a></span>
 						{/if}
 						{if charter_contacts:fax != ""}
-							Fax: {charter_contacts:fax}<br>Email: <a href="{charter_contacts:email}">{charter_contacts:email}</a>
+							<span class="contact-fax"><abbr title="Fax">F: </abbr> {charter_contacts:fax}</span>
+							<span class="contact-email"><abbr title="Email">E: </abbr> <a href="{charter_contacts:email}">{charter_contacts:email}</a></span>
 						{/if}
-					</address>
+					</div>
 					{if charter_contacts:map != ""}
 					<a class="google-map-link text-uppercase" href="{charter_contacts:map}" target="_blank">
-					<div class="fa fa-map-marker"></div>Google Maps</a>
+						<div class="fa fa-map-marker"></div>
+					Google Maps</a>
 					{/if}
+					</address>
 				</div>
-			</div>
 		</div>
+
 		{/charter_contacts}
 	</div>
 </section>
@@ -111,27 +120,31 @@
 	<div class="banner">Oyster Custom &amp; Refit</div>
 	<div class="row">
 	{custom_contacts}
-		<div class="location-contents column large-6 small-12">
+
+<div class="location-contents column large-6 small-12">
 			<div class="location-box">
-				<div style="background-image:url('{custom_contacts:image}')" class="location-image medium-4 small-12 column"></div>
-				<div class="location-details medium-8 small-12 column">
-					<address><strong class="text-uppercase">Oyster <abbr title="{custom_contacts:office}">{custom_contacts:office}</abbr></strong><br>{custom_contacts:address}<br>
-					</address>
-					<address class="digital-contact">
+				<div style="background-image:url('{custom_contacts:image}')" class="location-image medium-6 small-12 column"></div>
+					<address class="location-details medium-6 small-12 column"><strong class="text-uppercase">Oyster <abbr title="{custom_contacts:office}">{custom_contacts:office}</abbr></strong> 
+					<div class="written-address">{custom_contacts:address}<br></div>
+					<div class="contact-phone-email">
 						{if custom_contacts:telephone != ""}
-							<abbr title="Telephone">Tel: </abbr><a href="tel:{custom_contacts:telephone}">{custom_contacts:telephone}</a><br>
+							<span class="contact-phone"><abbr title="Telephone">Tel: </abbr><a href="tel:{custom_contacts:telephone}">{custom_contacts:telephone}</a></span>
 						{/if}
 						{if custom_contacts:fax != ""}
-							Fax: {custom_contacts:fax}<br>Email: <a href="{custom_contacts:email}">{custom_contacts:email}</a>
+							<span class="contact-fax"><abbr title="Fax">F: </abbr> {custom_contacts:fax}</span>
+							<span class="contact-email"><abbr title="Email">E: </abbr> <a href="{custom_contacts:email}">{custom_contacts:email}</a></span>
 						{/if}
-					</address>
+					</div>
 					{if custom_contacts:map != ""}
 					<a class="google-map-link text-uppercase" href="{custom_contacts:map}" target="_blank">
-					<div class="fa fa-map-marker"></div>Google Maps</a>
+						<div class="fa fa-map-marker"></div>
+					Google Maps</a>
 					{/if}
+					</address>
 				</div>
-			</div>
 		</div>
+
+
 		{/custom_contacts}
 	</div>
 </section>
@@ -141,27 +154,33 @@
 		<div class="banner">Oyster Service Centres</div>
 		<div class="row">
 		{service_centers_contacts}
-			<div class="location-contents column large-6 small-12">
-				<div class="location-box">
-					<div style="background-image:url('{service_centers_contacts:image}')" class="location-image medium-4 small-12 column"></div>
-					<div class="location-details medium-8 small-12 column">
-						<address><strong class="text-uppercase">Oyster <abbr title="{service_centers_contacts:office}">{service_centers_contacts:office}</abbr></strong><br>{service_centers_contacts:address}<br>
-						</address>
-						<address class="digital-contact">
-							{if service_centers_contacts:telephone != ""}
-								<abbr title="Telephone">Tel: </abbr><a href="tel:{service_centers_contacts:telephone}">{service_centers_contacts:telephone}</a><br>
-							{/if}
-							{if service_centers_contacts:fax != ""}
-								Fax: {service_centers_contacts:fax}<br>Email: <a href="{service_centers_contacts:email}">{service_centers_contacts:email}</a>
-							{/if}
-						</address>
-						{if service_centers_contacts:map != ""}
-						<a class="google-map-link text-uppercase" href="{service_centers_contacts:map}" target="_blank">
-						<div class="fa fa-map-marker"></div>Google Maps</a>
+
+
+
+<div class="location-contents column large-6 small-12">
+			<div class="location-box">
+				<div style="background-image:url('{service_centers_contacts:image}')" class="location-image medium-6 small-12 column"></div>
+					<address class="location-details medium-6 small-12 column"><strong class="text-uppercase">Oyster <abbr title="{service_centers_contacts:office}">{service_centers_contacts:office}</abbr></strong> 
+					<div class="written-address">{service_centers_contacts:address}<br></div>
+					<div class="contact-phone-email">
+						{if service_centers_contacts:telephone != ""}
+							<span class="contact-phone"><abbr title="Telephone">Tel: </abbr><a href="tel:{service_centers_contacts:telephone}">{service_centers_contacts:telephone}</a></span>
+						{/if}
+						{if service_centers_contacts:fax != ""}
+							<span class="contact-fax"><abbr title="Fax">F: </abbr> {service_centers_contacts:fax}</span>
+							<span class="contact-email"><abbr title="Email">E: </abbr> <a href="{service_centers_contacts:email}">{service_centers_contacts:email}</a></span>
 						{/if}
 					</div>
+					{if service_centers_contacts:map != ""}
+					<a class="google-map-link text-uppercase" href="{service_centers_contacts:map}" target="_blank">
+						<div class="fa fa-map-marker"></div>
+					Google Maps</a>
+					{/if}
+					</address>
 				</div>
-			</div>
+		</div>
+
+
 			{/service_centers_contacts}
 		</div>
 	</section>
@@ -171,27 +190,31 @@
 		<div class="banner">Oyster Representatives</div>
 		<div class="row">
 			{representatives}
-			<div class="location-contents column large-6 small-12">
-				<div class="location-box">
-					<div style="background-image:url('{representatives:image}')" class="location-image medium-4 small-12 column"></div>
-					<div class="location-details medium-8 small-12 column">
-						<address><strong class="text-uppercase">Oyster <abbr title="{representatives:office}">{representatives:office}</abbr></strong><br>{representatives:address}<br>
-						</address>
-						<address class="digital-contact">
-							{if representatives:telephone != ""}
-								<abbr title="Telephone">Tel: </abbr><a href="tel:{representatives:telephone}">{representatives:telephone}</a><br>
-							{/if}
-							{if representatives:fax != ""}
-								Fax: {representatives:fax}<br>Email: <a href="{representatives:email}">{representatives:email}</a>
-							{/if}
-						</address>
-						{if representatives:map != ""}
-						<a class="google-map-link text-uppercase" href="{representatives:map}" target="_blank">
-						<div class="fa fa-map-marker"></div>Google Maps</a>
+
+
+<div class="location-contents column large-6 small-12">
+			<div class="location-box">
+				<div style="background-image:url('{representatives:image}')" class="location-image medium-6 small-12 column"></div>
+					<address class="location-details medium-6 small-12 column"><strong class="text-uppercase">Oyster <abbr title="{representatives:office}">{representatives:office}</abbr></strong> 
+					<div class="written-address">{representatives:address}<br></div>
+					<div class="contact-phone-email">
+						{if representatives:telephone != ""}
+							<span class="contact-phone"><abbr title="Telephone">Tel: </abbr><a href="tel:{representatives:telephone}">{representatives:telephone}</a></span>
+						{/if}
+						{if representatives:fax != ""}
+							<span class="contact-fax"><abbr title="Fax">F: </abbr> {representatives:fax}</span>
+							<span class="contact-email"><abbr title="Email">E: </abbr> <a href="{representatives:email}">{representatives:email}</a></span>
 						{/if}
 					</div>
+					{if representatives:map != ""}
+					<a class="google-map-link text-uppercase" href="{representatives:map}" target="_blank">
+						<div class="fa fa-map-marker"></div>
+					Google Maps</a>
+					{/if}
+					</address>
 				</div>
-			</div>
+		</div>
+			
 			{/representatives}
 		</div>
 	</section>
