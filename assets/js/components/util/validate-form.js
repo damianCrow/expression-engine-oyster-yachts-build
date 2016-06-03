@@ -6,26 +6,28 @@ define(['jquery', 'jqueryValidation'], function ($) {
 		$('.address-fill-out').on('click', '.add-address-line', function () {
 			var addressLineLength = $('.address-line').length;
 			var newAddressLineNum = addressLineLength + 1;
-			if (addressLineLength < 5) {
-				var newClone = $('.last-address-line').clone();
-				newClone.insertAfter('.last-address-line');
-				if (addressLineLength > 3) {
-					$('.last-address-line button').css('display', 'none');
-				} else {
-					// For whatever reason, the modal closes when removing the button, so hiding it instead.
-					$('.last-address-line:eq(0) button').css('display', 'none');
-					$('.last-address-line:eq(0)').removeClass('last-address-line');
-				};
 
-				$('.last-address-line:last label').attr({
+			if (addressLineLength < 5) {
+				var $lastLine = $('.address-line:last');
+
+				var $newClone = $lastLine.clone();
+				$newClone.find('label').attr({
 					'for': 'member_address_line_' + newAddressLineNum
 				});
-
-				$('.last-address-line:last input').attr({
+				$newClone.find('input').attr({
 					name: 'member_address_line_' + newAddressLineNum,
 					id: 'member_address_line_' + newAddressLineNum,
-					placeholder: 'Address Line ' + newAddressLineNum
+					placeholder: 'Address Line ' + newAddressLineNum,
+					value: ''
 				});
+
+				if (addressLineLength  === 4) {
+					$newClone.find('button').remove();
+				}
+
+				$newClone.insertAfter($lastLine);
+
+				$lastLine.find('button').remove();
 			}
 		});
 

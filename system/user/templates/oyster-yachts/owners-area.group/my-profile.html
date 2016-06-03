@@ -1,0 +1,137 @@
+{owners_area_auth}
+
+{embed="site/.header" snap_to=".my-profile" snap_offset="55"}
+
+{owners_area_subnav}
+
+<article class="my-profile after-nav global-page-hero-adjust-subnav global-padding-top-only--large">
+	<section>
+		<div class="row padded-full-width-row">
+			<div class="large-offset-1 large-7 float-left">
+
+				<h2 class="text-uppercase">Oyster Owners Area</h2>
+				<h1 class="text-uppercase">My Profile</h1>
+				<p>
+					If any of the information shown here has changed, please update it now to ensure we have your correct contact details.
+
+				</p>
+				<div class="request-spec">
+					{exp:user:edit dynamic="no" override_return="owners-area"}
+					<div class="form-error text-center text-uppercase"><span>ERROR: Invalid or incomplete fields</span><span class="error-messages"></span></div>
+					<fieldset>
+						<ol>
+							<li class="required-input">
+								<label for="member_title" class="show-for-sr">Title *</label>
+								<input id="member_title" type="text" name="member_title" placeholder="Title" required="" value="{member_title}">
+							</li>
+							<li class="required-input">
+								<label for="member_first_name" class="show-for-sr">First Name *</label>
+								<input id="member_first_name" type="text" name="member_first_name" placeholder="First Name" required="" value="{member_first_name}">
+							</li>
+							<li class="required-input">
+								<label for="member_last_name" class="show-for-sr">Last Name *</label>
+								<input id="member_last_name" type="text" name="member_last_name" placeholder="Last Name" required="" value="{member_last_name}">
+							</li>
+						</ol>
+					</fieldset>
+					<fieldset class="address-fill-out">
+						<ol>
+							<li class="address-line first-address-line">
+								<label for="member_address_line_1" class="show-for-sr">Address Line 1 *</label>
+								<input id="member_address_line_1" type="text" name="member_address_line_1" placeholder="Address Line 1" required="" value="{member_address_line_1}">
+							</li>
+							<li class="address-line last-address-line">
+								<label for="member_address_line_2" class="show-for-sr">Address Line 2</label>
+								<input id="member_address_line_2" type="text" name="member_address_line_2" placeholder="Address Line 2" value="{member_address_line_2}">
+								{if member_address_line_3 == ""}
+								<button type="button" class="add-address-line"><i class="add fa fa-plus"></i><span class="add-line">Add Address Line</span></button>
+								{/if}
+							</li>
+							{if member_address_line_3 != ""}
+							<li class="address-line last-address-line">
+								<label for="member_address_line_3" class="show-for-sr">Address Line 3</label>
+								<input id="member_address_line_3" type="text" name="member_address_line_3" placeholder="Address Line 3" value="{member_address_line_3}">
+								{if member_address_line_4 == ""}
+								<button type="button" class="add-address-line"><i class="add fa fa-plus"></i><span class="add-line">Add Address Line</span></button>
+								{/if}
+							</li>
+							{/if}
+							{if member_address_line_4 != ""}
+							<li class="address-line last-address-line">
+								<label for="member_address_line_4" class="show-for-sr">Address Line 4</label>
+								<input id="member_address_line_4" type="text" name="member_address_line_4" placeholder="Address Line 4" value="{member_address_line_4}">
+								{if member_address_line_5 == ""}
+								<button type="button" class="add-address-line"><i class="add fa fa-plus"></i><span class="add-line">Add Address Line</span></button>
+								{/if}
+							</li>
+							{/if}
+							{if member_address_line_5 != ""}
+							<li class="address-line last-address-line">
+								<label for="member_address_line_5" class="show-for-sr">Address Line 5</label>
+								<input id="member_address_line_5" type="text" name="member_address_line_5" placeholder="Address Line 5" value="{member_address_line_5}">
+							</li>
+							{/if}
+							<li class="required-input column large-5">
+								<label for="member_country" class="show-for-sr">Country</label>
+								<select id="member_country" name="member_country">
+									{embed="site/.country_list" country="{member_country}"}
+								</select>
+							</li>
+							<li class="spec-postcode required-input column float-right">
+								<label for="member_postcode" class="show-for-sr">Postcode / Zip code*</label>
+								<input id="member_postcode" name="member_postcode" required="" placeholder="Postcode / Zip code" type="text" class="column" value="{member_postcode}">
+							</li>
+						</ol>
+					</fieldset>
+					<fieldset>
+						<ol>
+							<li class="required-input">
+								<label for="register_username" class="show-for-sr">Email *</label>
+								<input id="register_username" type="email" name="username" placeholder="Email Address" title="Please enter a valid email" required="" class="required-input" value="{username}">
+							</li>
+							<li class="required-input">
+								<label for="member_phone_number" class="show-for-sr">Phone Number *</label>
+								<input id="member_phone_number" type="tel" name="member_phone_number" placeholder="Phone Number" required="" class="required-input" value="{member_phone_number}">
+							</li>
+						</ol>
+					</fieldset>
+					<fieldset class="spec-current-yacht">
+						<ol>
+							<li>
+								<label for="member_current_yacht_make" class="show-for-sr">Current Yacht Make *</label>
+								<input id="member_current_yacht_make" type="text" name="member_current_yacht_make" placeholder="Current Yacht Make" value="{member_current_yacht_make}">
+							</li>
+							<li>
+								<label for="member_current_yacht_model" class="show-for-sr">Current Yacht Model *</label>
+								<input id="member_current_yacht_model" type="text" name="member_current_yacht_model" placeholder="Current Yacht Model" value="{member_current_yacht_model}">
+							</li>
+						</ol>
+					</fieldset>
+					<fieldset class="password-update">
+						<ol>
+							<li>
+								<label for="password" class="show-for-sr">New Password *</label>
+								<input id="password" type="password" name="password" placeholder="New Password">
+							</li>
+							<li>
+								<label for="password_confirm" class="show-for-sr">Confirm New Password *</label>
+								<input id="password_confirm" type="password" name="password_confirm" placeholder="Confirm New Password">
+							</li>
+							<li>
+								<label for="current_password" class="show-for-sr">Current Password *</label>
+								<input id="current_password" type="password" name="current_password" placeholder="Current Password">
+							</li>
+						</ol>
+					</fieldset>
+					<div class="save-changes-btn">
+						<button tabindex="0" type="submit" value="Submit" class="button-solid-blue button-chubby float-right">Save Changes</button>
+					</div>
+					<input type="hidden" name="member_account_type" value="{member_account_type}">
+					{/exp:user:edit}
+				</div>
+			</div>
+		</div>
+	</section>
+</article>
+
+{footer}

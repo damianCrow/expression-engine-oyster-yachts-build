@@ -45,7 +45,7 @@
 			</div>
 			<div id="new-account" class="tabs-panel">
 				<div id="new-account-form" class="new-account-form">
-					{exp:user:register assign_roles="2" override_return="owners-area/thanks-for-registering" form:class="sign-up-modal-form"}
+					{exp:user:register assign_roles="1" admin_register="yes" override_return="owners-area/thanks-for-registering" form:class="sign-up-modal-form"}
 					<div class="modal-content">
 						<div class="request-spec">
 							<div class="form-error text-center text-uppercase"><span>ERROR: Invalid or incomplete fields</span><span class="error-messages"></span></div>
@@ -79,7 +79,7 @@
 									<li class="required-input column large-5">
 										<label for="member_country" class="show-for-sr">Country</label>
 										<select id="member_country" name="member_country">
-											{country_list}
+											{embed="site/.country_list"}
 										</select>
 									</li>
 									<li class="spec-postcode required-input column float-right">

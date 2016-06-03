@@ -2,19 +2,7 @@
 
 {embed="site/.header" snap_to=".owners-area-landing" snap_offset="55"}
 
-<section class="owners-area-sub-nav">
-	<div class="global-local-subnav">
-		<ul>
-			<li class="active"><a href="/oyster/owners-area" class="text-uppercase"><span>Dashboard</span></a></li>
-			<li><a href="/oyster/owners-area/world-rally" class="text-uppercase"><span>Oyster World Rally</span></a></li>
-			<li><a href="/oyster/owners-area/after-sales-advice" class="text-uppercase"><span>Advisory Notes</span></a></li>
-			<li><a href="/oyster/owners-area/my-profile" class="text-uppercase"><span>My Profile</span></a></li>
-		</ul>
-		{exp:user:logout return="/"}
-    	<a href="{url}" class="button-transparent button-chubby float-right">Logout</a>
-		{/exp:user:logout}
-	</div>
-</section>
+{owners_area_subnav}
 
 <section style="background-image: url('/assets/images/news-hero.jpg'); " class="hero after-nav global-page-hero yacht-listing-photo global-page-hero--medium global-page-hero-adjust-subnav">
 </section>
