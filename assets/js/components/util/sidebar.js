@@ -21,8 +21,18 @@ define(['jquery', 'ScrollMagic'], function ($, ScrollMagic) {
 
 	sideBarStick();
 
-	$(window).resize(function () {
-		sideBarStick();
+	var resizeTimer;
+
+	$(window).on('resize', function (e) {
+		clearTimeout(resizeTimer);
+		resizeTimer = setTimeout(function () {
+			// Run code here, resizing has "stopped"
+			sideBarStick();
+			checkForTabs();
+			enableSelect2();
+
+			var equalizerResize = new Foundation.Equalizer($('[data-equalizer]'));
+		}, 250);
 	});
 
 	function sideBarStick() {

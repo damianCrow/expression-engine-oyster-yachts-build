@@ -31,9 +31,16 @@ define(['jquery', 'jqueryValidation'], function ($) {
 			}
 		});
 
-		$('.sign-up-modal-form').each(function (index, element) {
+		$('.sign-up-modal-form, .request-spec').each(function (index, element) {
+			$(this).parent().parent().find('[type="submit"]').click(function () {
+				console.log('submit btn clicked');
+				$(element).submit();
+			});
+
+			var errorContainer = $('.form-error .error-messages', element)[0];
+			
 			$(element).validate({
-				errorLabelContainer: ".sign-up-modal-form:eq(" + index + ") .form-error .error-messages",
+				errorLabelContainer: errorContainer,
 				showErrors: function showErrors(errorMap, errorList) {
 					if (this.numberOfInvalids() == 0) {
 						$(".sign-up-modal-form:eq(" + index + ") .form-error").removeClass('visible');

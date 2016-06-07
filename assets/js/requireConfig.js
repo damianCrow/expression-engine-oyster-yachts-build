@@ -4,7 +4,7 @@ require.config({
     typekit: 'https://use.typekit.net/htg3ydj',
     jquery: '/bower_components/jquery/dist/jquery.min',
     underscore: '/bower_components/underscore/underscore-min',
-    TweenLite: '/bower_components/gsap/src/minified/TweenLite.min',
+    TweenMax: '/bower_components/gsap/src/minified/TweenMax.min',
     CSSPlugin: '/bower_components/gsap/src/minified/plugins/CSSPlugin.min',
     jquerygsap: '/bower_components/gsap/src/minified/jquery.gsap.min',
     foundation: '/bower_components/foundation-sites/dist/foundation.min',
@@ -21,6 +21,7 @@ require.config({
     googleMaps: 'https://maps.googleapis.com/maps/api/js?key=AIzaSyC4Ctq_b0K3ygkut_DEJ4YFyuGkcWKvM68',
     salvattore: '/bower_components/salvattore/dist/salvattore.min',
     froogaloop: 'https://f.vimeocdn.com/js/froogaloop2.min',
+    lazySizes: '/bower_components/lazysizes/lazysizes.min',
 
     appInit: '/assets/js/components/setup/init',
     global: '/assets/js/app/app',
@@ -52,14 +53,14 @@ require.config({
     'underscore': {
       exports: '_'
     },
-    'TweenLite': {
-      exports: 'TweenLite'
+    'TweenMax': {
+      exports: 'TweenMax'
     },
     'CSSPlugin': [
-      'TweenLite'
+      'TweenMax'
     ],
     'jquerygsap': [
-      'jquery', 'TweenLite', 'CSSPlugin'
+      'jquery', 'TweenMax', 'CSSPlugin'
     ],
     'cycle': [
       'jquery'
@@ -113,7 +114,7 @@ require([
   'jquerygsap',
   'foundation',
   'owlcarousel',
-
+  'lazySizes',
   'appInit',
   'global'
 ]);

@@ -21,7 +21,7 @@
 						</div>
 						<div class="right small-8 large-8 columns">
 							<h2 class="title text-uppercase">{title}</h2>
-							<h5 class="sub-title text-uppercase">{boatshow_start_date format="%d %F"} - {boatshow_end_date format="%d %F %Y"}</h5><a href="{url_title_path='events/boat-shows'}" class="text-uppercase button-transparent">view event</a>
+							<h5 class="sub-title text-uppercase">{exp:date_range start_date="{boatshow_start_date format='%d %F %Y'}" end_date="{boatshow_end_date format='%d %F %Y'}"}</h5><a href="{url_title_path='events/boat-shows'}" class="text-uppercase button-transparent">view event</a>
 						</div>
 					</div>
 				</div>

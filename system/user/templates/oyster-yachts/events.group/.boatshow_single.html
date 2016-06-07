@@ -10,7 +10,7 @@
 <section class="page-home-about events-home-about">
 	<div class="row padded-full-width-row">
 		<div class="large-offset-1 large-7 float-left">
-			<h2 class="yacht-list-modal">{boatshow_start_date format="%d %F"} - {boatshow_end_date format="%d %F %Y"}</h2>
+			<h2 class="yacht-list-modal">{exp:date_range start_date="{boatshow_start_date format='%d %F %Y'}" end_date="{boatshow_end_date format='%d %F %Y'}"}</h2>
 			<h1 class="text-uppercase">{title}</h1>
 			{boatshow_description}
 		</div>

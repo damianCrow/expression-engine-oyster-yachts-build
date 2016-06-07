@@ -8,7 +8,7 @@
 		{back_button}
 		<div class="yacht-name">
 			<div class="row-pad">
-				<h2 class="yacht-list-modal">{event_start_date format="%d %F"} - {event_end_date format="%d %F %Y"} | {event_location}</h2>
+				<h2 class="yacht-list-modal">{exp:date_range start_date="{event_start_date format='%d %F %Y'}" end_date="{event_end_date format='%d %F %Y'}"}</h2>
 				<h1 class="yacht-list-name">{title}</h1>
 				<?php $gallery = false; ?>
 				{parents field="event_day_event" status="published" orderby="date" sort="ASC"}

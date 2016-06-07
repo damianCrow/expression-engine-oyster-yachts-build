@@ -20,6 +20,16 @@ define(['jquery', 'cycle', 'salvattore', 'lightgallery', 'lightgalleryThumbs', '
 	});
 	//  ---- *end* LOCAL SUB-NAVIGATION SCROLL ON CLICK FUNCTIONALITY *end* -----  //
 
+
+	//  ---- IMAGER.JS (RETINA IMAGES / LAZY LOADING / IMAGE LOADING) -----  //
+	document.addEventListener('lazybeforeunveil', function (e) {
+		var bg = e.target.getAttribute('data-bg');
+		if (bg) {
+			e.target.style.backgroundImage = 'url(' + bg + ')';
+		}
+	});
+	//  ---- *end* IMAGER.JS (RETINA IMAGES / LAZY LOADING / IMAGE LOADING)  *end* -----  //
+
 	//  ---- GLOBAL TESTIMONIALS SLIDESHOW CYCLE -----  //
 	$('.quote-testimonials').cycle({
 		autoHeight: 'calc',
