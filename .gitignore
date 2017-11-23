@@ -22,9 +22,7 @@ _thumbs/
 # Root user content dirs
 images/*
 !images/index
-assets/images/*
-!images/sizes
-assets/videos
+assets/images/sizes
 press
 media
 magazine
