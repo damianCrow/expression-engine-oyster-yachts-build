@@ -1,0 +1,83 @@
+{embed="site/.header" page_title="About Oyster Service Centres" snap_to="undefined" snap_offset="undefined"}
+<section style="background-image: url('/images/content/oysteryachts-servicecentres.jpg'); " class="hero after-nav global-page-hero yacht-listing-photo global-page-hero--small">
+	<div id="page-back-button" class="back-button"><a class="button-clear-white"><i class="fa fa-angle-left"></i>Back</a></div>
+</section>
+
+<article class="why-oyster">
+	<div class="banner">
+		<h1>Oyster Service Centres</h1>
+	</div>
+{exp:channel:entries channel="oyster_crew" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published"}
+	<section class="staggered-features stagger-split">
+		
+
+		{oyster_crew_sections}
+
+			{if oyster_crew_sections:count % 2 == 0}
+
+			<div class="row row-pad">
+				<div class="staggered-image medium-7 small-12 columns"><img src="{oyster_crew_sections:image}"></div>
+				<div class="staggered-details medium-5 small-12 columns">
+					<div class="staggered-details-contents">
+						<h2>{oyster_crew_sections:title}</h2>
+						{oyster_crew_sections:description}
+						              {if oyster_crew_sections:link != ""}
+              <div class="staggered-button-group">
+                 <a href="{oyster_crew_sections:link}"class="button-solid-white button-chubby">{soyster_crew_sections:link_label}</a>
+              </div>
+              	{/if}
+					</div>
+				</div>
+			</div>
+
+			{if:else}
+
+			<div class="row staggered-row-reverse row-pad">
+				<div class="staggered-details medium-7 small-12 columns">
+					<div class="staggered-details-contents">
+						<h2>{oyster_crew_sections:title}</h2>
+						{oyster_crew_sections:description}
+						  {if oyster_crew_sections:link != ""}
+              <div class="staggered-button-group">
+                 <a href="{oyster_crew_sections:link}"class="button-solid-white button-chubby">{oyster_crew_sections:link_label}</a>
+              </div>
+              	{/if}
+					</div>
+				</div>
+				<div class="staggered-image medium-5 small-12 columns"><img src="{oyster_crew_sections:image}"></div>
+			</div>
+
+			{/if}
+
+		{/oyster_crew_sections}
+
+		
+
+	</section>
+	          <section id="download-documents" class="download-documents">
+            <div class="banner">Downloads</div>
+            <div class="row content">
+              <ul>
+                {crew_downloads}
+                <li class="columns medium-4 small-12">
+                      <figure class="download-pdf clearfix">
+                        <div class="download-thumb column small-3">
+
+                           <img src="/assets/images/brochure-preview2.jpg">
+                        
+                        </div>
+<!--                         {embed="owners-area/.download_file" title="{downloads:title}" file="{downloads:document}" filesize="{downloads:document}{file_size}{/downloads:document}" label="View"}
+ -->                        <figcaption class="description-download column small-9"><a href="{crew_downloads:document}" class="title text-uppercase">{crew_downloads:title}</a>
+
+ {embed="site/.download_simple" title="" file="{crew_downloads:document}" filesize="{crew_downloads:document}{file_size}{/crew_downloads:document}" label="Download"}
+                        </figcaption>
+                      </figure>
+                </li>
+                {/crew_downloads}
+               
+              </ul>
+            </div>
+          </section>
+          {/exp:channel:entries}
+</article>
+{footer}

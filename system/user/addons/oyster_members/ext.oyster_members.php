@@ -215,7 +215,7 @@ class Oyster_members_ext {
         ee()->load->library('email');
         
         $subject = 'New User';
-        $adminEmail = 'macdochris@gmail.com, giulio.r@interstateteam.com';
+        $adminEmail = 'marketing@oysteryachts.com';
 
 
         ee()->email->clear();

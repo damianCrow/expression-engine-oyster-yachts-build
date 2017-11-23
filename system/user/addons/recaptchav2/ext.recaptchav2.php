@@ -167,7 +167,7 @@ HTML;
 			ee()->session->set_cache(__CLASS__, 'google_api_inc', TRUE);
 		}
 
-		$output .= "<div class=\"g-recaptcha\" data-callback=\"window.recaptchaCallback()\"></div>";
+		$output .= "<div class=\"g-recaptcha\" data-callback=\"recaptchaCallback\"></div>";
 
 		ee()->extensions->end_script = TRUE;
 
