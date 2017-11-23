@@ -182,118 +182,6 @@ $('.hero-controls .nav-point').click(function() {
 	}
 
 	function cycleFeaturedYachtSlider(secondarySlider) {
-		// init Overview cycle
-		var $overviewCycle = $('.yacht-feature .details').on( 'cycle-pager-activated', function( event, opts ) {
-
-		    currentSubRow = 0;
-		    currentRow = opts.currSlide;
-
-		    clearTimeout(t);
-		    nextSlide();
-
-		    nextImageSlides();
-		}).cycle({
-			pager: '.nav-points',
-			pagerTemplate: '<div class="nav-point"></div>',
-			pagerActiveClass: 'active',
-			slides: '> .slide',
-			prev: '.yacht-left',
-			next: '.yacht-right',
-			fx: 'scrollHorz',
-			swipe: true,
-			speed: 500,
-			log: false,
-			paused: true
-		});
-
-		// init image cycles
-		var $imageCycles = $('.yacht-feature-large-media, .yacht-feature-small-media').cycle({
-			paused: true,
-			speed: 500,
-			fx: 'scrollHorz',
-			swipe: true,
-			slides: '> .slide'
-		});
-
-		var timerNewRow = 6500,
-			timerStagger = 100,
-			currentRow = 0,
-			currentSubRow = 0,
-			slideSubRows = [],
-			t;
-
-		// get how many subrows there as for each row
-		$(slideIndex).each(function(i, subrow) {
-			slideSubRows[i] = Math.max.apply(Math, subrow);
-		});
-
-		nextSlide();
-
-		function nextSlide() {
-			t = setTimeout(function() {
-
-				if (currentSubRow < slideSubRows[currentRow] - 1) {
-					currentSubRow++;
-
-					nextImageSlides();
-				} else {
-					currentSubRow = 0;
-					currentRow++;
-					if (currentRow >= slideIndex.length) {
-						currentRow = 0;
-					}
-
-					$overviewCycle.cycle('next');
-					nextImageSlides();
-				}
-
-				nextSlide();
-
-			}, timerNewRow);
-		}
-
-		function nextImageSlides() {
-			var c = 0;
-
-			for (var i=0; i<4; i++) {
-				if (currentSubRow === 0) {
-					nextSlideTimer(i, c);
-
-					c++;
-				} else if (slideIndex[currentRow][i] > 1) {
-					nextSlideTimer(i, c);
-
-					c++;
-				}
-			}
-		}
-
-		function nextSlideTimer(i, c) {
-			var index = 0;
-
-			for (var j=0; j<currentRow; j++) {
-				index += slideIndex[j][i];
-			}
-
-			index += currentSubRow;
-
-			setTimeout(function() {
-				$imageCycles.eq(i).cycle('goto', index);
-			}, c*timerStagger);
-		}
-
-		function startAutopager() {
-		    nextSlide();
-		}
-		function stopAutopager() {
-		    clearTimeout(t);
-		}
-
-		window.addEventListener('focus', startAutopager);
-		window.addEventListener('blur', stopAutopager);
-	}
-
-	/*function cycleFeaturedYachtSlider(secondarySlider) {
 
 		if ($('.landing-yacht-feature').length > 0) {
 			var firstSliders = function firstSliders() {
@@ -494,7 +382,7 @@ $('.hero-controls .nav-point').click(function() {
 
 
 		}
-	}*/
+	}
 
 
 	$('.news-preview .cheveron-nav-left').on('click', function () {

@@ -1,6 +1,6 @@
 /*jshint unused: vars */
 require.config({
-  urlArgs: "v=1.03",
+  urlArgs: "v=1.12",
 
   paths: {
     typekit: 'https://use.typekit.net/htg3ydj',

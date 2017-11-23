@@ -14,7 +14,7 @@ define(['jquery'], function ($) {
   Filters.prototype.filter = function (model, otherType, price, location, status) {
     this.$grid.find('li').removeClass('hide');
 
-    //console.log('filter: ', model, otherType, price, location, status);
+    console.log('filter: ', model, otherType, price, location, status);
 
     if (otherType === true) {
       this.$grid.find('li').addClass('hide');
@@ -95,14 +95,6 @@ define(['jquery'], function ($) {
       });
 
       _this.doFilter();
-
-      /*this.queryString(
-        _this.$filterotherType.prop('checked') ? _this.$filterModelOther : _this.$filterModel.val(),
-        _this.$filterotherType.prop('checked'),
-        _this.$filterPrice.val(),
-        _this.$filterLocation.val(),
-        _this.$filterStatus.val()
-      );*/
 
       $('input[name=oyster-yacht-or-not]').change(function() {
         if (this.value === "true") {

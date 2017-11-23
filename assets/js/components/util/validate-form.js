@@ -178,9 +178,5 @@ define(['jquery', 'jqueryValidation'], function($) {
     });
   };
 
-  window.recaptchaCallback = function () {
-    $('#hiddenRecaptcha').valid();
-  };
-
   return validateForm;
 });
