@@ -1,0 +1,59 @@
+{embed="site/.header" page_title="About SYS" snap_to="undefined" snap_offset="undefined"}
+<section style="background-image: url('/images/content/oysteryachts-sys-banner.jpg'); " class="hero after-nav global-page-hero yacht-listing-photo global-page-hero--small">
+	<div id="page-back-button" class="back-button"><a class="button-clear-white"><i class="fa fa-angle-left"></i>Back</a></div>
+	<div class="sys-logo" style="position:absolute; left:50%; margin-left:-172px;top:50%;margin-top:-81px;"><img src="/images/content/sys-logo.png"/></div>
+</section>
+
+<article class="why-oyster">
+	<div class="banner">
+		<h1>About SYS</h1>
+	</div>
+
+	<section class="staggered-features stagger-split">
+		{exp:channel:entries channel="sys" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published"}
+
+		{sys_sections}
+
+			{if sys_sections:count % 2 == 0}
+
+			<div class="row row-pad">
+				<div class="staggered-image medium-7 small-12 columns"><img src="{sys_sections:image}"></div>
+				<div class="staggered-details medium-5 small-12 columns">
+					<div class="staggered-details-contents">
+						<h2>{sys_sections:title}</h2>
+						{sys_sections:description}
+						              {if sys_sections:link != ""}
+              <div class="staggered-button-group">
+                 <a href="{sys_sections:link}"class="button-solid-white button-chubby">{sys_sections:link_label}</a>
+              </div>
+              	{/if}
+					</div>
+				</div>
+			</div>
+
+			{if:else}
+
+			<div class="row staggered-row-reverse row-pad">
+				<div class="staggered-details medium-7 small-12 columns">
+					<div class="staggered-details-contents">
+						<h2>{sys_sections:title}</h2>
+						{sys_sections:description}
+						  {if sys_sections:link != ""}
+              <div class="staggered-button-group">
+                 <a href="{sys_sections:link}"class="button-solid-white button-chubby">{sys_sections:link_label}</a>
+              </div>
+              	{/if}
+					</div>
+				</div>
+				<div class="staggered-image medium-5 small-12 columns"><img src="{sys_sections:image}"></div>
+			</div>
+
+			{/if}
+
+		{/sys_sections}
+
+		{/exp:channel:entries}
+
+	</section>
+</article>
+{footer}

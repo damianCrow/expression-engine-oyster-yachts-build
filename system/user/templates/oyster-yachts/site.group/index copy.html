@@ -1,0 +1,398 @@
+ {exp:channel:entries channel="home" dynamic="no" disable="member_data|categories|category_fields|pagination|member_data" cache="yes" refresh="60" status="published" } {embed="site/.header" page_title="" entry_id="{entry_id}" snap_to=".hero-home .scroll-message-contents-wrapper" snap_offset="100"} {/exp:channel:entries}
+
+{exp:channel:entries channel="home" dynamic="no" disable="member_data|categories|category_fields|pagination|member_data" cache="yes" refresh="60" status="published" }
+<section class="hero-home">
+    <div class="hero-controls-wrapper owl-dots">
+        <div class="hero-controls"></div>
+    </div>
+    <div class="scroll-message">
+        <div class="down-arrow"><i class="fa fa-angle-down"></i></div>
+        <div class="scroll-message-contents-wrapper text-uppercase">
+            <!-- <div class="scroll-message-contents"><span>Scroll</span><img src="/assets/images/mouse.png" class="mouse-icon"><span>Down</span></div> -->
+            <div class="anim-container">
+                <div class="mouse">
+                    <div class="wheel"></div>
+                </div>
+                <div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="hero-slides owl-carousel">
+
+    
+    {main_carousel}
+        <div class="hero-slide">
+            <div class="hero-contents">
+                {main_carousel:content}
+                <a href="{main_carousel:link}" class="button-solid-white">{main_carousel:button_label}</a>
+            </div>
+            <div class="hero-image-container slide-{main_carousel:count}"><img src="data:image/jpeg;base64,<?php echo base64_encode(file_get_contents('{main_carousel:image:Tiny}')); ?>" data-img-name="homepage-hero-{main_carousel:count}" data-sizes="auto" data-srcset="{main_carousel:image:750w} 750w, {main_carousel:image:1125w} 1125w, {main_carousel:image:1500w} 1500w, {main_carousel:image:1950w} 1950w, {main_carousel:image:3000w} 3000w" class="hero-image lazyload blur-up"></div>
+        </div>
+    {/main_carousel}
+    
+    </div>
+</section>
+<section class="yacht-feature landing-yacht-feature">
+    <div class="row row-pad">
+        <div class="yacht-feature-large-media-container">
+            <div class="details large-6 columns">
+
+                {yacht_carousel}
+                <div class="slide slide-{yacht_carousel:count} owl-item">
+                    {yacht_carousel:content}
+                    <a href="{yacht_carousel:link}" class="button-solid-white">View Yacht Overview</a>
+                </div>
+                {/yacht_carousel}
+
+            </div>
+            <div class="yacht-feature-large-media owl-carousel large-6 columns">
+
+                {yacht_carousel}
+
+                {yacht_carousel:large_image}
+                    {if extension == "mp4"}
+                    <div class="slide owl-item">
+                        <video loop autoplay muted>
+                            <source src="{url}" type="video/mp4">
+                        </video>
+                        {embed="site/.home_carousel_small" row_id="{yacht_carousel:row_id}" image="1"}
+                    </div>
+                    {if:else}
+                    <div style="background-image: url('{url:Tiny}')" class="slide slide-image owl-item"><img src="{url:Tiny}" data-sizes="auto" data-srcset="{url:342w} 342w, {url:512w} 512w, {url:683w} 683w, {url:888w} 888w, {url:1366w} 1366w" class="lazyload blur-up"></div>
+                    {/if}
+                {/yacht_carousel:large_image}
+                
+                {/yacht_carousel}
+
+            </div>
+        </div>
+        <div class="yacht-feature-small-media-container">
+            <div class="yacht-feature-small-media owl-carousel small-4 columns">
+
+                {yacht_carousel}
+
+                {yacht_carousel:small_image_1}
+
+                {if extension == "mp4"}
+                <div class="slide owl-item">
+                    <video loop autoplay muted>
+                        <source src="{url}" type="video/mp4">
+                    </video>
+                    {embed="site/.home_carousel_small" row_id="{yacht_carousel:row_id}" image="3"}
+                </div>
+                {if:else}
+                <div style="background-image: url('{url:Tiny}')" class="slide slide-image owl-item"><img src="{url:Tiny}" data-sizes="auto" data-srcset="{url:228w} 228w, {url:341w} 341w, {url:455w} 455w, {url:592w} 592w, {url:910w} 910w" class="lazyload blur-up"></div>
+                {/if}
+
+                {/yacht_carousel:small_image_1}
+
+                {/yacht_carousel}
+
+            </div>
+            <div class="yacht-feature-small-media owl-carousel small-4 columns">
+
+                {yacht_carousel}
+
+                {yacht_carousel:small_image_2}
+
+                {if extension == "mp4"}
+                <div class="slide owl-item">
+                    <video loop autoplay muted>
+                        <source src="{url}" type="video/mp4">
+                    </video>
+                    {embed="site/.home_carousel_small" row_id="{yacht_carousel:row_id}" image="1"}
+                </div>
+                {if:else}
+                <div style="background-image: url('{url:Tiny}')" class="slide slide-image owl-item"><img src="{url:Tiny}" data-sizes="auto" data-srcset="{url:228w} 228w, {url:341w} 341w, {url:455w} 455w, {url:592w} 592w, {url:910w} 910w" class="lazyload blur-up"></div>
+                {/if}
+
+                {/yacht_carousel:small_image_2}
+
+                {/yacht_carousel}
+
+            </div>
+            <div class="yacht-feature-small-media owl-carousel small-4 columns">
+
+                {yacht_carousel}
+
+                {yacht_carousel:small_image_3}
+
+                {if extension == "mp4"}
+                <div class="slide owl-item">
+                    <video loop autoplay muted>
+                        <source src="{url}" type="video/mp4">
+                    </video>
+                    {embed="site/.home_carousel_small" row_id="{yacht_carousel:row_id}" image="1"}
+                </div>
+                {if:else}
+                <div style="background-image: url('{url:Tiny}')" class="slide slide-image owl-item"><img src="{url:Tiny}" data-sizes="auto" data-srcset="{url:228w} 228w, {url:341w} 341w, {url:455w} 455w, {url:592w} 592w, {url:910w} 910w" class="lazyload blur-up"></div>
+                {/if}
+
+                {/yacht_carousel:small_image_3}
+
+                {/yacht_carousel}
+
+            </div>
+        </div>
+        <div class="yacht-feature-nav-points">
+            <div class="nav-points owl-dots"></div>
+        </div>
+    </div>
+</section>
+{/exp:channel:entries}
+
+<section class="staggered-features">
+    <div class="row row-pad">
+        <div style="background-image: url(&quot;/assets/images/sizes/09-jueves-4383-holder.jpg&quot;)" class="staggered-image medium-7 small-12 columns"><img src="/assets/images/sizes/09-jueves-4383-holder.jpg" data-sizes="auto" data-srcset="/assets/images/sizes/09-jueves-4383-x05.jpg 399w, /assets/images/sizes/09-jueves-4383-x075.jpg 598w, /assets/images/sizes/09-jueves-4383-x1.jpg 797w, /assets/images/sizes/09-jueves-4383-x13.jpg 1036w, /assets/images/sizes/09-jueves-4383-x2.jpg 1594w" class="lazyload blur-up"></div>
+        <div class="staggered-details medium-5 small-12 columns">
+            <div class="staggered-details-contents">
+                <h2>Get on Board</h2><a href="{path='brokerage'}" class="button-solid-white">Oyster Brokerage</a>
+            </div>
+        </div>
+    </div>
+    <div class="row row-pad staggered-row-reverse">
+        <div class="staggered-details medium-5 small-12 columns">
+            <div class="staggered-details-contents">
+                <h2>Sail the Dream</h2><a href="{path='charter'}" class="button-solid-white">Oyster Charter </a>
+            </div>
+        </div>
+        <div style="background-image: url(&quot;/assets/images/sizes/_OYS0196-holder.jpg&quot;)" class="staggered-image medium-7 small-12 columns"><img src="/assets/images/sizes/_OYS0196-holder.jpg" data-sizes="auto" data-srcset="/assets/images/sizes/_OYS0196-x05.jpg 399w, /assets/images/sizes/_OYS0196-x075.jpg 598w, /assets/images/sizes/_OYS0196-x1.jpg 797w, /assets/images/sizes/_OYS0196-x13.jpg 1036w, /assets/images/sizes/_OYS0196-x2.jpg 1594w" class="lazyload blur-up"></div>
+    </div>
+    <div class="row row-pad">
+        <div class="staggered-image medium-7 small-12 columns"><img src="/assets/images/sizes/Create_Memories-holder.jpg" data-img-name="Create_Memories" data-sizes="auto" data-srcset="/assets/images/sizes/Create_Memories-x05.jpg 399w, /assets/images/sizes/Create_Memories-x075.jpg 598w, /assets/images/sizes/Create_Memories-x1.jpg 797w, /assets/images/sizes/Create_Memories-x13.jpg 1036w, /assets/images/sizes/Create_Memories-x2.jpg 1594w" class="lazyload blur-up"></div>
+        <div class="staggered-details medium-5 small-12 columns">
+            <div class="staggered-details-contents">
+                <h2>Create Memories</h2><a href="{path='world-rally'}" class="button-solid-white">Oyster World Rally</a>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="news-preview">
+    <div class="latest-title-container">
+        <div class="row latest-title-contents">
+            <div class="latest-title small-centered small-10 columns">
+                <h2>Latest Oyster News //</h2>
+            </div>
+        </div>
+    </div>
+    <div class="row news-content">
+        <div class="cheveron-nav cheveron-nav-left show-for-medium medium-1 columns"><i class="fa fa-angle-left"></i></div>
+        <div class="news-slides medium-10 small-12 columns">
+            <div class="owl-carousel">
+                {exp:channel:entries channel="news|event_news" dynamic="no" disable="member_data|categories|category_fields|pagination|member_data" cache="yes" refresh="60" status="published" sort="desc" limit="3"}
+                <div class="slide news-preview-text-container">
+                    <time datetime="{entry_date format=" %Y-%m-%d %H:%i "}" class="text-uppercase columns medium-2 small-4"><span class="month-year">{entry_date format="%F"}</span><span class="date">{entry_date format="%d"}</span></time>
+                    <div class="snippet-title medium-10 small-8">
+                        <h3 class="text-uppercase">{title}</h3>
+                    </div>
+                    <div class="news-preview-text medium-10 small-12">
+                        {if channel_short_name == "news"}
+                        <div class="cut-news-text">{article_excerpt}</div>
+                        <a href="{url_title_path='news/article'}" class="read-more">Read More</a> {if:elseif channel_short_name == "event_news"}
+                        <div class="cut-news-text">{event_news_content}</div>
+                        {event_news_report status="published"} {event_news_report:event_day_event status="published"}
+                        <a href="{path='events/regattas/{event_news_report:event_day_event:url_title}'}" class="read-more">Read More</a> {/event_news_report:event_day_event} {/event_news_report} {/if}
+                    </div>
+                </div>
+                {/exp:channel:entries}
+            </div>
+        </div>
+        <div class="cheveron-nav cheveron-nav-right show-for-medium medium-1 columns"><i class="fa fa-angle-right"></i></div>
+    </div>
+</section>
+<section class="social-blocks row row-pad">
+    <div class="row show-for-medium">
+        <div class="column large-3 medium-6 social-slider"></div>
+        <div class="column medium-3 show-for-large social-slider"></div>
+        <div class="column large-3 medium-6 social-slider"></div>
+        <div class="column medium-3 show-for-large social-slider"></div>
+    </div>
+    <div class="row middle-row">
+        <div class="column medium-6 social-main-info">
+            <div class="social-contents">
+                <h2>#OysterYachts</h2>
+                <p>Keep informed and join the conversation.</p>
+                <div class="social-icons"><a href="https://www.facebook.com/oystermarine" target="_blank" class="facebook"><i class="fa fa-facebook-official"></i></a><a href="https://twitter.com/OysterMarine" target="_blank" class="twitter"><i class="fa fa-twitter"></i></a><a href="https://www.youtube.com/user/oystermarine" target="_blank" class="youtube"><i class="fa fa-youtube-play"></i></a><a href="https://www.instagram.com/oysteryachts/" target="_blank" class="instagram"><i class="fa fa-instagram"></i></a></div>
+            </div>
+        </div>
+        <div class="column large-3 small-6 social-slider"></div>
+        <div class="column large-3 small-6 hide-for-medium-only social-slider"></div>
+    </div>
+    <div class="row show-for-medium">
+        <div class="column large-3 medium-6 social-slider"></div>
+        <div class="column medium-3 show-for-large social-slider"></div>
+        <div class="column large-3 medium-6 social-slider"></div>
+        <div class="column medium-3 show-for-large social-slider"></div>
+    </div>
+</section>
+<style>
+.social-blocks .social-slider .social-slide.social-slide-instagram {
+    background-size: 1.05 !important;
+}
+</style>
+<style>
+*,
+*:before,
+*:after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.anim-container {
+    display: block;
+    margin: 0 auto;
+    width: 20px;
+}
+
+.arrow {
+    display: block;
+    -ms-transform: rotate(45deg);
+    /* IE 9 */
+    -webkit-transform: rotate(45deg);
+    /* Chrome, Safari, Opera */
+    transform: rotate(45deg);
+    border-right: 1px solid white;
+    border-bottom: 1px solid white;
+    margin: 5px 0 8px 8px;
+    width: 10px;
+    height: 10px;
+    -webkit-animation: mouse-scroll .5s infinite;
+    -moz-animation: mouse-scroll .5s infinite;
+    -webkit-animation-direction: alternate;
+}
+
+.mouse {
+    height: 32px;
+    width: 20px;
+    border-radius: 14px;
+    transform: none;
+    border: 2px solid #c7c8ca;
+    margin-bottom: 6px;
+}
+
+.wheel {
+    height: 5px;
+    width: 2px;
+    display: block;
+    margin: 5px auto;
+    background: white;
+    position: relative;
+    height: 4px;
+    width: 4px;
+    border: 2px solid #c0c0c0;
+    border-radius: 2px;
+}
+
+.wheel {
+    -webkit-animation: mouse-wheel 1s linear infinite;
+    -moz-animation: mouse-wheel 1s linear infinite;
+}
+
+@-webkit-keyframes mouse-wheel {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateY(0);
+        -ms-transform: translateY(0);
+        transform: translateY(0);
+    }
+    50% {
+        opacity: 1;
+        -webkit-transform: translateY(7px);
+        -ms-transform: translateY(7px);
+        transform: translateY(7px);
+    }
+    100% {
+        opacity: 0;
+        -webkit-transform: translateY(16px);
+        -ms-transform: translateY(16px);
+        transform: translateY(16px);
+    }
+}
+
+@-moz-keyframes mouse-wheel {
+    0% {
+        top: 1px;
+    }
+    25% {
+        top: 2px;
+    }
+    50% {
+        top: 6px;
+    }
+    75% {
+        top: 2px;
+    }
+    100% {
+        top: 1px;
+    }
+}
+
+@-webkit-keyframes mouse-scroll {
+    0% {
+        opacity: 0;
+    }
+    25% {
+        opacity: .25;
+    }
+    50% {
+        opacity: .5;
+    }
+    75% {
+        opacity: .75;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes mouse-scroll {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: .5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@-o-keyframes mouse-scroll {
+    0% {
+        opacity: 0;
+    }
+    25% {
+        opacity: .25;
+    }
+    50% {
+        opacity: .5;
+    }
+    75% {
+        opacity: .75;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes mouse-scroll {
+    0% {
+        opacity: 0;
+    }
+    25% {
+        opacity: .25;
+    }
+    50% {
+        opacity: .5;
+    }
+    75% {
+        opacity: .75;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+</style>
+{footer}

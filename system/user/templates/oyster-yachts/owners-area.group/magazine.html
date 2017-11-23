@@ -1,0 +1,52 @@
+{embed="site/.header" page_title="Magazine" snap_to="undefined" snap_offset="undefined"}
+
+<section style="background-image: url('/assets/images/oysteryachts-news-magazine.jpg');" class="hero after-nav global-page-hero yacht-listing-photo global-page-hero--small">
+	{back_button}
+</section>
+
+<section class="latest-issue global-padding-top-only--small">
+	<div class="banner">
+		<h1>Oyster Magazine Latest Issue</h1>
+	</div>
+	{exp:channel:entries channel="magazine" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published" sort="desc" limit="1"}
+	<article class="row row-pad current-issue">
+		<h1>{title}</h1>
+		<div class="row small-collapse">
+			<div class="large-7 column">
+				<h2 class="text-uppercase">In this issue</h2>
+				<ul class="list-of-issues row">
+					{magazine_in_this_issue}
+					<li>{magazine_in_this_issue:item}</li>
+					{/magazine_in_this_issue}
+				</ul>
+			</div>
+			<div class="large-5 column lastest-magazine-cover">
+				{magazine_image}<img src="{image:url}">{/magazine_image}
+				<div class="button-group"><a href="{magazine_link}" class="button-solid-white button-chubby" target="_blank">Read On Issuu</a></div>
+			</div>
+		</div>
+	</article>
+	{/exp:channel:entries}
+</section>
+
+<section class="prev-magazine-issues">
+	<div class="banner">Previous Issues</div>
+	<div class="row press-list">
+
+		{exp:channel:entries channel="magazine" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published" sort="desc" offset="1"}
+		<div class="issue-wrapper column large-6 medium-6 small-12">
+			<figure class="external-file">
+				<div {magazine_image}style="background-image:url('{image:url}');"{/magazine_image} class="external-file-thumb"></div>
+				<figcaption class="external-file-info">
+					<a href="{magazine_link}" class="external-file-name text-uppercase" target="_blank">{title}</a>
+					{magazine_description}
+					<a href="{magazine_link}" class="button-solid-white external-file-btn text-uppercase" target="_blank">View Issue</a>
+				</figcaption>
+			</figure>
+		</div>
+		{/exp:channel:entries}
+
+	</div>
+</section>
+
+{footer}

@@ -1,0 +1,8 @@
+{if logged_out}
+	{redirect="media-centre/login" status_code="403"}
+{/if}
+{exp:member:custom_profile_data}
+	{if member_group != 13}
+		{redirect="media-centre/login" status_code="403"}
+	{/if}
+{/exp:member:custom_profile_data}

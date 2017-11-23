@@ -1,0 +1,5 @@
+{if embed:entry_ids != ""}
+{exp:channel:entries disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published" entry_id="{embed:entry_ids}" dynamic="no"}
+<li><a href="#{url_title}" class="scroll">{title}</a></li>
+{/exp:channel:entries}
+{/if}

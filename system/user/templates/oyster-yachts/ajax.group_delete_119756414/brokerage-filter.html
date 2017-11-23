@@ -1,0 +1,25 @@
+<?php 
+$search = "";
+
+if (isset($_GET['model'])) {
+	$search .= " AND field_id_39 = '".$_GET['model']."'";
+}
+
+if (isset($_GET['status'])) {
+	$search .= " AND field_id_9 = '".$_GET['status']."'";
+}
+
+if (isset($_GET['location'])) {
+	$search .= " AND field_id_4 = '".$_GET['location']."'";
+}
+
+if (isset($_GET['price_min'])) {
+	$search .= " AND field_id_10 >= ".$_GET['price_min'];
+}
+
+if (isset($_GET['price_max'])) {
+	$search .= " AND field_id_10 <= ".$_GET['price_max'];
+}
+
+?>
+[{exp:http_header content_type="application/json"}{exp:query sql="SELECT entry_id FROM exp_channel_data WHERE channel_id=1<?php echo $search; ?>" backspace="1"}{entry_id},{/exp:query}]
