@@ -1,5 +1,8 @@
-{exp:user:has_role roles="owners_area"}
-    {if not_has_roles}
-        {redirect="owners-area/login" status_code="403"}
-    {/if}
-{/exp:user:has_role}
+{if logged_out}
+	{redirect="owners-area/login" status_code="403"}
+{/if}
+{exp:member:custom_profile_data}
+	{if member_group != 12}
+		{redirect="owners-area/login" status_code="403"}
+	{/if}
+{/exp:member:custom_profile_data}

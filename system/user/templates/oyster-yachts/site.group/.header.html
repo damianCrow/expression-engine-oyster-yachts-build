@@ -4,23 +4,19 @@
 		<meta charse="utf-8">
 		<meta http-equiv="x-ua-compatible" content="ie=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="description" content="">
+		{if embed:page_title != ""}
+		<title>{embed:page_title} - {site_name}</title>
+		{if:else}
+		<title>{site_name}</title>
+		{/if}
+		{if embed:entry_id != ""}
+		{exp:seo_lite entry_id="{embed:entry_id}"}
+		{if:else}
 		{exp:seo_lite use_last_segment="yes"}
+		{/if}
 		<title>Oyster Yachts</title>
-		<link rel="stylesheet" href="{site_url}assets/css/app.css">
+		<link rel="stylesheet" href="{site_url}assets/css/app.css?180917">
 		<style>
-			.tmp-table th, .tmp-table td {
-			text-transform: uppercase;
-			}
-			.tmp-table >tbody>tr>td {
-			padding: 0;
-			border: none;
-			font-size: 1em;
-			vertical-align: top;
-			}
-			.tmp-table table {
-			width: 100%;
-			}
 			.yachts-fleet .column {
 				padding-left: 0;
 				padding-right: 0;
@@ -46,6 +42,52 @@
 			.fadein {
 				opacity: 1 !important;
 			}
+
+			{if segment_1 == ""}
+			.hero-home .hero-slide .hero-contents h1 {
+			    font-family: 'omnes_lightregular', sans-serif;
+			    letter-spacing: 0.25rem;
+			    font-size: 3rem;
+			    line-height: 1em;
+			    color: white;
+			    text-transform: uppercase;
+			    margin-bottom: 20px;
+    		}
+
+    		.hero-home .hero-slide .hero-contents h1 strong {
+			    font-family: 'omnes_regularregular', sans-serif;
+			    letter-spacing: .05rem;
+			}
+
+			.hero-home .hero-slide .hero-contents p {
+			    font-size: .9375em;
+			    line-height: 1.73333333em;
+			    margin-bottom: 1.73333333em;
+			    letter-spacing: .05rem;
+			    color: white;
+			}
+
+			.hero-home .hero-slide .hero-contents a {
+				background-color: #fff;
+				border-color: #fff;
+				color: #003145;
+			}
+			{/if}
+.main-nav-crew-image::after {
+    background-image: url("/images/content/oyster_crew.jpg") !important;
+	    background-position: inherit;
+    background-repeat: no-repeat;
+    background-size: cover;
+    content: '';
+    display: block;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: calc(400% + 8rem);
+	}
+
+
 		</style>
 		<link rel="apple-touch-icon" sizes="57x57" href="/assets/images/favicons/apple-icon-57x57.png">
 	    <link rel="apple-touch-icon" sizes="60x60" href="/assets/images/favicons/apple-icon-60x60.png">
@@ -64,18 +106,37 @@
 	    <meta name="msapplication-TileColor" content="#ffffff">
 	    <meta name="msapplication-TileImage" content="/assets/images/favicons/ms-icon-144x144.png">
 	    <meta name="theme-color" content="#ffffff">
+	    <script>
+		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+		  ga('create', 'UA-8862948-1', 'auto');
+		  ga('send', 'pageview');
+
+		</script>
 	</head>
 	<body>
-		<header data-snap-to-min-nav="{embed:snap_to}" data-snap-offset="{embed:snap_offset}" class="global-header">
-			<div class="owners-area"><a href="{path='owners-area'}" class="text-uppercase float-right owners-area-text">owners' area</a>
-				<div class="follow float-right">
-					<div class="social-links">
-						<div class="social-icons social-invert social-background"><a href="https://www.facebook.com/oystermarine" target="_blank" class="facebook-icon"><i class="fa fa-facebook-official"></i></a><a href="https://twitter.com/OysterMarine" target="_blank" class="twitter-icon"><i class="fa fa-twitter"></i></a><a href="https://www.youtube.com/user/oystermarine" target="_blank" class="youtube-icon"><i class="fa fa-youtube-play"></i></a><a href="https://www.instagram.com/oysteryachts/" target="_blank" class="instagram-icon"><i class="fa fa-instagram"></i></a></div>
-              		</div>
-					<a class="text-uppercase float-right follow-oyster">follow oyster</a>
+		<header class="global-header-wrapper">
+			<div class="top-header">
+				<div class="fixed-message">
+					<div class="fixed-message-contents"><small>We use cookies to enhance your browsing experience, please read our <a href="/legal/privacy-policy">Privacy Policy</a> to find out more.</small>
+						<button class="accept-message button-clear-white">Accept & Close</button>
+					</div>
 				</div>
 			</div>
+			<div data-snap-to-min-nav="{embed:snap_to}" data-snap-offset="{embed:snap_offset}" class='global-header'>
+				<div class="owners-area"><a href="{path='owners-area'}" class="text-uppercase float-right owners-area-text">owners' area</a>
+					<div class="follow float-right">
+						<div class="social-links">
+							<div class="social-icons social-invert social-background"><a href="https://www.facebook.com/oystermarine" target="_blank" class="facebook-icon"><i class="fa fa-facebook-official"></i></a><a href="https://twitter.com/OysterMarine" target="_blank" class="twitter-icon"><i class="fa fa-twitter"></i></a><a href="https://www.youtube.com/user/oystermarine" target="_blank" class="youtube-icon"><i class="fa fa-youtube-play"></i></a><a href="https://www.instagram.com/oysteryachts/" target="_blank" class="instagram-icon"><i class="fa fa-instagram"></i></a></div>
+	              		</div>
+						<a class="text-uppercase float-right follow-oyster">follow oyster</a>
+					</div>
+				</div>
 
-			{main_nav}
+				{embed="site/.main_nav" page_title="{embed:page_title}"}
+		</div>
 			
 		</header>

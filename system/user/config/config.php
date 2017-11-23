@@ -11,9 +11,9 @@
 |
 */
 
-$config['app_version'] = '3.2.1';
+$config['app_version'] = '3.3.1';
 $config['debug'] = '1';
-$config['cp_url'] = 'http://oyster.local/admin.php';
+$config['cp_url'] = 'http://staging.oysteryachts.com/admin.php';
 $config['doc_url'] = 'https://ellislab.com/expressionengine/user-guide/';
 $config['is_system_on'] = 'y';
 $config['allow_extensions'] = 'y';
@@ -21,9 +21,9 @@ $config['cache_driver'] = 'file';
 $config['database'] = array (
 	'expressionengine' => array (
 		'hostname' => 'localhost',
-		'username' => 'root',
-		'password' => 'root',
-		'database' => 'oysteryachts_live2',
+		'username' => 'oyster_staging',
+		'password' => '3yC8^k0d',
+		'database' => 'oyster_yachts_staging',
 		'dbdriver' => 'mysqli',
 		'dbprefix' => 'exp_',
 		'pconnect' => FALSE
@@ -36,6 +36,12 @@ $config['cookie_httponly'] = 'y';
 
 $config['multiple_sites_enabled'] = 'n';
 $config['index_page'] = '';
+
+$config['marksmin_enabled'] = true;
+
+$config['resizer_memory_limit'] = 512;
+
+$config['disable_csrf_protection'] = 'y';
 
 // END EE config items
 
@@ -126,7 +132,7 @@ $config['log_date_format'] = 'Y-m-d H:i:s';
 | enabled you MUST set an encryption key.  See the user guide for info.
 |
 */
-$config['encryption_key'] = '';
+$config['encryption_key'] = '876ce28db87754af75c47e8b29e08da9387d9d0f';
 
 
 /*

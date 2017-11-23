@@ -26,9 +26,7 @@ reset:function(){_.each(this.items,function(e){t(e.el).toggle(!0)}),this.length=
 _update:function(){this.ul.empty().append(_.pluck(this.items,"el")),this.ul.append(this.keep)},/**
 	 * Rough fuzzy matching scorer
 	 */
-_scoreString:function(t,e){var i=0,s=1,n=e.length;t=t.toLowerCase(),
-// First letter match is a big plus
-t[0]==e[0]&&(i+=1);for(var r=0;n>r;r++){var h=t.indexOf(e.charAt(r).toLowerCase());switch(h){case-1:return 0;// not found, not our word
+_scoreString:function(t,e){var i=0,s=1,n=e.length;t=t.toLowerCase(),t[0]==e[0]&&(i+=1);for(var r=0;n>r;r++){var h=t.indexOf(e.charAt(r).toLowerCase());switch(h){case-1:return 0;// not found, not our word
 case 0:i+=.6,// first position, good
 r==s&&(// consecutive, better
 i+=.4);break;default:i+=.4/s}s+=h,t=t.substr(h+1)}

@@ -1,3 +1,4 @@
+<!--  -->
 <nav class="navigation">
 	<div class="global-header-top-nav-large">
 		<a href="{site_url}" class="logo">
@@ -18,204 +19,115 @@
 			<span class="burger-piece"></span>
 			<span class="burger-piece"></span>
 		</a>
-	
-		<ul id="main-nav" class="main-nav show-for-large">
-			<li{if segment_1 == "about"} class="active is-active"{/if}>
-				<a href="{path='about'}" class="text-uppercase">about us</a>
-				<ul>
-					<li>
-						<a href="{path='about/why-oyster'}"{if segment_1 == "about" && segment_2 == "why-oyster"} class="active-subnav"{/if}>
-							<div style="background-position: 0px 0px" class="sub-nav-image"></div>
-							<span class="text-uppercase">Why buy</span>
-						</a>
-					</li>
-					<li>
-						<a href="{path='about/what-we-offer'}"{if segment_1 == "about" && segment_2 == "what-we-offer"} class="active-subnav"{/if}>
-							<div style="background-position: 0px 315px" class="sub-nav-image"></div>
-							<span class="text-uppercase">What We Offer</span>
-						</a>
-					</li>
-					<li>
-						<a href="{path='about/team'}"{if segment_1 == "about" && segment_2 == "team"} class="active-subnav"{/if}>
-							<div style="background-position: 0px 630px" class="sub-nav-image"></div>
-							<span class="text-uppercase">Our team</span>
-						</a>
-					</li>
-					<li>
-						<a href="{path='about/heritage'}"{if segment_1 == "about" && segment_2 == "heritage"} class="active-subnav"{/if}>
-							<div style="background-position: 0px 945px" class="sub-nav-image"></div>
-							<span class="text-uppercase">Heritage</span>
-						</a>
-					</li>
-				</ul>
-			</li>
-			<li{if segment_1 == "yachts"} class="active is-active"{/if}>
-				<a href="{path='yachts/fleet'}" class="text-uppercase">yachts</a>
-				<ul>
-					<li>
-						<a href="{path='yachts/fleet'}"{if segment_1 == "yachts" && segment_2 == "fleet"} class="active-subnav"{/if}>
-							<div style="background-position: 0px 14.25%" class="sub-nav-image"></div>
-							<span class="text-uppercase">our fleet</span>
-						</a>
-					</li>
-					<li>
-						<a href="{path='yachts/special-projects'}"{if segment_1 == "yachts" && segment_2 == "special-projects"} class="active-subnav"{/if}>
-							<div style="background-position: 0px 630px" class="sub-nav-image"></div>
-							<span class="text-uppercase">special projects</span>
-						</a>
-					</li>
-					<li>
-						<a href="{path='yachts/previous-models'}"{if segment_1 == "yachts" && segment_2 == "previous-models"} class="active-subnav"{/if}>
-							<div style="background-position: 0px 315px" class="sub-nav-image"></div>
-							<span class="text-uppercase">previous models</span>
-						</a>
-					</li>
-					<li>
-						<a href="">
-							<div style="background-position: 0px 945px" class="sub-nav-image"></div>
-							<span class="text-uppercase">contact sales</span>
-						</a>
-					</li>
-				</ul>
-			</li>
-			<li{if segment_1 == "brokerage"} class="active is-active"{/if}>
-				<a href="{path='brokerage'}" class="text-uppercase">brokerage</a>
-				<ul class="three">
-					<li>
-						<a href="{path='brokerage/fleet'}"{if segment_1 == "brokerage" && segment_2 == "fleet"} class="active-subnav"{/if}>
-							<div style="background-position: 0px 28.5%" class="sub-nav-image"></div>
-							<span class="text-uppercase">brokerage fleet</span>
-						</a>
-					</li>
-					<li>
-						<a href="{path='brokerage/team'}"{if segment_1 == "brokerage" && segment_2 == "team"} class="active-subnav"{/if}>
-							<div style="background-position: 0px 630px" class="sub-nav-image"></div>
-							<span class="text-uppercase">brokerage team</span>
-						</a>
-					</li>
-					<li>
-						<a href="">
-							<div style="background-position: 0px 945px" class="sub-nav-image"></div>
-							<span class="text-uppercase">contact brokerage</span>
-						</a>
-					</li>
-				</ul>
-			</li>
-			<li{if segment_1 == "charter"} class="active is-active"{/if}>
-				<a href="{path='charter'}" class="text-uppercase">charter</a>
-				<ul>
-					<li>
-						<a href="{path='charter/fleet'}"{if segment_1 == "charter" && segment_2 == "fleet"} class="active-subnav"{/if}>
-							<div style="background-position: 0px 43%" class="sub-nav-image"></div>
-							<span class="text-uppercase">charter fleet</span>
-						</a>
-					</li>
-					<li>
-						<a href="{path='charter/guide'}"{if segment_1 == "charter" && segment_2 == "guide"} class="active-subnav"{/if}>
-							<div style="background-position: 0px 315px" class="sub-nav-image"></div>
-							<span class="text-uppercase">charter guide</span>
-						</a>
-					</li>
-					<li>
-						<a href="{path='charter/destinations'}"{if segment_1 == "charter" && segment_2 == "destinations"} class="active-subnav"{/if}>
-							<div style="background-position: 0px 630px" class="sub-nav-image"></div>
-							<span class="text-uppercase">destinations</span>
-						</a>
-					</li>
-					<li>
-						<a href="">
-							<div style="background-position: 0px 945px" class="sub-nav-image"></div>
-							<span class="text-uppercase">contact charter</span>
-						</a>
-					</li>
-				</ul>
-			</li>
-			<li{if segment_1 == "world-rally"} class="active is-active"{/if}>
-				<a href="{path='world-rally'}" class="text-uppercase">world rally</a>
-				<ul class="three">
-					<li>
-						<a href="http://www.oysterworldrally.com/" target="_blank">
-							<div style="background-position: 0px 57.25%" class="sub-nav-image"></div>
-							<span class="text-uppercase">World rally 2017-19</span>
-						</a>
-					</li>
-					<li>
-						<a href="{path='world-rally/world-rally-2013-14'}"{if segment_1 == "world-rally" && segment_2 == "world-rally-2013-14"} class="active-subnav"{/if}>
-							<div style="background-position: 0px 315px" class="sub-nav-image"></div>
-							<span class="text-uppercase">World rally 2013-14</span>
-						</a>
-					</li>
-					<li>
-						<a href="">
-							<div style="background-position: 0px 630px" class="sub-nav-image"></div>
-							<span class="text-uppercase">contact world rally</span>
-						</a>
-					</li>
-				</ul>
-			</li>
-			<li{if segment_1 == "events"} class="active is-active"{/if}>
-				<a href="{path='events'}" class="text-uppercase">events</a>
-				<ul class="three">
-					<li>
-						<a href="{path='events/regatta-calendar'}"{if segment_1 == "events" && segment_2 == "regatta-calendar"} class="active-subnav"{/if}>
-							<div style="background-position: 0px 71.5%" class="sub-nav-image"></div>
-							<span class="text-uppercase">regattas</span>
-						</a>
-					</li>
-					<li>
-						<a href="{path='events/boat-shows'}"{if segment_1 == "events" && segment_2 == "boat-shows"} class="active-subnav"{/if}>
-							<div style="background-position: 0px 315px" class="sub-nav-image"></div>
-							<span class="text-uppercase">boat shows</span>
-						</a>
-					</li>
-					<li>
-						<a href="{path='events/gallery'}"{if segment_1 == "events" && segment_2 == "gallery"} class="active-subnav"{/if}>
-							<div style="background-position: 0px 945px" class="sub-nav-image"></div>
-							<span class="text-uppercase">events gallery</span>
-						</a>
-					</li>
-				</ul>
-			</li>
-			<li{if segment_1 == "news"} class="active is-active"{/if}>
-				<a href="{path='news'}" class="text-uppercase">news</a>
-				<ul class="three">
-					<li>
-						<a href="{path='news/news-library'}"{if segment_1 == "news" && segment_2 == "news-library"} class="active-subnav"{/if}>
-							<div style="background-position: 0px 86%" class="sub-nav-image"></div>
-							<span class="text-uppercase">news library</span>
-						</a>
-					</li>
-					<li>
-						<a href="{path='news/magazine'}"{if segment_1 == "news" && segment_2 == "magazine"} class="active-subnav"{/if}>
-							<div style="background-position: 0px 315px" class="sub-nav-image"></div>
-							<span class="text-uppercase">oyster magazine</span>
-						</a>
-					</li>
-					<li>
-						<a href="{path='news/press-coverage'}"{if segment_1 == "news" && segment_2 == "press-coverage"} class="active-subnav"{/if}>
-							<div style="background-position: 0px 630px" class="sub-nav-image"></div>
-							<span class="text-uppercase">press coverage</span>
-						</a>
-					</li>
-				</ul>
-			</li>
-			<li{if segment_1 == "contact"} class="active is-active"{/if}>
-				<a href="{path='contact'}" class="text-uppercase">contact</a>
-				<ul class="two">
-					<li>
-						<a href="{path='contact'}"{if segment_1 == "contact" && segment_2 == ""} class="active-subnav"{/if}>
-							<div style="background-position: 0px 100%" class="sub-nav-image"></div>
-							<span class="text-uppercase">our offices</span>
-						</a>
-					</li>
-					<li>
-						<a href="{path='contact/recruitment'}"{if segment_1 == "contact" && segment_2 == "recruitment"} class="active-subnav"{/if}>
-							<div style="background-position: 0px 630px" class="sub-nav-image"></div>
-							<span class="text-uppercase">recruitment</span>
-						</a>
-					</li>
-				</ul>
-			</li>
+
+		<ul class="main-nav-first show-for-large" id="main-nav">
+		  <li class="{if segment_1 == "about"}active is-active{/if} main-nav-first__option"><a class="text-uppercase" href="/about">About Us</a>
+		    <ul class="main-nav-second main-nav-second--split-four">
+		      <li class="main-nav-second__option"><a class="main-nav-second__preview" href="{path='about/why-oyster'}"><span class="main-nav-second__category text-uppercase">Why Oyster</span>
+		          <div class="main-nav-second__image"></div></a></li>
+		      <li class="main-nav-second__option"><a class="main-nav-second__preview" href="{path='about/what-we-offer'}"><span class="main-nav-second__category text-uppercase">What We Offer</span>
+		          <div class="main-nav-second__image"></div></a></li>
+		      <li class="main-nav-second__option"><a class="main-nav-second__preview" href="{path='about/team'}"><span class="main-nav-second__category text-uppercase">Our Team</span>
+		          <div class="main-nav-second__image"></div></a></li>
+		      <li class="main-nav-second__option"><a class="main-nav-second__preview" href="{path='about/heritage'}"><span class="main-nav-second__category text-uppercase">Heritage &amp; Previous Models</span>
+		          <div class="main-nav-second__image"></div></a></li>
+		    </ul>
+		  </li>
+		  <li class="{if segment_1 == "yachts"}active is-active{/if} main-nav-first__option"><a class="text-uppercase" href="{path='yachts/'}">New Yachts</a>
+		    <ul class="main-nav-second main-nav-second--split-three">
+		      <li class="main-nav-second__option"><a class="main-nav-second__preview" href="{path='/yachts/g6-fleet'}"><span class="main-nav-second__category text-uppercase">G6 Fleet</span>
+		          <div class="main-nav-second__image"></div></a></li>
+		      <li class="main-nav-second__option"><a class="main-nav-second__preview" href="{path='/yachts/g5-fleet'}"><span class="main-nav-second__category text-uppercase">G5 Fleet</span>
+		          <div class="main-nav-second__image"></div></a></li>
+		      <li class="main-nav-second__option"><a class="main-nav-second__preview" href="{path='/contact#oyster-sales'}"><span class="main-nav-second__category text-uppercase">Contact Sales</span>
+		          <div class="main-nav-second__image"></div></a></li>
+		    </ul>
+		  </li>
+		  <li class="{if segment_1 == "contact"}active is-active{/if} main-nav-first__option"><a class="text-uppercase" href="#">Services</a>
+		    <ul class="main-nav-second main-nav-second--split-five">
+		      <li class="main-nav-second__option"><a class="main-nav-second__preview" href="/contact#oyster-service-centres"><span class="main-nav-second__category text-uppercase">Service Centres</span>
+		          <div class="main-nav-second__image"></div></a>
+		        <ul class="main-nav-third">
+		          <li class="main-nav-third__option"><a class="main-nav-third__link" href="/contact#oyster-service-centres">Contact Service Centres</a></li>
+		        </ul>
+		      </li>
+		      <li class="main-nav-second__option"><a class="main-nav-second__preview" href="/brokerage"><span class="main-nav-second__category text-uppercase">Brokerage</span>
+		          <div class="main-nav-second__image"></div></a>
+		        <ul class="main-nav-third">
+		          <li class="main-nav-third__option"><a class="main-nav-third__link" href="{path='brokerage/fleet'}">Brokerage Fleet</a></li>
+		          <li class="main-nav-third__option"><a class="main-nav-third__link" href="{path='brokerage/team'}">Brokerage Team</a></li>
+		          <li class="main-nav-third__option"><a class="main-nav-third__link" href="{path='events'}">Brokerage Events</a></li>
+		          <li class="main-nav-third__option"><a class="main-nav-third__link" href="/contact#oyster-brokerage">Contact Brokerage</a></li>
+		        </ul>
+		      </li>
+		      <li class="main-nav-second__option"><a class="main-nav-second__preview" href="/charter"><span class="main-nav-second__category text-uppercase">Charter</span>
+		          <div class="main-nav-second__image"></div></a>
+		        <ul class="main-nav-third">
+		          <li class="main-nav-third__option"><a class="main-nav-third__link" href="{path='charter/fleet'}">Charter Fleet</a></li>
+		          <li class="main-nav-third__option"><a class="main-nav-third__link" href="{path='charter/guide'}">Charter Guide</a></li>
+		          <li class="main-nav-third__option"><a class="main-nav-third__link" href="{path='charter/destinations'}">Destinations</a></li>
+		          <li class="main-nav-third__option"><a class="main-nav-third__link" href="/contact#oyster-charter">Contact Charter</a></li>
+		        </ul>
+		      </li>
+		      <li class="main-nav-second__option"><a class="main-nav-second__preview" href="/contact#oyster-custom"><span class="main-nav-second__category text-uppercase">Custom &amp; Refit</span>
+		          <div class="main-nav-second__image"></div></a>
+		        <ul class="main-nav-third">
+		          <li class="main-nav-third__option"><a class="main-nav-third__link" href="/yachts/sys-projects">Sys Projects</a></li>
+		          <li class="main-nav-third__option"><a class="main-nav-third__link" href="/contact#oyster-custom">Contact Sys</a></li>
+		        </ul>
+		      </li>
+		      <li class="main-nav-second__option"><a class="main-nav-second__preview" href="/contact#oyster-custom"><span class="main-nav-second__category text-uppercase">Oyster Crew</span>
+		          <div class="main-nav-second__image"></div></a>
+		        <ul class="main-nav-third">
+                <li class="main-nav-third__option"><a class="main-nav-third__link" href="/services/sys">Oyster Crew</a></li>
+		          <li class="main-nav-third__option"><a class="main-nav-third__link" href="/contact#oyster-custom">Contact Oyster Crew</a></li>
+		        </ul>
+		      </li>
+		    </ul>
+		  </li>
+		  <li class="{if segment_1 == "world-rally"}active is-active{/if} main-nav-first__option"><a class="text-uppercase" href="/world-rally">World Rally</a>
+		    <ul class="main-nav-second main-nav-second--split-three">
+		      <li class="main-nav-second__option"><a class="main-nav-second__preview" href="http://www.oysterworldrally.com/" target="_blank"><span class="main-nav-second__category text-uppercase">World Rally 2017 - 19</span>
+		          <div class="main-nav-second__image"></div></a></li>
+		      <li class="main-nav-second__option"><a class="main-nav-second__preview" href="{path='world-rally/world-rally-2013-14'}"><span class="main-nav-second__category text-uppercase">World Rally 2013 - 14</span>
+		          <div class="main-nav-second__image"></div></a></li>
+		      <li class="main-nav-second__option"><a class="main-nav-second__preview" href="mailto:worldrally2017@oysteryachts.com"><span class="main-nav-second__category text-uppercase">Contact World Rally</span>
+		          <div class="main-nav-second__image"></div></a></li>
+		    </ul>
+		  </li>
+		  <li class="{if segment_1 == "events"}active is-active{/if} main-nav-first__option"><a class="text-uppercase" href="/events">Events</a>
+		    <ul class="main-nav-second main-nav-second--split-four">
+		      <li class="main-nav-second__option"><a class="main-nav-second__preview" href="{path='events/regatta-calendar'}"><span class="main-nav-second__category text-uppercase">Regattas</span>
+		          <div class="main-nav-second__image"></div></a></li>
+		      <li class="main-nav-second__option"><a class="main-nav-second__preview" href="{path='events/boat-shows'}"><span class="main-nav-second__category text-uppercase">Boat Shows</span>
+		          <div class="main-nav-second__image"></div></a></li>
+		      <li class="main-nav-second__option"><a class="main-nav-second__preview" href="{path='events/other-events'}"><span class="main-nav-second__category text-uppercase">Other Events</span>
+		          <div class="main-nav-second__image"></div></a></li>
+		      <li class="main-nav-second__option"><a class="main-nav-second__preview" href="{path='events/gallery'}"><span class="main-nav-second__category text-uppercase">Events Gallery</span>
+		          <div class="main-nav-second__image"></div></a></li>
+		    </ul>
+		  </li>
+		  <li class="{if segment_1 == "news"}active is-active{/if} main-nav-first__option"><a class="text-uppercase" href="/news">News</a>
+		    <ul class="main-nav-second main-nav-second--split-three main-nav-second--one-down">
+		      <li class="main-nav-second__option"><a class="main-nav-second__preview" href="{path='news/news-library'}"><span class="main-nav-second__category text-uppercase">News Library</span>
+		          <div class="main-nav-second__image"></div></a></li>
+		      <li class="main-nav-second__option"><a class="main-nav-second__preview" href="{path='news/magazine'}"><span class="main-nav-second__category text-uppercase">Oyster Magazine</span>
+		          <div class="main-nav-second__image"></div></a></li>
+		      <li class="main-nav-second__option"><a class="main-nav-second__preview" href="{path='news/press-coverage'}"><span class="main-nav-second__category text-uppercase">Press Coverage</span>
+		          <div class="main-nav-second__image"></div></a></li>
+		    </ul>
+		  </li>
+		  <li class="{if segment_1 == "contact"}active is-active{/if} main-nav-first__option"><a class="text-uppercase" href="/contact">Contact</a>
+		    <ul class="main-nav-second main-nav-second--split-three main-nav-second--one-down">
+		     <li class="main-nav-second__option"><a class="main-nav-second__preview" href="/media-centre"><span class="main-nav-second__category text-uppercase">Media Centre</span>
+		          <div class="main-nav-second__image"></div></a></li>
+		      <li class="main-nav-second__option"><a class="main-nav-second__preview" href="/contact/recruitment"><span class="main-nav-second__category text-uppercase">Recruitment</span>
+		          <div class="main-nav-second__image"></div></a></li>
+	           <li class="main-nav-second__option"><a class="main-nav-second__preview" href="/contact"><span class="main-nav-second__category text-uppercase">Our Offices</span>
+	          <div class="main-nav-second__image"></div></a></li>
+		      
+		    </ul>
+		  </li>
 		</ul>
 
 		<button class="site-search show-for-large">
@@ -235,123 +147,141 @@
 	</div>
 </nav>
 
-
-
-
-<div id="global-navigation-modal" data-reveal class="full reveal">
-	<section class="nav-body-modal">
-		<div class="row">
-			<div class="small-11 small-centered">
-				<div class="input-group search-box">
-					{exp:super_search:form return="search/index"}
-					<span class="input-group-label"><i class="fa fa-search"></i></span>
-					<input type="text" placeholder="Help me find..." class="input-group-field" name="keywords">
-					{/exp:super_search:form}
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="small-12 small-centered navigation-links">
-				<ul data-accordion data-allow-all-closed="true" class="accordion">
-					<li data-accordion-item class="accordion-item{if segment_1 == "about"} active is-active{/if}">
-						<a href="{path='about'}" class="text-uppercase accordion-title"> <span>About Us</span><i class="fa fa-angle-up float-right"></i><i class="fa fa-angle-down float-right"></i></a>
-						<div data-tab-content class="accordion-content">
-							<ul class="sub-navigation">
-								<li class="sub-navigation-item"><a href="{path='about/why-oyster'}" class="text-uppercase">Why Buy</a></li>
-								<li class="sub-navigation-item"><a href="{path='about/what-we-offer'}" class="text-uppercase">What We Offer</a></li>
-								<li class="sub-navigation-item"><a href="{path='about/team'}" class="text-uppercase">Our team</a></li>
-								<li class="sub-navigation-item"><a href="{path='about/heritage'}" class="text-uppercase">Heritage</a></li>
-							</ul>
-						</div>
-					</li>
-					<li data-accordion-item class="accordion-item{if segment_1 == "yachts"} active is-active{/if}">
-						<a href="{path='yachts/fleet'}" class="text-uppercase accordion-title"> <span>Yachts</span><i class="fa fa-angle-up float-right"></i><i class="fa fa-angle-down float-right"></i></a>
-						<div data-tab-content class="accordion-content">
-							<ul class="sub-navigation">
-								<li class="sub-navigation-item"><a href="{path='yachts/fleet'}" class="text-uppercase">our fleet</a></li>
-								<li class="sub-navigation-item"><a href="{path='yachts/special-projects'}" class="text-uppercase">special projects</a></li>
-								<li class="sub-navigation-item"><a href="{path='yachts/previous-models'}" class="text-uppercase">Previous models</a></li>
-								<li class="sub-navigation-item"><a href="#" class="text-uppercase">contact sales</a></li>
-							</ul>
-						</div>
-					</li>
-					<li data-accordion-item class="accordion-item{if segment_1 == "brokerage"} active is-active{/if}">
-						<a href="{path='brokerage'}" class="text-uppercase accordion-title"> <span>Brokerage</span><i class="fa fa-angle-up float-right"></i><i class="fa fa-angle-down float-right"></i></a>
-						<div data-tab-content class="accordion-content">
-							<ul class="sub-navigation">
-								<li class="sub-navigation-item"><a href="{path='brokerage/fleet'}" class="text-uppercase">Brokerage Fleet</a></li>
-								<li class="sub-navigation-item"><a href="/oyster/brokerage/team" class="text-uppercase">Brokerage Team</a></li>
-								<li class="sub-navigation-item"><a href="#" class="text-uppercase">Contact Brokerage</a></li>
-							</ul>
-						</div>
-					</li>
-					<li data-accordion-item class="accordion-item{if segment_1 == "charter"} active is-active{/if}">
-						<a href="{path='charter'}" class="text-uppercase accordion-title"> <span>charter</span><i class="fa fa-angle-up float-right"></i><i class="fa fa-angle-down float-right"></i></a>
-						<div data-tab-content class="accordion-content">
-							<ul class="sub-navigation">
-								<li class="sub-navigation-item"><a href="{path='charter/fleet'}" class="text-uppercase">charter fleet</a></li>
-								<li class="sub-navigation-item"><a href="{path='charter/guide'}" class="text-uppercase">charter guide</a></li>
-								<li class="sub-navigation-item"><a href="{path='charter/destinations'}" class="text-uppercase">Destinations</a></li>
-								<li class="sub-navigation-item"><a href="#" class="text-uppercase">contact charter</a></li>
-							</ul>
-						</div>
-					</li>
-					<li data-accordion-item class="accordion-item{if segment_1 == "world-rally"} active is-active{/if}">
-						<a href="/oyster/world-rally" class="text-uppercase accordion-title"> <span>world rally</span><i class="fa fa-angle-up float-right"></i><i class="fa fa-angle-down float-right"></i></a>
-						<div data-tab-content class="accordion-content">
-							<ul class="sub-navigation">
-								<li class="sub-navigation-item"><a href="http://www.oysterworldrally.com/" target="_blank" class="text-uppercase">World rally 2017-19</a></li>
-								<li class="sub-navigation-item"><a href="{path='world-rally/world-rally-2013-14'}" class="text-uppercase">World rally 2013-14</a></li>
-								<li class="sub-navigation-item"><a href="#" class="text-uppercase">contact world rally</a></li>
-							</ul>
-						</div>
-					</li>
-					<li data-accordion-item class="accordion-item{if segment_1 == "events"} active is-active{/if}">
-						<a href="{path='events'}" class="text-uppercase accordion-title"> <span>events</span><i class="fa fa-angle-up float-right"></i><i class="fa fa-angle-down float-right"></i></a>
-						<div data-tab-content class="accordion-content">
-							<ul class="sub-navigation">
-								<li class="sub-navigation-item"><a href="{path='events/regatta-calendar'}" class="text-uppercase">regatta calendar</a></li>
-								<li class="sub-navigation-item"><a href="{path='events/boat-shows'}" class="text-uppercase">boat shows</a></li>
-								<li class="sub-navigation-item"><a href="{path='events/gallery'}" class="text-uppercase">events gallery</a></li>
-							</ul>
-						</div>
-					</li>
-					<li data-accordion-item class="accordion-item{if segment_1 == "news"} active is-active{/if}">
-						<a href="{path='news'}" class="text-uppercase accordion-title"> <span>news</span><i class="fa fa-angle-up float-right"></i><i class="fa fa-angle-down float-right"></i></a>
-						<div data-tab-content class="accordion-content">
-							<ul class="sub-navigation">
-								<li class="sub-navigation-item"><a href="{path='news/news-library'}" class="text-uppercase">news library</a></li>
-								<li class="sub-navigation-item"><a href="{path='news/magazine'}" class="text-uppercase">oyster magazine</a></li>
-								<li class="sub-navigation-item"><a href="{path='news/press-coverage'}" class="text-uppercase">press coverage</a></li>
-							</ul>
-						</div>
-					</li>
-					<li data-accordion-item class="accordion-item{if segment_1 == "contact"} active is-active{/if}">
-						<a href="{path='contact'}" class="text-uppercase accordion-title"> <span>contact</span><i class="fa fa-angle-up float-right"></i><i class="fa fa-angle-down float-right"></i></a>
-						<div data-tab-content class="accordion-content">
-							<ul class="sub-navigation">
-								<li class="sub-navigation-item"><a href="{path='contact'}" class="text-uppercase">our offices</a></li>
-								<li class="sub-navigation-item"><a href="{path='contact/recruitment'}" class="text-uppercase">Recruitment</a></li>
-							</ul>
-						</div>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</section>
-	<footer class="nav-footer-modal">
-		<div class="row small-collapse">
-			<div class="small-6 columns show-for-small-only">
-				<button type="button" class="button follow-btn text-uppercase">Follow oyster</button>
-			</div>
-			<div class="medium-9 columns show-for-medium">
-				<div class="social-icons social-invert social-background"><a href="https://www.facebook.com/oystermarine" target="_blank" class="facebook-icon"><i class="fa fa-facebook-official"></i></a><a href="https://twitter.com/OysterMarine" target="_blank" class="twitter-icon"><i class="fa fa-twitter"></i></a><a href="https://www.youtube.com/user/oystermarine" target="_blank" class="youtube-icon"><i class="fa fa-youtube-play"></i></a><a href="https://www.instagram.com/oysteryachts/" target="_blank" class="instagram-icon"><i class="fa fa-instagram"></i></a></div>
-			</div>
-			<div class="small-6 medium-3 columns"><a href="{path='owners-area'}" class="button owners-area-text text-uppercase">owners' area</a></div>
-			<div class="small-12 columns social-links end">
-				<div class="back-btn"><img src="/assets/images/arrow_left.png"></div>
-				<div class="social-icons social-invert social-background"><a href="https://www.facebook.com/oystermarine" target="_blank" class="facebook-icon"><i class="fa fa-facebook-official"></i></a><a href="https://twitter.com/OysterMarine" target="_blank" class="twitter-icon"><i class="fa fa-twitter"></i></a><a href="https://www.youtube.com/user/oystermarine" target="_blank" class="youtube-icon"><i class="fa fa-youtube-play"></i></a><a href="https://www.instagram.com/oysteryachts/" target="_blank" class="instagram-icon"><i class="fa fa-instagram"></i></a></div>
-			</div>
-		</div>
-	</footer>
+<div class="full reveal" id="global-navigation-modal" data-reveal>
+  <section class="nav-body-modal">
+    <div class="search-box">
+		{exp:super_search:form return="search/index"}
+		<span class="input-group-label"><i class="fa fa-search"></i></span>
+		<input type="text" placeholder="Help me find..." class="input-group-field" name="keywords">
+		{/exp:super_search:form}
+    </div>
+    <div class="row">
+      <div class="small-12 small-centered navigation-links">
+        <ul class="accordion first-level-nav" data-accordion="" data-allow-all-closed="true">
+          <li class="accordion-item" data-accordion-item><a class="accordion-title" href="/about"><span>About Us</span><i class="fa fa-angle-up float-right"></i><i class="fa fa-angle-down float-right"></i></a>
+            <div class="accordion-content" data-tab-content>
+              <ul class="sub-navigation second-level-nav">
+                <li class="sub-navigation-item"><a class="accordion-title" href="{path='about/why-oyster'}">Why Oyster</a></li>
+                <li class="sub-navigation-item"><a class="accordion-title" href="{path='about/what-we-offer'}">What We Offer</a></li>
+                <li class="sub-navigation-item"><a class="accordion-title" href="{path='about/team'}">Our Team</a></li>
+                <li class="sub-navigation-item"><a class="accordion-title" href="{path='about/heritage'}">Heritage &amp; Previous Models</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="accordion-item" data-accordion-item><a class="accordion-title" href="{path='yachts'}"><span>New Yachts</span><i class="fa fa-angle-up float-right"></i><i class="fa fa-angle-down float-right"></i></a>
+            <div class="accordion-content" data-tab-content>
+              <ul class="sub-navigation second-level-nav">
+                <li class="sub-navigation-item"><a class="accordion-title" href="/yachts/g6-fleet">G6 Fleet</a></li>
+                <li class="sub-navigation-item"><a class="accordion-title" href="/yachts/g5-fleet">G5 Fleet</a></li>
+                <li class="sub-navigation-item"><a class="accordion-title" href="{path='contact'}">Contact Sales</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="accordion-item" data-accordion-item=""><a class="accordion-title" href="#"><span class="text-uppercase">Services</span><i class="fa fa-angle-up float-right"></i><i class="fa fa-angle-down float-right"></i></a>
+            <div class="accordion-content" data-tab-content="">
+              <ul class="accordion sub-navigation second-level-nav" data-accordion="" data-allow-all-closed="true">
+                <li class="accordion-item sub-navigation-item" data-accordion-item=""><a class="accordion-title" href="/contact#oyster-service-centres"><span>Service Centres</span><i class="fa fa-angle-up float-right"></i><i class="fa fa-angle-down float-right"></i></a>
+                  <div class="accordion-content" data-tab-content="">
+                    <ul class="sub-sub-navigation third-level-nav">
+                      <li class="sub-navigation-item"><a class="accordion-title" href="/contact#oyster-service-centres">Contact Service Centres</a></li>
+                    </ul>
+                  </div>
+                </li>
+                <li class="accordion-item sub-navigation-item" data-accordion-item=""><a class="accordion-title" href="{path='brokerage'}"><span>Brokerage</span><i class="fa fa-angle-up float-right"></i><i class="fa fa-angle-down float-right"></i></a>
+                  <div class="accordion-content" data-tab-content="">
+                    <ul class="sub-sub-navigation third-level-nav">
+                      <li class="sub-navigation-item"><a class="accordion-title" href="{path='brokerage/fleet'}">Brokerage Fleet</a></li>
+                      <li class="sub-navigation-item"><a class="accordion-title" href="{path='brokerage/team'}">Brokerage Team</a></li>
+                      <li class="sub-navigation-item"><a class="accordion-title" href="{path='events'}">Brokerage Events</a></li>
+                      <li class="sub-navigation-item"><a class="accordion-title" href="/contact#oyster-brokerage">Contact Brokerage</a></li>
+                    </ul>
+                  </div>
+                </li>
+                <li class="accordion-item sub-navigation-item" data-accordion-item=""><a class="accordion-title" href="/charter"><span>Charter</span><i class="fa fa-angle-up float-right"></i><i class="fa fa-angle-down float-right"></i></a>
+                  <div class="accordion-content" data-tab-content="">
+                    <ul class="sub-sub-navigation third-level-nav">
+                      <li class="sub-navigation-item"><a class="accordion-title" href="{path='charter/fleet'}">Charter Fleet</a></li>
+                      <li class="sub-navigation-item"><a class="accordion-title" href="{path='charter/guide'}">Charter Guide</a></li>
+                      <li class="sub-navigation-item"><a class="accordion-title" href="{path='charter/destinations'}">Destinations</a></li>
+                      <li class="sub-navigation-item"><a class="accordion-title" href="/contact#oyster-charter">Contact Charter</a></li>
+                    </ul>
+                  </div>
+                </li>
+                <li class="accordion-item sub-navigation-item" data-accordion-item=""><a class="accordion-title" href="/yachts/sys-projects"><span>Custom &amp; Refit</span><i class="fa fa-angle-up float-right"></i><i class="fa fa-angle-down float-right"></i></a>
+                  <div class="accordion-content" data-tab-content="">
+                    <ul class="sub-sub-navigation third-level-nav">
+                      <li class="sub-navigation-item"><a class="accordion-title" href="/yachts/sys-projects">Sys Projects</a></li>
+                      <li class="sub-navigation-item"><a class="accordion-title" href="/yachts/sys-projects">Contact Sys</a></li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="accordion-item" data-accordion-item><a class="accordion-title" href="/charter"><span>Charter</span><i class="fa fa-angle-up float-right"></i><i class="fa fa-angle-down float-right"></i></a>
+            <div class="accordion-content" data-tab-content>
+              <ul class="sub-navigation second-level-nav">
+                <li class="sub-navigation-item"><a class="accordion-title" href="{path='charter/fleet'}">Charter Fleet</a></li>
+                <li class="sub-navigation-item"><a class="accordion-title" href="{path='charter/guide'}">Charter Guide</a></li>
+                <li class="sub-navigation-item"><a class="accordion-title" href="{path='charter/destinations'}">Destinations</a></li>
+                <li class="sub-navigation-item"><a class="accordion-title" href="/contact#oyster-charter">Contact Charter</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="accordion-item" data-accordion-item><a class="accordion-title" href="/world-rally"><span>World Rally</span><i class="fa fa-angle-up float-right"></i><i class="fa fa-angle-down float-right"></i></a>
+            <div class="accordion-content" data-tab-content>
+              <ul class="sub-navigation second-level-nav">
+                <li class="sub-navigation-item"><a class="accordion-title" href="http://www.oysterworldrally.com/" target="_blank">World Rally 2017-19</a></li>
+                <li class="sub-navigation-item"><a class="accordion-title" href="{path='world-rally/world-rally-2013-14'}">World Rally 2013-14</a></li>
+                <li class="sub-navigation-item"><a class="accordion-title" href="mailto:worldrally2017@oysteryachts.com">Contact World Rally</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="accordion-item" data-accordion-item><a class="accordion-title" href="/events"><span>Events</span><i class="fa fa-angle-up float-right"></i><i class="fa fa-angle-down float-right"></i></a>
+            <div class="accordion-content" data-tab-content>
+              <ul class="sub-navigation second-level-nav">
+                <li class="sub-navigation-item"><a class="accordion-title" href="/events/regattas-calendar">Regattas</a></li>
+                <li class="sub-navigation-item"><a class="accordion-title" href="/events/boat-shows">Boat Shows</a></li>
+                <li class="sub-navigation-item"><a class="accordion-title" href="/events/other-events">Other Events</a></li>
+                <li class="sub-navigation-item"><a class="accordion-title" href="/events/gallery">Events Gallery</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="accordion-item" data-accordion-item><a class="accordion-title" href="/news"><span>News</span><i class="fa fa-angle-up float-right"></i><i class="fa fa-angle-down float-right"></i></a>
+            <div class="accordion-content" data-tab-content>
+              <ul class="sub-navigation second-level-nav">
+                <li class="sub-navigation-item"><a class="accordion-title" href="/news/news-library">News Library</a></li>
+                <li class="sub-navigation-item"><a class="accordion-title" href="/news/magazine">Oyster Magazine</a></li>
+                <li class="sub-navigation-item"><a class="accordion-title" href="/news/press-coverage">Press Coverage</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="accordion-item" data-accordion-item><a class="accordion-title" href="/contact"><span>Contact</span><i class="fa fa-angle-up float-right"></i><i class="fa fa-angle-down float-right"></i></a>
+            <div class="accordion-content" data-tab-content>
+              <ul class="sub-navigation second-level-nav">
+                <li class="sub-navigation-item"><a class="accordion-title" href="/contact">Our Offices</a></li>
+                <li class="sub-navigation-item"><a class="accordion-title" href="/contact/recruitment">Recruitment</a></li>
+                <li class="sub-navigation-item"><a class="accordion-title" href="/media-centre">Media Centre</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <footer class="nav-footer-modal">
+    <div class="row small-collapse">
+      <div class="small-6 columns show-for-small-only">
+        <button class="button follow-btn text-uppercase" type="button">Follow oyster</button>
+      </div>
+      <div class="medium-9 columns show-for-medium">
+            <div class="social-icons social-invert social-background"><a class="facebook-icon" href="https://www.facebook.com/oystermarine" target="_blank"><i class="fa fa-facebook-official"></i></a><a class="twitter-icon" href="https://twitter.com/OysterMarine" target="_blank"><i class="fa fa-twitter"></i></a><a class="youtube-icon" href="https://www.youtube.com/user/oystermarine" target="_blank"><i class="fa fa-youtube-play"></i></a><a class="instagram-icon" href="https://www.instagram.com/oysteryachts/" target="_blank"><i class="fa fa-instagram"></i></a></div>
+      </div>
+      <div class="small-6 medium-3 columns"><a class="button owners-area-text text-uppercase" href="/owners-area/login">owners' area</a></div>
+      <div class="small-12 columns social-links end">
+        <div class="back-btn"><img src="/assets/images/arrow_left.png"></div>
+            <div class="social-icons social-invert social-background"><a class="facebook-icon" href="https://www.facebook.com/oystermarine" target="_blank"><i class="fa fa-facebook-official"></i></a><a class="twitter-icon" href="https://twitter.com/OysterMarine" target="_blank"><i class="fa fa-twitter"></i></a><a class="youtube-icon" href="https://www.youtube.com/user/oystermarine" target="_blank"><i class="fa fa-youtube-play"></i></a><a class="instagram-icon" href="https://www.instagram.com/oysteryachts/" target="_blank"><i class="fa fa-instagram"></i></a></div>
+      </div>
+    </div>
+  </footer>
 </div>

@@ -1,4 +1,5 @@
-{embed="site/.header" snap_to="90" snap_offset="undefined"}
+{exp:channel:entries channel="world_rally_landing" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published"}
+{embed="site/.header" page_title="World Rally" entry_id="{entry_id}" snap_to="90" snap_offset="undefined"}
 
 <section class="after-nav world-rally-landing">
       <div class="row full-width-row">
@@ -9,10 +10,8 @@
                 WORLD RALLY 
                 <span>2017-19</span>
               </h2>
-              <p>
-                Explore some of the most beautiful regions of the world. Make your dreams come true and join the Oyster World Rally 2017-19.
-                
-              </p><a href="http://www.oysterworldrally.com/" target="_blank" class="button-solid-yellow text-uppercase">discover more</a>
+              {world_rally_2017_19_description}
+            <a href="http://www.oysterworldrally.com/" target="_blank" class="button-solid-yellow text-uppercase">discover more</a>
             </div>
           </div>
         </div>
@@ -24,24 +23,20 @@
                   WORLD RALLY 
                   <span>2013-14</span>
                 </h2>
-                <p>
-                  Look back at the successful inaugural Oyster World Rally 2013-14, organised exclusively for the owners of Oyster Yachts.
-                  
-                </p><a href="{path='world-rally/world-rally-2013-14'}" class="button-solid-yellow text-uppercase">view previous rally</a>
+                {world_rally_2013_14_description}
+                <a href="{path='world-rally/world-rally-2013-14'}" class="button-solid-yellow text-uppercase">view previous rally</a>
               </div>
             </div>
             <div style="background-image: url('/assets/images/bg-images/world-rally-bg-3.jpg')" class="world-rally-landing-contact">
               <div class="inner">
-                <h2 class="text-uppercase">contact</h2>
-                <p>
-                  To find out more about the Oyster World Rally 2017-19 please click the link below to get in contact with a member of our team.
-                  
-                </p><a href="" class="button-transparent text-uppercase">contact</a>
+                <h2 class="text-uppercase">World Rally 2021-23</h2>
+                {contact_description}
+                <a href="mailto:worldrally2017@oysteryachts.com" class="button-transparent text-uppercase">contact</a>
               </div>
             </div>
           </div>
         </div>
       </div>
     </section>
-
+{/exp:channel:entries}
 {footer}

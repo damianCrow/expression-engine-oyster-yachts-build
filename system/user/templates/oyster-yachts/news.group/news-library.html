@@ -1,10 +1,16 @@
-{embed="site/.header" snap_to="undefined" snap_offset="undefined"}
+
+				{exp:channel:entries channel="news_library_landing" dynamic="no" disable="member_data|categories|category_fields|pagination|member_data" cache="yes" refresh="60" status="published" }
+
+{embed="site/.header" page_title="News Library"  entry_id="{entry_id}" snap_to=".news-panes" snap_offset="undefined"}
+{/exp:channel:entries}
+
 
 <section style="background-image: url('/assets/images/bg-images/news-news-library-bg.jpg'); " class="hero after-nav global-page-hero yacht-listing-photo global-page-hero--small">
 	{back_button}
 </section>
 <section id="news-news-library" class="news-news-library global-padding-top-only--small">
-	<div class="row">
+	<div class="banner"><h1>News library</h1></div>
+	<div class="row row-pad">
 		<div data-columns class="news-panes">
 
 			{exp:channel:entries channel="news|event_news" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published" sort="desc"}

@@ -1,13 +1,13 @@
 'use strict';
 
-define(['jquery', 'foundation', 'social_grid', 'owlcarousel', 'cycle'], function ($, Foundation, SocialGrid) {
+define(['jquery', 'foundation', 'social_grid', 'breakpoints', 'owlcarousel', 'cycle'], function ($, Foundation, SocialGrid, BreakPoints) {
 
 	// ----- HOME PAGE SOCIAL GRID ----
 	new SocialGrid();
 
 	$('.scroll-message').click(function () {
 		$('html, body').animate({
-			scrollTop: $(".yacht-feature").offset().top - $('header').height()
+			scrollTop: $(".yacht-feature").offset().top - $('.global-header').height()
 		}, 1000);
 	});
 
@@ -21,20 +21,31 @@ define(['jquery', 'foundation', 'social_grid', 'owlcarousel', 'cycle'], function
 	/*$(window).resize(function () {
 		heroSlideHeight();
 	});*/
+	var resizeTimer;
 
+	$(window).on('resize', function(e) {
+		clearTimeout(resizeTimer);
+		resizeTimer = setTimeout(function() {
+			// Run code here, resizing has "stopped"
+			heroSlideHeight();
+			cycleFeaturedYachtSlider(BreakPoints.atLeast("large"));
+		}, 250);
+	});
 	// Homepage cycle / sliders
 
 	var prevActiveClasses;
 	$('.hero-slides').on('initialized.owl.carousel', function (e) {
-		// Apply event before the carousel is initialized and add the zooming animation class to all.
-		$('.hero-slide').find('.hero-image').addClass('zooming-in');
+		setTimeout(function(){
+			// Apply event before the carousel is initialized and add the zooming animation class to all.
+			$('.hero-slide').find('.hero-image-container').addClass('zooming-in');
+		}, 850);
 	}).owlCarousel({
 		loop: true,
 		autoplay: true,
 		autoplayTimeout: 5000,
 		autoplayHoverPause: true,
 		margin: 0,
-		autoHeight: true,
+		autoHeight: false,
 		items: 1,
 		dotsContainer: '.hero-controls',
 		dotClass: 'nav-point',
@@ -43,18 +54,17 @@ define(['jquery', 'foundation', 'social_grid', 'owlcarousel', 'cycle'], function
 
 	}).on('translate.owl.carousel', function (e, info) {
 		// On each change make sure every carousel item is animating (with this class).
-		$('.hero-slide').find('.hero-image').addClass('zooming-in');
+		setTimeout(function(){
+				$('.hero-image-container').not('.hero-slides .slide-' + ( (e.page.index) + 1)).removeClass('zooming-in');
+			}, 850);
 
-		// Remove the class from the last active item (to allow the animation to reset next time round)
-		$(prevActiveClasses).removeClass('zooming-in');
-
-		// We need to pull each slide's unique class number (from slide-[i]), as Owl duplicates slides to allow for a smooth loop.
-		var classesOfActive = $('.hero-slides .active .hero-image').attr('class').match(/slide-(\d+)/)[1];
-
-		// Use the slides number to select it and it's dublicates.
-		prevActiveClasses = $('.hero-slides .slide-' + classesOfActive);
+			$('.hero-slides .slide-' + ( (e.page.index) + 1)).addClass('zooming-in');
 	});
-
+$('.hero-controls .nav-point').click(function() {
+// With optional speed parameter
+// Parameters has to be in square bracket '[]'
+	$('.hero-slides').trigger('play.owl.autoplay', [5000]);
+})
 	
 
 	var newsPreviewCarousel = $('.news-preview .owl-carousel');
@@ -70,10 +80,13 @@ define(['jquery', 'foundation', 'social_grid', 'owlcarousel', 'cycle'], function
 		nav: false
 	});
 
-	if ($('.landing-yacht-feature').length > 0) {
-		// gsapFeaturedYachtSlider();
-		cycleFeaturedYachtSlider();
-	}
+	Modernizr.on('videoautoplay', function( result ) {
+		if (result) {
+			cycleFeaturedYachtSlider(BreakPoints.atLeast("large"));
+		}else{
+			console.log('Modernizr failed to run autoplay test');
+		}
+	})
 
 	function gsapFeaturedYachtSlider() {
 
@@ -168,31 +181,21 @@ define(['jquery', 'foundation', 'social_grid', 'owlcarousel', 'cycle'], function
 		}
 	}
 
-	function cycleFeaturedYachtSlider() {
-		$('.landing-yacht-feature').removeClass('gsap-slider');
+	function cycleFeaturedYachtSlider(secondarySlider) {
+		// init Overview cycle
+		var $overviewCycle = $('.yacht-feature .details').on( 'cycle-pager-activated', function( event, opts ) {
+		    console.log(event, opts);
 
-		var timer = 100;
+		    currentSubRow = 0;
+		    currentRow = opts.currSlide;
 
-		$('.yacht-feature-large-media, .yacht-feature-small-media').on('cycle-initialized', function () {
-			
-			var lgActiveSlideImg = $('.yacht-feature-large-media .cycle-slide-active').find('img');
-			var smActiveSlideImg = $('.yacht-feature-small-media .cycle-slide-active').find('img');
+		    //console.log(opts);
 
-			// unveil the first slides
-			if (lgActiveSlideImg.length > 0) {
-				lazySizes.loader.unveil(lgActiveSlideImg[0]);
-			}
+		    clearTimeout(t);
+		    nextSlide();
 
-			if (smActiveSlideImg.length > 0) {
-				// lazySizes.loader.unveil(smActiveSlideImg[0]);
-				smActiveSlideImg.each(function (index, element) {
-					// console.log(element);
-					lazySizes.loader.unveil(smActiveSlideImg[index]);
-				});
-			}
-		});
-
-		$(".yacht-feature .details").cycle({
+		    nextImageSlides();
+		}).cycle({
 			pager: '.nav-points',
 			pagerTemplate: '<div class="nav-point"></div>',
 			pagerActiveClass: 'active',
@@ -200,71 +203,310 @@ define(['jquery', 'foundation', 'social_grid', 'owlcarousel', 'cycle'], function
 			prev: '.yacht-left',
 			next: '.yacht-right',
 			fx: 'scrollHorz',
+			swipe: true,
 			speed: 500,
-			log: false
-		}).on('cycle-before', function (event, optionHash) {
-
-			var nextLargeImg = $('.yacht-feature-large-media .cycle-slide-active').next().find('img'),
-			    nextSmallImg = $('.yacht-feature-small-media .cycle-slide-active').next().find('img');
-
-			if (nextLargeImg.length > 0) {
-				lazySizes.loader.unveil(nextLargeImg[0]);
-			}
-
-			if (nextSmallImg.length > 0) {
-				nextSmallImg.each(function (index, element) {
-					lazySizes.loader.unveil(nextSmallImg[index]);
-				});
-			}
-
-			// Top row image
-			setTimeout(function () {
-				$('.yacht-feature-large-media').cycle('next');
-				// console.log($('.yacht-feature-large-media').cycle('next'));
-				// console.log('optionHash', optionHash);		
-			}, timer);
-
-			// Bottom row image 1
-			setTimeout(function () {
-				$('.yacht-feature-small-media:eq(0)').cycle('next');
-			}, timer * 2);
-
-			// Bottom row image 2
-			setTimeout(function () {
-				$('.yacht-feature-small-media:eq(1)').cycle('next');
-			}, timer * 3);
-
-			// Bottom row image 3
-			setTimeout(function () {
-				$('.yacht-feature-small-media:eq(2)').cycle('next');
-			}, timer * 4);
+			log: false,
+			paused: true
 		});
 
-		$('.yacht-feature-large-media, .yacht-feature-small-media').cycle({
+		// init image cycles
+		var $imageCycles = $('.yacht-feature-large-media, .yacht-feature-small-media').cycle({
 			paused: true,
 			speed: 500,
 			fx: 'scrollHorz',
-			slides: '> .slide',
-			log: false
+			swipe: true,
+			slides: '> .slide'
 		});
 
-		// Autoplay all videos in carousels, else delete it.
-		$('.yacht-feature').find('video').each(function () {
-			var videoFound = this;
-			// $(this).get(0).play();
+		var timerNewRow = 6500,
+			timerStagger = 100,
+			currentRow = 0,
+			currentSubRow = 0,
+			slideSubRows = [],
+			t;
 
-			if (Foundation.MediaQuery.atLeast('medium')) {
-				$(videoFound).get(0).play();
+		// get how many subrows there as for each row
+		$(slideIndex).each(function(i, subrow) {
+			slideSubRows[i] = Math.max.apply(Math, subrow);
+		});
 
-				$(videoFound).get(0).onplay = function () {
-					console.log('playing video');
-					$(videoFound).siblings('.slide-image').remove();
-				};
-			} else {
-				$(videoFound).remove();
+		//console.log('slideindex', slideIndex);
+
+		//console.log('subrows', slideSubRows);
+
+		nextSlide();
+
+		function nextSlide() {
+			t = setTimeout(function() {
+
+				if (currentSubRow < slideSubRows[currentRow] - 1) {
+					currentSubRow++;
+
+					nextImageSlides();
+				} else {
+					currentSubRow = 0;
+					currentRow++;
+					if (currentRow >= slideIndex.length) {
+						currentRow = 0;
+					}
+
+					$overviewCycle.cycle('next');
+					nextImageSlides();
+				}
+
+				nextSlide();
+
+			}, timerNewRow);
+		}
+
+		function nextImageSlides() {
+			var c = 0;
+
+			for (var i=0; i<4; i++) {
+				if (currentSubRow === 0) {
+					nextSlideTimer(i, c);
+
+					c++;
+				} else if (slideIndex[currentRow][i] > 1) {
+					nextSlideTimer(i, c);
+
+					c++;
+				}
 			}
-		});
+		}
+
+		function nextSlideTimer(i, c) {
+			var index = 0;
+
+
+
+			for (var j=0; j<currentRow; j++) {
+				index += slideIndex[j][i];
+			}
+
+			//console.log(currentRow, index);
+
+			index += currentSubRow;
+
+			setTimeout(function() {
+				//console.log(i, $imageCycles.eq(i));
+				$imageCycles.eq(i).cycle('goto', index);
+			}, c*timerStagger);
+		}
+
+		function startAutopager() {
+		    nextSlide();
+		}
+		function stopAutopager() {
+		    clearTimeout(t);
+		}
+
+		window.addEventListener('focus', startAutopager);    
+		window.addEventListener('blur', stopAutopager);
 	}
+
+	/*function cycleFeaturedYachtSlider(secondarySlider) {
+
+		if ($('.landing-yacht-feature').length > 0) {
+			var firstSliders = function firstSliders() {
+
+				$('.yacht-feature .details').data('cycle-pause-on-hover', '.yacht-feature').data('cycle-initialized', true);
+
+				var timer = 100;
+				var slideTimeout = 6500;
+
+				$('.yacht-feature-large-media, .yacht-feature-small-media').on('cycle-initialized', function () {
+					// console.log("$('.yacht-feature-large-media .cycle-slide-active').find('img')", $('.yacht-feature-large-media .cycle-slide-active').find('img'));
+
+					$('.yacht-feature-large-media, .yacht-feature-small-media').data('cycle-initialized', true);
+
+					var lgActiveSlideImg = $('.yacht-feature-large-media .cycle-slide-active').find('img');
+					var smActiveSlideImg = $('.yacht-feature-small-media .cycle-slide-active').find('img');
+
+					// unveil the first slides
+					if (lgActiveSlideImg.length > 0) {
+						lazySizes.loader.unveil(lgActiveSlideImg[0]);
+					}
+
+					if (BreakPoints.atLeast("large")) {
+						playFirstVideos();
+					}
+
+					function playFirstVideos() {
+
+						var firstLargeVideo = $('.yacht-feature-large-media .slide').eq(0).find('video');
+						var firstSmallVideo = $('.yacht-feature-small-media .slide').eq(0).find('video');
+
+						$('.yacht-feature-small-media').each(function (index, element) {
+							if ($('.slide', element).eq(0).find('video').length > 0) {
+								// console.log('slide element', $(element).eq(0).find('video'));
+								$(element).eq(0).find('video').get(0).play();
+							}
+						});
+
+						if (firstLargeVideo.length > 0) {
+							$(firstLargeVideo).each(function (index, element) {
+								$(element).get(0).play();
+							});
+						}
+
+						if (smActiveSlideImg.length > 0) {
+							// lazySizes.loader.unveil(smActiveSlideImg[0]);
+							smActiveSlideImg.each(function (index, element) {
+								// console.log(element);
+								lazySizes.loader.unveil(smActiveSlideImg[index]);
+							});
+						}
+					}
+				});
+
+				$(".yacht-feature .details").cycle({
+					pager: '.nav-points',
+					pagerTemplate: '<div class="nav-point"></div>',
+					pagerActiveClass: 'active',
+					slides: '> .slide',
+					prev: '.yacht-left',
+					next: '.yacht-right',
+					fx: 'scrollHorz',
+					swipe: true,
+					speed: 500,
+					log: false,
+					// hoverPaused: true,
+					timeout: slideTimeout
+				}).on('cycle-before', function (event, optionHash) {
+
+					var nextLargeImg = $('.yacht-feature-large-media .cycle-slide-active').next().find('img'),
+					    nextLargeVideo = $('.yacht-feature-large-media .slide').eq(optionHash.slideNum).find('video');
+
+					Modernizr.on('videoautoplay', function (result) {
+
+						if (nextLargeVideo.length > 0) {
+							$('.yacht-feature-large-media').find('video').not(nextLargeVideo).each(function (index, element) {
+								var videoFound = element;
+								// $(this).get(0).play();
+								$(videoFound).get(0).pause();
+							});
+							$(nextLargeVideo).get(0).play();
+						}
+					});
+
+					if (nextLargeImg.length > 0) {
+						lazySizes.loader.unveil(nextLargeImg[0]);
+					}
+
+					// Top row image
+					setTimeout(function () {
+						$('.yacht-feature-large-media').cycle('goto', optionHash.slideNum - 1);
+						// $('.yacht-feature-large-media').cycle('next');
+						// console.log($('.yacht-feature-large-media').cycle('next'));
+						// console.log('optionHash', optionHash);		
+					}, timer);
+				});
+
+				$('.yacht-feature-large-media').cycle(secondarySliders);
+			};
+
+			var secondarySliders = {
+				paused: true,
+				speed: 500,
+				fx: 'scrollHorz',
+				swipe: true,
+				slides: '> .slide',
+				log: false
+			},
+			    timer = 100,
+			    slideTimeout = 6500;
+
+			if (!$(".yacht-feature .details").data('cycle-initialized')) {
+				firstSliders();
+			}
+
+			if (secondarySlider == true) {
+				// If it doesn't exist, create it
+
+				var smallerSliders = function smallerSliders() {
+
+					$(".yacht-feature .details").on('cycle-initialized', function () {});
+
+					$(".yacht-feature .details").on('cycle-before', function (event, optionHash) {
+
+						var nextSmallVideo = [],
+						    nextSmallImg = $('.yacht-feature-small-media .cycle-slide-active').next().find('img');
+
+						$('.yacht-feature-small-media').find('video').each(function (index, element) {
+							var videoFound = element;
+							// $(this).get(0).play();
+							$(videoFound).get(0).pause();
+						});
+
+						$('.yacht-feature-small-media').each(function (index, element) {
+							if ($('.slide', element).eq(optionHash.slideNum).find('video').length > 0) {
+								// console.log('slide element', $(element).eq(0).find('video'));
+								$('.slide', element).eq(optionHash.slideNum).find('video').each(function (index2, videoToPlay) {
+									$(videoToPlay).get(0).play();
+								});
+							}
+						});	
+
+						// An each loop because there are multiple small image carousels.
+						if (nextSmallImg.length > 0) {
+							nextSmallImg.each(function (index, element) {
+								lazySizes.loader.unveil(nextSmallImg[index]);
+							});
+						}
+
+						// Bottom row image 1
+						setTimeout(function () {
+							$('.yacht-feature-small-media:eq(0)').cycle('goto', optionHash.slideNum - 1);
+							// $('.yacht-feature-small-media:eq(0)').cycle('next');
+						}, timer * 2);
+
+						// Bottom row image 2
+						setTimeout(function () {
+							$('.yacht-feature-small-media:eq(1)').cycle('goto', optionHash.slideNum - 1);
+							// $('.yacht-feature-small-media:eq(1)').cycle('next');
+						}, timer * 3);
+
+						// Bottom row image 3
+						setTimeout(function () {
+							$('.yacht-feature-small-media:eq(2)').cycle('goto', optionHash.slideNum - 1);
+							// $('.yacht-feature-small-media:eq(2)').cycle('next');
+						}, timer * 4);
+					});
+
+					$('.yacht-feature-small-media').cycle(secondarySliders);
+				};
+
+				smallerSliders();
+			} else if ($(".yacht-feature-small-media").data('cycle-initialized')) {
+				//If it exists, destory it.
+				$('.yacht-feature-small-media').cycle('destroy');
+			}
+
+			// Autoplay all videos in carousels, else delete it.
+			$('.yacht-feature').find('video').each(function () {
+				var videoFound = this;
+
+				Modernizr.on('videoautoplay', function (result) {
+					if (result) {
+						// console.log('removing image from video slide?');
+						$(videoFound).siblings('img, .lazyload, div').css('display', 'none');
+						$(videoFound).css('display', 'block');
+					} else {
+						$(videoFound).siblings('img, .lazyload, div').css('display', 'block');
+						$(videoFound).css('display', 'none');
+					}
+				});
+			});
+
+			// Make sure the other (not details slider) sliders sync when they are swiped
+			$('.yacht-feature-large-media, .yacht-feature-small-media').on('cycle-before', function(event, optionHash){
+				$('.yacht-feature .details').cycle('goto', optionHash.slideNum - 1);
+			});
+
+
+		}
+	}*/
 
 
 	$('.news-preview .cheveron-nav-left').on('click', function () {

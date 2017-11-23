@@ -1,5 +1,7 @@
 /*jshint unused: vars */
 require.config({
+  urlArgs: "v=1.03",
+
   paths: {
     typekit: 'https://use.typekit.net/htg3ydj',
     jquery: '/bower_components/jquery/dist/jquery.min',
@@ -11,6 +13,7 @@ require.config({
     cycle: '/bower_components/jquery-cycle2/build/jquery.cycle2.min',
     lightgallery: '/assets/js/lib/lightgallery/lightgallery',
     lightgalleryThumbs: '/assets/js/lib/lightgallery/lg-thumbnail.min',
+    lightgalleryHash: '/assets/js/lib/lightgallery/lg-hash',
     lightgalleryVideo: '/assets/js/lib/lightgallery/lg-video.min',
     ScrollMagic: '/bower_components/scrollmagic/scrollmagic/minified/ScrollMagic.min',
     jqueryValidation: '/bower_components/jquery-validation/dist/jquery.validate.min',
@@ -21,6 +24,10 @@ require.config({
     googleMaps: 'https://maps.googleapis.com/maps/api/js?key=AIzaSyC4Ctq_b0K3ygkut_DEJ4YFyuGkcWKvM68',
     salvattore: '/bower_components/salvattore/dist/salvattore.min',
     froogaloop: 'https://f.vimeocdn.com/js/froogaloop2.min',
+    lazySizesRespImg: '/bower_components/lazysizes/plugins/respimg/ls.respimg.min',
+    lazySizesBgSet: '/bower_components/lazysizes/plugins/bgset/ls.bgset.min',
+    lazySizesParentFit: '/bower_components/lazysizes/plugins/parent-fit/ls.parent-fit.min',
+    lazySizesProg: '/bower_components/lazysizes/plugins/progressive/ls.progressive.min',
     lazySizes: '/bower_components/lazysizes/lazysizes.min',
 
     appInit: '/assets/js/components/setup/init',
@@ -35,8 +42,8 @@ require.config({
     brokerage_filters: '/assets/js/components/util/brokerage-filters',
     charter_filters: '/assets/js/components/util/charter-filters',
     social_grid: '/assets/js/components/util/social-grid',
+    breakpoints: '/assets/js/components/util/breakpoints',
     map: '/assets/js/components/util/map',
-    sidebar: '/assets/js/components/util/sidebar',
     gallery_fullscreen: '/assets/js/components/util/gallery-full',
     gallery_modal: '/assets/js/components/util/gallery-modal',
     shortlist: '/assets/js/components/util/shortlist',
@@ -69,6 +76,10 @@ require.config({
       'jquery'
     ],
     'lightgalleryThumbs': [
+      'jquery',
+      'lightgallery'
+    ],
+    'lightgalleryHash': [
       'jquery',
       'lightgallery'
     ],
@@ -114,6 +125,10 @@ require([
   'jquerygsap',
   'foundation',
   'owlcarousel',
+  'lazySizesRespImg',
+  'lazySizesBgSet',
+  'lazySizesParentFit',
+  'lazySizesProg',
   'lazySizes',
   'appInit',
   'global'

@@ -6,7 +6,7 @@
 // Baseline setup
 // --------------
 // Establish the root object, `window` in the browser, or `global` on the server.
-var n=this,t=n._,r={},e=Array.prototype,u=Object.prototype,i=Function.prototype,a=e.push,o=e.slice,c=e.concat,l=u.toString,f=u.hasOwnProperty,s=e.forEach,p=e.map,h=e.reduce,v=e.reduceRight,d=e.filter,g=e.every,m=e.some,y=e.indexOf,b=e.lastIndexOf,x=Array.isArray,_=Object.keys,w=i.bind,j=function(n){return n instanceof j?n:this instanceof j?void(this._wrapped=n):new j(n)};
+var n=this,t=n._,r={},e=Array.prototype,u=Object.prototype,i=Function.prototype,a=e.push,o=e.slice,c=e.concat,l=u.toString,f=u.hasOwnProperty,s=e.forEach,p=e.map,h=e.reduce,v=e.reduceRight,d=e.filter,y=e.every,g=e.some,m=e.indexOf,b=e.lastIndexOf,x=Array.isArray,_=Object.keys,w=i.bind,j=function(n){return n instanceof j?n:this instanceof j?void(this._wrapped=n):new j(n)};
 // Export the Underscore object for **Node.js**, with
 // backwards-compatibility for the old `require()` API. If we're in
 // the browser, add `_` as a global object via a string identifier,
@@ -40,14 +40,14 @@ j.reject=function(n,t,r){return j.filter(n,function(n,e,u){return!t.call(r,n,e,u
 // Determine whether all of the elements match a truth test.
 // Delegates to **ECMAScript 5**'s native `every` if available.
 // Aliased as `all`.
-j.every=j.all=function(n,t,e){t||(t=j.identity);var u=!0;return null==n?u:g&&n.every===g?n.every(t,e):(A(n,function(n,i,a){return(u=u&&t.call(e,n,i,a))?void 0:r}),!!u)};
+j.every=j.all=function(n,t,e){t||(t=j.identity);var u=!0;return null==n?u:y&&n.every===y?n.every(t,e):(A(n,function(n,i,a){return(u=u&&t.call(e,n,i,a))?void 0:r}),!!u)};
 // Determine if at least one element in the object matches a truth test.
 // Delegates to **ECMAScript 5**'s native `some` if available.
 // Aliased as `any`.
-var O=j.some=j.any=function(n,t,e){t||(t=j.identity);var u=!1;return null==n?u:m&&n.some===m?n.some(t,e):(A(n,function(n,i,a){return u||(u=t.call(e,n,i,a))?r:void 0}),!!u)};
+var O=j.some=j.any=function(n,t,e){t||(t=j.identity);var u=!1;return null==n?u:g&&n.some===g?n.some(t,e):(A(n,function(n,i,a){return u||(u=t.call(e,n,i,a))?r:void 0}),!!u)};
 // Determine if the array or object contains a given value (using `===`).
 // Aliased as `include`.
-j.contains=j.include=function(n,t){return null==n?!1:y&&n.indexOf===y?-1!=n.indexOf(t):O(n,function(n){return n===t})},
+j.contains=j.include=function(n,t){return null==n?!1:m&&n.indexOf===m?-1!=n.indexOf(t):O(n,function(n){return n===t})},
 // Invoke a method (with arguments) on every item in a collection.
 j.invoke=function(n,t){var r=o.call(arguments,2),e=j.isFunction(t);return j.map(n,function(n){return(e?t:n[t]).apply(n,r)})},
 // Convenience version of a common use case of `map`: fetching a property.
@@ -91,7 +91,7 @@ j.size=function(n){return null==n?0:n.length===+n.length?n.length:j.keys(n).leng
 // Get the first element of an array. Passing **n** will return the first N
 // values in the array. Aliased as `head` and `take`. The **guard** check
 // allows it to work with `_.map`.
-j.first=j.head=j.take=function(n,t,r){return null==n?void 0:null==t||r?n[0]:o.call(n,0,t)},
+j.first=j.head=j.take=function(n,t,r){return null!=n?null==t||r?n[0]:o.call(n,0,t):void 0},
 // Returns everything but the last entry of the array. Especially useful on
 // the arguments object. Passing **n** will return all the values in
 // the array, excluding the last N. The **guard** check allows it to work with
@@ -99,7 +99,7 @@ j.first=j.head=j.take=function(n,t,r){return null==n?void 0:null==t||r?n[0]:o.ca
 j.initial=function(n,t,r){return o.call(n,0,n.length-(null==t||r?1:t))},
 // Get the last element of an array. Passing **n** will return the last N
 // values in the array. The **guard** check allows it to work with `_.map`.
-j.last=function(n,t,r){return null==n?void 0:null==t||r?n[n.length-1]:o.call(n,Math.max(n.length-t,0))},
+j.last=function(n,t,r){return null!=n?null==t||r?n[n.length-1]:o.call(n,Math.max(n.length-t,0)):void 0},
 // Returns everything but the first entry of the array. Aliased as `tail` and `drop`.
 // Especially useful on the arguments object. Passing an **n** will return
 // the rest N values in the array. The **guard**
@@ -139,7 +139,7 @@ j.object=function(n,t){if(null==n)return{};for(var r={},e=0,u=n.length;u>e;e++)t
 // Delegates to **ECMAScript 5**'s native `indexOf` if available.
 // If the array is large and already in sort order, pass `true`
 // for **isSorted** to use binary search.
-j.indexOf=function(n,t,r){if(null==n)return-1;var e=0,u=n.length;if(r){if("number"!=typeof r)return e=j.sortedIndex(n,t),n[e]===t?e:-1;e=0>r?Math.max(0,u+r):r}if(y&&n.indexOf===y)return n.indexOf(t,r);for(;u>e;e++)if(n[e]===t)return e;return-1},
+j.indexOf=function(n,t,r){if(null==n)return-1;var e=0,u=n.length;if(r){if("number"!=typeof r)return e=j.sortedIndex(n,t),n[e]===t?e:-1;e=0>r?Math.max(0,u+r):r}if(m&&n.indexOf===m)return n.indexOf(t,r);for(;u>e;e++)if(n[e]===t)return e;return-1},
 // Delegates to **ECMAScript 5**'s native `lastIndexOf` if available.
 j.lastIndexOf=function(n,t,r){if(null==n)return-1;var e=null!=r;if(b&&n.lastIndexOf===b)return e?n.lastIndexOf(t,r):n.lastIndexOf(t);for(var u=e?r:n.length;u--;)if(n[u]===t)return u;return-1},
 // Generate an integer Array containing an arithmetic progression. A port of
@@ -248,9 +248,7 @@ if(r[i]==n)return e[i]==t;
 // Add the first object to the stack of traversed objects.
 r.push(n),e.push(t);var a=0,o=!0;
 // Recursively compare objects and arrays.
-if("[object Array]"==u){if(
-// Compare array lengths to determine if a deep comparison is necessary.
-a=n.length,o=a==t.length)
+if("[object Array]"==u){if(a=n.length,o=a==t.length)
 // Deep compare the contents, ignoring non-numeric properties.
 for(;a--&&(o=S(n[a],t[a],r,e)););}else{
 // Objects with different constructors are not equivalent, but `Object`s
@@ -315,7 +313,7 @@ var M={escape:new RegExp("["+j.keys(I.escape).join("")+"]","g"),unescape:new Reg
 j.each(["escape","unescape"],function(n){j[n]=function(t){return null==t?"":(""+t).replace(M[n],function(t){return I[n][t]})}}),
 // If the value of the named property is a function then invoke it;
 // otherwise, return it.
-j.result=function(n,t){if(null==n)return void 0;var r=n[t];return j.isFunction(r)?r.call(n):r},
+j.result=function(n,t){if(null!=n){var r=n[t];return j.isFunction(r)?r.call(n):r}},
 // Add your own custom functions to the Underscore object.
 j.mixin=function(n){A(j.functions(n),function(t){var r=j[t]=n[t];j.prototype[t]=function(){var n=[this._wrapped];return a.apply(n,arguments),D.call(this,r.apply(j,n))}})};
 // Generate a unique integer id (unique within the entire client session).
@@ -333,9 +331,7 @@ var T=/(.)^/,q={"'":"'","\\":"\\","\r":"r","\n":"n","	":"t","\u2028":"u2028","\u
 // and correctly escapes quotes within interpolated code.
 j.template=function(n,t,r){var e;r=j.defaults({},r,j.templateSettings);
 // Combine delimiters into one regular expression via alternation.
-var u=new RegExp([(r.escape||T).source,(r.interpolate||T).source,(r.evaluate||T).source].join("|")+"|$","g"),i=0,a="__p+='";n.replace(u,function(t,r,e,u,o){return a+=n.slice(i,o).replace(B,function(n){return"\\"+q[n]}),r&&(a+="'+\n((__t=("+r+"))==null?'':_.escape(__t))+\n'"),e&&(a+="'+\n((__t=("+e+"))==null?'':__t)+\n'"),u&&(a+="';\n"+u+"\n__p+='"),i=o+t.length,t}),a+="';\n",
-// If a variable is not specified, place data values in local scope.
-r.variable||(a="with(obj||{}){\n"+a+"}\n"),a="var __t,__p='',__j=Array.prototype.join,print=function(){__p+=__j.call(arguments,'');};\n"+a+"return __p;\n";try{e=new Function(r.variable||"obj","_",a)}catch(o){throw o.source=a,o}if(t)return e(t,j);var c=function(n){return e.call(this,n,j)};
+var u=new RegExp([(r.escape||T).source,(r.interpolate||T).source,(r.evaluate||T).source].join("|")+"|$","g"),i=0,a="__p+='";n.replace(u,function(t,r,e,u,o){return a+=n.slice(i,o).replace(B,function(n){return"\\"+q[n]}),r&&(a+="'+\n((__t=("+r+"))==null?'':_.escape(__t))+\n'"),e&&(a+="'+\n((__t=("+e+"))==null?'':__t)+\n'"),u&&(a+="';\n"+u+"\n__p+='"),i=o+t.length,t}),a+="';\n",r.variable||(a="with(obj||{}){\n"+a+"}\n"),a="var __t,__p='',__j=Array.prototype.join,print=function(){__p+=__j.call(arguments,'');};\n"+a+"return __p;\n";try{e=new Function(r.variable||"obj","_",a)}catch(o){throw o.source=a,o}if(t)return e(t,j);var c=function(n){return e.call(this,n,j)};
 // Provide the compiled function source as a convenience for precompilation.
 return c.source="function("+(r.variable||"obj")+"){\n"+a+"}",c},
 // Add a "chain" function, which will delegate to the wrapper.

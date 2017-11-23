@@ -107,10 +107,7 @@ var t=/[&?](S=[A-Za-z0-9]+)/;EE.cp.setBasePath=function(n,a){var n=n.replace(/&a
 EE.BASE=n,a||e(window).trigger("broadcast.setBasePath",n)},e(window).bind("broadcast.setBasePath",function(e,t){EE.cp.setBasePath(t,!0)}),EE.cp.refreshSessionData=function(t,n){n&&EE.cp.setBasePath(n),
 // running the request will return the x-csrf-header, which will trigger
 // our prefilter. We still need to replace the base though.
-e.getJSON(EE.BASE+"&C=login&M=refresh_csrf_token",function(e){EE.cp.setBasePath(e.base)})};var n=/(.*?)[?](.*?&)?(D=cp(?:&C=[^&]+(?:&M=[^&]+)?)?)(?:&(.+))?$/,a=/&?[DCM]=/g,o=/^&+/,i=/&+$/,s=/(^|&)S=0(&|$)/;EE.cp.cleanUrl=function(e,t){t=t||e,// i exists if coming from jQuery attr callback
-t=t||"",
-// Move session to the end
-t=t.toString().replace(/^(\S*?)S=(\S+?)&(\S*?)$/g,"$1$3&S=$2");var r=n.exec(t);if(r){
+e.getJSON(EE.BASE+"&C=login&M=refresh_csrf_token",function(e){EE.cp.setBasePath(e.base)})};var n=/(.*?)[?](.*?&)?(D=cp(?:&C=[^&]+(?:&M=[^&]+)?)?)(?:&(.+))?$/,a=/&?[DCM]=/g,o=/^&+/,i=/&+$/,s=/(^|&)S=0(&|$)/;EE.cp.cleanUrl=function(e,t){t=t||e,t=t||"",t=t.toString().replace(/^(\S*?)S=(\S+?)&(\S*?)$/g,"$1$3&S=$2");var r=n.exec(t);if(r){
 // result[1] // index.php
 // result[2] // S=49204&
 // result[3] // D=cp&C=foo&M=bar
@@ -121,7 +118,7 @@ EE.insert_placeholders=function(){e('input[type="text"]').each(function(){if(thi
 // Reset color & remove placeholder text
 t.css("color",a),t.val()===n&&(t.val(""),t.data("user_data","y"))}).blur(function(){
 // If no user content -> add placeholder text and dim
-(""===t.val()||t.val===n)&&(t.val(n).css("color","#888"),t.data("user_data","n"))}).trigger("blur")}})},/**
+""!==t.val()&&t.val!==n||(t.val(n).css("color","#888"),t.data("user_data","n"))}).trigger("blur")}})},/**
  * Handle idle / inaction between windows
  *
  * This code relies heavily on timing. In order to reduce complexity everything is
@@ -154,9 +151,7 @@ o=18e5,// 30 minutes: time before modal if window focused
 i=27e5,// 45 minutes: time before modal if no focus
 s=3e6;
 // Setup Base EE Control Panel
-e(document).ready(function(){
-// Make sure we have our modal available when we need it
-t=e("#idle-modal"),n=e(".overlay"),
+e(document).ready(function(){t=e("#idle-modal"),n=e(".overlay"),
 // If the modal hasn't been interacted with in over 10 minutes we'll send a request for
 // the current csrf token. It can flip on us during long waits due to the session timeout.
 // If the session times out this will get us a cookie based csrf token, which is what you
@@ -178,7 +173,7 @@ var r={hasFocus:!0,modalActive:!1,pingReceived:!1,lastActive:e.now(),lastRefresh
 // the timer stops. Reopening it hours later creates a race between
 // the tick timer and the non-idle events. When that happens, you're
 // way past the threshold and therefore too late.
-(this.modalActive||!this.modalThresholdReached())&&(
+!this.modalActive&&this.modalThresholdReached()||(
 // If they're active on the page for an extend period of time
 // without hitting the backend, we can sometimes run past the
 // session timeout. To prevent that from happening we'll refresh

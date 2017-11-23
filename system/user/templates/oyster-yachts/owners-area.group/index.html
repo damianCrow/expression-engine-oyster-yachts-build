@@ -1,21 +1,20 @@
 {owners_area_auth}
 
-{embed="site/.header" snap_to=".owners-area-landing" snap_offset="55"}
+{embed="site/.header" page_title="Oyster Owners Area" snap_to=".owners-area-landing" snap_offset="55"}
 
 {owners_area_subnav}
 
-<section style="background-image: url('/assets/images/news-hero.jpg'); " class="hero after-nav global-page-hero yacht-listing-photo global-page-hero--medium global-page-hero-adjust-subnav">
+<section style="background-image: url('/assets/images/oysteryachts-owners_area-banner.jpg'); " class="hero after-nav global-page-hero yacht-listing-photo global-page-hero--small global-page-hero-adjust-subnav">
 </section>
 
 <article class="owners-area-landing global-padding-top-only--large">
 	<section class="row row-pad">
 		<div class="large-offset-1 large-7 float">
 			<h2>Welcome to Oyster Yachts</h2>
-			<h1>Owners' Area</h1>
-			<p>
-				Welcome to the Owners Area of our website, which we hope you will find helpful and which is only accessible by fellow owners. We are always looking for ways to improve our service to owners and plan to develop the owners area of our website over the coming months. We would welcome your feedback and ideas for additional features. 
-				If you are planning to take part in our regattas, we will post all the information and regatta booking forms in this area so you can easily access this information from anywhere in the world. If you are away from your Oyster and need to refer to the Owners’ Manual, the latest version is stored here for your reference. In addition, our Aftersales Advisory Notes are stored online, ensuring that you always have access to any relevant technical information. We are pleased to offer you our exclusive range of Oyster merchandise and gifts together with customised clothing by special order. Please contact us if you have any queries or comments.
-			</p>
+			{exp:channel:entries channel="owners_area" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published" sort="desc"}
+			<h1>{title}</h1>
+			{introduction}
+			{/exp:channel:entries}
 		</div>
 		<div class="large-offset-1 large-3 small-12 float-left">
 			<aside class="overview-download columns owners-area-aside">
@@ -36,7 +35,7 @@
 					<div class="overview columns small-12">
 						<div class="side-profile">
 							<div class="side-profile-image"><span><?php echo substr($firstName, 0, 1).substr($lastName, 0, 1); ?></span></div>
-							<div class="side-profile-details"><span class="side-profile-name">{member_first_name} {member_last_name}</span><a href="/oyster/owners-area/profile" class="side-profile-view">View Profile</a></div>
+							<div class="side-profile-details"><span class="side-profile-name">{member_first_name} {member_last_name}</span><a href="/owners-area/my-profile" class="side-profile-view">View Profile</a></div>
 						</div>
 						<table class="table definition-table">
 							<tbody>
@@ -55,117 +54,101 @@
 								
 							</tbody>
 						</table>
+						{exp:channel:entries channel="world_rally_accounts" disable="member_data|category_fields|pagination" search:account_member="={member_id}" status="published"}
+                        <div class="owners-balance">
+                        	<span class="owners-balance__account-label">Account</br> Balance </span>
+                        	<span class="owners-balance__value"><abbr title="GBP">&pound;</abbr><?php echo number_format({account_balance}, 2); ?></span>
+                        	<a href="/owners-area/account" class="owners-balance__view-statement button-solid-blue button-full-width">View Account Statement</a>
+                        	<a href="mailto:customerservice@oysteryachts.com" class="owners-balance__view-statement button-solid-blue button-full-width" style="background-color:#fff;color:#003145 !important;">Contact Customer Service</a>
+                        </div>	{/exp:channel:entries}
 					</div>
 				</div>
 				{/exp:member:custom_profile_data}
 			</aside>
 		</div>
 	</section>
-	<div class="row row-pad">
+	<div class="row row-pad" data-equalizer>
 		<section class="large-6 small-12 float-left global-padding-top-only--small">
 			<div class="block-section large-11 large-centered small-12">
 				<div class="block-section-header">
 					<h3 class="text-uppercase">Upcoming Events</h3>
 				</div>
-				<ul class="upcoming-events--small text-uppercase">
+				<ul class="upcoming-events--small text-uppercase" data-equalizer-watch>
+					{exp:channel:entries channel="event" disable="member_data|category_fields|pagination" limit="3" cache="yes" refresh="60" status="published" orderby="event_end_date" sort="asc" search:event_end_date=">{current_time}"}
 					<li class="upcoming-event--small">
-						<div class="date-preview"><span class="month">May</span><span class="date">13</span></div>
-						<div class="event-details"><a href="" class="event-title">Oyster Brokerage Spring Show</a>
-							<time datetime="2016-05-13" class="start-date"> May 2016</time>
-							<time datetime="2016-05-15" class="end-date">15 May 2016</time>
-						</div><a class="button-solid-white button-chubby">View Event</a>
+						<div class="date-preview"><span class="month" style="font-size: 0.750em;">{event_start_date format="%F"}</span><span class="date" style="font-size: 2em;">{event_start_date format="%d"}</span></div>
+						<div class="event-details"><a href="" class="event-title">{title}</a>
+						<h5 class="sub-title text-uppercase">{exp:date_range start_date="{event_start_date format='%d %F %Y'}" end_date="{event_end_date format='%d %F %Y'}"}</h5>
+						</div><a href="{url_title_path='events/regattas'}" class="button-solid-white button-chubby">View Event</a>
 					</li>
-					<li class="upcoming-event--small">
-						<div class="date-preview"><span class="month">July</span><span class="date">04</span></div>
-						<div class="event-details"><a href="" class="event-title">Royal Southern Oyster Week</a>
-							<time datetime="2016-05-13" class="start-date"> July 2016</time>
-							<time datetime="2016-05-15" class="end-date">08 July 2016</time>
-						</div><a class="button-solid-white button-chubby">View Event</a>
-					</li>
-					<li class="upcoming-event--small">
-						<div class="date-preview"><span class="month">October</span><span class="date">04</span></div>
-						<div class="event-details"><a href="" class="event-title">Oyster Palma Regatta 2016</a>
-							<time datetime="2016-05-13" class="start-date"> October 2016</time>
-							<time datetime="2016-05-15" class="end-date">08 October 2016</time>
-						</div><a class="button-solid-white button-chubby">View Event</a>
-					</li>
+					{/exp:channel:entries}
 				</ul>
 			</div>
 		</section>
+		{exp:channel:entries channel="owners_area" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published" sort="desc"}
+
 		<section class="large-6 small-12 float-left global-padding-top-only--small">
 			<div class="block-section large-11 large-centered small-12">
 				<div class="block-section-header">
 					<h3 class="text-uppercase">My Contacts</h3>
 				</div>
 				<address>
-					<ul class="contacts-list">
+					<ul class="contacts-list" data-equalizer-watch>
+						{my_contacts}
 						<li>
 							<div class="contact-detail">
-								<div class="contact-picture"><img src="/assets/images/david-tydeman.jpg"></div>
-								<div class="contact-information"><span class="contact-name text-uppercase">Sarah Harmer</span><span class="contact-role text-uppercase">Customer Services</span>
-									<div class="contact-phone-email"><span class="contact-phone"><abbr title="Telephone">T: </abbr><a href="tel:+44 23 8083 1005">+44 23 8083 1005</a></span><span class="contact-email"><abbr title="Email">E: </abbr><a href="mailto:sarah.harmer@oysteryachts.com">sarah.harmer@oysteryachts.com</a></span></div>
+								<div class="contact-picture"><img src="{my_contacts:portrait}"></div>
+								<div class="contact-information"><span class="contact-name text-uppercase">{my_contacts:name}</span><span class="contact-role text-uppercase">{my_contacts:department}</span>
+									<div class="contact-phone-email"><span class="contact-phone"><abbr title="Telephone">T: </abbr><a href="tel:{my_contacts:telephone}">{my_contacts:telephone}</a></span><span class="contact-email"><abbr title="Email">E: </abbr><a href="mailto:{my_contacts:email}">{my_contacts:email}</a></span></div>
 								</div>
 							</div>
 						</li>
-						<li>
-							<div class="contact-detail">
-								<div class="contact-picture"><img src="/assets/images/david-tydeman.jpg"></div>
-								<div class="contact-information"><span class="contact-name text-uppercase">Mandy Boughton</span><span class="contact-role text-uppercase">Warranty</span>
-									<div class="contact-phone-email"><span class="contact-phone"><abbr title="Telephone">T: </abbr><a href="tel:+44 23 8083 1017">+44 23 8083 1017</a></span><span class="contact-email"><abbr title="Email">E: </abbr><a href="mailto:mandy.boughton@oysteryachts.com">mandy.boughton@oysteryachts.com</a></span></div>
-								</div>
-							</div>
-						</li>
-						<li>
-							<div class="contact-detail">
-								<div class="contact-picture"><img src="/assets/images/david-tydeman.jpg"></div>
-								<div class="contact-information"><span class="contact-name text-uppercase">Mark Durham</span><span class="contact-role text-uppercase">Operations Manager</span>
-									<div class="contact-phone-email"><span class="contact-phone"><abbr title="Telephone">T: </abbr><a href="tel:+34 971 287 474">+34 971 287 474</a></span><span class="contact-email"><abbr title="Email">E: </abbr><a href="mailto:mark.durham@oysteryachts.com">mark.durham@oysteryachts.com</a></span></div>
-								</div>
-							</div>
-						</li>
+						{/my_contacts}
+						
 					</ul>
 				</address>
 			</div>
 		</section>
 	</div>
+	{/exp:channel:entries}
 	<div class="row row-pad">
 		<section class="medium-6 small-12 float-left global-padding-top-only--small advice-notes">
 			<div class="block-section medium-11 medium-centered small-12">
+				{exp:channel:entries channel="owners_area_advisory_notes" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published" sort="desc" limit="1"}
 				<div class="block-section-header">
 					<h3 class="text-uppercase">Advisory Notes</h3>
 				</div>
 				<figure class="download-pdf clearfix">
 					<div class="download-thumb column small-3"><img src="/assets/images/oyster-event-pdf.png">
 					</div>
-					<figcaption class="description-download column small-9"><a>Oyster PDF Brochure</a>
-						<p>Includes: Davit wires – conversion to Dyneema ropes, Electric davits – correct operation, Marine Growth Protection System (MGPS ) & much more.</p>
-						<div class="external-file-btns"><a href="" class="external-file-btn button-solid-white text-uppercase button-chubby">View <span class="size text-uppercase">(2.3MB)</span></a><a href="" class="external-file-btn button-solid-white text-uppercase button-chubby">View Archive</a></div>
+					<figcaption class="description-download column small-9">{title}
+					<div class="external-file-btns">
+ 	{embed="site/.download_simple" title="" file="{document_pdf}" filesize="{document_pdf}{file_size}{/document_pdf}" label="Download"}
+ <a href="{path='owners-area/advisory-notes'}" class="external-file-btn button-solid-white text-uppercase ">View Archive</a></div>
 					</figcaption>
 				</figure>
+				{/exp:channel:entries}
 			</div>
 		</section>
+		{exp:channel:entries channel="owners_area" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published" sort="desc"}
 		<section class="medium-6 small-12 float-left global-padding-top-only--small owners-documents-preview">
 			<div class="block-section medium-11 medium-centered small-12">
 				<div class="block-section-header">
-					<h3 class="text-uppercase">Documents</h3>
+					<h3 class="text-uppercase">Featured Documents</h3>
 				</div>
 				<ul class="clearfix">
-					<li class="large-6 small-12 float-left">
+						{featured_documents}
+					<li class="small-12 float-left">
 						<figure class="download-pdf clearfix">
 							<div class="download-thumb column small-3"><img src="/assets/images/oyster-event-pdf.png">
 							</div>
-							<figcaption class="description-download column small-9"><a>Oyster PDF Brochure</a><a href="" class="external-file-btn button-solid-white text-uppercase">Download <span class="size text-uppercase">(2.3MB)</span></a>
+							<figcaption class="description-download column small-9">{featured_documents:title}
+							<!-- <a href="" class="external-file-btn button-solid-white text-uppercase">Download <span class="size text-uppercase">(2.3MB)</span></a> -->
+							{embed="site/.download_simple" title="" file="{featured_documents:file}" filesize="{featured_documents:file}{file_size}{/featured_documents:file}" label="Download"}
 							</figcaption>
 						</figure>
 					</li>
-					<li class="large-6 small-12 float-left">
-						<figure class="download-pdf clearfix">
-							<div class="download-thumb column small-3"><img src="/assets/images/oyster-event-pdf.png">
-							</div>
-							<figcaption class="description-download column small-9"><a>Oyster PDF Brochure</a><a href="" class="external-file-btn button-solid-white text-uppercase">Download <span class="size text-uppercase">(2.3MB)</span></a>
-							</figcaption>
-						</figure>
-					</li>
+						{/featured_documents}
 				</ul>
 			</div>
 		</section>
@@ -174,11 +157,23 @@
 		<div style="background-image:url('/assets/images/owners-area-feature.jpg')" class="wide-image-feature add-full-background-overlay">
 			<div class="wide-image-feature-content">
 				<h3 class="text-uppercase">Oyster Yachts Merchandise</h3>
-				<p>We are pleased to offer owners a range of Oyster merchandise and gifts. We can also supply clothing by special order, customised to your own requirements. To place an order, or for more information on our range of merchandise please contact the Oyster After Sales team.</p>
-				<div class="contact-phone-email"><span class="contact-phone"><abbr title="Telephone">T: </abbr><a href="tel:+44 2380 831 005">+44 2380 831 005</a></span><span class="contact-email"><abbr title="Email">E: </abbr><a href="mailto:customerservice@oysteryachts.com">customerservice@oysteryachts.com</a></span></div>
+				{merchandise_introduction}
+				<div class="contact-phone-email"><span class="contact-phone"><abbr title="Telephone">T: </abbr><a href="tel:{merchandise_department_telephone}">{merchandise_department_telephone}</a></span><span class="contact-email"><abbr title="Email">E: </abbr><a href="mailto:{merchandise_department_email}">{merchandise_department_email}</a></span></div>
 			</div>
 		</div>
 	</section>
+	{/exp:channel:entries}
+						
+<!-- 	<section>
+	Files:<br />
+	
+	{exp:channel:entries channel="owners_area_files" dynamic="no" disable="category_fields|pagination" status="published" search:owner_member="{logged_in_member_id}"}
+		{owner_files}
+			{owner_files:file}<br />
+		{/owner_files}
+	{/exp:channel:entries}
+	</section> -->
+	
 </article>
 
 {footer}

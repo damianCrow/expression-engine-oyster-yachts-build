@@ -90,10 +90,20 @@ class Editor_ft extends EE_Fieldtype
             ee('editor:Helper')->mcpAssets('js', $config['lang'].'.js', 'redactor/languages');
         }
 
+        $allPlugins = ee('editor:Configuration')->getPluginList();
+
         // Plugins
         if (isset($config['plugins'])) {
             foreach ($config['plugins'] as $plugin) {
-                ee('editor:Helper')->mcpAssets('js', $plugin.'.js', 'redactor/plugins');
+                if (!isset($allPlugins[$plugin])) continue;
+
+                if (!isset($allPlugins[$plugin]['included']) || $allPlugins[$plugin]['included'] == true) {
+                    ee('editor:Helper')->mcpAssets('js', $plugin.'.js', 'redactor/plugins');
+                }
+
+                if (isset($allPlugins[$plugin]['url'])) {
+                    ee()->cp->add_to_foot('<script src="' . $allPlugins[$plugin]['url'] . '" type="text/javascript"></script>');
+                }
             }
 
             if (in_array('codemirror', $config['plugins'])) {

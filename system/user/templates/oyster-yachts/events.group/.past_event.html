@@ -1,7 +1,7 @@
 {exp:channel:entries channel="event" disable="member_data|category_fields|pagination" cache="yes" refresh="60" require_entry="yes" status="published"}
 {if no_results}{redirect="404"}{/if}
 
-{embed="site/.header" snap_to=".full-screen #yacht-nav" snap_offset="55"}
+{embed="site/.header" page_title="{title}" snap_to=".full-screen #yacht-nav" snap_offset="55"}
 
 <section class="hero full-screen yacht-listing-photo">
 	<div id="full-image" {event_main_image}style="background-image: url('{image:url}');"{/event_main_image} class="yacht-listing-photo">
@@ -14,7 +14,7 @@
 				{parents field="event_day_event" status="published" orderby="date" sort="ASC"}
 				{parents:event_day_gallery limit="1"}
 				<?php if (!$gallery): ?>
-				<a href="" class="gallery button-view-gallery" data-gallery="{parents:url_title}">View Gallery</a>
+				<a href="" class="gallery button-view-gallery btn-gallery" data-gallery="{parents:url_title}">View Gallery</a>
 				<?php $gallery = true; ?>
 				<?php endif; ?>
 				{/parents:event_day_gallery}
@@ -61,19 +61,19 @@
 			<ul class="event-gallery">
 				<li style="background-image: url('{image:url}')"></li>
 				<li class="view-gallery-btn">
-					<a href="" class="text-uppercase button-view-gallery" data-gallery="{parents:url_title}"><i class="fa fa-th"></i><span>view gallery</span></a>
+					<a href="" class="text-uppercase button-view-gallery btn-gallery" data-gallery="{parents:url_title}"><i class="fa fa-th"></i><span>view gallery</span></a>
 				</li>
 			</ul>
 			{/parents:event_day_gallery}
 		</div>
 	</div>
 
-	{if parents:event_day_class_1_results:total_rows > 0}
+	{if "{parents:event_day_class_1_results:total_rows}" != "0" && "{parents:event_day_class_1_results:total_rows}" != "" && ("{parents:show_results}" == "" || "{parents:show_results}" == "Yes")}
 	<div class="row padded-full-width-row content">
 		<table class="table specs-table">
 			<thead>
 				<tr>
-					<td colspan="6" class="heading text-uppercase">{parents:event_day_number} results - sponsered by {parents:event_day_results_sponsor} (class 1)</td>
+					<td colspan="6" class="heading text-uppercase">class 1 results - sponsored by {parents:event_day_results_sponsor}</td>
 				</tr>
 			</thead>
 			<tbody>
@@ -82,17 +82,17 @@
 					<th class="text-uppercase">model</th>
 					<th class="text-uppercase">owner/skipper</th>
 					<th class="text-uppercase">finished</th>
-					<th class="text-uppercase">elapse</th>
-					<th class="text-uppercase">corrected</th>
+			<!-- 		<th class="text-uppercase">elapse</th>
+					<th class="text-uppercase">corrected</th> -->
 				</tr>
 				{parents:event_day_class_1_results}
 				<tr>
-					<td>{event_day_class_1_results:yacht_name}</td>
-					<td>{event_day_class_1_results:model}</td>
-					<td>{event_day_class_1_results:owner_skipper}</td>
-					<td>{event_day_class_1_results:finished}</td>
-					<td>{event_day_class_1_results:elapse}</td>
-					<td>{event_day_class_1_results:corrected}</td>
+					<td data-th='Yacht Name'>{event_day_class_1_results:yacht_name}</td>
+					<td data-th='Model'>{event_day_class_1_results:model}</td>
+					<td data-th='Owner/Skipper'>{event_day_class_1_results:owner_skipper}</td>
+					<td data-th='Finished'>{event_day_class_1_results:finished}</td>
+<!-- 					<td>{event_day_class_1_results:elapse}</td>
+					<td>{event_day_class_1_results:corrected}</td> -->
 				</tr>
 				{/parents:event_day_class_1_results}
 			</tbody>
@@ -100,12 +100,12 @@
 	</div>
 	{/if}
 
-	{if parents:event_day_class_2_results:total_rows > 0}
+	{if "{parents:event_day_class_2_results:total_rows}" != "0" && "{parents:event_day_class_2_results:total_rows}" != "" && ("{parents:show_results}" == "" || "{parents:show_results}" == "Yes")}
 	<div class="row padded-full-width-row content">
 		<table class="table specs-table">
 			<thead>
 				<tr>
-					<td colspan="6" class="heading text-uppercase">{parents:event_day_number} results - sponsered by {parents:event_day_results_sponsor} (class 2)</td>
+					<td colspan="6" class="heading text-uppercase">class 2 results - sponsored by {parents:event_day_results_sponsor}</td>
 				</tr>
 			</thead>
 			<tbody>
@@ -114,18 +114,18 @@
 					<th class="text-uppercase">model</th>
 					<th class="text-uppercase">owner/skipper</th>
 					<th class="text-uppercase">finished</th>
-					<th class="text-uppercase">elapse</th>
-					<th class="text-uppercase">corrected</th>
+			<!-- 		<th class="text-uppercase">elapse</th>
+					<th class="text-uppercase">corrected</th> -->
 				</tr>
 
 				{parents:event_day_class_2_results}
 				<tr>
-					<td>{event_day_class_2_results:yacht_name}</td>
-					<td>{event_day_class_2_results:model}</td>
-					<td>{event_day_class_2_results:owner_skipper}</td>
-					<td>{event_day_class_2_results:finished}</td>
-					<td>{event_day_class_2_results:elapse}</td>
-					<td>{event_day_class_2_results:corrected}</td>
+					<td data-th='Yacht Name'>{event_day_class_2_results:yacht_name}</td>
+					<td data-th='Model'>{event_day_class_2_results:model}</td>
+					<td data-th='Owner/Skipper'>{event_day_class_2_results:owner_skipper}</td>
+					<td data-th='Finished'>{event_day_class_2_results:finished}</td>
+			<!-- 		<td>{event_day_class_2_results:elapse}</td>
+					<td>{event_day_class_2_results:corrected}</td> -->
 				</tr>
 				{/parents:event_day_class_2_results}
 
@@ -133,18 +133,13 @@
 		</table>
 	</div>
 	{/if}
-</section>
-{/parents}
 
-{if event_class_1_overall_results:total_rows > 0 || event_class_2_overall_results:total_rows > 0}
-<section id="events-previous-regattas-overall-results" class="page-home-about event-previous-regattas-about">
-
-	{if event_class_1_overall_results:total_rows > 0}
+	{if "{parents:event_day_class_3_results:total_rows}" != "0" && "{parents:event_day_class_3_results:total_rows}" != "" && ("{parents:show_results}" == "" || "{parents:show_results}" == "Yes")}
 	<div class="row padded-full-width-row content">
 		<table class="table specs-table">
 			<thead>
 				<tr>
-					<td colspan="6" class="heading cyan-background text-uppercase">overall results - with discard (class 1) </td>
+					<td colspan="6" class="heading text-uppercase">class 3 results - sponsored by {parents:event_day_results_sponsor}</td>
 				</tr>
 			</thead>
 			<tbody>
@@ -153,18 +148,115 @@
 					<th class="text-uppercase">model</th>
 					<th class="text-uppercase">owner/skipper</th>
 					<th class="text-uppercase">finished</th>
-					<th class="text-uppercase">elapse</th>
-					<th class="text-uppercase">corrected</th>
+			<!-- 		<th class="text-uppercase">elapse</th>
+					<th class="text-uppercase">corrected</th> -->
+				</tr>
+
+				{parents:event_day_class_3_results}
+				<tr>
+					<td data-th='Yacht Name'>{event_day_class_3_results:yacht_name}</td>
+					<td data-th='Model'>{event_day_class_3_results:model}</td>
+					<td data-th='Owner/Skipper'>{event_day_class_3_results:owner_skipper}</td>
+					<td data-th='Finished'>{event_day_class_3_results:finished}</td>
+			<!-- 		<td>{event_day_class_2_results:elapse}</td>
+					<td>{event_day_class_2_results:corrected}</td> -->
+				</tr>
+				{/parents:event_day_class_3_results}
+
+			</tbody>
+		</table>
+	</div>
+	{/if}
+
+	{if "{parents:event_day_class_4_results:total_rows}" != "0" && "{parents:event_day_class_4_results:total_rows}" != "" && ("{parents:show_results}" == "" || "{parents:show_results}" == "Yes")}
+	<div class="row padded-full-width-row content">
+		<table class="table specs-table">
+			<thead>
+				<tr>
+					<td colspan="6" class="heading text-uppercase">class 4 results - sponsored by {parents:event_day_results_sponsor}</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th class="text-uppercase">yacht name</th>
+					<th class="text-uppercase">model</th>
+					<th class="text-uppercase">owner/skipper</th>
+					<th class="text-uppercase">finished</th>
+			<!-- 		<th class="text-uppercase">elapse</th>
+					<th class="text-uppercase">corrected</th> -->
+				</tr>
+
+				{parents:event_day_class_4_results}
+				<tr>
+					<td data-th='Yacht Name'>{event_day_class_4_results:yacht_name}</td>
+					<td data-th='Model'>{event_day_class_4_results:model}</td>
+					<td data-th='Owner/Skipper'>{event_day_class_4_results:owner_skipper}</td>
+					<td data-th='Finished'>{event_day_class_4_results:finished}</td>
+			<!-- 		<td>{event_day_class_2_results:elapse}</td>
+					<td>{event_day_class_2_results:corrected}</td> -->
+				</tr>
+				{/parents:event_day_class_4_results}
+
+			</tbody>
+		</table>
+	</div>
+	{/if}
+
+</section>
+{/parents}
+
+{if event_class_1_overall_results:total_rows > 0 || event_class_2_overall_results:total_rows > 0 || event_class_3_overall_results:total_rows > 0 || event_class_4_overall_results:total_rows > 0}
+<section id="events-previous-regattas-overall-results" class="page-home-about event-previous-regattas-about">
+
+	{if event_class_1_overall_results:total_rows > 0}
+	<div class="row padded-full-width-row content">
+		<table class="table specs-table">
+			<thead>
+				<tr>
+					<td colspan="9" class="heading cyan-background text-uppercase">class 1 overall results<!--  - with discard --></td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th class="text-uppercase">yacht name</th>
+					<th class="text-uppercase">model</th>
+					<th class="text-uppercase">owner/skipper</th>
+					<th class="text-uppercase">Race 1 Points</th>
+					<th class="text-uppercase">Race 2 Points</th>
+					<th class="text-uppercase">Race 3 Points</th>
+					{event_class_1_overall_results limit="1"}
+					{if event_class_1_overall_results:race4_points != ""}
+					<th class="text-uppercase">Race 4 Points</th>
+					{/if}
+					{/event_class_1_overall_results}
+					<th class="text-uppercase">Total Points</th>
+					{event_class_1_overall_results limit="1"}
+					{if event_class_1_overall_results:best_three != ""}
+					<th class="text-uppercase">Best Three</th>
+					{/if}
+					{/event_class_1_overall_results}
+			<!-- 		<th class="text-uppercase">elapse</th>
+					<th class="text-uppercase">corrected</th> -->
 				</tr>
 
 				{event_class_1_overall_results}
 				<tr>
-					<td>{yacht_name}</td>
-					<td>{model}</td>
-					<td>{owner_skipper}</td>
-					<td>{finished}</td>
-					<td>{elapse}</td>
-					<td>{corrected}</td>
+					<td data-th='Yacht Name'>{event_class_1_overall_results:yacht_name}</td>
+					<td data-th='Model'>{event_class_1_overall_results:model}</td>
+					<td data-th='Owner / Skipper'>{event_class_1_overall_results:owner_skipper}</td>
+					<td data-th='Race 1 Points'>{event_class_1_overall_results:race1_points}</td>
+					<td data-th='Race 2 Points'>{event_class_1_overall_results:race2_points}</td>
+					<td data-th='Race 3 Points'>{event_class_1_overall_results:race3_points}</td>
+					{if event_class_1_overall_results:race4_points != ""}
+					<td data-th='Race 4 Points'>{event_class_1_overall_results:race4_points}</td>
+					{/if}
+					<td data-th='Total Points'>{event_class_1_overall_results:total_points}</td>
+					{if event_class_1_overall_results:best_three != ""}
+					<td data-th='Best Three'>{event_class_1_overall_results:best_three}</td>
+					{/if}
+							
+		<!-- 			<td>{elapse}</td>
+					<td>{corrected}</td> -->
 				</tr>
 				{/event_class_1_overall_results}
 				
@@ -173,12 +265,12 @@
 	</div>
 	{/if}
 
-	{if event_class_2_overall_results:total_rows > 0}
+{if event_class_2_overall_results:total_rows > 0}
 	<div class="row padded-full-width-row content">
 		<table class="table specs-table">
 			<thead>
 				<tr>
-					<td colspan="6" class="heading cyan-background text-uppercase">overall results - with discard (class 2) </td>
+					<td colspan="9" class="heading cyan-background text-uppercase">class 2 overall results<!--  - with discard --></td>
 				</tr>
 			</thead>
 			<tbody>
@@ -186,19 +278,41 @@
 					<th class="text-uppercase">yacht name</th>
 					<th class="text-uppercase">model</th>
 					<th class="text-uppercase">owner/skipper</th>
-					<th class="text-uppercase">finished</th>
-					<th class="text-uppercase">elapse</th>
-					<th class="text-uppercase">corrected</th>
+					<th class="text-uppercase">Race 1 Points</th>
+					<th class="text-uppercase">Race 2 Points</th>
+					<th class="text-uppercase">Race 3 Points</th>
+					{event_class_2_overall_results limit="1"}
+					{if event_class_2_overall_results:race4_points != ""}
+					<th class="text-uppercase">Race 4 Points</th>
+					{/if}
+					{/event_class_2_overall_results}
+					<th class="text-uppercase">Total Points</th>
+					{event_class_2_overall_results limit="1"}
+					{if event_class_2_overall_results:best_three != ""}
+					<th class="text-uppercase">Best Three</th>
+					{/if}
+					{/event_class_2_overall_results}
+			<!-- 		<th class="text-uppercase">elapse</th>
+					<th class="text-uppercase">corrected</th> -->
 				</tr>
 
 				{event_class_2_overall_results}
 				<tr>
-					<td>{yacht_name}</td>
-					<td>{model}</td>
-					<td>{owner_skipper}</td>
-					<td>{finished}</td>
-					<td>{elapse}</td>
-					<td>{corrected}</td>
+					<td data-th='Yacht Name'>{event_class_2_overall_results:yacht_name}</td>
+					<td data-th='Model'>{event_class_2_overall_results:model}</td>
+					<td data-th='Owner / Skipper'>{event_class_2_overall_results:owner_skipper}</td>
+					<td data-th='Race 1 Points'>{event_class_2_overall_results:race1_points}</td>
+					<td data-th='Race 2 Points'>{event_class_2_overall_results:race2_points}</td>
+					<td data-th='Race 3 Points'>{event_class_2_overall_results:race3_points}</td>
+					{if event_class_2_overall_results:race4_points != ""}
+					<td data-th='Race 4 Points'>{event_class_2_overall_results:race4_points}</td>
+					{/if}
+					<td data-th='Total Points'>{event_class_2_overall_results:total_points}</td>
+					{if event_class_2_overall_results:best_three != ""}
+					<td data-th='Best Three'>{event_class_2_overall_results:best_three}</td>
+					{/if}
+		<!-- 			<td>{elapse}</td>
+					<td>{corrected}</td> -->
 				</tr>
 				{/event_class_2_overall_results}
 				
@@ -206,6 +320,122 @@
 		</table>
 	</div>
 	{/if}
+
+{if event_class_3_overall_results:total_rows > 0}
+	<div class="row padded-full-width-row content">
+		<table class="table specs-table">
+			<thead>
+				<tr>
+					<td colspan="9" class="heading cyan-background text-uppercase">class 3 overall results <!-- - with discard --></td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th class="text-uppercase">yacht name</th>
+					<th class="text-uppercase">model</th>
+					<th class="text-uppercase">owner/skipper</th>
+					<th class="text-uppercase">Race 1 Points</th>
+					<th class="text-uppercase">Race 2 Points</th>
+					<th class="text-uppercase">Race 3 Points</th>
+					{event_class_3_overall_results limit="1"}
+					{if event_class_3_overall_results:race4_points != ""}
+					<th class="text-uppercase">Race 4 Points</th>
+					{/if}
+					{/event_class_3_overall_results}
+					<th class="text-uppercase">Total Points</th>
+					{event_class_3_overall_results limit="1"}
+					{if event_class_3_overall_results:best_three != ""}
+					<th class="text-uppercase">Best Three</th>
+					{/if}
+					{/event_class_3_overall_results}
+			<!-- 		<th class="text-uppercase">elapse</th>
+					<th class="text-uppercase">corrected</th> -->
+				</tr>
+
+				{event_class_3_overall_results}
+				<tr>
+					<td data-th='Yacht Name'>{event_class_3_overall_results:yacht_name}</td>
+					<td data-th='Model'>{event_class_3_overall_results:model}</td>
+					<td data-th='Owner / Skipper'>{event_class_3_overall_results:owner_skipper}</td>
+					<td data-th='Race 1 Points'>{event_class_3_overall_results:race1_points}</td>
+					<td data-th='Race 2 Points'>{event_class_3_overall_results:race2_points}</td>
+					<td data-th='Race 3 Points'>{event_class_3_overall_results:race3_points}</td>
+					{if event_class_3_overall_results:race4_points != ""}
+					<td data-th='Race 4 Points'>{event_class_3_overall_results:race4_points}</td>
+					{/if}
+					<td data-th='Total Points'>{event_class_3_overall_results:total_points}</td>
+					{if event_class_3_overall_results:best_three != ""}
+					<td data-th='Best Three'>{event_class_3_overall_results:best_three}</td>
+					{/if}
+		<!-- 			<td>{elapse}</td>
+					<td>{corrected}</td> -->
+				</tr>
+				{/event_class_3_overall_results}
+				
+			</tbody>
+		</table>
+	</div>
+	{/if}
+
+
+
+{if event_class_4_overall_results:total_rows > 0}
+	<div class="row padded-full-width-row content">
+		<table class="table specs-table">
+			<thead>
+				<tr>
+					<td colspan="9" class="heading cyan-background text-uppercase">class 4 overall results <!-- - with discard --></td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th class="text-uppercase">yacht name</th>
+					<th class="text-uppercase">model</th>
+					<th class="text-uppercase">owner/skipper</th>
+					<th class="text-uppercase">Race 1 Points</th>
+					<th class="text-uppercase">Race 2 Points</th>
+					<th class="text-uppercase">Race 3 Points</th>
+					{event_class_4_overall_results limit="1"}
+					{if event_class_4_overall_results:race4_points != ""}
+					<th class="text-uppercase">Race 4 Points</th>
+					{/if}
+					{/event_class_4_overall_results}
+					<th class="text-uppercase">Total Points</th>
+					{event_class_4_overall_results limit="1"}
+					{if event_class_4_overall_results:best_three != ""}
+					<th class="text-uppercase">Best Three</th>
+					{/if}
+					{/event_class_4_overall_results}
+			<!-- 		<th class="text-uppercase">elapse</th>
+					<th class="text-uppercase">corrected</th> -->
+				</tr>
+
+				{event_class_4_overall_results}
+				<tr>
+					<td data-th='Yacht Name'>{event_class_4_overall_results:yacht_name}</td>
+					<td data-th='Model'>{event_class_4_overall_results:model}</td>
+					<td data-th='Owner / Skipper'>{event_class_4_overall_results:owner_skipper}</td>
+					<td data-th='Race 1 Points'>{event_class_4_overall_results:race_1_points}</td>
+					<td data-th='Race 2 Points'>{event_class_4_overall_results:race_2_points}</td>
+					<td data-th='Race 3 Points'>{event_class_4_overall_results:race_3_points}</td>
+					{if event_class_4_overall_results:race4_points != ""}
+					<td data-th='Race 4 Points'>{event_class_4_overall_results:race_4_points}</td>
+					{/if}
+					<td data-th='Total Points'>{event_class_4_overall_results:total_points}</td>
+					{if event_class_4_overall_results:best_three != ""}
+					<td data-th='Best Three'>{event_class_4_overall_results:best_three}</td>
+					{/if}
+		<!-- 			<td>{elapse}</td>
+					<td>{corrected}</td> -->
+				</tr>
+				{/event_class_4_overall_results}
+				
+			</tbody>
+		</table>
+	</div>
+	{/if}
+	
+
 </section>
 {/if}
 
@@ -214,10 +444,10 @@
 <section id="galleries" data-title="{title}">
 {parents field="event_day_event" status="published" orderby="date" sort="ASC"}
 
-	{parents:event_day_gallery}
+	{parents:event_day_gallery limit="999"}
 
 	{if image:count == 1}
-	<div class="gallery-content" data-gallery="{parents:url_title}" data-title="{parents:event_day_number}">
+	<div class="gallery-content" data-gallery="{parents:url_title}" data-title="{parents:event_day_numberr}">
 	{/if}
 		<a href="{image:url}" data-sub-html="{parents:event_day_report_title}">
 			<img src="{image:url:gallery_thumb}" />

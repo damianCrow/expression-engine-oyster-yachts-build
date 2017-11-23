@@ -1,18 +1,19 @@
 {exp:channel:entries channel="team_page" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published" limit="1"}
 
-{embed="site/.header" snap_to="undefined" snap_offset="undefined"}
+{embed="site/.header" page_title="Team" snap_to="undefined" snap_offset="undefined"}
 
-<section style="background-image: url('/assets/images/oysteryachts-team.jpg'); " class="hero after-nav global-page-hero yacht-listing-photo global-page-hero--small">
+<section style="background-image: url('/assets/images/oysteryachts-about_landing-our_team.jpg'); " class="hero after-nav global-page-hero yacht-listing-photo global-page-hero--small">
 	<div id="page-back-button" class="back-button"><a class="button-clear-white"><i class="fa fa-angle-left"></i>Back</a></div>
 </section>
 
 <div class="row-pad sliding-tabs team-tab-container">
 	<ul id="team-tabs" data-tabs="" class="tabs">
-		<li class="tabs-title is-active"><a href="#management-panel" aria-selected="true">Management</a></li>
+		<li class="tabs-title is-active"><a href="#yards" aria-selected="true">Our Yards</a></li>
+		<li class="tabs-title "><a href="#management-panel">Management</a></li>
 		<li class="tabs-title"><a href="#new-yachts-panel">New Yachts</a></li>
-		<li class="tabs-title"><a href="#customer-service-panel">Service Centres</a></li>
 		<li class="tabs-title"><a href="#brokerage-panel">Brokerage</a></li>
 		<li class="tabs-title"><a href="#charter-panel">Charter</a></li>
+		<li class="tabs-title"><a href="#customer-service-panel">Service Centres</a></li>
 	</ul>
 	<div class="tab-slider-container">
 		<div class="tab-slider"></div>
@@ -20,7 +21,21 @@
 </div>
 
 <div data-tabs-content="team-tabs" class="tabs-content team-tab-contents row-pad global-padding-top-only--medium">
-	<article id="management-panel" class="staggered-features stagger-split tabs-panel is-active">
+	<article id="yards" class="tabs-panel is-active">
+		<section class="row"><img src="/assets/images/oyster_southampton.jpg">
+<div>
+<div class="small-12 medium-12 large-12 large-offset-1 column about-heading"><span class="text-uppercase">
+Oyster Southampton
+</span></div></div>
+		
+		<img src="/assets/images/oyster_wroxham.jpg">
+<div>
+<div class="small-12 medium-12 large-12 large-offset-1 column about-heading"><span class="text-uppercase">
+Oyster Wroxham
+</span></div></div>
+		</section>
+	</article>
+	<article id="management-panel" class="staggered-features stagger-split tabs-panel">
 		{team_management}
 
 		{if team_management:count % 2 == 0}
@@ -280,6 +295,25 @@
 		{/team_charter}
 	</article>
 </div>
+<style>
+.about-heading {height:100px;padding-top:30px;}
+.about-heading span {font-family: 'omnes_mediumregular', sans-serif;
+    letter-spacing: .05rem;
+    font-size: 1.25em;
+    line-height: 1.25em;
+    position: relative;
+    color: #003145;}
+.about-heading span:after {
+    content: "";
+    display: block;
+    width: 38px;
+    height: 2px;
+    background: #003145;
+    position: absolute;
+    left: 0;
+    bottom: -20px;
+}
+</style>
 {footer}
 
 {/exp:channel:entries}

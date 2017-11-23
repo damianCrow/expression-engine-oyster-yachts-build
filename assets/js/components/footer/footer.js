@@ -6,35 +6,47 @@ define(['jquery'], function ($) {
 		var btn = this;
 		var nope = false;
 
-		$(':input[required]').each(function() {
+		$('.new-sign-up :input[required]').each(function () {
 			if (!$(this).val()) {
 				nope = true;
-
 				$(this).parent('.field').addClass('error');
 				$('.new-sign-up .form-error').addClass('visible');
-			}else{
+			} else {
 				$(this).parent('.field').removeClass('error');
 				$('.new-sign-up .form-error').removeClass('visible');
-
 			}
 		});
 
-		if (!validateEmail($(':input[type="email"]').val())) {
+		if (!validateEmail($('.new-sign-up :input[type="email"]').val())) {
 			nope = true;
 
-			$(':input[type="email"]').parent('.field').addClass('error');
+			$('.new-sign-up :input[type="email"]').parent('.field').addClass('error');
 			$('.new-sign-up .form-error').addClass('visible');
-
 		} else {
-			$(':input[type="email"]').parent('.field').removeClass('error');
+			$('.new-sign-up :input[type="email"]').parent('.field').removeClass('error');
 			$('.new-sign-up .form-error').removeClass('visible');
 		};
 
 		if (!nope) {
 			$('.sign-up-btn').addClass('is-loading');
-			setTimeout((function() {
-				$('.sign-up').addClass('is-complete');
-			}), 3000);
+			
+			var $form = $('#signup-home-footer');
+
+			$.ajax({
+				url: '/newsletter/signup.php',
+				dataType: 'json',
+				type: 'POST',
+				data: {
+					'email': $form.find('.newsletter-email').val(),
+					'fname': $form.find('.newsletter-fname').val(),
+					'sname': $form.find('.newsletter-sname').val(),
+					'country': $form.find('.newsletter-country').val()
+				}
+			}).done(function( data ) {
+				if (data.status === "success") {
+					$('.sign-up').addClass('is-complete');
+				}
+			});
 		}
 
 	});

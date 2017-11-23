@@ -370,9 +370,6 @@ class Filepicker_mcp {
 							'title' => array(
 								'type' => 'text',
 							)
-						),
-						'attrs' => array(
-							'class' => 'hidden-field'
 						)
 					),
 					array(
@@ -381,9 +378,6 @@ class Filepicker_mcp {
 							'description' => array(
 								'type' => 'textarea',
 							)
-						),
-						'attrs' => array(
-							'class' => 'hidden-field'
 						)
 					),
 					array(
@@ -392,9 +386,6 @@ class Filepicker_mcp {
 							'credit' => array(
 								'type' => 'text',
 							)
-						),
-						'attrs' => array(
-							'class' => 'hidden-field'
 						)
 					),
 					array(
@@ -403,9 +394,6 @@ class Filepicker_mcp {
 							'location' => array(
 								'type' => 'text',
 							)
-						),
-						'attrs' => array(
-							'class' => 'hidden-field'
 						)
 					),
 				)

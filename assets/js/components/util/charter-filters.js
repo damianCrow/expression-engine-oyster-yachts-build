@@ -22,7 +22,10 @@ define(['jquery'], function ($) {
 
 		// filter guests
 		if (guests !== "") {
-			this.$grid.find("li[data-guests!='" + guests + "']").addClass('hide');
+			//this.$grid.find("li[data-guests!='" + guests + "']").addClass('hide');
+			this.$grid.find("li").filter(function() {
+				return parseInt($(this).data('guests')) < parseInt(guests);
+			}).addClass('hide');
 		}
 
 		// filter season
@@ -37,6 +40,12 @@ define(['jquery'], function ($) {
 			} else {
 				this.$grid.find("li[data-summer!='" + destination + "'][data-winter!='" + destination + "']").addClass('hide');
 			}
+		}
+
+		if (this.$grid.find('li').length == this.$grid.find('li.hide').length) {
+			this.$grid.find('.no-results').addClass('no-results--show')
+		} else {
+			this.$grid.find('.no-results').removeClass('no-results--show')
 		}
 	};
 

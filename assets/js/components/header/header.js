@@ -4,7 +4,7 @@ define(['jquery', 'ScrollMagic', 'validateForm', 'foundation'], function ($, Scr
 	validateForm();
 
 	// Global header
-	var header = $("header.global-header"),
+	var header = $(".global-header"),
 	    scrollToPoint = header.attr('data-snap-to-min-nav'),
 	    snapOffset = parseInt(header.attr('data-snap-offset'), 10) || 0,
 	   
@@ -25,6 +25,44 @@ define(['jquery', 'ScrollMagic', 'validateForm', 'foundation'], function ($, Scr
 	} else if ($(".global-local-subnav")[0]) {
 		var localSubNav = $(".global-local-subnav");
 	}
+	// COOKIE HEADER MESSAGE
+
+	var retrievedCookieMessage = JSON.parse(localStorage.getItem("oysterYachtsCookie"));
+
+	var cookieApproved;
+
+
+	console.log(retrievedCookieMessage);
+
+	// var oysterYachtsCookie = {value: "true", timestamp: new Date().getTime()}
+
+	var oysterYachtsCookie = {value: JSON.stringify('true'), timestamp: new Date().getTime() + 31556926000}
+
+	if ($(retrievedCookieMessage).length > 0) {
+
+		if(retrievedCookieMessage.timestamp < new Date().getTime()){
+			//expired
+			console.log('expired', retrievedCookieMessage.timestamp);
+			console.log('cureent date', new Date().getTime());
+			$('body').addClass('fixed-message-showing');
+
+		}else{
+			console.log('retrievedCookieMessage.timestamp', retrievedCookieMessage.timestamp);
+			$('body').removeClass('fixed-message-showing');
+		}
+
+
+	}else{
+		$('body').addClass('fixed-message-showing');
+	}
+
+
+	$('.accept-message').on('click', function(){
+		$('body').removeClass('fixed-message-showing');
+		// cookieMessage = 'true';
+		localStorage.setItem('oysterYachtsCookie', JSON.stringify(oysterYachtsCookie));
+
+	})
 
 
 	// if the scroll point is a div id, get its index point
@@ -45,9 +83,11 @@ define(['jquery', 'ScrollMagic', 'validateForm', 'foundation'], function ($, Scr
 					header.addClass(headerClass);
 				}
 
-			localSubNav.addClass('global-local-subnav-mini').parent().css({
-				position: 'static'
-			});
+			if (localSubNav.length !== 0 && Foundation.MediaQuery.atLeast("medium")) {
+				localSubNav.addClass('global-local-subnav-mini').parent().css({
+					position: 'static'
+				});
+			}
 
 			// A buffer zone for expanding the header.
 		} else {
@@ -97,6 +137,13 @@ define(['jquery', 'ScrollMagic', 'validateForm', 'foundation'], function ($, Scr
 	transitionEvent && e.addEventListener(transitionEvent, function () {
 		$('.main-nav li ul').removeClass('hidden-animation');
 	});
+
+	// Hack to make sure SVG transisions work correctly inside an anchor tag
+	if (navigator.userAgent.indexOf('Safari') != -1 && navigator.userAgent.indexOf('Chrome') == -1) {
+		var logoHref = $('.global-header .logo').attr('href');
+		$('.global-header .logo').removeAttr('href');
+		$('.global-header .logo').append('<a class="safari-logo-link" href=' + logoHref + '></a>');
+	}
 
 
 	// OVVERIDE MOBILE ACCORDION TEXT TO BE LINKS

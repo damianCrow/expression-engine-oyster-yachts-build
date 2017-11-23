@@ -1,21 +1,25 @@
-{embed="site/.header" snap_to="undefined" snap_offset="undefined"}
+{exp:channel:entries channel="news_landing" disable="member_data|category_fields|pagination" limit="1" cache="yes" refresh="60" status="published" sort="asc"}
 
+{embed="site/.header" page_title="News" entry_id="{entry_id}" snap_to="undefined" snap_offset="undefined"}
+{/exp:channel:entries}
 <section style="background-image: url('/assets/images/news-hero.jpg');" class="hero after-nav global-page-hero yacht-listing-photo global-page-hero--medium">
 	{back_button}
 </section>
 
 <section id="news-thumbs" class="news-thumbs global-padding-top-only--small">
 	<div class="banner">Latest News</div>
-	<div data-equalizer data-equalize-on="medium" class="row wrapper">
+	<div data-equalizer data-equalize-on="medium" class="row wrapper row-pad">
 		<ul>
 
 			{exp:channel:entries channel="news|event_news" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published" limit="3" sort="desc"}
 			<li class="columns medium-4 small-6 small-12">
 				<div class="content">
 					{if channel_short_name == "news"}
-					<div {article_main_image}style="background-image:url('{image:url:small}')"{/article_main_image} class="news-thumb-image">
-						{share_buttons}
-					</div>
+					<a href="{url_title_path='news/article'}">
+						<div {article_main_image}style="background-image:url('{image:url:small}')"{/article_main_image} class="news-thumb-image">
+							{share_buttons}
+						</div>
+					</a>
 					<div data-equalizer-watch class="news-details">
 						<time datetime="{entry_date format="%Y-%m-%d %H:%i"}" class="text-uppercase">{entry_date format="%d %F %Y"}</time>
 						<h3 class="text-uppercase"><a href="{url_title_path='news/article'}">{title}</a></h3>
@@ -23,17 +27,20 @@
 						<a href="{url_title_path='news/article'}" class="read-more">READ MORE</a>
 					</div>
 					{if:elseif channel_short_name == "event_news"}
-					<div {event_news_image}style="background-image:url('{image:url:small}')"{/event_news_image} class="news-thumb-image">
-						{share_buttons}
-					</div>
+					{event_news_report status="published"}
+					<a href="{path='events/regattas/{event_news_report:event_day_event:url_title}'}">
+						<div {event_news_image}style="background-image:url('{image:url:small}')"{/event_news_image} class="news-thumb-image">
+							{share_buttons}
+						</div>
+					</a>
 					<div data-equalizer-watch class="news-details">
-						{event_news_report status="published"}
+						
 						
 						<time datetime="{entry_date format="%Y-%m-%d %H:%i"}" class="text-uppercase">{entry_date format="%d %F %Y"}</time>
-						<h3 class="text-uppercase"><a href="{path='events/event/{event_news_report:event_day_event:url_title}'}">{title}</a></h3>
+						<h3 class="text-uppercase"><a href="{path='events/regattas/{event_news_report:event_day_event:url_title}'}">{title}</a></h3>
 						{event_news_content}
 						{event_news_report:event_day_event status="published"}
-						<a href="{path='events/event/{event_news_report:event_day_event:url_title}'}" class="read-more">READ MORE</a>
+						<a href="{path='events/regattas/{event_news_report:event_day_event:url_title}'}" class="read-more">READ MORE</a>
 						{/event_news_report:event_day_event}
 						{/event_news_report}
 					</div>
@@ -54,7 +61,7 @@
 			<div class="description medium-7 small-12">
 				<h2>{title}</h2>
 				{magazine_description}
-				<a href="{magazine_link}" class="button-solid-white" target="_blank">Read on Issuu</a>
+				<a href="{magazine_link}" class="button-solid-white" target="_blank">View Issue</a>
 			</div>
 			{magazine_rendered_image}<img src="{image:url}" class="magazine-thumb medium-5 small-12">{/magazine_rendered_image}
 		</div>
@@ -65,7 +72,7 @@
 
 <section class="press-articles">
 	<div class="banner">Latest Press Articles</div>
-	<div class="row press-list">
+	<div class="row press-list row-pad">
 		
 		{exp:channel:entries channel="press_coverage" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published" sort="desc" limit="3"}
 		<figure class="external-file column large-4 medium-6 small-12">

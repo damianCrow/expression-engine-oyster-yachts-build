@@ -1,5 +1,8 @@
-{embed="site/.header" snap_to=".events-regattas-callendar" snap_offset="125"}
 
+{exp:channel:entries channel="events_gallery" disable="member_data|category_fields|pagination" limit="1" cache="yes" refresh="60" status="published" sort="asc"}
+
+{embed="site/.header" page_title="Events Gallery" entry_id="{entry_id}" snap_to=".events-regattas-callendar" snap_offset="125"}
+{/exp:channel:entries}
 <section style="background-image: url('/assets/images/oysteryachts-events-regatta_galleries.jpg'); background-position: center 95%;" class="hero after-nav global-page-hero yacht-listing-photo global-page-hero--small">
 	{back_button}
 </section>
@@ -11,7 +14,7 @@
 		{exp:channel:entries channel="event" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published" sort="desc" search:event_end_date="<{current_time}"}
 		<div class="small-12 medium-6 large-4 columns">
 			<div class="gallery-pane">
-				<div class="gallery-pane-header images" {event_main_image}style="background-image: url('{image:url}');"{/event_main_image}>
+				<div class="gallery-pane-header images" {event_main_image}style="background-image: url('{image:url:w_472}');"{/event_main_image}>
 					{share_buttons}
 				</div>
 				<div class="gallery-pane-content">

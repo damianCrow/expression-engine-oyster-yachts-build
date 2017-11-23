@@ -1,4 +1,4 @@
-{exp:channel:entries disable="member_data|category_fields|pagination" cache="yes" refresh="60" require_entry="yes" status="published"}
+{exp:channel:entries disable="member_data|category_fields|pagination" cache="yes" refresh="60" require_entry="yes" status="published" channel="yacht"}
 {if no_results}{redirect="404"}{/if}
 
 <?php
@@ -12,7 +12,7 @@ $query = ee()->db->query('SELECT * FROM exp_channel_images WHERE entry_id={entry
 $interiorGalleryImages = $query->num_rows();
 ?>
 
-{embed="site/.header" snap_to=".full-screen #yacht-nav" snap_offset="55"}
+{embed="site/.header" page_title="{title}" snap_to=".full-screen #yacht-nav" snap_offset="55"}
 
 <section class="hero full-screen">
 	<div id="full-image" class="yacht-listing-photo add-full-background-overlay" style="background-image: url('{yacht_main_image}{image:url}{/yacht_main_image}');">
@@ -23,7 +23,7 @@ $interiorGalleryImages = $query->num_rows();
 				<h1>{title}</h1>
 
 				<?php if ($exteriorGalleryImages > 0 || $interiorGalleryImages > 0): ?>
-				<a class="gallery button-view-gallery" href="" data-gallery="<?php if ($exteriorGalleryImages > 0): ?>external<?php else: ?>internal<?php endif; ?>">View Gallery</a>
+				<a class="gallery button-view-gallery btn-gallery" href="" data-gallery="<?php if ($exteriorGalleryImages > 0): ?>external<?php else: ?>internal<?php endif; ?>">View Gallery</a>
 				<?php endif; ?>
 			</div>
 		</div>
@@ -48,10 +48,14 @@ $interiorGalleryImages = $query->num_rows();
 			<li><a href="#news-thumbs" class="scroll">News</a></li>
 
 			<?php if ($exteriorGalleryImages > 0 || $interiorGalleryImages > 0): ?>
-			<li><a href="" class="gallery">Gallery</a></li>
+			<li><a href="" class="gallery btn-gallery" data-gallery="<?php if ($exteriorGalleryImages > 0): ?>external<?php else: ?>internal<?php endif; ?>">Gallery</a></li>
 			<?php endif; ?>
 
-			<li><a href="#" data-open="contactSalesModal" class="contact">Contact Sales</a></li>
+			{yachts_virtual_tours limit="1"}
+			<li><a href="" class="gallery btn-gallery" data-gallery="vrtours">VR Tours</a></li>
+			{/yachts_virtual_tours}
+
+			<li><a data-open="contactSalesModal" class="contact">Contact Sales</a></li>
 		</ul>
 	</div>
 </section>
@@ -59,8 +63,8 @@ $interiorGalleryImages = $query->num_rows();
 <section class="about-yacht">
 	<div class="row row-pad">
 		<div class="large-offset-1 large-7 float">
-			<h2>{yacht_tagline}</h2>
-			<h1>{title}</h1>
+<!-- 			<h2>{yacht_tagline}</h2>
+ -->			<h1>{title}</h1>
 			{yacht_about}
 			{if awards !=""}<img src="{awards}" style="max-height:80px;">{/if}
 		</div>
@@ -79,7 +83,7 @@ $interiorGalleryImages = $query->num_rows();
 				<div class="overview-contents prev-models">
 					<div class="overview columns small-12">
 						<p>To find out more about the {title} model, you can download the {title} Brochure below.</p>
-						<p>If you would like more information, please complete the Contact Sales form or alternatively call us on <a href="tell:442380831010" class="phone-number">+44 (0)2380 831 010</a></p>
+						<p>If you would like more information, please complete the Contact Sales form or alternatively call us on <a href="tel:+442380831010" class="phone-number">+44 (0)23 8083 1010</a></p>
 						{yacht_brochure}
 						<figure class="download-pdf clearfix">
 							<div class="download-thumb column small-3">
@@ -134,69 +138,120 @@ $interiorGalleryImages = $query->num_rows();
 {if yacht_dimensions:total_rows > 0 OR yacht_performance_features:total_rows > 0}
 <section id="specifications" class="specifications yachts-yacht-spec">
 	<div class="banner">Specifications</div>
+
 	{if yacht_dimensions:total_rows > 0}
 	<div class="content row row-pad">
-		<table class="table specs-table">
-			<tbody>
-				<tr>
-					<td colspan="9" class="heading text-uppercase">Dimensions</td>
-				</tr>
-				<tr>
-					<th class="text-uppercase">Length Overall - Inc. Pulpit</th>
-					<th class="text-uppercase">Length of Hull</th>
-					<th class="text-uppercase">Length of Waterline</th>
-					<th class="text-uppercase">Beam</th>
-					<th class="text-uppercase">Draft Standard</th>
-					<th class="text-uppercase">Draft Shoal</th>
-					<th class="text-uppercase">Draft Centreboard Up</th>
-					<th class="text-uppercase">Draft Centreboard Down</th>
-				</tr>
-				{yacht_dimensions}
-				<tr>
-					<td>{yacht_dimensions:length_overall}</td>
-					<td>{yacht_dimensions:length_of_hull}</td>
-					<td>{yacht_dimensions:length_of_waterline}</td>
-					<td>{yacht_dimensions:beam}</td>
-					<td>{yacht_dimensions:draft_standard}</td>
-					<td>{yacht_dimensions:draft_shoal}</td>
-					<td>{yacht_dimensions:draft_centreboard_up}</td>
-					<td>{yacht_dimensions:draft_centreboard_down}</td>
-				</tr>
-				{/yacht_dimensions}
-			</tbody>
-		</table>
+		<h2 class="yacht-featured-list-header">Dimensions</h2>
+		<div data-equalizer class="yacht-featured-lists">
+			{yacht_dimensions limit="1"}
+			{if yacht_dimensions:length_overall}
+			<div class="yacht-featured-list">
+				<h3 data-equalizer-watch class="yacht-featured-list-sub-header">Length Overall - Inc. Pulpit</h3>
+				{embed="yachts/.table-column" field="length_overall"}
+			</div>
+			{/if}
+			{if yacht_dimensions:length_overall_stemhead}
+			<div class="yacht-featured-list">
+				<h3 data-equalizer-watch class="yacht-featured-list-sub-header">Length Overall - Inc. Stemhead</h3>
+				{embed="yachts/.table-column" field="length_overall_stemhead"}
+			</div>
+			{/if}
+			{if yacht_dimensions:length_of_hull}
+			<div class="yacht-featured-list">
+				<h3 data-equalizer-watch class="yacht-featured-list-sub-header">Length of Hull</h3>
+				{embed="yachts/.table-column" field="length_of_hull"}
+			</div>
+			{/if}
+			{if yacht_dimensions:length_of_waterline}
+			<div class="yacht-featured-list">
+				<h3 data-equalizer-watch class="yacht-featured-list-sub-header">Length of Waterline</h3>
+				{embed="yachts/.table-column" field="length_of_waterline"}
+			</div>
+			{/if}
+			{if yacht_dimensions:beam}
+			<div class="yacht-featured-list">
+				<h3 data-equalizer-watch class="yacht-featured-list-sub-header">Beam</h3>
+				{embed="yachts/.table-column" field="beam"}
+			</div>
+			{/if}
+			{if yacht_dimensions:draft_standard}
+			<div class="yacht-featured-list">
+				<h3 data-equalizer-watch class="yacht-featured-list-sub-header">Draft Standard</h3>
+				{embed="yachts/.table-column" field="draft_standard"}
+			</div>
+			{/if}
+			{if yacht_dimensions:draft_shoal}
+			<div class="yacht-featured-list">
+				<h3 data-equalizer-watch class="yacht-featured-list-sub-header">Draft Shoal</h3>
+				{embed="yachts/.table-column" field="draft_shoal"}
+			</div>
+			{/if}
+			{if yacht_dimensions:draft_centreboard_up}
+			<div class="yacht-featured-list">
+				<h3 data-equalizer-watch class="yacht-featured-list-sub-header">Draft Centreboard Up</h3>
+				{embed="yachts/.table-column" field="draft_centreboard_up"}
+			</div>
+			{/if}
+			{if yacht_dimensions:draft_centreboard_down}
+			<div class="yacht-featured-list">
+				<h3 data-equalizer-watch class="yacht-featured-list-sub-header">Draft Centreboard Down</h3>
+				{embed="yachts/.table-column" field="draft_centreboard_down"}
+			</div>
+			{/if}
+			{/yacht_dimensions}
+		</div>
 	</div>
 	{/if}
 
 	{if yacht_performance_features:total_rows > 0}
 	<div class="content row row-pad">
-		<table class="table specs-table">
-			<tbody>
-				<tr>
-					<td colspan="9" class="heading text-uppercase">Preformance Features</td>
-				</tr>
-				<tr>
-					<th class="text-uppercase">Displacement - Standard Keel</th>
-					<th class="text-uppercase">Typical Engine</th>
-					<th class="text-uppercase">Tanks - Fuel</th>
-					<th class="text-uppercase">Tanks - Water</th>
-					<th class="text-uppercase">Sail Area - Inc. 150% Foretriangle</th>
-					<th class="text-uppercase">Air Draft Approx - exc. Antennae</th>
-				</tr>
+		<h2 class="yacht-featured-list-header">Performance Features</h2>
+		<div data-equalizer class="yacht-featured-lists">
+			<div class="yacht-featured-list">
+				<h3 data-equalizer-watch class="yacht-featured-list-sub-header">Displacement - Standard Keel</h3>
 				{yacht_performance_features}
-				<tr>
-					<td>{yacht_performance_features:displacement_standard_keel}</td>
-					{if yacht_performance_features:count == 1}
-						<td rowspan="2">{yacht_performance_features:typical_engine}</td>
-					{/if}
-					<td>{yacht_performance_features:tanks_fuel}</td>
-					<td>{yacht_performance_features:tanks_water}</td>
-					<td>{yacht_performance_features:sail_area}</td>
-					<td>{yacht_performance_features:air_draft}</td>
-				</tr>
+				<span>{yacht_performance_features:displacement_standard_keel}</span>
 				{/yacht_performance_features}
-			</tbody>
-		</table>
+			</div>
+			<div class="yacht-featured-list">
+				<h3 data-equalizer-watch class="yacht-featured-list-sub-header">Typical Engine</h3>
+				{yacht_performance_features}
+				<span>{yacht_performance_features:typical_engine}</span>
+				{/yacht_performance_features}
+			</div>
+			<div class="yacht-featured-list">
+				<h3 data-equalizer-watch class="yacht-featured-list-sub-header">Tanks - Fuel</h3>
+				{yacht_performance_features}
+				<span>{yacht_performance_features:tanks_fuel}</span>
+				{/yacht_performance_features}
+			</div>
+			<div class="yacht-featured-list">
+				<h3 data-equalizer-watch class="yacht-featured-list-sub-header">Tanks - Water</h3>
+				{yacht_performance_features}
+				<span>{yacht_performance_features:tanks_water}</span>
+				{/yacht_performance_features}
+			</div>
+			{yacht_performance_features limit="1"}
+				{if yacht_performance_features:sail_area}
+				<div class="yacht-featured-list">
+					<h3 data-equalizer-watch class="yacht-featured-list-sub-header">Sail Area - Inc. 150% Foretriangle</h3>
+					{embed="yachts/.table-column" field="sail_area" table="performance"}
+				</div>
+				{/if}
+				{if yacht_performance_features:sail_area_100}
+				<div class="yacht-featured-list">
+					<h3 data-equalizer-watch class="yacht-featured-list-sub-header">Sail Area - Inc. 100% Foretriangle</h3>
+					{embed="yachts/.table-column" field="sail_area_100" table="performance"}
+				</div>
+				{/if}
+			{/yacht_performance_features}
+			<div class="yacht-featured-list">
+				<h3 data-equalizer-watch class="yacht-featured-list-sub-header">Air Draft Approx - exc. Antennae</h3>
+				{yacht_performance_features}
+				<span>{yacht_performance_features:air_draft}</span>
+				{/yacht_performance_features}
+			</div>
+		</div>
 	</div>
 	{/if}
 </section>
@@ -225,7 +280,7 @@ $interiorGalleryImages = $query->num_rows();
 	<div class="row content row-pad">
 		<ul>
 			{yacht_documents}
-			<li class="columns medium-4 small-6">
+			<li class="columns large-4 medium-6 small-12">
 				<figure class="download-pdf clearfix">
 					<div class="download-thumb column small-3">
 						<img src="{yacht_documents:thumbnail}">
@@ -247,9 +302,9 @@ $interiorGalleryImages = $query->num_rows();
 <section id="news-thumbs" class="news-thumbs global-padding-top-only--small">
 	<div class="banner">News</div>
 	<div data-equalizer data-equalize-on="medium" class="row wrapper row-pad">
-		<ul>
+		<ul style="display:block;">
 
-			{parents field="article_yacht" status="published"}
+			{parents field="article_yacht" status="published" orderby="date" sort="desc" limit="3"}
 			<li class="columns medium-4 small-6 small-12">
 				<div class="content">
 					<div {parents:article_main_image}style="background-image:url('{image:url:small}')"{/parents:article_main_image} class="news-thumb-image">
@@ -258,8 +313,8 @@ $interiorGalleryImages = $query->num_rows();
 					<div data-equalizer-watch class="news-details">
 						<time datetime="{parents:entry_date format="%Y-%m-%d %H:%i"}" class="text-uppercase">{parents:entry_date format="%d %F %Y"}</time>
 						<h3 class="text-uppercase"><a href="{parents:url_title_path='news/article'}">{parents:title}</a></h3>
-						{parents:article_excerpt}
-						<a href="{parents:url_title_path='news/article'}" class="read-more">READ MORE</a>
+<!-- 						{parents:article_excerpt}
+ -->						<a href="{parents:url_title_path='news/article'}" class="read-more">READ MORE</a>
 					</div>
 				</div>
 			</li>
@@ -300,163 +355,22 @@ $interiorGalleryImages = $query->num_rows();
 	</div>
 	{/if}
 	{/yacht_videos}
-</div>
 
-<div id="contactSalesModal" role="dialog" aria-labelledby="dialog1Title" aria-describedby="dialog1Desc" data-reveal="" class="full-modal reveal">
-	<h2 id="dialog1Title">Contact Sales</h2>
-	<div class="modal-content">
-		<p id="dialog1Desc" class="modal-instructions">All the designs in the Oyster range are semi-custom built and as such we prefer to talk to our customers direct. Complete the form below to arrange a callback from a member of our sales team.</p>
-		<form class="request-spec">
-			<div class="form-error text-center text-uppercase"><span>ERROR: Invalid or incomplete fields</span><span class="error-messages"></span></div>
-			<fieldset>
-				<ol>
-					<li class="required-input">
-						<label for="titlename" class="show-for-sr">Title *</label>
-						<input id="titlename" type="text" name="titlename" placeholder="Title" required="">
-					</li>
-					<li class="required-input">
-						<label for="firstname" class="show-for-sr">First Name *</label>
-						<input id="firstname" type="text" name="firstname" placeholder="First Name" required="">
-					</li>
-					<li class="required-input">
-						<label for="lastname" class="show-for-sr">Last Name *</label>
-						<input id="firstname" type="text" name="lastname" placeholder="Last Name" required="">
-					</li>
-				</ol>
-			</fieldset>
-			<fieldset class="address-fill-out">
-				<ol>
-					<li class="address-line first-address-line">
-						<label for="addressline1" class="show-for-sr">Address Line 1 *</label>
-						<input id="addressline1" type="text" name="addressline1" placeholder="Address Line 1" required="">
-					</li>
-					<li class="address-line last-address-line">
-						<label for="addressline2" class="show-for-sr">Address Line 2 *</label>
-						<input id="addressline2" type="text" name="addressline2" placeholder="Address Line 2">
-						<button type="button" class="add-address-line"><i class="add fa fa-plus"></i><span class="add-line">Add Address Line</span></button>
-					</li>
-					<li class="required-input column large-5">
-						<label for="country-slection" class="show-for-sr">Country</label>
-						<select id="country-slection" name="country-slection">
-							<option>Africa</option>
-							<option>America</option>
-							<option>Australia</option>
-							<option>China</option>
-							<option selected>United Kingdom</option>
-							<option>Japan</option>
-							<option>India</option>
-							<option>Indonesia</option>
-						</select>
-					</li>
-					<li class="spec-postcode required-input column float-right">
-						<label for="postcode" class="show-for-sr">Postcode / Zip code*</label>
-						<input id="postcode" name="postcode" required="" placeholder="Postcode / Zip code" type="text" class="column">
-					</li>
-				</ol>
-			</fieldset>
-			<fieldset>
-				<ol>
-					<li class="required-input">
-						<label for="email" class="show-for-sr">Email *</label>
-						<input id="email" type="email" name="email" placeholder="Email Address" title="Please enter a valid email" required="" class="required-input">
-					</li>
-					<li class="required-input">
-						<label for="tel" class="show-for-sr">Phone Number *</label>
-						<input id="tel" type="tel" name="tel" pattern="d{10}" placeholder="Phone Number" required="" class="required-input">
-					</li>
-				</ol>
-			</fieldset>
-			<fieldset class="spec-current-yacht">
-				<ol>
-					<li>
-						<label for="current-yacht-make" class="show-for-sr">Current Yacht Make *</label>
-						<input id="current-yacht-make" type="text" name="current-yacht-make" placeholder="Current Yacht Make">
-					</li>
-					<li>
-						<label for="current-yacht-model" class="show-for-sr">Current Yacht Model *</label>
-						<input id="current-yacht-model" type="text" name="current-yacht-model" placeholder="Current Yacht Model">
-					</li>
-				</ol>
-				<div class="row oyster-delivery-form">
-					<label for="allow-more-information" class="request-more-info-confirmation required-input column large-8">When would you like to take delivery of your new Oyster?*</label>
-					<select id="request-information" name="request-information" required="" class="column large-2 float-right">
-						<option value="">Year</option>
-						<option value="2016">2016</option>
-						<option value="2017">2017</option>
-						<option value="2018">2018</option>
-						<option value="2019">2019</option>
-						<option value="2020">2020</option>
-					</select>
-				</div>
-				<div class="form-interested-in">
-					<legend class="required-input">Which Oyster model(s) are you interested in?*</legend>
-					<ol>
-						<li>
-							<input id="oyster-475-check" type="checkbox" name="oyster-475-check" value="oyster-475-check" class="show-for-sr">
-							<label for="oyster-475-check">Oyster <b>475</b></label>
-						</li>
-						<li>
-							<input id="oyster-545-check" type="checkbox" name="oyster-545-check" value="oyster-545-check" class="show-for-sr">
-							<label for="oyster-545-check">Oyster <b>545</b></label>
-						</li>
-						<li>
-							<input id="oyster-575-check" type="checkbox" name="oyster-575-check" value="oyster-575-check" class="show-for-sr">
-							<label for="oyster-575-check">Oyster <b>575</b></label>
-						</li>
-						<li>
-							<input id="oyster-545-check" type="checkbox" name="oyster-545-check" value="oyster-545-check" class="show-for-sr">
-							<label for="oyster-545-check">Oyster <b>545</b></label>
-						</li>
-						<li>
-							<input id="oyster-675-check" type="checkbox" name="oyster-675-check" value="oyster-675-check" class="show-for-sr">
-							<label for="oyster-675-check">Oyster <b>675</b></label>
-						</li>
-						<li>
-							<input id="oyster-885-check" type="checkbox" name="oyster-885-check" value="oyster-885-check" class="show-for-sr">
-							<label for="oyster-885-check">Oyster <b>885</b></label>
-						</li>
-						<li>
-							<input id="oyster-575-check" type="checkbox" name="oyster-575-check" value="oyster-575-check" class="show-for-sr">
-							<label for="oyster-575-check">Oyster <b>575</b></label>
-						</li>
-						<li>
-							<input id="oyster-745-check" type="checkbox" name="oyster-745-check" value="oyster-745-check" class="show-for-sr">
-							<label for="oyster-745-check">Oyster <b>745</b></label>
-						</li>
-						<li>
-							<input id="oyster-118-check" type="checkbox" name="oyster-118-check" value="oyster-118-check" class="show-for-sr">
-							<label for="oyster-118-check">Oyster <b>118</b></label>
-						</li>
-					</ol>
-				</div>
-			</fieldset>
-			<fieldset class="spec-additional-yacht">
-				<ol>
-					<li>
-						<label for="more-information" class="show-for-sr">More Information *</label>
-						<textarea id="more-information" name="more-information" type="text" placeholder="Additional Information"></textarea>
-					</li>
-					<li class="row">
-						<label for="allow-more-information" class="request-more-info-confirmation required-input column large-8">Would you like to receive information and updates from Oyster Yachts via email?*</label>
-						<select id="request-information" name="request-information" required="" class="column large-2 float-right">
-							<option value="">Select</option>
-							<option value="Yes">Yes</option>
-							<option value="No">No</option>
-						</select>
-					</li>
-				</ol>
-			</fieldset><small>Your information will never be sold to any other company. Your data will be treated in accordance with the Data Protection Act 1998. Please see our Privacy Policy for more details. If you wish to update or delete the data you have voluntarily given us please contact us on +44 2380 831 010 or email sales@oysteryachts.com</small>
-		</form>
+	{yachts_virtual_tours}
+	{if yachts_virtual_tours:count == 1}
+	<div class="gallery-content" data-gallery="vrtours" data-title="VR Tours">
+	{/if}
+		<a href="{yachts_virtual_tours:url}" data-iframe="true"><img src="{site_url}images/static/oyster_360_thumbnail.jpg"></a>
+	{if yachts_virtual_tours:count == yachts_virtual_tours:total_rows}
 	</div>
-	<div class="modal-footer">
-		<div class="float-right">
-			<button data-close aria-label="Cancel" type="button" class="button-solid-lightgrey">Cancel</button>
-			<button tabindex="0" type="submit" value="Submit" class="button-solid-blue button-chubby">Submit Form</button>
-		</div>
-	</div>
-	<button data-close aria-label="Close modal" type="button" class="close-button"><span aria-hidden="true">×</span></button>
+	{/if}
+	{/yachts_virtual_tours}
 </div>
-
+<style>
+section, .global-padding-top-only--small {    padding-top: 11px !important;}
+section.hero {padding-top: 0 !important;}
+.lg-image {padding: 30px 50px;}
+</style>
 {footer}
 
 {/exp:channel:entries}

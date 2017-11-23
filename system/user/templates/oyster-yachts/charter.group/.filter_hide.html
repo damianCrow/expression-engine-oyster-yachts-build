@@ -24,16 +24,18 @@ if (isset($_POST['season'])) {
 }
 
 if (isset($_POST['destination'])) {
-	$summer = "{embed:summer}";
-	$winter = "{embed:winter}";
+	if ($_POST['destination'] !== "") {
+		$summer = "{embed:summer}";
+		$winter = "{embed:winter}";
 
-	if (isset($_POST['season']) && $_POST['season'] !== "") {
-		if ($$_POST['season'] !== $_POST['destination']) {
-			$filter = true;
-		}
-	} else {
-		if ($summer !== $_POST['destination'] && $winter !== $_POST['destination']) {
-			$filter = true;
+		if (isset($_POST['season']) && $_POST['season'] !== "") {
+			if ($$_POST['season'] !== $_POST['destination']) {
+				$filter = true;
+			}
+		} else {
+			if ($summer !== $_POST['destination'] && $winter !== $_POST['destination']) {
+				$filter = true;
+			}
 		}
 	}
 }

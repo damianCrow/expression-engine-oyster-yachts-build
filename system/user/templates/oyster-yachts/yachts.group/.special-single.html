@@ -6,7 +6,7 @@ $query = ee()->db->query('SELECT * FROM exp_channel_images WHERE entry_id={entry
 $galleryImages = $query->num_rows();
 ?>
 
-{embed="site/.header" snap_to="undefined" snap_offset="undefined"}
+{embed="site/.header" page_title="{title}" snap_to="undefined" snap_offset="undefined"}
 
 <section {yacht_prev_main_image}style="background-image: url('{image:url}');"{/yacht_prev_main_image} class="hero after-nav global-page-hero yacht-listing-photo global-page-hero--medium">
 	{back_button}
@@ -15,7 +15,7 @@ $galleryImages = $query->num_rows();
 			<h1 class="hero-title yacht-list-name text-uppercase">{title}</h1>
 
 			<?php if ($galleryImages > 0): ?>
-			<a href="" class="gallery button-view-gallery" data-gallery="external">View Gallery</a>
+			<a href="" class="gallery button-view-gallery btn-gallery" data-gallery="external">View Gallery</a>
 			<?php endif; ?>
 		</div>
 	</div>
@@ -25,7 +25,7 @@ $galleryImages = $query->num_rows();
 <section class="about-yacht">
 	<div class="row row-pad">
 		<div class="large-offset-1 large-7 float">
-			<h2>Special Projects</h2>
+			<h2>SYS Projects</h2>
 			<h1>{title}</h1>
 			{yacht_prev_about}
 		</div>
@@ -44,8 +44,8 @@ $galleryImages = $query->num_rows();
 					<div class="overview columns small-12">
 						<ul>
 							<li><a href="{path='yachts/fleet'}">Fleet</a></li>
+							<li class="active-page"><a href="{path='yachts/sys-projects'}">SYS Projects</a></li>
 							<li><a href="{path='yachts/previous-models'}">Previous Models</a></li>
-							<li class="active-page"><a href="{path='yachts/special-projects'}">Special Projects</a></li>
 						</ul>
 					</div>
 				</div>

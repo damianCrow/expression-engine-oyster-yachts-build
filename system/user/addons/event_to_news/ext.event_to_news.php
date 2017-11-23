@@ -222,7 +222,10 @@ class Event_to_news_ext {
         }       
         
         // Set status
-        $data['status'] = 'Published';
+        $data['status'] = $values['status'];
+
+        //var_dump($values);
+        //die();
 
         
         // Load API
@@ -304,9 +307,8 @@ class Event_to_news_ext {
             )
         );
 
-         /*echo '<pre>';
-         var_dump($_POST);
-         die();*/
+        // set status
+        $data['status'] = $values['status'];
 
         // If there's a gallery image, set it as the news item image
         // We need to copy the image and it's thumbs from this Event Day Report so a cache directory, so Channel Images can add them to our new Event News post

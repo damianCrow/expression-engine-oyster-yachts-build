@@ -41,6 +41,8 @@ class Configuration
                 return $json;
             }
 
+            $config->settings = array_merge(ee('App')->get('editor')->get('redactor_default'), $config->settings);
+
             if (isset($config->settings['config']) && !empty($config->settings['config'])) {
                 $json = $config->settings['config'];
             }
@@ -75,12 +77,28 @@ class Configuration
                 $uploadUrl  = ee('editor:Helper')->getRouterUrl('url', 'actionFileUpload');
                 $uploadUrl .= '&action=file&upload_location=' . $config->settings['files_upload_location'];
                 $json['fileUpload'] = $uploadUrl;
+
+                if ($config->settings['files_browse'] == 'yes') {
+                    $browse  = ee('editor:Helper')->getRouterUrl('url', 'actionGeneralRouter');
+                    $browse .= '&method=browseFiles&upload_location=' . $config->settings['files_upload_location'];
+
+                    $json['fileManagerJson'] = $browse;
+                    $json['plugins'][] = 'filemanager';
+                }
             }
 
             if ($config->settings['images_upload_location'] > 0) {
                 $uploadUrl  = ee('editor:Helper')->getRouterUrl('url', 'actionFileUpload');
                 $uploadUrl .= '&action=image&upload_location=' . $config->settings['images_upload_location'];
                 $json['imageUpload'] = $uploadUrl;
+
+                if ($config->settings['images_browse'] == 'yes') {
+                    $browse  = ee('editor:Helper')->getRouterUrl('url', 'actionGeneralRouter');
+                    $browse .= '&method=browseImages&upload_location=' . $config->settings['images_upload_location'];
+
+                    $json['imageManagerJson'] = $browse;
+                    $json['plugins'][] = 'imagemanager';
+                }
             }
         } elseif ($config->settings['upload_service'] == 's3') {
             $uploadUrl  = ee('editor:Helper')->getRouterUrl('url', 'actionFileUpload');
@@ -160,6 +178,17 @@ class Configuration
         $plugins['codemirror']    = array('author' => 'Redactor', 'label' => 'Codemirror', 'desc' => "This plugin enables source code highlighting, powered by CodeMirror.");
         //$plugins['filemanager']   = array('author' => 'Redactor', 'label' => 'File Manager', 'desc' => "Manage, upload, select files and place them anywhere in Redactor.");
         //$plugins['imagemanager']  = array('author' => 'Redactor', 'label' => 'Image Manager', 'desc' => "Upload or choose and insert images to tell a more visual story.");
+
+        // Channel Images?
+        if (ee('Addon')->get('channel_images') && ee('Addon')->get('channel_images')->isInstalled()) {
+            $plugins['channel_images']    = array(
+                'author'   => 'DevDemon',
+                'label'    => 'Channel Images',
+                'desc'     => 'Channel Images Integration',
+                'included' => false,
+                'url'      => ee('channel_images:Helper')->getThemeUrl() . 'js/addon_redactor_plugin.js',
+            );
+        }
 
         return $plugins;
     }

@@ -1,7 +1,7 @@
 {exp:channel:entries channel="other_events" disable="member_data|category_fields|pagination" cache="yes" refresh="60" require_entry="yes" status="published"}
 {if no_results}{redirect="404"}{/if}
 
-{embed="site/.header" snap_to=".events-home-about" snap_offset="125"}
+{embed="site/.header" page_title="{title}" snap_to=".events-home-about" snap_offset="125"}
 
 <section {otherevent_main_image}style="background-image: url('{image:url}');"{/otherevent_main_image} class="hero after-nav global-page-hero yacht-listing-photo global-page-hero--medium">
 	{back_button}
@@ -15,9 +15,17 @@
 			{otherevent_description}
 		</div>
 		<div class="large-offset-1 large-3 small-12 float-left">
-			<div class="sticky-sidebar">
-				{embed="events/.event_nav" id="{categories}{category_id}{/categories}"}
-			</div>
+			<aside class="overview-download columns">
+				<div class="block-section-header aside-header">
+					<h3 class="text-uppercase">Events Types</h3>
+					<div class="dropdown-arrow"></div>
+				</div>
+				<div class="overview-contents prev-models">
+					<div class="overview">
+						{embed="events/.event_nav" id="{categories}{category_id}{/categories}"}
+					</div>
+				</div>
+			</aside>
 		</div>
 	</div>
 </section>

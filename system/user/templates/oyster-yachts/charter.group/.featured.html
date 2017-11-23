@@ -2,25 +2,49 @@
 <li class="column large-4 size-small">
 	<div class="yacht-list-item">
 		<a href="{url_title_path='charter/fleet'}">
-			<div {charter_main_image}style="background-image:url('{image:url:small}')"{/charter_main_image} class="yacht-listing-photo"></div>
+			<div class="listing-images">		
+				{charter_main_image}
+				<div class="yacht-listing-photo"><img src="{image:url:blur}" data-img-name="{image:title}" data-sizes="auto" data-srcset="{image:url:w_416} 416w, {image:url:w_633} 633w, {image:url:w_983} 983w" class="lazyload blur-up"></div>
+				{/charter_main_image}
+			</div>
 			<div class="yacht-listing-title">
 				<span class="yacht-list-modal">{charter_model}</span>
 				<span class="yacht-list-name double-slash">{title}</span>
 			</div>
 		</a>
 		<div class="listing-content">
-			<table class="table listing-table feature-col">
-				<tbody>
-					<tr>
-						<td>Year: <span>{charter_year}</span></td>
-						<td>Number of Guests: <span>{charter_guests}</span></td>
-					</tr>
-					<tr>
-						<td>Summer: <span>{charter_summer}</span></td>
-						<td>Winter: <span>{charter_winter}</span></td>
-					</tr>
-				</tbody>
-			</table>
+				<table class="table listing-table feature-col">
+								<tbody>
+									<tr>
+										<td>Year: <span>{charter_year}</span></td>
+										<td>Number of Guests: <span>{charter_guests}</span></td>
+									</tr>
+									<tr>
+										<td  style="border-bottom: 0;">Summer: <span>{charter_summer}</span>
+										</td>
+										<td  style="border-bottom: 0;">Winter: <span>{if winter_price}{charter_winter}{if:else}N/A{/if}</span>
+										</td>
+									</tr>
+									<tr>
+										<td style="border-top: 0; padding-top: 0;">
+											{if summer_price}
+											Prices From: <span>{summer_price}/wk
+											{if:else}
+											Prices Not Available
+											{/if}
+											</span>
+										</td>
+										<td style="border-top: 0; padding-top: 0;">
+											{if winter_price}
+											Prices From: <span>{winter_price}/wk
+											{if:else}
+											Prices Not Available
+											{/if}
+											</span>
+										</td>
+									</tr>
+								</tbody>
+							</table>
 		</div>
 		{share_buttons}
 	</div>

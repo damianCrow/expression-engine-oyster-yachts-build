@@ -22,6 +22,13 @@ class Editor_mcp
     private $vdata = array();
 
     /**
+     * Base URI
+     * @var string
+     * @access protected
+     */
+    protected $baseUri = 'addons/settings/editor/';
+
+    /**
      * Constructor
      *
      * @access public
@@ -29,8 +36,9 @@ class Editor_mcp
      */
     public function __construct()
     {
-        $this->baseUrl = ee('CP/URL', 'addons/settings/editor');
+        $this->baseUrl = ee('CP/URL', $this->baseUri);
         $this->site_id = ee()->config->item('site_id');
+        $this->vdata['baseUri'] = $this->baseUri;
         $this->vdata['baseUrl'] = $this->baseUrl->compile();
 
         //----------------------------------------
@@ -139,6 +147,8 @@ class Editor_mcp
 
         if (!$config->settings) {
             $config->settings = ee('App')->get('editor')->get('redactor_default');
+        } else {
+            $config->settings = array_merge(ee('App')->get('editor')->get('redactor_default'), $config->settings);
         }
 
         $this->vdata['formName'] = $formName = 'redactor';
@@ -288,6 +298,20 @@ class Editor_mcp
                     )
                 ),
                 array(
+                    'title' => 'ed:file_browse',
+                    'group'  => 'upload-local',
+                    'fields' => array(
+                        $formName.'[files_browse]' => array(
+                            'type' => 'inline_radio',
+                            'choices' => array(
+                                'yes' => lang('yes'),
+                                'no'  => lang('no'),
+                            ),
+                            'value'   => $settings['files_browse'],
+                        ),
+                    )
+                ),
+                array(
                     'title' => 'ed:image_upload_loc',
                     'group'  => 'upload-local',
                     'fields' => array(
@@ -295,6 +319,20 @@ class Editor_mcp
                             'type'    => 'select',
                             'choices' => $locations,
                             'value'   => $settings['images_upload_location'],
+                        ),
+                    )
+                ),
+                array(
+                    'title' => 'ed:image_browse',
+                    'group'  => 'upload-local',
+                    'fields' => array(
+                        $formName.'[images_browse]' => array(
+                            'type' => 'inline_radio',
+                            'choices' => array(
+                                'yes' => lang('yes'),
+                                'no'  => lang('no'),
+                            ),
+                            'value'   => $settings['images_browse'],
                         ),
                     )
                 ),
@@ -385,7 +423,7 @@ class Editor_mcp
 
         // Final view variables we need to render the form
         $this->vdata += array(
-            'base_url'      => $this->baseUrl->compile() . '/update-config',
+            'base_url'      => ee('CP/URL', $this->baseUri . 'update-config')->compile(),
             'cp_page_title' => $config->isNew() ? lang('ed:create_config') : lang('ed:edit_config'),
             'save_btn_text' => sprintf(lang('btn_save'), lang('ed:config')),
             'save_btn_text_working' => 'btn_saving',

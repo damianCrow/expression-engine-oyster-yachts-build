@@ -126,7 +126,7 @@ class Toggle_ft extends EE_Fieldtype {
 		{
 			$selected = ($value == $data);
 
-			$html .= '<label>'.form_radio($this->field_name, $value, $selected, $extra).NBS.$key.'</label>';
+			$html .= '<label>'.form_radio($this->field_name, $value, $selected).NBS.$key.'</label>';
 		}
 
 		switch ($container)
@@ -184,9 +184,9 @@ class Toggle_ft extends EE_Fieldtype {
 
 	function save_settings($data)
 	{
-		return array(
-			'field_default_value' => $data['field_default_value']
-		);
+		$all = array_merge($this->settings_vars, $data);
+
+		return array_intersect_key($all, $this->settings_vars);
 	}
 
 	/**
@@ -239,6 +239,17 @@ class Toggle_ft extends EE_Fieldtype {
 	 * @return bool   Accepts all content types
 	 */
 	public function accepts_content_type($name)
+	{
+		return TRUE;
+	}
+
+	/**
+	 * Update the fieldtype
+	 *
+	 * @param string $version The version being updated to
+	 * @return boolean TRUE if successful, FALSE otherwise
+	 */
+	public function update($version)
 	{
 		return TRUE;
 	}

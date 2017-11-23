@@ -1,6 +1,8 @@
-{embed="site/.header" snap_to="undefined" snap_offset="undefined"}
+{exp:channel:entries channel="charter_destinations" disable="member_data|category_fields|pagination" limit="1" cache="yes" refresh="60" status="published" sort="asc"}
 
-<section style="background-image: url('/assets/images/destinations.jpg'); " class="hero after-nav global-page-hero yacht-listing-photo global-page-hero--medium">
+{embed="site/.header" page_title="Oyster Charter Destinations" entry_id="{entry_id}" snap_to="undefined" snap_offset="undefined"}
+
+<section style="background-image: url('/assets/images/oysteryachts-charter-destinations.jpg'); " class="hero after-nav global-page-hero yacht-listing-photo global-page-hero--medium">
 	{back_button}
 	{share_buttons}
 </section>
@@ -8,14 +10,15 @@
 	<div class="row row-pad">
 		<div class="large-offset-1 large-7 float">
 			<h2>Oyster Charter</h2>
-			<h1>Destinations</h1>
-			<p>
-				After the success of the inaugural Oyster World Rally, organised exclusively for the owners of Oyster yachts, the countdown to the Oyster World Rally 2017-19 has begun. The departure from Antigua is set for January 2017 and entries are invited by Spring 2016. With this fully-supported, 27,000 mile circumnavigation extended from 15 to 27 months and comprising four connecting stages, participants can look forward in this event to lengthier, more relaxed exploration of the Pacific and Asian islands, while also discovering more of New Zealand and Australia. Make your dreams come true and join the Oyster World Rally 2017-19.
+			
 
-			</p>
+			<h1>{title}</h1>
+{charter_destinations_landing_int}
 			<div class="further-info">
-				<p>Oyster Charter enables you to sail the dream. Let us show you how we really can ‘make the world your Oyster’.  For further details on Charter destinations please contact Molly Marston - <a href="mailto:molly.marston@oysteryachts.com">molly.marston@oysteryachts.com</a></p>
+				{charter_destinations_landing_con}
+				
 			</div>
+			
 		</div>
 		<div class="large-offset-1 large-3 small-12 float-left">
 			<aside class="overview-download columns destinaitons-aside">
@@ -31,10 +34,10 @@
 				<div class="overview-contents prev-models">
 					<div class="overview columns small-12">
 						<ul>
-							<li><abbr title="Telephone">Tel: </abbr><a href="tel:+14018467400">+1 401 846 7400</a></li>
-							<li><abbr title="Fax">F: </abbr><a href="tel:+14018467483">+1 401 846 7483</a></li>
+							<li><abbr title="Telephone">T: </abbr><a href="tel:{charter_telephone}">{charter_telephone}</a></li>
+							<li><abbr title="Fax">F: </abbr><a href="tel:{charter_fax}">{charter_fax}</a></li>
 							<li><abbr title="Email">E: </abbr><a href="mailto:charter@oysteryachts.com">charter@oysteryachts.com</a></li>
-							<li><abbr title="Email">E: </abbr><a href="mailto:molly.marston@oysteryachts.com">molly.marston@oysteryachts.com</a></li>
+							<li><a href="mailto:molly.marston@oysteryachts.com" class="text-uppercase button-transparent" style="margin:0;width: 100%;">Contact via email</a></li>
 						</ul>
 					</div>
 				</div>
@@ -42,37 +45,39 @@
 		</div>
 	</div>
 </section>
+{/exp:channel:entries}
 <section class="staggered-features global-padding-top-only--small">
-	<div class="row">
-		<div class="staggered-image medium-7 small-12 columns"><img src="/assets/images/09-jueves-4383.jpg"></div>
-		<div class="staggered-details medium-5 small-12 columns">
-			<div class="staggered-details-contents">
-				<h2>Caribbean Islands</h2>
-				<p>Introduction copy to the Caribbean... sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud. Lorem ipsum dolor sit ametelit. </p>
-				<a href="{path='charter/destinations/area'}" class="button-solid-white button-chubby">View Destination</a>
-			</div>
-		</div>
-	</div>
-	<div class="row staggered-row-reverse">
-		<div class="staggered-details medium-5 small-12 columns">
-			<div class="staggered-details-contents">
-				<h2>Mediterranean</h2>
-				<p>Introduction copy to the Caribbean... sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud. Lorem ipsum dolor sit ametelit.</p>
-				<a href="{path='charter/destinations/area'}" class="button-solid-white button-chubby">View Destination</a>
-			</div>
-		</div>
-		<div class="staggered-image medium-7 small-12 columns"><img src="/assets/images/_OYS0196.jpg"></div>
-	</div>
-	<div class="row">
-		<div class="staggered-image medium-7 small-12 columns"><img src="/assets/images/_DSC4836.jpg"></div>
-		<div class="staggered-details medium-5 small-12 columns">
-			<div class="staggered-details-contents">
-				<h2>New England</h2>
-				<p>Introduction copy to the Caribbean... sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud. Lorem ipsum dolor sit ametelit. </p>
-				<a href="{path='charter/destinations/area'}" class="button-solid-white button-chubby">View Destination</a>
-			</div>
-		</div>
-	</div>
-</section>
 
+{exp:channel:entries channel="destinations" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published" sort="asc"}
+	{if count % 2 == 0}
+	<div class="row row-pad staggered-row-reverse">
+		<div class="staggered-details medium-5 small-12 columns">
+			<div class="staggered-details-contents">
+				<h2>{title}</h2>
+				{dest_introduction}
+				<a href="{url_title_path='charter/destinations'}" class="button-solid-white button-chubby">View Destination</a>
+			</div>
+		</div>
+		<div class="staggered-image medium-7 small-12 columns"><img src="{dest_link_image}{image:url}{/dest_link_image}"></div>
+	</div>
+	{if:else}
+	<div class="row row-pad">
+		<div class="staggered-image medium-7 small-12 columns"><img src="{dest_link_image}{image:url}{/dest_link_image}"></div>
+		<div class="staggered-details medium-5 small-12 columns">
+			<div class="staggered-details-contents">
+				<h2>{title}</h2>
+				{dest_introduction}
+				<a href="{url_title_path='charter/destinations'}" class="button-solid-white button-chubby">View Destination</a>
+			</div>
+		</div>
+	</div>
+	{/if}
+{/exp:channel:entries}
+</section>
+<style>
+.button-transparent:hover, .button-transparent:focus {
+    background-color: #003145;
+    color: #fff !important;
+}
+</style>
 {footer}

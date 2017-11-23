@@ -1,8 +1,8 @@
-{embed="site/.header" snap_to=".login-page" snap_offset="55"}
+{embed="site/.header" page_title="Oyster Owners Area" snap_to=".login-page" snap_offset="55"}
 
-<article style="background-image: url('/assets/images/login-bg-min.jpg')" class="login-page after-nav">
+<article style="background-image: url('/assets/images/owners_area-login-bg.jpg')" class="login-page after-nav">
 	<div id="login-page" class="full-modal reveal">
-		<h2>Oyster Owners Area</h2>
+		<h2>Oyster Owners' Area</h2>
 		<div class="sliding-tabs login-tab-container">
 			<ul id="login-tabs" data-tabs="" class="tabs">
 				<li class="tabs-title is-active"><a href="#login-panel" aria-selected="true">Login</a></li>
@@ -12,9 +12,10 @@
 		</div>
 		<div data-tabs-content="login-tabs" class="login-tabs-content">
 			<div id="login-panel" class="tabs-panel is-active">
-				{exp:member:login_form return="owners-area/index" form_class="sign-up-modal-form"}
 				<div class="modal-content">
-					<div class="form-error text-center text-uppercase"><span>ERROR: Invalid or incomplete fields</span><span class="error-messages"></span></div>
+				{exp:member:login_form return="owners-area" form_class="sign-up-modal-form" id="owners-login"}
+				
+					<div class="form-error text-center text-uppercase" data-form-id="owners-login"><span>ERROR: Invalid or incomplete fields</span><span class="error-messages"></span></div>
 					<fieldset>
 						<legend class="show-for-sr">Login</legend>
 						<ol>
@@ -27,28 +28,30 @@
 								<input id="login_password" type="password" name="password" placeholder="Password" required="">
 							</li>
 						</ol>
-						<div class="extra-login-content"><a href="" class="login-forgot-password">Forgot Password?</a>
+						<div class="extra-login-content"><a href="{path='owners-area/forgot-password'}" class="login-forgot-password">Forgot Password?</a>
 							<div class="login-remember-me">
 								<input id="auto_login" type="checkbox" name="auto_login" value="1" class="show-for-sr">
 								<label for="auto_login" class="material-icons">Remember Me</label>
 							</div>
 						</div>
 					</fieldset>
+					{/exp:member:login_form}
 				</div>
 				<div class="modal-footer">
 					<div class="float-right">
-						<button data-close aria-label="Close modal" type="button" class="button-solid-lightgrey">Cancel</button>
-						<button aria-controls="formModal" aria-haspopup="true" tabindex="0" type="submit" value="Submit" class="button-solid-blue">Submit </button>
+<!-- 						<button data-close aria-label="Close modal" type="button" class="button-solid-lightgrey">Cancel</button>
+ -->						<button aria-controls="formModal" aria-haspopup="true" tabindex="0" type="submit" value="Submit" class="button-solid-blue" data-form-id="owners-login">Submit </button>
 					</div>
 				</div>
-				{/exp:member:login_form}
+				
 			</div>
 			<div id="new-account" class="tabs-panel">
 				<div id="new-account-form" class="new-account-form">
-					{exp:user:register assign_roles="1" admin_register="yes" override_return="owners-area/thanks-for-registering" form:class="sign-up-modal-form"}
 					<div class="modal-content">
+					{exp:user:register assign_roles="1" admin_register="yes" override_return="owners-area/thanks-for-registering" form:class="sign-up-modal-form"}
+					
 						<div class="request-spec">
-							<div class="form-error text-center text-uppercase"><span>ERROR: Invalid or incomplete fields</span><span class="error-messages"></span></div>
+							<div class="form-error text-center text-uppercase" data-form-id="member_form"><span>ERROR: Invalid or incomplete fields</span><span class="error-messages"></span></div>
 							<fieldset>
 								<ol>
 									<li class="required-input">
@@ -108,19 +111,19 @@
 								<legend class="required-input">Please select the appropriate account type</legend>
 								<ol>
 									<li>
-										<input id="oyster-owner-check" type="checkbox" name="member_account_type" value="oyster-owner-check" class="show-for-sr">
+										<input id="oyster-owner-check" type="checkbox" name="member_account_type" value="Owner" class="show-for-sr">
 										<label for="oyster-owner-check">Owner</label>
 									</li>
 									<li>
-										<input id="oyster-skipper-check" type="checkbox" name="member_account_type" value="oyster-skipper-check" class="show-for-sr">
+										<input id="oyster-skipper-check" type="checkbox" name="member_account_type" value="Skipper" class="show-for-sr">
 										<label for="oyster-skipper-check">Skipper</label>
 									</li>
 									<li>
-										<input id="oyster-crew-check" type="checkbox" name="member_account_type" value="oyster-crew-check" class="show-for-sr">
+										<input id="oyster-crew-check" type="checkbox" name="member_account_type" value="Crew" class="show-for-sr">
 										<label for="oyster-crew-check">Crew</label>
 									</li>
 									<li>
-										<input id="oyster-rep-check" type="checkbox" name="member_account_type" value="oyster-rep-check" class="show-for-sr">
+										<input id="oyster-rep-check" type="checkbox" name="member_account_type" value="Rep" class="show-for-sr">
 										<label for="oyster-rep-check">Rep</label>
 									</li>
 								</ol>
@@ -128,12 +131,12 @@
 							<fieldset class="spec-current-yacht">
 								<ol>
 									<li class="required-input">
-										<label for="member_current_yacht_make" class="show-for-sr">Current Yacht Make *</label>
-										<input id="member_current_yacht_make" type="text" name="member_current_yacht_make" placeholder="Current Yacht Make" required="">
+										<label for="member_current_yacht_model" class="show-for-sr">Oyster Model (and hull number if known) *</label>
+										<input id="member_current_yacht_model" type="text" name="member_current_yacht_model" placeholder="Oyster Model (and hull number if known)" required="">
 									</li>
 									<li class="required-input">
-										<label for="member_current_yacht_model" class="show-for-sr">Current Yacht Model *</label>
-										<input id="member_current_yacht_model" type="text" name="member_current_yacht_model" placeholder="Current Yacht Model" required="">
+										<label for="member_current_yacht_make" class="show-for-sr">Yacht Name *</label>
+										<input id="member_current_yacht_make" type="text" name="member_current_yacht_make" placeholder="Yacht Name" required="">
 									</li>
 								</ol>
 							</fieldset>
@@ -152,16 +155,26 @@
 										</select>
 									</li>
 								</ol>
-							</fieldset><small>Your information will never be sold to any other company. Your data will be treated in accordance with the Data Protection Act 1998. Please see our Privacy Policy for more details. If you wish to update or delete the data you have voluntarily given us please contact us on +44 2380 831 010 or email sales@oysteryachts.com</small>
+							</fieldset>
+							<fieldset class="spec-additional-yacht">
+								<ol>
+									<li class="required-input">
+						            <p>Please tick the checkbox below:</p>
+						            <p>{captcha}</p>
+						            <input id="hiddenRecaptcha" type="hidden" name="hiddenRecaptcha" class="hiddenRecaptcha required">
+						            </li>
+								</ol>
+							</fieldset>
+							{/exp:user:register}<small>Your information will never be sold to any other company. Your data will be treated in accordance with the Data Protection Act 1998. Please see our Privacy Policy for more details. If you wish to update or delete the data you have voluntarily given us please contact us on +44 2380 831 010 or email sales@oysteryachts.com</small>
 						</div>
 					</div>
 					<div class="modal-footer">
 						<div class="float-right">
-							<button data-close aria-label="Close modal" type="button" class="button-solid-lightgrey">Cancel</button>
-							<button aria-controls="formModal" aria-haspopup="true" tabindex="0" type="submit" value="Submit" class="button-solid-blue">Submit </button>
+<!-- 							<button data-close aria-label="Close modal" type="button" class="button-solid-lightgrey">Cancel</button>
+ -->							<button aria-controls="formModal" aria-haspopup="true" tabindex="0" type="submit" value="Submit" class="button-solid-blue" data-form-id="member_form">Submit </button>
 						</div>
 					</div>
-					{/exp:user:register}
+					
 				</div>
 			</div>
 		</div>

@@ -1,79 +1,57 @@
-{embed="site/.header" snap_to=".events-home-about" snap_offset="150"}
+{exp:channel:entries channel="events_landing_page" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published" sort="desc"}
+{embed="site/.header" page_title="Events" entry_id="{entry_id}" snap_to=".events-home-about" snap_offset="150"}
 
 <section style="background-image: url('/assets/images/bg-images/events-bg.jpg'); background-position: center 95%;" class="hero after-nav global-page-hero yacht-listing-photo global-page-hero--medium">
 </section>
 <section class="page-home-about events-home-about">
 	<div class="row padded-full-width-row">
 		<div class="large-offset-1 large-7 float-left">
+				
 			<h2 class="text-uppercase">Regattas | Events | Parties</h2>
-			<h1 class="text-uppercase">Come Together</h1>
-			<p>
-				Supported by our family of sponsors, Oyster Regattas and events are run on a "hands on" basis by our own staff and, with the emphasis on fun, include parties and social functions every evening, not just for owners but also for their crew and friends. As we don't sell through agents or dealers, most owners have a direct relationship with Oyster staff so they can be sure of finding some friendly faces and a warm welcome on arrival.
-			</p>
-			<p>
-				Of course it doesn't stop at regattas, since we also organise annual parties and dinners for owners during the London, Southampton and Annapolis boat shows, together with parties at events like the ARC and Antigua Sailing Week.
-			</p>
+			<h1 class="text-uppercase">{title}</h1>
+			{events_description}
 			<div class="further-info">
-				<p>
-					For event invitations, booking forms and event programmes please visit the <a href="/oyster/owners-area">Oyster Owners’ Area</a> <br/>
-					For further details on our Oyster events please contact XXXXXXXXXXXXX - xxxx.xxxxxxx@oysteryachts.com
-				</p>
+				{events_further_info}
 			</div>
+		
+
+			
 		</div>
 		<div class="large-offset-1 large-3 small-12 float-left">
-			{embed="events/.event_nav"}
+						<aside class="overview-download columns">
+				<div class="block-section-header aside-header">
+					<h3 class="text-uppercase">Events Types</h3>
+					<div class="dropdown-arrow"></div>
+				</div>
+				<div class="overview-contents prev-models">
+					<div class="overview">
+						{embed="events/.event_nav" id="{categories}{category_id}{/categories}"}
+						<div class="events-notice">
+	                      <p>The Oyster World Rally 2017-19 started on Sunday 15th January.</p><a class="button-solid-blue button-chubby button-full-width" target='_blank' href="http://oysterworldrally.com">Discover More</a>
+	                    </div>
+					</div>
+				</div>
+			</aside>
 		</div>
 	</div>
 </section>
+{/exp:channel:entries}
 <section id="events-home-upcoming-events" class="events-view-events-mixin events-home-upcoming-events">
 	<div class="banner">Forthcoming events</div>
 	<div data-equalizer data-equalizer-mq="medium-up" class="row padded-full-width-row small-up-1 medium-up-2 large-up-3">
-
-		{exp:channel:entries channel="boat_show|event" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published" orderby="boatshow_end_date" sort="desc"}
-		{if channel_short_name == "boat_show" && boatshow_end_date > current_time}
-		<div class="small-12 medium-6 large-4 columns">
-			<div class="gallery-pane">
-				<div class="gallery-pane-header images" {boatshow_main_image}style="background-image: url('{image:url}');"{/boatshow_main_image}>
-					{share_buttons}
-				</div>
-				<div class="gallery-pane-content">
-					<div data-equalizer-watch class="row small-collapse medium-collapse large-collapse">
-						<div class="left small-4 large-4 columns">
-							<h2 class="month text-uppercase">{boatshow_start_date format="%F"}</h2><span class="date">{boatshow_start_date format="%d"}</span>
-						</div>
-						<div class="right small-8 large-8 columns">
-							<h2 class="title text-uppercase">{title}</h2>
-							<h5 class="sub-title text-uppercase">{exp:date_range start_date="{boatshow_start_date format='%d %F %Y'}" end_date="{boatshow_end_date format='%d %F %Y'}"}</h5>
-							<a href="{url_title_path='events/boat-shows'}" class="text-uppercase button-transparent">view event</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		{if:elseif channel_short_name == "event" && event_end_date > current_time}
-		<div class="small-12 medium-6 large-4 columns">
-			<div class="gallery-pane">
-				<div class="gallery-pane-header images" {event_main_image}style="background-image: url('{image:url}');"{/event_main_image}>
-					{share_buttons}
-				</div>
-				<div class="gallery-pane-content">
-					<div data-equalizer-watch class="row small-collapse medium-collapse large-collapse">
-						<div class="left small-4 large-4 columns">
-							<h2 class="month text-uppercase">{event_start_date format="%F"}</h2><span class="date">{event_start_date format="%d"}</span>
-						</div>
-						<div class="right small-8 large-8 columns">
-							<h2 class="title text-uppercase">{title}</h2>
-							<h5 class="sub-title text-uppercase">{exp:date_range start_date="{event_start_date format='%d %F %Y'}" end_date="{event_end_date format='%d %F %Y'}"}</h5>
-							<a href="{url_title_path='events/regattas'}" class="text-uppercase button-transparent">view event</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		{/if}
-		{/exp:channel:entries}
-		
+		{embed='events/.forthcoming_events'}
 	</div>
+</section>
+<section class="events-full-feature">
+  <div class="row padded-full-width-row events-full-feature__container">
+    <div class="events-full-feature__background">
+      <div class="events-full-feature__content medium-8 large-6">
+        <h2 class="text-uppercase">Oyster World Rally</h2>
+        <p>
+          The Oyster World Rally 2017-19<br> started on Sunday 15th January.</p><a class="button-solid-yellow button-chubby" target='_blank' href="http://oysterworldrally.com">Follow The Adventure</a>
+      </div>
+    </div>
+  </div>
 </section>
 
 {footer}

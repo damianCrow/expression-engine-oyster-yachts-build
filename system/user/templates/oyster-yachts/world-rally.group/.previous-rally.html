@@ -1,4 +1,4 @@
-{embed="site/.header" snap_to=".world-rally-staggered-features" snap_offset="55"}
+{embed="site/.header" page_title="World Rally 2013/14" snap_to=".world-rally-staggered-features" snap_offset="55"}
 
 {embed="world-rally/.previous-rally-subnav"}
 
@@ -6,43 +6,34 @@
       {back_button}
       <div class="world-rally-logo"><img src="/assets/images/oyster-world-rally-logo.png"/></div>
     </section>
-    <section class="staggered-features world-rally-staggered-features">
-      <div class="row padded-full-width-row">
-        <div class="staggered-image medium-7 small-12 columns"><img src="/assets/images/bg-images/world-rally-previous-bg-1.jpg"></div>
+    <section class="staggered-features world-rally-staggered-features global-padding-top-only--small">
+            {exp:channel:entries channel="wr_previous" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published"}
+ {navigation}
+         {if navigation:count % 2 == 0}
+<div class="row padded-full-width-row staggered-row-reverse">
         <div class="staggered-details medium-5 small-12 columns">
           <div class="staggered-details-contents">
-            <h2 class="text-uppercase">the route</h2>
-            <p>Introduction copy for Gallery... sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. quis nostrud. Lorem ipsum dolor sit ametelit.</p><a href="{path='world-rally/world-rally-2013-14/route'}" class="text-uppercase button-solid-white">view the route</a>
+            <h2 class="text-uppercase">{navigation:name}</h2>
+            {navigation:description}<a href="{navigation:link}" class="text-uppercase button-solid-white">{navigation:link_label}</a>
+          </div>
+        </div>
+        <div class="staggered-image medium-7 small-12 columns"><img src="{navigation:image}"></div>
+      </div>
+
+
+       {if:else}
+            <div class="row padded-full-width-row">
+        <div class="staggered-image medium-7 small-12 columns"><img src="{navigation:image}"></div>
+        <div class="staggered-details medium-5 small-12 columns">
+          <div class="staggered-details-contents">
+            <h2 class="text-uppercase">{navigation:name}</h2>
+           {navigation:description}<a href="{navigation:link}" class="text-uppercase button-solid-white">{navigation:link_label}</a>
           </div>
         </div>
       </div>
-      <div class="row padded-full-width-row staggered-row-reverse">
-        <div class="staggered-details medium-5 small-12 columns">
-          <div class="staggered-details-contents">
-            <h2 class="text-uppercase">news</h2>
-            <p>Introduction copy for Gallery... sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. quis nostrud. Lorem ipsum dolor sit ametelit.</p><a href="{path='world-rally/world-rally-2013-14/news'}" class="text-uppercase button-solid-white">view news</a>
-          </div>
-        </div>
-        <div class="staggered-image medium-7 small-12 columns"><img src="/assets/images/bg-images/world-rally-previous-bg-2.jpg"></div>
-      </div>
-      <div class="row padded-full-width-row">
-        <div class="staggered-image medium-7 small-12 columns"><img src="/assets/images/bg-images/world-rally-entries-bg.jpg"></div>
-        <div class="staggered-details medium-5 small-12 columns">
-          <div class="staggered-details-contents">
-            <h2 class="text-uppercase">entries</h2>
-            <p>Introduction copy for Gallery... sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. quis nostrud. Lorem ipsum dolor sit ametelit.</p><a href="{path='world-rally/world-rally-2013-14/entries'}" class="text-uppercase button-solid-white">view entries</a>
-          </div>
-        </div>
-      </div>
-      <div class="row padded-full-width-row staggered-row-reverse">
-        <div class="staggered-details medium-5 small-12 columns">
-          <div class="staggered-details-contents">
-            <h2 class="text-uppercase">gallery</h2>
-            <p>Introduction copy for Gallery... sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. quis nostrud. Lorem ipsum dolor sit ametelit.</p><a href="{path='world-rally/world-rally-2013-14/gallery'}" class="text-uppercase button-solid-white">view gallery</a>
-          </div>
-        </div>
-        <div class="staggered-image medium-7 small-12 columns"><img src="/assets/images/_DSC4836.jpg"></div>
-      </div>
+      {/if}
+      {/navigation}
+      {/exp:channel:entries}
     </section>
 
 {footer}

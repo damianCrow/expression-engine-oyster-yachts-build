@@ -1,68 +1,187 @@
 <div id="global-page-filters" data-local-subnav="data-local-subnav" class="filters">
-	<div class="row row-pad">
-		<div class="large-offset-1 large-10 end">
+	<div class="row padded-full-width-row">
+		<div class="filters-container large-centered large-10 end show-for-large">
 			<form id="filters-form" method="POST" action="{path='brokerage/fleet'}"{if embed:post == "true"} data-post="true"{/if}>
-				<div class="filter-dropdown">
-					<select id="filter-model" name="model" tabindex="-1" aria-hidden="true">
-						<option value="">All models</option>
-						{exp:query sql="
-							SELECT DISTINCT cd.field_id_24 AS model 
-							FROM exp_channel_data cd 
-							LEFT JOIN exp_channel_titles ct 
-								ON cd.entry_id = ct.entry_id 
-							WHERE cd.channel_id=1 
-								AND cd.field_id_24 != '---'
-								AND ct.status = 'Published'
-							ORDER BY cd.field_id_24 ASC"}
-							<option value="{model}"{if post:model == model} selected="selected"{/if}>{model}</option>
-						{/exp:query}
-					</select>
+				<div class="filter-oyster-yachts-or-not">
+					<legend class="hide">Choose Oyster Yacht or others</legend>
+					<input id="filter-oyster-type" type="radio" name="oyster-yacht-or-not" value="true" class="show-for-sr" {if get_post:otherType != "true"} checked="checked"{/if}/>
+					<label for="filter-oyster-type">Oyster Yachts</label>
+					<input id="filter-oyster-type-non" type="radio" name="oyster-yacht-or-not" value="false" class="show-for-sr" {if get_post:otherType == "true"} checked="checked"{/if} />
+					<label for="filter-oyster-type-non">All Other Yachts</label>
 				</div>
-				<div class="filter-dropdown">
-					<select name="price" id="filter-price" tabindex="-1" aria-hidden="true">
-						<option value="">Any Price</option>
-						<option value="0-250000"{if post:price == "0-250000"} selected="selected"{/if}>Under £250,000</option>
-						<option value="250000-500000"{if post:price == "250000-500000"} selected="selected"{/if}>£250,000 - £500,000</option>
-						<option value="500000-1000000"{if post:price == "500000-1000000"} selected="selected"{/if}>£500,000 - £1,000,000</option>
-						<option value="1000000-1500000"{if post:price == "1000000-1500000"} selected="selected"{/if}>£1,000,000 - £1,500,000</option>
-						<option value="1500000-2000000"{if post:price == "1500000-2000000"} selected="selected"{/if}>£1,500,000 - £2,000,000</option>
-						<option value="2000000-0"{if post:price == "2000000-0"} selected="selected"{/if}>Over £2,000,000</option>
-					</select>
+				<div class="filter-dropdowns">
+					<div class="filter-dropdown filter-model" {if get_post:otherType == "true"}style="display:none;"{/if}>
+						<select id="filter-model" name="model" tabindex="-1" aria-hidden="true">
+							<option value="">All Models</option>
+							{exp:query sql="
+								SELECT DISTINCT cd.field_id_24 AS model 
+								FROM exp_channel_data cd 
+								LEFT JOIN exp_channel_titles ct 
+									ON cd.entry_id = ct.entry_id 
+								WHERE cd.channel_id=1 
+									AND cd.field_id_24 != '---'
+									AND cd.field_id_24 != 'Non Oyster Models'
+									AND ct.status = 'Published'
+									AND cd.field_id_24 NOT LIKE 'Oyster LD%'
+								ORDER BY cd.field_id_24 DESC"}
+								<option value="{model}"{if get_post:model == model && get_post:otherType != "true"} selected="selected"{/if}>{model}</option>
+							{/exp:query}
+							{exp:query sql="
+								SELECT DISTINCT cd.field_id_24 AS model 
+								FROM exp_channel_data cd 
+								LEFT JOIN exp_channel_titles ct 
+									ON cd.entry_id = ct.entry_id 
+								WHERE cd.channel_id=1 
+									AND cd.field_id_24 != '---'
+									AND cd.field_id_24 != 'Non Oyster Models'
+									AND ct.status = 'Published'
+									AND cd.field_id_24 LIKE 'Oyster LD%'
+								ORDER BY cd.field_id_24 DESC"}
+								<option value="{model}"{if get_post:model == model && get_post:otherType != "true"} selected="selected"{/if}>{model}</option>
+							{/exp:query}
+						</select>
+					</div>
+					<div class="filter-dropdown filter-model-other" {if get_post:otherType == "false" || get_post:otherType == ""}style="display:none;"{/if}>
+						<select id="filter-model-other" name="model_other" tabindex="-1" aria-hidden="true">
+							<option value="">All Models</option>
+							{exp:query sql="
+								SELECT DISTINCT cd.field_id_294 AS model 
+								FROM exp_channel_data cd 
+								LEFT JOIN exp_channel_titles ct 
+									ON cd.entry_id = ct.entry_id 
+								WHERE cd.channel_id=1 
+									AND cd.field_id_294 != ''
+									AND ct.status = 'Published'
+								ORDER BY cd.field_id_294 DESC"}
+								<option value="{model}"{if get_post:model == model && get_post:otherType == "true"} selected="selected"{/if}>{model}</option>
+							{/exp:query}
+						</select>
+					</div>
+					<div class="filter-dropdown">
+						<select name="price" id="filter-price" tabindex="-1" aria-hidden="true">
+							<option value="">Any Price</option>
+							<option value="0-250000"{if get_post:price == "0-250000"} selected="selected"{/if}>Under £250,000</option>
+							<option value="250000-500000"{if get_post:price == "250000-500000"} selected="selected"{/if}>£250,000 - £500,000</option>
+							<option value="500000-1000000"{if get_post:price == "500000-1000000"} selected="selected"{/if}>£500,000 - £1,000,000</option>
+							<option value="1000000-1500000"{if get_post:price == "1000000-1500000"} selected="selected"{/if}>£1,000,000 - £1,500,000</option>
+							<option value="1500000-2000000"{if get_post:price == "1500000-2000000"} selected="selected"{/if}>£1,500,000 - £2,000,000</option>
+							<option value="2000000-0"{if get_post:price == "2000000-0"} selected="selected"{/if}>Over £2,000,000</option>
+						</select>
+					</div>
+					<div class="filter-dropdown">
+						<select name="location" id="filter-location" tabindex="-1" aria-hidden="true">
+							<option value="">Any Location</option>
+							{exp:channel:categories show_empty="no" status="published" style="linear" category_group="2"}
+							<option value="{category_url_title}"{if get_post:location == category_url_title} selected="selected"{/if}>{category_name}</option>
+							{/exp:channel:categories}
+						</select>
+					</div>
+					<div class="filter-dropdown">
+						<select name="status" id="filter-status" tabindex="-1" aria-hidden="true">
+							<option value="">Any Status</option>
+							{exp:query sql="
+								SELECT DISTINCT cd.field_id_9 AS status 
+								FROM exp_channel_data cd
+								LEFT JOIN exp_channel_titles ct 
+									ON cd.entry_id = ct.entry_id 
+								WHERE cd.channel_id=1 
+									AND ct.status = 'Published'
+								ORDER BY cd.field_id_9 ASC"}
+								<option value="{status}"{if get_post:status == status} selected="selected"{/if}>{status}</option>
+							{/exp:query}
+						</select>
+					</div>
+					<a id="submit" href="#" class="button filters-submit">Search</a>
 				</div>
-				<div class="filter-dropdown">
-					<select name="location" id="filter-location" tabindex="-1" aria-hidden="true">
-						<option value="">Any location</option>
-						{exp:query sql="
-							SELECT DISTINCT field_id_4 AS location 
-							FROM exp_channel_data cd
-							LEFT JOIN exp_channel_titles ct 
-								ON cd.entry_id = ct.entry_id 
-							WHERE cd.channel_id=1 
-								AND ct.status = 'Published'
-								AND field_id_4 != ''
-							ORDER BY cd.field_id_4 ASC"}
-							<option value="{location}"{if post:location == location} selected="selected"{/if}>{location}</option>
-						{/exp:query}
-					</select>
-				</div>
-				<div class="filter-dropdown">
-					<select name="status" id="filter-status" tabindex="-1" aria-hidden="true">
-						<option value="">Any status</option>
-						{exp:query sql="
-							SELECT DISTINCT cd.field_id_9 AS status 
-							FROM exp_channel_data cd
-							LEFT JOIN exp_channel_titles ct 
-								ON cd.entry_id = ct.entry_id 
-							WHERE cd.channel_id=1 
-								AND ct.status = 'Published'
-							ORDER BY cd.field_id_9 ASC"}
-							<option value="{status}"{if post:status == status} selected="selected"{/if}>{status}</option>
-						{/exp:query}
-					</select>
-				</div>
-				<a id="submit" href="#" class="button filters-submit">Search</a>
 				<input type="hidden" name="csrf_token" value="{csrf_token}">
 			</form>
 		</div>
+		<button data-open="global-filters-modal" class="text-uppercase button-solid-cyan button-full-width hide-for-large medium-centered medium-10">Filter Yachts</button>
 	</div>
+</div>
+
+<div id="global-filters-modal" data-reveal="data-reveal" data-overlay="false" class="full reveal global-modals">
+	<header class="top-nav-modal">
+		<div data-close="data-close" aria-label="Close modal" class="close-button-wrapper"><a class="site-search-close"></a></div>
+	</header>
+	<section class="nav-body-modal">
+		<div class="row">
+			<div class="small-12 small-centered navigation-links">
+				<form method="POST" action="{path='brokerage/fleet'}"{if embed:post == "true"} data-post="true"{/if}>
+					<div class="filter-oyster-yachts-or-not filter-option">
+						<div class="filter-oyster-yachts-or-not__container">
+							<legend class="hide">Choose Oyster Yacht or others</legend>
+							<div class="filter-oyster-yachts-or-not__option">
+								<input id="filter-oyster-type-small" type="radio" name="oyster-yacht-or-not" checked="checked"/>
+								<label for="filter-oyster-type-small">Oyster Yachts</label>
+							</div>
+							<div class="filter-oyster-yachts-or-not__option">
+								<input id="filter-oyster-type-non-small" type="radio" name="oyster-yacht-or-not" />
+								<label for="filter-oyster-type-non-small">All Other Yachts</label>
+							</div>
+						</div>
+					</div>
+					<div class="filter-dropdowns">
+						<ul class="filters">
+							<li class="filter-dropdown filter-option">
+								<select id="filter-model-small" name="model" tabindex="-1" aria-hidden="true" class="select2-hidden-accessible">
+									<option value="">All Models</option>
+									{exp:query sql="
+									SELECT DISTINCT cd.field_id_24 AS model 
+									FROM exp_channel_data cd 
+									LEFT JOIN exp_channel_titles ct 
+										ON cd.entry_id = ct.entry_id 
+									WHERE cd.channel_id=1 
+										AND cd.field_id_24 != '---'
+										AND cd.field_id_24 != 'Non Oyster Models'
+										AND ct.status = 'Published'
+									ORDER BY cd.field_id_24 ASC"}
+									<option value="{model}"{if get_post:model == model} selected="selected"{/if}>{model}</option>
+									{/exp:query}
+								</select>
+							</li>
+							<li class="filter-dropdown filter-option">
+								<select id="filter-price-small" name="price" tabindex="-1" aria-hidden="true">
+									<option value="">Any Price</option>
+									<option value="0-250000"{if get_post:price == "0-250000"} selected="selected"{/if}>Under £250,000</option>
+									<option value="250000-500000"{if get_post:price == "250000-500000"} selected="selected"{/if}>£250,000 - £500,000</option>
+									<option value="500000-1000000"{if get_post:price == "500000-1000000"} selected="selected"{/if}>£500,000 - £1,000,000</option>
+									<option value="1000000-1500000"{if get_post:price == "1000000-1500000"} selected="selected"{/if}>£1,000,000 - £1,500,000</option>
+									<option value="1500000-2000000"{if get_post:price == "1500000-2000000"} selected="selected"{/if}>£1,500,000 - £2,000,000</option>
+									<option value="2000000-0"{if get_post:price == "2000000-0"} selected="selected"{/if}>Over £2,000,000</option>
+								</select>
+							</li>
+							<li tabindex="-1" aria-hidden="true" class="filter-dropdown filter-option">
+								<select id="filter-location-small" name="location">
+									<option value="">Any Location</option>
+									{exp:channel:categories show_empty="no" status="published" style="linear" category_group="2"}
+									<option value="{category_url_title}"{if get_post:location == category_url_title} selected="selected"{/if}>{category_name}</option>
+									{/exp:channel:categories}
+								</select>
+							</li>
+							<li tabindex="-1" aria-hidden="true" class="filter-dropdown filter-option">
+								<select id="filter-status-small" name="status">
+									<option value="">Any Status</option>
+									{exp:query sql="
+										SELECT DISTINCT cd.field_id_9 AS status 
+										FROM exp_channel_data cd
+										LEFT JOIN exp_channel_titles ct 
+											ON cd.entry_id = ct.entry_id 
+										WHERE cd.channel_id=1 
+											AND ct.status = 'Published'
+										ORDER BY cd.field_id_9 ASC"}
+										<option value="{status}"{if get_post:status == status} selected="selected"{/if}>{status}</option>
+									{/exp:query}
+								</select>
+							</li>
+							<li class="filter-button filter-option">
+								<button class="text-uppercase button-solid-cyan hide-for-large medium-centered medium-10">filter yachts</button>
+							</li>
+						</ul>
+					</div>
+					<input type="hidden" name="csrf_token" value="{csrf_token}">
+				</form>
+			</div>
+		</div>
+	</section>
 </div>

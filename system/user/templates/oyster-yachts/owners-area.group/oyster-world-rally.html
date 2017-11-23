@@ -1,44 +1,23 @@
 {owners_area_auth}
 
-{embed="site/.header" snap_to=".owners-world-rally" snap_offset="55"}
+{embed="site/.header" page_title="Oyster World Rally" snap_to=".owners-world-rally" snap_offset="55"}
 
 {owners_area_subnav}
 
-<section style="background-image: url('/assets/images/owners-world-rally.jpg'); " class="hero after-nav global-page-hero yacht-listing-photo global-page-hero--medium global-page-hero-adjust-subnav">
+<section style="background-image: url('/assets/images/owners-world-rally.jpg'); " class="hero after-nav global-page-hero yacht-listing-photo global-page-hero--small global-page-hero-adjust-subnav">
     </section>
+     {exp:channel:entries channel="owners_area_world_rally" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published" sort="desc"}
     <article class="owners-world-rally global-padding-top-only--large">
       <section>
         <div class="row row-pad">
-          <div class="large-7 float">
+          <div class="large-offset-1 large-7 float">
             <h2>Oyster Owners Area</h2>
-            <h1>Oyster World Rally</h1>
-            <p>
-              After the success of the inaugural Oyster World Rally, organised exclusively for the owners of Oyster yachts, the countdown to the Oyster World Rally 2017-19 has begun. The departure from Antigua is set for January 2017 and entries are invited by Spring 2016. With this fully-supported, 27,000 mile circumnavigation extended from 15 to 27 months and comprising four connecting stages, participants can look forward in this event to lengthier, more relaxed exploration of the Pacific and Asian islands, while also discovering more of New Zealand and Australia. Make your dreams come true and join the Oyster World Rally 2017-19.
-              
-            </p>
+            <h1>{title}</h1>
+           
+     {oa-wr-description}
+           
           </div>
-          <div class="large-offset-1 large-3 float-left">
-                <aside class="overview-download columns owners-rally-side-info">
-                      <div class="block-section-header aside-header">
-                        <h3 class="text-uppercase">Oyster World Rally</h3>
-                        <svg id="svg-arrow" version="1.1" baseprofile="tiny" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewbox="0 -20 100 100" xml:space="preserve">
-                          <g>
-                            <line x1="10" y1="10" x2="53" y2="53" stroke="#454646" stroke-width="10"></line>
-                            <line x1="90" y1="10" x2="47" y2="53" stroke="#454646" stroke-width="10"></line>
-                          </g>
-                        </svg>
-                      </div>
-                  <div class="overview-contents prev-models">
-                    <div class="overview columns small-12">
-                      <ul>
-                        <li><a href="">World Rally 2017-2019</a></li>
-                        <li><a href="">World Rally Crew Directory</a></li>
-                        <li><a href="">Contact World Rally Team</a></li>
-                      </ul>
-                    </div>
-                  </div>
-                </aside>
-          </div>
+{embed="owners-area/sidebar"}
         </div>
       </section>
       <section class="staggered-features">
@@ -46,52 +25,24 @@
           <div class="staggered-image medium-7 small-12 columns"><img src="/assets/images/owners-world-rally-feature.jpg"></div>
           <div class="staggered-details medium-5 small-12 columns">
             <div class="staggered-details-contents">
-              <h2>World Rally Guide</h2>
-              <p>We are now delighted to offer the PDF guide free to Oyster Owners and hope that it will stimulate the planning of your next adventures! quis nostrud. Lorem ipsum dolor sit ametelit.</p><a class="button-solid-white">Download Guide</a>
+              <h2>Notice of Event</h2>
+            {world_rally_guide_description}
+            <a href="{notice_of_event_download}" class="button-solid-white">Download Notice of Event</a>
             </div>
           </div>
         </div>
         <div class="row staggered-row-reverse">
           <div class="staggered-details medium-5 small-12 columns">
             <div class="staggered-details-contents">
-              <h2>Crew Directory</h2>
-              <p>Introduction copy to the Crew Directory... sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud. Lorem ipsum dolor sit ametelit.</p><a class="button-solid-white">View Crew Directory	</a>
+              <h2>World Rally Map</h2>
+             {crew_directory_description}
+             <a href="{world_rally_map_download}" class="button-solid-white">Download Map</a>
             </div>
           </div>
-          <div class="staggered-image medium-7 small-12 columns"><img src="/assets/images/_OYS0196.jpg"></div>
+          <div class="staggered-image medium-7 small-12 columns"><img src="/assets/images/oysteryachts-ownersection-map.jpg"></div>
         </div>
       </section>
-          <section id="download-documents" class="download-documents">
-            <div class="banner">Downloads</div>
-            <div class="row content">
-              <ul>
-                <li class="columns medium-4 small-12">
-                      <figure class="download-pdf clearfix">
-                        <div class="download-thumb column small-3"><img src="/assets/images/brochure-preview.jpg">
-                        </div>
-                        <figcaption class="description-download column small-9"><a class="title text-uppercase">Oyster 575 PDF Brochure Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean quis risus aliquam, iaculis ipsum sit amet, consectetur nibh. Duis ac consequat eros, ac bibendum ipsum. Ut finibus tristique convallis. Cras dignissim pellentesque mollis. Vivamus sed lectus non diam scelerisque volutpat. Cras ut tortor urna.</a><a href="" class="external-file-btn button-solid-white text-uppercase">Download<span class="size text-uppercase">(2.3MB)</span></a>
-                        </figcaption>
-                      </figure>
-                </li>
-                <li class="columns medium-4 small-12">
-                      <figure class="download-pdf clearfix">
-                        <div class="download-thumb column small-3"><img src="/assets/images/brochure-preview2.jpg">
-                        </div>
-                        <figcaption class="description-download column small-9"><a class="title text-uppercase">Oyster 575 PDF Brochure</a><a href="" class="external-file-btn button-solid-white text-uppercase">Download<span class="size text-uppercase">(2.3MB)</span></a>
-                        </figcaption>
-                      </figure>
-                </li>
-                <li class="columns medium-4 small-12">
-                      <figure class="download-pdf clearfix">
-                        <div class="download-thumb column small-3"><img src="/assets/images/brochure-preview2.jpg">
-                        </div>
-                        <figcaption class="description-download column small-9"><a class="title text-uppercase">Oyster 575 Sales Report 2016 PDF Format</a><a href="" class="external-file-btn button-solid-white text-uppercase">Download<span class="size text-uppercase">(2.3MB)</span></a>
-                        </figcaption>
-                      </figure>
-                </li>
-              </ul>
-            </div>
-          </section>
+     
     </article>
-
+ {/exp:channel:entries}
 {footer}

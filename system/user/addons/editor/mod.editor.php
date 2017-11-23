@@ -26,6 +26,19 @@ class Editor
 
     // ********************************************************************************* //
 
+    public function actionGeneralRouter()
+    {
+        if (ee('Request')->get('method') == 'browseImages') {
+            return $this->browseImages();
+        }
+
+        if (ee('Request')->get('method') == 'browseFiles') {
+            return $this->browseFiles();
+        }
+    }
+
+    // ********************************************************************************* //
+
     public function actionFileUpload()
     {
         ee()->load->library('filemanager');
@@ -88,11 +101,11 @@ class Editor
         }
 
         if ($action == 'file') {
-            exit(stripslashes('{ "filelink": "'.$location->url.$file['file_name'].'", "filename": "'.$file['file_name'].'" }'));
+            exit(stripslashes('{ "url": "'.$location->url.$file['file_name'].'", "name": "'.$file['file_name'].'" }'));
         }
 
         if ($action == 'image') {
-            exit(stripslashes('{ "filelink": "'.$location->url.$file['file_name'].'" }'));
+            exit(stripslashes('{ "url": "'.$location->url.$file['file_name'].'" }'));
         }
 
         exit('{"error":"Something went wrong"}');
@@ -150,6 +163,61 @@ class Editor
 
         echo $url;
         exit();
+    }
+
+    // ********************************************************************************* //
+
+    private function browseFiles()
+    {
+        ee()->lang->loadfile('filemanager');
+        $uploadLocation = ee('Request')->get('upload_location');
+
+        // Adapted from http://jeffreysambells.com/2012/10/25/human-readable-filesize-php
+        $size   = array('b', 'kb', 'mb', 'gb', 'tb', 'pb', 'eb', 'zb', 'yb');
+
+        $items = array();
+        $files = ee('Model')->get('File')
+            ->with('UploadDestination')
+            ->filter('upload_location_id', $uploadLocation)
+            ->filter('UploadDestination.module_id', 0);
+
+        foreach ($files->all() as $file) {
+            $factor = floor((strlen($file->file_size) - 1) / 3);
+
+            $items[] = array(
+                'size'  =>  sprintf("%d", $file->file_size / pow(1024, $factor)) . lang('size_' . @$size[$factor]),
+                'url'   => $file->getAbsoluteURL(),
+                'title' => $file->title,
+                'name' => $file->file_name,
+                'id'    => $file->file_id,
+            );
+        }
+
+        return ee()->output->send_ajax_response($items);
+    }
+
+    // ********************************************************************************* //
+
+    private function browseImages()
+    {
+        $uploadLocation = ee('Request')->get('upload_location');
+
+        $items = array();
+        $files = ee('Model')->get('File')
+            ->with('UploadDestination')
+            ->filter('upload_location_id', $uploadLocation)
+            ->filter('UploadDestination.module_id', 0);
+
+        foreach ($files->all() as $file) {
+            $items[] = array(
+                'thumb' => $file->getAbsoluteThumbnailURL(),
+                'url'   => $file->getAbsoluteURL(),
+                'title' => $file->title,
+                'id'    => $file->file_id,
+            );
+        }
+
+        return ee()->output->send_ajax_response($items);
     }
 
     // ********************************************************************************* //

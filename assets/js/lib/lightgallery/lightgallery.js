@@ -136,7 +136,6 @@
     }
 
     Plugin.prototype.init = function() {
-
         var _this = this;
 
         // s.preload should not be more than $item.length
@@ -155,6 +154,10 @@
                 setTimeout(function() {
                     _this.build(_this.index);
                     $('body').addClass('lg-on');
+                    if($('.global-header').hasClass('global-header-mini')){
+                        $('.global-header').addClass('had-mini-header');
+                    }
+                    $('.global-header').addClass('global-header-mini no-boxshadow');
                 });
             }
         }
@@ -170,6 +173,10 @@
                 setTimeout(function() {
                     _this.build(_this.index);
                     $('body').addClass('lg-on');
+                    if($('.global-header').hasClass('global-header-mini')){
+                        $('.global-header').addClass('had-mini-header');
+                    }
+                    $('.global-header').addClass('global-header-mini no-boxshadow');
                 });
             }
         } else {
@@ -193,6 +200,10 @@
                 //if (!$('body').hasClass('lg-on')) {
                     _this.build(_this.index);
                     $('body').addClass('lg-on');
+                    if($('.global-header').hasClass('global-header-mini')){
+                        $('.global-header').addClass('had-mini-header');
+                    }
+                    $('.global-header').addClass('global-header-mini no-boxshadow');
                 //}
             });
         }
@@ -313,9 +324,7 @@
                     $('.global-local-subnav').append('<div class="gallery-sections">' + galleryHtml + '</div>');
                 }
                 
-                template += '<span class="gallery-logo"></span>' +
-                '<span class="gallery-yacht"><span>'+$('#galleries').attr('data-title')+'</span>' +
-                '</div>' +
+                template += '</div>' +
                 '<div class="lg-toolbar-bot group">' +
                 //'<div class="gallery-share"><a href=""></a></div>' +
                 '<a class="lg-counter" href=""></a>' +
@@ -408,6 +417,8 @@
 
         $('.gallery-sections').unbind('click.lg').on('click.lg', 'a', function(e) {
             e.preventDefault();
+
+            _this.index = 0;
 
             if ($(this).hasClass('gallery-active')) return;
 
@@ -936,6 +947,7 @@
             _this.lGalleryOn = true;
 
             if (this.s.counter) {
+                //console.log('slide', index);
                 $('#lg-counter-current').text(index + 1);
             }
 
@@ -1027,11 +1039,11 @@
 
     Plugin.prototype.arrow = function() {
         var _this = this;
-        this.$outer.find('.lg-prev').on('click.lg', function() {
+        this.$outer.find('.lg-prev').unbind('click.lg').on('click.lg', function() {
             _this.goToPrevSlide();
         });
 
-        this.$outer.find('.lg-next').on('click.lg', function() {
+        this.$outer.find('.lg-next').unbind('click.lg').on('click.lg', function() {
             _this.goToNextSlide();
         });
     };
@@ -1342,6 +1354,10 @@
         }
         
         $('body').removeClass('lg-on lg-from-hash');
+
+        if(!$('.global-header').hasClass('had-mini-header')){
+            $('.global-header').removeClass('global-header-mini no-boxshadow');
+        }
 
         if (_this.$outer) {
             _this.$outer.removeClass('lg-visible');

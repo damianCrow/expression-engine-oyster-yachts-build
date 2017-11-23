@@ -1,6 +1,6 @@
 'use strict';
 
-define(['jquery', 'ScrollMagic'], function ($, ScrollMagic) {
+define(['jquery', 'ScrollMagic', 'foundation'], function ($, ScrollMagic, Foundation) {
 	// ---- GLOBAL STICKY SIDEBAR ----
 
 	var mainNavHeight = $('#main-nav').height();
@@ -9,14 +9,15 @@ define(['jquery', 'ScrollMagic'], function ($, ScrollMagic) {
 	var controller = new ScrollMagic.Controller(),
 	    $elem = $('.about-yacht'),
 	    $lastId = null,
-	   
-	// $sideBarScene = _sideBarScene($elem),
-	$locaSubNav = $("[data-local-subnav]") || {},
+		$locaSubNav = $("[data-local-subnav]") || {},
 	    $locaSubNavHeight = $locaSubNav.outerHeight(),
 	    $localSubNavItems = $locaSubNav.find(".local-subnav a"),
 	    $localSubNavItemsMap = $localSubNavItems.map(function () {
-			var item = $($(this).attr("href"));
-			if (item.length) return item;
+			var item = $(this).attr("href").trim();
+
+			if (item.toString().substring(0, 1) == "#") {
+				if (item.length) return item;
+			}
 		});
 
 	sideBarStick();
@@ -30,8 +31,8 @@ define(['jquery', 'ScrollMagic'], function ($, ScrollMagic) {
 			sideBarStick();
 			checkForTabs();
 			enableSelect2();
-
-			var equalizerResize = new Foundation.Equalizer($('[data-equalizer]'));
+			stackedBlocks();
+			Foundation.Equalizer;
 		}, 250);
 	});
 
@@ -119,4 +120,43 @@ define(['jquery', 'ScrollMagic'], function ($, ScrollMagic) {
 	});
 
 	// ---- *end* GLOBAL STICKY SIDEBAR *end* ----
+
+	//  ---- SLIDING TABS -----  //
+	checkForTabs();
+	function checkForTabs() {
+		if ($('.sliding-tabs').length >= 1) {
+
+			slidingTabs();
+			$('.sliding-tabs').each(function (index, element) {
+				slidingTabs(element);
+			});
+		}
+	}
+
+	stackedBlocks();
+
+	function stackedBlocks() {
+
+		var stackedBlocks = '.heritage-blocks .stacked-blocks';
+		
+
+		if($(stackedBlocks).length > 0){
+			if(Foundation.MediaQuery.atLeast("large")) {
+				$(stackedBlocks + ' .stacked-block:nth-child(3n - 1)').addClass('container-col2');
+				$(stackedBlocks + ' .stacked-block:nth-child(3n)').addClass('container-col3');
+
+				$('.container-col2').appendTo(stackedBlocks).removeClass('container-col2');
+				$('.container-col3').appendTo(stackedBlocks).removeClass('container-col3');
+			}else if(Foundation.MediaQuery.current == 'medium') {
+				$(stackedBlocks + ' .stacked-block:nth-child(even)').addClass('container-col2');
+				// $(stackedBlocks + ' .stacked-block:nth-child(3n)').addClass('container-col3');
+
+				$('.container-col2').appendTo(stackedBlocks).removeClass('container-col2');
+				// $('.container-col3').appendTo(stackedBlocks).removeClass('container-col3');
+			}
+
+			$('.heritage-blocks .stacked-blocks').addClass('active');
+		}
+	}
+
 });

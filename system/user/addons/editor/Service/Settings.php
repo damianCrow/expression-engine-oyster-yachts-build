@@ -53,7 +53,7 @@ class Settings
         $defaultSettings = ee('App')->get($this->moduleClassName)->get('settings_module');
 
         // Merge the default module settings with the current site settings
-        $settings = $this->array_extend($defaultSettings, $settings);
+        $settings = $this->arrayExtend($defaultSettings, $settings);
 
         // Get Config Overrides
         if ($this->config === null) {
@@ -66,7 +66,7 @@ class Settings
         }
 
         if (empty($this->config) === false) {
-            $settings = $this->array_extend($settings, $this->config);
+            $settings = $this->arrayExtend($settings, $this->config);
         }
 
         return $settings;
@@ -90,6 +90,9 @@ class Settings
         if (!$dbSettings) {
             $dbSettings = array();
         }
+
+        // Refresh the current module settings, in case we use it afer saving
+        $this->settings = $settings;
 
         $dbSettings['site:'.$site_id] = $settings;
 
@@ -124,11 +127,11 @@ class Settings
                 $settings = $settings[$this->moduleConfigName];
             }
 
-            $settings = $this->array_extend($defaultSettings, $settings);
+            $settings = $this->arrayExtend($defaultSettings, $settings);
 
             // Any overrides?
             if (isset($this->config['fields'][$field_id]) === true && is_array($this->config['fields'][$field_id]) === true) {
-                $settings = $this->array_extend($settings, $this->config['fields'][$field_id]);
+                $settings = $this->arrayExtend($settings, $this->config['fields'][$field_id]);
                 $settings['override'] = $this->config['fields'][$field_id];
             }
 
@@ -151,14 +154,14 @@ class Settings
      * @param array $a
      * @param array $b
      */
-    protected function array_extend($a, $b)
+    protected function arrayExtend($a, $b)
     {
         foreach($b as $k=>$v) {
             if (is_array($v) ) {
                 if (!isset($a[$k])) {
                     $a[$k] = $v;
                 } else {
-                    $a[$k] = $this->array_extend($a[$k], $v);
+                    $a[$k] = $this->arrayExtend($a[$k], $v);
                 }
             } else {
                 $a[$k] = $v;

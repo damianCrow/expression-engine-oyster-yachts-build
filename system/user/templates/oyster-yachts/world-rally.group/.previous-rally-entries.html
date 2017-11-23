@@ -1,4 +1,4 @@
-{embed="site/.header" snap_to=".world-rally-entries" snap_offset="55"}
+{embed="site/.header" page_title="World Rally 2013/14 Entries" snap_to=".world-rally-entries" snap_offset="55"}
 
 {embed="world-rally/.previous-rally-subnav" page="entries"}
 
@@ -22,13 +22,13 @@
 
 				{exp:low_reorder:entries set="world_rally_entries" dynamic="no" disable="member_data|category_fields|pagination" cache="yes" refresh="60"}
 				<tr>
-					<td>{title}</td>
+					<td data-th='entry name'>{title}</td>
 					<td {prev_entry_image}style="background-image:url('{image:url}')"{/prev_entry_image} class="image"> </td>
-					<td>{prev_entry_model}</td>
-					<td>{prev_entry_hull_number}</td>
-					<td>{prev_entry_owner}</td>
-					<td>{prev_entry_nationality}</td>
-					<td class="link">
+					<td data-th='model'>{prev_entry_model}</td>
+					<td data-th='hull number'>{prev_entry_hull_number}</td>
+					<td data-th='owner'>{prev_entry_owner}</td>
+					<td data-th='nationality'>{prev_entry_nationality}</td>
+					<td data-th='blog' class="link">
 						{if prev_entry_website_link != ""}
 						<a href="{prev_entry_website_link}" target="_blank">{prev_entry_website_link_label}</a>
 						{/if}

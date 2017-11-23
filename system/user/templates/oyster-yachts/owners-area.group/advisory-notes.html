@@ -1,7 +1,61 @@
 {owners_area_auth}
 
-{embed="site/.header" snap_to=".owners-world-rally" snap_offset="55"}
+{embed="site/.header" page_title="Advisory Notes" snap_to=".owners-world-rally" snap_offset="55"}
 
 {owners_area_subnav}
+<section style="background-image: url('/assets/images/oysteryachts-owners_area-banner.jpg'); " class="hero after-nav global-page-hero yacht-listing-photo global-page-hero--small global-page-hero-adjust-subnav">
+</section>
+<section class="latest-issue global-padding-top-only--small">
+	<div class="banner">
+		<h1>Advisory Notes</h1>
+	</div>
+	{exp:channel:entries channel="owners_area_advisory_notes" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published" sort="desc" limit="1"}
+	<article class="row row-pad current-issue">
+		<h1>After Sales Advisory Note // {title}</h1>
+		<div class="row small-collapse">
+			<div class="large-7 column">
+				<h2 class="text-uppercase">Contents include</h2>
+				<ul class="list-of-issues ">
+					{notes_latest}
+					<li>{notes_latest:item}</li>
+					{/notes_latest}
+				</ul>
+			</div>
+			<div class="large-5 column lastest-magazine-cover">
+				<img src="/assets/images/oysteryachts-document.png">
+								<div class="button-group"><a href="{document_pdf}" class="button-solid-white button-chubby" target="_blank">View Notes</a></div>
 
+			</div>
+		</div>
+	</article>
+	{/exp:channel:entries}
+</section>
+
+<section class="download-documents">
+	<div class="banner">Advisory Notes Archive</div>
+	  <div class="row content">
+              <ul>
+
+	{exp:channel:entries channel="owners_area_advisory_notes" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published" sort="desc" }
+	    <li class="columns medium-4 small-12">
+                      <figure class="download-pdf clearfix">
+                        <div class="download-thumb column small-3">
+				<a href="{document_pdf}" target="_blank"><img src="/assets/images/oysteryachts-document.png" class="external-file-thumb"></a>
+			</div>
+				<figcaption class="description-download column small-9">
+					<a href="{document_pdf}" class="title text-uppercase" target="_blank">{title}</a>
+<!-- 					{notes_description}
+ -->					<a href="{document_pdf}" class="button-solid-white external-file-btn text-uppercase" target="_blank">View Notes</a>
+				</figcaption>
+			</figure>
+		</li>
+		{/exp:channel:entries}
+
+	</ul>
+</div>
+</section>
+<style>
+.column:last-child:not(:first-child), .columns:last-child:not(:first-child) {
+    float: left;
+</style>
 {footer}
