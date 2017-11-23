@@ -1,9 +1,70 @@
-{header}
+{exp:channel:entries channel="brokerage_landing_page" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published" limit="1"}
+{if no_results}{redirect="404"}{/if}
 
-{if segment_2}
-	{embed="brokerage/.single"}
-{if:else}
-	{embed="brokerage/.list"}
-{/if}
+{embed="site/.header" page_title="Brokerage" entry_id="{entry_id}" snap_to=".hero #global-page-filters" snap_offset="55"}
+
+<section style="background-image: url('{brokerage_header_image}{image:url}{/brokerage_header_image}')" class="hero after-nav global-page-hero yacht-listing-photo global-page-hero--medium">
+	{embed="brokerage/.filters" post="true"}
+</section>
+
+<section class="page-home-about brokerage-home-about">
+	<div class="row padded-full-width-row">
+		<div class="small-12 medium-3 large-2 large-offset-1 column about-heading"><span class="text-uppercase">
+			{brokerage_intro_heading}
+		</span></div>
+		<div class="small-12 medium-9 large-8 end column intro">
+			{brokerage_intro_content}
+		</div>
+	</div>
+</section>
+
+<section id="brokerage-home-local-nav" class="page-home-local-nav brokerage-home-local-nav">
+	<div class="content row padded-full-width-row">
+		<div class="small-12 medium-4 large-4 content-col">
+			<a href="{path='brokerage/fleet'}" class="localnav-anchor">
+				<div class="feature-image">
+					<img src="/assets/images/sizes/Brokerage-Fleet_link-holder.jpg" data-img-name="Brokerage-Fleet_link" data-sizes="auto" data-srcset="/assets/images/sizes/Brokerage-Fleet_link-x05.jpg 369w, /assets/images/sizes/Brokerage-Fleet_link-x075.jpg 553w, /assets/images/sizes/Brokerage-Fleet_link-x1.jpg 737w, /assets/images/sizes/Brokerage-Fleet_link-x13.jpg 958w, /assets/images/sizes/Brokerage-Fleet_link-x2.jpg 1474w" class="lazyload blur-up">
+	            </div>
+				<div class="feature-content">
+					<h4>brokerage fleet</h4>
+				</div>
+			</a>
+		</div>
+		<div class="small-12 medium-4 large-4 content-col">
+			<a href="{path='events/brokerage-events'}" class="localnav-anchor">
+				<div class="feature-image">
+					<img src="/assets/images/sizes/Brokerage-Events_link-holder.jpg" data-img-name="Brokerage-Events_link" data-sizes="auto" data-srcset="/assets/images/sizes/Brokerage-Events_link-x05.jpg 369w, /assets/images/sizes/Brokerage-Events_link-x075.jpg 553w, /assets/images/sizes/Brokerage-Events_link-x1.jpg 737w, /assets/images/sizes/Brokerage-Events_link-x13.jpg 958w, /assets/images/sizes/Brokerage-Events_link-x2.jpg 1474w" class="lazyload blur-up">
+            	</div>
+            	<div class="feature-content">
+					<h4>Brokerage Events</h4>
+				</div>
+			</a>
+		</div>
+		<div class="small-12 medium-4 large-4 content-col">
+			<a href="{path='brokerage/team'}" class="localnav-anchor">
+				<div class="feature-image">
+					<img src="/assets/images/sizes/Brokerage-Team_link-holder.jpg" data-img-name="Brokerage-Team_link" data-sizes="auto" data-srcset="/assets/images/sizes/Brokerage-Team_link-x05.jpg 369w, /assets/images/sizes/Brokerage-Team_link-x075.jpg 553w, /assets/images/sizes/Brokerage-Team_link-x1.jpg 737w, /assets/images/sizes/Brokerage-Team_link-x13.jpg 958w, /assets/images/sizes/Brokerage-Team_link-x2.jpg 1474w" class="lazyload blur-up">
+            	</div>
+            	<div class="feature-content">
+					<h4>brokerage team</h4>
+				</div>
+			</a>
+		</div>
+	</div>
+</section>
+
+<section class="brokerage-home-featured-yachts">
+	<div class="banner">featured yachts</div>
+
+	<div class="row padded-full-width-row content">
+		<div id="yacht-grid" class="row">
+			<ul>
+			{embed="brokerage/.featured" ids="{brokerage_featured_yachts:entry_ids}"}
+			</ul>
+		</div>
+	</div>
+</section>
 
 {footer}
+
+{/exp:channel:entries}

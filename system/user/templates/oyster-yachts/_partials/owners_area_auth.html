@@ -1,0 +1,8 @@
+{if logged_out}
+	{redirect="owners-area/login" status_code="403"}
+{/if}
+{exp:member:custom_profile_data}
+	{if member_group != 12}
+		{redirect="owners-area/login" status_code="403"}
+	{/if}
+{/exp:member:custom_profile_data}

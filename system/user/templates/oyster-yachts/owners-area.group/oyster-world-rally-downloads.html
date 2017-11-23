@@ -1,0 +1,65 @@
+{owners_area_auth}
+
+{embed="site/.header" page_title="Oyster World Rally" snap_to=".owners-world-rally" snap_offset="55"}
+
+{owners_area_subnav}
+
+<section style="background-image: url('/assets/images/owners-world-rally.jpg'); " class="hero after-nav global-page-hero yacht-listing-photo global-page-hero--small global-page-hero-adjust-subnav">
+    </section>
+     
+    <article class="owners-world-rally global-padding-top-only--large">
+    {exp:channel:entries channel="owners_area_world_rally" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published" sort="desc"}
+      <section>
+        <div class="row row-pad">
+          <div class="large-offset-1 large-7 float">
+            <h2>Oyster Owners Area</h2>
+            <h1>Downloads</h1>
+           
+     {oa-wr-description}
+           
+          </div>
+{embed="owners-area/sidebar"}
+        </div>
+      </section>
+
+          <section id="download-documents" class="download-documents">
+            <div class="banner">Downloads</div>
+            <div class="row content">
+              <ul>
+                {downloads}
+                <li class="columns medium-4 small-12">
+                      <figure class="download-pdf clearfix">
+                        <div class="download-thumb column small-3">
+{if downloads:image != ""}
+                          <img src="{downloads:image}">
+                          {if:else}
+                           <img src="/assets/images/brochure-preview2.jpg">
+                           {/if}
+                        </div>
+<!--                         {embed="owners-area/.download_file" title="{downloads:title}" file="{downloads:document}" filesize="{downloads:document}{file_size}{/downloads:document}" label="View"}
+ -->                        <figcaption class="description-download column small-9"><a href="{downloads:document}" class="title text-uppercase">{downloads:title}</a>
+
+ {embed="site/.download_simple" title="" file="{downloads:document}" filesize="{downloads:document}{file_size}{/downloads:document}" label="Download"}
+                        </figcaption>
+                      </figure>
+                </li>
+                {/downloads}
+               
+              </ul>
+            </div>
+          </section>
+           {/exp:channel:entries}
+
+			{exp:member:custom_profile_data}
+            {if world_rally == "Yes"}
+               {embed="owners-area/.private-owr-docs"}
+ {/if}
+ {/exp:member:custom_profile_data}
+    </article>
+<style>
+.download-pdf .title {
+    margin-top: 0px;
+    margin-bottom: .5rem;
+    font-weight: bold;
+}</style>
+{footer}

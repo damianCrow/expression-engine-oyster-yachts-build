@@ -1,0 +1,9 @@
+<table class="table definition-table events-home-sidetable">
+	<tbody>
+		{exp:channel:categories category_group="1" show="not 13" style="linear" status="published"}
+		<tr>
+			<td{if category_id == embed:id} class="active"{/if}><a href="{path='events/{category_url_title}'}">{category_name}</a></td>
+		</tr>
+		{/exp:channel:categories}
+	</tbody>
+</table>

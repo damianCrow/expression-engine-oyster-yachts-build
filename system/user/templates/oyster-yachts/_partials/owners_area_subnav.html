@@ -1,0 +1,16 @@
+	<div class="global-local-subnav">
+		<ul>
+			<li{if segment_2 == ''} class="active"{/if}><a href="{path='owners-area'}" class="text-uppercase"><span>Dashboard</span></a></li>
+						{exp:member:custom_profile_data}
+	            {if world_rally == "Yes"}
+					<li{if segment_2 == 'account'} class="active"{/if}><a href="{path='owners-area/account'}" class="text-uppercase"><span>Account</span></a></li>
+				 {/if}
+            {/exp:member:custom_profile_data}
+			<li{if segment_2 == 'oyster-world-rally'} class="active"{/if}><a href="{path='owners-area/oyster-world-rally'}" class="text-uppercase"><span>Oyster World Rally</span></a></li>
+			<li{if segment_2 == 'advisory-notes'} class="active"{/if}><a href="{path='owners-area/advisory-notes'}" class="text-uppercase"><span>Advisory Notes</span></a></li>
+			<li{if segment_2 == 'my-profile'} class="active"{/if}><a href="{path='owners-area/my-profile'}" class="text-uppercase"><span>My Profile</span></a></li>
+		</ul>
+		{exp:user:logout return="/"}
+    	<a href="{url}" class="button-transparent button-chubby float-right">Logout</a>
+		{/exp:user:logout}
+	</div>

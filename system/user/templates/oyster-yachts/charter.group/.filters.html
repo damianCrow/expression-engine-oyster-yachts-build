@@ -1,0 +1,127 @@
+<div id="global-page-filters" data-local-subnav="data-local-subnav" class="filters filters--charter">
+	<div class="row padded-full-width-row">
+		<div class="filters-container large-centered large-10 end show-for-large">
+			<form id="filters-form" method="POST" action="{path='charter/fleet'}"{if embed:post == "true"} data-post="true"{/if}>
+				<div class="filter-dropdown">
+					<select id="filter-model" name="model" tabindex="-1" aria-hidden="true">
+						<option value="">All Models</option>
+						{exp:query sql="
+							SELECT DISTINCT cd.field_id_31 AS model 
+							FROM exp_channel_data cd 
+							LEFT JOIN exp_channel_titles ct 
+								ON cd.entry_id = ct.entry_id 
+							WHERE cd.channel_id=2 
+								AND cd.field_id_31 != '---'
+								AND ct.status = 'Published'
+							ORDER BY cd.field_id_31 ASC"}
+							<option value="{model}"{if post:model == model} selected="selected"{/if}>{model}</option>
+						{/exp:query}
+					</select>
+				</div>
+				<div class="filter-dropdown">
+					<select id="filter-guests" name="guests" tabindex="-1" aria-hidden="true">
+						<option value="">Any No. Guests</option>
+						<option value="4"{if post:guests == "4"} selected="selected"{/if}>4 Guests</option>
+						<option value="6"{if post:guests == "6"} selected="selected"{/if}>6 Guests</option>
+						<option value="8"{if post:guests == "8"} selected="selected"{/if}>8 Guests</option>
+					</select>
+				</div>
+				<div class="filter-dropdown">
+					<select id="filter-season" name="season" tabindex="-1" aria-hidden="true">
+						<option value="">All Seasons</option>
+						<option value="winter"{if post:season == "winter"} selected="selected"{/if}>Winter</option>
+						<option value="summer"{if post:guests == "summer"} selected="selected"{/if}>Summer</option>
+					</select>
+				</div>
+				<div class="filter-dropdown">
+					<select id="filter-destination" name="destination" tabindex="-1" aria-hidden="true">
+						<option value="">Any Destination</option>
+						{exp:query sql="
+						SELECT DISTINCT cd.destination FROM
+						(SELECT DISTINCT field_id_32 destination, entry_id FROM exp_channel_data WHERE channel_id=2 
+						UNION
+						SELECT DISTINCT field_id_33 destination, entry_id FROM exp_channel_data WHERE channel_id=2) cd
+						LEFT JOIN exp_channel_titles ct 
+							ON cd.entry_id = ct.entry_id 
+						WHERE cd.destination != ''
+							AND ct.status = 'Published'
+						ORDER BY cd.destination ASC"}
+							<option value="{destination}"{if post:destination == destination} selected="selected"{/if}>{destination}</option>
+						{/exp:query}
+					</select>
+				</div>
+				<a id="submit" href="#" class="button filters-submit">Search</a>
+				<input type="hidden" name="csrf_token" value="{csrf_token}">
+			</form>
+		</div>
+		<button data-open="global-filters-modal" class="text-uppercase button-solid-cyan button-full-width hide-for-large medium-centered medium-10">Filter Yachts</button>
+	</div>
+</div>
+
+<div id="global-filters-modal" data-reveal="data-reveal" data-overlay="false" class="full reveal global-modals">
+	<header class="top-nav-modal">
+		<div data-close="data-close" aria-label="Close modal" class="close-button-wrapper"><a class="site-search-close"></a></div>
+	</header>
+	<section class="nav-body-modal">
+		<div class="row">
+			<div class="small-12 small-centered navigation-links">
+				<form id="filters-form-small" method="POST" action="{path='charter/fleet'}"{if embed:post == "true"} data-post="true"{/if}>
+					<ul class="filters">
+						<li class="filter-dropdown filter-option">
+							<select id="filter-model-small" name="model" tabindex="-1" aria-hidden="true" class="select2-hidden-accessible">
+								<option value="">All models</option>
+								{exp:query sql="
+									SELECT DISTINCT cd.field_id_31 AS model 
+									FROM exp_channel_data cd 
+									LEFT JOIN exp_channel_titles ct 
+										ON cd.entry_id = ct.entry_id 
+									WHERE cd.channel_id=2 
+										AND cd.field_id_31 != '---'
+										AND ct.status = 'Published'
+									ORDER BY cd.field_id_31 ASC"}
+									<option value="{model}"{if post:model == model} selected="selected"{/if}>{model}</option>
+								{/exp:query}
+							</select>
+						</li>
+						<li class="filter-dropdown filter-option">
+							<select id="filter-guests-small" name="guests" tabindex="-1" aria-hidden="true">
+								<option value="">Any No. Guests</option>
+								<option value="4"{if post:guests == "4"} selected="selected"{/if}>4 Guests</option>
+								<option value="6"{if post:guests == "6"} selected="selected"{/if}>6 Guests</option>
+								<option value="8"{if post:guests == "8"} selected="selected"{/if}>8 Guests</option>
+							</select>
+						</li>
+						<li tabindex="-1" aria-hidden="true" class="filter-dropdown filter-option">
+							<select id="filter-season-small" name="season" tabindex="-1" aria-hidden="true">
+								<option value="">All seasons</option>
+								<option value="winter"{if post:season == "winter"} selected="selected"{/if}>Winter</option>
+								<option value="summer"{if post:guests == "summer"} selected="selected"{/if}>Summer</option>
+							</select>
+						</li>
+						<li tabindex="-1" aria-hidden="true" class="filter-dropdown filter-option">
+							<select id="filter-destination-small" name="destination" tabindex="-1" aria-hidden="true">
+								<option value="">Any destination</option>
+								{exp:query sql="
+								SELECT DISTINCT cd.destination FROM
+								(SELECT DISTINCT field_id_32 destination, entry_id FROM exp_channel_data WHERE channel_id=2 
+								UNION
+								SELECT DISTINCT field_id_33 destination, entry_id FROM exp_channel_data WHERE channel_id=2) cd
+								LEFT JOIN exp_channel_titles ct 
+									ON cd.entry_id = ct.entry_id 
+								WHERE cd.destination != ''
+									AND ct.status = 'Published'
+								ORDER BY cd.destination ASC"}
+									<option value="{destination}"{if post:destination == destination} selected="selected"{/if}>{destination}</option>
+								{/exp:query}
+							</select>
+						</li>
+						<li class="filter-button filter-option">
+							<button class="text-uppercase button-solid-cyan hide-for-large medium-centered medium-10">filter yachts</button>
+						</li>
+					</ul>
+					<input type="hidden" name="csrf_token" value="{csrf_token}">
+				</form>
+			</div>
+		</div>
+	</section>
+</div>

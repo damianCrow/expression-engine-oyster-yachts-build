@@ -800,7 +800,7 @@ class Members extends CP_Controller {
 			->fields('member_id', 'username', 'screen_name', 'email', 'group_id')
 			->all();
 
-		if (ee()->config->item('approved_member_notification'))
+		/*if (ee()->config->item('approved_member_notification'))
 		{
 			$template = ee('Model')->get('SpecialtyTemplate')
 				->filter('template_name', 'validated_member_notify')
@@ -808,9 +808,9 @@ class Members extends CP_Controller {
 
 			foreach ($members as $member)
 			{
-				$this->pendingMemberNotification($template, $member);
+				$this->pendingMemberNotification($template, $member, array('email' => $member->email));
 			}
-		}
+		}*/
 
 		$members->group_id = ee()->config->item('default_member_group');
 		$members->save();
@@ -941,7 +941,6 @@ class Members extends CP_Controller {
 		foreach ($members as $member)
 		{
 			$swap = array(
-				'username'  => $member->username,
 				'email'     => $member->email,
 				'activation_url' => ee()->functions->fetch_site_index(0, 0).QUERY_MARKER.'ACT='.$action_id.'&id='.$member->authcode
 			);
@@ -984,6 +983,7 @@ class Members extends CP_Controller {
 			'name'		=> $member->getMemberName(),
 			'site_name'	=> stripslashes(ee()->config->item('site_name')),
 			'site_url'	=> ee()->config->item('site_url'),
+			'username'	=> $member->username,
 			) + $extra_swap;
 
 		$email_title = ee()->functions->var_swap($template->data_title, $swap);

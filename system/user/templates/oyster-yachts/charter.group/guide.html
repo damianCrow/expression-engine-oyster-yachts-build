@@ -1,0 +1,91 @@
+{exp:channel:entries channel="charter_guide" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published" limit="1"}
+{embed="site/.header" page_title="Charter Guide" entry_id="{entry_id}" snap_to="#yacht-nav" snap_offset="55"}
+
+<section style="background-image: url('/assets/images/oysteryachts-charter-guide.jpg'); " class="hero after-nav global-page-hero global-page-hero--medium">
+      {back_button}
+
+      <div id="yacht-nav" data-local-subnav="data-local-subnav" class="yacht-nav">
+        <ul class="local-subnav">
+          <li class="active"><a href="#how-to-charter" class="scroll">How to Charter</a></li>
+          <li><a href="#terms-extras" class="scroll">Terms &amp; Extras</a></li>
+          <li><a href="#conditions" class="scroll">Conditions</a></li>
+          <li><a href="{path='contact'}#oyster-charter" class="contact">Contact Charter</a></li>
+        </ul>
+
+      </div>
+    </section>
+    <section id="how-to-charter" class="staggered-features stagger-split">
+      <div class="row staggered-row-reverse row-pad">
+        <div class="staggered-details medium-7 small-12 columns">
+          <div class="staggered-details-contents">
+            <h2>Yacht Selection</h2>
+            {yacht_selection_description}
+          </div>
+        </div>
+        <div class="staggered-image medium-5 small-12 columns"><img src="{yacht_selection_image}"></div>
+      </div>
+      <div class="row row-pad">
+        <div class="staggered-image medium-7 small-12 columns"><img src=" {agreement_image}"></div>
+        <div class="staggered-details medium-5 small-12 columns">
+          <div class="staggered-details-contents">
+            <h2>Agreement</h2>
+              {agreement_description}
+          </div>
+        </div>
+      </div>
+      <div class="row staggered-row-reverse row-pad">
+        <div class="staggered-details medium-7 small-12 columns">
+          <div class="staggered-details-contents">
+            <h2>Pay Balance</h2>
+           {pay_balance_description}
+          </div>
+        </div>
+        <div class="staggered-image medium-5 small-12 columns"><img src="{pay_balance_image}"></div>
+      </div>
+    </section>
+    <section id="terms-extras" class="terms-extras">
+      <div class="banner">Terms &amp; Extras</div>
+      <div class="row row-pad">
+        <table class="stack-override">
+          <tbody>
+            {terms_extras}
+            <tr>
+              <td class="text-uppercase header-column">
+                <h3>{terms_extras:title}</h3>
+              </td>
+              <td>
+                <div class="table-content large-10 medium-11 small-12 columns small-centered">
+                 {terms_extras:description}
+                </div>
+              </td>
+            </tr>
+            {/terms_extras}
+          </tbody>
+        </table>
+      </div>
+    </section>
+    <section id="conditions" class="conditions">
+      <div class="banner">Conditions	</div>
+      <div class="row">
+        <table class="stack-override">
+          <tbody>
+              {conditions}
+            <tr>
+              <td class="text-uppercase header-column">
+                <h3>{conditions:title}</h3>
+              </td>
+              <td>
+                <div class="table-content large-10 medium-11 small-12 columns small-centered">
+                 {conditions:description}
+                </div>
+              </td>
+            </tr>
+              {/conditions}
+          
+          </tbody>
+        </table>
+      </div>
+    </section>
+{/exp:channel:entries}
+
+{footer}

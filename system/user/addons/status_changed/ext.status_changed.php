@@ -103,17 +103,17 @@ class Status_changed_ext {
     function addStatus($entry, $values) {
         if ($values['channel_id'] !== "1") return;
 
-        // field_id_41 => brokerage_status_changed
-        $entry->setProperty('field_id_41', $values['edit_date']);
+        // field_id_51 => brokerage_status_changed
+        $entry->setProperty('field_id_51', $values['edit_date']);
     }
 
     function checkStatus($entry, $values, $modified) {
         if ($values['channel_id'] !== "1") return;
 
         // field_id_9 => brokerage_status
-        // field_id_41 => brokerage_status_changed
+        // field_id_51 => brokerage_status_changed
         if (array_key_exists('field_id_9', $modified)) {
-            $entry->setProperty('field_id_41', $values['edit_date']);
+            $entry->setProperty('field_id_51', $values['edit_date']);
         }
         
     }

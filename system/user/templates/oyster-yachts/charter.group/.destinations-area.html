@@ -1,0 +1,26 @@
+{exp:channel:entries channel="destinations" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published" sort="desc"}
+
+{if no_results}{redirect="404"}{/if}
+
+{embed="site/.header" snap_to=".destination-area-container" snap_offset="55"}
+
+<section style="background-image: url('{dest_link_image}{image:url}{/dest_link_image}'); " class="hero after-nav global-page-hero yacht-listing-photo global-page-hero--medium">
+	{back_button}
+	<div class="yacht-name">
+		<div class="row-pad">
+			<h2 class="yacht-list-modal">{dest_tagline}</h2>
+			<h1 class="hero-title yacht-list-name text-uppercase">{title}</h1>
+		</div>
+	</div>
+	<div id="yacht-nav" data-local-subnav="data-local-subnav" class="yacht-nav">
+		<ul class="local-subnav">
+			{embed="charter/.destinations_sub_nav" entry_ids="{parents:entry_ids}"}
+		</ul>
+	</div>
+</section>
+
+{embed="charter/.destinations_sub" entry_ids="{parents:entry_ids}"}
+
+{footer}
+
+{/exp:channel:entries}

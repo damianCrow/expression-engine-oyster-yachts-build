@@ -1,0 +1,57 @@
+{exp:channel:entries channel="events_landing_page" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published" sort="desc"}
+{embed="site/.header" page_title="Events" entry_id="{entry_id}" snap_to=".events-home-about" snap_offset="150"}
+
+<section style="background-image: url('/assets/images/bg-images/events-bg.jpg'); background-position: center 95%;" class="hero after-nav global-page-hero yacht-listing-photo global-page-hero--medium">
+</section>
+<section class="page-home-about events-home-about">
+	<div class="row padded-full-width-row">
+		<div class="large-offset-1 large-7 float-left">
+				
+			<h2 class="text-uppercase">Regattas | Events | Parties</h2>
+			<h1 class="text-uppercase">{title}</h1>
+			{events_description}
+			<div class="further-info">
+				{events_further_info}
+			</div>
+		
+
+			
+		</div>
+		<div class="large-offset-1 large-3 small-12 float-left">
+						<aside class="overview-download columns">
+				<div class="block-section-header aside-header">
+					<h3 class="text-uppercase">Events Types</h3>
+					<div class="dropdown-arrow"></div>
+				</div>
+				<div class="overview-contents prev-models">
+					<div class="overview">
+						{embed="events/.event_nav" id="{categories}{category_id}{/categories}"}
+						<div class="events-notice">
+	                      <p>The Oyster World Rally 2017-19 started on Sunday 15th January.</p><a class="button-solid-blue button-chubby button-full-width" target='_blank' href="http://oysterworldrally.com">Discover More</a>
+	                    </div>
+					</div>
+				</div>
+			</aside>
+		</div>
+	</div>
+</section>
+{/exp:channel:entries}
+<section id="events-home-upcoming-events" class="events-view-events-mixin events-home-upcoming-events">
+	<div class="banner">Forthcoming events</div>
+	<div data-equalizer data-equalizer-mq="medium-up" class="row padded-full-width-row small-up-1 medium-up-2 large-up-3">
+		{embed='events/.forthcoming_events'}
+	</div>
+</section>
+<section class="events-full-feature">
+  <div class="row padded-full-width-row events-full-feature__container">
+    <div class="events-full-feature__background">
+      <div class="events-full-feature__content medium-8 large-6">
+        <h2 class="text-uppercase">Oyster World Rally</h2>
+        <p>
+          The Oyster World Rally 2017-19<br> started on Sunday 15th January.</p><a class="button-solid-yellow button-chubby" target='_blank' href="http://oysterworldrally.com">Follow The Adventure</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{footer}

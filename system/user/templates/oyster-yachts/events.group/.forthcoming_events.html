@@ -1,0 +1,20 @@
+<?php $ids = array(); ?>
+{exp:channel:entries channel="boat_show" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published"}
+<?php $ids[{entry_id}] = (int) '{boatshow_start_date}'; ?>
+{/exp:channel:entries}
+{exp:channel:entries channel="event" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published"}
+<?php $ids[{entry_id}] = (int) '{event_start_date}'; ?>
+{/exp:channel:entries}
+{exp:channel:entries channel="other_events" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published"}
+<?php $ids[{entry_id}] = (int) '{otherevent_start_date}'; ?>
+{/exp:channel:entries}
+<?php
+asort($ids);
+$return = array();
+foreach ($ids as $key => $value) {
+	if ($value > (int) '{current_time}') {
+		$return[] = $key;
+	}
+}
+?>
+{embed="events/.forthcoming_events_output" ids="<?php echo implode('|', $return); ?>"}

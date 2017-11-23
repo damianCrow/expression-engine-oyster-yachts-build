@@ -218,9 +218,14 @@ class Editor_upd
         }
 
         // Upgrade The Module
-        $module = $module = ee('Model')->get('Module')->filter('module_name', ucfirst($this->module_name))->first();
+        $module = ee('Model')->get('Module')->filter('module_name', ucfirst($this->module_name))->first();
         $module->module_version = $this->version;
         $module->save();
+
+        // Upgrade The Fieldtype
+        $fieldtype = ee('Model')->get('Fieldtype')->filter('name', $this->module_name)->first();
+        $fieldtype->version = $this->version;
+        $fieldtype->save();
 
         return true;
     }

@@ -1,0 +1,285 @@
+{exp:channel:entries channel="charter" disable="member_data|category_fields|pagination" cache="yes" refresh="60" require_entry="yes" status="published"}
+{if no_results}{redirect="404"}{/if}
+
+<?php
+$query = ee()->db->query('SELECT * FROM exp_channel_images WHERE entry_id={entry_id} AND field_id=35');
+$layoutImages = $query->num_rows();
+
+$query = ee()->db->query('SELECT * FROM exp_channel_images WHERE entry_id={entry_id} AND field_id=43');
+$exteriorGalleryImages = $query->num_rows();
+
+$query = ee()->db->query('SELECT * FROM exp_channel_images WHERE entry_id={entry_id} AND field_id=42');
+$interiorGalleryImages = $query->num_rows();
+?>
+
+{embed="site/.header" page_title="{charter_model} - {title}" snap_to=".full-screen #yacht-nav" snap_offset="55"}
+
+<section class="hero full-screen yacht-listing-photo">
+	<div id="full-image" class="yacht-listing-photo add-full-background-overlay" style="background-image: url('{charter_main_image}{image:url}{/charter_main_image}');  {if charter_image_align =="Bottom"}background-position: bottom center;{/if}">
+		{back_button}
+		<div class="yacht-name">
+			<div class="row-pad">
+				<h2>{charter_model}</h2>
+				<h1>{title}</h1>
+				<?php if ($exteriorGalleryImages > 0 || $interiorGalleryImages > 0): ?>
+				<a class="gallery button-view-gallery btn-gallery" href="" data-gallery="<?php if ($exteriorGalleryImages > 0): ?>external<?php else: ?>internal<?php endif; ?>">View Gallery</a>
+				<?php endif; ?>
+			</div>
+		</div>
+		{share_buttons}
+	</div>
+	<div id="yacht-nav" data-local-subnav="data-local-subnav" class="yacht-nav">
+		<ul class="local-subnav">
+			<?php if ($layoutImages > 0): ?>
+			<li class="active"><a href="#yacht-layout" class="scroll">Yacht layout</a></li>
+			<?php endif; ?>
+
+			<li><a href="#charter-activities" class="scroll">activities &amp; entertainment</a></li>
+
+			{if charter_crew:total_rows > 0}
+			<li><a href="#the-crew" class="scroll">the crew</a></li>
+			{/if}
+
+			<?php if ($exteriorGalleryImages > 0 || $interiorGalleryImages > 0): ?>
+			<li><a href="" class="gallery btn-gallery" data-gallery="<?php if ($exteriorGalleryImages > 0): ?>external<?php else: ?>internal<?php endif; ?>">Gallery</a></li>
+			<?php endif; ?>
+
+			{charter_virtual_tours limit="1"}
+			<li><a href="" class="gallery btn-gallery" data-gallery="vrtours">VR Tours</a></li>
+			{/charter_virtual_tours}
+
+			<li><a href="/contact#oyster-charter" class="contact">Contact Charter</a></li>
+		</ul>
+	</div>
+</section>
+
+<section class="about-yacht">
+	<div class="row row-pad">
+		<div class="large-offset-1 large-7 float">
+			<h2>{charter_model}</h2>
+			<h1>{title}</h1>
+			{charter_about}
+		</div>
+		<div class="large-offset-1 large-3 small-12 float-left">
+			<aside class="overview-download columns sticky-sidebar charter-fleet-side">
+				<div class="aside-header">
+					<h3 class="text-uppercase">{title} Overview</h3>
+					<svg id="svg-arrow" version="1.1" baseprofile="tiny" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewbox="0 -20 100 100" xml:space="preserve">
+						<g>
+							<line x1="10" y1="10" x2="53" y2="53" stroke="#454646" stroke-width="10"></line>
+							<line x1="90" y1="10" x2="47" y2="53" stroke="#454646" stroke-width="10"></line>
+						</g>
+					</svg>
+				</div>
+				<div class="overview-contents prev-models">
+					<div class="overview columns small-12">
+						<table class="table definition-table">
+							<tbody>
+								<tr>
+									<td>Year:</td>
+									<td>{charter_year}</td>
+								</tr>
+								<tr>
+									<td>No. Guests:</td>
+									<td>{charter_guests}</td>
+								</tr>
+								{if summer_price}
+								<tr>
+									<td style="border-bottom: 0; height: auto; padding-top: 15px;}">Summer:</td>
+									<td style="border-bottom: 0; height: auto; padding-top: 15px;">{charter_summer}</td>
+								</tr>
+								<tr>
+									<td style="height: auto; padding-top: 0px;    padding-bottom: 15px;">Prices from:</td>
+									<td style="height: auto; padding-top: 0px;    padding-bottom: 15px;">{summer_price}/wk</td>
+								</tr>
+								{if:else}
+									<tr>
+									<td >Summer:</td>
+									<td >{charter_summer}</td>
+								</tr>
+									{/if}
+									{if winter_price}
+								<tr>
+									<td style="border-bottom: 0; height: auto; padding-top: 15px;">Winter:</td>
+									<td style="border-bottom: 0; height: auto; padding-top: 15px;">{charter_winter}</td>
+								</tr>
+								
+								<tr>
+									<td style="height: auto; padding-top: 0px;padding-bottom: 15px;">Prices from:</td>
+									<td style="height: auto; padding-top: 0px;padding-bottom: 15px;">{winter_price}/wk</td>
+								</tr>
+								{if:else}
+								<tr>
+									<td >Winter:</td>
+									<td >{if winter_price}{charter_winter}{if:else}N/A{/if}</td>
+								</tr>
+								{/if}
+							</tbody>
+						</table>
+
+						{charter_brochure}
+						<figure class="download-pdf clearfix">
+							<div class="download-thumb column small-3">
+								{if charter_brochure:thumbnail}
+								<img src="{charter_brochure:thumbnail}">
+								{if:else}
+								<img src="/images/yachts/oysteryachts_brochure_thumb.gif">
+								{/if}
+							</div>
+							{embed="site/.download_file" title="{if charter_brochure:title}{charter_brochure:title}{if:else}{charter_model} Brochure{/if}" file="{charter_brochure:file}" filesize="{charter_brochure:file}{file_size}{/charter_brochure:file}" label="Download"}
+						</figure>
+						{/charter_brochure}
+
+					</div>
+				</aside>
+			</div>
+		</div>
+	</div>
+</section>
+
+<?php if ($layoutImages > 0): ?>
+<section id="yacht-layout" class="yacht-layout">
+	<div class="banner">Yacht Layout</div>
+	<div class="content row row-pad">
+		<div class="large-10 large-offset-1 end">
+			<div id="layout-slider">
+				{charter_layout}
+				<div class="cycle-slide">
+					<img src="{image:url}">
+				</div>
+				{/charter_layout}
+			</div>
+			<ul class="slider-pager<?php if ($layoutImages === 1): ?> hide<?php endif; ?>">
+				{charter_layout}
+				<li><a><span style="background-image:url('{image:url:small}');"></span></a></li>
+				{/charter_layout}
+			</ul>
+		</div>
+	</div>
+</section>
+<?php endif; ?>
+
+<section id="charter-activities" class="charter-activities">
+	<div class="banner">activities &amp; entertainment</div>
+	<div data-equalizer class="content row row-pad yacht-featured-lists">
+		<div class="yacht-featured-list">
+			<h2 class="yacht-featured-list-header" data-equalizer-watch>Specifications</h2>
+			<div class="feature-out">
+				Model: {charter_model}<br/>
+				Year: {charter_year}<br/>
+				No. Guests: {charter_guests}<br/>
+				No. Guest Cabins: {charter_cabins}<br/>
+				No. Guest Heads: {charter_guest_heads}
+			</div>
+		</div>
+
+		<div class="yacht-featured-list">
+			<h2 class="yacht-featured-list-header" data-equalizer-watch>GUEST AMENITIES</h2>
+			<div class="feature-out">{guest_amenities2}</div>
+<!-- 			<ul>
+					
+				{charter_guest_amenities}
+				<li>{charter_guest_amenities:item}</li>
+				{/charter_guest_amenities}
+			</ul> -->
+		</div>
+		<div class="yacht-featured-list">
+			<h2 class="yacht-featured-list-header" data-equalizer-watch>AV ENTERTAINMENT</h2>
+			<div class="feature-out">{av_entertainment2}</div>
+<!-- 			<ul>
+					
+				{charter_av_entertainment}
+				<li>{charter_av_entertainment:item}</li>
+				{/charter_av_entertainment}
+			</ul> -->
+		</div>
+		<div class="yacht-featured-list">
+			<h2 class="yacht-featured-list-header" data-equalizer-watch>WATERSPORTS ACTIVITIES</h2>
+			<div class="feature-out">{watersports_activities2}</div>
+			<!-- <ul>
+				{charter_watersports_activities}
+				<li>{charter_watersports_activities:item}</li>
+				{/charter_watersports_activities}
+			</ul> -->
+        </div>
+	</div>
+</section>
+
+{if charter_crew:total_rows > 0}
+<section id="the-crew" class="charter-yacht-crew charter-activities">
+	<div class="banner">The crew</div>
+	<div class="row">
+		<div class="small-12">
+			<div class="charter-activities-bg" style="background-image:url('{charter_activities_entertainment}{image:url}{/charter_activities_entertainment}');"></div>
+		</div>
+	</div>
+	<div data-equalizer data-equalize-by-row="true" class="row row-pad charter-activities-crew small-up-1 medium-up-2 large-up-3">
+
+		{charter_crew}
+		<div data-equalizer-watch class="column">
+			<div class="feature-content">
+				{if charter_crew:image}
+				<img src="{charter_crew:image}" class="crew-member-img">
+				{/if}
+				<h4>{charter_crew:name}</h4>
+				{charter_crew:about}
+			</div>
+		</div>
+		{/charter_crew}
+
+	</div>
+</section>
+{/if}
+
+<div id="galleries" data-title="{title}">
+	<?php if ($exteriorGalleryImages > 0): ?>
+	<div class="gallery-content" data-gallery="external" data-title="Exterior">
+		{charter_exterior_gallery}
+		<a href="{image:url}" data-sub-html="{image:description}">
+			<img src="{image:url:gallery_thumb}" />
+		</a>
+		{/charter_exterior_gallery}
+	</div>
+	<?php endif; ?>
+
+	<?php if ($interiorGalleryImages > 0): ?>
+	<div class="gallery-content" data-gallery="internal" data-title="Interior">
+		{charter_interior_gallery}
+		<a href="{image:url}" data-sub-html="{image:description}">
+			<img src="{image:url:gallery_thumb}" />
+		</a>
+		{/charter_interior_gallery}
+	</div>
+	<?php endif; ?>
+
+	{charter_virtual_tours}
+	{if charter_virtual_tours:count == 1}
+	<div class="gallery-content" data-gallery="vrtours" data-title="VR Tours">
+	{/if}
+		<a href="{charter_virtual_tours:url}" data-iframe="true"><img src="{site_url}images/static/oyster_360_thumbnail.jpg"></a>
+	{if charter_virtual_tours:count == charter_virtual_tours:total_rows}
+	</div>
+	{/if}
+	{/charter_virtual_tours}
+</div>
+
+{footer}
+<style>
+section, .global-padding-top-only--small {    padding-top: 11px !important;}
+section.hero {
+    padding-top: 0px !important;
+}
+.feature-out {
+	font-size: 12px;
+    padding: 1.25rem .5rem;
+    color: #7d9aaa;
+    text-transform: uppercase;
+    
+    border-right:none;
+}
+.yacht-featured-list {border: 1px solid #c7c8ca;border-left:none;}
+.yacht-featured-list:first-child {border-left: 1px solid #c7c8ca;}
+.feature-out :last-child {}
+.feature-out br {line-height:35px;}
+</style>
+{/exp:channel:entries}

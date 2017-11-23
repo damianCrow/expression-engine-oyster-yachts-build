@@ -1,0 +1,319 @@
+{exp:channel:entries channel="team_page" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published" limit="1"}
+
+{embed="site/.header" page_title="Team" snap_to="undefined" snap_offset="undefined"}
+
+<section style="background-image: url('/assets/images/oysteryachts-about_landing-our_team.jpg'); " class="hero after-nav global-page-hero yacht-listing-photo global-page-hero--small">
+	<div id="page-back-button" class="back-button"><a class="button-clear-white"><i class="fa fa-angle-left"></i>Back</a></div>
+</section>
+
+<div class="row-pad sliding-tabs team-tab-container">
+	<ul id="team-tabs" data-tabs="" class="tabs">
+		<li class="tabs-title is-active"><a href="#yards" aria-selected="true">Our Yards</a></li>
+		<li class="tabs-title "><a href="#management-panel">Management</a></li>
+		<li class="tabs-title"><a href="#new-yachts-panel">New Yachts</a></li>
+		<li class="tabs-title"><a href="#brokerage-panel">Brokerage</a></li>
+		<li class="tabs-title"><a href="#charter-panel">Charter</a></li>
+		<li class="tabs-title"><a href="#customer-service-panel">Service Centres</a></li>
+	</ul>
+	<div class="tab-slider-container">
+		<div class="tab-slider"></div>
+	</div>
+</div>
+
+<div data-tabs-content="team-tabs" class="tabs-content team-tab-contents row-pad global-padding-top-only--medium">
+	<article id="yards" class="tabs-panel is-active">
+		<section class="row"><img src="/assets/images/oyster_southampton.jpg">
+<div>
+<div class="small-12 medium-12 large-12 large-offset-1 column about-heading"><span class="text-uppercase">
+Oyster Southampton
+</span></div></div>
+		
+		<img src="/assets/images/oyster_wroxham.jpg">
+<div>
+<div class="small-12 medium-12 large-12 large-offset-1 column about-heading"><span class="text-uppercase">
+Oyster Wroxham
+</span></div></div>
+		</section>
+	</article>
+	<article id="management-panel" class="staggered-features stagger-split tabs-panel">
+		{team_management}
+
+		{if team_management:count % 2 == 0}
+
+		<section class="row staggered-row-reverse team-stagger-section">      
+			<div class="staggered-details medium-8 small-12 columns">
+				<div class="staggered-details-contents">
+					<div class="person-details">
+						<div class="person-name-pos">
+							<h2>{team_management:name}</h2>
+							<h3>{team_management:job_title}</h3>
+						</div>
+						{if team_management:linkedin != ""}
+						<a href="{team_management:linkedin}" target="_blank">
+							<div aria-hidden="true" class="fa fa-linkedin"></div>
+						</a>
+						{/if}
+					</div>
+					{team_management:description}
+				</div>
+			</div>
+			<div class="staggered-image medium-4 small-12 columns"><img src="{team_management:image}"></div>
+		</section>
+
+		{if:else}
+
+		<section class="row team-stagger-section">
+			<div class="staggered-image medium-4 small-12 columns"><img src="{team_management:image}"></div>
+			<div class="staggered-details medium-8 small-12 columns">
+				<div class="staggered-details-contents">
+					<div class="person-details">
+						<div class="person-name-pos">
+							<h2>{team_management:name}</h2>
+							<h3>{team_management:job_title}</h3>
+						</div>
+						{if team_management:linkedin != ""}
+						<a href="{team_management:linkedin}" target="_blank">
+							<div aria-hidden="true" class="fa fa-linkedin"></div>
+						</a>
+						{/if}
+					</div>
+					{team_management:description}
+				</div>
+			</div>
+		</section>
+
+		{/if}
+
+		{/team_management}
+	</article>
+
+	<article id="new-yachts-panel" class="staggered-features stagger-split tabs-panel">
+		{team_new_yachts}
+
+		{if team_new_yachts:count % 2 == 0}
+
+		<section class="row staggered-row-reverse team-stagger-section">      
+			<div class="staggered-details medium-8 small-12 columns">
+				<div class="staggered-details-contents">
+					<div class="person-details">
+						<div class="person-name-pos">
+							<h2>{team_new_yachts:name}</h2>
+							<h3>{team_new_yachts:job_title}</h3>
+						</div>
+						{if team_new_yachts:linkedin != ""}
+						<a href="{team_new_yachts:linkedin}" target="_blank">
+							<div aria-hidden="true" class="fa fa-linkedin"></div>
+						</a>
+						{/if}
+					</div>
+					{team_new_yachts:description}
+				</div>
+			</div>
+			<div class="staggered-image medium-4 small-12 columns"><img src="{team_new_yachts:image}"></div>
+		</section>
+
+		{if:else}
+
+		<section class="row team-stagger-section">
+			<div class="staggered-image medium-4 small-12 columns"><img src="{team_new_yachts:image}"></div>
+			<div class="staggered-details medium-8 small-12 columns">
+				<div class="staggered-details-contents">
+					<div class="person-details">
+						<div class="person-name-pos">
+							<h2>{team_new_yachts:name}</h2>
+							<h3>{team_new_yachts:job_title}</h3>
+						</div>
+						{if team_new_yachts:linkedin != ""}
+						<a href="{team_new_yachts:linkedin}" target="_blank">
+							<div aria-hidden="true" class="fa fa-linkedin"></div>
+						</a>
+						{/if}
+					</div>
+					{team_new_yachts:description}
+				</div>
+			</div>
+		</section>
+
+		{/if}
+
+		{/team_new_yachts}
+	</article>
+
+	<article id="customer-service-panel" class="staggered-features stagger-split tabs-panel">
+		{team_customer_service}
+
+		{if team_customer_service:count % 2 == 0}
+
+		<section class="row staggered-row-reverse team-stagger-section">      
+			<div class="staggered-details medium-8 small-12 columns">
+				<div class="staggered-details-contents">
+					<div class="person-details">
+						<div class="person-name-pos">
+							<h2>{team_customer_service:name}</h2>
+							<h3>{team_customer_service:job_title}</h3>
+						</div>
+						{if team_customer_service:linkedin != ""}
+						<a href="{team_customer_service:linkedin}" target="_blank">
+							<div aria-hidden="true" class="fa fa-linkedin"></div>
+						</a>
+						{/if}
+					</div>
+					{team_customer_service:description}
+				</div>
+			</div>
+			<div class="staggered-image medium-4 small-12 columns"><img src="{team_customer_service:image}"></div>
+		</section>
+
+		{if:else}
+
+		<section class="row team-stagger-section">
+			<div class="staggered-image medium-4 small-12 columns"><img src="{team_customer_service:image}"></div>
+			<div class="staggered-details medium-8 small-12 columns">
+				<div class="staggered-details-contents">
+					<div class="person-details">
+						<div class="person-name-pos">
+							<h2>{team_customer_service:name}</h2>
+							<h3>{team_customer_service:job_title}</h3>
+						</div>
+						{if team_customer_service:linkedin != ""}
+						<a href="{team_customer_service:linkedin}" target="_blank">
+							<div aria-hidden="true" class="fa fa-linkedin"></div>
+						</a>
+						{/if}
+					</div>
+					{team_customer_service:description}
+				</div>
+			</div>
+		</section>
+
+		{/if}
+
+		{/team_customer_service}
+	</article>
+
+	<article id="brokerage-panel" class="staggered-features stagger-split tabs-panel">
+		{team_brokerage}
+
+		{if team_brokerage:count % 2 == 0}
+
+		<section class="row staggered-row-reverse team-stagger-section">      
+			<div class="staggered-details medium-8 small-12 columns">
+				<div class="staggered-details-contents">
+					<div class="person-details">
+						<div class="person-name-pos">
+							<h2>{team_brokerage:name}</h2>
+							<h3>{team_brokerage:job_title}</h3>
+						</div>
+						{if team_brokerage:linkedin != ""}
+						<a href="{team_brokerage:linkedin}" target="_blank">
+							<div aria-hidden="true" class="fa fa-linkedin"></div>
+						</a>
+						{/if}
+					</div>
+					{team_brokerage:description}
+				</div>
+			</div>
+			<div class="staggered-image medium-4 small-12 columns"><img src="{team_brokerage:image}"></div>
+		</section>
+
+		{if:else}
+
+		<section class="row team-stagger-section">
+			<div class="staggered-image medium-4 small-12 columns"><img src="{team_brokerage:image}"></div>
+			<div class="staggered-details medium-8 small-12 columns">
+				<div class="staggered-details-contents">
+					<div class="person-details">
+						<div class="person-name-pos">
+							<h2>{team_brokerage:name}</h2>
+							<h3>{team_brokerage:job_title}</h3>
+						</div>
+						{if team_brokerage:linkedin != ""}
+						<a href="{team_brokerage:linkedin}" target="_blank">
+							<div aria-hidden="true" class="fa fa-linkedin"></div>
+						</a>
+						{/if}
+					</div>
+					{team_brokerage:description}
+				</div>
+			</div>
+		</section>
+
+		{/if}
+
+		{/team_brokerage}
+	</article>
+
+	<article id="charter-panel" class="staggered-features stagger-split tabs-panel">
+		{team_charter}
+
+		{if team_charter:count % 2 == 0}
+
+		<section class="row staggered-row-reverse team-stagger-section">      
+			<div class="staggered-details medium-8 small-12 columns">
+				<div class="staggered-details-contents">
+					<div class="person-details">
+						<div class="person-name-pos">
+							<h2>{team_charter:name}</h2>
+							<h3>{team_charter:job_title}</h3>
+						</div>
+						{if team_charter:linkedin != ""}
+						<a href="{team_charter:linkedin}" target="_blank">
+							<div aria-hidden="true" class="fa fa-linkedin"></div>
+						</a>
+						{/if}
+					</div>
+					{team_charter:description}
+				</div>
+			</div>
+			<div class="staggered-image medium-4 small-12 columns"><img src="{team_charter:image}"></div>
+		</section>
+
+		{if:else}
+
+		<section class="row team-stagger-section">
+			<div class="staggered-image medium-4 small-12 columns"><img src="{team_charter:image}"></div>
+			<div class="staggered-details medium-8 small-12 columns">
+				<div class="staggered-details-contents">
+					<div class="person-details">
+						<div class="person-name-pos">
+							<h2>{team_charter:name}</h2>
+							<h3>{team_charter:job_title}</h3>
+						</div>
+						{if team_charter:linkedin != ""}
+						<a href="{team_charter:linkedin}" target="_blank">
+							<div aria-hidden="true" class="fa fa-linkedin"></div>
+						</a>
+						{/if}
+					</div>
+					{team_charter:description}
+				</div>
+			</div>
+		</section>
+
+		{/if}
+
+		{/team_charter}
+	</article>
+</div>
+<style>
+.about-heading {height:100px;padding-top:30px;}
+.about-heading span {font-family: 'omnes_mediumregular', sans-serif;
+    letter-spacing: .05rem;
+    font-size: 1.25em;
+    line-height: 1.25em;
+    position: relative;
+    color: #003145;}
+.about-heading span:after {
+    content: "";
+    display: block;
+    width: 38px;
+    height: 2px;
+    background: #003145;
+    position: absolute;
+    left: 0;
+    bottom: -20px;
+}
+</style>
+{footer}
+
+{/exp:channel:entries}

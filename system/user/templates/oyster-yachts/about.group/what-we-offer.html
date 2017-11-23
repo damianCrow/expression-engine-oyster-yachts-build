@@ -1,0 +1,46 @@
+{embed="site/.header" page_title="What We Offer" snap_to="undefined" snap_offset="undefined"}
+    <section style="background-image: url('/assets/images/oysteryachts-about-what_weoffer.jpg'); " class="hero after-nav global-page-hero yacht-listing-photo global-page-hero--medium">
+      <div id="page-back-button" class="back-button"><a class="button-clear-white"><i class="fa fa-angle-left"></i>Back</a></div>
+    </section>
+    <article class="why-oyster">
+      <div class="banner">
+        <h1>What We Offer</h1>
+      </div>
+      {exp:channel:entries channel="what_we_offer_page" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published"}
+
+   
+      <section class="staggered-features stagger-split">
+              {what_we_offer}
+         {if what_we_offer:count % 2 == 0}
+           <div class="row row-pad">
+          <div class="staggered-image medium-7 small-12 columns"><img src="{what_we_offer:image}"></div>
+          <div class="staggered-details medium-5 small-12 columns">
+            <div class="staggered-details-contents">
+              <h2>{what_we_offer:title}</h2>
+            {what_we_offer:description}
+              <div class="staggered-button-group">
+                 <a href="{what_we_offer:link}"class="button-solid-white button-chubby">{what_we_offer:link_label}</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {if:else}
+        <div class="staggered-row-reverse row row-pad">
+          <div class="staggered-details medium-7 small-12 columns">
+            <div class="staggered-details-contents">
+              <h2>{what_we_offer:title}</h2>
+            {what_we_offer:description}
+              <div class="staggered-button-group">
+                <a href="{what_we_offer:link}"class="button-solid-white button-chubby">{what_we_offer:link_label}</a>
+              </div>
+            </div>
+          </div>
+          <div class="staggered-image medium-5 small-12 columns"><img src="{what_we_offer:image}"></div>
+        </div>
+        {/if}
+           {/what_we_offer}
+           {/exp:channel:entries}
+      </section>
+    </article>
+     {footer}

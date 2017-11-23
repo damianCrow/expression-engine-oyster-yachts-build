@@ -1,0 +1,321 @@
+{exp:channel:entries channel="contact_page" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published" limit="1"}
+
+{embed="site/.header" page_title="Contact" entry_id="{entry_id}" snap_to="#yacht-nav" snap_offset="55"}
+
+<section class="after-nav"></section>
+<section style="background-image: url('/assets/images/oysteryachts-contact.jpg'); " class="hero after-nav global-page-hero yacht-listing-photo global-page-hero--medium">
+	{back_button}
+	<div id="yacht-nav" data-local-subnav="data-local-subnav" class="yacht-nav">
+		<ul class="local-subnav">
+			{if sales_contacts:total_rows != 0}<li class="active"><a href="#oyster-sales" class="scroll">Sales</a></li>{/if}
+			{if oyster_yards:total_rows != 0}<li ><a href="#oyster-yards" class="scroll">Yards</a></li>{/if}
+			{if brokerage_contacts:total_rows != 0}<li><a href="#oyster-brokerage" class="scroll">Brokerage</a></li>{/if}
+			{if charter_contacts:total_rows != 0}<li><a href="#oyster-charter" class="scroll">Charter</a></li>{/if}
+			{if customer_contacts:total_rows != 0}<li><a href="#oyster-customer" class="scroll">Customer Service</a></li>{/if}
+			{if custom_contacts:total_rows != 0}<li><a href="#oyster-custom" class="scroll">Custom &amp; Refit</a></li>{/if}
+			{if service_centers_contacts:total_rows != 0}<li><a href="#oyster-service" class="scroll">Service Centres</a></li>{/if}
+			{if representatives:total_rows != 0}<li><a href="#oyster-representatives" class="scroll">Representatives</a></li>{/if}
+		</ul>
+	</div>
+</section>
+{if sales_contacts:total_rows != 0}
+<section id="oyster-sales" class="contact-group">
+	<div class="banner">Oyster Sales</div>
+	<div class="row row-pad small-collapse">
+		{sales_contacts}
+
+		<div class="location-contents column large-6 small-12">
+			<div class="location-box">
+				<div style="background-image:url('{sales_contacts:image}')" class="location-image medium-6 small-12 column"></div>
+					<address class="location-details medium-6 small-12 column"><strong class="text-uppercase"> Oyster {sales_contacts:office}<abbr title="{sales_contacts:office}"></abbr> </strong> 
+					<div class="written-address" style="color:#003145;">
+					{sales_contacts:address}
+					{if sales_contacts:map != ""}
+						<a class="google-map-link text-uppercase" href="{sales_contacts:map}" target="_blank">
+						View&nbsp;Map</a>
+					{/if}
+					</div>
+					<div class="contact-phone-email">
+						{if sales_contacts:telephone != ""}
+							<span class="contact-phone">T: <abbr title="Telephone">{sales_contacts:telephone}</abbr></span>
+						{/if}
+						{if sales_contacts:fax != ""}
+							<span class="contact-fax">F: <abbr title="Fax"> {sales_contacts:fax}</abbr></span>
+						{/if}
+					</div>
+					{if sales_contacts:email != ""}
+						<a href="mailto:{sales_contacts:email}" class="text-uppercase button-transparent" style="margin:1rem 0 0 0;">Contact via email</a>
+					{/if}
+					</address>
+				</div>
+		</div>
+
+		{/sales_contacts}
+	</div>
+</section>
+{/if}
+
+{if oyster_yards:total_rows != 0}
+<section id="oyster-yards" class="contact-group">
+	<div class="banner">Oyster Yards</div>
+	<div class="row row-pad small-collapse">
+		{oyster_yards}
+
+		<div class="location-contents column large-6 small-12">
+			<div class="location-box">
+				<div style="background-image:url('{oyster_yards:image}')" class="location-image medium-6 small-12 column"></div>
+					<address class="location-details medium-6 small-12 column"><strong class="text-uppercase"> Oyster {oyster_yards:office}<abbr title="{oyster_yards:office}"></abbr> </strong> 
+					<div class="written-address" style="color:#003145;">
+					{oyster_yards:address}
+					{if oyster_yards:map != ""}
+						<a class="google-map-link text-uppercase" href="{oyster_yards:map}" target="_blank">
+						View&nbsp;Map</a>
+					{/if}
+					</div>
+					<div class="contact-phone-email">
+						{if oyster_yards:telephone != ""}
+							<span class="contact-phone">T: <abbr title="Telephone">{oyster_yards:telephone}</abbr></span>
+						{/if}
+						{if oyster_yards:fax != ""}
+							<span class="contact-fax">F: <abbr title="Fax"> {oyster_yards:fax}</abbr></span>
+						{/if}
+					</div>
+					{if oyster_yards:email != ""}
+						<a href="mailto:{oyster_yards:email}" class="text-uppercase button-transparent" style="margin:1rem 0 0 0;">Contact via email</a>
+					{/if}
+					</address>
+				</div>
+		</div>
+
+		{/oyster_yards}
+	</div>
+</section>
+{/if}
+
+{if brokerage_contacts:total_rows != 0}
+<section id="oyster-brokerage" class="contact-group">
+	<div class="banner">Oyster Brokerage</div>
+	<div class="row row-pad small-collapse">
+		{brokerage_contacts}
+
+		<div class="location-contents column large-6 small-12">
+			<div class="location-box">
+				<div style="background-image:url('{brokerage_contacts:image}')" class="location-image medium-6 small-12 column"></div>
+				<address class="location-details medium-6 small-12 column"><strong class="text-uppercase">Oyster {brokerage_contacts:office}<abbr title="{brokerage_contacts:office}"></abbr></strong> 
+					<div class="written-address">{brokerage_contacts:address}
+					{if brokerage_contacts:map != ""}
+						<a class="google-map-link text-uppercase" href="{brokerage_contacts:map}" target="_blank">
+						View&nbsp;Map</a>
+					{/if}
+					</div>
+					<div class="contact-phone-email">
+						{if brokerage_contacts:telephone != ""}
+							<span class="contact-phone">T: <abbr title="Telephone">{brokerage_contacts:telephone}</abbr></span>
+						{/if}
+						{if brokerage_contacts:fax != ""}
+							<span class="contact-fax">F: <abbr title="Fax">{brokerage_contacts:fax}</abbr></span>
+						{/if}
+					</div>
+					{if brokerage_contacts:email != ""}
+						<a href="mailto:{brokerage_contacts:email}" class="text-uppercase button-transparent" style="margin:1rem 0 0 0;">Contact via email</a>
+					{/if}
+				</address>
+			</div>
+		</div>
+
+		{/brokerage_contacts}
+	</div>
+</section>
+{/if}
+{if charter_contacts:total_rows != 0}
+<section id="oyster-charter" class="contact-group">
+	<div class="banner">Oyster Charter</div>
+	<div class="row row-pad small-collapse">
+		{charter_contacts}
+
+<div class="location-contents column large-6 small-12">
+			<div class="location-box">
+				<div style="background-image:url('{charter_contacts:image}')" class="location-image medium-6 small-12 column"></div>
+					<address class="location-details medium-6 small-12 column"><strong class="text-uppercase">Oyster {charter_contacts:office}<abbr title="{charter_contacts:office}"></abbr></strong> 
+					<div class="written-address">{charter_contacts:address}
+					{if charter_contacts:map != ""}
+						<a class="google-map-link text-uppercase" href="{charter_contacts:map}" target="_blank">
+						View&nbsp;Map</a>
+					{/if}
+					</div>
+					<div class="contact-phone-email">
+						{if charter_contacts:telephone != ""}
+							<span class="contact-phone">T: <abbr title="Telephone">{charter_contacts:telephone}</abbr></span>
+						{/if}
+						{if charter_contacts:fax != ""}
+							<span class="contact-fax">F: <abbr title="Fax">{charter_contacts:fax}</abbr></span>
+						{/if}
+					</div>
+					{if charter_contacts:email != ""}
+						<a href="mailto:{charter_contacts:email}" class="text-uppercase button-transparent" style="margin:1rem 0 0 0;">Contact via email</a>
+					{/if}
+					</address>
+				</div>
+		</div>
+
+		{/charter_contacts}
+	</div>
+</section>
+{/if}
+
+{if customer_contacts:total_rows != 0}
+<section id="oyster-customer" class="contact-group">
+	<div class="banner">Oyster Customer Service</div>
+	<div class="row row-pad small-collapse">
+		{customer_contacts}
+
+<div class="location-contents column large-6 small-12">
+			<div class="location-box">
+				<div style="background-image:url('{customer_contacts:image}')" class="location-image medium-6 small-12 column"></div>
+					<address class="location-details medium-6 small-12 column"><strong class="text-uppercase">Oyster {customer_contacts:office}<abbr title="{customer_contacts:office}"></abbr></strong> 
+					<div class="written-address">{customer_contacts:address}
+					{if customer_contacts:map != ""}
+						<a class="google-map-link text-uppercase" href="{customer_contacts:map}" target="_blank">
+						View&nbsp;Map</a>
+					{/if}
+					</div>
+					<div class="contact-phone-email">
+						{if customer_contacts:telephone != ""}
+							<span class="contact-phone">T: <abbr title="Telephone">{customer_contacts:telephone}</abbr></span>
+						{/if}
+						{if customer_contacts:fax != ""}
+							<span class="contact-fax">F: <abbr title="Fax">{customer_contacts:fax}</abbr></span>
+						{/if}
+					</div>
+					{if customer_contacts:email != ""}
+						<a href="mailto:{customer_contacts:email}" class="text-uppercase button-transparent" style="margin:1rem 0 0 0;">Contact via email</a>
+					{/if}
+					</address>
+				</div>
+		</div>
+
+		{/customer_contacts}
+	</div>
+</section>
+{/if}
+
+{if custom_contacts:total_rows != 0}
+<section id="oyster-custom" class="contact-group">
+	<div class="banner">Oyster Custom &amp; Refit</div>
+	<div class="row row-pad small-collapse">
+	{custom_contacts}
+
+<div class="location-contents column large-6 small-12">
+			<div class="location-box">
+				<div style="background-image:url('{custom_contacts:image}')" class="location-image medium-6 small-12 column"></div>
+					<address class="location-details medium-6 small-12 column"><strong class="text-uppercase">Oyster {custom_contacts:office}<abbr title="{custom_contacts:office}"></abbr></strong> 
+					<div class="written-address">{custom_contacts:address}
+					{if custom_contacts:map != ""}
+						<a class="google-map-link text-uppercase" href="{custom_contacts:map}" target="_blank">
+						View&nbsp;Map</a>
+					{/if}
+					</div>
+					<div class="contact-phone-email">
+						{if custom_contacts:telephone != ""}
+							<span class="contact-phone"><abbr title="Telephone">T: {custom_contacts:telephone}</abbr></span>
+						{/if}
+						{if custom_contacts:fax != ""}
+							<span class="contact-fax"><abbr title="Fax">F: {custom_contacts:fax}</abbr></span>
+						{/if}
+					</div>
+					{if custom_contacts:email != ""}
+						<a href="mailto:{custom_contacts:email}" class="text-uppercase button-transparent" style="margin:1rem 0 0 0;">Contact via email</a>
+					{/if}
+					</address>
+				</div>
+		</div>
+
+
+		{/custom_contacts}
+	</div>
+</section>
+{/if}
+{if service_centers_contacts:total_rows != 0}
+	<section id="oyster-service" class="contact-group">
+		<div class="banner">Oyster Service Centres</div>
+		<div class="row row-pad small-collapse">
+		{service_centers_contacts}
+
+
+
+<div class="location-contents column large-6 small-12">
+			<div class="location-box">
+				<div style="background-image:url('{service_centers_contacts:image}')" class="location-image medium-6 small-12 column"></div>
+					<address class="location-details medium-6 small-12 column"><strong class="text-uppercase">Oyster {service_centers_contacts:office}<abbr title="{service_centers_contacts:office}"></abbr></strong> 
+					<div class="written-address">{service_centers_contacts:address}
+					{if service_centers_contacts:map != ""}
+						<a class="google-map-link text-uppercase" href="{service_centers_contacts:map}" target="_blank">
+						View&nbsp;Map</a>
+					{/if}
+				</div>
+					<div class="contact-phone-email">
+						{if service_centers_contacts:telephone != ""}
+							<span class="contact-phone"><abbr title="Telephone">T: {service_centers_contacts:telephone}</abbr></span>
+						{/if}
+						{if service_centers_contacts:fax != ""}
+							<span class="contact-fax"><abbr title="Fax">F: {service_centers_contacts:fax}</abbr></span>
+						{/if}
+					</div>
+					{if service_centers_contacts:email != ""}
+						<a href="mailto:{service_centers_contacts:email}" class="text-uppercase button-transparent" style="margin:1rem 0 0 0;">Contact via email</a>
+					{/if}
+					</address>
+				</div>
+		</div>
+
+
+			{/service_centers_contacts}
+		</div>
+	</section>
+{/if}
+{if representatives:total_rows != 0}
+	<section id="oyster-representatives" class="contact-group">
+		<div class="banner">Oyster Representatives</div>
+		<div class="row row-pad small-collapse">
+			{representatives}
+
+
+<div class="location-contents column large-6 small-12">
+			<div class="location-box">
+				<div style="background-image:url('{representatives:image}')" class="location-image medium-6 small-12 column"></div>
+					<address class="location-details medium-6 small-12 column"><strong class="text-uppercase">Oyster {representatives:office}<abbr title="{representatives:office}"></abbr></strong> 
+					<div class="written-address">{representatives:address}
+					{if representatives:map != ""}
+						<a class="google-map-link text-uppercase" href="{representatives:map}" target="_blank">
+						View&nbsp;Map</a>
+					{/if}
+					</div>
+					<div class="contact-phone-email">
+						{if representatives:telephone != ""}
+							<span class="contact-phone"><abbr title="Telephone">T: {representatives:telephone}</abbr></span>
+						{/if}
+						{if representatives:fax != ""}
+							<span class="contact-fax"><abbr title="Fax">F: {representatives:fax}</abbr></span>
+							<span class="contact-email"><abbr title="Email">E: </abbr> <a href="{representatives:email}">{representatives:email}</a></span>
+						{/if}
+					</div>
+					{if representatives:email != ""}
+						<a href="mailto:{representatives:email}" class="text-uppercase button-transparent" style="margin:1rem 0 0 0;">Contact via email</a>
+					{/if}
+					</address>
+				</div>
+		</div>
+			
+			{/representatives}
+		</div>
+	</section>
+{/if}
+<style>
+.location-box abbr, .contact-phone, .contact-fax {
+	color:#003145; !important;
+}
+.contact-group {padding-top:11px !important;}
+</style>
+{footer}
+
+{/exp:channel:entries}

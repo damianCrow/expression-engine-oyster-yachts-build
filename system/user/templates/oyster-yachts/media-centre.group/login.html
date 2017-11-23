@@ -1,0 +1,153 @@
+{embed="site/.header" page_title="Oyster Media Centre" snap_to=".login-media-page" snap_offset="55"}
+
+<article style="background-image: url('/assets/images/media-centre/media_centre-login-bg.jpg')" class="login-media-page after-nav">
+	<div id="login-page" class="full-modal reveal">
+		<h2>Media Centre</h2>
+		<div class="sliding-tabs login-tab-container">
+			<ul id="login-tabs" data-tabs="" class="tabs">
+				<li class="tabs-title is-active"><a href="#login-panel" aria-selected="true">Login</a></li>
+				<li class="tabs-title"><a href="#new-account">Create a New Account</a></li>
+			</ul>
+			<div class="tab-slider"></div>
+		</div>
+		<div data-tabs-content="login-tabs" class="login-tabs-content">
+			<div id="login-panel" class="tabs-panel is-active">
+				<div class="modal-content">
+				{exp:member:login_form return="media-centre" form_class="sign-up-modal-form" id="media-login"}
+				
+					<div class="form-error text-center text-uppercase" data-form-id="media-login"><span>ERROR: Invalid or incomplete fields</span><span class="error-messages"></span></div>
+					<fieldset>
+						<legend class="show-for-sr">Login</legend>
+						<ol>
+							<li class="required-input">
+								<label for="login_username" class="show-for-sr">Email *</label>
+								<input id="login_username" type="email" name="username" placeholder="Email Address" title="Please enter a valid email" required="" class="required-input">
+							</li>
+							<li class="required-input">
+								<label for="login_password" class="show-for-sr">Password</label>
+								<input id="login_password" type="password" name="password" placeholder="Password" required="">
+							</li>
+						</ol>
+						<div class="extra-login-content"><a href="{path='media-centre/forgot-password'}" class="login-forgot-password">Forgot Password?</a>
+							<div class="login-remember-me">
+								<input id="auto_login" type="checkbox" name="auto_login" value="1" class="show-for-sr">
+								<label for="auto_login" class="material-icons">Remember Me</label>
+							</div>
+						</div>
+					</fieldset>
+					{/exp:member:login_form}
+				</div>
+				<div class="modal-footer">
+					<div class="float-right">
+						<!-- <button data-close aria-label="Close modal" type="button" class="button-solid-lightgrey">Cancel</button> -->
+						<button aria-controls="formModal" aria-haspopup="true" tabindex="0" type="submit" value="Submit" class="button-solid-blue" data-form-id="media-login">Submit</button>
+					</div>
+				</div>
+				
+			</div>
+			<div id="new-account" class="tabs-panel">
+				<div id="new-account-form" class="new-account-form">
+					<div class="modal-content">
+											{exp:user:register assign_roles="2" admin_register="yes" override_return="media-centre/thanks-for-registering" form:class="sign-up-modal-form"}
+
+						<div class="request-spec">
+							<div class="form-error text-center text-uppercase" data-form-id="member_form"><span>ERROR: Invalid or incomplete fields</span><span class="error-messages"></span></div>
+							<fieldset>
+								<ol>
+									<li class="required-input">
+										<label for="member_title" class="show-for-sr">Title *</label>
+										<input id="member_title" type="text" name="member_title" placeholder="Title" required="">
+									</li>
+									<li class="required-input">
+										<label for="member_first_name" class="show-for-sr">First Name *</label>
+										<input id="member_first_name" type="text" name="member_first_name" placeholder="First Name" required="">
+									</li>
+									<li class="required-input">
+										<label for="member_last_name" class="show-for-sr">Last Name *</label>
+										<input id="member_last_name" type="text" name="member_last_name" placeholder="Last Name" required="">
+									</li>
+								</ol>
+							</fieldset>
+							<fieldset>
+								<ol>
+									<li class="required-input">
+										<label for="member_job_position" class="show-for-sr">Job Position *</label>
+										<input id="member_job_position" type="text" name="member_job_position" placeholder="Job Position" title="Job Position" required="" class="required-input">
+									</li>
+									<li class="required-input">
+										<label for="member_media_organisation" class="show-for-sr">Name of Media Organisation *</label>
+										<input id="member_media_organisation" type="text" name="member_media_organisation" placeholder="Name of media organisation" title="Name of media organisation" required="" class="required-input">
+									</li>
+								</ol>
+							</fieldset>
+							<fieldset>
+								<ol>
+									<li class="required-input">
+										<label for="register_username" class="show-for-sr">Email *</label>
+										<input id="register_username" type="email" name="username" placeholder="Email Address" title="Please enter a valid email" required="" class="required-input">
+									</li>
+									<li class="required-input">
+										<label for="member_phone_number" class="show-for-sr">Phone Number *</label>
+										<input id="member_phone_number" type="tel" name="member_phone_number" placeholder="Phone Number" required="" class="required-input">
+									</li>
+									<li class="required-input">
+					                	<label for="register_password" class="show-for-sr">Password *</label>
+					                	<input id="register_password" type="password" name="password" placeholder="Password" required="" class="required-input"/>
+					                </li>
+								</ol>
+							</fieldset>
+							<fieldset class="form-signup-usage">
+								<ol>
+									<li class="required-input">
+										<label for="member_type_of_medium" class="show-for-sr">Type of Medium *</label>
+										<input id="member_type_of_medium" type="text" name="member_type_of_medium" placeholder="Type of Medium" title="Type of Medium" required="" class="required-input">
+									</li>
+									<li class="required-input">
+										<label for="member_proposed_usage" class="show-for-sr">Proposed Usage *</label>
+										<input id="member_proposed_usage" type="text" name="member_proposed_usage" placeholder="Proposed Usage" title="Proposed Usage" required="" class="required-input">
+									</li>
+								</ol>
+							</fieldset>
+							<fieldset class="spec-additional-yacht">
+								<ol>
+									<li>
+										<label for="member_more_information" class="show-for-sr">More Information</label>
+										<textarea id="member_more_information" name="member_more_information" type="text" placeholder="Additional Information"></textarea>
+									</li>
+									<li class="row">
+										<label for="member_receive_updates" class="request-more-info-confirmation required-input column large-8">Would you like to receive information and updates from Oyster Yachts via email?*</label>
+										<select id="member_receive_updates" name="member_receive_updates" required="" class="column large-2 float-right">
+											<option value="">Select</option>
+											<option value="Yes">Yes</option>
+											<option value="No">No</option>
+										</select>
+									</li>
+								</ol>
+							</fieldset>
+							<fieldset class="spec-additional-yacht">
+								<ol>
+									<li class="required-input">
+						            <p>Please tick the checkbox below:</p>
+						            <p>{captcha}</p>
+						            <input id="hiddenRecaptcha" type="hidden" name="hiddenRecaptcha" class="hiddenRecaptcha required">
+						            </li>
+								</ol>
+							</fieldset>
+							{/exp:user:register}
+							<small>Your information will never be sold to any other company. Your data will be treated in accordance with the Data Protection Act 1998. Please see our Privacy Policy for more details. If you wish to update or delete the data you have voluntarily given us please contact us on +44 2380 831 010 or email sales@oysteryachts.com</small>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<div class="float-right">
+							<!-- <button data-close aria-label="Close modal" type="button" class="button-solid-lightgrey">Cancel</button> -->
+							<button aria-controls="formModal" aria-haspopup="true" tabindex="0" type="submit" value="Submit" class="button-solid-blue" data-form-id="member_form">Submit </button>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+</article>
+
+{footer}

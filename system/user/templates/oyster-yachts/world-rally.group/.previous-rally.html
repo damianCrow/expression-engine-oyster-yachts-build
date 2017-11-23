@@ -1,0 +1,39 @@
+{embed="site/.header" page_title="World Rally 2013/14" snap_to=".world-rally-staggered-features" snap_offset="55"}
+
+{embed="world-rally/.previous-rally-subnav"}
+
+<section style="background-image: url('/assets/images/bg-images/world-rally-previous-bg.jpg'); " class="hero after-nav global-page-hero global-page-hero--medium global-page-hero-adjust-subnav">
+      {back_button}
+      <div class="world-rally-logo"><img src="/assets/images/oyster-world-rally-logo.png"/></div>
+    </section>
+    <section class="staggered-features world-rally-staggered-features global-padding-top-only--small">
+            {exp:channel:entries channel="wr_previous" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published"}
+ {navigation}
+         {if navigation:count % 2 == 0}
+<div class="row padded-full-width-row staggered-row-reverse">
+        <div class="staggered-details medium-5 small-12 columns">
+          <div class="staggered-details-contents">
+            <h2 class="text-uppercase">{navigation:name}</h2>
+            {navigation:description}<a href="{navigation:link}" class="text-uppercase button-solid-white">{navigation:link_label}</a>
+          </div>
+        </div>
+        <div class="staggered-image medium-7 small-12 columns"><img src="{navigation:image}"></div>
+      </div>
+
+
+       {if:else}
+            <div class="row padded-full-width-row">
+        <div class="staggered-image medium-7 small-12 columns"><img src="{navigation:image}"></div>
+        <div class="staggered-details medium-5 small-12 columns">
+          <div class="staggered-details-contents">
+            <h2 class="text-uppercase">{navigation:name}</h2>
+           {navigation:description}<a href="{navigation:link}" class="text-uppercase button-solid-white">{navigation:link_label}</a>
+          </div>
+        </div>
+      </div>
+      {/if}
+      {/navigation}
+      {/exp:channel:entries}
+    </section>
+
+{footer}
