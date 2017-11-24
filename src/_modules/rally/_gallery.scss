@@ -1,0 +1,124 @@
+.world-rally-gallery, .events-view-events-mixin {
+	.banner {
+		margin-bottom: 40px;
+	}
+
+	.gallery-pane {
+		.contain-bg {
+			background-size: contain;
+		}
+	}
+
+	.columns {
+		margin-bottom: 70px;
+		@include breakpoint(small down) {
+			margin-bottom: 35px;
+		}
+	}
+
+	.gallery-pane-header {
+		width: 100%;
+		height: 200px;
+		position: relative;
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
+
+		@mixin gallery-header-btns($bgColor, $color) {
+			// @extend .button-core;
+			@include button-core();
+
+			background-color: $bgColor;
+			color: $color;
+			border: none;
+
+			margin: 0;
+			position: absolute;
+			top: 10px;
+			left: 10px;
+			padding: 0;
+			line-height: 2;
+			width: 90px;
+			font-size: 12px;
+
+			&:hover, &:focus {
+				border: none;
+				background-color: $bgColor;
+				color: $color;
+			}
+		}
+
+		.images {
+			@include gallery-header-btns($yellow, $blue);
+		}
+
+		.video {
+			@include gallery-header-btns($blue, #fff);
+		}
+
+		.share {
+			right: 10px;
+		}
+	}
+
+	.gallery-pane-content {
+		padding: 20px;
+		// padding-bottom: 80px;
+		border: 1px solid $grayborder;
+		position: relative;
+
+		display: flex;
+		flex-direction: column;
+
+		a {
+			// width: 200px;
+			// bottom: 15px;
+			// margin: 0;
+			// position: absolute;
+
+			align-self: stretch;
+			margin-top: auto;
+			margin-bottom: 0px;
+
+		}
+
+		.gallery {
+			@extend .button-view-gallery;
+			line-height: 2.4;
+			font-size: 14px;
+			width: auto;
+			padding: 0 1rem;
+
+			// bottom: 15px;
+			// margin: 0;
+			// position: absolute;
+		}
+
+		.fa {
+			display: inline-block;
+			margin-right: 10px;
+		}
+
+		h2.title {
+			@include omnes_medium;
+			margin-bottom: 1rem;
+			line-height: 1.25;
+			font-size: 16px;
+			color: rgb(0, 49, 69);
+		}
+
+		.columns {
+			margin: 0;
+		}
+	}
+
+	.button-solid-blue {
+		text-align: center;
+		display: block;
+		width: 200px;
+		margin: 0 auto;
+		margin-bottom: 80px;
+	}
+}
+
+

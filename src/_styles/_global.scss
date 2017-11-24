@@ -1,0 +1,4004 @@
+// Typography
+html,
+body {
+  height: 100%;
+  // letter-spacing: .05em;
+}
+
+body {
+  @include omnes-regular;
+}
+
+p {
+  @include general-text;
+
+  // For custom user CMS posts
+  strong {
+    @include omnes_medium;
+  }
+
+  // For custom user CMS posts
+  em {
+    font-style: italic;
+  }
+
+}
+
+h1 {
+  @include h1-styles;
+}
+
+h2 {
+  @include h2-styles;
+}
+
+h4 {
+  @include h4-styles;
+}
+
+b,
+strong {
+  @include omnes_medium;
+  font-weight: normal;
+}
+
+a {
+  color: $blue;
+}
+
+small {
+  color: $grey;
+  font-size: 80%;
+}
+
+label {
+  @include general-text;
+  // Might not need this?
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+fieldset {
+  margin: 1rem 0;
+}
+
+abbr[title] {
+  border-bottom: 0;
+}
+
+section {
+  background: $white;
+  position: relative;
+  z-index: 10;
+}
+
+.reveal-overlay {
+  z-index: 1052 !important;
+}
+
+.select2-container {
+  .select2-dropdown {
+    z-index: 1052;
+  }
+}
+
+.has-tip {
+  border: 0;
+  outline: none;
+}
+
+.tooltip-left {
+  &::before {
+    @include omnes_medium;
+    background-color: $white;
+    border-radius: 2px;
+    font-family: 'omnes_mediumregular', sans-serif;
+    margin: auto;
+    opacity: 0;
+    padding: .5rem .75rem;
+    position: absolute;
+    right: 125%;
+    transform: translate(25%, 0);
+    transition: transform 250ms ease-out, opacity 150ms cubic-bezier(.86, 0, .07, 1);
+    vertical-align: middle;
+    white-space: nowrap;
+  }
+
+  &:hover {
+    &::before {
+      opacity: 1;
+      transform: translate(0, 0);
+    }
+  }
+}
+
+.contacts-list {
+  display: flex;
+  flex-direction: column;
+
+  > li {
+    align-items: center;
+    border-bottom: 1px solid $grayborder;
+    display: flex;
+    flex: 1 1 auto;
+
+    &:last-child {
+      border-bottom: 0;
+    }
+  }
+}
+
+.contact-picture {
+  background-color: $lightblue;
+  border-radius: 2px;
+  flex: 0 0 50px;
+  height: 50px;
+  margin: .75rem;
+  position: relative;
+  width: 50px;
+
+  > img {
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+  }
+}
+
+.contact-information {
+  display: flex;
+  flex: 1 1 100%;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: .5rem;
+
+  .contact-phone-email {
+    width: 100%;
+  }
+
+  .contact-name,
+  .contact-role,
+  .contact-email,
+  .contact-phone {
+    margin-bottom: .1rem;
+    margin-top: .1rem;
+  }
+
+  .contact-name,
+  .contact-role {
+    @include omnes_medium;
+    align-self: flex-end;
+    color: $blue;
+  }
+
+  .contact-role {
+    &::before {
+      content: '-';
+      margin: 0 .25rem;
+    }
+  }
+
+  .contact-phone {
+    min-width: 25%;
+  }
+
+  .contact-email,
+  .contact-phone {
+    display: block;
+    font-size: .8rem;
+    margin-top: .5rem;
+  }
+}
+
+.contact-email {
+  a {
+    text-decoration: underline;
+  }
+}
+
+.contact-email,
+.contact-phone {
+  abbr {
+    color: $lightblue;
+  }
+}
+
+.contact-detail {
+  display: flex;
+  flex-direction: row;
+  hyphens: auto;
+  width: 100%;
+  word-break: break-word;
+  word-wrap: break-word;
+
+  abbr {
+    @include omnes-regular;
+    color: $lightblue;
+    flex: 0 0 auto;
+    margin-right: .25rem;
+  }
+
+  a {
+    @include omnes_medium;
+    color: $blue;
+  }
+}
+
+// Utility
+.float {
+  float: left;
+}
+
+// Reusable elements
+.row-pad {
+  @include row-padding;
+}
+
+.full-width-row {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: none;
+  width: 100%;
+}
+
+.padded-full-width-row {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 40px;
+  padding-right: 40px;
+  width: 100%;
+
+  @include breakpoint(medium only) {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  @include breakpoint(small only) {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
+.content-col {
+  float: left;
+}
+
+@mixin listing-hightlight() {
+  @include omnes_medium;
+  background: $lightgrey;
+  border-bottom: none;
+  color: $blue;
+  height: 65px;
+  padding: 5px;
+  text-align: center;
+  text-transform: uppercase;
+  vertical-align: middle;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  tr {
+    background: $white;
+    // remove stripes
+    &:nth-child(even) {
+        background-color: $white;
+    }
+  }
+  td {
+    border: 1px solid $greyborder;
+    color: $lightblue;
+    font-size: .9375em;
+    line-height: 1.13333333em;
+  }
+  td,
+  th {
+    height: 50px;
+    vertical-align: middle;
+    padding: 0 5px;
+    @include breakpoint(medium up) {
+      padding: 0 10px 0 20px;
+    }
+    text-align: left;
+  }
+  th {
+    @include omnes_medium;
+    background: #f6f8f9;
+    color: $lightblue;
+    text-transform: uppercase;
+  }
+  tr.footer {
+    background: $cyan;
+  }
+  th.heading,
+  td.heading {
+    background: $blue;
+    @include omnes_medium;
+    font-size: .8rem;
+    line-height: 1em;
+    color: $white;
+    border: none;
+    text-transform: uppercase;
+  }
+  td.highlight {
+    @include listing-hightlight()
+  }
+  td.title {
+    color: $blue;
+    font-size: 1.125em;
+    line-height: 1em;
+    text-transform: uppercase;
+  }
+  span {
+    color: $blue;
+    @include omnes_medium;
+    span {
+        @include omnes-regular;
+    }
+  }
+  a {
+    text-decoration: none;
+  }
+}
+
+.listing-highlight {
+  @include listing-hightlight()
+  align-items: center;
+  border-top: 1px solid $greyborder;
+  display: flex;
+  justify-content: center;
+  // margin-left: -1px;
+  // width: calc(100% + 2px);
+  width: 100%;
+}
+
+.definition-table {
+  tbody {
+    td {
+      span {
+        @include omnes-regular;
+      }
+    }
+
+    td:nth-child(1) {
+      width: 44%;
+    }
+
+    td:nth-child(2) {
+      @include omnes_medium;
+      color: $blue;
+      width: 56%;
+    }
+
+    td,
+    th {
+      font-size: .9375em;
+      line-height: 1.2em;
+    }
+  }
+}
+
+.specs-table {
+  tbody {
+    td:nth-child(1),
+    td:nth-child(2),
+    td:nth-child(3),
+    td:nth-child(7),
+    td:nth-child(8),
+    td:nth-child(9) {
+      width: 9.66666666%;
+    }
+
+    td:nth-child(4),
+    td:nth-child(5),
+    td:nth-child(6) {
+      width: 14%;
+    }
+
+    td,
+    th {
+      font-size: .75em;
+      line-height: 1.25em;
+    }
+  }
+}
+
+.after-nav {
+  @include after-nav;
+}
+
+// aka Modal
+.reveal {
+    outline: none;
+    border-radius: 3px;
+}
+
+.social-icons {
+  display: flex;
+  align-items: center;
+  a {
+      width: 3rem;
+      height: 100%;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      opacity: .375;
+      color: $white;
+      transition: color 250ms cubic-bezier(0.86, 0, .07, 1);
+      // here
+      &:hover {
+          opacity: 1;
+      }
+  }
+  .fa {
+      font-size: 1.8rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+  &.social-invert {
+      a {
+          color: $white;
+          opacity: .5;
+          &:hover {
+              opacity: 1;
+          }
+      }
+  }
+}
+
+// This should be roled out as standard eventually.
+.social-background {
+  .facebook-icon,
+  .instagram-icon,
+  .twitter-icon,
+  .youtube-icon,
+  .email-icon {
+      @include transition(background-color 150ms ease-out);
+      &:hover {
+          color: $white;
+          @include transition(color 150ms ease-out);
+          a {
+              color: $white;
+              @include transition(color 150ms ease-out);
+          }
+          .fa {
+              opacity: 1;
+          }
+      }
+  }
+  .facebook-icon:hover {
+      background-color: #3b5998;
+  }
+  .instagram-icon:hover {
+      background-color: #3f729b;
+  }
+  .twitter-icon:hover {
+      background-color: #55acee;
+  }
+  .youtube-icon:hover {
+      background-color: #cd201f;
+  }
+  .email-icon:hover {
+      background-color: $blue;
+    }
+}
+
+.hero {
+    position: relative;
+    z-index: 1;
+    @include after-nav;
+}
+
+.full-screen {
+  width: 100%;
+  $header-nav-small-height: $header-nav-small-height - 2;
+  $header-nav-large-height: ($header-nav-large-height + $header-owners-area-height) - 2;
+  height: calc(100% - #{$header-nav-small-height});
+  @include breakpoint(large up) {
+      height: calc(100% - #{$header-nav-large-height});
+  }
+}
+
+.full-screen-media {
+  position: relative;
+  background-color: $blue;
+  video {
+      width: 100%;
+      height: 100%;
+  }
+}
+
+#full-image {
+  height: 100%;
+  background-position: center center;
+  background-size: cover;
+  // Does not work on iOS, as it has a huge re-paint cost.
+  @include breakpoint(xlarge up) {
+      background-attachment: fixed;
+  }
+  position: relative;
+  .back-button {
+      z-index: 1;
+      position: absolute;
+      left: 2em;
+      top: 20px;
+      a {
+          margin: 0;
+      }
+      @include breakpoint(medium only) {
+          left: 25px;
+      }
+      @include breakpoint(small down) {
+          display: none;
+          left: 20px;
+      }
+  }
+  .yacht-name {
+      @include breakpoint(medium only) {
+          h1 {
+              font-size: 3.5em;
+          }
+      }
+      @include breakpoint(small only) {
+          h1 {
+              font-size: 3em;
+          }
+      }
+  }
+}
+
+// ---- OVERRIDE FILTERS -----
+.select2-override {
+  float: left;
+  width: 21%;
+  height: 45px;
+  select {
+      font-size: 15px;
+      height: 100%;
+  }
+  .select2 {
+      width: 225px;
+      height: 100%;
+      padding: .5rem;
+      border: none;
+      margin: 0 0 1rem;
+      font-size: 1rem;
+      color: #0a0a0a;
+      background-color: $white;
+  }
+  &:first-child .select2 {
+      border-top-left-radius: 3px;
+      border-bottom-left-radius: 3px;
+  }
+  .select2-selection__arrow {
+      height: 9px;
+      position: absolute;
+      top: 19px;
+      right: 20px;
+      width: 16px;
+      background: url(/assets/images/select_down.png);
+      background-repeat: no-repeat;
+  }
+  b {
+      display: none;
+  }
+  .select2-selection {
+      border: none;
+      outline: none;
+  }
+}
+
+.select2-results__option[aria-selected] {
+  @include general-text;
+  border-top: 1px solid $grayborder;
+  color: $grey;
+  margin: 0;
+  padding: .25rem 1rem;
+
+  &:first-child {
+      border-top: 0;
+  }
+}
+
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+  background-color: $lightblue;
+}
+
+.select2-container--default .select2-results__option[aria-selected=true] {
+  background-color: $lightgrey;
+  color: $grey;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+  color: $grey;
+  @include omnes_medium;
+}
+
+// ---- OVERRIDE FILTERS -----
+.global-page-hero {
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+
+  .yacht-name {
+      padding-bottom: 0;
+      position: static;
+  }
+
+  .row-pad {
+      @include breakpoint(large up) {
+          padding-left: 2em;
+      }
+  }
+
+  h1.hero-title {
+      color: $white;
+      margin: 0;
+      // @include breakpoint(small only) {
+      //  font-size: 3em;
+      // }
+      // @include breakpoint(medium only) {
+      //  font-size: 3.75em;
+      // }
+  }
+
+  p.hero-subtext {
+      max-width: 500px;
+      color: white;
+      margin: 1rem 0;
+  }
+
+  // Due to container being static, this exposes (shows a grey bar) the overlaying gradient
+  // margin-bottom: 35px;
+  .back-button {
+      z-index: 1;
+      position: absolute;
+      left: 2em;
+      top: 20px;
+      @include breakpoint(small only) {
+          left: 15px;
+      }
+      @include breakpoint(medium only) {
+          left: 20px;
+      }
+      a {
+          margin: 0;
+      }
+  }
+
+  .world-rally-logo {
+      width: 100%;
+      height: 100%;
+      img {
+          z-index: 5;
+          width: 350px;
+          margin: 0 auto;
+          display: block;
+          @include vertical-align();
+      }
+  }
+
+  .global-local-subnav-mini.filters {
+    button.button-solid-cyan {
+      transform: translateY(-3px);
+    }
+
+    .filters-container {
+      transform: translateY(-15px);
+    }
+
+    &.search-results-box {
+      @include breakpoint(medium down) {
+        .filters-container {
+          transform: translateY(-8px);
+        }
+      }
+    }
+
+    &:before {
+      transform: translateY(-30px);
+      background-color: rgba(0, 49, 69, 1);
+    }
+  }
+
+  .filters {
+
+    padding: 30px 0;
+
+    @include breakpoint(medium down) {
+      padding: 15px 0
+    }
+
+    .filter-dropdown {
+      width: 21%;
+      height: 45px;
+
+      select {
+        font-size: 15px;
+        height: 100%;
+      }
+
+      .select2 {
+        // margin: 0 0 1rem;
+        background-color: $white;
+        border: none;
+        color: #0a0a0a;
+        font-size: 1rem;
+        height: 100%;
+        padding: .5rem;
+        width: 100% !important;
+      }
+
+      &:first-child .select2 {
+        border-bottom-left-radius: 3px;
+        border-top-left-radius: 3px;
+      }
+
+      .select2-selection__arrow {
+        background: url(/assets/images/select_down.png);
+        height: 9px;
+        position: absolute;
+        right: 20px;
+        top: 19px;
+        width: 16px;
+      }
+
+      b {
+        display: none;
+      }
+
+      .select2-selection {
+        border: none;
+        outline: none;
+      }
+
+    }
+
+    .button {
+      border-bottom-right-radius: 3px;
+      border-top-right-radius: 3px;
+      width: 16%;
+    }
+
+    #submit {
+      height: 45px;
+      margin: 0;
+    }
+
+    .filter-dropdowns {
+      background-color: $lightgrey;
+      border-bottom-left-radius: 3px;
+      border-bottom-right-radius: 3px;
+      border-top-right-radius: 3px;
+      border: 5px solid $lightgrey;
+      display: flex;
+      overflow: hidden;
+    }
+  }
+
+  .filters {
+    bottom: 0;
+    left: 0;
+    padding: 30px 0;
+    position: absolute;
+    width: 100%;
+
+    &::before {
+      background-color: rgba(0, 49, 69, .75);
+      content: '';
+      display: block;
+      height: 165px;
+      margin-top: -30px;
+      position: absolute;
+      transition: transform .5s cubic-bezier(.19, 1, .22, 1), background-color .5s cubic-bezier(0.19, 1, .22, 1);
+      width: 100%;
+    }
+
+    > .row {
+      z-index: 1;
+      position: relative;
+    }
+
+    .filters-container {
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .filters-container,
+    button.button-solid-cyan {
+      transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+
+    @include breakpoint(medium down) {
+      padding: 15px 0px
+    }
+
+    .filter-dropdown {
+      float: left;
+      height: 45px;
+      width: 21%;
+
+      select {
+        font-size: 15px;
+        height: 100%;
+      }
+
+      .select2 {
+        // margin: 0 0 1rem;
+        background-color: #fff;
+        border: none;
+        color: #0a0a0a;
+        font-size: 1rem;
+        height: 100%;
+        padding: 0.5rem;
+        width: 100% !important;
+      }
+
+      &:first-child .select2 {
+        border-bottom-left-radius: 3px;
+        border-top-left-radius: 3px;
+      }
+
+      .select2-selection__arrow {
+        background: url(/assets/images/select_down.png);
+        height: 9px;
+        position: absolute;
+        right: 20px;
+        top: 19px;
+        width: 16px;
+      }
+
+      b {
+        display: none;
+      }
+      .select2-selection {
+        border: none;
+        outline: none;
+      }
+    }
+
+    .button {
+      width: 16%;
+      float: left;
+      border-top-right-radius: 3px;
+      border-bottom-right-radius: 3px;
+    }
+
+    #submit {
+      margin: 0;
+      height: 45px;
+    }
+
+    &--charter {
+      &::before {
+        height: 105px;
+      }
+    }
+  }
+
+}
+
+// Used on the brokerage filter
+.filter-oyster-yachts-or-not {
+  display: inline-flex;
+  flex-direction: column;
+  margin: 0 auto;
+  overflow: hidden;
+  width: 100%;
+
+  &__container {
+    border: 1px solid $lightishgrey;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  @include breakpoint(large up) {
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+    border: 0;
+    flex-direction: row;
+    margin: 0;
+    width: auto;
+  }
+
+  label {
+    // padding-left: $global-padding * 2;
+    color: $grey;
+    display: inline-block;
+    margin: 0;
+    padding: $global-padding;
+    padding-right: $global-padding * 2;
+    transition: background-color .25s ease-out;
+    @include omnes_medium;
+    @include breakpoint(large up) {
+      background-color: $grayborder;
+    }
+  }
+
+  input:checked + label {
+    @include breakpoint(large up) {
+      background-color: $lightgrey;
+    }
+  }
+
+}
+
+.global-page-hero--small {
+  height: 320px;
+}
+
+.global-page-hero--medium {
+  height: 450px;
+  @include breakpoint(small only) {
+    height: 350px;
+  }
+}
+
+// banner
+.banner {
+  background: $lightgrey;
+  @include trajan;
+  font-size: .9375em;
+  line-height: 1em;
+  color: $blue;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 19px 0;
+  letter-spacing: .2em;
+  h1,
+  h2,
+  h3,
+  strong {
+    margin: 0;
+    @include trajan;
+    font-size: .9375em;
+    line-height: 1em;
+    color: $blue;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  strong {
+    font-weight: bold;
+  }
+}
+
+.share {
+  cursor: pointer;
+  position: absolute;
+  right: 10px;
+  top: 40px;
+
+  button {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+
+    outline: none;
+  }
+
+  img {
+    display: block;
+    height: 30px;
+    width: 30px;
+  }
+
+  .hero & {
+    top: 50%;
+    margin-top: -42px;
+    right: 40px;
+    @include breakpoint(medium only) {
+        right: 20px;
+    }
+    @include breakpoint(small only) {
+        right: 15px;
+    }
+  }
+  .share-icon {
+    position: relative;
+    display: block;
+  }
+  // Not on the main class as it needs to be toggled via JS.
+  .share-icon-tooltip:before {
+    content: 'Share';
+  }
+  .add-to-shortlist-tooltip:before {
+    content: 'Add to Shortlist'
+  }
+  .share-list {
+    white-space: nowrap;
+    width: 200px;
+    background-color: $white;
+    border-radius: 3px;
+    position: absolute;
+    right: 120%;
+    top: 50%;
+    opacity: 0;
+    @include transform(translate(25%, 0));
+    @include transition(transform 150ms ease-out, opacity 75ms cubic-bezier(0.86, 0, .07, 1));
+    li {
+      margin-bottom: 0;
+      padding: .5rem 0;
+      border-bottom: 1px solid $grayborder;
+      display: block;
+      &:last-of-type {
+          border-bottom: 0;
+      }
+    }
+    a {
+      display: block;
+      margin: 0;
+      margin-left: 0;
+      margin-right: 0;
+      margin: 0;
+      padding: 0;
+      color: $blue;
+      border: 0 !important;
+      user-select: none;
+      @include omnes_medium;
+      outline: none;
+    }
+    .fa {
+      font-size: 1rem;
+      opacity: .5;
+    }
+    .share-list-icon {
+      text-align: center;
+    }
+    &.share-list-visible {
+      @include transform(translate(0%, 0));
+      animation: socialList 150ms;
+      opacity: 1;
+    }
+  }
+}
+
+@keyframes socialList {
+  0% {
+    opacity: 0;
+    transform: translate3d(25%, 0, 0);
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+// Structual stuff needs to be moved from this class.
+.remove-button {
+  // margin: 1rem .625rem;
+  background-color: $white;
+  border-radius: 50%;
+  color: $bluecerulean;
+  cursor: pointer;
+  font-size: 1.5rem;
+  height: 1.85rem;
+  outline: none;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  width: 1.85rem;
+
+  &::before {
+    content: '×';
+    display: block;
+    margin: auto;
+    padding-bottom: .25rem;
+    text-align: center;
+    vertical-align: middle;
+  }
+}
+
+// Old button styles - these need removing
+.button {
+  @include omnes_medium;
+  background: $cyan;
+  color: $white;
+  display: block;
+  font-size: .875em;
+  line-height: 1em;
+  padding: 15px 0 16px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  width: 100%;
+}
+
+.button-clear {
+  @include button-base();
+  background: #003145;
+  border-radius: 2px;
+  display: inline-block;
+  width: auto;
+  @include omnes_medium;
+  color: $white;
+  cursor: pointer;
+  padding: .65em 1em;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  &:hover {
+    text-decoration: none;
+    background: $white;
+    color: $blue;
+  }
+}
+
+.button-clear-invert {
+  @include button-base();
+  border-radius: 2px;
+  display: inline-block;
+  width: auto;
+  @include omnes_medium;
+  text-align: center;
+  padding: .65em 1em;
+  text-decoration: none;
+  text-transform: uppercase;
+  cursor: pointer;
+  background: rgba($white, .3);
+  border: solid 1px $blue;
+  color: $blue;
+  &:hover {
+    background: #003145;
+    color: $white;
+    text-decoration: none;
+  }
+}
+
+// The carousel only initiates this with the obsolete -webkit- prefix.
+.owl-carousel .owl-item {
+  backface-visibility: hidden;
+}
+
+// New button styles
+@mixin button-core() {
+  // Extend foundation's base button styling
+  // @extend .button;
+  @include button-base();
+  // @include button();
+  // Speed up foundation's transistion
+  @include omnes_medium;
+  border-radius: 2px;
+  cursor: pointer;
+  display: inline-block;
+  padding: .7em 1em;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background-color .15s ease-out, color .15s ease-out, opacity .15s ease-out;
+  user-select: none;
+  width: auto;
+
+  .fa {
+    font-size: 1.2em;
+    margin-left: 0;
+    margin: 0 .5em;
+  }
+}
+
+.button-core {
+  @include button-core();
+}
+
+.button-solid-cyan {
+  @include button-core();
+  background-color: $cyan;
+  color: $white;
+
+  &:hover,
+  &:focus {
+    background-color: $dakerCyan;
+  }
+}
+
+.button-solid-blue {
+  @include button-core();
+  background-color: $blue;
+  border: solid 1px $white;
+  color: $white;
+
+  &:hover,
+  &:focus {
+    background-color: $white;
+    border: solid 1px $blue;
+    color: $blue;
+  }
+}
+
+.button-solid-white {
+  @include button-core();
+  background-color: $white;
+  border: solid 1px $blue;
+  color: $blue;
+
+  &:hover,
+  &:focus {
+    background-color: $blue;
+    color: $white;
+  }
+}
+
+.button-solid-yellow {
+  @include button-core();
+  background-color: $yellow;
+  color: $blue;
+
+  &:hover,
+  &:focus {
+    background-color: $blue;
+    border: solid 1px $blue;
+    color: $white;
+  }
+}
+
+.button-solid-lightgrey {
+  @include button-core();
+  background-color: $lightgrey;
+  border: solid 1px $lightblue;
+  color: $lightblue;
+
+  &:hover,
+  &:focus {
+    background-color: $lightblue;
+    border: solid 1px $lightgrey;
+    color: $lightgrey;
+  }
+}
+
+.button-clear-blue {
+  @include button-core();
+  background-color: transparent;
+  border: solid 1px $blue;
+  color: $blue;
+
+  &:hover,
+  &:focus {
+    background-color: transparent;
+    border: solid 1px $white;
+    color: $white;
+  }
+}
+
+.button-clear-white {
+  @include button-core();
+  background-color: transparent;
+  border: solid 1px $white;
+  color: $white;
+
+  &:hover,
+  &:focus {
+    background-color: transparent;
+    border: solid 1px $blue;
+    color: $blue;
+  }
+}
+
+.button-clear-yellow {
+  @include button-core();
+  background-color: $yellow;
+  color: $blue;
+
+  &:hover,
+  &:focus {
+    background-color: transparent;
+    color: $blue;
+  }
+}
+
+.button-transparent {
+  @include button-core();
+  background-color: transparent;
+  border: solid 1px $blue;
+  color: $blue;
+
+  &:hover,
+  &:focus {
+    background-color: $blue;
+    color: $white;
+  }
+}
+
+.button-view-gallery {
+  background: transparent;
+  border: 1px solid $blue;
+  border-radius: 3px;
+  color: $blue;
+  display: inline-block;
+  font-size: 14px;
+  line-height: 2.4;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  width: 200px;
+  @include omnes_medium;
+
+  .fa {
+    display: inline-block;
+    margin-right: 10px;
+  }
+}
+
+.button-chubby {
+  padding: .7rem 2rem;
+}
+
+.button-full-width {
+  width: 100%;
+}
+
+// Icon buttons
+.close-button {
+  color: $white;
+  outline: none;
+
+  &:hover,
+  &:focus {
+    color: $white;
+    // background-color: $blue;
+    // color: $white;
+  }
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+.video-embed-container {
+  height: 0;
+  max-width: 100%;
+  overflow: hidden;
+  padding-bottom: 56.25%;
+  position: relative;
+
+  iframe,
+  object,
+  embed {
+    height: 100% !important;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100% !important;
+  }
+}
+
+.further-info {
+  border-bottom: 1px solid $grayborder;
+  border-top: 1px solid $grayborder;
+  padding-top: 23px;
+
+  p {
+    color: $blue;
+  }
+}
+
+.block-section {
+  border: 1px solid $grayborder;
+  // border-bottom: 0;
+}
+
+// Small text with solid background, header type used on aside's and split sections
+.block-section-header {
+  align-items: center;
+  background: $blue;
+  display: flex;
+  justify-content: space-between;
+
+  h3 {
+    color: $white;
+    display: inline-block;
+    // Same as the menu bar, so they flush.
+    font-size: .75em;
+    line-height: 1.16666666em;
+    padding: 21px 20px 20px;
+  }
+
+  .dropdown-arrow {
+    bottom: -5px;
+    display: inline-block;
+    height: 13px;
+    left: 0;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-top: -.85rem;
+    opacity: 0;
+    position: relative;
+    text-align: left;
+    transform: rotate(0);
+    transition: .4s ease;
+    width: 13px;
+
+    &::before,
+    &::after {
+      background-color: transparent;
+      border-bottom: 12px solid $white;
+      box-sizing: content-box;
+      content: '';
+      display: inline-block;
+      height: 10px;
+      left: 0;
+      position: absolute;
+      top: 0;
+      transform: rotate(0);
+      transition: .4s ease;
+      width: 3px;
+    }
+
+    &::before {
+      transform: rotate(-45deg);
+    }
+
+    &::after {
+      transform: rotate(45deg);
+    }
+  }
+
+  #svg-arrow {
+    // For IE10 - will strech to 100% otherwise
+    height: 1rem;
+    margin: 1rem;
+    opacity: 0;
+    transition: opacity .25s;
+    width: 2rem;
+    will-change: opacity;
+
+    line,
+    rect {
+      stroke: $white;
+      transition: all .25s ease-out;
+      will-change: transform;
+    }
+
+    line:nth-of-type(1) {
+      transform: translateX(42%);
+    }
+
+    line:nth-of-type(2) {
+      transform: translateX(-42%);
+    }
+  }
+}
+
+.upcoming-events--small {
+  list-style: none;
+}
+
+.upcoming-event--small {
+  border-bottom: 1px solid $grayborder;
+  color: $blue;
+  display: flex;
+  flex-wrap: wrap;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  .date-preview {
+    align-items: center;
+    border-right: 1px solid $grayborder;
+    display: flex;
+    flex: 0 0 6rem;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+
+    @include breakpoint(small down) {
+      border-bottom: 1px solid $grayborder;
+    }
+
+    .date {
+      @include omnes_light;
+      font-size: 3.5rem;
+    }
+  }
+  .event-details {
+      flex: 1 1 0%;
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      padding: 1rem;
+      flex-wrap: wrap;
+      @include breakpoint(small down) {
+          border-bottom: 1px solid $grayborder;
+      }
+      time {
+          align-self: flex-start;
+          display: inline;
+          @include omnes-regular;
+          font-size: .8rem;
+          color: $lightblue;
+      }
+      .start-date {
+          &:after {
+              content: ' - ';
+          }
+      }
+  }
+  .event-title {
+      @include omnes_medium;
+      flex: 0 0 100%;
+      align-self: flex-end;
+  }
+  .button-solid-white {
+      align-self: center;
+      margin: 1rem;
+      @include breakpoint(small down) {
+          width: 100%;
+      }
+  }
+}
+
+// Yacht pages - mixins
+// Yacht overview download mixin
+.overview-download {
+    padding: 0;
+    p {
+        margin: 0em 1em 1em 1em;
+        &:first-of-type {
+            margin-top: 1em;
+        }
+    }
+    .aside-header {
+        // This class is still used on the live site, so we're just extending the new class.
+        @extend .block-section-header;
+    }
+    .overview {
+        padding: .5em;
+        ul {
+            width: 100%;
+        }
+        li {
+            overflow: hidden;
+            word-break: break-all;
+        }
+    }
+    .phone-number {
+        display: inline;
+    }
+    .overview-contents {
+        background-color: $white;
+        @include clearfix;
+        overflow: hidden;
+        border: 1px solid $grayborder;
+        will-change: transform;
+        transition: transform 1s cubic-bezier(0.190, 1.000, .220, 1.000);
+        .definition-table {
+            td:first-of-type:not([colspan="2"]) {
+                border-width: 0 1px 1px 0;
+            }
+            td:last-of-type:not([colspan="2"]) {
+                border-width: 0 0 1px 1px;
+            }
+            [colspan="2"] {
+                border: 1px solid $grayborder;
+                border-width: 0 0 1px 0;
+            }
+        }
+        .disclaimer {
+            small {
+                @include omnes_light;
+                letter-spacing: .05rem;
+                font-size: .8rem;
+                line-height: 1.5;
+                color: $blue;
+            }
+        }
+    }
+    .download-pdf {
+        border: 0;
+    }
+    &.overview-stuck {
+        .aside-header {
+            cursor: pointer;
+        }
+        #svg-arrow,
+        .dropdown-arrow {
+            opacity: 1;
+        }
+        .overview-contents {
+            transform: translateY(0%);
+            position: absolute;
+            z-index: -1;
+            // For IE10
+            width: 100%;
+        }
+        &.overview-contents-hidden {
+            .overview-contents {
+                transform: translateY(-100%);
+            }
+            #svg-arrow {
+                line:nth-of-type(1) {
+                    transform: translateX(0%);
+                }
+                line:nth-of-type(2) {
+                    transform: translateX(0%);
+                }
+            }
+            .dropdown-arrow {
+                &:before {
+                    transform: rotate(-135deg);
+                }
+                &:after {
+                    transform: rotate(135deg);
+                }
+            }
+        }
+    }
+}
+
+// Download button, thumbnail and info mixin
+.download-pdf {
+  // Do not put a border on this
+  padding: .5rem;
+
+  @include breakpoint(medium up) {
+      padding: 1rem .5rem;
+  }
+
+  background-color: $white;
+  border-top: 1px solid $grayborder;
+  position: relative;
+  overflow: hidden;
+  // Equliser breaks when being hidden at start - long live flexbox.
+  display: flex;
+
+  @include breakpoint(small down) {
+    flex-direction: column;
+  }
+
+  .title {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    &:hover,
+    &:focus {
+        color: $blue;
+    }
+  }
+
+  .description-download {
+    // margin: .5em;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    font-size: .8em;
+    line-height: 1.5;
+    position: relative;
+    vertical-align: bottom;
+
+    @include breakpoint(small down) {
+      // margin-top: 1rem;
+      width: auto;
+      > a {
+          margin: 1rem 0;
+      }
+    }
+
+    span {
+      color: $grey;
+      display: block;
+
+      &.size {
+        color: $grey;
+        display: inline;
+      }
+    }
+
+    .external-file-btn,
+    .external-file-btns {
+      margin-top: auto;
+      margin-bottom: 0;
+
+      // @include breakpoint(medium up) {
+      //   align-self: flex-start;
+      // }
+
+      @include breakpoint(large down) {
+        width: 100%;
+        margin-right: 0;
+        margin-left: 0;
+      }
+    }
+
+    .external-file-btns {
+      a,
+      btn {
+        margin: .5rem;
+      }
+    }
+  }
+
+  .download-thumb {
+    // margin: .5em;
+    display: inline-block;
+    flex: 0 0 5rem;
+
+    @include breakpoint(large down) {
+      // Overriding the grid classes.
+      display: none;
+      flex: 0 0 100%;
+      justify-content: center;
+      margin: 0 auto;
+      width: auto;
+
+      img {
+        max-height: 175px;
+      }
+    }
+
+    img {
+      // min-height: 120px;
+      // object-fit: contain;
+      @include object-fit(contain);
+    }
+    // max-width: 70px;
+  }
+}
+
+.wide-image-feature {
+  background-position: center center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 200px;
+  position: relative;
+  width: 100%;
+
+  @include breakpoint(medium up) {
+    min-height: 300px;
+  }
+
+  @include breakpoint(large up) {
+    min-height: 400px;
+  }
+
+  .wide-image-feature-content {
+    // Needed to place content over the graident bg overlay
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 55rem;
+    padding: 1rem;
+    padding-bottom: 2rem;
+    padding-top: 2rem;
+    z-index: 1;
+
+    @include breakpoint(medium up) {
+      padding: 3rem;
+    }
+
+    @include breakpoint(large up) {
+      padding: 5rem;
+    }
+
+    p,
+    .contact-phone-email,
+    .contact-phone {
+      color: $white;
+
+      a {
+        color: $white;
+      }
+    }
+
+    h3 {
+      color: $white;
+      font-size: 1.75rem;
+      margin-bottom: 1rem;
+      @include omnes_light;
+    }
+
+    .contact-phone {
+      margin-right: 2rem;
+    }
+
+    .contact-phone-email {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .button-solid-white {
+      align-self: flex-start;
+    }
+  }
+}
+
+.download-article {}
+
+// Read article button, thumbnail and info mixin
+.external-file {
+  background-color: $white;
+  display: flex;
+  min-height: 150px;
+  padding: .5em;
+
+  @include breakpoint(small down) {
+    flex-wrap: wrap;
+  }
+
+  .external-file-name {
+    // margin-top: 1em;
+    font-size: 1.2em;
+    margin-bottom: .25rem;
+    @include omnes_medium;
+  }
+
+  .external-file-info {
+    display: flex;
+    flex: 1 1 70%;
+    flex-direction: column;
+    font-size: .8em;
+    line-height: 1.5;
+    margin: .5em;
+    position: relative;
+    vertical-align: top;
+
+    a {
+        // span{
+        //  display: inline;
+        // }
+    }
+
+    time {
+      color: $grey;
+      display: block;
+      // font-size: .8em;
+    }
+
+    .external-file-btn {
+      // position: absolute;
+      // bottom: 0;
+      // align-self: flex-end;
+      margin-bottom: 0;
+      margin-top: auto;
+
+      @include breakpoint(medium up) {
+        align-self: flex-start;
+      }
+    }
+
+    .external-file-size {
+      color: $grey;
+    }
+  }
+
+  .external-file-thumb {
+    // min-height: 102px;
+    // min-width: 80px;
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: inline-block;
+    flex: 0 1 255px;
+    height: 232px;
+    margin: .5em;
+    margin-right: 1em;
+    width: 155px;
+
+    @include breakpoint(small down) {
+      flex: 1 0 100%;
+      height: 160px;
+    }
+  }
+}
+
+// A list of download sections (above)
+.download-documents {
+  // padding-top: 40px;
+  // Used this instead of the foundation class to make sure the last child is selected.
+  .columns:last-child {
+    &:not(:first-child) {
+      float: left;
+    }
+  }
+
+  .content {
+    padding-bottom: 40px;
+    padding-top: 40px;
+  }
+
+  li {
+    padding: .5rem;
+  }
+
+  .download-pdf {
+    border: 1px solid $grayborder;
+
+    @include breakpoint(small down) {
+      flex-wrap: wrap;
+    }
+  }
+}
+
+// News thumbnail / preview mixin
+.news-thumbs {
+  padding-top: 40px;
+
+  .wrapper {
+    padding-bottom: 70px;
+    padding-top: 40px;
+  }
+
+  .row-pad {
+
+    ul li {
+
+      &:last-child {
+        padding-right: 0;
+      }
+
+      &:first-child {
+        padding-left: 0;
+      }
+    }
+  }
+
+  ul {
+    display: block;
+
+    @include breakpoint(medium down) {
+      padding: 0 1em;
+    }
+
+    li {
+      // Used this instead of the foundation class to make sure the last child is selected.
+      &.columns:last-child:not(:first-child) {
+        float: left;
+      }
+
+      display: inline-block;
+
+      @include breakpoint(medium down) {
+        padding: 1em 0;
+      }
+
+      .content {
+        border: 1px solid $grayborder;
+
+        .news-thumb-image {
+          position: relative;
+          margin: 1em auto;
+          margin-top: 0em;
+          display: block;
+          height: 150px;
+          width: 100%;
+          background-size: cover;
+          background-position: center;
+          @include breakpoint(medium up) {
+            height: 250px;
+          }
+        }
+
+        .news-details {
+          padding: 0 1em;
+          padding-bottom: 1em;
+          time {
+            color: $grey;
+            font-size: .8em;
+            margin: .5em 0;
+            display: block;
+          }
+          h3 {
+            margin: .5em 0;
+            a {
+              font-weight: bold;
+            }
+          }
+          p {
+            margin-bottom: 0;
+            a.read-more {
+              display: inline;
+              margin-left: 1em;
+            }
+          }
+        }
+
+      }
+    }
+  }
+}
+
+// Slider nav points
+.nav-points {
+  display: inline-block;
+  margin: 1em auto;
+  position: relative;
+  text-align: center;
+
+  .nav-point {
+    background-color: transparent;
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    border: solid $lightishgrey 1px;
+    position: relative;
+    display: inline-block;
+    margin: .25em;
+    cursor: pointer;
+    will-change: transform;
+    transition: transform 250ms;
+
+    &:before {
+      background-color: transparent;
+      border-radius: 50%;
+      bottom: 0;
+      content: '';
+      height: 9px;
+      left: 0;
+      margin: auto;
+      position: absolute;
+      right: 0;
+      text-align: center;
+      top: 0;
+      transform: scale(0);
+      transition: transform 250ms 100ms;
+      width: 9px;
+      will-change: transform, background-color;
+      z-index: 2;
+    }
+
+    &.active {
+      transform: scale(1.5);
+
+      &:before {
+        background-color: $blue;
+        transform: scale(1);
+      }
+    }
+  }
+}
+
+// Quote on yacht pages
+.quote-testimonials {
+  position: relative;
+  margin: 4rem auto;
+
+  @include breakpoint(medium down) {
+    margin: 2rem auto;
+  }
+
+  blockquote {
+    text-align: center;
+    margin: 2em 2em;
+
+    @include breakpoint(medium up) {
+        margin: 2em 4em;
+    }
+    p {
+        @include h2-styles;
+        // font-family: "trajan-pro-3";
+        // font-style: normal;
+        // font-weight: 400;
+        // letter-spacing: .5px;
+        // @include breakpoint(large up) {
+        //  font-size: 1.6rem;
+        // }
+        @include breakpoint(medium up) {
+            font-size: 1.6rem;
+        }
+        @include breakpoint(small down) {
+            font-size: 1.2rem;
+        }
+        line-height: 1.6em;
+        color: $blue;
+        margin-bottom: 1em;
+    }
+    footer {
+        cite {
+            color: $lightblue;
+            &:before {
+                content: '';
+            }
+        }
+        background: transparent;
+    }
+  }
+
+  .nav-points {
+    display: block;
+    margin-top: 1rem;
+  }
+}
+
+$locaiton-image-height: 250px;
+.location-box {
+  border: 1px solid $grayborder;
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  @include breakpoint(medium up) {
+      flex-direction: row;
+  }
+  .location-image {
+      display: inline-block;
+      background-size: cover;
+      background-position: center center;
+      min-height: $locaiton-image-height;
+  }
+  .location-details {
+      display: inline-block;
+      padding: .8rem 1rem;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      min-height: 225px;
+      justify-content: space-between;
+      // @include breakpoint(medium up) {
+      //  padding: 1rem 1rem;
+      // }
+  }
+  address,
+  span,
+  abbr,
+  strong {
+      @include general-text;
+      color: $lightblue;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      font-size: 100%;
+      font: inherit;
+      vertical-align: baseline;
+  }
+  address {
+      margin-bottom: 0;
+      strong {
+          color: $blue;
+          font-size: 1.2rem;
+          margin-bottom: 0;
+          @include breakpoint(medium up) {
+              margin-bottom: 1rem;
+          }
+          // @include omnes-regular;
+          abbr {
+              color: $blue;
+              font-size: 1.2rem;
+              @include omnes_medium;
+          }
+      }
+  }
+  .written-address {
+      margin: 1rem 0;
+      color: $blue;
+  }
+  .contact-phone-email {
+      margin: 1rem 0;
+      > span {
+          display: block;
+          margin-bottom: .5rem;
+          &:last-child {
+              margin-bottom: 0;
+          }
+          &:not(abbr) {
+              @include omnes_medium;
+          }
+          abbr {
+              @include omnes-regular;
+          }
+      }
+  }
+  .google-map-link {
+      margin-top: 1rem;
+      @include omnes_medium;
+      color: $blue;
+      text-decoration: underline;
+      .fa {
+          font-size: 1.4em;
+          margin-right: .5em;
+      }
+  }
+}
+
+.large-hero {
+  height: 430px;
+  padding: 2em;
+  background-size: cover;
+  background-position: center center;
+}
+
+.small-hero {
+  height: 320px;
+  padding: 2em;
+  background-size: cover;
+  background-position: center center;
+}
+
+.page-fleet {
+  ul {
+      overflow: hidden;
+  }
+  li {
+      margin-bottom: 25px;
+      @include breakpoint(medium up) {
+          margin-bottom: 50px;
+      }
+      @include breakpoint(large up) {
+          margin-bottom: 70px;
+      }
+      position: relative;
+  }
+  .content {
+      padding-top: 35px;
+  }
+  td.name {
+      width: 100%;
+  }
+}
+
+// Animations
+@keyframes slideInRight {
+  from {
+      transform: translate3d(100%, 0, 0);
+      visibility: visible;
+  }
+  to {
+      transform: translate3d(0, 0, 0);
+  }
+}
+
+.slideInRight {
+  animation-name: slideInRight;
+}
+
+@keyframes slideInLeft {
+  from {
+      transform: translate3d(-100%, 0, 0);
+      visibility: visible;
+  }
+  to {
+      transform: translate3d(0, 0, 0);
+  }
+}
+
+.slideInLeft {
+  animation-name: slideInLeft;
+}
+
+@keyframes slideOutLeft {
+  from {
+      transform: translate3d(0, 0, 0);
+  }
+  to {
+      visibility: hidden;
+      transform: translate3d(-100%, 0, 0);
+  }
+}
+
+.slideOutLeft {
+  animation-name: slideOutLeft;
+}
+
+@keyframes slideOutRight {
+  from {
+      transform: translate3d(0, 0, 0);
+  }
+  to {
+      visibility: hidden;
+      transform: translate3d(100%, 0, 0);
+  }
+}
+
+.slideOutRight {
+  animation-name: slideOutRight;
+}
+
+.sticky-sidebar {
+  // For closing the cookie message
+  top: 55px;
+  transition: transform .5s cubic-bezier(.19, 1, .22, 1);
+  z-index: 40;
+}
+
+.page-home-about {
+  // Flex for when the parent happens to be flex;
+  flex: 0 0 auto;
+  padding: 25px 0;
+
+  .intro {
+    p {
+      font-size: 15px;
+      @include omnes-regular;
+    }
+  }
+
+  .about-heading {
+    margin-bottom: 40px;
+    position: relative;
+
+    span {
+      @include omnes_medium;
+      color: rgb(0, 49, 69);
+      font-size: 1.25em;
+      line-height: 1.25em;
+
+      &:after {
+        background: $blue;
+        bottom: -20px;
+        content: '';
+        display: block;
+        height: 2px;
+        position: absolute;
+        width: 63px;
+      }
+    }
+  }
+}
+
+.page-home-local-nav {
+  margin-bottom: 4.5em;
+
+  @include breakpoint(medium down) {
+    margin-bottom: 3.5rem;
+  }
+
+  @include breakpoint(small down) {
+    margin-bottom: 2.5rem;
+  }
+
+  .content-col {
+    @include breakpoint(small down) {
+      .feature-content {
+        border-right: 1px solid $grayborder;
+      }
+    }
+
+    &:last-child {
+      @include breakpoint(medium up) {
+        .feature-content {
+          border-right: 1px solid $grayborder;
+        }
+      }
+    }
+  }
+
+  .localnav-anchor {
+    display: inline-block;
+    width: 100%;
+
+    .feature-image {
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: 195px;
+      max-height: 265px;
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+
+      > img {
+        @include object-fit(cover);
+        height: 100%;
+        width: 100%;
+      }
+    }
+
+    .feature-content {
+      // border-top: 1px solid #f1f2f2;
+      border-bottom: 1px solid $grayborder;
+      border-left: 1px solid $grayborder;
+      padding: 0 20px;
+    }
+
+    h4 {
+      font-size: 16px;
+      line-height: 3;
+      margin: 0;
+    }
+  }
+}
+
+// TESTIMONIAL CYCLE 2 - might not need this block?
+.page-testimonials {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-align: center;
+
+  .testimonials {
+    margin: 50px 0;
+  }
+
+  .pager {
+    display: inline-block;
+    margin-top: 40px;
+
+    & > span {
+      margin: 0 8px;
+      padding: 4px;
+      transition: all .3s;
+
+      & > span {
+        border: 1px solid #8ca6b4;
+        border-radius: 50%;
+        display: block;
+        height: 12px;
+        transition: all .3s;
+        width: 12px;
+      }
+
+    }
+
+    & > span.cycle-pager-active {
+      border-color: #8ca6b4;
+
+      & > span {
+        background: $blue;
+        border-color: $blue;
+      }
+    }
+  }
+
+  .testimonials-inner {
+    p {
+      color: $blue;
+      font-family: "trajan-pro-3";
+      font-size: 1.75em;
+      font-style: normal;
+      font-weight: 400;
+      letter-spacing: .5px;
+      line-height: 1.42857143em;
+      margin-bottom: .78571428em;
+    }
+
+    span {
+      font-size: .9375em;
+      line-height: 1.06666667em;
+      color: $lightblue;
+    }
+  }
+}
+
+#page-testimonials {
+  background-image: url(/assets/images/charter_quote_background.jpg);
+  background-size: cover;
+}
+
+#yacht-grid {
+  li {
+    position: relative;
+    display: flex;
+    flex: 0 1 auto;
+    float: none;
+    height: 100%;
+
+    &:after {
+      @include listing-hightlight()
+      align-items: center;
+      border-left: 1px solid $greyborder;
+      border-right: 1px solid $greyborder;
+      border-bottom: 1px solid $greyborder;
+      display: flex;
+      justify-content: center;
+      position: absolute;
+      width: calc(100% - 1.25rem);
+      bottom: -65px;
+      left: 0;
+      right: 0;
+      margin: auto;
+    }
+  }
+}
+
+#yacht-grid {
+  ul {
+    display: flex;
+    flex-wrap: wrap;    
+  }
+
+  li[data-listing-hightlight] {
+    margin-bottom: 85px;
+    &:after {
+      content: attr(data-listing-hightlight);
+    }
+  }
+}
+
+
+// These lists change there colours in different places.
+.yacht-featured-list-header {
+  @include omnes_medium;
+  align-items: center;
+  color: $white;
+  display: flex;
+  font-size: 12px;
+  padding: 1rem 1rem;
+  text-transform: uppercase;
+}
+
+.yacht-featured-lists {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  @include breakpoint(medium down) {
+    flex-wrap: wrap;
+  }
+
+  .yacht-featured-list-sub-header {
+    @include omnes_medium;
+
+    align-items: flex-start;
+    background-color: $lightgrey;
+    color: $lightblue;
+    display: flex;
+    font-size: 12px;
+    padding: 1.25rem .5rem;
+    text-transform: uppercase;
+    @include breakpoint(medium down) {
+      border-right: 1px solid $greyborder;
+    }
+  }
+
+  .yacht-featured-list {
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 0%;
+
+    &:first-of-type {
+      @include breakpoint(medium up) {
+        > span,
+        ul {
+          border-left: 1px solid $greyborder;
+        }
+      }
+    }
+
+    &:nth-of-type(odd) {
+      @include breakpoint(medium down) {
+        border-left: 1px solid $greyborder;
+      }
+    }
+
+    @include breakpoint(medium down) {
+      flex: 1 0 50%;
+      width: 50%;
+    }
+
+    ul {
+      border-left: 0;
+      border-top: 0;
+      border: 1px solid $greyborder;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+
+      li {
+        font-size: 12px;
+        padding: 1.25rem .5rem;
+        color: $lightblue;
+        text-transform: uppercase;
+        border-bottom: 1px solid $greyborder;
+        display: flex;
+        flex: 1;
+        align-items: center;
+
+        &:last-of-type {
+          border: 0;
+        }
+      }
+    }
+
+    > span {
+      &:first-of-type {
+        border-top: 1px solid $greyborder;
+      }
+
+      align-items: center;
+      border-bottom: 1px solid $greyborder;
+      border-right: 1px solid $greyborder;
+      color: $lightblue;
+      display: flex;
+      flex: 1;
+      font-size: 12px;
+      padding: 1.25rem .5rem;
+    }
+  }
+}
+
+.staggered-features {
+  margin: 0;
+  // To make sure the image to the side always fills the space by the detials box, we need to use some flexbox goodness.
+
+  .row {
+    display: flex;
+    flex-direction: row;
+
+    @include breakpoint(small down) {
+      // For this container to switch it's elements from top to bottom and vice-versa, without JS or duplicating HTML we need flexbox.
+      flex-direction: column;
+
+      &.staggered-row-reverse {
+        flex-direction: column-reverse;
+      }
+    }
+  }
+
+  @include breakpoint(medium up) {
+    margin: 2em 0;
+  }
+
+  .banner {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .staggered-image,
+  .staggered-details {
+    min-height: 325px;
+
+    @include breakpoint(small down) {
+      min-height: 165px;
+    }
+  }
+
+  .staggered-image {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+    padding: 0;
+    position: relative;
+
+    img {
+      // object-fit: cover;
+      @include object-fit(cover);
+      height: 100%;
+      position: absolute;
+      width: 100%;
+    }
+  }
+
+  .staggered-details {
+      display: flex;
+      // The small column needs different padding compared to the big one.
+      &.medium-8,
+      .medium-7,
+      .medium-9,
+      .medium-10 {
+          .staggered-details-contents {
+              @include breakpoint(xlarge up) {
+                  padding: 0 6.25rem 0 5rem;
+              }
+              @include breakpoint(large up) {
+                  padding: 0 5.25rem 0 4rem;
+              }
+          }
+      }
+      &.medium-5,
+      .medium-4,
+      .medium-3,
+      .medium-2 {
+          .staggered-details-contents {
+              @include breakpoint(xlarge up) {
+                  padding: 0 2.5rem 0 5rem;
+              }
+              @include breakpoint(large up) {
+                  padding: 0 2rem 0 4rem;
+              }
+          }
+      }
+  }
+
+  .staggered-details-contents {
+    min-height: 175px;
+    @include breakpoint(large up) {
+      min-height: 325px;
+    }
+    @include breakpoint(medium up) {
+      min-height: 225px;
+    }
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    // This is needed for IE to behave.
+    flex: 1 1 0%;
+    // display: table-cell;
+    // vertical-align: middle;
+    .button-clear-invert {
+      @include breakpoint(medium down) {
+          width: 100%;
+      }
+    }
+    .staggered-button-group {
+      align-self: flex-start;
+      // IE 10
+      width: 100%;
+      @include breakpoint(small down) {
+        width: 100%;
+      }
+      > a {
+        margin-right: 1rem;
+        @include breakpoint(small down) {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+.stagger-split {
+  > .row {
+    margin-top: 30px;
+    // margin-bottom: 4rem;
+    @include breakpoint(medium up) {
+      margin-top: 4rem;
+      margin-bottom: 4rem;
+    }
+  }
+}
+
+.staggered-details-contents {
+  padding: 1em 0;
+  @include breakpoint(xlarge up) {
+    padding: 0 2.5em;
+  }
+  h2 {
+    @include h3-styles;
+  }
+  // h1, h2 {
+  //  font-size: 2.2em;
+  // }
+  .button-solid-white {
+      align-self: flex-start;
+      @include breakpoint(medium down) {
+          width: 100%;
+      }
+  }
+}
+
+// Used in Brokerage team and About Us team page
+.team-stagger-section {
+  @include breakpoint(small down) {
+    margin-bottom: 1.5rem;
+    margin-top: 1.5rem;
+  }
+}
+
+.full-modal {
+  padding: 0;
+  border: none;
+  transition: transform 650ms cubic-bezier(0.190, 1.000, .220, 1.000), opacity 650ms cubic-bezier(0.190, 1.000, .220, 1.000);
+  transform: perspective(500px) rotateX(-8deg) translateY(85px);
+  will-change: transform, opacity;
+  @include breakpoint(small down) {
+      transform: none;
+      will-change: opacity;
+  }
+  // Important to overide foundations animation, that won't turn off.
+  opacity: 0 !important;
+  &[aria-hidden="false"] {
+      transform: perspective(500px) rotateX(0deg) translateY(0px);
+      // Important to overide foundations animation, that won't turn off.
+      opacity: 1 !important;
+      @include breakpoint(small down) {
+          transform: none;
+          top: 0;
+      }
+  }
+  h2 {
+      display: block;
+      text-align: center;
+      padding: 2rem;
+      color: $white;
+      font-size: 1rem;
+      letter-spacing: .25rem;
+  }
+  .modal-content,
+  .modal-footer {
+      padding: .5rem 2rem;
+      @include breakpoint(small down) {
+          padding: .5rem .5rem;
+      }
+  }
+  .modal-content {
+      max-height: calc(60vh - #{$header-nav-small-height});
+      @include breakpoint(large up) {
+          max-height: calc(60vh - #{$header-nav-large-owners});
+      }
+      // max-height: 60vh;
+      overflow-x: hidden; // remove horizontal scroll bar
+      position: relative;
+      @include breakpoint(small down) {
+          max-height: none;
+      }
+      > form {
+          padding: 0 2rem;
+      }
+  }
+
+  .user-shortlist {
+    $root: &;
+
+    border-top: 1px solid $grayborder;
+
+    overflow: hidden;
+
+    padding-top: .5rem;
+
+    &__empty-message {
+      color: $red;
+
+      height: 2.5rem;
+
+      font-style: italic;
+
+      margin-bottom: 1.25rem;
+      margin: 1.25rem 1.5rem;
+
+      transition: transform 250ms cubic-bezier(.32, .94, .6, 1), opacity 200ms cubic-bezier(.32, .94, .6, 1);
+
+    }
+
+    &--hide-message {
+      .yachts-shortlist {
+        transform: translateY(-2rem);
+      }
+
+      .user-shortlist__empty-message {
+        opacity: 0;
+
+        transform: translateY(2rem);
+
+        transition: none;
+      }
+
+    }
+
+  }
+
+  .yachts-shortlist {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    transition: transform 250ms cubic-bezier(0.32, .94, .6, 1);
+
+    .yacht-listing-title {
+      border-bottom: 1px solid $grayborder;
+    }
+
+    li {
+      // Flex will strech border to match parallel list-item
+      display: flex;
+      position: relative;
+
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+    }
+
+    .yacht-listing-photo {
+
+      height: 125px;
+
+      background-size: cover;
+      background-position: center;
+    }
+  }
+
+  &#request-boarding-pass {
+    > h2 {
+      background-color: $cyan;
+    }
+  }
+  .modal-instructions {
+    margin: .5rem 1.5rem;
+    margin-bottom: 1rem;
+    @include breakpoint(medium down) {
+        margin: 0;
+        // margin-bottom: .5rem;
+    }
+  }
+  .modal-footer {
+      background-color: $lightgrey;
+      display: flex;
+      justify-content: flex-end;
+      @include breakpoint(small down) {
+          justify-content: center;
+      }
+
+      .modal-buttons {
+          float: right;
+          @include breakpoint(small down) {
+              float: none;
+              width: 100%;
+              .request-spec-button {
+                  width: 100%;
+                  display: block;
+                  margin: 0;
+              }
+          }
+      }
+      a,
+      button {
+          position: relative;
+          margin: .5rem;
+          @include breakpoint(small down) {
+              width: 100%;
+              margin-right: 0;
+              margin-left: 0;
+          }
+      }
+  }
+  small {
+      display: block;
+      padding: .5rem 0;
+      @include breakpoint(small down) {
+          padding: .5rem 0;
+      }
+  }
+}
+
+#contactSalesModal {
+  h2 {
+      background-color: $lightblue;
+  }
+  legend {
+      float: left;
+  }
+  small {
+      padding: 0;
+  }
+  .oyster-delivery-form,
+  .form-interested-in {
+      margin: 2rem 0;
+  }
+  .oyster-delivery-form {
+      @include breakpoint(medium up) {
+          display: flex;
+          > .select2-container {
+              margin-left: auto;
+          }
+      }
+      &:after {
+          display: none;
+      }
+  }
+}
+
+.form-interested-in,
+.form-type-interested-in {
+  legend {
+      width: 100%;
+  }
+  > ol {
+      display: flex;
+      clear: both;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      li {
+          padding: 0;
+          position: relative;
+          flex: 0 1 33%;
+          text-transform: uppercase;
+          margin-top: .75rem;
+          display: flex;
+          align-items: center;
+          @include breakpoint(small down) {
+              flex: 1 0 50%;
+          }
+      }
+  }
+  &.error {
+      input[type="checkbox"] ~ label:before {
+          border: 1px solid red;
+      }
+  }
+}
+
+.form-type-interested-in {
+  > ol {
+      li {
+          flex: 1 1 33% !important;
+      }
+  }
+}
+
+.form-viewing-details {
+  .select2-container {
+      width: 52% !important;
+      // margin-top: 1rem;
+      @include breakpoint(small down) {
+          margin-top: 1rem;
+          width: 100% !important;
+      }
+  }
+}
+
+.vist-details-container,
+.form-type-interested-in,
+.form-interested-in {
+  margin: 1rem 0;
+  display: inline-block;
+  width: 100%;
+}
+
+.form-viewing-details {
+  margin: .5rem 0;
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+}
+
+#login-page {
+  h2 {
+      background-color: $blue;
+  }
+}
+
+.tabs {
+  display: flex;
+  .tabs-title {
+      display: flex;
+      flex: 1 1 0%;
+      min-width: 125px;
+      text-align: center;
+      & > a {
+          // min-height: 3rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          text-transform: uppercase;
+          color: $lightblue;
+          transition: all 250ms ease-out;
+          padding: 1.2rem 1rem;
+          flex: 1 0 100%;
+          // height: 100%;
+          @include omnes_medium;
+          &:hover,
+          &:active {
+              background-color: $lightgrey;
+          }
+      }
+  }
+}
+
+.login-tab-container {
+  overflow: hidden;
+}
+
+// .tabs-title > a {
+//  @include breakpoint(small down) {
+//    padding: .75rem 1rem;
+//  }
+// }
+.tab-slider {
+  height: 2px;
+  background: $blue;
+  // width: 60%;
+  // margin-left: -25%;
+  transition: all 450ms cubic-bezier(0.32, .94, .6, 1);
+  // transform: translateX(100%);
+  // margin-left: -25%;
+}
+
+// .tabs-title > a:focus, .tabs-title > a[aria-selected='true'] {
+//  background: transparent;
+// }
+// .tabs-title > a:focus, .tabs-title > a[aria-selected='false'] {
+//  background-color: $lightgrey;
+// }
+.tabs-title > a:focus,
+.tabs-title > a[aria-selected='true'] {
+  color: $blue;
+  &:hover,
+  &:active {
+      background-color: white;
+  }
+}
+
+input,
+textarea {
+  &::placeholder {
+      /* WebKit, Blink, Edge */
+      color: $inputTextColour;
+  }
+}
+
+input[type="checkbox"] ~ label {
+  cursor: pointer;
+  padding-left: 1.25rem;
+  &:before,
+  &:after {
+    bottom: 0;
+    content: '';
+    height: 1.25rem;
+    left: 0;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    width: 1.25rem;
+  }
+  &:after {
+    // Transform transistion is long to try and ignore transform altogether
+    background: url('/bower_components/material-design-icons/navigation/svg/production/ic_check_18px.svg');
+    left: .06rem;
+    opacity: 0;
+    top: .15rem;
+    transform: rotate(-30deg);
+    transition: transform 2s ease-in, opacity 250ms;
+  }
+  &:before {
+    border-radius: 2px;
+    border: 1px solid $greyborder;
+    transition: border-color 350ms ease-in;
+  }
+}
+
+input[type="checkbox"]:checked ~ label {
+  &:after {
+    opacity: 1;
+    transform: rotate(0deg);
+    transition: transform 350ms ease-out, opacity 250ms;
+  }
+}
+
+.global-page-hero-adjust-subnav {
+  // adjust the following elements to fit since the header is FIXED
+  margin-top: $header-nav-small-height + $header-nav-small-height;
+  @include breakpoint(large up) {
+      margin-top: $header-nav-large-height + $header-owners-area-height + $header-nav-small-height;
+  }
+}
+
+.list-entrance > li {
+  opacity: 0;
+}
+
+.list-entrance-animations {
+  animation: listingFadeIn 500ms ease-out both;
+}
+
+@keyframes listingFadeIn {
+  0% {
+      opacity: 0;
+  }
+  100% {
+      opacity: 1;
+  }
+}
+
+fieldset {
+  .required-input {
+    position: relative;
+    &:before {
+      content: '*';
+      color: $blue;
+      margin: 0 .5rem;
+      margin-left: -0.75rem;
+      position: absolute;
+    }
+  }
+  li {
+    padding: 0;
+    position: relative;
+  }
+  .error {
+    // Select2 really is just, yeah.
+    input,
+    .select2-selection {
+      border-color: red !important;
+      &:placeholder {
+          color: red !important;
+      }
+    }
+    .select2-selection__rendered {
+      color: red !important;
+    }
+    &:after {
+      content: "!";
+      line-height: .6em;
+      background: $white;
+      border: 2px solid #d2244b;
+      color: #d2244b;
+      border-radius: 100%;
+      display: inline-block;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: .5em;
+      height: 1em;
+      width: 1em;
+      vertical-align: middle;
+      text-align: center;
+      animation: pop 200ms forwards cubic-bezier(.175, .885, .32, 1.275);
+      margin: auto;
+      padding: .2em;
+      &:nth-of-type(1):after {
+          animation-duration: 100ms;
+      }
+      &:nth-of-type(2):after {
+          animation-duration: 200ms;
+      }
+      &:nth-of-type(3):after {
+          animation-duration: 300ms;
+      }
+    }
+    &:before {
+      color: red;
+    }
+  }
+}
+
+.g-recaptcha {
+    margin-bottom: 1rem;
+}
+
+legend,
+label {
+  color: $grey;
+  line-height: 1rem;
+}
+
+form.request-spec {
+  padding: 1rem 3.5rem;
+}
+
+.new-account-form,
+.sign-up-modal-form,
+.request-spec {
+  form {
+      // padding: 1rem 3.5rem;
+  }
+  // border-top: 1px solid $grayborder;
+  // padding: 0 2rem;
+  legend {
+      margin-bottom: 1rem;
+  }
+  @include breakpoint(medium down) {
+      padding: 0;
+  }
+  .spec-additional-yacht {
+      li {
+          &.error:after {
+              top: 2.2em;
+              bottom: 0;
+              right: -1.5em;
+              @include breakpoint(medium down) {
+                  top: 1.6em;
+              }
+          }
+      }
+  }
+  .address-fill-out {
+      .country-selection {
+          &.error:after {
+              top: 0em;
+              bottom: 0;
+              right: -1.5em;
+              @include breakpoint(medium down) {
+                  top: .6em;
+              }
+          }
+      }
+  }
+  textarea {
+      resize: vertical;
+  }
+  fieldset {
+      margin-top: 0;
+      &:first-child {
+          margin-top: 1rem;
+      }
+      &:last-child {
+          margin-bottom: 0;
+          padding-bottom: 1rem;
+      }
+  }
+  .request-more-info-confirmation {
+      display: block;
+      padding: 0;
+      margin: 0;
+      @include breakpoint(small down) {
+          margin-bottom: $global-margin;
+      }
+  }
+  .last-address-line {
+      .add-address-line {
+          color: $blue;
+          // margin-right: .75rem;
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          right: -2rem;
+          .add-line {
+              display: none;
+          }
+          .add {
+              font-size: .8rem;
+              width: 1.4rem;
+              text-align: center;
+              border-radius: 1.6em;
+              border: 1px solid black;
+              height: 1.4rem;
+              line-height: 1.4rem;
+          }
+          @include breakpoint(medium down) {
+              position: relative;
+              display: block;
+              right: 0;
+              margin: 1rem 0;
+              .add-line {
+                  display: inline-block;
+                  margin-left: .25rem;
+              }
+          }
+      }
+  }
+  .spec-current-yacht,
+  .spec-additional-yacht,
+  .password-update,
+  .save-changes-btn {
+      border-top: 1px solid $grayborder;
+      padding: 2.5rem 0;
+  }
+  .password-update {
+      padding-bottom: 0;
+  }
+  .spec-current-yacht {
+      padding-bottom: 0;
+  }
+  #request-information,
+  #member_receive_updates {
+      // Select2 is hella buggy, and fails to convert % to px.
+      width: 20% !important;
+      + .select2-container {
+          width: 20% !important;
+          float: right;
+      }
+      @include breakpoint(medium down) {
+          margin-top: 1rem;
+          width: 100% !important;
+          + .select2-container {
+              width: 100% !important;
+              float: none;
+          }
+      }
+  }
+  .form-account-type {
+      ol {
+          width: 100%;
+          justify-content: space-between;
+          display: flex;
+          margin: .5rem 0;
+          li {
+              display: inline-block;
+          }
+      }
+  }
+  .address-fill-out li {
+      padding: 0;
+  }
+  .spec-postcode {
+      width: 45%;
+      input {
+          margin-bottom: 0;
+      }
+      @include breakpoint(medium down) {
+          width: 100%;
+          margin-top: 1rem;
+      }
+  }
+  #country-slection,
+  #member_country {
+      width: 100% !important;
+      + .select2-container {
+          width: 100% !important;
+      }
+  }
+  .select2-selection {
+    border-color: $grayborder !important;
+    border-radius: 0 !important;
+    height: rem-calc(38) !important;
+
+    &:focus,
+    &:hover {
+        outline: none !important;
+    }
+
+    span {
+      // color: $greyborder !important;
+      height: rem-calc(38) !important;
+      line-height: rem-calc(38) !important;
+      &:focus,
+      &:hover {
+        outline: none;
+      }
+    }
+
+    .select2-selection__arrow {
+      width: 40px !important;
+      &:after {
+        background: url(/assets/images/select_down.png);
+        bottom: 0;
+        content: '';
+        height: 9px;
+        left: 0;
+        margin: auto;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 16px;
+      }
+      b {
+          display: none !important;
+      }
+    }
+  }
+}
+
+.sign-up-success {
+  // align-items: center;
+  // display: flex;
+  // max-width: 100%;
+  // position:absolute;
+  // width: 100%;
+  background: $green;
+  border-radius: 2px;
+  color: $white;
+  display: inline-block;
+  font-size: 1.2em;
+  margin: 1rem;
+  min-height: 100%;
+  padding: 1em;
+
+  a {
+    color: $white;
+    text-decoration: underline;
+  }
+}
+
+.yacht-list-item {
+  // Border doesn't cover photo, only listing contents
+  // border: 1px solid $grayborder;
+  color: $blue;
+  display: block;
+  display: flex;
+  flex-direction: column;
+  font-size: .9375em;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  @include omnes-regular;
+
+  .listing-header {
+
+    .share {
+      bottom: 0;
+      display: flex;
+      height: 100%;
+      margin: auto;
+      top: 0;
+    }
+  }
+
+  .listing-image-container {
+    position: relative;
+  }
+
+  &.updated-listing {
+    &:before {
+      @include omnes_medium;
+      background-color: $cyan;
+      color: $white;
+      content: 'Updated Listing';
+      left: 0;
+      padding: .5rem 1rem;
+      position: absolute;
+      text-transform: uppercase;
+      top: 0;
+      width: 100%;
+      z-index: 1;
+    }
+  }
+  // .yacht-list-name {
+  //  margin: .5rem;
+  //  display: block;
+  //  text-transform: uppercase;
+  //  .yacht-list-second-name {
+  //    @include omnes_medium;
+  //    &:before {
+  //      content: '//';
+  //      margin: 0 .25rem;
+  //      vertical-align: top;
+  //    }
+  //  }
+  // }
+  .yacht-listing-photo,
+  .yacht-listing-photo-extra {
+    // height: 192px;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+
+    > img {
+      // object-fit: cover;
+      // min-height: 260px;
+      @include object-fit(cover);
+      display: block;
+      height: auto;
+      position: relative;
+      width: 100%;
+    }
+
+  }
+
+  .yacht-listing-title {
+    flex: 1;
+    border-left: 1px solid $grayborder;
+    border-right: 1px solid $grayborder;
+
+    &--without-side-borders {
+      border-left: 0;
+      border-right: 0;
+    }  
+
+
+    &:hover,
+    &:focus {
+      text-decoration: none;
+      color: #003145;
+    }
+
+
+
+  }
+}
+
+.yacht-listing-title {
+  color: $blue;
+  display: block;
+  font-size: 1rem;
+  line-height: 1rem;
+  padding: 1rem .75rem;
+  text-transform: uppercase;
+
+  &--without-side-borders {
+    border-left: 0;
+    border-right: 0;
+  }  
+
+  .yacht-list-modal {
+    @include omnes_medium;
+    margin: 0 .25rem;
+
+    &.double-slash {
+      &::before {
+        content: '//';
+        margin: 0 .25rem;
+        vertical-align: top;
+      }
+    }
+  }
+
+  .yacht-listing-title {
+    margin: .5rem;
+    display: block;
+
+    .yacht-list-modal {
+      @include omnes-regular;
+      margin: 0 .25rem;
+    }
+  }
+
+  .yacht-list-name {
+
+    &.double-slash {
+
+      &::before {
+        content: '//';
+        margin: 0 .25rem;
+        vertical-align: top;
+      }
+    }
+  }
+
+  .yacht-list-subtitle {
+    display: block;
+    @include omnes-regular;
+  }
+}
+
+.listing-content {
+  border: 1px solid $greyborder;
+  border-top: 0;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;  
+
+  &--padded {
+    padding: .75rem;
+  }
+
+  table {
+    // height: 100%;
+    // height: 132px;
+
+    tbody {
+      border: none;
+      height: 100%;
+
+      // tr:first-child,
+      // tr:nth-child(2) {
+      //   height: 50%;
+      // }
+      td {
+        box-sizing: content-box;
+      }
+
+      tr:first-child {
+        td {
+          width: 50%;
+          height: 35px;
+        }
+      }
+
+      tr:nth-child(2) {
+        td {
+          height: 50px;
+        }
+      }
+
+      tr:nth-child(3) {
+        td {
+          height: 30px;
+        }
+      }
+    }
+
+    tr {
+      td {
+
+        &:last-of-type {
+          border-right: 0;
+        }
+
+        &:first-of-type {
+          border-left: 0;
+        }
+      }
+
+      &:last-of-type {
+
+        td {
+          border-bottom: 0;
+        }
+      }
+    }
+  }
+}
+
+.form-error {
+  display: block;
+  margin: 1em 0;
+  opacity: 0;
+  text-align: center;
+  transition: opacity 250ms cubic-bezier(.86, 0, .07, 1);
+
+  span {
+    background: $red;
+    border-radius: 2px;
+    color: $white;
+    display: inline-block;
+    font-size: .8rem;
+    margin: 0 auto;
+    padding: .5em 1em;
+  }
+
+  &.visible {
+    opacity: 1;
+  }
+
+  .error-messages {
+    // Stop jquery validate from showing the messages.
+    display: none !important;
+  }
+}
+
+@mixin global-local-subnav {
+  transform: translateY($header-nav-large-height - $header-nav-small-height + $header-owners-area-height);
+}
+
+.global-local-subnav {
+  // adjust the following elements to fit since the header is FIXED
+  // box-shadow: 0 3px 2px -2px gray;
+  align-items: center;
+  background-color: $lightgrey;
+  bottom: none;
+  box-shadow: 0 3px 2px -2px $gray;
+  display: flex;
+  height: $header-nav-small-height;
+  overflow-x: visible;
+  overflow-y: hidden;
+  padding: 0;
+  position: fixed;
+  top: $header-nav-small-height;
+  transition: transform .5s cubic-bezier(.19, 1, .22, 1);
+  width: 100%;
+  z-index: 30;
+
+  @include breakpoint(large up) {
+    @include global-local-subnav;
+  }
+
+  ul {
+    //     display: none;
+    // &::-webkit-scrollbar {
+    // margin-left: 295px;
+    // overflow-x: visible;
+    // overflow-y: hidden;
+    // width: 100%;
+    // }
+    display: flex;
+    flex: 0 0 auto;
+    height: 100%;
+    position: relative;
+
+    @include breakpoint(medium only) {
+      margin-left: 55px;
+    }
+
+    li {
+      flex: 0 0 auto;
+      float: none;
+      height: 100%;
+      a {
+        @include omnes_medium;
+        color: $grey;
+        display: table;
+        font-size: .75em;
+        height: 100%;
+        line-height: 1.16666666em;
+        padding-left: 20px;
+        padding-right: 20px;
+        text-decoration: none;
+        text-transform: uppercase;
+
+        @include breakpoint(xlarge up) {
+          padding-left: 25px;
+          padding-right: 25px;
+        }
+
+        @include breakpoint(large only) {
+          padding-left: 15px;
+          padding-right: 15px;
+        }
+
+        span {
+          display: table-cell;
+          height: 100%;
+          vertical-align: middle;
+        }
+      }
+    }
+
+    .active {
+
+      a {
+
+        span {
+          border-bottom: 3px solid $blue;
+        }
+      }
+    }
+  }
+  .button-transparent {
+      // margin-top: .5rem;
+      margin-bottom: 0;
+      margin-left: auto;
+      margin-right: 1rem;
+      position: relative;
+  }
+  .sub-heading {
+    float: left;
+    height: $header-nav-small-height;
+    margin-left: 40px;
+    a {
+      line-height: 3.25;
+    }
+  }
+}
+
+.global-local-subnav-mini {
+  // box-shadow: 0 3px 2px -2px gray;
+  // For closing the cookie message
+  // padding: 0;
+  // width: 100%;
+  bottom: none;
+  height: $header-nav-small-height;
+  max-height: $header-nav-small-height;
+  overflow: visible;
+  position: fixed !important;
+  top: 55px;
+  transform: translateY(0);
+  transition: transform .5s cubic-bezier(.19, 1, .22, 1);
+  z-index: 30;
+  // top: $header-nav-large-height + $header-owners-area-height;
+  // transform: translateY(calc(#{$header-nav-large-height} - #{$header-nav-small-height} + #{$header-owners-area-height}))
+}
+
+// Remove background overlay. Ovverrides :before
+@mixin bg-overlay($tr: 0%) {
+  background-color: transparent;
+  background-image: linear-gradient(transparent 0%, transparent $tr, rgba($black, .5) 100%);
+  content: '';
+  height: 100%;
+  position: absolute;
+  top: 0;
+  width: 100%;
+
+  @include breakpoint(small down) {
+    background-image: linear-gradient(transparent 0%, rgba($black, .25) $tr, rgba($black, .75) 100%);
+  }
+}
+
+.add-full-background-overlay {
+  &::before {
+    @include bg-overlay();
+  }
+}
+
+.no-results {
+  max-width: 100%;
+  opacity: 0;
+  padding: 0;
+  pointer-events: none;
+  transform: translateY(-2rem);
+  transition: transform 250ms cubic-bezier(.32, .94, .6, 1), opacity 200ms cubic-bezier(.32, .94, .6, 1);
+  height: 0;
+
+  &--show {
+    height: auto;
+    padding: 2rem 1rem;
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  @include breakpoint(large up) {
+    max-width: 50%;
+  }
+
+  span {
+    @include omnes-regular;
+  }
+
+  h2 {
+    @include h4-styles;
+  }
+
+}
+
+// ---- Stacked Blocks ----
+.stacked-blocks {
+  // padding: 1.5rem;
+  column-count: 3;
+  column-gap: 1rem;
+  column-width: 30%;
+  padding-top: 0;
+
+  .stacked-block {
+    page-break-inside: avoid;
+    /* Firefox is dumb */
+    break-inside: avoid;
+    column-break-inside: avoid;
+  }
+
+  @include breakpoint(medium down) {
+    column-count: 2;
+    column-width: 50%;
+  }
+
+  @include breakpoint(small down) {
+    column-count: 1;
+    column-width: 100%;
+  }
+}
+
+.stacked-block {
+  padding-bottom: 1rem;
+
+  .stacked-block-image {
+    // border: 1px solid $grayborder;
+    border-bottom: 0;
+    position: relative;
+
+    > img {
+      // object-fit: cover;
+      @include object-fit(cover);
+      display: block;
+      max-height: 310px;
+      width: 100%;
+    }
+
+  }
+
+  figcaption {
+    border: 1px solid $grayborder;
+    border-top: 0;
+
+    > a {
+      margin: 1rem .75rem 2rem;
+    }
+  }
+
+  .yacht-list-subtitle {
+    color: $lightblue;
+    font-size: .8rem;
+    margin-bottom: .5rem;
+    margin-top: .5rem;
+  }
+
+  &.stacked-block-dark {
+    figcaption {
+      background-color: $blue;
+      border: 0;
+    }
+
+    .yacht-listing-title {
+      color: $white;
+    }
+
+    p {
+      color: $white;
+    }
+  }
+}
+
+// ---- Stacked Blocks END ----
+// ---- Global Padding CONFIG ----
+.global-padding {
+
+  &--small {
+    padding-bottom: 70px !important;
+    padding-top: 35px !important;
+  }
+}
+
+.global-padding-top-only {
+  &--small {
+    padding-top: 35px !important;
+  }
+
+  &--medium {
+    padding-top: 50px !important;
+  }
+
+  &--large {
+    padding-top: 70px !important;
+  }
+}
+
+// ---- Global Padding CONFIG ----
+// ---- SALVATTORE CONFIG -----
+.salvattore-column {
+    float: left;
+}
+
+.size-1of1 {
+    width: 100%;
+}
+
+.size-1of2 {
+    width: 50%;
+}
+
+.size-1of3 {
+    width: 33.333%;
+}
+
+// ---- SALVATTORE CONFIG -----

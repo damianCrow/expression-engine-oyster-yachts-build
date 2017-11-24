@@ -1,0 +1,53 @@
+.world-rally-local-subnav {
+
+	span {
+		font-size: 0.8rem;
+		line-height: 4.25;
+		margin: 0 2rem;
+		color: $blue;
+		text-transform: uppercase;
+		@include omnes_medium;
+	}
+
+}
+
+
+.full-screen-media {
+	.gallery-container {
+		height: 100%;
+		// width: 100%;
+		// min-height: 500px;
+		position: relative;
+		> .images-to-be-loaded {
+			display: none;
+		}
+		.lg-outer {
+			position: absolute;
+			z-index: 0;
+		}
+		.lg-outer {
+			.lg-img-wrap {
+				padding: 0px;
+			}
+			.lg-image {
+				// object-fit: cover;
+				// width: auto !important;
+				// height: 100% !important;
+			}
+			.lg-object {
+				padding: 6rem 2rem;
+			}
+			.lg-toolbar {
+				display: none;
+			}
+			// Even if the main gallery where "grabable" why would the thumbs need to be?
+			.lg-thumb-outer.lg-grab .lg-thumb-item {
+				cursor: pointer;
+			}
+		}
+		.gallery-caption {
+			font-size: 1rem;
+			padding-top: 1rem;
+		}
+	}
+}

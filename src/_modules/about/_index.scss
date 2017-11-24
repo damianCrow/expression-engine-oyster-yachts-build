@@ -1,0 +1,58 @@
+.blocks-on-blocks {
+  > section:nth-of-type(even) {
+    .block-on-block-info {
+      align-self: flex-end;
+    }
+  }
+}
+
+.block-on-block {
+
+  // Justify-content doesn't work with a min-height on IE.
+  align-items: flex-start;
+  background-position: center center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  height: 450px;
+  justify-content: center;
+  max-height: 100%;
+
+  @include breakpoint(medium up) {
+    > div:nth-of-type(even) {
+      align-self: flex-end;
+    }
+  }
+
+  @include breakpoint(small down) {
+    justify-content: flex-end;
+  }
+
+  .block-on-block-info {
+    background-color: $white;
+    max-width: 560px;
+    padding: 1.5rem 3rem;
+    transition: background-color 1s ease-in;
+    width: 100%;
+    will-change: background-color;
+
+    @include breakpoint(small down) {
+      background-color: rgba($white, .8);
+      padding: 1rem;
+    }
+
+    p {
+      color: $blue;
+    }
+
+    h1 {
+      @include h3-styles;
+    }
+  }
+}
+
+
+// import fleet page
+@import 'why-oyster';
+@import 'team';
+@import 'heritage';

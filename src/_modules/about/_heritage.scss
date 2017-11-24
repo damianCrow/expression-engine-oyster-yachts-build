@@ -1,0 +1,24 @@
+.heritage-blocks {
+
+  .yacht-listing-title {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .stacked-blocks {
+    opacity: 0;
+    transition: opacity .5s cubic-bezier(.190, 1, .220, 1);
+
+    &.active {
+      opacity: 1;
+    }
+  }
+
+  .stacked-block figcaption {
+    padding: 1rem;
+
+    > a {
+      margin: 1rem 0;
+    }
+  }
+}

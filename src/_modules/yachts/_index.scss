@@ -1,0 +1,65 @@
+.yachts-landing {
+  @include full-page-feature($class-name: 'yachts-landing__');
+  display: flex;
+  flex-direction: column;
+}
+
+.yachts-full-spread {
+  @include full-page-half-n-half($class-name: 'yachts-full-spread__');
+
+  flex: 1 0 auto;
+  flex-direction: row;
+  flex-wrap: wrap;
+  overflow: hidden;
+
+
+  &__left,
+  &__right {
+    flex: 1 0 auto;
+    height: auto !important;
+    max-width: 100%;
+    width: auto !important;
+
+    &::before {
+      @include feature-gradient;
+    }
+
+    @include breakpoint(medium up) {
+      width: 50%;
+    }
+  }
+
+  &__inner {
+    max-width: 25rem;
+  }
+
+  &__feature-image {
+    /* position: relative; */
+    // To try and avoid the white line
+    display: flex;
+    flex: 1 1 100%;
+    flex-direction: column;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: calc(100% + 1px);
+
+    > img,
+    picture,
+    picture img {
+      @include object-fit(cover);
+      flex: 1 1 100%;
+      flex-direction: column;
+      height: 100%;
+      width: 100%;
+    }
+  }
+}
+
+// import yacht
+@import 'yacht';
+@import 'special-projects';
+@import 'previous-models';
+@import 'g5';
+@import 'g6';

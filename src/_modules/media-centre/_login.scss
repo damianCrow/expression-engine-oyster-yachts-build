@@ -1,0 +1,133 @@
+// LOGIN PAGE
+
+.login-media-page, .login-media-message {
+	background-size: cover;
+	background-position: center center;
+	height: 100%;
+	position: relative;
+	// &:before{
+	// 	content: '';
+	// 	width: 100%;
+	// 	height: 100%;
+	// 	position: absolute;
+	// 	top: 0;
+	// 	left: 0;
+	// 	background-color: rgba($blue, 0.75);
+	// }
+	.full-modal {
+		// Overiding the modal settings so it shows
+		min-height: auto;
+		display: block;
+		transform: none;
+		opacity: 1 !important;
+		z-index: 2;
+	}
+	.tabs-panel {
+		padding: 0px;
+	}
+
+
+	// MODAL
+	.tabs-panel {
+		// @include breakpoint(small down) {
+		// 	padding: 0.25rem 0.5rem;
+		// }
+		// padding: 0.5rem 2rem;
+		.modal-footer {
+			// margin: -0.5rem 0rem;
+			// @include breakpoint(small down) {
+			// 	margin: -0.25rem -0.5rem;
+			// }
+		}
+	}
+
+
+
+	#login-panel {
+		// padding: 1rem 3.5rem;
+		
+		label {
+
+		}
+		.login-forgot-password {
+			color: $grey;
+		}
+		.login-remember-me {
+			color: $grey;
+			float: right;
+			margin: 0px;
+			position: relative;
+		}
+		.extra-login-content {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			@include breakpoint(small down) {
+				flex-direction: column-reverse;
+				align-items: flex-start;
+			}
+			> * {
+				margin: 1rem 0rem;
+			}	
+		}
+		// .modal-footer {
+		// 	margin: -0.75rem -3.5rem;
+		// }
+	}
+
+	.login-tabs-content {
+		position: relative;
+		// overflow: hidden;
+	}
+
+	#new-account {
+
+		// position: absolute;
+		// top: 0;
+		// right: 0;
+		// left: 100%;
+		// width: 100%;
+		// transform: translatex(0%);
+		// transition: transform 250ms;
+		// &.is-active {
+		// 	transform: translatex(-100%);
+		// }
+		// transform: translatex(-100%);
+		.request-spec {
+			border: none;
+			padding: 0;
+		}
+
+		.form-account-type > legend {
+			padding-top: 1rem;
+			width: 100%;
+			border-top: 1px solid $grayborder;
+		}
+
+		.spec-current-yacht {
+			border: 0px;
+			padding: 1rem 0;
+		}
+
+		small {
+			padding: 0px;
+			margin-bottom: 1.5rem;
+		}
+		.form-signup-usage {
+			border-top: 1px solid $grayborder;
+			// border-bottom: 1px solid $grayborder;
+			padding-top: 2rem;
+			// margin-bottom: 1rem;
+
+		}
+
+	}
+
+
+
+
+}
+
+
+
+

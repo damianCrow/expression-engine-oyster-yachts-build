@@ -1,0 +1,97 @@
+.news-news-library .news-pane-header {
+    background-image: url('/assets/images/oysteryachts-news-default_image_sml.jpg');
+}
+
+.news-news-library {
+    .banner {
+        margin-bottom: 40px;
+    }
+
+    // ---- SALVATTORE CONFIG -----
+    .news-panes {
+        visibility: hidden;
+    }
+
+    .news-panes[data-columns="1"], .news-panes[data-columns="2"], .news-panes[data-columns="3"], .news-panes[data-columns="4"] {
+        visibility: visible !important;
+    }
+
+    @include breakpoint(small only) {
+        .news-panes[data-columns]::before {
+            content: '1 .salvattore-column.size-1of1';
+        }
+    }
+
+    @include breakpoint(medium only) {
+        .news-panes[data-columns]::before {
+            content: '2 .salvattore-column.size-1of2';
+        }
+    }
+
+    @include breakpoint(large up) {
+        .news-panes[data-columns]::before {
+            content: '3 .salvattore-column.size-1of3';
+        }
+    }
+
+    .size-1of1 {
+        width: 100%;
+    }
+
+    .size-1of2 {
+        width: 50%;
+    }
+
+    .size-1of3 {
+        width: 33.333%;
+    }
+    // ---- SALVATTORE CONFIG -----
+
+
+    .news-pane {}
+
+    .news-pane-inner {
+        margin-bottom: 30px;
+    }
+
+    .news-pane-header {
+        width: 100%;
+        // height: 200px;
+        position: relative;
+        background-size: cover;
+        background-position: center;
+
+        padding-bottom: 67%;
+    }
+
+    .news-pane-content {
+        padding: 20px;
+        border: 1px solid $grayborder;
+        position: relative;
+
+        .title {
+            @include omnes_medium;
+        }
+
+        .date {
+            font-size: 12px;
+            @include omnes_medium;
+            color: rgb(125, 154, 170);
+        }
+
+        p {
+            line-height: 1.5;
+            font-size: 15px;
+            margin: 25px 0px;
+            margin-bottom: 10px;
+            @include omnes-regular;
+            color: rgb(116, 118, 120);
+
+        }
+    }
+
+
+    .row.padded-full-width-row {
+        padding-bottom: 70px;
+    }   
+}

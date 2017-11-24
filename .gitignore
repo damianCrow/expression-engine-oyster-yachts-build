@@ -19,6 +19,9 @@ thumbs/
 _thumbs/
 .sass-cache/
 
+# Third party modules
+node_modules
+
 # Root user content dirs
 images/*
 !images/index

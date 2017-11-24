@@ -1,0 +1,33 @@
+.crew-member-wrapper {
+    padding: 0px;
+}
+
+.crew-member{
+
+    border: 1px solid $greyborder;
+    padding: 2rem 1.25rem;
+
+    .crew-member-image {
+        float: left;
+        margin-right: 0.75rem;
+        margin-bottom: 0.75rem;
+    }
+    .crew-member-name {
+        color: $blue;
+        @include omnes_medium;
+        margin-bottom: 0.5rem;
+    }
+
+    .contact-phone-email {
+        display: flex;
+        flex-direction: column;
+        @include omnes_medium;
+        abbr {
+            @include omnes-regular;
+        }
+        .contact-email, .contact-phone {
+            margin-top: 0.25rem;
+            margin-bottom: 0.25rem;
+        }
+    }
+}

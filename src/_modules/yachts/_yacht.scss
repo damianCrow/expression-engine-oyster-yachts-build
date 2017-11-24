@@ -1,0 +1,133 @@
+// Specfics to yachts/yacht page.
+	// Avoid modifying component structure here.
+
+.yachts-yacht-spec {
+	.yacht-featured-list-header {
+		background: $lightblue;
+	}	
+}
+
+.yachts-yacht-theme {
+	.aside-header {
+		background: $lightblue;
+	}
+}
+
+// Light Gallery Overides
+
+.lg-close {
+	@include breakpoint(small down) {
+		margin: 0;
+	}
+}
+
+
+.lg-backdrop {
+	z-index: 98;
+}
+
+body {
+
+	&.fixed-message-showing {
+		> .lg-outer, .lg-backdrop {
+			top: $header-nav-small-height + $header-message-height  !important;
+			height: calc(100% - #{$header-nav-small-height + $header-message-height});
+			@include breakpoint(small down) {
+				top: $header-nav-small-height + $header-message-height-small  !important;
+				height: calc(100% - #{$header-nav-small-height + $header-message-height-small});
+			}	
+		}
+	}
+
+	> .lg-outer, .lg-backdrop {
+		// top: $header-nav-large-owners  !important;
+		// height: calc(100% - #{$header-nav-large-owners});
+
+		// @include breakpoint(medium down) {
+		top: $header-nav-small-height  !important;
+		height: calc(100% - #{$header-nav-small-height});
+		// z-index: 1051;
+		// }
+		.lg-close {
+			margin: 15px 40px !important;
+			@include breakpoint(medium down) {
+				margin: 15px 17px !important;
+			}
+		}
+
+		.lg {
+			overflow: visible;
+		}
+		.lg-toolbar {
+			@include breakpoint(large up) {
+				background-color: transparent;
+				top: (0px - $header-nav-small-height) !important;
+			}
+		}
+
+		.lg-video-cont {
+			height: calc(100% - 110px);
+			padding: 0px;
+			.lg-video {
+				padding: 0px;
+				height: 100%;
+				// position: absolute;
+				// top: 0;
+				// padding: 0;
+			}
+			@include breakpoint(large up) {
+				height: calc(100% - 55px);
+				vertical-align: top;
+			}
+
+		}
+
+		.lg-img-wrap {
+			padding: 0px;
+		}
+
+		.lg-image {
+		    padding: 30px 50px;
+		    padding-bottom: 55px;			
+			@include breakpoint(large up) {
+		    	padding-bottom: 85px;
+		    }
+		}
+
+
+	}
+
+}
+
+
+.gallery-sections {
+	margin: 10px 40px !important;
+	@include breakpoint(medium down) {
+		margin: 10px 15px !important;
+		margin: 0 auto;
+		float: none;
+		a {
+			padding: 10px;
+		}
+	}
+
+	a {
+		border-right: 0px !important;
+		&:last-child {
+			border-right: 1px solid $blue !important;
+		}
+		@include breakpoint(small down) {
+			padding: 11px 10px 10px !important;
+		}
+	}
+
+}
+
+.lg-toolbar {
+	@include breakpoint(medium down) {
+		display: flex;
+		align-items: center;
+		flex-direction: row-reverse;
+		justify-content: space-between;
+	}
+}

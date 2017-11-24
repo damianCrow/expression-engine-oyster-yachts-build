@@ -1,0 +1,12 @@
+.world-rally-news {
+	@extend .news-news-library;
+}
+
+.rallynews-article-hero {
+	background-image: url('/assets/images/oysteryachts-wolrd-rally-news-default_image.jpg');
+}
+
+.world-rally-news .news-pane-header {
+	background-image: url('/assets/images/oysteryachts-wolrd-rally-news-default_image_sml.jpg');
+	padding-bottom: 67%;
+}

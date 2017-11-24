@@ -1,0 +1,91 @@
+// THIS CSS IS ALSO BEING USED IN OWNERS AREA AFTER SALES PAGE
+
+.current-issue {
+    @include breakpoint(large up) {
+        padding-left: 8rem;
+    }
+    h1 {
+        @include h3-styles;
+        @include omnes-regular;
+        margin: 2rem 0;
+        // font-size: 3.5rem;
+        span {
+            @include omnes_light;
+            &:after{
+                content: ' // ';
+                vertical-align: text-top;           
+            }
+        }
+    }
+
+    h2 {
+        display: block;
+        width: 100%;
+        @include omnes_medium;
+        background-color: $lightgrey;
+        font-size: 0.9375em;
+        line-height: 1em;
+        color: $lightblue;
+        text-align: left;
+        padding: 1rem;
+    }
+
+    .list-of-issues {
+        border-top: 1px solid $greyborder;
+        margin-bottom: 2rem;
+        // Flex to stop borders breaking when more content inserted.
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        li {
+            color: $lightblue;
+            padding: 1rem;
+            width: 100%;
+            @include breakpoint(medium up) {
+                @include grid-column(6);
+            }
+
+            @include breakpoint(large up) {
+                &:nth-child(odd) {
+                    border-left: 1px solid $greyborder;
+                }
+                border-bottom: 1px solid $greyborder;
+                border-right: 1px solid $greyborder;
+            }
+            @include breakpoint(medium down) {
+                border-right: 1px solid $greyborder;
+                border-left: 1px solid $greyborder;
+                border-bottom: 1px solid $greyborder;
+                // &:last-child{
+                //  border-bottom: 1px solid $greyborder;
+                // }
+            }
+        }
+    }
+    .lastest-magazine-cover {
+        margin-bottom: 2rem;
+        img {
+            width: 275px;
+            margin: 0 auto;
+            border: 1px solid $greyborder;
+            display: block;
+        }
+        .button-group {
+            a {
+                float: none;
+            }
+            text-align: center;
+            margin: 1rem;
+        }
+    }
+}
+
+.prev-magazine-issues {
+    margin-bottom: 2rem;
+    .issue-wrapper {
+        margin-top: 2rem;
+    }
+    .external-file {
+        border: 1px solid $greyborder;
+    }
+}

@@ -1,0 +1,7 @@
+.full-screen-media--video {
+	@extend .full-screen-media;
+	display: table;
+	.video-embed-container {
+		display: table-cell;
+	}
+}

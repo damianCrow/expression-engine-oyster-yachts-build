@@ -1,0 +1,56 @@
+.media-press-exterior, .media-press-interior, .media-press-cad-plans {
+	padding: 35px 0px 35px 0px;
+
+	.banner {
+		margin-bottom: 35px;
+	}
+
+	.columns {
+		margin-bottom: 35px;
+
+		@include breakpoint(small only) {
+			padding: 0;
+		}
+	}
+
+	.adjust-oyster-100 {
+		background-position: center 100%;
+	}
+
+	.gallery-pane-content {
+		padding-top: 1rem;
+		padding-bottom: 1rem;
+
+		display: flex;
+		flex-direction: column;
+
+		p {
+			margin: 0;
+			line-height: 1.4;
+		}
+
+		a {
+			@include breakpoint(medium only) {
+				width: 180px;
+			}
+		}
+
+		a.button-transparent {
+			margin-top: 1rem;
+		}
+	}
+}
+
+
+.media-press-interior {
+	padding-top: 0px;
+}
+
+.media-press-cad-plans {
+	padding-top: 0px;
+	padding-bottom: 60px;
+
+	@include breakpoint(small only) {
+		padding-bottom: 70px;
+	}
+}

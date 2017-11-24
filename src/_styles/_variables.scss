@@ -1,0 +1,60 @@
+// Colors
+
+// Blues
+$blue: #003145;
+$blueborder: #0d3c4e;
+$lightblue: #7d9aaa;
+
+// Errors
+$red: #d2244b;
+
+// Speical
+$bluecerulean: #00a0e1;
+// currently used for top fixed header message only.
+$pictonblue: #3ca6e0;
+
+$generalFontSize: .9375em;
+
+// Gre[a]ys
+$white: #fff;
+$black: #000;
+
+$grey: #747678;
+$gray: $grey;
+
+$lightgrey: #f2f5f6;
+$lightishgrey: #d1d3d4;
+$grayborder: #dfe2e3;
+$graydarkborder: #f1f2f2;
+$lightishgrey: #dadcdd;
+
+$inputTextColour: #a7a9ac;
+
+$greyborder: #c7c8ca;
+$grayborder: $greyborder;
+
+
+// Yellows
+$yellow: #ffc521;
+$yellow-background: #fc3;
+
+
+// Others
+$green: #3CC850;
+$cyan: #00b2a9;
+$dakerCyan: #009a92;
+
+// Social
+$twitter-color: #55acee;
+
+
+// Dimentions
+$header-nav-small-height: 55px;
+$header-nav-large-height: 96px;
+$header-owners-area-height: 30px;
+$header-message-height: 55px;
+$header-message-height-small: 120px;
+$header-nav-large-owners: $header-nav-large-height + $header-owners-area-height;
+
+// Default letter spacing
+$letter-spacing: .05rem;

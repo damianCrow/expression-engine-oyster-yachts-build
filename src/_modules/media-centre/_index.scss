@@ -1,0 +1,320 @@
+$media-theme-color: $blue;
+
+.media-centre-aside {
+    h3{
+        background-color: $media-theme-color;
+    }
+    .overview-contents {
+        .overview{
+            abbr {
+                color: $lightblue;
+                @include omnes-regular;
+                margin-right: 0.25rem;
+            }
+
+            a {
+                color: $blue;
+                @include omnes_medium;  
+            }               
+        }
+    }
+}
+
+.media-centre-home-press-releases {
+    .content {}
+
+    ul {
+        .download-pdf {
+            border-top: none;
+        }
+
+        li {
+            margin-top: 30px; 
+        }
+
+        .columns {
+            @include breakpoint(small only) {
+                padding: 0px;
+            }
+        }
+
+        .download-thumb {
+            width: 120px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position-x: center;
+            background-position-y: 0%;
+        }
+
+        figure.download-article {
+            border: 1px solid #f6f6f6;
+            padding: 1rem;
+        }
+
+        .download-article-content {
+            padding-left: 15px;
+            position: relative;
+
+            figcaption {
+                padding-bottom: 40px;
+            }
+        }
+
+        p, a {
+            margin-bottom: 0px;
+        }
+
+        p {
+            margin-top: 10px;
+        }
+
+        a.button-clear-invert {
+            bottom: 0;
+            position: absolute;
+            width: calc(100% - 20px);
+        }
+    }
+}
+
+
+.media-home-download-logo {
+    ul {
+        display: block;
+        position: relative;
+        height: 180px;
+        padding-top: 35px;
+
+        li {
+            &:first-child {
+                height: 100%;
+            }
+        }
+
+        .logo-border {
+            height: 90%;
+            margin-right: 50px;
+            padding: 0rem 1.2rem;
+            border: 1px solid #d8d8d8;
+
+            @include breakpoint(small only) {
+                margin-right: 0px;
+                float: none !important;
+                margin: 0 auto;
+                display: block;
+            }
+        }
+
+        img {
+            margin: 0 auto;
+            display: table;
+            text-align: center;
+            @include vertical-align();
+        }
+    }
+
+
+    .download-logo {
+        width: 220px;
+        display: inline-block;
+
+        border-top: none;
+        padding: 8px;
+
+        @include breakpoint(small only) {
+            // margin: 0 auto;
+            // display: block;
+
+            &:last-child {
+                margin-top: 25px;
+            }
+        }
+
+        .button-clear-invert {
+            margin: 0px;
+            width: 100%;
+        }
+    }
+}
+
+
+.media-home-gallery-container {
+    
+    margin-bottom: 4rem;
+
+    @include breakpoint(small down) {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    .gallery-banner {
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: relative;
+        margin-top: 30px;
+        &:first-child {
+            margin-top: 0px;
+        }
+        height: 375px;
+
+        @include breakpoint(small down) {
+            height: 250px;
+        }
+
+
+        width: 100%;
+        &:before {
+            // Change this for the SASS mixin once it's done.
+            content: '';
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: linear-gradient(to right, rgba($blue, 0.5) 0%, rgba($blue, 0) 100%);
+        }
+    }
+
+    .gallery-banner-inner {
+        // @include vertical-align();
+        width: 50%;
+        z-index: 10;
+        padding-left: 5rem;
+        margin: 0px;
+
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+
+        height: 100%;
+        position: absolute;
+
+        h4 {
+            color: #fff;
+            margin: 1.5rem 0px;
+            @include omnes_light;
+            font-size: 2rem;
+        }
+
+        p {
+            color: #fff;
+            @include breakpoint(medium down) {
+                display: none;
+            }
+
+        }
+
+        select {}
+
+        @include breakpoint(medium down) {
+            width: 60%;
+            padding-left: 3rem;
+            padding-right: 3rem;
+        }
+
+        @include breakpoint(small down) {
+            width: 100%;
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+
+        a.button-transparent {
+            color: #fff;
+            margin: 0px;
+            border: 1px solid #fff;
+
+            height: 45px;
+            line-height: 1.5;
+
+            // &:hover {
+            //  border: 1px solid $blue;
+            // }
+
+            @include breakpoint(small only) {
+                display: block;
+            }
+        }
+
+        .select-gallery-wrapper {
+            & > span, & > a {
+                margin-right: 1rem;
+                margin-top: 1rem;
+                margin-bottom: 1rem;
+                @include breakpoint(small down) {
+                    width: 100%;
+                    margin: 0px;
+                    margin-top: 1rem;
+                }
+            }
+        }
+
+        // .view-gallery-wrapper {
+        //  a.button-transparent {
+        //      margin-left: 0px;
+        //      width: 250px;
+        //  }
+        // }
+    }
+
+
+    .select2-override {
+        .select2 {
+            width: 250px !important;
+            border: none !important;
+            border-radius: 0 !important;
+            height: 45px;
+            margin: 0;
+            @include breakpoint(small down) {
+                width: 100% !important;
+            }
+
+        }
+
+        .select2-selection__rendered {
+            font-size: 14px;
+            color: $blue !important;
+            text-transform: uppercase;
+            font-family: 'omnes_mediumregular', sans-serif !important;
+        }
+
+        .select2-selection__arrow {
+            top: 18px;
+            right: 7px;
+            width: 20px;
+            height: 15px;
+            position: absolute;
+        }
+
+
+        @include breakpoint(small only) {
+            // top: 50%;
+            // height: 100%;
+            // margin-left: 20px;
+            // margin-right: 20px;
+            // @include calc(width, "100% - 40px");
+            // @include transform(translateY(-25%));
+
+            .select2 {
+            }
+
+            .select2-selection__rendered {
+
+            }
+
+            .select2-selection__arrow {
+
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+// import press images page
+@import 'press-images';
+@import 'reg-thank-you';
+@import 'login';

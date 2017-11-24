@@ -1,0 +1,50 @@
+.world-rally-entries {
+    .content {
+        margin-top: 40px;
+        margin-bottom: 40px * 2; 
+    }
+
+    table.specs-table {
+        td {
+
+        }
+    }
+
+
+    .link {
+        a {
+            color: $blue;
+            font-weight: bold;
+            text-decoration: underline;
+            @include omnes-regular;
+        }
+    }
+
+    td.image {
+        height: 80px;
+        background-size: cover;
+        background-position: center;
+
+        @include breakpoint(medium up) {
+            border: none;           
+        }
+
+        @include breakpoint(small down) {
+            min-height: 175px;
+        }
+    }
+
+    tr.heading {
+        background-color: $blue;
+
+        th {
+            color: #fff;
+            background-color: $blue;
+        }
+    }
+
+    @include responsive-table;
+}
+
+
+

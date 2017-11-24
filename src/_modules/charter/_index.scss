@@ -1,0 +1,189 @@
+$charter-theme-color: $cyan;
+
+.charter-fleet-side {
+  td.heading {
+    background-color: $charter-theme-color;
+  }
+}
+
+.charter-fleet {
+  // Patch for grey bar showing just after nav snap
+  padding-top: 35px;
+
+  #yacht-grid {
+    > ul {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+    }
+  }
+}
+
+.charter-home-your-yacht {
+  padding: 90px 0;
+  padding-top: 50px;
+  position: relative;
+
+  @include breakpoint(medium down) {
+    padding: 40px 0;
+    padding-top: 0;
+  }
+
+  > .row {
+    @include breakpoint(small down) {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+
+  .your-yacht-background {
+    align-items: center;
+    background-image: url('/assets/images/oysteryachts-charter-charter_landing-contact_banner.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    // Height to keep IE10 flex happy, will default to min-height
+    height: 100px;
+    min-height: 396px;
+    position: relative;
+    transition: all 1s ease-in;
+
+    .column {
+      position: absolute;
+    }
+
+    &::before {
+      background-color: transparent;
+      background-image: linear-gradient(transparent 0%, transparent 0%, rgba($black, .5) 100%);
+      content: '';
+      height: 100%;
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
+  }
+
+  .your-yacht-content {
+
+    color: $white;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    padding: 1rem;
+    position: relative;
+    z-index: 2;
+
+    @include breakpoint(medium up) {
+      padding: 2rem;
+    }
+
+    @include breakpoint(medium only) {
+      width: auto;
+    }
+
+    .your-charter-contact-profile {
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+      display: inline-block;
+      flex: 0 0 70px;
+      float: left;
+      height: 70px;
+      margin-bottom: .5rem;
+      margin-right: 1rem;
+      overflow: hidden;
+      width: 80px;
+
+      > img {
+        height: 100%;
+        width: 100%;
+      }
+    }
+
+    h2 {
+      @include omnes_light;
+      color: $white;
+      font-size: 1.75rem;
+      font-weight: normal;
+      letter-spacing: $letter-spacing;
+      line-height: 1.75rem;
+      margin-bottom: 1em;
+    }
+
+    .contact-phone-email {
+      @include breakpoint(xxlarge up) {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      span,
+      abbr,
+      a {
+        color: $white;
+      }
+
+      span {
+        display: block;
+        margin-bottom: .5rem;
+        margin-top: .5rem;
+      }
+
+      abbr {
+        @include omnes-regular;
+      }
+
+      a {
+        @include omnes_medium;
+      }
+
+    }
+
+    p {
+      @include omnes-regular;
+      color: $white;
+      font-size: .9375em;
+      line-height: 1.33333333em;
+      margin-bottom: 2rem;
+    }
+
+  }
+}
+
+
+.charter-home-testimonials {
+  margin-bottom: 4.5em;
+  background-image: url('/assets/images/oysteryachts-charter-testimonials-feature.jpg');
+}
+
+
+.charter-home-featured-yachts {
+  #yacht-grid {
+    margin: 30px 0px;
+
+    @include breakpoint(small down) {
+      margin: 15px 0px;
+    }
+
+    li.column {
+      padding-bottom: 20px;
+    }
+  }
+}
+
+.charter-home-about {
+  @include breakpoint(large up) {
+    .padded-full-width-row {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+}
+
+// import fleet page
+@import 'yacht';
+@import 'charter-guide';
+@import 'destinations';
+@import 'destination';
+@import 'destination-area';

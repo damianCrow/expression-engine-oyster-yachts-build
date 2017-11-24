@@ -1,0 +1,72 @@
+.terms-extras, .conditions {
+	margin-bottom: 40px;
+	padding: 1rem;
+
+	.banner {
+		margin-bottom: 40px;
+	}
+
+
+	table {
+		h3 {
+			@include general-text;
+			@include omnes_medium;
+			margin: 0px;
+		}
+
+		.header-column {
+			@include breakpoint(large up) {
+				width: 25%;
+			}
+		}
+
+		tr {
+			&:first-child {
+				border-top: 1px solid $greyborder;
+			}
+
+			td {
+				border: 1px solid $greyborder;
+				padding: 1rem 0.5rem;
+
+				@include breakpoint(medium up) {
+					padding: 2rem 1rem 0;
+				}
+			}
+
+			&:nth-child(even) {
+				background: #fff;
+				// @include breakpoint(small down) {
+				// 	border-bottom: 0px;
+				// }
+			}
+		}
+
+		.table-content {
+			@include breakpoint(small down) {
+				padding: 0px;
+			}			
+		}
+
+		&.stack-override {
+			@include breakpoint(small down) {
+				thead, tfoot {
+					display: none;
+				}
+
+				tr, th, td {
+					display: block;
+				}
+
+				td {
+					border-top: 0;
+				}
+			}
+		}
+	}
+}
+
+// Patch for grey bar showing just after nav snap
+#charter-guide {
+	padding-top: 35px;
+}
