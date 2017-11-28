@@ -14,7 +14,6 @@ export default function (gulp, plugins, args, config, taskTarget) {
 
   gulp.task('responsiveImages', () => (
     gulp.src(path.join(dirs.source, dirs.images, 'largest-orginal-size/**/*.{jpg,jpeg,png}'))
-      .pipe(plugins.cached(dest))
       .pipe(plugins.changed(dest))
       .pipe(plugins.responsive({ stats: false }, [{
         ...imgageDefault,
