@@ -52,6 +52,29 @@ $fa-font-path: "../../node_modules/font-awesome/fonts";
 // Import Vendor dependencies
 @import '../../node_modules/select2/src/scss/core';
 
+// BLUR UP LOADING IMAGES
+.blur-up {
+  filter: blur(5px);
+  transition: filter 1.5s cubic-bezier(.19, 1, .22, 1);
+}
+
+.blur-up.lazyloaded {
+  filter: blur(0);
+}
+// END BLUR UP LOADING IMAGES
+
+
+.fade-box .lazyload,
+.fade-box .lazyloading {
+  opacity: 0;
+  transition: opacity 1.5s cubic-bezier(.19, 1, .22, 1);
+}
+
+.fade-box img.lazyloaded {
+  opacity: 1;
+}
+
+
 // scss-lint:disable ImportPath
 // For object fit font-family hack.
 @import '../../node_modules/object-fit-images/preprocessors/mixin.scss';
