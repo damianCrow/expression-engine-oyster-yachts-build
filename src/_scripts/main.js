@@ -3,6 +3,7 @@ import 'babel-polyfill'
 // Legacy imports
 // TODO: Break these (and their code below) into modules.
 import $ from 'jquery'
+import select2 from 'select2'
 import ScrollMagic from 'scrollmagic'
 import 'foundation-sites'
 // import { Foundation } from 'foundation-sites/js/foundation.core'
@@ -83,6 +84,8 @@ class Main {
     this.shortlist = this.shortlistModal && new Shortlist()
     this.weather = new Weather()
     this.owenersArea = new OwnersArea()
+
+    this.enableSelect2()
   }
 
   maps() {
@@ -349,6 +352,7 @@ class Main {
 
 
   enableSelect2() {
+    select2(window, $)
     $('select').select2({ minimumResultsForSearch: -1 })
   }
 

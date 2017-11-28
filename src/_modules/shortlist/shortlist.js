@@ -10,27 +10,6 @@ export default class Shortlist {
 
     let shortlistYachts = []
 
-    $('.add-to-shortlist').on('click', () => {
-      const localStorageSl = JSON.parse(localStorage.getItem('localShortlist'))
-      // Is there a local storage list?
-
-      if (localStorageSl != null && localStorageSl.length > 0) {
-        shortlistYachts = localStorageSl
-
-        if (typeof currentYachts !== 'undefined') {
-          console.log('currentYachts', currentYachts)
-          removeNowClosedYachts()
-        }
-      }
-
-      addToShortlist(this)
-
-      if ($(shortlistYachts).length > 0) {
-        localStorage.setItem('localShortlist', JSON.stringify(shortlistYachts))
-      }
-    })
-
-
     function removeNowClosedYachts() {
       $.each(shortlistYachts, (key, yachtOnList) => {
         console.log($.inArray(yachtOnList.yachtid, currentYachts))
@@ -42,7 +21,7 @@ export default class Shortlist {
 
     // Pull the info, check it and put it in the object if it's not already
     function addToShortlist(item) {
-      var yachtContainer = $(item).parents('[data-yachtid]')
+      let yachtContainer = $(item).parents('[data-yachtid]')
 
       if (yachtContainer.length < 1) {
         yachtContainer = $('[data-yachtid]')
@@ -69,13 +48,11 @@ export default class Shortlist {
       // Now add the items emptied from the DOM onto the list
       displayOnShortlist()
 
-      // console.log('yachtImage src', yachtImage);
-
-
+      // console.log('yachtImage src', yachtImage)
     }
 
     function checkIfYachtShortlist(yachtId, yachtImage, yachtModal, yachtName, yachtSection, yachtSpec) {
-      // console.log('checkIfYachtShortlist, shortlistYachts: ' , shortlistYachts);
+      // console.log('checkIfYachtShortlist, shortlistYachts: ' , shortlistYachts)
 
       // Check if this yacht is on the shortlist already
       const shortlistCheck = $.grep(shortlistYachts, e => e.yachtid === yachtId)
@@ -94,11 +71,10 @@ export default class Shortlist {
           yachtSpec,
         })
       }
-
     }
 
     function ripBgUrl(container) {
-      var bgCss = $(container).css('background-image')
+      const bgCss = $(container).css('background-image')
       return bgCss.replace('url(', '').replace(')', '').replace(/['"]+/g, '')
     }
 
@@ -107,15 +83,16 @@ export default class Shortlist {
       // Empty what might be there
       $('#shortlistModal .yachts-shortlist').empty()
 
-      // console.log('shortlistYachts', shortlistYachts);
+      // console.log('shortlistYachts', shortlistYachts)
 
-      $.each(shortlistYachts, function(key, yachtOnList) {
-        // Check if the yacht image is defined, if not, remove the yacht..
+      $.each(shortlistYachts, (key, yachtOnList) => {
         console.log('yachtOnList', yachtOnList)
-        var yachtImage = yachtOnList.yachtImage.toString().replace('__blur', '')
-        var backgroundImage = '<div class="yacht-listing-photo" style="background-image: url(' + yachtImage + ')"></div>'
-        var removeButton = '<button class="remove-button"></button>'
-        var completeYachtList = '<li class="column medium-6 small-12"><div data-yachtid=' + yachtOnList.yachtid + ' data-yachtsection=' + yachtOnList.yachtSection + ' class="yacht-list-item"><a href="">' + backgroundImage + '<div class="yacht-listing-title"><span class="yacht-list-modal">' + yachtOnList.yachtmodal + '</span><span class="yacht-list-name double-slash">' + yachtOnList.name + '</span></div></a>' + removeButton + '</div></li>';
+        const { yachtId, yachtImage, yachtModal, yachtName, yachtSection } = yachtOnList
+        // Check if the yacht image is defined, if not, remove the yacht..
+        const yachtImage2 = yachtImage.toString().replace('__blur', '')
+        const backgroundImage = `<div class="yacht-listing-photo" style="background-image: url(${yachtImage2})"></div>`
+        const removeButton = '<button class="remove-button"></button>'
+        const completeYachtList = '<li class="column medium-6 small-12"><div data-yachtid=' + yachtId + ' data-yachtsection=' + yachtSection + ' class="yacht-list-item"><a href="">' + backgroundImage + '<div class="yacht-listing-title"><span class="yacht-list-modal">' + yachtModal + '</span><span class="yacht-list-name double-slash">' + yachtName + '</span></div></a>' + removeButton + '</div></li>'
         $('#shortlistModal .yachts-shortlist').append(completeYachtList)
       })
 
@@ -127,15 +104,15 @@ export default class Shortlist {
 
 
     function addYachtsToFreeform() {
-
       console.log(shortlistYachts)
-      // alert('hello');
+      // alert('hello')
       // Remove all existing images from the shortlist form
       $('.ff_yacht_image,.ff_yacht_name,.ff_yacht_link,.ff_yacht_spec').remove()
-      var shortListCounter = 0;
-      $.each(shortlistYachts, function(key, yachtOnList) {
 
-        var yachtImage = yachtOnList.yachtImage.toString().replace('__blur', '')
+      let shortListCounter = 0
+
+      $.each(shortlistYachts, (key, yachtOnList) => {
+        const yachtImage = yachtOnList.yachtImage.toString().replace('__blur', '')
 
         // Add to shortlist form
         $('<input>').attr({
@@ -183,7 +160,6 @@ export default class Shortlist {
     }
 
     function removeFromList(yachtToRemoveId) {
-
       const yachtToRemove = $('.yachts-shortlist [data-yachtid="' + yachtToRemoveId + '"]')
 
       const refinedList = $.grep(shortlistYachts, e => e.yachtid !== yachtToRemoveId)
@@ -197,7 +173,7 @@ export default class Shortlist {
       console.log('yachtToRemove', yachtToRemove)
 
       $(yachtToRemove).parent('.column').css('display', 'none')
-      // $(yachtToRemove).parent().html('test');
+      // $(yachtToRemove).parent().html('test')
       addYachtsToFreeform()
     }
 
@@ -219,5 +195,25 @@ export default class Shortlist {
         requestBtn.style.opacity = 1
       }
     }
+
+    $('.add-to-shortlist').on('click', (e) => {
+      const chosenYacht = e.currentTarget
+      const localStorageSl = JSON.parse(localStorage.getItem('localShortlist'))
+      // Is there a local storage list?
+
+      if (localStorageSl != null && localStorageSl.length > 0) {
+        shortlistYachts = localStorageSl
+
+        if (typeof currentYachts !== 'undefined') {
+          removeNowClosedYachts()
+        }
+      }
+
+      addToShortlist(chosenYacht)
+
+      if ($(shortlistYachts).length > 0) {
+        localStorage.setItem('localShortlist', JSON.stringify(shortlistYachts))
+      }
+    })
   }
 }
