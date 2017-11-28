@@ -4,13 +4,13 @@
   "dependencies": {
     "babel-polyfill": "^6.26.0",
     "font-awesome": "^4.7.0",
-    "foundation-sites": "6.2.4",
+    "foundation-sites": "~6.4.4-rc1",
     "gsap": "^1.18.2",
     "jquery": "~3.2.1",
     "jquery-ui": "^1.12.1",
     "jquery-validation": "^1.15.0",
     "jquery.cycle2": "^2.1.7",
-    "lazysizes": "^2.0.0",
+    "lazysizes": "^4.0.1",
     "lightgallery": "^1.2.14",
     "motion-ui": "^1.2.2",
     "normalize.css": "~7.0.0",
@@ -32,6 +32,7 @@
     "babelify": "~7.3.0",
     "browser-sync": "~2.18.0",
     "browserify": "~14.4.0",
+    "browserify-shim": "^3.8.14",
     "del": "~3.0.0",
     "envify": "~4.1.0",
     "eslint": "^4.8.0",
@@ -49,7 +50,7 @@
     "gulp-eslint": "~4.0.0",
     "gulp-htmlmin": "~3.0.0",
     "gulp-if": "~2.0.2",
-    "gulp-imagemin": "~3.4.0",
+    "gulp-imagemin": "~4.0.0",
     "gulp-load-plugins": "~1.5.0",
     "gulp-notify": "~3.0.0",
     "gulp-plumber": "~1.1.0",
@@ -99,6 +100,25 @@
     "entries": {
       "js": "main**.js",
       "css": "main**.{sass,scss}"
+    }
+  },
+  "browserify": {
+    "transform": [
+      "browserify-shim"
+    ]
+  },
+  "browser": {
+    "simpleweather": "./node_modules/simpleweather/jquery.simpleWeather.js",
+    "owl.carousel2": "./node_modules/owl.carousel2/dist/owl.carousel.js"
+  },
+  "browserify-shim": {
+    "simpleweather": {
+      "exports": null,
+      "depends": "jquery:jQuery"
+    },
+    "owl.carousel2": {
+      "exports": null,
+      "depends": "jquery:jQuery"
     }
   }
 }

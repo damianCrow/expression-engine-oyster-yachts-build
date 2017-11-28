@@ -1,448 +1,421 @@
-      {if segment_1 == 'brokerage'}
-            {shortlist_modal}
-      {if:elseif segment_1 == 'yachts'}
-            {contact_sales_modal}
-      {/if}
-      {if:elseif segment_1 == 'events'}
-            {request_boarding_pass_modal}
-      {/if}
-
-	<section class="newsletter">
-		<h2></h2>
-		<div class="row row-pad new-sign-up small-collapse">
-			<div class="column text-center newsletter-header">
-				<h2 class="text-uppercase">Subscribe to our newsletter</h2><span>Subscribe to our email newsletter for the latest news and updates from Oyster Yachts</span>
-			</div>
-			<div class="column medium-12">
-<div class="sign-up">
-  <div class="flipsies">
-    <form id="signup-home-footer" method="post" name="sign-up-form" novalidate class="sign-up-form">
-      <div class="field">
-        <input type="text" placeholder="First Name" name="fname" required="" class="newsletter-fname">
-      </div>
-      <div class="field">
-        <input type="text" placeholder="Last Name" name="sname" required="" class="newsletter-sname">
-      </div>
-      <div class="field">
-        <input type="email" placeholder="Email Address" name="email" required="" class="newsletter-email">
-      </div>
-      <div class="field">
-        <select id="signup-country" name="cm-fo-ntykll" class="newsletter-country">
-          <option value="">Country</option>
-            <option value="Afghanistan">Afghanistan</option>
-            <option value="Albania">Albania</option>
-            <option value="Algeria">Algeria</option>
-            <option value="American Samoa">American Samoa</option>
-            <option value="Andorra">Andorra</option>
-            <option value="Angola">Angola</option>
-            <option value="Anguilla">Anguilla</option>
-            <option value="Antigua &amp; Barbuda">Antigua &amp; Barbuda</option>
-            <option value="Argentina">Argentina</option>
-            <option value="Armenia">Armenia</option>
-            <option value="Aruba">Aruba</option>
-            <option value="Australia">Australia</option>
-            <option value="Austria">Austria</option>
-            <option value="Azerbaijan">Azerbaijan</option>
-            <option value="Azores">Azores</option>
-            <option value="Bahamas">Bahamas</option>
-            <option value="Bahrain">Bahrain</option>
-            <option value="Bangladesh">Bangladesh</option>
-            <option value="Barbados">Barbados</option>
-            <option value="Belarus">Belarus</option>
-            <option value="Belgium">Belgium</option>
-            <option value="Belize">Belize</option>
-            <option value="Benin">Benin</option>
-            <option value="Bermuda">Bermuda</option>
-            <option value="Bhutan">Bhutan</option>
-            <option value="Bolivia">Bolivia</option>
-            <option value="Bonaire">Bonaire</option>
-            <option value="Bosnia &amp; Herzegovina">Bosnia &amp; Herzegovina</option>
-            <option value="Botswana">Botswana</option>
-            <option value="Brazil">Brazil</option>
-            <option value="British Indian Ocean Ter">British Indian Ocean Ter</option>
-            <option value="Brunei">Brunei</option>
-            <option value="Bulgaria">Bulgaria</option>
-            <option value="Burkina Faso">Burkina Faso</option>
-            <option value="Burundi">Burundi</option>
-            <option value="Cambodia">Cambodia</option>
-            <option value="Cameroon">Cameroon</option>
-            <option value="Canada">Canada</option>
-            <option value="Canary Islands">Canary Islands</option>
-            <option value="Cape Verde">Cape Verde</option>
-            <option value="Cayman Islands">Cayman Islands</option>
-            <option value="Central African Republic">Central African Republic</option>
-            <option value="Chad">Chad</option>
-            <option value="Channel Islands">Channel Islands</option>
-            <option value="Chile">Chile</option>
-            <option value="China">China</option>
-            <option value="Christmas Island">Christmas Island</option>
-            <option value="Cocos Island">Cocos Island</option>
-            <option value="Colombia">Colombia</option>
-            <option value="Comoros">Comoros</option>
-            <option value="Congo">Congo</option>
-            <option value="Congo Democratic Rep">Congo Democratic Rep</option>
-            <option value="Cook Islands">Cook Islands</option>
-            <option value="Costa Rica">Costa Rica</option>
-            <option value="Cote D&#x27;Ivoire">Cote D&#x27;Ivoire</option>
-            <option value="Croatia">Croatia</option>
-            <option value="Cuba">Cuba</option>
-            <option value="Curacao">Curacao</option>
-            <option value="Cyprus">Cyprus</option>
-            <option value="Czech Republic">Czech Republic</option>
-            <option value="Denmark">Denmark</option>
-            <option value="Djibouti">Djibouti</option>
-            <option value="Dominica">Dominica</option>
-            <option value="Dominican Republic">Dominican Republic</option>
-            <option value="East Timor">East Timor</option>
-            <option value="Ecuador">Ecuador</option>
-            <option value="Egypt">Egypt</option>
-            <option value="El Salvador">El Salvador</option>
-            <option value="Equatorial Guinea">Equatorial Guinea</option>
-            <option value="Eritrea">Eritrea</option>
-            <option value="Estonia">Estonia</option>
-            <option value="Ethiopia">Ethiopia</option>
-            <option value="Falkland Islands">Falkland Islands</option>
-            <option value="Faroe Islands">Faroe Islands</option>
-            <option value="Fiji">Fiji</option>
-            <option value="Finland">Finland</option>
-            <option value="France">France</option>
-            <option value="French Guiana">French Guiana</option>
-            <option value="French Polynesia">French Polynesia</option>
-            <option value="French Southern Ter">French Southern Ter</option>
-            <option value="Gabon">Gabon</option>
-            <option value="Gambia">Gambia</option>
-            <option value="Georgia">Georgia</option>
-            <option value="Germany">Germany</option>
-            <option value="Ghana">Ghana</option>
-            <option value="Gibraltar">Gibraltar</option>
-            <option value="Great Britain">Great Britain</option>
-            <option value="Greece">Greece</option>
-            <option value="Greenland">Greenland</option>
-            <option value="Grenada">Grenada</option>
-            <option value="Guadeloupe">Guadeloupe</option>
-            <option value="Guam">Guam</option>
-            <option value="Guatemala">Guatemala</option>
-            <option value="Guernsey">Guernsey</option>
-            <option value="Guinea">Guinea</option>
-            <option value="Guinea-Bissau">Guinea-Bissau</option>
-            <option value="Guyana">Guyana</option>
-            <option value="Haiti">Haiti</option>
-            <option value="Honduras">Honduras</option>
-            <option value="Hong Kong">Hong Kong</option>
-            <option value="Hungary">Hungary</option>
-            <option value="Iceland">Iceland</option>
-            <option value="India">India</option>
-            <option value="Indonesia">Indonesia</option>
-            <option value="Iran">Iran</option>
-            <option value="Iraq">Iraq</option>
-            <option value="Ireland">Ireland</option>
-            <option value="Isle of Man">Isle of Man</option>
-            <option value="Israel">Israel</option>
-            <option value="Italy">Italy</option>
-            <option value="Jamaica">Jamaica</option>
-            <option value="Japan">Japan</option>
-            <option value="Jersey">Jersey</option>
-            <option value="Jordan">Jordan</option>
-            <option value="Kazakhstan">Kazakhstan</option>
-            <option value="Kenya">Kenya</option>
-            <option value="Kiribati">Kiribati</option>
-            <option value="Korea North">Korea North</option>
-            <option value="Korea South">Korea South</option>
-            <option value="Kuwait">Kuwait</option>
-            <option value="Kyrgyzstan">Kyrgyzstan</option>
-            <option value="Laos">Laos</option>
-            <option value="Latvia">Latvia</option>
-            <option value="Lebanon">Lebanon</option>
-            <option value="Lesotho">Lesotho</option>
-            <option value="Liberia">Liberia</option>
-            <option value="Libya">Libya</option>
-            <option value="Liechtenstein">Liechtenstein</option>
-            <option value="Lithuania">Lithuania</option>
-            <option value="Luxembourg">Luxembourg</option>
-            <option value="Macau">Macau</option>
-            <option value="Macedonia">Macedonia</option>
-            <option value="Madagascar">Madagascar</option>
-            <option value="Malawi">Malawi</option>
-            <option value="Malaysia">Malaysia</option>
-            <option value="Maldives">Maldives</option>
-            <option value="Mali">Mali</option>
-            <option value="Malta">Malta</option>
-            <option value="Marshall Islands">Marshall Islands</option>
-            <option value="Martinique">Martinique</option>
-            <option value="Mauritania">Mauritania</option>
-            <option value="Mauritius">Mauritius</option>
-            <option value="Mayotte">Mayotte</option>
-            <option value="Mexico">Mexico</option>
-            <option value="Midway Islands">Midway Islands</option>
-            <option value="Moldova">Moldova</option>
-            <option value="Monaco">Monaco</option>
-            <option value="Mongolia">Mongolia</option>
-            <option value="Montenegro">Montenegro</option>
-            <option value="Montserrat">Montserrat</option>
-            <option value="Morocco">Morocco</option>
-            <option value="Mozambique">Mozambique</option>
-            <option value="Myanmar">Myanmar</option>
-            <option value="Namibia">Namibia</option>
-            <option value="Nauru">Nauru</option>
-            <option value="Nepal">Nepal</option>
-            <option value="Netherland Antilles">Netherland Antilles</option>
-            <option value="Netherlands">Netherlands</option>
-            <option value="Nevis">Nevis</option>
-            <option value="New Caledonia">New Caledonia</option>
-            <option value="New Zealand">New Zealand</option>
-            <option value="Nicaragua">Nicaragua</option>
-            <option value="Niger">Niger</option>
-            <option value="Nigeria">Nigeria</option>
-            <option value="Niue">Niue</option>
-            <option value="Norfolk Island">Norfolk Island</option>
-            <option value="Norway">Norway</option>
-            <option value="Oman">Oman</option>
-            <option value="Pakistan">Pakistan</option>
-            <option value="Palau Island">Palau Island</option>
-            <option value="Palestine">Palestine</option>
-            <option value="Panama">Panama</option>
-            <option value="Papua New Guinea">Papua New Guinea</option>
-            <option value="Paraguay">Paraguay</option>
-            <option value="Peru">Peru</option>
-            <option value="Philippines">Philippines</option>
-            <option value="Pitcairn Island">Pitcairn Island</option>
-            <option value="Poland">Poland</option>
-            <option value="Portugal">Portugal</option>
-            <option value="Puerto Rico">Puerto Rico</option>
-            <option value="Qatar">Qatar</option>
-            <option value="Reunion">Reunion</option>
-            <option value="Romania">Romania</option>
-            <option value="Russia">Russia</option>
-            <option value="Rwanda">Rwanda</option>
-            <option value="Saipan">Saipan</option>
-            <option value="Samoa">Samoa</option>
-            <option value="Samoa American">Samoa American</option>
-            <option value="San Marino">San Marino</option>
-            <option value="Sao Tome &amp; Principe">Sao Tome &amp; Principe</option>
-            <option value="Saudi Arabia">Saudi Arabia</option>
-            <option value="Senegal">Senegal</option>
-            <option value="Serbia">Serbia</option>
-            <option value="Serbia &amp; Montenegro">Serbia &amp; Montenegro</option>
-            <option value="Seychelles">Seychelles</option>
-            <option value="Sierra Leone">Sierra Leone</option>
-            <option value="Singapore">Singapore</option>
-            <option value="Slovakia">Slovakia</option>
-            <option value="Slovenia">Slovenia</option>
-            <option value="Solomon Islands">Solomon Islands</option>
-            <option value="Somalia">Somalia</option>
-            <option value="South Africa">South Africa</option>
-            <option value="South Sudan">South Sudan</option>
-            <option value="Spain">Spain</option>
-            <option value="Sri Lanka">Sri Lanka</option>
-            <option value="St Barthelemy">St Barthelemy</option>
-            <option value="St Eustatius">St Eustatius</option>
-            <option value="St Helena">St Helena</option>
-            <option value="St Kitts-Nevis">St Kitts-Nevis</option>
-            <option value="St Lucia">St Lucia</option>
-            <option value="St Maarten">St Maarten</option>
-            <option value="St Pierre &amp; Miquelon">St Pierre &amp; Miquelon</option>
-            <option value="St Vincent &amp; Grenadines">St Vincent &amp; Grenadines</option>
-            <option value="Sudan">Sudan</option>
-            <option value="Suriname">Suriname</option>
-            <option value="Swaziland">Swaziland</option>
-            <option value="Sweden">Sweden</option>
-            <option value="Switzerland">Switzerland</option>
-            <option value="Syria">Syria</option>
-            <option value="Tahiti">Tahiti</option>
-            <option value="Taiwan">Taiwan</option>
-            <option value="Tajikistan">Tajikistan</option>
-            <option value="Tanzania">Tanzania</option>
-            <option value="Thailand">Thailand</option>
-            <option value="Togo">Togo</option>
-            <option value="Tokelau">Tokelau</option>
-            <option value="Tonga">Tonga</option>
-            <option value="Trinidad &amp; Tobago">Trinidad &amp; Tobago</option>
-            <option value="Tunisia">Tunisia</option>
-            <option value="Turkey">Turkey</option>
-            <option value="Turkmenistan">Turkmenistan</option>
-            <option value="Turks &amp; Caicos Is">Turks &amp; Caicos Is</option>
-            <option value="Tuvalu">Tuvalu</option>
-            <option value="Uganda">Uganda</option>
-            <option value="Ukraine">Ukraine</option>
-            <option value="United Arab Emirates">United Arab Emirates</option>
-            <option value="United Kingdom">United Kingdom</option>
-            <option value="United States of America">United States of America</option>
-            <option value="Uruguay">Uruguay</option>
-            <option value="Uzbekistan">Uzbekistan</option>
-            <option value="Vanuatu">Vanuatu</option>
-            <option value="Vatican City State">Vatican City State</option>
-            <option value="Venezuela">Venezuela</option>
-            <option value="Vietnam">Vietnam</option>
-            <option value="Virgin Islands (Brit)">Virgin Islands (Brit)</option>
-            <option value="Virgin Islands (USA)">Virgin Islands (USA)</option>
-            <option value="Wake Island">Wake Island</option>
-            <option value="Wallis &amp; Futana Is">Wallis &amp; Futana Is</option>
-            <option value="Yemen">Yemen</option>
-            <option value="Zambia">Zambia</option>
-            <option value="Zimbabwe">Zimbabwe</option>
-        </select>
-      </div>
-      <button type="submit" class="sign-up-btn button-solid-cyan button-chubby">Subscribe
-        <div class="loader-container">
-          <div class="loader">Loading...
-            <div class="ball"></div>
-            <div class="ball"></div>
-            <div class="ball"></div>
-          </div>
+{if segment_1 == 'brokerage'}
+	{shortlist_modal}
+{if:elseif segment_1 == 'yachts'}
+	{contact_sales_modal}
+{/if}
+{if:elseif segment_1 == 'events'}
+	{request_boarding_pass_modal}
+{/if}
+<section class="newsletter">
+  <h2></h2>
+  <div class="row row-pad new-sign-up small-collapse">
+    <div class="column text-center newsletter-header">
+      <h2 class="text-uppercase">Subscribe to our newsletter</h2><span>Subscribe to our email newsletter for the latest news and updates from Oyster Yachts</span>
+    </div>
+    <div class="column medium-12">
+      <div class="sign-up">
+        <div class="flipsies">
+          <form id="signup-home-footer" method="post" name="sign-up-form" novalidate class="sign-up-form">
+            <div class="field">
+              <input type="text" placeholder="First Name" name="fname" required="" class="newsletter-fname">
+            </div>
+            <div class="field">
+              <input type="text" placeholder="Last Name" name="sname" required="" class="newsletter-sname">
+            </div>
+            <div class="field">
+              <input type="email" placeholder="Email Address" name="email" required="" class="newsletter-email">
+            </div>
+            <div class="field">
+              <select id="signup-country" name="cm-fo-ntykll" class="newsletter-country">
+                <option value="">Country</option>
+                <option value="Afghanistan">Afghanistan</option>
+                <option value="Albania">Albania</option>
+                <option value="Algeria">Algeria</option>
+                <option value="American Samoa">American Samoa</option>
+                <option value="Andorra">Andorra</option>
+                <option value="Angola">Angola</option>
+                <option value="Anguilla">Anguilla</option>
+                <option value="Antigua &amp; Barbuda">Antigua &amp; Barbuda</option>
+                <option value="Argentina">Argentina</option>
+                <option value="Armenia">Armenia</option>
+                <option value="Aruba">Aruba</option>
+                <option value="Australia">Australia</option>
+                <option value="Austria">Austria</option>
+                <option value="Azerbaijan">Azerbaijan</option>
+                <option value="Azores">Azores</option>
+                <option value="Bahamas">Bahamas</option>
+                <option value="Bahrain">Bahrain</option>
+                <option value="Bangladesh">Bangladesh</option>
+                <option value="Barbados">Barbados</option>
+                <option value="Belarus">Belarus</option>
+                <option value="Belgium">Belgium</option>
+                <option value="Belize">Belize</option>
+                <option value="Benin">Benin</option>
+                <option value="Bermuda">Bermuda</option>
+                <option value="Bhutan">Bhutan</option>
+                <option value="Bolivia">Bolivia</option>
+                <option value="Bonaire">Bonaire</option>
+                <option value="Bosnia &amp; Herzegovina">Bosnia &amp; Herzegovina</option>
+                <option value="Botswana">Botswana</option>
+                <option value="Brazil">Brazil</option>
+                <option value="British Indian Ocean Ter">British Indian Ocean Ter</option>
+                <option value="Brunei">Brunei</option>
+                <option value="Bulgaria">Bulgaria</option>
+                <option value="Burkina Faso">Burkina Faso</option>
+                <option value="Burundi">Burundi</option>
+                <option value="Cambodia">Cambodia</option>
+                <option value="Cameroon">Cameroon</option>
+                <option value="Canada">Canada</option>
+                <option value="Canary Islands">Canary Islands</option>
+                <option value="Cape Verde">Cape Verde</option>
+                <option value="Cayman Islands">Cayman Islands</option>
+                <option value="Central African Republic">Central African Republic</option>
+                <option value="Chad">Chad</option>
+                <option value="Channel Islands">Channel Islands</option>
+                <option value="Chile">Chile</option>
+                <option value="China">China</option>
+                <option value="Christmas Island">Christmas Island</option>
+                <option value="Cocos Island">Cocos Island</option>
+                <option value="Colombia">Colombia</option>
+                <option value="Comoros">Comoros</option>
+                <option value="Congo">Congo</option>
+                <option value="Congo Democratic Rep">Congo Democratic Rep</option>
+                <option value="Cook Islands">Cook Islands</option>
+                <option value="Costa Rica">Costa Rica</option>
+                <option value="Cote D&#x27;Ivoire">Cote D&#x27;Ivoire</option>
+                <option value="Croatia">Croatia</option>
+                <option value="Cuba">Cuba</option>
+                <option value="Curacao">Curacao</option>
+                <option value="Cyprus">Cyprus</option>
+                <option value="Czech Republic">Czech Republic</option>
+                <option value="Denmark">Denmark</option>
+                <option value="Djibouti">Djibouti</option>
+                <option value="Dominica">Dominica</option>
+                <option value="Dominican Republic">Dominican Republic</option>
+                <option value="East Timor">East Timor</option>
+                <option value="Ecuador">Ecuador</option>
+                <option value="Egypt">Egypt</option>
+                <option value="El Salvador">El Salvador</option>
+                <option value="Equatorial Guinea">Equatorial Guinea</option>
+                <option value="Eritrea">Eritrea</option>
+                <option value="Estonia">Estonia</option>
+                <option value="Ethiopia">Ethiopia</option>
+                <option value="Falkland Islands">Falkland Islands</option>
+                <option value="Faroe Islands">Faroe Islands</option>
+                <option value="Fiji">Fiji</option>
+                <option value="Finland">Finland</option>
+                <option value="France">France</option>
+                <option value="French Guiana">French Guiana</option>
+                <option value="French Polynesia">French Polynesia</option>
+                <option value="French Southern Ter">French Southern Ter</option>
+                <option value="Gabon">Gabon</option>
+                <option value="Gambia">Gambia</option>
+                <option value="Georgia">Georgia</option>
+                <option value="Germany">Germany</option>
+                <option value="Ghana">Ghana</option>
+                <option value="Gibraltar">Gibraltar</option>
+                <option value="Great Britain">Great Britain</option>
+                <option value="Greece">Greece</option>
+                <option value="Greenland">Greenland</option>
+                <option value="Grenada">Grenada</option>
+                <option value="Guadeloupe">Guadeloupe</option>
+                <option value="Guam">Guam</option>
+                <option value="Guatemala">Guatemala</option>
+                <option value="Guernsey">Guernsey</option>
+                <option value="Guinea">Guinea</option>
+                <option value="Guinea-Bissau">Guinea-Bissau</option>
+                <option value="Guyana">Guyana</option>
+                <option value="Haiti">Haiti</option>
+                <option value="Honduras">Honduras</option>
+                <option value="Hong Kong">Hong Kong</option>
+                <option value="Hungary">Hungary</option>
+                <option value="Iceland">Iceland</option>
+                <option value="India">India</option>
+                <option value="Indonesia">Indonesia</option>
+                <option value="Iran">Iran</option>
+                <option value="Iraq">Iraq</option>
+                <option value="Ireland">Ireland</option>
+                <option value="Isle of Man">Isle of Man</option>
+                <option value="Israel">Israel</option>
+                <option value="Italy">Italy</option>
+                <option value="Jamaica">Jamaica</option>
+                <option value="Japan">Japan</option>
+                <option value="Jersey">Jersey</option>
+                <option value="Jordan">Jordan</option>
+                <option value="Kazakhstan">Kazakhstan</option>
+                <option value="Kenya">Kenya</option>
+                <option value="Kiribati">Kiribati</option>
+                <option value="Korea North">Korea North</option>
+                <option value="Korea South">Korea South</option>
+                <option value="Kuwait">Kuwait</option>
+                <option value="Kyrgyzstan">Kyrgyzstan</option>
+                <option value="Laos">Laos</option>
+                <option value="Latvia">Latvia</option>
+                <option value="Lebanon">Lebanon</option>
+                <option value="Lesotho">Lesotho</option>
+                <option value="Liberia">Liberia</option>
+                <option value="Libya">Libya</option>
+                <option value="Liechtenstein">Liechtenstein</option>
+                <option value="Lithuania">Lithuania</option>
+                <option value="Luxembourg">Luxembourg</option>
+                <option value="Macau">Macau</option>
+                <option value="Macedonia">Macedonia</option>
+                <option value="Madagascar">Madagascar</option>
+                <option value="Malawi">Malawi</option>
+                <option value="Malaysia">Malaysia</option>
+                <option value="Maldives">Maldives</option>
+                <option value="Mali">Mali</option>
+                <option value="Malta">Malta</option>
+                <option value="Marshall Islands">Marshall Islands</option>
+                <option value="Martinique">Martinique</option>
+                <option value="Mauritania">Mauritania</option>
+                <option value="Mauritius">Mauritius</option>
+                <option value="Mayotte">Mayotte</option>
+                <option value="Mexico">Mexico</option>
+                <option value="Midway Islands">Midway Islands</option>
+                <option value="Moldova">Moldova</option>
+                <option value="Monaco">Monaco</option>
+                <option value="Mongolia">Mongolia</option>
+                <option value="Montenegro">Montenegro</option>
+                <option value="Montserrat">Montserrat</option>
+                <option value="Morocco">Morocco</option>
+                <option value="Mozambique">Mozambique</option>
+                <option value="Myanmar">Myanmar</option>
+                <option value="Namibia">Namibia</option>
+                <option value="Nauru">Nauru</option>
+                <option value="Nepal">Nepal</option>
+                <option value="Netherland Antilles">Netherland Antilles</option>
+                <option value="Netherlands">Netherlands</option>
+                <option value="Nevis">Nevis</option>
+                <option value="New Caledonia">New Caledonia</option>
+                <option value="New Zealand">New Zealand</option>
+                <option value="Nicaragua">Nicaragua</option>
+                <option value="Niger">Niger</option>
+                <option value="Nigeria">Nigeria</option>
+                <option value="Niue">Niue</option>
+                <option value="Norfolk Island">Norfolk Island</option>
+                <option value="Norway">Norway</option>
+                <option value="Oman">Oman</option>
+                <option value="Pakistan">Pakistan</option>
+                <option value="Palau Island">Palau Island</option>
+                <option value="Palestine">Palestine</option>
+                <option value="Panama">Panama</option>
+                <option value="Papua New Guinea">Papua New Guinea</option>
+                <option value="Paraguay">Paraguay</option>
+                <option value="Peru">Peru</option>
+                <option value="Philippines">Philippines</option>
+                <option value="Pitcairn Island">Pitcairn Island</option>
+                <option value="Poland">Poland</option>
+                <option value="Portugal">Portugal</option>
+                <option value="Puerto Rico">Puerto Rico</option>
+                <option value="Qatar">Qatar</option>
+                <option value="Reunion">Reunion</option>
+                <option value="Romania">Romania</option>
+                <option value="Russia">Russia</option>
+                <option value="Rwanda">Rwanda</option>
+                <option value="Saipan">Saipan</option>
+                <option value="Samoa">Samoa</option>
+                <option value="Samoa American">Samoa American</option>
+                <option value="San Marino">San Marino</option>
+                <option value="Sao Tome &amp; Principe">Sao Tome &amp; Principe</option>
+                <option value="Saudi Arabia">Saudi Arabia</option>
+                <option value="Senegal">Senegal</option>
+                <option value="Serbia">Serbia</option>
+                <option value="Serbia &amp; Montenegro">Serbia &amp; Montenegro</option>
+                <option value="Seychelles">Seychelles</option>
+                <option value="Sierra Leone">Sierra Leone</option>
+                <option value="Singapore">Singapore</option>
+                <option value="Slovakia">Slovakia</option>
+                <option value="Slovenia">Slovenia</option>
+                <option value="Solomon Islands">Solomon Islands</option>
+                <option value="Somalia">Somalia</option>
+                <option value="South Africa">South Africa</option>
+                <option value="South Sudan">South Sudan</option>
+                <option value="Spain">Spain</option>
+                <option value="Sri Lanka">Sri Lanka</option>
+                <option value="St Barthelemy">St Barthelemy</option>
+                <option value="St Eustatius">St Eustatius</option>
+                <option value="St Helena">St Helena</option>
+                <option value="St Kitts-Nevis">St Kitts-Nevis</option>
+                <option value="St Lucia">St Lucia</option>
+                <option value="St Maarten">St Maarten</option>
+                <option value="St Pierre &amp; Miquelon">St Pierre &amp; Miquelon</option>
+                <option value="St Vincent &amp; Grenadines">St Vincent &amp; Grenadines</option>
+                <option value="Sudan">Sudan</option>
+                <option value="Suriname">Suriname</option>
+                <option value="Swaziland">Swaziland</option>
+                <option value="Sweden">Sweden</option>
+                <option value="Switzerland">Switzerland</option>
+                <option value="Syria">Syria</option>
+                <option value="Tahiti">Tahiti</option>
+                <option value="Taiwan">Taiwan</option>
+                <option value="Tajikistan">Tajikistan</option>
+                <option value="Tanzania">Tanzania</option>
+                <option value="Thailand">Thailand</option>
+                <option value="Togo">Togo</option>
+                <option value="Tokelau">Tokelau</option>
+                <option value="Tonga">Tonga</option>
+                <option value="Trinidad &amp; Tobago">Trinidad &amp; Tobago</option>
+                <option value="Tunisia">Tunisia</option>
+                <option value="Turkey">Turkey</option>
+                <option value="Turkmenistan">Turkmenistan</option>
+                <option value="Turks &amp; Caicos Is">Turks &amp; Caicos Is</option>
+                <option value="Tuvalu">Tuvalu</option>
+                <option value="Uganda">Uganda</option>
+                <option value="Ukraine">Ukraine</option>
+                <option value="United Arab Emirates">United Arab Emirates</option>
+                <option value="United Kingdom">United Kingdom</option>
+                <option value="United States of America">United States of America</option>
+                <option value="Uruguay">Uruguay</option>
+                <option value="Uzbekistan">Uzbekistan</option>
+                <option value="Vanuatu">Vanuatu</option>
+                <option value="Vatican City State">Vatican City State</option>
+                <option value="Venezuela">Venezuela</option>
+                <option value="Vietnam">Vietnam</option>
+                <option value="Virgin Islands (Brit)">Virgin Islands (Brit)</option>
+                <option value="Virgin Islands (USA)">Virgin Islands (USA)</option>
+                <option value="Wake Island">Wake Island</option>
+                <option value="Wallis &amp; Futana Is">Wallis &amp; Futana Is</option>
+                <option value="Yemen">Yemen</option>
+                <option value="Zambia">Zambia</option>
+                <option value="Zimbabwe">Zimbabwe</option>
+              </select>
+            </div>
+            <button type="submit" class="sign-up-btn button-solid-cyan button-chubby">Subscribe
+              <div class="loader-container">
+                <div class="loader">Loading...
+                  <div class="ball"></div>
+                  <div class="ball"></div>
+                  <div class="ball"></div>
+                </div>
+              </div>
+            </button>
+          </form>
+          <div aria-hidden="true" class="sign-up-success"><span><strong>Thank you. </strong> You have sucessfully subscribed to the Oyster Yachts newsletter.</span></div>
         </div>
-      </button>
-    </form>
-    <div aria-hidden="true" class="sign-up-success"><span><strong>Thank you. </strong> You have sucessfully subscribed to the Oyster Yachts newsletter.</span></div>
+      </div>
+      <div class="form-error text-center text-uppercase"><span>ERROR: Invalid Email or incomplete fields</span></div>
+    </div>
   </div>
-</div>
-				<div class="form-error text-center text-uppercase"><span>ERROR: Invalid Email or incomplete fields</span></div>
-			</div>
-		</div>
-	</section>
-
-	<footer>
-		<div class="footer-contents">
-			<div class="social-wrapper-wrapper row row-pad small-collapse">
-				<div class="footer-nav column clearfix medium-9 large-7 show-for-medium">
-					<nav>
-						<a href="{path='about'}" class="text-uppercase">About</a>
-						<ul class="show-for-medium">
-							<li><a href="{path='about/why-oyster'}" class="text-uppercase">Why Oyster</a></li>
-							<li><a href="{path='about/what-we-offer'}" class="text-uppercase">What We Offer</a></li>
-							<li><a href="{path='about/team'}" class="text-uppercase">Our Team</a></li>
-                                          <li><a href="{path='about/heritage'}" class="text-uppercase">Heritage</a></li>
-						</ul>
-					</nav>
-					<nav>
-						<a href="{path='yachts/fleet'}" class="text-uppercase">New Yachts</a>
-						<ul class="show-for-medium">
-							<li><a href="{path='yachts/g6-fleet'}" class="text-uppercase">G6 Fleet</a></li>
-                                          <li><a href="{path='yachts/g5-fleet'}" class="text-uppercase">G5 Fleet</a></li>
-                                          <li><a href="{path='contact#oyster-sales'}" class="text-uppercase">Contact Sales</a></li>
-                                        <!--   <li><a href="{path='yachts/sys-projects'}" class="text-uppercase">SYS Projects</a></li>
+</section>
+<footer class='global-footer'>
+  <div class="footer-contents">
+    <div class="social-wrapper-wrapper row row-pad small-collapse">
+      <div class="footer-nav column clearfix medium-9 large-7 show-for-medium">
+        <nav>
+          <a href="{path='about'}" class="text-uppercase">About</a>
+          <ul class="show-for-medium">
+            <li><a href="{path='about/why-oyster'}" class="text-uppercase">Why Oyster</a></li>
+            <li><a href="{path='about/what-we-offer'}" class="text-uppercase">What We Offer</a></li>
+            <li><a href="{path='about/team'}" class="text-uppercase">Our Team</a></li>
+            <li><a href="{path='about/heritage'}" class="text-uppercase">Heritage</a></li>
+          </ul>
+        </nav>
+        <nav>
+          <a href="{path='yachts/fleet'}" class="text-uppercase">New Yachts</a>
+          <ul class="show-for-medium">
+            <li><a href="{path='yachts/g6-fleet'}" class="text-uppercase">G6 Fleet</a></li>
+            <li><a href="{path='yachts/g5-fleet'}" class="text-uppercase">G5 Fleet</a></li>
+            <li><a href="{path='contact#oyster-sales'}" class="text-uppercase">Contact Sales</a></li>
+            <!--   <li><a href="{path='yachts/sys-projects'}" class="text-uppercase">SYS Projects</a></li>
 							<li><a href="{path='yachts/previous-models'}" class="text-uppercase">Previous Models</a> --></li>
-						</ul>
-					</nav>
-					<nav>
-						<a href="{path='yachts/fleet'}" class="text-uppercase">Services</a>
-						<ul class="show-for-medium">
-                                          <li><a href="#" class="text-uppercase">Service Centres</a></li>
-							<li><a href="{path='brokerage/fleet'}" class="text-uppercase">Brokerage Fleet</a></li>
-							<li><a href="{path='charter'}" class="text-uppercase">Charter </a></li>
-							<li><a href="{path='contact#oyster-custom'}" class="text-uppercase">Custom &amp; Refit</a></li>
-                                          <li><a href="{path='services/oyster-crew'}" class="text-uppercase">Oyster Crew</a></li>
-						</ul>
-					</nav>
-
-					<nav>
-						<a href="{path='world-rally'}" class="text-uppercase">World Rally</a>
-						<ul class="show-for-medium">
-							<li><a href="http://www.oysterworldrally.com/" class="text-uppercase">World Rally 2017 - 19</a></li>
-							<li><a href="{path='world-rally/world-rally-2013-14'}" class="text-uppercase">World Rally 2013 - 14</a></li>
-                                                <li><a href="mailto:worldrally2017@oysteryachts.com" class="text-uppercase">Contact World Rally</a></li>
-						</ul>
-					</nav>
-					<nav>
-						<a href="{path='events'}" class="text-uppercase">Events</a>
-						<ul class="show-for-medium">
-							<li><a href="{path='events/regatta-calendar'}" class="text-uppercase">Regattas</a></li>
-							<li><a href="{path='events/boat-shows'}" class="text-uppercase">Boat Shows</a></li>
-							<li><a href="{path='events/other-events'}" class="text-uppercase">Other Events</a></li>
-							<li><a href="{path='events/gallery'}" class="text-uppercase">Events Gallery</a></li>
-						</ul>
-					</nav>
-					<nav>
-						<a href="{path='news'}" class="text-uppercase">News</a>
-						<ul class="show-for-medium">
-							<li><a href="{path='news/news-library'}" class="text-uppercase">News Library</a></li>
-							<li><a href="{path='news/magazine'}" class="text-uppercase">Oyster Magazine</a></li>
-							<li><a href="{path='news/press-coverage'}" class="text-uppercase">Press Coverage</a></li>
-						</ul>
-					</nav>
-					<nav>
-						<a href="{path='contact'}" class="text-uppercase">Contact</a>
-						<ul class="show-for-medium">
-                                          <li><a href="{path='media-centre/login'}" class="text-uppercase">Media Centre</a></li>
-      						<li><a href="{path='contact/recruitment'}" class="text-uppercase">Recruitment</a></li>
-                                          <li><a href="{path='contact'}" class="text-uppercase">Our Offices</a></li>
-						</ul>
-                                    <a href="{path='owners-area'}" class="text-uppercase">Owners' Area</a>
-					</nav>
-				</div>
-				<nav class="end float-right social-wrapper"><span class="text-uppercase show-for-medium">Connect with us</span>
-					<div class="social-icons"><a href="https://www.facebook.com/oystermarine" target="_blank" class="facebook-icon"><i class="fa fa-facebook-official"></i></a><a href="https://twitter.com/OysterMarine" target="_blank" class="twitter-icon"><i class="fa fa-twitter"></i></a><a href="https://www.youtube.com/user/oystermarine" target="_blank" class="youtube-icon"><i class="fa fa-youtube-play"></i></a><a href="https://www.instagram.com/oysteryachts/" target="_blank" class="instagram-icon"><i class="fa fa-instagram"></i></a></div>
-				</nav>
-			</div>
-			<div class="footer-highlights-wrapper">
-				<div class="row row-pad small-collapse footer-highlights">
-					<div class="medium-9 show-for-medium columns">
-						<ul>
-							<li>Sales</li>
-							<li>Brokerage</li>
-							<li>Charter</li>
-							<li>Custom &amp; Refit</li>
-						</ul>
-					</div>
-					<div class="small-12 small-centered medium-3 footer-logo-wrapper columns end">
-						<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 249.2 28.2" enable-background="new 0 0 249.2 28.2" xml:space="preserve">
-							<g>
-								<path fill="#fff" d="M156.9,6.2L156,4.8c-1.8-2.8-4-3.3-10.6-3.4c-0.4,0-0.6,0.2-0.6,0.5c-0.1,2.6-0.2,7.7-0.2,12.5			c0,5.3,0.1,10.2,0.6,11.2c0.6,1.2,1.7,1.5,3,1.5c0.7,0,0.6,0.7,0,0.7H136c-0.6,0-0.7-0.7,0-0.7c1.4,0,2.5-0.4,3.2-1.5			c0.5-0.9,0.7-6.4,0.7-12.1c0-4.8-0.1-9.8-0.1-11.6c0-0.4-0.2-0.5-0.6-0.5c-3.7,0-8.4,0-10.5,3.4l-0.7,1.5c-0.2,0.5-0.8,0.4-0.7,0			l1.4-5.9c9.9,0.1,17.7,0.4,27.5,0l1.3,5.9C157.7,6.7,157.1,6.7,156.9,6.2"></path>
-								<path fill="#fff" d="M74.5,1.1c-1.7,0.1-3.1,1.5-4.1,2.6c-0.4,0.6-0.9,1.2-1.5,1.9l-6.1,7.9c-0.8,0.9-1,1.8-1,2.8l0,6			c0,0.7,0,1.4,0,2.1c0.1,0.7,0.2,1.4,0.4,1.7c0.6,0.7,1.9,1.1,2.8,1.1c0.7,0.1,0.6,0.7,0,0.7H53.7c-0.7,0-0.9-0.7,0-0.7			c1.4,0,2.6-0.9,2.9-2.1c0.1-0.3,0.1-0.6,0.2-1c0.1-0.4,0.1-0.8,0.1-1.2c0-0.4,0-0.8,0-1.2c0-0.7,0-1.5,0-2.5c0-2.4-0.5-4.2-1.9-6.3			c-0.3-0.5-0.7-0.9-1-1.4C53.6,10.8,50.2,6.3,50,6l-1.6-2c-0.7-1-1.6-1.9-2.7-2.5c-0.5-0.3-1-0.4-1.6-0.4c-0.5,0-0.6-0.7,0-0.7h11.7			c0.5,0,0.5,0.7,0,0.7c-1.6,0-2,0.6-2,1.2c0,0.7,0.4,1.4,0.7,1.7c0.5,0.7,2.1,3,3.7,5.3c1.4,2,2.7,3.9,3.2,4.6c0.9-1.2,5.8-7.6,6-8			l0.5-0.7c0.2-0.3,0.3-0.5,0.5-0.8c0.3-0.5,0.6-1.1,0.7-1.7c0-0.9-0.4-1.5-1.8-1.6c-0.6,0-0.7-0.7-0.1-0.7h8.4c0.5,0,0.5,0.7,0,0.7			C75.1,1,74.8,1,74.5,1.1"></path>
-								<path fill="#fff" d="M196.3,27.9h-22.8c-0.6,0-0.7-0.5,0-0.6c0.6-0.1,1.1-0.2,1.7-0.5c1.4-0.6,1.3-2.5,1.3-3.7			c0-0.4,0-0.8,0-1.2l0-1.4c0-0.6,0-1.3,0-2c0-0.7,0-1.5,0-2.2V14V6.6c0-0.4,0-0.9,0-1.4c0-0.5,0-0.9-0.1-1.4			c-0.1-1.7-0.8-2.6-2.7-2.9c-0.7-0.1-0.5-0.6,0-0.6h19.8c1.2,0,2,0,2.6,0c0.9,0,1.1,0.8,1.1,0.8l0.6,4c0.1,0.5-0.5,0.6-0.7,0.3			c-0.6-0.9-1-1.6-1.9-2.3c-1-0.8-2.4-1.4-4.8-1.7c-1.3-0.2-3.9-0.2-5.8-0.2c-0.6,0-1.2,0-1.9,0.1c-0.5,0-1.3,0.2-1.4,2.5			c0,1.3,0,2.7,0,4.4v2.4v1.6l0,0.9v0.3h0.7c0.4,0,0.9,0,1.4,0l1.6-0.1c2.4-0.2,5.9-0.9,6.2-3.5h0.8v7.6h-0.8c-0.9-3-3.3-2.8-6.2-3			c-0.4,0-0.8,0-1.1,0c-0.3,0-0.6,0-0.8,0h-0.8h-1c0,0.3-0.1,0.8-0.1,1.4v2.1v1.1v1.3l0,2.1c0,0.8,0.1,1.6,0.1,2.3			c0.2,1.5,0.5,1.9,2.2,2.2c1,0.1,2,0.2,3.1,0.2c0.5,0,1.1,0,1.8,0c0.8,0,1.5-0.1,2.4-0.2c2.3-0.3,6.6-2.2,7.9-4.3			c0.4-0.6,1-0.5,0.8,0.2l-1,3.6C198.6,27.4,197.7,27.9,196.3,27.9"></path>
-								<path fill="#fff" d="M111.1,23.7c-0.6,1-1.5,1.8-2.6,2.5c-2.5,1.6-5.9,2-8.8,2c-2.7,0-4.9-0.5-6.5-0.9c-1.4-0.3-2.6-0.5-3.6-0.3			c-0.5,0.1-0.5-0.2-0.5-0.5c0-0.7-0.1-5.3-0.1-5.3c0-0.4,0.6-0.4,0.7,0c1.2,3.3,6.2,6.1,10,6.1c2.3,0,4.1-0.5,5.5-1.5			c1.4-1,2.1-2.3,2.1-4c0-1.2-0.5-2.3-1.5-3.1c-1-0.9-2.4-1.4-3.7-1.7c-0.7-0.2-6.2-1.7-6.9-2c-0.8-0.3-1.6-0.6-2.4-1			c-0.8-0.5-1.4-1-2-1.6c-0.6-0.6-1-1.3-1.4-2c-0.4-0.7-0.5-1.5-0.5-2.4c0-1.4,0.3-2.6,0.9-3.6c1.3-2.1,3.6-3.4,6.1-4			c1.4-0.3,2.8-0.5,4.3-0.5c1.4,0,2.6,0.1,3.6,0.3c1.5,0.3,2.9,0.6,4.4,0.7c0.2,0,0.5,0,0.8,0c0.4,0,0.7,0.1,0.7,0.5V7			c0,0.9-0.4,0.8-0.8-0.2c-0.1-0.3-1.1-2.4-2-3.4c-1.4-1.3-3.4-2.5-6.5-2.5c-1,0-2.1,0.1-2.9,0.3c-0.8,0.2-1.6,0.6-2.2,1			c-0.6,0.4-1.1,1-1.5,1.7c-0.3,0.6-0.5,1.4-0.5,2.2c0,1.3,0.5,2.3,1.4,3.1c1,0.8,2.3,1.4,3.8,1.9c0.6,0.2,6.1,1.7,6.7,1.9			c2.1,0.6,3.8,1.6,5,2.8c1.2,1.2,1.8,2.7,1.8,4.6C112,21.6,111.7,22.7,111.1,23.7"></path>
-								<path fill="#fff" d="M25.9,9.4c-0.4-1.5-1.1-2.9-2-4.2c-0.9-1.3-2-2.3-3.3-3.1c-1.3-0.8-2.8-1.2-4.6-1.2c-1.8,0-3.4,0.4-4.7,1.2			C10,2.9,8.9,3.9,8,5.1C7.2,6.4,6.6,7.8,6.2,9.4c-0.4,1.6-0.6,3.2-0.6,4.8c0,3.1,0.8,6.5,2.6,9.1c0.9,1.2,2,2.1,3.3,2.9			c1.3,0.7,2.9,1.1,4.6,1.1c1.8,0,3.3-0.4,4.5-1.2c1.3-0.8,2.4-1.8,3.3-3.1c0.9-1.3,1.5-2.7,1.9-4.3c0.4-1.6,0.7-3.2,0.7-4.7			C26.5,12.4,26.3,10.9,25.9,9.4 M30.8,19.6c-0.9,1.7-2,3.2-3.5,4.5c-1.5,1.3-3.2,2.3-5.1,2.9c-1.9,0.7-4,1-6.2,1			c-2.2,0-4.2-0.3-6.2-1c-1.9-0.7-3.6-1.6-5.1-2.9c-1.5-1.2-2.6-2.7-3.5-4.4C0.4,18,0,16.1,0,14.1c0-2.2,0.4-4.1,1.3-5.9			C2.2,6.5,3.4,5,4.9,3.8C6.4,2.6,8.2,1.6,10.1,1c2-0.7,4.1-1,6.4-1c2.4,0,4.6,0.4,6.5,1.1c1.9,0.8,3.6,1.8,4.9,3.1			c2.8,2.6,4.2,6.1,4.2,9.7C32.1,16,31.7,17.9,30.8,19.6" class="logo-o"></path>
-								<path fill="#fff" d="M243.6,27.9c-4.4,0.1-6.6-2.6-7.8-3.6c-2.5-2.3-6.1-5.6-6.9-6.3c-0.7-0.7-2.3-2.3-3.3-3			c-0.5-0.2-0.5-0.7,0-0.7c1.3-0.1,2.2-0.3,3.1-0.6c1.5-0.4,2.9-1.3,3.8-2.5c0.4-0.5,0.7-1.1,0.9-1.7c0.2-0.6,0.3-1.3,0.3-1.9			c0-2.6-1.5-4.5-4.1-5.6c-0.7-0.3-1.4-0.5-2.1-0.6c-0.7-0.1-1.5-0.2-2.3-0.2c-0.6,0-1.1,0-1.4,0c-0.8,0-1,1.3-1,2.8			c0,0.6-0.1,3-0.1,3v3.2v8.9c0,1.2,0,2.2,0,3.1l0.1,2.1c0.1,2.2,1.2,2.8,3.5,2.9c0.6,0,0.5,0.7,0,0.7h-11.6c-0.5,0-0.6-0.5,0-0.6			c1.4-0.2,2.2-0.6,2.6-2c0.1-0.3,0.1-0.6,0.2-1c0.1-0.4,0.1-0.8,0.1-1.2c0-0.4,0-0.8,0-1.2v-1.4c0-0.6,0-1.3,0-2c0-0.7,0-1.5,0-2.2			V14V6.6c0-0.4,0-0.9,0-1.4c0-0.5,0-0.9-0.1-1.3c0-0.4-0.1-0.8-0.2-1.1c-0.1-0.6-0.5-1.3-1.1-1.5c-0.4-0.2-0.9-0.3-1.4-0.4			c-0.5-0.1-0.5-0.6,0-0.6h1.3h2.6c1.2,0,2.4,0,3.6,0h3c1.9,0,3.6,0.1,5.1,0.2c1.5,0.1,2.9,0.4,4.1,1c1.3,0.6,2.3,1.4,3.1,2.4			c0.8,1,1.2,2.3,1.2,3.8c0,1-0.2,1.8-0.6,2.6c-1.2,2.3-3.9,3.8-6.5,4.6l0.4,0.4c1.1,1.1,1.4,1.4,2.7,2.5c0,0,4.7,4.4,5.7,5.2			c2.6,2.3,4.4,3.7,8.2,4.1c0.6,0.1,0.5,0.7-0.1,0.6L243.6,27.9z"></path>
-							</g>
-						</svg>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="copyright">
-			<div class="row row-pad">
-				<ul class="small-12 medium-9 copyright-links">
-					<li class="text-uppercase">
-						&copy; <?php echo date('Y'); ?> Oyster Yachts
-					</li>
-					<li class="show-for-medium"><a href="{path='legal/privacy-policy'}" class="text-uppercase">Privacy Policy</a></li>
-					<li class="show-for-medium"><a href="{path='media-centre'}" class="text-uppercase">Media Centre</a></li>
-				</ul>
-				<div class="show-for-medium float-right medium-3 designed-by"><span class="text-uppercase"><a href="http://www.interstateteam.com" target="_blank" style="color:#fff;">Design By Interstate, London</a></span></div>
-			</div>
-		</div>
-	</footer>
-
-
-
-	{if segment_1 == ''}
+          </ul>
+        </nav>
+        <nav>
+          <a href="{path='yachts/fleet'}" class="text-uppercase">Services</a>
+          <ul class="show-for-medium">
+            <li><a href="#" class="text-uppercase">Service Centres</a></li>
+            <li><a href="{path='brokerage/fleet'}" class="text-uppercase">Brokerage Fleet</a></li>
+            <li><a href="{path='charter'}" class="text-uppercase">Charter </a></li>
+            <li><a href="{path='contact#oyster-custom'}" class="text-uppercase">Custom &amp; Refit</a></li>
+            <li><a href="{path='services/oyster-crew'}" class="text-uppercase">Oyster Crew</a></li>
+          </ul>
+        </nav>
+        <nav>
+          <a href="{path='world-rally'}" class="text-uppercase">World Rally</a>
+          <ul class="show-for-medium">
+            <li><a href="http://www.oysterworldrally.com/" class="text-uppercase">World Rally 2017 - 19</a></li>
+            <li><a href="{path='world-rally/world-rally-2013-14'}" class="text-uppercase">World Rally 2013 - 14</a></li>
+            <li><a href="mailto:worldrally2017@oysteryachts.com" class="text-uppercase">Contact World Rally</a></li>
+          </ul>
+        </nav>
+        <nav>
+          <a href="{path='events'}" class="text-uppercase">Events</a>
+          <ul class="show-for-medium">
+            <li><a href="{path='events/regatta-calendar'}" class="text-uppercase">Regattas</a></li>
+            <li><a href="{path='events/boat-shows'}" class="text-uppercase">Boat Shows</a></li>
+            <li><a href="{path='events/other-events'}" class="text-uppercase">Other Events</a></li>
+            <li><a href="{path='events/gallery'}" class="text-uppercase">Events Gallery</a></li>
+          </ul>
+        </nav>
+        <nav>
+          <a href="{path='news'}" class="text-uppercase">News</a>
+          <ul class="show-for-medium">
+            <li><a href="{path='news/news-library'}" class="text-uppercase">News Library</a></li>
+            <li><a href="{path='news/magazine'}" class="text-uppercase">Oyster Magazine</a></li>
+            <li><a href="{path='news/press-coverage'}" class="text-uppercase">Press Coverage</a></li>
+          </ul>
+        </nav>
+        <nav>
+          <a href="{path='contact'}" class="text-uppercase">Contact</a>
+          <ul class="show-for-medium">
+            <li><a href="{path='media-centre/login'}" class="text-uppercase">Media Centre</a></li>
+            <li><a href="{path='contact/recruitment'}" class="text-uppercase">Recruitment</a></li>
+            <li><a href="{path='contact'}" class="text-uppercase">Our Offices</a></li>
+          </ul>
+          <a href="{path='owners-area'}" class="text-uppercase">Owners' Area</a>
+        </nav>
+      </div>
+      <nav class="end float-right social-wrapper"><span class="text-uppercase show-for-medium">Connect with us</span>
+        <div class="social-icons"><a href="https://www.facebook.com/oystermarine" target="_blank" class="facebook-icon"><i class="fa fa-facebook-official"></i></a><a href="https://twitter.com/OysterMarine" target="_blank" class="twitter-icon"><i class="fa fa-twitter"></i></a><a href="https://www.youtube.com/user/oystermarine" target="_blank" class="youtube-icon"><i class="fa fa-youtube-play"></i></a><a href="https://www.instagram.com/oysteryachts/" target="_blank" class="instagram-icon"><i class="fa fa-instagram"></i></a></div>
+      </nav>
+    </div>
+    <div class="footer-highlights-wrapper">
+      <div class="row row-pad small-collapse footer-highlights">
+        <div class="medium-9 show-for-medium columns">
+          <ul>
+            <li>Sales</li>
+            <li>Brokerage</li>
+            <li>Charter</li>
+            <li>Custom &amp; Refit</li>
+          </ul>
+        </div>
+        <div class="small-12 small-centered medium-3 footer-logo-wrapper columns end">
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 249.2 28.2" enable-background="new 0 0 249.2 28.2" xml:space="preserve">
+            <g>
+              <path fill="#fff" d="M156.9,6.2L156,4.8c-1.8-2.8-4-3.3-10.6-3.4c-0.4,0-0.6,0.2-0.6,0.5c-0.1,2.6-0.2,7.7-0.2,12.5			c0,5.3,0.1,10.2,0.6,11.2c0.6,1.2,1.7,1.5,3,1.5c0.7,0,0.6,0.7,0,0.7H136c-0.6,0-0.7-0.7,0-0.7c1.4,0,2.5-0.4,3.2-1.5			c0.5-0.9,0.7-6.4,0.7-12.1c0-4.8-0.1-9.8-0.1-11.6c0-0.4-0.2-0.5-0.6-0.5c-3.7,0-8.4,0-10.5,3.4l-0.7,1.5c-0.2,0.5-0.8,0.4-0.7,0			l1.4-5.9c9.9,0.1,17.7,0.4,27.5,0l1.3,5.9C157.7,6.7,157.1,6.7,156.9,6.2"></path>
+              <path fill="#fff" d="M74.5,1.1c-1.7,0.1-3.1,1.5-4.1,2.6c-0.4,0.6-0.9,1.2-1.5,1.9l-6.1,7.9c-0.8,0.9-1,1.8-1,2.8l0,6			c0,0.7,0,1.4,0,2.1c0.1,0.7,0.2,1.4,0.4,1.7c0.6,0.7,1.9,1.1,2.8,1.1c0.7,0.1,0.6,0.7,0,0.7H53.7c-0.7,0-0.9-0.7,0-0.7			c1.4,0,2.6-0.9,2.9-2.1c0.1-0.3,0.1-0.6,0.2-1c0.1-0.4,0.1-0.8,0.1-1.2c0-0.4,0-0.8,0-1.2c0-0.7,0-1.5,0-2.5c0-2.4-0.5-4.2-1.9-6.3			c-0.3-0.5-0.7-0.9-1-1.4C53.6,10.8,50.2,6.3,50,6l-1.6-2c-0.7-1-1.6-1.9-2.7-2.5c-0.5-0.3-1-0.4-1.6-0.4c-0.5,0-0.6-0.7,0-0.7h11.7			c0.5,0,0.5,0.7,0,0.7c-1.6,0-2,0.6-2,1.2c0,0.7,0.4,1.4,0.7,1.7c0.5,0.7,2.1,3,3.7,5.3c1.4,2,2.7,3.9,3.2,4.6c0.9-1.2,5.8-7.6,6-8			l0.5-0.7c0.2-0.3,0.3-0.5,0.5-0.8c0.3-0.5,0.6-1.1,0.7-1.7c0-0.9-0.4-1.5-1.8-1.6c-0.6,0-0.7-0.7-0.1-0.7h8.4c0.5,0,0.5,0.7,0,0.7			C75.1,1,74.8,1,74.5,1.1"></path>
+              <path fill="#fff" d="M196.3,27.9h-22.8c-0.6,0-0.7-0.5,0-0.6c0.6-0.1,1.1-0.2,1.7-0.5c1.4-0.6,1.3-2.5,1.3-3.7			c0-0.4,0-0.8,0-1.2l0-1.4c0-0.6,0-1.3,0-2c0-0.7,0-1.5,0-2.2V14V6.6c0-0.4,0-0.9,0-1.4c0-0.5,0-0.9-0.1-1.4			c-0.1-1.7-0.8-2.6-2.7-2.9c-0.7-0.1-0.5-0.6,0-0.6h19.8c1.2,0,2,0,2.6,0c0.9,0,1.1,0.8,1.1,0.8l0.6,4c0.1,0.5-0.5,0.6-0.7,0.3			c-0.6-0.9-1-1.6-1.9-2.3c-1-0.8-2.4-1.4-4.8-1.7c-1.3-0.2-3.9-0.2-5.8-0.2c-0.6,0-1.2,0-1.9,0.1c-0.5,0-1.3,0.2-1.4,2.5			c0,1.3,0,2.7,0,4.4v2.4v1.6l0,0.9v0.3h0.7c0.4,0,0.9,0,1.4,0l1.6-0.1c2.4-0.2,5.9-0.9,6.2-3.5h0.8v7.6h-0.8c-0.9-3-3.3-2.8-6.2-3			c-0.4,0-0.8,0-1.1,0c-0.3,0-0.6,0-0.8,0h-0.8h-1c0,0.3-0.1,0.8-0.1,1.4v2.1v1.1v1.3l0,2.1c0,0.8,0.1,1.6,0.1,2.3			c0.2,1.5,0.5,1.9,2.2,2.2c1,0.1,2,0.2,3.1,0.2c0.5,0,1.1,0,1.8,0c0.8,0,1.5-0.1,2.4-0.2c2.3-0.3,6.6-2.2,7.9-4.3			c0.4-0.6,1-0.5,0.8,0.2l-1,3.6C198.6,27.4,197.7,27.9,196.3,27.9"></path>
+              <path fill="#fff" d="M111.1,23.7c-0.6,1-1.5,1.8-2.6,2.5c-2.5,1.6-5.9,2-8.8,2c-2.7,0-4.9-0.5-6.5-0.9c-1.4-0.3-2.6-0.5-3.6-0.3			c-0.5,0.1-0.5-0.2-0.5-0.5c0-0.7-0.1-5.3-0.1-5.3c0-0.4,0.6-0.4,0.7,0c1.2,3.3,6.2,6.1,10,6.1c2.3,0,4.1-0.5,5.5-1.5			c1.4-1,2.1-2.3,2.1-4c0-1.2-0.5-2.3-1.5-3.1c-1-0.9-2.4-1.4-3.7-1.7c-0.7-0.2-6.2-1.7-6.9-2c-0.8-0.3-1.6-0.6-2.4-1			c-0.8-0.5-1.4-1-2-1.6c-0.6-0.6-1-1.3-1.4-2c-0.4-0.7-0.5-1.5-0.5-2.4c0-1.4,0.3-2.6,0.9-3.6c1.3-2.1,3.6-3.4,6.1-4			c1.4-0.3,2.8-0.5,4.3-0.5c1.4,0,2.6,0.1,3.6,0.3c1.5,0.3,2.9,0.6,4.4,0.7c0.2,0,0.5,0,0.8,0c0.4,0,0.7,0.1,0.7,0.5V7			c0,0.9-0.4,0.8-0.8-0.2c-0.1-0.3-1.1-2.4-2-3.4c-1.4-1.3-3.4-2.5-6.5-2.5c-1,0-2.1,0.1-2.9,0.3c-0.8,0.2-1.6,0.6-2.2,1			c-0.6,0.4-1.1,1-1.5,1.7c-0.3,0.6-0.5,1.4-0.5,2.2c0,1.3,0.5,2.3,1.4,3.1c1,0.8,2.3,1.4,3.8,1.9c0.6,0.2,6.1,1.7,6.7,1.9			c2.1,0.6,3.8,1.6,5,2.8c1.2,1.2,1.8,2.7,1.8,4.6C112,21.6,111.7,22.7,111.1,23.7"></path>
+              <path fill="#fff" d="M25.9,9.4c-0.4-1.5-1.1-2.9-2-4.2c-0.9-1.3-2-2.3-3.3-3.1c-1.3-0.8-2.8-1.2-4.6-1.2c-1.8,0-3.4,0.4-4.7,1.2			C10,2.9,8.9,3.9,8,5.1C7.2,6.4,6.6,7.8,6.2,9.4c-0.4,1.6-0.6,3.2-0.6,4.8c0,3.1,0.8,6.5,2.6,9.1c0.9,1.2,2,2.1,3.3,2.9			c1.3,0.7,2.9,1.1,4.6,1.1c1.8,0,3.3-0.4,4.5-1.2c1.3-0.8,2.4-1.8,3.3-3.1c0.9-1.3,1.5-2.7,1.9-4.3c0.4-1.6,0.7-3.2,0.7-4.7			C26.5,12.4,26.3,10.9,25.9,9.4 M30.8,19.6c-0.9,1.7-2,3.2-3.5,4.5c-1.5,1.3-3.2,2.3-5.1,2.9c-1.9,0.7-4,1-6.2,1			c-2.2,0-4.2-0.3-6.2-1c-1.9-0.7-3.6-1.6-5.1-2.9c-1.5-1.2-2.6-2.7-3.5-4.4C0.4,18,0,16.1,0,14.1c0-2.2,0.4-4.1,1.3-5.9			C2.2,6.5,3.4,5,4.9,3.8C6.4,2.6,8.2,1.6,10.1,1c2-0.7,4.1-1,6.4-1c2.4,0,4.6,0.4,6.5,1.1c1.9,0.8,3.6,1.8,4.9,3.1			c2.8,2.6,4.2,6.1,4.2,9.7C32.1,16,31.7,17.9,30.8,19.6" class="logo-o"></path>
+              <path fill="#fff" d="M243.6,27.9c-4.4,0.1-6.6-2.6-7.8-3.6c-2.5-2.3-6.1-5.6-6.9-6.3c-0.7-0.7-2.3-2.3-3.3-3			c-0.5-0.2-0.5-0.7,0-0.7c1.3-0.1,2.2-0.3,3.1-0.6c1.5-0.4,2.9-1.3,3.8-2.5c0.4-0.5,0.7-1.1,0.9-1.7c0.2-0.6,0.3-1.3,0.3-1.9			c0-2.6-1.5-4.5-4.1-5.6c-0.7-0.3-1.4-0.5-2.1-0.6c-0.7-0.1-1.5-0.2-2.3-0.2c-0.6,0-1.1,0-1.4,0c-0.8,0-1,1.3-1,2.8			c0,0.6-0.1,3-0.1,3v3.2v8.9c0,1.2,0,2.2,0,3.1l0.1,2.1c0.1,2.2,1.2,2.8,3.5,2.9c0.6,0,0.5,0.7,0,0.7h-11.6c-0.5,0-0.6-0.5,0-0.6			c1.4-0.2,2.2-0.6,2.6-2c0.1-0.3,0.1-0.6,0.2-1c0.1-0.4,0.1-0.8,0.1-1.2c0-0.4,0-0.8,0-1.2v-1.4c0-0.6,0-1.3,0-2c0-0.7,0-1.5,0-2.2			V14V6.6c0-0.4,0-0.9,0-1.4c0-0.5,0-0.9-0.1-1.3c0-0.4-0.1-0.8-0.2-1.1c-0.1-0.6-0.5-1.3-1.1-1.5c-0.4-0.2-0.9-0.3-1.4-0.4			c-0.5-0.1-0.5-0.6,0-0.6h1.3h2.6c1.2,0,2.4,0,3.6,0h3c1.9,0,3.6,0.1,5.1,0.2c1.5,0.1,2.9,0.4,4.1,1c1.3,0.6,2.3,1.4,3.1,2.4			c0.8,1,1.2,2.3,1.2,3.8c0,1-0.2,1.8-0.6,2.6c-1.2,2.3-3.9,3.8-6.5,4.6l0.4,0.4c1.1,1.1,1.4,1.4,2.7,2.5c0,0,4.7,4.4,5.7,5.2			c2.6,2.3,4.4,3.7,8.2,4.1c0.6,0.1,0.5,0.7-0.1,0.6L243.6,27.9z"></path>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="copyright">
+    <div class="row row-pad">
+      <ul class="small-12 medium-9 copyright-links">
+        <li class="text-uppercase">
+          &copy;
+          <?php echo date('Y'); ?> Oyster Yachts
+        </li>
+        <li class="show-for-medium"><a href="{path='legal/privacy-policy'}" class="text-uppercase">Privacy Policy</a></li>
+        <li class="show-for-medium"><a href="{path='media-centre'}" class="text-uppercase">Media Centre</a></li>
+      </ul>
+      <div class="show-for-medium float-right medium-3 designed-by"><span class="text-uppercase"><a href="http://www.interstateteam.com" target="_blank" style="color:#fff;">Design By Interstate, London</a></span></div>
+    </div>
+  </div>
+</footer>
+{if segment_1 == ''}
 	<script>
-	var socialItems = {exp:social_feed:to_json}
-	</script>
-	{/if}
-    
-	
-	<script src="{site_url}bower_components/requirejs/require.js"></script>
-	<script>
-	requirejs(['{site_url}assets/js/requireConfig.js?20170731'], function() {
-		{if segment_1 == ""}
-		requirejs(['home']);
-		{if:elseif segment_1 == "brokerage"}
-		requirejs(['brokerage']);
-		{if:elseif segment_1 == "charter"}
-		requirejs(['charter']);
-		{if:elseif segment_1 == "yachts"}
-		requirejs(['yachts']);
-		{if:elseif segment_1 == "events"}
-			{if segment_2 == "gallery"}
-				requirejs(['gallery_fullscreen']);
-			{if:else}
-				requirejs(['gallery_modal']);
-			{/if}
-		{if:elseif segment_1 == "world-rally"}
-			requirejs(['gallery_fullscreen']);
-		{/if}
+	var socialItems = { exp: social_feed: to_json }
 
-	});
 	</script>
+{/if}
+	<script type="text/javascript" src="{site_url}assets/scripts/main.js"></script>
 </body>
+
 </html>

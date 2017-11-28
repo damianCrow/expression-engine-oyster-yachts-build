@@ -1,7 +1,7 @@
 import $ from 'jquery'
 import 'jquery.cycle2'
 
-export default function quoteTestimonials() {
+export function quoteTestimonials() {
   $('.quote-testimonials').cycle({
     autoHeight: 'calc',
     pager: '.nav-points',

@@ -13,7 +13,7 @@
 
 $config['app_version'] = '3.3.1';
 $config['debug'] = '1';
-$config['cp_url'] = 'http://localhost:8888/admin.php';
+$config['cp_url'] = 'http://oysteryachts.dev/admin.php';
 $config['doc_url'] = 'https://ellislab.com/expressionengine/user-guide/';
 $config['is_system_on'] = 'y';
 $config['allow_extensions'] = 'y';

@@ -1,81 +1,71 @@
-'use strict';
+import $ from 'jquery'
 
-define(['jquery'], function ($) {
+export default class CharterFilters {
+  constructor() {
+    this.grid = $('#yacht-grid')
+    this.form = $('#filters-form')
 
-	var Filters = function Filters() {
-		this.$grid = $('#yacht-grid');
-		this.$form = $('#filters-form');
+    if (this.form.length > 0) {
+      this.init()
+    }
+  }
 
-		if (this.$form.length > 0) {
-			this.init();
-		}
-	};
+  init() {
+    if (this.form.attr('data-post') === "true") {
+      $('.filters-submit').on('click', function (e) {
+        e.preventDefault()
 
-	Filters.prototype.filter = function (model, guests, season, destination) {
+        this.form.submit()
+      })
+    } else {
+      this.filterModel = $('#filter-model')
+      this.filterGuests = $('#filter-guests')
+      this.filterSeason = $('#filter-season')
+      this.filterDestination = $('#filter-destination')
 
-		this.$grid.find('li').removeClass('hide');
+      this.form.find('.filters-submit').on('click', (e) => {
+        e.preventDefault()
+        this.doFilter()
+      })
+    }
+  }
 
-		// filter model
-		if (model !== "") {
-			this.$grid.find("li[data-model!='" + model + "']").addClass('hide');
-		}
+  filter(model, guests, season, destination) {
+    this.grid.find('li').removeClass('hide')
 
-		// filter guests
-		if (guests !== "") {
-			//this.$grid.find("li[data-guests!='" + guests + "']").addClass('hide');
-			this.$grid.find("li").filter(function() {
-				return parseInt($(this).data('guests')) < parseInt(guests);
-			}).addClass('hide');
-		}
+    // filter model
+    if (model !== '') {
+      this.grid.find("li[data-model!='" + model + "']").addClass('hide')
+    }
 
-		// filter season
-		if (season !== "") {
-			this.$grid.find("li[data-" + season + "='']").addClass('hide');
-		}
+    // filter guests
+    if (guests !== '') {
+      //this.grid.find("li[data-guests!='" + guests + "']").addClass('hide')
+      this.grid.find('li').filter(yacht => parseInt($(yacht).data('guests')) < parseInt(guests)).addClass('hide')
+    }
 
-		// filter destination
-		if (destination !== "") {
-			if (season !== "") {
-				this.$grid.find("li[data-"+season+"!='" + destination + "']").addClass('hide');
-			} else {
-				this.$grid.find("li[data-summer!='" + destination + "'][data-winter!='" + destination + "']").addClass('hide');
-			}
-		}
+    // filter season
+    if (season !== '') {
+      this.grid.find("li[data-" + season + "='']").addClass('hide')
+    }
 
-		if (this.$grid.find('li').length == this.$grid.find('li.hide').length) {
-			this.$grid.find('.no-results').addClass('no-results--show')
-		} else {
-			this.$grid.find('.no-results').removeClass('no-results--show')
-		}
-	};
+    // filter destination
+    if (destination !== '') {
+      if (season !== '') {
+        this.grid.find("li[data-" + season + "!='" + destination + "']").addClass('hide')
+      } else {
+        this.grid.find("li[data-summer!='" + destination + "'][data-winter!='" + destination + "']").addClass('hide')
+      }
+    }
 
-	Filters.prototype.init = function () {
-		var _this = this;
+    if (this.grid.find('li').length === this.grid.find('li.hide').length) {
+      this.grid.find('.no-results').addClass('no-results--show')
+    } else {
+      this.grid.find('.no-results').removeClass('no-results--show')
+    }
+  }
 
-		if (_this.$form.attr('data-post') === "true") {
-			$('.filters-submit').on('click', function (e) {
-				e.preventDefault();
-
-				_this.$form.submit();
-			});
-		} else {
-			_this.$filterModel = $('#filter-model');
-			_this.$filterGuests = $('#filter-guests');
-			_this.$filterSeason = $('#filter-season');
-			_this.$filterDestination = $('#filter-destination');
-
-			_this.$form.find('.filters-submit').on('click', function (e) {
-				e.preventDefault();
-
-				_this.doFilter();
-			});
-		}
-	};
-
-	Filters.prototype.doFilter = function () {
-		this.filter(this.$filterModel.val(), this.$filterGuests.val(), this.$filterSeason.val(), this.$filterDestination.val());
-	};
-
-	return Filters;
-});
-//# sourceMappingURL=charter-filters.js.map
+  doFilter() {
+    this.filter(this.filterModel.val(), this.filterGuests.val(), this.filterSeason.val(), this.filterDestination.val())
+  }
+}

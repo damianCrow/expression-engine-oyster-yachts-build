@@ -1,200 +1,189 @@
-'use strict';
+import $ from 'jquery'
 
-define(['jquery', 'ScrollMagic', 'foundation'], function ($, ScrollMagic, validateForm) {
+import BreakPoints from '../../_scripts/breakpoints'
 
-	// Global header
-	var header = $(".global-header"),
-	    scrollToPoint = header.attr('data-snap-to-min-nav'),
-	    snapOffset = parseInt(header.attr('data-snap-offset'), 10) || 0,
+export default class GlobalHeader {
+  constructor() {
+    this.header = $('.global-header')
+    this.scrollToPoint = this.header.attr('data-snap-to-min-nav')
+    this.snapOffset = parseInt(this.header.attr('data-snap-offset'), 10) || 0
+    this.headerClass = 'global-header-mini'
 
-	// local-nav
+    // local-sidebar
+    this.localSidebar = $('[data-local-sidebar]')
+    this.stickySidebar = $('.sticky-sidebar')
+    this.expandHeaderBuffer = $(this.header).height() * 1.5
 
-	headerClass = "global-header-mini",
+    this.yachtNav = $('[data-local-subnav]')
+    this.localSubNav = $('[data-local-subnav]') ? $('[data-local-subnav]') : $('.global-local-subnav')
 
-	// local-sidebar
-	localSidebar = $("[data-local-sidebar]"),
-	    stickySidebar = $('.sticky-sidebar'),
-	    expandHeaderBuffer = $(header).height() * 1.5;
+    this.breakpoints = new BreakPoints()
 
-	var yachtNav = $("[data-local-subnav]"),
-	    localSubNav = $(".global-local-subnav");
+    this.init()
+  }
 
-	if ($("[data-local-subnav]")[0]) {
-		var localSubNav = $("[data-local-subnav]");
-	} else if ($(".global-local-subnav")[0]) {
-		var localSubNav = $(".global-local-subnav");
-	}
+  init() {
+    // if ($('[data-local-subnav]')[0]) {
+    //   this.localSubNav = $('[data-local-subnav]')
+    // } else if ($('.global-local-subnav')[0]) {
+    //   this.localSubNav = $('.global-local-subnav')
+    // }
 
-	// COOKIE HEADER MESSAGE
+    // COOKIE HEADER MESSAGE
 
-	var retrievedCookieMessage = JSON.parse(localStorage.getItem("oysterYachtsCookie"));
+    const retrievedCookieMessage = JSON.parse(localStorage.getItem('oysterYachtsCookie'))
 
-	var cookieApproved;
+    // console.log(retrievedCookieMessage)
 
+    // var oysterYachtsCookie = {value: "true", timestamp: new Date().getTime()}
 
-	// console.log(retrievedCookieMessage);
+    const oysterYachtsCookie = { value: JSON.stringify('true'), timestamp: new Date().getTime() + 31556926000 }
 
-	// var oysterYachtsCookie = {value: "true", timestamp: new Date().getTime()}
-
-	var oysterYachtsCookie = {value: JSON.stringify('true'), timestamp: new Date().getTime() + 31556926000}
-
-	if ($(retrievedCookieMessage).length > 0) {
-
-		if(retrievedCookieMessage.timestamp < new Date().getTime()){
-			//expired
-			// console.log('expired', retrievedCookieMessage.timestamp);
-			// console.log('cureent date', new Date().getTime());
-			$('body').addClass('fixed-message-showing');
-
-		}else{
-			// console.log('retrievedCookieMessage.timestamp', retrievedCookieMessage.timestamp);
-			$('body').removeClass('fixed-message-showing');
-		}
-
-
-	}else{
-		$('body').addClass('fixed-message-showing');
-	}
+    if ($(retrievedCookieMessage).length > 0) {
+      if (retrievedCookieMessage.timestamp < new Date().getTime()) {
+        //expired
+        // console.log('expired', retrievedCookieMessage.timestamp)
+        // console.log('cureent date', new Date().getTime())
+        $('body').addClass('fixed-message-showing')
+      } else {
+        // console.log('retrievedCookieMessage.timestamp', retrievedCookieMessage.timestamp)
+        $('body').removeClass('fixed-message-showing')
+      }
+    } else {
+      $('body').addClass('fixed-message-showing')
+    }
 
 
-	$('.accept-message').on('click', function(){
-		$('body').removeClass('fixed-message-showing');
-		// cookieMessage = 'true';
-		localStorage.setItem('oysterYachtsCookie', JSON.stringify(oysterYachtsCookie));
-
-	})
-
-
-	// if the scroll point is a div id, get its index point
-	if (isNaN(parseInt(scrollToPoint), 10) && scrollToPoint != "undefined") scrollToPoint = $(scrollToPoint).offset().top - snapOffset;
-
-	$(window).bind('scroll', function () {
-		var scroll = $(window).scrollTop();
-
-		// if the subnav and the header exists, remove the box shadow
-		if (localSubNav.length !== 0 && header.length !== 0) headerClass = "global-header-mini no-boxshadow";
-
-		if (scroll >= parseInt(scrollToPoint, 10)) {
-
-			if ($(header).hasClass(headerClass)) {
-				// $('.main-nav li ul').removeClass('hidden-animation');
-			} else {
-					$('.main-nav li ul').addClass('hidden-animation');
-					header.addClass(headerClass);
-				}
-
-			if (localSubNav.length !== 0 && Foundation.MediaQuery.atLeast("medium")) {
-				localSubNav.addClass('global-local-subnav-mini').parent().css({
-					position: 'static'
-				});
-			}
-
-			// A buffer zone for expanding the header.
-		} else {
-
-				yachtNav.removeClass('global-local-subnav-mini').parent().css({
-					position: 'relative'
-				});
-			}
-
-		if (scroll <= parseInt(expandHeaderBuffer, 10)) {
-
-			if ($(header).hasClass(headerClass)) {
-				$('.main-nav li ul').addClass('hidden-animation');
-
-				header.removeClass(headerClass);
-			} else {
-				// $('.main-nav li ul').removeClass('hidden-animation');
-			}
-
-			localSubNav.removeClass('global-local-subnav-mini');
-		}
-	});
+    $('.accept-message').on('click', () => {
+      $('body').removeClass('fixed-message-showing')
+      // cookieMessage = 'true'
+      localStorage.setItem('oysterYachtsCookie', JSON.stringify(oysterYachtsCookie))
+    })
 
 
-	/* From Modernizr */
-	function whichTransitionEvent() {
-		var t;
-		var el = document.createElement('fakeelement');
-		var transitions = {
-			'transition': 'transitionend',
-			'OTransition': 'oTransitionEnd',
-			'MozTransition': 'transitionend',
-			'WebkitTransition': 'webkitTransitionEnd'
-		};
+    // if the scroll point is a div id, get its index point
+    if (isNaN(parseInt(this.scrollToPoint), 10) && this.scrollToPoint !== 'undefined') this.scrollToPoint = $(this.scrollToPoint).offset().top - this.snapOffset
 
-		for (t in transitions) {
-			if (el.style[t] !== undefined) {
-				return transitions[t];
-			}
-		}
-	}
+    $(window).bind('scroll', () => {
+      const scroll = $(window).scrollTop()
+      // if the subnav and the header exists, remove the box shadow
+      if (this.localSubNav && this.header.length !== 0) this.headerClass = 'global-header-mini no-boxshadow'
 
-	/* Listen for a transition! */
-	var e = document.getElementsByClassName('logo-o')[0];
+      if (scroll >= parseInt(this.scrollToPoint, 10)) {
+        if ($(this.header).hasClass(this.headerClass)) {
+          // $('.main-nav li ul').removeClass('hidden-animation')
+        } else {
+          $('.main-nav li ul').addClass('hidden-animation')
+          this.header.addClass(this.headerClass)
+        }
 
-	var transitionEvent = whichTransitionEvent();
-	transitionEvent && e.addEventListener(transitionEvent, function () {
-		$('.main-nav li ul').removeClass('hidden-animation');
-	});
+        if (this.localSubNav && this.breakpoints.atLeast('medium')) {
+          this.localSubNav.addClass('global-local-subnav-mini').parent().css({ position: 'static' })
+        }
 
-	// Hack to make sure SVG transisions work correctly inside an anchor tag
-	if (navigator.userAgent.indexOf('Safari') != -1 && navigator.userAgent.indexOf('Chrome') == -1) {
-		var logoHref = $('.global-header .logo').attr('href');
-		$('.global-header .logo').removeAttr('href');
-		$('.global-header .logo').append('<a class="safari-logo-link" href=' + logoHref + '></a>');
-	}
+        // A buffer zone for expanding the header.
+      } else {
+        this.yachtNav.removeClass('global-local-subnav-mini').parent().css({ position: 'relative' })
+      }
+
+      if (scroll <= parseInt(this.expandHeaderBuffer, 10)) {
+        if ($(this.header).hasClass(this.headerClass)) {
+          $('.main-nav li ul').addClass('hidden-animation')
+
+          this.header.removeClass(this.headerClass)
+        } else {
+          // $('.main-nav li ul').removeClass('hidden-animation')
+        }
+
+        this.localSubNav && this.localSubNav.removeClass('global-local-subnav-mini')
+      }
+    })
 
 
-	// OVVERIDE MOBILE ACCORDION TEXT TO BE LINKS
-	$('#global-navigation-modal a.accordion-title span').on('click', function (evt) {
-		evt.preventDefault();
-		location.href = $(this).parent().attr('href');
-		return false;
-	});
+    /* From Modernizr */
+    function whichTransitionEvent() {
+      let t
+      const el = document.createElement('fakeelement')
+      const transitions = {
+        'transition': 'transitionend',
+        'OTransition': 'oTransitionEnd',
+        'MozTransition': 'transitionend',
+        'WebkitTransition': 'webkitTransitionEnd',
+      }
 
-	$('.site-menu').on('click', function () {
-		$(this).toggleClass('active-burger');
-	});
+      for (t in transitions) {
+        if (el.style[t] !== undefined) {
+          return transitions[t]
+        }
+      }
+    }
 
-	// Toggle follow oyster social buttons
-	var navFooter = $('#global-navigation-modal .nav-footer-modal'),
-	    followHeader = $(".global-header .follow");
+    /* Listen for a transition! */
+    const e = document.getElementsByClassName('logo-o')[0]
 
-	$('.nav-footer-modal .follow-btn').on('click', function () {
-		navFooter.addClass('follow-oyster-social-btns');
-	});
-	$('.nav-footer-modal .social-links .back-btn').on('click', function () {
-		navFooter.removeClass('follow-oyster-social-btns');
-	});
+    const transitionEvent = whichTransitionEvent()
+    transitionEvent && e.addEventListener(transitionEvent, () => {
+      $('.main-nav li ul').removeClass('hidden-animation')
+    })
 
-	$('.global-header .follow-oyster').on('click', function () {
-		followHeader.toggleClass('follow-on');
-	});
-	$('.global-header .back-btn').on('click', function () {
-		followHeader.removeClass('follow-on');
-	});
+    // Hack to make sure SVG transisions work correctly inside an anchor tag
+    if (navigator.userAgent.indexOf('Safari') !== -1 && navigator.userAgent.indexOf('Chrome') === -1) {
+      const logoHref = $('.global-header .logo').attr('href')
+      $('.global-header .logo').removeAttr('href')
+      $('.global-header .logo').append('<a class="safari-logo-link" href=' + logoHref + '></a>')
+    }
 
-	// close foundation modal
-	$('.global-modals .close-button-wrapper a.site-search-close').on('click', function (evnt) {
-		// if a modal is full screen and has the combination of ".close-button-wrapper a.site-search-close", manually close it
-		$('.global-modals.full').foundation('close');
-	});
 
-	//  ---- GLOBAL MAIN FIXED HEADER SEARCH BAR TOGGLE SEARCH ICON -----  //
-	var $siteSearchOpen = $('.global-header-top-nav-large .site-search'),
-	    $siteSearchBar = $('.global-header-top-nav-large .search-bar');
+    // OVVERIDE MOBILE ACCORDION TEXT TO BE LINKS
+    $('#global-navigation-modal a.accordion-title span').on('click', (evt) => {
+      evt.preventDefault()
+      location.href = $(evt.currentTarget).parent().attr('href')
+      return false
+    })
 
-	// site search open
-	$siteSearchOpen.on('click', function (e) {
-		e.preventDefault();
+    $('.site-menu').on('click', (e) => {
+      $(e.currentTarget).toggleClass('active-burger')
+    })
 
-		$('.global-header-top-nav-large').toggleClass('search-bar-open');
+    // Toggle follow oyster social buttons
+    const navFooter = $('#global-navigation-modal .nav-footer-modal')
+    const followHeader = $('.global-header .follow')
 
-		if ($('.global-header-top-nav-large').hasClass('search-bar-open')) {
-			$('.search-bar input').focus();
-		}
-	});
+    $('.nav-footer-modal .follow-btn').on('click', () => {
+      navFooter.addClass('follow-oyster-social-btns')
+    })
 
-});
-//# sourceMappingURL=header.js.map
+    $('.nav-footer-modal .social-links .back-btn').on('click', () => {
+      navFooter.removeClass('follow-oyster-social-btns')
+    })
+
+    $('.global-header .follow-oyster').on('click', () => {
+      followHeader.toggleClass('follow-on')
+    })
+
+    $('.global-header .back-btn').on('click', () => {
+      followHeader.removeClass('follow-on')
+    })
+
+    // close foundation modal
+    $('.global-modals .close-button-wrapper a.site-search-close').on('click', () => {
+      // if a modal is full screen and has the combination of ".close-button-wrapper a.site-search-close", manually close it
+      $('.global-modals.full').foundation('close')
+    })
+
+    //  ---- GLOBAL MAIN FIXED HEADER SEARCH BAR TOGGLE SEARCH ICON -----  //
+    const siteSearchOpen = $('.global-header-top-nav-large .site-search')
+
+    // site search open
+    siteSearchOpen.on('click', (e) => {
+      e.preventDefault()
+
+      $('.global-header-top-nav-large').toggleClass('search-bar-open')
+
+      if ($('.global-header-top-nav-large').hasClass('search-bar-open')) {
+        $('.search-bar input').focus()
+      }
+    })
+  }
+}
+
