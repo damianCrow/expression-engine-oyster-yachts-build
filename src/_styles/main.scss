@@ -89,7 +89,8 @@ $fa-font-path: "../../node_modules/font-awesome/fonts";
 
 // Import custom resuables
 @import 'global';
-@import 'main-nav/main-nav';
+@import 'burger/burger';
+@import 'global-nav/global-nav';
 @import 'mobile-nav/mobile-nav';
 @import 'header/header';
 @import 'footer/footer';

@@ -48618,7 +48618,7 @@ var Main = function () {
 
       (0, _quoteTestimonials.quoteTestimonials)();
 
-      this.header = this.globalHeader && new _header2.default();
+      // this.header = this.globalHeader && new GlobalHeader()
       this.footer = this.globalFooter && new _footer2.default();
       this.gallery = this.galleryModal && new _galleryModal2.default();
       this.homepage = this.homeSlider && new _homepage2.default();

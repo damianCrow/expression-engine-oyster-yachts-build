@@ -75,7 +75,7 @@ class Main {
 
     quoteTestimonials()
 
-    this.header = this.globalHeader && new GlobalHeader()
+    // this.header = this.globalHeader && new GlobalHeader()
     this.footer = this.globalFooter && new GlobalFooter()
     this.gallery = this.galleryModal && new GalleryModal()
     this.homepage = this.homeSlider && new Homepage()
