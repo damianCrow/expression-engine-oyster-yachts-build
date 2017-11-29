@@ -1,0 +1,45 @@
+//  Foundation for Sites Settings
+//  -----------------------------
+//
+
+@import '../../node_modules/foundation-sites/scss/util/util';
+
+// 1. Global
+// ---------
+
+$global-width: rem-calc(1366);
+$foundation-palette: (
+  primary: #2199e8,
+  secondary: #777,
+  success: #3adb76,
+  warning: #ffae00,
+  alert: #cc4b37,
+);
+$lightblue: #7d9aaa;
+$light-gray: #f2f5f6;
+$medium-gray: #dadcdd;
+$white: #fefefe;
+
+// 2. Breakpoints
+// --------------
+
+$breakpoints: (
+  small: 0,
+  medium: 768px,
+  large: 1024px,
+  xlarge: 1240px,
+  xxlarge: 1440px,
+);
+$breakpoint-classes: (small medium large xlarge);
+
+// 47. Reveal
+// ----------
+
+$reveal-width: 650px;
+
+// 51. Tabs
+// --------
+
+$tab-background: $light-gray;
+$tab-background-active: $white;
+$tab-item-color: $lightblue;
