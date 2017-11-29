@@ -2,7 +2,7 @@ $fa-font-path: "../../node_modules/font-awesome/fonts";
 @import '../../node_modules/font-awesome/scss/font-awesome';
 
 // Import Vendor dependencies
-@import 'foundation-settings'; // Settings copied over & overrides default settings
+@import 'settings'; // Settings copied over & overrides default settings
 @import '../../node_modules/foundation-sites/scss/foundation';
 @import '../../node_modules/owl.carousel2/src/scss/owl.carousel';
 @import '../../node_modules/owl.carousel2/src/scss/animate';
@@ -28,7 +28,7 @@ $fa-font-path: "../../node_modules/font-awesome/fonts";
 @include foundation-drilldown-menu;
 @include foundation-dropdown;
 @include foundation-dropdown-menu;
-@include foundation-flex-video;
+// @include foundation-flex-video;
 // @include foundation-label;
 // @include foundation-media-object;
 // @include foundation-off-canvas;
