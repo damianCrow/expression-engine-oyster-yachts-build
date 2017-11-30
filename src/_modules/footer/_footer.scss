@@ -1,5 +1,6 @@
 footer {
     background: $blue;
+    margin: 0 $page-margin $page-margin;
     > .row {
         position: relative;
     }
@@ -8,6 +9,16 @@ footer {
             display: flex;
             flex-direction: column-reverse;
         }
+    }
+
+    &:after {
+        content: '';
+        width: 100%;
+        height: $page-margin;
+        position: fixed;
+        z-index: 10;
+        bottom: 0;
+        background-color: $white;
     }
 }
 
@@ -405,6 +416,7 @@ footer {
     background: url('/assets/images/water-bg.jpg') no-repeat center center;
     background-size: cover;
     padding: 30px 0;
+    margin: 0 $page-margin;
 
     .newsletter-text-wrapper {
         padding: 20px 0px;

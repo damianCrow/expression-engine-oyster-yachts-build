@@ -1,956 +1,225 @@
-.hero-home {
+.carosel {
   color: $white;
   position: relative;
   z-index: 1;
-
-  // More cycle2 patching
+  margin: 0 $page-margin;
   overflow: hidden;
-
   @include after-nav;
+  height: calc(100% - 136px);
 
-  .frame {
-    /**
-     * (optional) wrapper width, specifies width of the slider frame.
-     */
-    font-size: 0;
-    line-height: 0;
-    overflow: hidden;
-    position: relative;
-    white-space: nowrap;
-    width: 880px;
-  }
-
-  .js_slides {
-    display: inline-block;
-  }
-
-  & > .owl-carousel {
-    background-color: $black;
-    display: block;
-  }
-
-  * {
-    user-select: none;
-  }
-
-  .hero-controls-wrapper {
+  &__pagination-wrap {
+    z-index: 3;
+    width: 53px;
+    right: 31px;
+    top: 50%;
+    transform: translateY(-50%);
     position: absolute;
-    //60px to allow space for scroll down message
-    bottom: calc(25px + 60px);
-    right: 40px;
-
-    // Blame cycle2 for the silly z-index
-    z-index: 110;
+    display: flex;
+    flex-direction: column;
 
     @include breakpoint(medium down) {
       display: none;
-      width: 100%;
-      bottom: 0;
-      right: 0;
+    }
+  }
+
+  &__link {
+    position: relative;
+    height: 60px;
+    flex: 1;
+
+    .graphic-wrapper {
+      width: 206px;      
+      height: 180px; 
+      overflow: hidden;
+      transform: scale(0.25);
+      position: inherit;
+      left: -77px;
+      top: -66px;
+
+      &:after {
+        position: absolute;
+        font-size: 5rem;
+        color: $white;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      &[data-index="0"]:after {
+        content: '01';
+      }
+      &[data-index="1"]:after {
+        content: '02';
+      }
+      &[data-index="2"]:after {
+        content: '03';
+      }
+      &[data-index="3"]:after {
+        content: '04';
+      }
+
+      #graphic {
+        position:relative;
+        padding-left: 6px;
+        transform: translate(0, -20px);
+      }
+
+      #path {
+        will-change: stroke-dashoffset;
+        stroke-dasharray: 439.11248779296875;
+      }
     }
 
-    .hero-controls {
-      display: inline-block;
-      margin: 0 1em;
-      .nav-point {
-        height: 15px;
-        width: 90px;
-        margin: 1em 10px;
-        padding: 1em 10px;
-        border-radius: 2px;
-        display: inline-block;
-        cursor: pointer;
-        position: relative;
+    &.active {
+      #path {
+        stroke: $white;
+        animation: dash 6s ease-in-out forwards; 
+      }
 
-        @include breakpoint(medium down) {
-          width: 50px;
-          margin: 0.25em 10px;
+      &.reverse-dash {
+        #path {
+          animation: dash-back 0.8s ease-in-out forwards; 
         }
+      }  
+    }  
+  }
 
-        &:before {
-          content: '';
-          height: 2px;
-          width: 100%;
+  .text-wrapper {
+    will-change: opacity;
+    position: absolute;
+    bottom: 50px;
+    width: 25%;
+    opacity: 0;
+
+    @include breakpoint(medium down) {
+      width: 80%;
+    }
+
+    .text {
+      color: $white;
+      will-change: transform, opacity;
+      transition: transform 1s, opacity 1s;
+      position: relative;
+      transform: translateX(-40px);
+      opacity: 0;
+      margin: 0 0 14px;
+      letter-spacing: 0.05rem;
+      line-height: 1.733333em;
+      font-size: 16px;
+
+      &:nth-child(2) {
+        transition-delay: 0.2s
+      }
+      &:nth-child(3) {
+        transition-delay: 0.4s
+      }
+      &:nth-child(4) {
+        transition-delay: 0.6s
+      }
+
+      &__link {
+        text-decoration: none;
+        color: rgba($white, .5);
+        position: relative;
+        padding-right: 20px;
+        
+        &__icon {
+          background-image: url('/assets/images/homepage/shevron.svg');
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: 40%;
+          height: 16px;
+          width: 16px;
+          display: inline-block;
           position: absolute;
-          top: 0;
-          left: 0;
           right: 0;
           bottom: 0;
-          margin: auto;
-          @include transition(opacity 250ms);
-          opacity: 0.5;
-          background-color: white;
+          border: 1px solid $white;
+          border-radius: 50%;
         }
 
-        &.active {
-
-          &:before {
-            opacity: 1;
+        &:hover {
+          .text__link__icon {
+            animation: animate-chevron 1s ease-in-out infinite;
           }
         }
       }
     }
-  }
-
-  .scroll-message {
-    height: 60px;
-    width: 100%;
-    position: absolute;
-    display: table;
-    bottom: 0;
-
-    // z-index: 2;
-    // Blame cycle2 for the silly z-index
-    z-index: 110;
-    background: white;
-    cursor: pointer;
-    @include omnes-regular;
-
-    @include breakpoint(medium down) {
-      background: none;
-      width: 44px;
-      right: 0;
-    }
-
-    .down-arrow {
-      display: none;
-      text-align: center;
-      width: 100%;
-      font-size: 2.5em;
-      background: $cyan;
-      position: absolute;
-      right: 0;
-      bottom: 0;
-      cursor: pointer;
-
-      @include breakpoint(medium down) {
-          display: inline-block;
-      }
-    }
-
-    .scroll-message-contents-wrapper {
-      margin: auto;
-      color: $lightishgrey;
-      position: relative;
-      display: table-cell;
-      height: 100%;
-      vertical-align: middle;
-      text-align: center;
-
-      @include breakpoint(medium down) {
-        display: none;
-      }
-
-      .scroll-message-contents {
-        span {
-          margin: 0 0.5em;
-        }
-
-        span, .mouse-icon {
-          display: inline-block;
-          text-align: center;
-        }
-
-        .mouse-icon {
-          vertical-align: middle;
-          width: 12px;
-        }
-      }
-    }
-  }
-
-
-  .hero-slides {
-    //These are only here for when the page is loading, these will get overwritten with JS.
-    height: calc(100vh - #{$header-nav-large-owners});
-    @include breakpoint(medium down) {
-      height: calc(100vh - #{$header-nav-small-height});
-
-      &:before {
-        background: linear-gradient(transparent 0%, transparent 10%, rgba($black, .5) 100%);
-      }
-    }
-  }
-
-  .owl-carousel {
-    // opacity: 0;
-    transition: opacity 250ms ease-out;
-    &.owl-loaded {
-        // opacity: 1;
-    }
-  }
-
-  .hero-slide {
-    // Fixed background does not play nicely with carousels
-    // background-attachment: fixed;
-    display: inline-block;
-    height: 100%;
-    overflow: hidden;
-    position: relative;
-    width: 100%;
-
-    .hero-image {
-      background-position: center center;
-      background-size: cover !important;
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      &.blur-up {
-        @include object-fit(cover);
-      }
-    }
-
-    &:after {
-      content: '';
-      position: absolute;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(transparent 0%, transparent 50%, rgba($black, .5) 100%);
-      z-index: 2;
-    }
-
-    .hero-contents {
-      //60px to allow space for scroll down message
-      bottom: 60px;
-      left: 0;
-      margin: 2.5em;
-      max-width: 600px;
-      position: absolute;
-      // Above .hero-slide:after (z-index: 2) and carousel (z-index: 3)
-      z-index: 3;
-
-      @include breakpoint(medium down) {
-        bottom: 0;
-      }
-
-      @include breakpoint(small only) {
-        margin: 1.2em;
-        margin-bottom: 2.5em;
-      }
-
-      .title {
-        @include hero-title;
-        margin-bottom: 20px;
-
-        span {
-          @include omnes-regular;
-        }
-      }
+ 
+    &.active {
+      opacity: 1;
 
       .text {
-        @include general-text;
-        color: $white;
+        opacity: 1;
+        transform: translateX(40px);
       }
     }
 
-    .hero-image-container {
-      // For lazysizes BG image.
-      background-position: center;
-      background-size: cover;
-      height: 100%;
-      transform: scale(1);
+    .slide-title {
+      font-size: 30px;
 
-      img {
-        // Disable the blur-up feature for the carousel as it interfears with zoom-in.
-        filter: none !important;
-      }
-    }
-
-    .zooming-in {
-      transform: scale(1.2);
-      transition: transform 20s linear;
-    }
-  }
-}
-
-@keyframes zoomIn {
-  from {
-    transform: scale3d(1, 1, 1);
-  }
-
-  to {
-    transform: scale3d(1.2, 1.2, 1);
-  }
-}
-
-.yacht-feature {
-  margin: 2em auto;
-  margin-top: 4em;
-
-  @include breakpoint(medium down) {
-    margin: 0.5em auto;
-  }
-
-  .owl-carousel {
-    display: block;
-  }
-
-  // Speed of transistions
-  .owl-item {
-    animation-duration: 750ms;
-  }
-
-  .yacht-feature-large-media-container {
-    @include clearfix;
-    // height: 275px;
-
-    .details, .yacht-feature-large-media {
-        overflow: hidden;
-
-        .slide {
-            box-sizing: border-box;
-            width: 100%;
-            overflow: hidden;
-
-            // For lazysizes BG image.
-            background-size: cover;
-            background-position: center;
-
-            img {
-                width: 100%;
-                height: 100%;
-            }
-
-            .slide-image {
-                // background-size: cover;
-                // position: absolute;
-                // width: 100%;
-                // height: 100%;
-                // top: 0;
-                // left: 0;
-            }
-
-            img {
-                // object-fit: cover;
-                @include object-fit(cover);
-                //Bug in OSX Chrome 49, object-fit cover ignoring box-sixing: border-box
-            }
-
-            video {
-                position: absolute;
-                min-width: 100%;
-                min-height: 100%;
-                width: 100%;
-                height: 100%;
-                z-index: -100;
-                // object-fit: cover;
-                @include object-fit(cover);
-
-                @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-                    /* IE10+ CSS styles go here */
-                    min-height: auto;
-                    height: auto;
-                }
-
-                @supports (-ms-accelerator:true) {
-                    // EDGE 10+
-                    min-height: auto;
-                    height: auto;
-                }
-
-                @include breakpoint(medium down) {
-                    position: relative;
-                }
-
-
-                // -webkit-transform: translateX(-50%) translateY(-50%);
-                // transform: translateX(-50%) translateY(-50%);
-            }
-        }
-    }
-
-
-    .details {
-        // box-sizing: border-box;
-        // padding: 1.5em;
-
-        // @include breakpoint(medium up) {
-        //  padding: 0em 5.5em;
-        //  padding-right: 5.5em;
-        // }
-
-        // So the slides don't stack while loading - this will be overidden by JS.
-        display: flex;
-
-        height: 100%;
-
-        h2 {
-            @include omnes_light;
-            font-size: 2.2em;
-            line-height: 1em;
-            color: $blue;
-            text-transform: uppercase;
-            margin-bottom: 30px;
-        }
-
-        .slide {
-            padding: 0em;
-            overflow: hidden;
-
-            // So the slides don't stack while loading - this will be overidden by JS.
-            flex: 1 0 auto;
-
-            @include breakpoint(medium up) {
-                padding: 0em 5rem;
-            }
-
-            @include breakpoint(medium only) {
-                padding: 1em 5rem;
-            }
-
-            @include breakpoint(small only) {
-                padding: 1em;
-            }
-        }
-
-        .button-clear {
-            @include breakpoint(medium down) {
-                width: 100%;
-            }
-        }
-    }
-
-    .yacht-feature-large-media {
-      padding: 0;
-      margin: 0;
-
-      // So the slides don't stack while loading - this will be overidden by JS.
-      display: flex;
-
-      .slide {
-        height: 275px;
-
-        // So the slides don't stack while loading - this will be overidden by JS.
-        flex: 1 0 auto;
-
-        @include breakpoint(medium down) {
-          height: auto;
-        }
+      &__number {
+        font-size: 16px;
+        display: inline-block;
+        vertical-align: super;
+        border-bottom: 1px solid rgba($white, .5);
       }
     }
   }
 
-
-  .yacht-feature-small-media-container {
-    // So the slides don't stack while loading - this will be overidden by JS.
-    display: flex;
-    height: 230px;
-    margin: 0;
-    overflow: hidden;
-    padding: 0;
-
-    @include breakpoint(medium down) {
-      display: none;
-    }
-
-    .yacht-feature-small-media {
-        padding: 0px;
-
-        // So the slides don't stack while loading - this will be overidden by JS.
-        flex: 1 0 auto;
-
-        .slide {
-
-            // For lazysizes BG image.
-            background-size: cover;
-            background-position: center;
-
-            position: static;
-            top: 0px;
-            left: 0px;
-            z-index: 100;
-            opacity: 1;
-            display: block;
-
-            img, video {
-                width: 100%;
-                height: 100%;
-                min-height: 100%;
-                min-width: 100%;
-            }
-
-            .slide-image {
-                @include object-fit(cover);
-                width: 100%;
-                height: 100%;
-
-                // For lazysizes holder.
-                background-size: cover;
-                background-position: center center;
-                background-repeat: no-repeat;
-
-                // background-size: cover;
-                // position: absolute;
-                // width: 100%;
-                // height: 100%;
-                // top: 0;
-                // left: 0;
-            }
-
-            img {
-                // object-fit: cover;
-                @include object-fit(cover);
-
-                //Bug in OSX Chrome 49, object-fit cover ignoring box-sixing: border-box
-            }
-
-            video {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                min-width: 100%;
-                min-height: 100%;
-                width: auto;
-                height: auto;
-                z-index: -100;
-                -webkit-transform: translateX(-50%) translateY(-50%);
-                transform: translateX(-50%) translateY(-50%);
-            }
-
-            height: 230px;
-
-            @include breakpoint(medium down) {
-                height: 68px;
-            }
-
-            width: 100%;
-            padding: 0px;
-        }
-    }
-  }
-
-
-  .yacht-feature-nav-points {
-    margin: 0;
-    position: relative;
-    text-align: center;
+  &__image-wrap {
+    will-change: opacity;
+    position: absolute;
+    opacity: 0;
     width: 100%;
+    height: 100%;
+    transition: opacity 1.2s ease-out;
 
-    @include breakpoint(medium up) {
-      margin: 1em 0;
+    &.active {
+      opacity: 1;
+      z-index: 2;
     }
+  }
+
+  &__image {
+    height: 100%;
+  }  
+}
+
+@keyframes dash {
+  0% {
+    stroke-dashoffset: 439.11248779296875;
+  }
+  100% {
+    stroke-dashoffset: 0;
   }
 }
 
-.gsap-slider {
-    .yacht-feature-large-media-container, .yacht-feature-small-media-container, .details-slides, .yacht-feature-large-media-slides, .small-slides{
-      display: flex;
-    }
-
-    // .yacht-feature-large-media-slides {
-    //  width: 100%;
-    // }
-
-    .details, .yacht-feature-large-media, .yacht-feature-small-media {
-      display: flex;
-      overflow: hidden;
-
-      .slide {
-        flex: 1 0 100%;
-      }
-    }
-
-    .details, .yacht-feature-large-media-slides {
-      .slide {
-        max-width: $global-width / 2;
-        width: 100%;
-
-        @include breakpoint($global-width down) {
-          max-width: 50vw;
-        }
-      }
-    }
-
-    .yacht-feature-large-media-slides {
-        width: $global-width / 2;
-        @include breakpoint($global-width down) {
-          max-width: 50vw;
-        }
-    }
-
-    .yacht-feature-small-media-container .yacht-feature-small-media {
-      .small-slides {
-        .slide {
-          max-width: $global-width / 3;
-          width: 33.3333333333vw;
-
-          @include breakpoint($global-width down) {
-            max-width: 33.3333333333vw;
-          }
-        }
-      }
-    }
-
-    .slide {
-      background-position: center center;
-      background-repeat: no-repeat;
-      background-size: cover;
-    }
-}
-
-.news-preview {
-  // Match these with the global padding top classes
-  // Only none-js way to allow for elements to be center aligned in a container with a flexible height.
-  align-items: center;
-  background: $blue;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-bottom: 1rem;
-  margin-top: 1rem;
-  max-width: 100%;
-  overflow: hidden;
-  padding: 0;
-  position: relative;
-
-  @include breakpoint(medium up) {
-    margin-bottom: 70px;
-    margin-top: 70px;
+@keyframes dash-back {
+  0% {
+    stroke-dashoffset: 0;
   }
-
-  p {
-    color: $white;
-    margin-bottom: 0;
-  }
-
-  h2 {
-    color: $cyan;
-  }
-
-  a {
-    color: $cyan;
-  }
-
-  h3 {
-    color: $white;
-  }
-
-  .latest-title-container {
-    border: solid 0 rgba(#a7a9ac, .3);
-    width: 100%;
-    border-width: 0 0 1px 0;
-
-    .latest-title {
-      h2 {
-        @include omnes-regular;
-        color: $cyan;
-        font-size: 1.2rem;
-      }
-
-      padding: 1em 0;
-    }
-  }
-
-  .news-content {
-    width: 100%;
-
-    .cheveron-nav {
-        text-align: center;
-        margin-top: 4em;
-        cursor: pointer;
-
-        i {
-            color: $cyan;
-            font-size: 2.5rem;
-            text-align: center;
-            cursor: pointer;
-            margin: auto;
-            height: 40px;
-        }
-    }
-
-    .news-slides {
-        padding: 0px;
-        margin: 0px;
-        border-right: solid 1px rgba(#a7a9ac, 0.3);
-        .owl-carousel {
-            display: flex;
-            overflow: hidden;
-
-        }
-    }
-
-    .snippet-title {
-        float: right;
-        padding: 1em 1em 0em 1em;
-
-        @include breakpoint(medium up) {
-            padding: 2em 2em 0em 2em;
-        }
-    }
-
-    .news-preview-text-container {
-        border-right: solid 1px rgba(#a7a9ac, 0.3);
-        flex: 0 0 100%;
-
-
-
-        .news-preview-text {
-            padding: 2em;
-            float: right;
-            border-top: solid 1px rgba(#a7a9ac, 0.3);
-
-            .cut-news-text {
-                display: block;
-                // display: -webkit-box;
-                // -webkit-box-orient: vertical;
-                position: relative;
-                line-height: 1.2;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                padding: 0 !important;
-
-                // -webkit-line-clamp: 4;
-                height: calc(1em * 1.2 * 4);
-
-                &:after {
-                    content: '...';
-                    text-align: right;
-                    bottom: 0;
-                    right: 0;
-                    width: 25%;
-                    display: block;
-                    position: absolute;
-                    height: calc(1em * 1.2);
-                    background: linear-gradient(to right, rgba($blue, 0), rgba($blue, 1) 75%);
-                }
-
-                // @supports (-webkit-line-clamp: 1){
-                //  &:after{
-                //      display : none !important;
-                //  }
-                // }
-            }
-
-            @include breakpoint(medium up) {
-                border: none;
-                padding: 0em 2em 2em 2em;
-            }
-
-        }
-    }
-
-
-    time {
-      @include omnes_light;
-      border-width: 0 1px;
-      border: solid 0 rgba(#a7a9ac, .3);
-      color: $white;
-      padding: 1em 0;
-
-      @include breakpoint(medium up) {
-        padding: 2rem 0;
-      }
-
-      .date, .month-year {
-        width: 100%;
-        display: block;
-        text-align: center;
-      }
-
-      .month-year {
-          @include omnes-regular;
-      }
-
-      .date {
-
-          font-size: 3rem;
-
-          @include breakpoint(medium up) {
-              font-size: 4rem;
-          }
-
-          @include breakpoint(large up) {
-              font-size: 6rem;
-          }
-
-
-          font-weight: bold;
-          @include omnes_light;
-          // @include breakpoint(medium up) {
-          //  font-size: 4em;
-          // }
-      }
-      // .month-year{
-      //  font-weight: 200;
-      // }
-
-      .month-year {
-        @include breakpoint(small down) {
-          display: block;
-        }
-
-        font-size: .75em;
-
-        @include breakpoint(medium up) {
-          font-size: 1.2em;
-        }
-      }
-    }
+  100% {
+    stroke-dashoffset: -439.11248779296875;
   }
 }
 
-.social-blocks {
-  margin: 1em auto;
-
-  @include breakpoint(medium up) {
-    margin: 4em auto;
+@keyframes animate-chevron {
+  0% {
+    background-position: 50%;
   }
-
-  @include breakpoint(small down) {
-    flex-wrap: wrap;
+  49.9% {
+    background-position: 150%;
   }
-
-  .row {
-    margin: 0;
+  50% {
+    fill: transparent;
+    background-position: -50%;
   }
-
-  .middle-row {
-    display: flex;
+  50.1% {
+    fill: $white;
+    background-position: -50%;
   }
-
-  .social-slider {
-    padding: 0;
-    position: relative;
-
-    .owl-item {
-      backface-visibility: hidden;
-      will-change: opacity;
-    }
-
-    &:before {
-      content: '';
-      display: block;
-      padding-top: (1 / 1) * 100%;
-      width: 100%;
-    }
-
-    .social-slide {
-      height: 100%;
-      left: 0;
-      position: absolute;
-      top: 0;
-      width: 100%;
-
-      > img {
-        bottom: 0;
-        left: 0;
-        position: absolute;
-        right: 0;
-        top: 0;
-        width: 100%;
-      }
-
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: none;
-      display: block;
-      transition: opacity .5s;
-      z-index: 1;
-
-      i {
-        bottom: 15px;
-        color: $white;
-        font-size: 1.8em;
-        height: 25px;
-        left: 20px;
-        opacity: .5;
-        position: absolute;
-      }
-
-      &.twitter {
-        background: $twitter-color;
-
-        @include breakpoint(medium up) {
-          padding: 2em;
-        }
-
-        padding: 1.5em;
-
-        p {
-          overflow-wrap: break-word;
-          word-wrap: break-word;
-          color: $white;
-
-          @include breakpoint(medium up) {
-            font-size: 1.2em;
-            line-height: auto;
-          }
-
-          font-size: 1em;
-          line-height: 1;
-          margin: 0;
-          padding: 0;
-        }
-      }
-
-      &.fade-block {
-        z-index: 2;
-        opacity: 0;
-      }
-
-      &.social-slide-youtube {
-        background-size: auto 100%;
-      }
-
-      &.social-slide-instagram {
-        background-size: 100%;
-      }
-    }
-  }
-
-  .social-main-info {
-    @include breakpoint(small down) {
-      padding: 0;
-      margin-top: 2rem;
-      margin-bottom: 2rem;
-    }
-
-    display: flex;
-    justify-content: center;
-    position: relative;
-
-    .social-contents {
-      // display: table-cell;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 1rem;
-      vertical-align: middle;
-      width: 100%;
-
-      @include breakpoint(large up) {
-        padding: 0 4em;
-      }
-
-      .social-icons {
-        a {
-          font-size: 1.8em;
-          display: inline-block;
-          margin-right: 1em;
-          color: $grey;
-        }
-      }
-    }
-
-    h2 {
-      @include omnes_light;
-      color: $blue;
-      font-size: 1.5rem;
-      line-height: 1em;
-      margin-bottom: 30px;
-      text-transform: uppercase;
-
-      @include breakpoint(medium up) {
-        font-size: 2rem;
-      }
-
-      @include breakpoint(large up) {
-        font-size: 2.5rem;
-      }
-    }
+  100% {
+    background-position: 50%;
   }
 }
