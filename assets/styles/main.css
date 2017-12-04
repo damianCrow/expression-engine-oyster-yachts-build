@@ -9978,8 +9978,8 @@ p {
   color: #747678;
   font-size: 0.9375em;
   letter-spacing: 0.05rem;
-  line-height: 1.73333333em;
-  margin-bottom: 1.73333333em;
+  line-height: 1.375em;
+  margin-bottom: 1.375em;
 }
 
 p strong {
@@ -10078,8 +10078,8 @@ label {
   color: #747678;
   font-size: 0.9375em;
   letter-spacing: 0.05rem;
-  line-height: 1.73333333em;
-  margin-bottom: 1.73333333em;
+  line-height: 1.375em;
+  margin-bottom: 1.375em;
   border: 0;
   font-size: 100%;
   font: inherit;
@@ -10768,8 +10768,8 @@ section {
   color: #747678;
   font-size: 0.9375em;
   letter-spacing: 0.05rem;
-  line-height: 1.73333333em;
-  margin-bottom: 1.73333333em;
+  line-height: 1.375em;
+  margin-bottom: 1.375em;
   border-top: 1px solid #c7c8ca;
   color: #747678;
   margin: 0;
@@ -13016,8 +13016,8 @@ section {
   color: #747678;
   font-size: 0.9375em;
   letter-spacing: 0.05rem;
-  line-height: 1.73333333em;
-  margin-bottom: 1.73333333em;
+  line-height: 1.375em;
+  margin-bottom: 1.375em;
   color: #7d9aaa;
   margin: 0;
   padding: 0;
@@ -18118,7 +18118,7 @@ footer:after {
   opacity: 0;
   margin: 0 0 14px;
   letter-spacing: 0.05rem;
-  line-height: 1.733333em;
+  line-height: 1.375em;
   font-size: 16px;
 }
 
@@ -18188,9 +18188,18 @@ footer:after {
 
 .carosel .text-wrapper .slide-title {
   font-size: 30px;
+  font-family: "Quarto A", "Quarto B";
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: 0.05rem;
+  font-size: 30px;
 }
 
 .carosel .text-wrapper .slide-title__number {
+  font-family: 'omnes_lightregular', sans-serif;
+  letter-spacing: 0.25rem;
+  letter-spacing: 0;
   font-size: 16px;
   display: inline-block;
   vertical-align: super;
@@ -18216,6 +18225,7 @@ footer:after {
 .carosel__image {
   height: 100%;
   background-position: center;
+  background-size: cover;
 }
 
 @-webkit-keyframes dash {
@@ -19998,8 +20008,8 @@ footer:after {
   color: #747678;
   font-size: 0.9375em;
   letter-spacing: 0.05rem;
-  line-height: 1.73333333em;
-  margin-bottom: 1.73333333em;
+  line-height: 1.375em;
+  margin-bottom: 1.375em;
   font-family: 'omnes_mediumregular', sans-serif;
   letter-spacing: 0.05rem;
   margin: 0px;
@@ -20150,8 +20160,8 @@ footer:after {
   color: #747678;
   font-size: 0.9375em;
   letter-spacing: 0.05rem;
-  line-height: 1.73333333em;
-  margin-bottom: 1.73333333em;
+  line-height: 1.375em;
+  margin-bottom: 1.375em;
   color: #7d9aaa;
   margin-bottom: 1.8rem;
   text-transform: uppercase;
@@ -26669,8 +26679,8 @@ body > .lg-outer .lg-image, body .lg-backdrop .lg-image {
   color: #747678;
   font-size: 0.9375em;
   letter-spacing: 0.05rem;
-  line-height: 1.73333333em;
-  margin-bottom: 1.73333333em;
+  line-height: 1.375em;
+  margin-bottom: 1.375em;
   list-style-type: none;
 }
 
@@ -28516,8 +28526,8 @@ body > .lg-outer .lg-image, body .lg-backdrop .lg-image {
   color: #747678;
   font-size: 0.9375em;
   letter-spacing: 0.05rem;
-  line-height: 1.73333333em;
-  margin-bottom: 1.73333333em;
+  line-height: 1.375em;
+  margin-bottom: 1.375em;
 }
 
 .search-result {
