@@ -5,7 +5,11 @@
   margin: 0 $page-margin;
   overflow: hidden;
   @include after-nav;
-  height: calc(100% - 136px);
+  height: calc(100% - #{$header-nav-large-height} - 10px);
+
+  @include breakpoint(medium down) {
+    height: calc(100% - #{$header-nav-small-height} - 10px);
+  }
 
   &__pagination-wrap {
     z-index: 3;
@@ -18,7 +22,11 @@
     flex-direction: column;
 
     @include breakpoint(medium down) {
-      display: none;
+      flex-direction: row;
+      width: auto;
+      top: auto;
+      right: 30px;
+      bottom: 0;
     }
   }
 
@@ -27,14 +35,24 @@
     height: 60px;
     flex: 1;
 
+    @include breakpoint(medium down) {
+      height: 40px;
+      width: 40px;
+    }
+
     .graphic-wrapper {
       width: 206px;      
       height: 180px; 
       overflow: hidden;
       transform: scale(0.25);
       position: inherit;
+      contain: strict;
       left: -77px;
       top: -66px;
+
+      @include breakpoint(medium down) {
+        transform: scale(0.15);
+      }
 
       &:after {
         position: absolute;
@@ -152,6 +170,10 @@
       .text {
         opacity: 1;
         transform: translateX(40px);
+
+        @include breakpoint(medium down) {
+          transform: translateX(30px);
+        }
       }
     }
 
@@ -183,6 +205,7 @@
 
   &__image {
     height: 100%;
+    background-position: center;
   }  
 }
 

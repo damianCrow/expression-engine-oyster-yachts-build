@@ -43485,6 +43485,7 @@ function _classCallCheck(instance, Constructor) {
 // PAGINATION BUTTONS CLICK HANDLER FOR SECTIONS 3 AND 4. \\
 
 var nextSlide = 0;
+var previousSlide = null;
 var timeoutName = null;
 var caroselLength = (0, _jquery2.default)('.carosel__link').length;
 
@@ -43524,6 +43525,62 @@ var handlePaninationButtonClick = function handlePaninationButtonClick(e) {
   }, 800);
 };
 
+// SWIPE EVENTS DETECTOR FUNCTION \\
+var detectswipe = function detectswipe(el, func) {
+  var swipe_det = {};
+  swipe_det.sX = 0;
+  swipe_det.sY = 0;
+  swipe_det.eX = 0;
+  swipe_det.eY = 0;
+  var min_x = 30;
+  var max_x = 30;
+  var min_y = 50;
+  var max_y = 60;
+  var direc = '';
+  var ele = document.getElementById(el);
+  ele.addEventListener('touchstart', function (e) {
+    var t = e.touches[0];
+    swipe_det.sX = t.screenX;
+    swipe_det.sY = t.screenY;
+  }, false);
+  ele.addEventListener('touchmove', function (e) {
+    e.preventDefault();
+    var t = e.touches[0];
+    swipe_det.eX = t.screenX;
+    swipe_det.eY = t.screenY;
+  }, false);
+  ele.addEventListener('touchend', function (e) {
+    // HORIZONTAL DETECTION \\
+    if ((swipe_det.eX - min_x > swipe_det.sX || swipe_det.eX + min_x < swipe_det.sX) && swipe_det.eY < swipe_det.sY + max_y && swipe_det.sY > swipe_det.eY - max_y && swipe_det.eX > 0) {
+      if (swipe_det.eX > swipe_det.sX) direc = 'r';else direc = 'l';
+    }
+    // VERTICAL DETECTION \\
+    else if ((swipe_det.eY - min_y > swipe_det.sY || swipe_det.eY + min_y < swipe_det.sY) && swipe_det.eX < swipe_det.sX + max_x && swipe_det.sX > swipe_det.eX - max_x && swipe_det.eY > 0) {
+        if (swipe_det.eY > swipe_det.sY) direc = 'd';else direc = 'u';
+      }
+
+    if (direc !== '') {
+      if (typeof func === 'function') func(direc);
+    }
+
+    swipe_det.sX = 0;
+    swipe_det.sY = 0;
+    swipe_det.eX = 0;
+    swipe_det.eY = 0;
+  }, false);
+};
+
+// CLICK THE RELEVANT SLIDE PAGINATION BUTTON ON SWIPE \\
+
+var swipeController = function swipeController(direction) {
+  if (direction === 'l') {
+    (0, _jquery2.default)('.carosel__link')[previousSlide].click();
+  }
+  if (direction === 'r') {
+    (0, _jquery2.default)('.carosel__link')[nextSlide].click();
+  }
+};
+
 var Homepage = function Homepage() {
   _classCallCheck(this, Homepage);
 
@@ -43535,10 +43592,17 @@ var Homepage = function Homepage() {
       // SET THE nextSlide TO 0 IF currentSlide IS THE LAST SLIDE \\
       if (currentSlide === caroselLength - 1) {
         nextSlide = 0;
+        previousSlide = currentSlide - 1;
       }
       // INCREMENT NEXT nextSlide IF currentSlide IS NOT THE LAST SLIDE \\
       if (currentSlide < caroselLength - 1) {
         nextSlide = currentSlide + 1;
+
+        if (currentSlide === 0) {
+          previousSlide = caroselLength - 1;
+        } else {
+          previousSlide = currentSlide - 1;
+        }
       }
       // CLEAR ANY EXISTING TIMEOUTS \\
       timeoutManager(false);
@@ -43550,6 +43614,8 @@ var Homepage = function Homepage() {
   });
   // click() THE FIRST PAGINATION BUTTON ON LOAD TO SHOW THE FIRST SLIDE \\
   (0, _jquery2.default)('.carosel__link')[nextSlide].click();
+  // INITIATE SWIPE DETECTION ON HOMEPAGE \\
+  detectswipe('homepage', swipeController);
 };
 
 exports.default = Homepage;
