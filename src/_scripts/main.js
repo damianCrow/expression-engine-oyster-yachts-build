@@ -78,7 +78,7 @@ class Main {
     // this.header = this.globalHeader && new GlobalHeader()
     this.footer = this.globalFooter && new GlobalFooter()
     this.gallery = this.galleryModal && new GalleryModal()
-    this.homepage = this.homeSlider && new Homepage()
+    this.homepage = new Homepage()
     this.brokerageFilters = this.brokerageGrid && new BrokerageFilters()
     this.charterFilters = this.charterGrid && new CharterFilters()
     this.shortlist = this.shortlistModal && new Shortlist()
