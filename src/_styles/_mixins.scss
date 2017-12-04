@@ -19,12 +19,34 @@
   font-style: normal;
   font-weight: 400;
   letter-spacing: $letter-spacing;
+}
 
+@mixin carisma-classic {
+  font-family: "CarismaClassic", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+}
+
+@mixin quarto-medium {
+  font-family: "Quarto A", "Quarto B";
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0.05rem;
+  font-size: 20px;
+}
+
+@mixin quarto-bold {
+  font-family: "Quarto A", "Quarto B";
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: 0.05rem;
+  font-size: 30px;
 }
 
 @mixin general-text {
   color: $grey;
-  font-size: $generalFontSize;
+  font-size: $general-font-size;
   letter-spacing: $letter-spacing;
   line-height: 1.73333333em;
   margin-bottom: 1.73333333em;
@@ -375,4 +397,9 @@
   .#{$class-name}right {
 
   }
+}
+
+@mixin button() {
+  border-radius: 50%;
+  border: 1px solid $lightgrey;
 }

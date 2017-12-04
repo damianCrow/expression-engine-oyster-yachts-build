@@ -2,7 +2,9 @@
 html,
 body {
   height: 100%;
-  // letter-spacing: .05em;
+  &.locked {
+    overflow: hidden;
+  }
 }
 
 body {
@@ -502,7 +504,7 @@ section {
 .full-screen {
   width: 100%;
   $header-nav-small-height: $header-nav-small-height - 2;
-  $header-nav-large-height: ($header-nav-large-height + $header-owners-area-height) - 2;
+  $header-nav-large-height: $header-nav-large-height - 2;
   height: calc(100% - #{$header-nav-small-height});
   @include breakpoint(large up) {
       height: calc(100% - #{$header-nav-large-height});
@@ -1199,7 +1201,7 @@ section {
 
   &:hover,
   &:focus {
-    background-color: $dakerCyan;
+    background-color: $daker-cyan;
   }
 }
 
@@ -3105,7 +3107,7 @@ input,
 textarea {
   &::placeholder {
       /* WebKit, Blink, Edge */
-      color: $inputTextColour;
+      color: $input-text-colour;
   }
 }
 
@@ -3151,7 +3153,7 @@ input[type="checkbox"]:checked ~ label {
   // adjust the following elements to fit since the header is FIXED
   margin-top: $header-nav-small-height + $header-nav-small-height;
   @include breakpoint(large up) {
-      margin-top: $header-nav-large-height + $header-owners-area-height + $header-nav-small-height;
+      margin-top: $header-nav-large-height + $header-nav-small-height;
   }
 }
 
@@ -3710,7 +3712,7 @@ form.request-spec {
 }
 
 @mixin global-local-subnav {
-  transform: translateY($header-nav-large-height - $header-nav-small-height + $header-owners-area-height);
+  transform: translateY($header-nav-large-height - $header-nav-small-height);
 }
 
 .global-local-subnav {

@@ -42810,6 +42810,93 @@ var _createClass = function () {
   };
 }();
 
+var _helperFunctions = require('../../_scripts/helper-functions');
+
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+var Burger = function () {
+  function Burger(button, navControls) {
+    _classCallCheck(this, Burger);
+
+    this.button = button;
+    this.navControls = navControls;
+    this.buttonTrans = 'close';
+
+    this.events();
+  }
+
+  _createClass(Burger, [{
+    key: 'events',
+    value: function events() {
+      var _this = this;
+
+      this.button.addEventListener('click', function () {
+        if ((0, _helperFunctions.hasClass)(_this.button, 'open')) {
+          _this.navControls.close();
+          _this.close();
+        } else {
+          _this.navControls.open();
+          _this.open();
+        }
+      });
+
+      this.button.addEventListener('transitionend', function (e) {
+        var action = _this.buttonTrans === 'close' ? 'closing' : 'opening';
+        console.log('e.currentTarget.classList', e.currentTarget.classList);
+        console.log('`${this.buttonTrans}ing`', action);
+        if ((0, _helperFunctions.hasClass)(e.currentTarget, action)) {
+          (0, _helperFunctions.removeClass)(_this.button, action);
+          (0, _helperFunctions.addClass)(_this.button, _this.buttonTrans);
+        }
+      });
+    }
+  }, {
+    key: 'close',
+    value: function close() {
+      this.buttonTrans = 'close';
+      if ((0, _helperFunctions.hasClass)(this.button, 'open')) {
+        (0, _helperFunctions.removeClass)(this.button, 'open');
+        (0, _helperFunctions.addClass)(this.button, 'closing');
+      }
+    }
+  }, {
+    key: 'open',
+    value: function open() {
+      this.buttonTrans = 'open';
+      if (!(0, _helperFunctions.hasClass)(this.button, 'open')) {
+        (0, _helperFunctions.removeClass)(this.button, 'close');
+        (0, _helperFunctions.addClass)(this.button, 'opening');
+      }
+    }
+  }]);
+
+  return Burger;
+}();
+
+exports.default = Burger;
+module.exports = exports['default'];
+
+},{"../../_scripts/helper-functions":392}],379:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () {
+  function defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }return function (Constructor, protoProps, staticProps) {
+    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+  };
+}();
+
 var _jquery = require('jquery');
 
 var _jquery2 = _interopRequireDefault(_jquery);
@@ -42910,7 +42997,7 @@ var CharterFilters = function () {
 exports.default = CharterFilters;
 module.exports = exports['default'];
 
-},{"jquery":361}],379:[function(require,module,exports){
+},{"jquery":361}],380:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -43014,7 +43101,7 @@ var GlobalFooter = function () {
 exports.default = GlobalFooter;
 module.exports = exports['default'];
 
-},{"jquery":361}],380:[function(require,module,exports){
+},{"jquery":361}],381:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -43233,7 +43320,7 @@ var FormValidation = function () {
 exports.default = FormValidation;
 module.exports = exports['default'];
 
-},{"jquery":361}],381:[function(require,module,exports){
+},{"jquery":361}],382:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -43312,7 +43399,7 @@ function GalleryModal() {
 exports.default = GalleryModal;
 module.exports = exports['default'];
 
-},{"jquery":361,"lightgallery":367,"lightgallery/modules/lg-fullscreen":368,"lightgallery/modules/lg-pager":369,"lightgallery/modules/lg-share":370,"lightgallery/modules/lg-thumbnail":371,"lightgallery/modules/lg-zoom":372}],382:[function(require,module,exports){
+},{"jquery":361,"lightgallery":367,"lightgallery/modules/lg-fullscreen":368,"lightgallery/modules/lg-pager":369,"lightgallery/modules/lg-share":370,"lightgallery/modules/lg-thumbnail":371,"lightgallery/modules/lg-zoom":372}],383:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -43329,17 +43416,7 @@ var _createClass = function () {
   };
 }();
 
-var _jquery = require('jquery');
-
-var _jquery2 = _interopRequireDefault(_jquery);
-
-var _breakpoints = require('../../_scripts/breakpoints');
-
-var _breakpoints2 = _interopRequireDefault(_breakpoints);
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
+var _helperFunctions = require('../../_scripts/helper-functions');
 
 function _classCallCheck(instance, Constructor) {
   if (!(instance instanceof Constructor)) {
@@ -43347,200 +43424,40 @@ function _classCallCheck(instance, Constructor) {
   }
 }
 
-var GlobalHeader = function () {
-  function GlobalHeader() {
-    _classCallCheck(this, GlobalHeader);
+var GlobalNav = function () {
+  function GlobalNav(nav, button, body) {
+    _classCallCheck(this, GlobalNav);
 
-    this.header = (0, _jquery2.default)('.global-header');
-    this.scrollToPoint = this.header.attr('data-snap-to-min-nav');
-    this.snapOffset = parseInt(this.header.attr('data-snap-offset'), 10) || 0;
-    this.headerClass = 'global-header-mini';
-
-    // local-sidebar
-    this.localSidebar = (0, _jquery2.default)('[data-local-sidebar]');
-    this.stickySidebar = (0, _jquery2.default)('.sticky-sidebar');
-    this.expandHeaderBuffer = (0, _jquery2.default)(this.header).height() * 1.5;
-
-    this.yachtNav = (0, _jquery2.default)('[data-local-subnav]');
-    this.localSubNav = (0, _jquery2.default)('[data-local-subnav]') ? (0, _jquery2.default)('[data-local-subnav]') : (0, _jquery2.default)('.global-local-subnav');
-
-    this.breakpoints = new _breakpoints2.default();
-
-    this.init();
+    this.body = body;
+    this.button = button;
+    this.nav = nav;
   }
 
-  _createClass(GlobalHeader, [{
-    key: 'init',
-    value: function init() {
-      var _this = this;
+  // events() {
+  //   this.button.addEventListener('click', () => hasClass(this.nav, 'open') ? this.close() : this.open())
+  // }
 
-      // if ($('[data-local-subnav]')[0]) {
-      //   this.localSubNav = $('[data-local-subnav]')
-      // } else if ($('.global-local-subnav')[0]) {
-      //   this.localSubNav = $('.global-local-subnav')
-      // }
-
-      // COOKIE HEADER MESSAGE
-
-      var retrievedCookieMessage = JSON.parse(localStorage.getItem('oysterYachtsCookie'));
-
-      // console.log(retrievedCookieMessage)
-
-      // var oysterYachtsCookie = {value: "true", timestamp: new Date().getTime()}
-
-      var oysterYachtsCookie = { value: JSON.stringify('true'), timestamp: new Date().getTime() + 31556926000 };
-
-      if ((0, _jquery2.default)(retrievedCookieMessage).length > 0) {
-        if (retrievedCookieMessage.timestamp < new Date().getTime()) {
-          //expired
-          // console.log('expired', retrievedCookieMessage.timestamp)
-          // console.log('cureent date', new Date().getTime())
-          (0, _jquery2.default)('body').addClass('fixed-message-showing');
-        } else {
-          // console.log('retrievedCookieMessage.timestamp', retrievedCookieMessage.timestamp)
-          (0, _jquery2.default)('body').removeClass('fixed-message-showing');
-        }
-      } else {
-        (0, _jquery2.default)('body').addClass('fixed-message-showing');
-      }
-
-      (0, _jquery2.default)('.accept-message').on('click', function () {
-        (0, _jquery2.default)('body').removeClass('fixed-message-showing');
-        // cookieMessage = 'true'
-        localStorage.setItem('oysterYachtsCookie', JSON.stringify(oysterYachtsCookie));
-      });
-
-      // if the scroll point is a div id, get its index point
-      if (isNaN(parseInt(this.scrollToPoint), 10) && this.scrollToPoint !== 'undefined') this.scrollToPoint = (0, _jquery2.default)(this.scrollToPoint).offset().top - this.snapOffset;
-
-      (0, _jquery2.default)(window).bind('scroll', function () {
-        var scroll = (0, _jquery2.default)(window).scrollTop();
-        // if the subnav and the header exists, remove the box shadow
-        if (_this.localSubNav && _this.header.length !== 0) _this.headerClass = 'global-header-mini no-boxshadow';
-
-        if (scroll >= parseInt(_this.scrollToPoint, 10)) {
-          if ((0, _jquery2.default)(_this.header).hasClass(_this.headerClass)) {
-            // $('.main-nav li ul').removeClass('hidden-animation')
-          } else {
-            (0, _jquery2.default)('.main-nav li ul').addClass('hidden-animation');
-            _this.header.addClass(_this.headerClass);
-          }
-
-          if (_this.localSubNav && _this.breakpoints.atLeast('medium')) {
-            _this.localSubNav.addClass('global-local-subnav-mini').parent().css({ position: 'static' });
-          }
-
-          // A buffer zone for expanding the header.
-        } else {
-          _this.yachtNav.removeClass('global-local-subnav-mini').parent().css({ position: 'relative' });
-        }
-
-        if (scroll <= parseInt(_this.expandHeaderBuffer, 10)) {
-          if ((0, _jquery2.default)(_this.header).hasClass(_this.headerClass)) {
-            (0, _jquery2.default)('.main-nav li ul').addClass('hidden-animation');
-
-            _this.header.removeClass(_this.headerClass);
-          } else {
-            // $('.main-nav li ul').removeClass('hidden-animation')
-          }
-
-          _this.localSubNav && _this.localSubNav.removeClass('global-local-subnav-mini');
-        }
-      });
-
-      /* From Modernizr */
-      function whichTransitionEvent() {
-        var t = void 0;
-        var el = document.createElement('fakeelement');
-        var transitions = {
-          'transition': 'transitionend',
-          'OTransition': 'oTransitionEnd',
-          'MozTransition': 'transitionend',
-          'WebkitTransition': 'webkitTransitionEnd'
-        };
-
-        for (t in transitions) {
-          if (el.style[t] !== undefined) {
-            return transitions[t];
-          }
-        }
-      }
-
-      /* Listen for a transition! */
-      var e = document.getElementsByClassName('logo-o')[0];
-
-      var transitionEvent = whichTransitionEvent();
-      transitionEvent && e.addEventListener(transitionEvent, function () {
-        (0, _jquery2.default)('.main-nav li ul').removeClass('hidden-animation');
-      });
-
-      // Hack to make sure SVG transisions work correctly inside an anchor tag
-      if (navigator.userAgent.indexOf('Safari') !== -1 && navigator.userAgent.indexOf('Chrome') === -1) {
-        var logoHref = (0, _jquery2.default)('.global-header .logo').attr('href');
-        (0, _jquery2.default)('.global-header .logo').removeAttr('href');
-        (0, _jquery2.default)('.global-header .logo').append('<a class="safari-logo-link" href=' + logoHref + '></a>');
-      }
-
-      // OVVERIDE MOBILE ACCORDION TEXT TO BE LINKS
-      (0, _jquery2.default)('#global-navigation-modal a.accordion-title span').on('click', function (evt) {
-        evt.preventDefault();
-        location.href = (0, _jquery2.default)(evt.currentTarget).parent().attr('href');
-        return false;
-      });
-
-      (0, _jquery2.default)('.site-menu').on('click', function (e) {
-        (0, _jquery2.default)(e.currentTarget).toggleClass('active-burger');
-      });
-
-      // Toggle follow oyster social buttons
-      var navFooter = (0, _jquery2.default)('#global-navigation-modal .nav-footer-modal');
-      var followHeader = (0, _jquery2.default)('.global-header .follow');
-
-      (0, _jquery2.default)('.nav-footer-modal .follow-btn').on('click', function () {
-        navFooter.addClass('follow-oyster-social-btns');
-      });
-
-      (0, _jquery2.default)('.nav-footer-modal .social-links .back-btn').on('click', function () {
-        navFooter.removeClass('follow-oyster-social-btns');
-      });
-
-      (0, _jquery2.default)('.global-header .follow-oyster').on('click', function () {
-        followHeader.toggleClass('follow-on');
-      });
-
-      (0, _jquery2.default)('.global-header .back-btn').on('click', function () {
-        followHeader.removeClass('follow-on');
-      });
-
-      // close foundation modal
-      (0, _jquery2.default)('.global-modals .close-button-wrapper a.site-search-close').on('click', function () {
-        // if a modal is full screen and has the combination of ".close-button-wrapper a.site-search-close", manually close it
-        (0, _jquery2.default)('.global-modals.full').foundation('close');
-      });
-
-      //  ---- GLOBAL MAIN FIXED HEADER SEARCH BAR TOGGLE SEARCH ICON -----  //
-      var siteSearchOpen = (0, _jquery2.default)('.global-header-top-nav-large .site-search');
-
-      // site search open
-      siteSearchOpen.on('click', function (e) {
-        e.preventDefault();
-
-        (0, _jquery2.default)('.global-header-top-nav-large').toggleClass('search-bar-open');
-
-        if ((0, _jquery2.default)('.global-header-top-nav-large').hasClass('search-bar-open')) {
-          (0, _jquery2.default)('.search-bar input').focus();
-        }
-      });
+  _createClass(GlobalNav, [{
+    key: 'open',
+    value: function open() {
+      (0, _helperFunctions.addClass)(this.nav, 'open');
+      (0, _helperFunctions.addClass)(this.body, 'locked');
+    }
+  }, {
+    key: 'close',
+    value: function close() {
+      (0, _helperFunctions.removeClass)(this.nav, 'open');
+      (0, _helperFunctions.removeClass)(this.body, 'locked');
     }
   }]);
 
-  return GlobalHeader;
+  return GlobalNav;
 }();
 
-exports.default = GlobalHeader;
+exports.default = GlobalNav;
 module.exports = exports['default'];
 
-},{"../../_scripts/breakpoints":390,"jquery":361}],383:[function(require,module,exports){
+},{"../../_scripts/helper-functions":392}],384:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -43638,7 +43555,7 @@ var Homepage = function Homepage() {
 exports.default = Homepage;
 module.exports = exports['default'];
 
-},{"../../_scripts/breakpoints":390,"jquery":361}],384:[function(require,module,exports){
+},{"../../_scripts/breakpoints":391,"jquery":361}],385:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -43768,7 +43685,7 @@ var OwnersArea = function () {
 exports.default = OwnersArea;
 module.exports = exports['default'];
 
-},{"../form-validation/form-validation":380,"jquery":361}],385:[function(require,module,exports){
+},{"../form-validation/form-validation":381,"jquery":361}],386:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -43798,7 +43715,7 @@ function quoteTestimonials() {
   });
 }
 
-},{"jquery":361,"jquery.cycle2":360}],386:[function(require,module,exports){
+},{"jquery":361,"jquery.cycle2":360}],387:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -44065,7 +43982,7 @@ var Shortlist = function () {
 exports.default = Shortlist;
 module.exports = exports['default'];
 
-},{"jquery":361}],387:[function(require,module,exports){
+},{"jquery":361}],388:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -44174,7 +44091,7 @@ var averageClimate = exports.averageClimate = {
   }
 };
 
-},{}],388:[function(require,module,exports){
+},{}],389:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -44302,7 +44219,7 @@ var weatherIconIds = exports.weatherIconIds = {
   3200: weatherIcon['Sun']
 };
 
-},{}],389:[function(require,module,exports){
+},{}],390:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -44455,7 +44372,7 @@ var Weather = function () {
 exports.default = Weather;
 module.exports = exports['default'];
 
-},{"./average-climate-data":387,"./weather-icons":388,"jquery":361,"simpleweather":376}],390:[function(require,module,exports){
+},{"./average-climate-data":388,"./weather-icons":389,"jquery":361,"simpleweather":376}],391:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -44577,7 +44494,7 @@ var BreakPoints = function () {
 exports.default = BreakPoints;
 module.exports = exports['default'];
 
-},{"jquery":361}],391:[function(require,module,exports){
+},{"jquery":361}],392:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -44850,7 +44767,7 @@ function documentReady() {
   });
 }
 
-},{}],392:[function(require,module,exports){
+},{}],393:[function(require,module,exports){
 'use strict';
 
 var _createClass = function () {
@@ -44870,6 +44787,9 @@ var _createClass = function () {
 // import 'foundation-sites/js/foundation.util.mediaQuery'
 // import 'foundation-sites/js/foundation.equalizer'
 // import 'foundation-sites/js/foundation.reveal'
+
+
+// import GlobalHeader from '../_modules/header/header'
 
 
 require('babel-polyfill');
@@ -44896,9 +44816,13 @@ require('lazysizes/plugins/optimumx/ls.optimumx');
 
 require('lazysizes/plugins/unveilhooks/ls.unveilhooks');
 
-var _header = require('../_modules/header/header');
+var _globalNav = require('../_modules/global-nav/global-nav');
 
-var _header2 = _interopRequireDefault(_header);
+var _globalNav2 = _interopRequireDefault(_globalNav);
+
+var _burger = require('../_modules/burger/burger');
+
+var _burger2 = _interopRequireDefault(_burger);
 
 var _footer = require('../_modules/footer/footer');
 
@@ -44951,6 +44875,8 @@ var Main = function () {
     _classCallCheck(this, Main);
 
     this.globalHeader = document.querySelector('.global-header-wrapper');
+    this.burgerBtn = document.querySelector('.burger');
+    this.globalNav = document.querySelector('.global-nav');
     this.globalFooter = document.querySelector('.global-footer');
 
     this.gallery = document.querySelector('.gallery-content');
@@ -44998,6 +44924,8 @@ var Main = function () {
       (0, _quoteTestimonials.quoteTestimonials)();
 
       // this.header = this.globalHeader && new GlobalHeader()
+      this.nav = new _globalNav2.default(this.globalNav, this.burgerBtn, document.body);
+      this.burger = new _burger2.default(this.burgerBtn, this.nav);
       this.footer = this.globalFooter && new _footer2.default();
       this.gallery = this.galleryModal && new _galleryModal2.default();
       this.homepage = new _homepage2.default();
@@ -45329,6 +45257,6 @@ var Main = function () {
   new Main();
 });
 
-},{"../_modules/brokerage/brokerage-filters":377,"../_modules/charter/charter-filters":378,"../_modules/footer/footer":379,"../_modules/gallery-modal/gallery-modal":381,"../_modules/header/header":382,"../_modules/homepage/homepage":383,"../_modules/owners-area/owners-area-modal":384,"../_modules/quote-testimonials/quote-testimonials":385,"../_modules/shortlist/shortlist":386,"../_modules/weather/weather":389,"./helper-functions":391,"babel-polyfill":1,"foundation-sites":325,"jquery":361,"lazysizes":362,"lazysizes/plugins/optimumx/ls.optimumx":364,"lazysizes/plugins/respimg/ls.respimg":365,"lazysizes/plugins/unveilhooks/ls.unveilhooks":366,"scrollmagic":374,"select2":375}]},{},[392])
+},{"../_modules/brokerage/brokerage-filters":377,"../_modules/burger/burger":378,"../_modules/charter/charter-filters":379,"../_modules/footer/footer":380,"../_modules/gallery-modal/gallery-modal":382,"../_modules/global-nav/global-nav":383,"../_modules/homepage/homepage":384,"../_modules/owners-area/owners-area-modal":385,"../_modules/quote-testimonials/quote-testimonials":386,"../_modules/shortlist/shortlist":387,"../_modules/weather/weather":390,"./helper-functions":392,"babel-polyfill":1,"foundation-sites":325,"jquery":361,"lazysizes":362,"lazysizes/plugins/optimumx/ls.optimumx":364,"lazysizes/plugins/respimg/ls.respimg":365,"lazysizes/plugins/unveilhooks/ls.unveilhooks":366,"scrollmagic":374,"select2":375}]},{},[393])
 
 //# sourceMappingURL=main.js.map

@@ -2,16 +2,90 @@
 $header-transistion-back-delay: .25;
 $logo-width: 230px;
 
+.global-header {
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: $white;
+  // TODO: Sort this out.
+  z-index: 9999;
+  transform: translateY(-30px);
+  transition: transform 250ms ease-in-out;
+  @include breakpoint(medium up) {
+    transform: translateY(0);
+  }
+}
+
+.main-header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: (10px * 2) 10px;
+  position: relative;
+  transform: translateY(20px);
+  transition: transform 250ms ease-in-out;
+  z-index: 2;
+
+  @include breakpoint(medium up) {
+    transform: translateY(0);
+  }
+
+  &:before {
+    background-color: $white;
+    content: "";
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    transform: translateY(-20px);
+    transition: transform 250ms ease-in-out;
+    width: 100%;
+
+    @include breakpoint(medium up) {
+      transform: translateY(0);
+    }
+  }
+
+  &__home,
+  &__title,
+  &__menu {
+    flex: 1;
+  }
+
+  &__title {
+    @include h4-styles;
+    text-align: center;
+    margin: 0;
+
+    @include breakpoint(medium up) {
+      display: none;
+    }
+  }
+
+  &__menu {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  &__home {
+    display: flex;
+    align-items: center;
+    margin: 0;
+  }
+}
+
 @mixin global-header-mini-mixin() {
   height: $header-nav-small-height;
   max-height: $header-nav-small-height;
   transition: all .25s ease-in,
               transform .5s cubic-bezier(.190, 1, .220, 1);
   // with the fixed cookie message at top
-  transform: translateY(0 - $header-owners-area-height);
+  // transform: translateY(0 - $header-owners-area-height);
 
   .fixed-message {
-    transform: translateY($header-owners-area-height);
+    // transform: translateY($header-owners-area-height);
     transition: all .25s ease-in, transform 250ms cubic-bezier(.190, 1, .220, 1);
   }
 
@@ -326,14 +400,14 @@ $logo-width: 230px;
 
     @include breakpoint(medium down) {
       // height: $header-message-height-small;
-      transform: translateY($header-message-height - $header-owners-area-height);
+      // transform: translateY($header-message-height - $header-owners-area-height);
       // So it doesn't drop down on each page load
       // transition: none;
     }
 
     @include breakpoint(small down) {
       // height: $header-message-height-small;
-      transform: translateY($header-message-height-small - $header-owners-area-height);
+      // transform: translateY($header-message-height-small - $header-owners-area-height);
       // So it doesn't drop down on each page load
       // transition: none;
     }
@@ -341,13 +415,13 @@ $logo-width: 230px;
     &.global-header-mini {
       // So it doesn't drop down on each page load
       // transition: none;
-      transform: translateY(0 - ($header-owners-area-height - $header-message-height));
+      // transform: translateY(0 - ($header-owners-area-height - $header-message-height));
 
       @include breakpoint(small down) {
         // height: $header-message-height-small;
         // So it doesn't drop down on each page load
         // transition: none;
-        transform: translateY($header-message-height-small - $header-owners-area-height);
+        // transform: translateY($header-message-height-small - $header-owners-area-height);
       }
     }
   }
@@ -391,7 +465,7 @@ $logo-width: 230px;
   }
 }
 
-.global-header {
+.global-header-old {
   background-color: $white;
   left: 0;
   position: fixed;
@@ -476,7 +550,7 @@ $logo-width: 230px;
   // will-change hides the entire element in FF.
   // will-change: transform;
   background-color: $blue;
-  height: $header-owners-area-height;
+  // height: $header-owners-area-height;
   overflow: hidden;
   position: relative;
 
@@ -548,7 +622,7 @@ $logo-width: 230px;
     background-color: $blue;
     display: inline-block;
     float: right;
-    height: $header-owners-area-height;
+    // height: $header-owners-area-height;
   }
 
   .social-icons {
@@ -575,45 +649,6 @@ $logo-width: 230px;
       font-size: 1.2rem;
       width: 2rem;
     }
-  }
-}
-
-.logo {
-  display: inline-block;
-  height: 100%;
-  width: 230px;
-
-  .safari-logo-link {
-    height: 100%;
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: $logo-width;
-  }
-
-  &::before {
-    // 101% to catch height / transform clashes
-
-    background: $blue;
-    border-bottom: 2px solid $blue;
-    border-radius: 0 50% 50% 0;
-    box-sizing: content-box;
-    content: '';
-    height: 101%;
-    left: 0;
-    opacity: 0;
-    padding: 0 1.75rem;
-    position: absolute;
-    top: -1%;
-    // Transistion is within the main global-header-top-nav-large class, to control it's recollapse.
-    transform: translateX(-100%);
-    will-change: opacity, transform;
-    z-index: -1;
-
-    @include breakpoint(large only) {
-      padding: 0 1.5rem;
-    }
-
   }
 }
 
@@ -723,7 +758,7 @@ $logo-width: 230px;
   input {
     background: $white;
     border: none;
-    color: $inputTextColour;
+    color: $input-text-colour;
     font-size: 1.875em;
     height: 100%;
     line-height: 1.14285714em;

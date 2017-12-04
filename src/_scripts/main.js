@@ -15,7 +15,9 @@ import 'lazysizes/plugins/respimg/ls.respimg'
 import 'lazysizes/plugins/optimumx/ls.optimumx'
 import 'lazysizes/plugins/unveilhooks/ls.unveilhooks'
 
-import GlobalHeader from '../_modules/header/header'
+// import GlobalHeader from '../_modules/header/header'
+import GlobalNav from '../_modules/global-nav/global-nav'
+import Burger from '../_modules/burger/burger'
 import GlobalFooter from '../_modules/footer/footer'
 import Homepage from '../_modules/homepage/homepage'
 import BrokerageFilters from '../_modules/brokerage/brokerage-filters'
@@ -31,6 +33,8 @@ import { quoteTestimonials } from '../_modules/quote-testimonials/quote-testimon
 class Main {
   constructor() {
     this.globalHeader = document.querySelector('.global-header-wrapper')
+    this.burgerBtn = document.querySelector('.burger')
+    this.globalNav = document.querySelector('.global-nav')
     this.globalFooter = document.querySelector('.global-footer')
 
     this.gallery = document.querySelector('.gallery-content')
@@ -76,6 +80,8 @@ class Main {
     quoteTestimonials()
 
     // this.header = this.globalHeader && new GlobalHeader()
+    this.nav = new GlobalNav(this.globalNav, this.burgerBtn, document.body)
+    this.burger = new Burger(this.burgerBtn, this.nav)
     this.footer = this.globalFooter && new GlobalFooter()
     this.gallery = this.galleryModal && new GalleryModal()
     this.homepage = new Homepage()

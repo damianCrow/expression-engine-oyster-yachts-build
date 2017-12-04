@@ -1,5 +1,120 @@
 .global-nav {
+  $root: &;
+  background-color: $white;
   display: flex;
-  position: relative;
-  justify-content: space-between;
+  flex-direction: column;
+  // min-height: calc(100vh - 50px);
+  height: calc(100vh - 50px);
+  padding: calc(10px + #{$global-padding});
+  width: 100vw;
+  z-index: 1;
+  position: fixed;
+  right: 0;
+  transform: translateY(-100%);
+  transition: transform 500ms $ease-out-quart;
+
+  @include breakpoint(medium up) {
+    width: 50vw;
+    min-height: calc(100vh - 90px);
+  }
+
+  &.open {
+    transition: transform 500ms $ease-out-quart;
+    transform: translateY(0);
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    right: 0;
+    height: 100%;
+    position: relative;
+    width: 100%;
+    z-index: 1;
+    flex: 1;
+  }
+
+  &__main {
+    overflow-y: scroll;
+
+    > li {
+      margin: ($global-margin / 2) 0;
+
+      a {
+        @include quarto-bold;
+      }      
+    }
+  }
+
+  &__extra {
+    margin-top: auto;
+    > li {
+      a {
+        @include omnes-regular;
+        font-size: 20px;
+      }
+    }
+  }
+
+  &__social-n-owners {
+    display: flex;
+    flex-direction: column;
+    padding: $global-padding 0;
+
+    @include breakpoint(medium up) {
+      flex-direction: row;
+    }
+  }
+
+  &__owners {
+    @include breakpoint(medium up) {
+      flex: 1;
+    }
+  }
+
+  &__social {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 25px;
+    @include breakpoint(medium up) {
+      flex: 1;
+    }
+
+    > li {
+      flex: 0 0 auto;
+
+      > a {
+        display: block;
+      }
+    }
+  }
+
+  &__contact {
+    background-color: $white;
+    // TODO: Find out why this -20px is needed.
+    bottom: -20px;
+    display: flex;
+    flex-direction: column;
+    left: 0;
+    margin-top: auto;
+    padding: $global-padding calc(10px + #{$global-padding});
+    position: fixed;
+    position: sticky;
+    width: 100%;
+    z-index: 1;
+
+    @supports (position: sticky) {
+      padding: 0;
+    }
+  }
+
+  &__contact-info {
+    padding: $global-padding 0;
+    > a {
+      @include omnes-regular;
+      font-size: 20px;
+      display: block;
+    }
+  }
 }

@@ -1,15 +1,47 @@
 .burger {
+  $root: &;
+  @include button();
   display: inline-block;
   position: relative;
-  padding: 0 $global-margin;
+  height: 40px;
+  width: 40px;
+  transition: transform 250ms ease-in-out;
+  contain: strict;
 
   &__piece {
     background: $blue;
     display: inline-block;
-    height: 100%;
-    margin-right: 2px;
-    width: 5px;
-    height: 12px;
+    width: 4px;
+    height: 10px;
     transform: skew(-10deg)
+  }
+
+  &.opening,
+  &.closing {
+    transform: scale(0);
+  }
+
+  &.open,
+  &.closed {
+    transform: scale(1);
+  }
+
+  &.open,
+  &.closing {
+    #{$root}__piece {
+      width: 2px;
+      &:nth-child(1) {
+        transform: rotate(45deg) translateY(-3.5px) translateX(3.5px) scale(2);
+      }
+
+      &:nth-child(2) {
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:nth-child(3) {
+        transform: rotate(-45deg) translateY(-3.5px) translateX(-3.5px) scale(2);
+      }
+    }
   }
 }

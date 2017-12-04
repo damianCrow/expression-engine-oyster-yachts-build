@@ -1,0 +1,70 @@
+.logo {
+  $root: &;
+  display: inline-flex;
+  height: 50px;
+  position: relative;
+
+  &::before {
+    background-color: $blue;
+    content: "";
+    display: block;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    transform: scaleY(1);
+    transform-origin: center bottom;
+    transition: transform 350ms $ease-out-circ 250ms;
+    width: 50px;
+
+    @include breakpoint(medium up) {
+      transform: scaleY(0);
+      transition: transform 250ms $ease-in-circ;
+    }
+  }
+
+  &__container {
+    height: 100%;
+    padding: 10px;
+    position: absolute;
+    width: 230px;
+    z-index: 1;
+  }
+
+  @mixin show-all-letters() {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(0);
+    transition: transform 250ms ease-in, opacity 250ms ease-in;
+
+    &--o {
+      fill: $blue;
+      transition: fill 250ms ease-out;
+    }
+  }
+
+  &--large {
+    #{$root}__letter{
+      @include show-all-letters();
+    }
+  }
+
+  &__letter {
+    fill: $blue;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(25px);
+    transition: transform 250ms ease-out, opacity 250ms ease-out;
+
+    &--o {
+      fill: $white;
+      opacity: 1;
+      pointer-events: auto;
+      transform: none;
+      transition: fill 250ms ease-in;
+    }
+
+    @include breakpoint(medium up) {
+      @include show-all-letters();
+    }
+  }
+}

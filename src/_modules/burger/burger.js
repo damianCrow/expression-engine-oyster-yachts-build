@@ -1,64 +1,49 @@
-import $ from 'jquery'
+import { addClass, removeClass, hasClass } from '../../_scripts/helper-functions'
 
-function validateEmail(email) {
-  const re = /\S+@\S+\.\S+/
-  return re.test(email)
-}
+export default class Burger {
+  constructor(button, navControls) {
+    this.button = button
+    this.navControls = navControls
+    this.buttonTrans = 'close'
 
-export default class GlobalFooter {
-  constructor() {
-    this.init()
+    this.events()
   }
 
-  init() {
-    $('.sign-up-btn').on('click', () => {
-      let nope = false
-
-      $('.new-sign-up :input[required]').each((input) => {
-        if (!$(input).val()) {
-          nope = true
-          $(input).parent('.field').addClass('error')
-          $('.new-sign-up .form-error').addClass('visible')
-        } else {
-          $(input).parent('.field').removeClass('error')
-          $('.new-sign-up .form-error').removeClass('visible')
-        }
-      })
-
-      if (!validateEmail($('.new-sign-up :input[type="email"]').val())) {
-        nope = true
-
-        $('.new-sign-up :input[type="email"]').parent('.field').addClass('error')
-        $('.new-sign-up .form-error').addClass('visible')
+  events() {
+    this.button.addEventListener('click', () => {
+      if (hasClass(this.button, 'open')) {
+        this.navControls.close()
+        this.close()
       } else {
-        $('.new-sign-up :input[type="email"]').parent('.field').removeClass('error')
-        $('.new-sign-up .form-error').removeClass('visible')
-      }
-
-      if (!nope) {
-        $('.sign-up-btn').addClass('is-loading')
-        const $form = $('#signup-home-footer')
-
-        $.ajax({
-          url: '/newsletter/signup.php',
-          dataType: 'json',
-          type: 'POST',
-          data: {
-            email: $form.find('.newsletter-email').val(),
-            fname: $form.find('.newsletter-fname').val(),
-            sname: $form.find('.newsletter-sname').val(),
-            country: $form.find('.newsletter-country').val(),
-          },
-        }).done((data) => {
-          if (data.status === 'success') {
-            $('.sign-up').addClass('is-complete')
-          }
-        })
+        this.navControls.open()
+        this.open()
       }
     })
 
-    $('#signup-home-footer').submit((e) => {
-      e.preventDefault()
+    this.button.addEventListener('transitionend', (e) => {
+      const action = this.buttonTrans === 'close' ? 'closing' : 'opening'
+      console.log('e.currentTarget.classList', e.currentTarget.classList)
+      console.log('`${this.buttonTrans}ing`', action)
+      if (hasClass(e.currentTarget, action)) {
+        removeClass(this.button, action)
+        addClass(this.button, this.buttonTrans)
+      }
     })
+  }
+
+  close() {
+    this.buttonTrans = 'close'
+    if (hasClass(this.button, 'open')) {
+      removeClass(this.button, 'open')
+      addClass(this.button, 'closing')
+    }
+  }
+
+  open() {
+    this.buttonTrans = 'open'
+    if (!hasClass(this.button, 'open')) {
+      removeClass(this.button, 'close')
+      addClass(this.button, 'opening')
+    }
   }
 }

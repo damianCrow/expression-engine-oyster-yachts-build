@@ -450,7 +450,7 @@ footer {
         @include omnes-regular;
         background: rgba(0, 0, 0, 0.35);
         &::placeholder { /* WebKit, Blink, Edge */
-            color: $inputTextColour;
+            color: $input-text-colour;
         }
         // &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
         //  color: $grey;
@@ -472,7 +472,7 @@ footer {
     }
 
     span[title="Country"].select2-selection__rendered {
-        color: $inputTextColour !important;
+        color: $input-text-colour !important;
     }
 
 }

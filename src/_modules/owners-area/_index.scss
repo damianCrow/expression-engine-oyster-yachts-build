@@ -26,7 +26,7 @@
         border: none;
         tr:last-of-type {
             td {
-                border-bottom: 0px;
+                border-bottom: 0;
             }
         }
     }
@@ -81,7 +81,7 @@
 .owners-area-landing {
   padding-bottom: 35px;
   .description-download {
-      font-size: $generalFontSize;
+      font-size: $general-font-size;
   }
   .upcoming-events--small {
       display: flex;
@@ -104,7 +104,7 @@
 
     figure {
         &:nth-child(even) {
-            border-right: 0px;
+            border-right: 0;
         }
     }
     .download-pdf {
@@ -112,7 +112,7 @@
         @include breakpoint(medium up) {
             border-right: 1px solid $greyborder;
             &:nth-child(even) {
-                border-right: 0px;
+                border-right: 0;
             }
         }
 
@@ -138,8 +138,8 @@
 
     .external-file-btn {
         @include breakpoint(small down) {
-            margin-left: 0px !important;
-            margin-right: 0px !important;
+            margin-left: 0 !important;
+            margin-right: 0 !important;
         }
     }
 }
@@ -159,7 +159,7 @@
         flex-direction: column;
         text-align: center;
         text-transform: uppercase;
-        padding: 0px;
+        padding: 0;
     }
 
     br {
@@ -199,17 +199,18 @@
         }
     }
 
-    &__view-statement{
+    &__view-statement {
         color: white !important;
-        border: solid 0px $blue;
+        border: solid 0 $blue;
         margin-top: 1rem;
-        margin-bottom: 0rem;
+        margin-bottom: 0;
+        flex: 1 0 100%;
+
         &:hover, &:focus {
             background-color: #fff;
             color: $blue !important;
-            border: solid 0px $blue;
+            border: solid 0 $blue;
         }
-        flex: 1 0 100%;
     }
 }
 

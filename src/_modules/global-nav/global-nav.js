@@ -1,47 +1,23 @@
-'use strict';
+import { addClass, removeClass } from '../../_scripts/helper-functions'
 
-define(['jquery', 'ScrollMagic', 'foundation'], function ($, ScrollMagic, validateForm) {
-
-  // Find the nav background sprite
-  let img = document.getElementsByClassName('main-nav-second__image')[0],
-  style = window.getComputedStyle(img, ':after'),
-  bi = style.backgroundImage.slice(4, -1);
-
-  // console.log('bi, ', bi);
-
-  // Preload image
-  let navImage = new Image();
-  navImage.src = bi;
-
-  const mainNav = document.querySelector('.main-nav-first');
-  const allFirstNavs = document.querySelectorAll('.main-nav-first > .main-nav-first__option');
-
-  Array.prototype.forEach.call(allFirstNavs, function(el, i){
-    el.addEventListener('mouseover', showThisMenu(el));
-  });
-
-  Array.prototype.forEach.call(allFirstNavs, function(el, i){
-    el.addEventListener('mouseleave', hideThisMenu(el));
-  });
-
-  function showThisMenu(menuTitle) {
-
-    const menuToShow = menuTitle.querySelector('.main-nav-second')
-    if (menuToShow.classList){
-      menuToShow.classList.add('main-nav-second--active');
-    } else {
-      menuToShow.className += ' ' + 'main-nav-second--active';
-    }
+export default class GlobalNav {
+  constructor(nav, button, body) {
+    this.body = body
+    this.button = button
+    this.nav = nav
   }
 
-  function hideThisMenu(menuTitle) {
-    const menuToHide = menuTitle.querySelector('.main-nav-second')
-    if (menuToHide.classList){
-      menuToHide.classList.remove('main-nav-second--active');
-    } else {
-      menuToHide.className = menuToHide.className.replace(new RegExp('(^|\\b)' + 'main-nav-second--active'.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
-    }
+  // events() {
+  //   this.button.addEventListener('click', () => hasClass(this.nav, 'open') ? this.close() : this.open())
+  // }
+
+  open() {
+    addClass(this.nav, 'open')
+    addClass(this.body, 'locked')
   }
 
-
-});
+  close() {
+    removeClass(this.nav, 'open')
+    removeClass(this.body, 'locked')
+  }
+}
