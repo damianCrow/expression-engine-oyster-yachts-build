@@ -3,6 +3,8 @@ import { addClass, removeClass, hasClass } from '../../_scripts/helper-functions
 export default class Burger {
   constructor(button, navControls) {
     this.button = button
+    this.burgerPiece = button.querySelector('.burger__wrapper')
+    console.log('this.burgerPiece', this.burgerPiece)
     this.navControls = navControls
     this.buttonTrans = 'close'
 
@@ -20,11 +22,9 @@ export default class Burger {
       }
     })
 
-    this.button.addEventListener('transitionend', (e) => {
+    this.burgerPiece.addEventListener('transitionend', () => {
       const action = this.buttonTrans === 'close' ? 'closing' : 'opening'
-      console.log('e.currentTarget.classList', e.currentTarget.classList)
-      console.log('`${this.buttonTrans}ing`', action)
-      if (hasClass(e.currentTarget, action)) {
+      if (hasClass(this.button, action)) {
         removeClass(this.button, action)
         addClass(this.button, this.buttonTrans)
       }
@@ -41,7 +41,7 @@ export default class Burger {
 
   open() {
     this.buttonTrans = 'open'
-    if (!hasClass(this.button, 'open')) {
+    if (!hasClass(this.button, 'open') && !hasClass(this.button, 'opening') && !hasClass(this.button, 'closing')) {
       removeClass(this.button, 'close')
       addClass(this.button, 'opening')
     }

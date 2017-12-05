@@ -42823,6 +42823,8 @@ var Burger = function () {
     _classCallCheck(this, Burger);
 
     this.button = button;
+    this.burgerPiece = button.querySelector('.burger__wrapper');
+    console.log('this.burgerPiece', this.burgerPiece);
     this.navControls = navControls;
     this.buttonTrans = 'close';
 
@@ -42844,11 +42846,9 @@ var Burger = function () {
         }
       });
 
-      this.button.addEventListener('transitionend', function (e) {
+      this.burgerPiece.addEventListener('transitionend', function () {
         var action = _this.buttonTrans === 'close' ? 'closing' : 'opening';
-        console.log('e.currentTarget.classList', e.currentTarget.classList);
-        console.log('`${this.buttonTrans}ing`', action);
-        if ((0, _helperFunctions.hasClass)(e.currentTarget, action)) {
+        if ((0, _helperFunctions.hasClass)(_this.button, action)) {
           (0, _helperFunctions.removeClass)(_this.button, action);
           (0, _helperFunctions.addClass)(_this.button, _this.buttonTrans);
         }
@@ -42867,7 +42867,7 @@ var Burger = function () {
     key: 'open',
     value: function open() {
       this.buttonTrans = 'open';
-      if (!(0, _helperFunctions.hasClass)(this.button, 'open')) {
+      if (!(0, _helperFunctions.hasClass)(this.button, 'open') && !(0, _helperFunctions.hasClass)(this.button, 'opening') && !(0, _helperFunctions.hasClass)(this.button, 'closing')) {
         (0, _helperFunctions.removeClass)(this.button, 'close');
         (0, _helperFunctions.addClass)(this.button, 'opening');
       }
@@ -43432,10 +43432,6 @@ var GlobalNav = function () {
     this.button = button;
     this.nav = nav;
   }
-
-  // events() {
-  //   this.button.addEventListener('click', () => hasClass(this.nav, 'open') ? this.close() : this.open())
-  // }
 
   _createClass(GlobalNav, [{
     key: 'open',

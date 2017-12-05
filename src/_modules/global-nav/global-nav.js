@@ -7,10 +7,6 @@ export default class GlobalNav {
     this.nav = nav
   }
 
-  // events() {
-  //   this.button.addEventListener('click', () => hasClass(this.nav, 'open') ? this.close() : this.open())
-  // }
-
   open() {
     addClass(this.nav, 'open')
     addClass(this.body, 'locked')

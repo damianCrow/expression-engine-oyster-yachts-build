@@ -7,6 +7,7 @@
   height: calc(100vh - 50px);
   padding: calc(10px + #{$global-padding});
   width: 100vw;
+  max-width: 800px;
   z-index: 1;
   position: fixed;
   right: 0;
@@ -14,7 +15,7 @@
   transition: transform 500ms $ease-out-quart;
 
   @include breakpoint(medium up) {
-    width: 50vw;
+    width: 40vw;
     min-height: calc(100vh - 90px);
   }
 

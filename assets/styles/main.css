@@ -15362,59 +15362,150 @@ form.request-spec {
 .burger {
   border-radius: 50%;
   border: 1px solid #f2f5f6;
+  contain: strict;
   display: inline-block;
-  position: relative;
   height: 40px;
+  outline: none;
+  position: relative;
   width: 40px;
+  cursor: pointer;
+}
+
+.burger__wrapper {
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
   -webkit-transition: -webkit-transform 250ms ease-in-out;
   transition: -webkit-transform 250ms ease-in-out;
   -o-transition: transform 250ms ease-in-out;
   transition: transform 250ms ease-in-out;
   transition: transform 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
-  contain: strict;
+  -webkit-transform: scale(1);
+      -ms-transform: scale(1);
+          transform: scale(1);
+  width: 100%;
+  line-height: 2;
 }
 
 .burger__piece {
-  background: #003145;
   display: inline-block;
-  width: 4px;
   height: 10px;
-  -webkit-transform: skew(-10deg);
-      -ms-transform: skew(-10deg);
-          transform: skew(-10deg);
+  position: relative;
+  -webkit-transform: scale(1);
+      -ms-transform: scale(1);
+          transform: scale(1);
+  -webkit-transition: -webkit-transform 250ms ease-in-out;
+  transition: -webkit-transform 250ms ease-in-out;
+  -o-transition: transform 250ms ease-in-out;
+  transition: transform 250ms ease-in-out;
+  transition: transform 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  width: 4px;
+  vertical-align: middle;
 }
 
-.burger.opening, .burger.closing {
+.burger__piece::after {
+  content: "";
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  background: #003145;
+  -webkit-transform: rotate(0) skew(-10deg) translate(0, 0);
+      -ms-transform: rotate(0) skew(-10deg) translate(0, 0);
+          transform: rotate(0) skew(-10deg) translate(0, 0);
+}
+
+.burger__piece:nth-child(2) {
+  -webkit-transition: opacity 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: opacity 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  -o-transition: transform 250ms ease-in-out, opacity 250ms ease-in-out;
+  transition: transform 250ms ease-in-out, opacity 250ms ease-in-out;
+  transition: transform 250ms ease-in-out, opacity 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+}
+
+.burger.opening .burger__wrapper {
   -webkit-transform: scale(0);
       -ms-transform: scale(0);
           transform: scale(0);
 }
 
-.burger.open, .burger.closed {
-  -webkit-transform: scale(1);
-      -ms-transform: scale(1);
-          transform: scale(1);
+.burger.opening .burger__piece::after {
+  -webkit-transform: rotate(0) skew(-10deg) translate(0, 0);
+      -ms-transform: rotate(0) skew(-10deg) translate(0, 0);
+          transform: rotate(0) skew(-10deg) translate(0, 0);
 }
 
-.burger.open .burger__piece, .burger.closing .burger__piece {
-  width: 2px;
+.burger.open .burger__wrapper {
+  -webkit-transform: scale(2);
+      -ms-transform: scale(2);
+          transform: scale(2);
 }
 
-.burger.open .burger__piece:nth-child(1), .burger.closing .burger__piece:nth-child(1) {
-  -webkit-transform: rotate(45deg) translateY(-3.5px) translateX(3.5px) scale(2);
-      -ms-transform: rotate(45deg) translateY(-3.5px) translateX(3.5px) scale(2);
-          transform: rotate(45deg) translateY(-3.5px) translateX(3.5px) scale(2);
+.burger.open .burger__piece::after {
+  -webkit-transform-origin: center center;
+      -ms-transform-origin: center center;
+          transform-origin: center center;
+  -webkit-transition: none;
+  -o-transition: none;
+  transition: none;
+}
+
+.burger.open .burger__piece:nth-child(1)::after {
+  -webkit-transform-origin: right center;
+      -ms-transform-origin: right center;
+          transform-origin: right center;
+  -webkit-transform: rotate(45deg) skew(0) scaleX(0.5) translate(12px, -2px);
+      -ms-transform: rotate(45deg) skew(0) scaleX(0.5) translate(12px, -2px);
+          transform: rotate(45deg) skew(0) scaleX(0.5) translate(12px, -2px);
+}
+
+.burger.open .burger__piece:nth-child(3)::after {
+  -webkit-transform-origin: left center;
+      -ms-transform-origin: left center;
+          transform-origin: left center;
+  -webkit-transform: rotate(-45deg) skew(0) scaleX(0.5) translate(-12px, -2px);
+      -ms-transform: rotate(-45deg) skew(0) scaleX(0.5) translate(-12px, -2px);
+          transform: rotate(-45deg) skew(0) scaleX(0.5) translate(-12px, -2px);
+}
+
+.burger.closing .burger__wrapper {
+  -webkit-transform: scale(0);
+      -ms-transform: scale(0);
+          transform: scale(0);
+}
+
+.burger.closing .burger__piece::after {
+  -webkit-transform-origin: center center;
+      -ms-transform-origin: center center;
+          transform-origin: center center;
+  -webkit-transition: none;
+  -o-transition: none;
+  transition: none;
+}
+
+.burger.closing .burger__piece:nth-child(1)::after {
+  -webkit-transform-origin: right center;
+      -ms-transform-origin: right center;
+          transform-origin: right center;
+  -webkit-transform: rotate(45deg) skew(0) scaleX(0.5) translate(12px, -2px);
+      -ms-transform: rotate(45deg) skew(0) scaleX(0.5) translate(12px, -2px);
+          transform: rotate(45deg) skew(0) scaleX(0.5) translate(12px, -2px);
+}
+
+.burger.closing .burger__piece:nth-child(3)::after {
+  -webkit-transform-origin: left center;
+      -ms-transform-origin: left center;
+          transform-origin: left center;
+  -webkit-transform: rotate(-45deg) skew(0) scaleX(0.5) translate(-12px, -2px);
+      -ms-transform: rotate(-45deg) skew(0) scaleX(0.5) translate(-12px, -2px);
+          transform: rotate(-45deg) skew(0) scaleX(0.5) translate(-12px, -2px);
 }
 
 .burger.open .burger__piece:nth-child(2), .burger.closing .burger__piece:nth-child(2) {
   opacity: 0;
   pointer-events: none;
-}
-
-.burger.open .burger__piece:nth-child(3), .burger.closing .burger__piece:nth-child(3) {
-  -webkit-transform: rotate(-45deg) translateY(-3.5px) translateX(-3.5px) scale(2);
-      -ms-transform: rotate(-45deg) translateY(-3.5px) translateX(-3.5px) scale(2);
-          transform: rotate(-45deg) translateY(-3.5px) translateX(-3.5px) scale(2);
 }
 
 .global-nav {
@@ -15429,6 +15520,7 @@ form.request-spec {
   height: calc(100vh - 50px);
   padding: calc(10px + 1rem);
   width: 100vw;
+  max-width: 800px;
   z-index: 1;
   position: fixed;
   right: 0;
@@ -15444,7 +15536,7 @@ form.request-spec {
 
 @media screen and (min-width: 40em) {
   .global-nav {
-    width: 50vw;
+    width: 40vw;
     min-height: calc(100vh - 90px);
   }
 }
