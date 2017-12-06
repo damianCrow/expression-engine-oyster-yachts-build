@@ -3,16 +3,17 @@
   background-color: $white;
   display: flex;
   flex-direction: column;
-  // min-height: calc(100vh - 50px);
   height: calc(100vh - 50px);
-  padding: calc(10px + #{$global-padding});
-  width: 100vw;
   max-width: 800px;
-  z-index: 1;
+  opacity: 0;
+  padding: calc(10px + #{$global-padding});
+  pointer-events: none;
   position: fixed;
   right: 0;
   transform: translateY(-100%);
-  transition: transform 500ms $ease-out-quart;
+  transition: transform 500ms $ease-out-quart, opacity 250ms $ease-out-quart 500ms;
+  width: 100vw;
+  z-index: 1;
 
   @include breakpoint(medium up) {
     width: 40vw;
@@ -20,8 +21,10 @@
   }
 
   &.open {
-    transition: transform 500ms $ease-out-quart;
+    opacity: 1;
+    pointer-events: auto;
     transform: translateY(0);
+    transition: transform 500ms $ease-out-quart;
   }
 
   &__wrapper {
