@@ -265,6 +265,8 @@ $logo-width: 230px;
   transition: transform .5s cubic-bezier(.19, 1, .22, 1);
   width: 100%;
   z-index: 1052;
+  opacity: 0;
+  pointer-events: none;
 
   @include breakpoint(small down) {
     height: $header-message-height-small;
@@ -389,8 +391,9 @@ $logo-width: 230px;
 .fixed-message-showing {
 
   .top-header {
-    // transition: none;
     transform: translateY(0%);
+    opacity: 1;
+    pointer-events: auto;
   }
 
   .global-header {
