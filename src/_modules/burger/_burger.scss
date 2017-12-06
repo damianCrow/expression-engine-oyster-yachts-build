@@ -15,9 +15,9 @@
     position: absolute;
     top: 0;
     transition: transform 250ms ease-in-out;
-    transform: scale(1);
+    transform: scale(1) translate(0, 0);
     width: 100%;
-    line-height: 2;
+    line-height: 2.2;
   }
 
   &__piece {
@@ -38,17 +38,13 @@
       width: 100%;
       background: $blue;
       transform: rotate(0) skew(-10deg) translate(0, 0);
-      // transition: transform 250ms ease-in-out;
-    }
-    
-    &:nth-child(2) {
-      transition: transform 250ms ease-in-out, opacity 250ms ease-in-out;
     }
   }
 
-  @mixin cross($direction) {
+  @mixin cross($direction, $cross) {
+    $variable: if($cross, translate(0.25px, -2px), translate(0, 0));
     #{$root}__wrapper {
-      transform: scale($direction);
+      transform: scale($direction) $variable;
     }
     #{$root}__piece {
       &::after {
@@ -74,12 +70,10 @@
 
   &.opening {
     #{$root}__wrapper {
-      transform: scale(0);
+      transform: scale(0) translate(0, 0);
     }
 
     #{$root}__piece {
-      // transform: scale(0);
-
       &::after {
         transform: rotate(0) skew(-10deg) translate(0, 0);
       }
@@ -87,11 +81,11 @@
   }
 
   &.open {
-    @include cross(2);
+    @include cross(2, true);
   }
 
   &.closing {
-    @include cross(0);
+    @include cross(0, false);
   }
 
   &.open,
@@ -100,6 +94,7 @@
       &:nth-child(2) {
         opacity: 0;
         pointer-events: none;
+        transition: none;
       }
     }
   }
