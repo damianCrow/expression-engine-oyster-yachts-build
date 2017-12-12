@@ -1,9 +1,13 @@
+// TODO: Break this up and then remove it.
+
 // Typography
 html,
 body {
-  height: 100%;
+  min-height: 100vh;
   &.locked {
+    // @include breakpoint(medium up) {
     overflow: hidden;
+    // }
   }
 }
 
@@ -78,6 +82,12 @@ section {
   z-index: 10;
 }
 
+main {
+  height: 100%;
+  margin: 0 10px;
+  @include after-nav;
+}
+
 .reveal-overlay {
   z-index: 1052 !important;
 }
@@ -98,7 +108,7 @@ section {
     @include omnes_medium;
     background-color: $white;
     border-radius: 2px;
-    font-family: 'omnes_mediumregular', sans-serif;
+    font-family: "omnes_mediumregular", sans-serif;
     margin: auto;
     opacity: 0;
     padding: .5rem .75rem;
@@ -496,18 +506,21 @@ section {
 }
 
 .hero {
-    position: relative;
-    z-index: 1;
-    @include after-nav;
+  position: relative;
+  z-index: 11;
+
+  &--sub-bar {
+    padding-top: $sub-bar-height;
+  }
 }
 
 .full-screen {
   width: 100%;
   $header-nav-small-height: $header-nav-small-height - 2;
   $header-nav-large-height: $header-nav-large-height - 2;
-  height: calc(100% - #{$header-nav-small-height});
+  height: calc(100vh - #{$header-nav-small-height});
   @include breakpoint(large up) {
-      height: calc(100% - #{$header-nav-large-height});
+      height: calc(100vh - #{$header-nav-large-height});
   }
 }
 
@@ -690,203 +703,28 @@ section {
       }
   }
 
-  .global-local-subnav-mini.filters {
-    button.button-solid-cyan {
-      transform: translateY(-3px);
-    }
+  // .global-local-subnav-mini.filters {
+  //   button.button-solid-cyan {
+  //     transform: translateY(-3px);
+  //   }
 
-    .filters-container {
-      transform: translateY(-15px);
-    }
+  //   .filters-container {
+  //     transform: translateY(-15px);
+  //   }
 
-    &.search-results-box {
-      @include breakpoint(medium down) {
-        .filters-container {
-          transform: translateY(-8px);
-        }
-      }
-    }
+  //   &.search-results-box {
+  //     @include breakpoint(medium down) {
+  //       .filters-container {
+  //         transform: translateY(-8px);
+  //       }
+  //     }
+  //   }
 
-    &:before {
-      transform: translateY(-30px);
-      background-color: rgba(0, 49, 69, 1);
-    }
-  }
-
-  .filters {
-
-    padding: 30px 0;
-
-    @include breakpoint(medium down) {
-      padding: 15px 0
-    }
-
-    .filter-dropdown {
-      width: 21%;
-      height: 45px;
-
-      select {
-        font-size: 15px;
-        height: 100%;
-      }
-
-      .select2 {
-        // margin: 0 0 1rem;
-        background-color: $white;
-        border: none;
-        color: #0a0a0a;
-        font-size: 1rem;
-        height: 100%;
-        padding: .5rem;
-        width: 100% !important;
-      }
-
-      &:first-child .select2 {
-        border-bottom-left-radius: 3px;
-        border-top-left-radius: 3px;
-      }
-
-      .select2-selection__arrow {
-        background: url(/assets/images/select_down.png);
-        height: 9px;
-        position: absolute;
-        right: 20px;
-        top: 19px;
-        width: 16px;
-      }
-
-      b {
-        display: none;
-      }
-
-      .select2-selection {
-        border: none;
-        outline: none;
-      }
-
-    }
-
-    .button {
-      border-bottom-right-radius: 3px;
-      border-top-right-radius: 3px;
-      width: 16%;
-    }
-
-    #submit {
-      height: 45px;
-      margin: 0;
-    }
-
-    .filter-dropdowns {
-      background-color: $lightgrey;
-      border-bottom-left-radius: 3px;
-      border-bottom-right-radius: 3px;
-      border-top-right-radius: 3px;
-      border: 5px solid $lightgrey;
-      display: flex;
-      overflow: hidden;
-    }
-  }
-
-  .filters {
-    bottom: 0;
-    left: 0;
-    padding: 30px 0;
-    position: absolute;
-    width: 100%;
-
-    &::before {
-      background-color: rgba(0, 49, 69, .75);
-      content: '';
-      display: block;
-      height: 165px;
-      margin-top: -30px;
-      position: absolute;
-      transition: transform .5s cubic-bezier(.19, 1, .22, 1), background-color .5s cubic-bezier(0.19, 1, .22, 1);
-      width: 100%;
-    }
-
-    > .row {
-      z-index: 1;
-      position: relative;
-    }
-
-    .filters-container {
-      border-radius: 3px;
-      overflow: hidden;
-    }
-
-    .filters-container,
-    button.button-solid-cyan {
-      transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
-    }
-
-    @include breakpoint(medium down) {
-      padding: 15px 0px
-    }
-
-    .filter-dropdown {
-      float: left;
-      height: 45px;
-      width: 21%;
-
-      select {
-        font-size: 15px;
-        height: 100%;
-      }
-
-      .select2 {
-        // margin: 0 0 1rem;
-        background-color: #fff;
-        border: none;
-        color: #0a0a0a;
-        font-size: 1rem;
-        height: 100%;
-        padding: 0.5rem;
-        width: 100% !important;
-      }
-
-      &:first-child .select2 {
-        border-bottom-left-radius: 3px;
-        border-top-left-radius: 3px;
-      }
-
-      .select2-selection__arrow {
-        background: url(/assets/images/select_down.png);
-        height: 9px;
-        position: absolute;
-        right: 20px;
-        top: 19px;
-        width: 16px;
-      }
-
-      b {
-        display: none;
-      }
-      .select2-selection {
-        border: none;
-        outline: none;
-      }
-    }
-
-    .button {
-      width: 16%;
-      float: left;
-      border-top-right-radius: 3px;
-      border-bottom-right-radius: 3px;
-    }
-
-    #submit {
-      margin: 0;
-      height: 45px;
-    }
-
-    &--charter {
-      &::before {
-        height: 105px;
-      }
-    }
-  }
+  //   &:before {
+  //     transform: translateY(-30px);
+  //     background-color: rgba(0, 49, 69, 1);
+  //   }
+  // }
 
 }
 
@@ -942,6 +780,7 @@ section {
 
 .global-page-hero--medium {
   height: 450px;
+
   @include breakpoint(small only) {
     height: 350px;
   }
@@ -1140,18 +979,19 @@ section {
 
 .button-clear-invert {
   @include button-base();
-  border-radius: 2px;
-  display: inline-block;
-  width: auto;
   @include omnes_medium;
-  text-align: center;
-  padding: .65em 1em;
-  text-decoration: none;
-  text-transform: uppercase;
-  cursor: pointer;
   background: rgba($white, .3);
+  border-radius: 2px;
   border: solid 1px $blue;
   color: $blue;
+  cursor: pointer;
+  display: inline-block;
+  padding: .65em 1em;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  width: auto;
+
   &:hover {
     background: #003145;
     color: $white;
@@ -1338,6 +1178,10 @@ section {
 
 .button-full-width {
   width: 100%;
+}
+
+.button-flush {
+  margin: 0;
 }
 
 // Icon buttons

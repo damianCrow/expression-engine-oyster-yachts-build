@@ -10,6 +10,7 @@
   pointer-events: none;
   position: fixed;
   right: 0;
+  top: 0;
   transform: translateY(-100%);
   transition: transform 500ms $ease-out-quart, opacity 250ms $ease-out-quart 500ms;
   width: 100vw;
@@ -78,9 +79,10 @@
 
   &__social {
     display: flex;
+    height: 25px;
     justify-content: space-between;
     width: 100%;
-    height: 25px;
+
     @include breakpoint(medium up) {
       flex: 1;
     }
@@ -96,25 +98,19 @@
 
   &__contact {
     background-color: $white;
-    // TODO: Find out why this -20px is needed.
-    bottom: -20px;
     display: flex;
     flex-direction: column;
     left: 0;
     margin-top: auto;
-    padding: $global-padding calc(10px + #{$global-padding});
-    position: fixed;
-    position: sticky;
+    padding: $global-padding 0;
+    position: relative;
     width: 100%;
     z-index: 1;
-
-    @supports (position: sticky) {
-      padding: 0;
-    }
   }
 
   &__contact-info {
     padding: $global-padding 0;
+
     > a {
       @include omnes-regular;
       font-size: 20px;

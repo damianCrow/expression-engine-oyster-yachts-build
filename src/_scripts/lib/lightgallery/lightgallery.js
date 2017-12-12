@@ -1,4 +1,4 @@
-/*! lightgallery - v1.2.14 - 2016-01-20
+/*! lightgallery - v1.2.14 - 2016-01-18
 * http://sachinchoolur.github.io/lightGallery/
 * Copyright (c) 2016 Sachin N; Licensed Apache 2.0 */
 (function($, window, document, undefined) {
@@ -34,7 +34,7 @@
         mousewheel: true,
 
         // .lg-item || '.lg-sub-html'
-        appendSubHtmlTo: '.gallery-caption',
+        appendSubHtmlTo: '.lg-sub-html',
 
         /**
          * @desc number of preload slides
@@ -67,9 +67,7 @@
 
         dynamic: false,
         dynamicEl: [],
-        galleryId: 1,
-
-        startOnClick: true
+        galleryId: 1
     };
 
     function Plugin(element, options) {
@@ -136,6 +134,7 @@
     }
 
     Plugin.prototype.init = function() {
+
         var _this = this;
 
         // s.preload should not be more than $item.length
@@ -154,10 +153,6 @@
                 setTimeout(function() {
                     _this.build(_this.index);
                     $('body').addClass('lg-on');
-                    if($('.global-header').hasClass('global-header-mini')){
-                        $('.global-header').addClass('had-mini-header');
-                    }
-                    $('.global-header').addClass('global-header-mini no-boxshadow');
                 });
             }
         }
@@ -173,10 +168,6 @@
                 setTimeout(function() {
                     _this.build(_this.index);
                     $('body').addClass('lg-on');
-                    if($('.global-header').hasClass('global-header-mini')){
-                        $('.global-header').addClass('had-mini-header');
-                    }
-                    $('.global-header').addClass('global-header-mini no-boxshadow');
                 });
             }
         } else {
@@ -197,14 +188,10 @@
                 _this.index = _this.s.index || _this.$items.index(this);
 
                 // prevent accidental double execution
-                //if (!$('body').hasClass('lg-on')) {
+                if (!$('body').hasClass('lg-on')) {
                     _this.build(_this.index);
                     $('body').addClass('lg-on');
-                    if($('.global-header').hasClass('global-header-mini')){
-                        $('.global-header').addClass('had-mini-header');
-                    }
-                    $('.global-header').addClass('global-header-mini no-boxshadow');
-                //}
+                }
             });
         }
 
@@ -212,11 +199,7 @@
 
     Plugin.prototype.build = function(index) {
 
-        //console.log('build', index);
-
         var _this = this;
-
-        _this.lGalleryOn = false;
 
         _this.structure();
 
@@ -246,14 +229,14 @@
             }
         }
 
-        //_this.counter();
+        _this.counter();
 
         _this.closeGallery();
 
         _this.$el.trigger('onAfterOpen.lg');
 
         // Hide controllers if mouse doesn't move for some period
-        /*_this.$outer.on('mousemove.lg click.lg touchstart.lg', function() {
+        _this.$outer.on('mousemove.lg click.lg touchstart.lg', function() {
 
             _this.$outer.removeClass('lg-hide-items');
 
@@ -264,13 +247,11 @@
                 _this.$outer.addClass('lg-hide-items');
             }, _this.s.hideBarsDelay);
 
-        });*/
+        });
 
     };
 
     Plugin.prototype.structure = function() {
-        //console.log('structure');
-
         var list = '';
         var controls = '';
         var i = 0;
@@ -278,10 +259,8 @@
         var template;
         var _this = this;
 
-        if (_this.s.startOnClick) {
-            $('body').append('<div class="lg-backdrop"></div>');
-            $('.lg-backdrop').css('transition-duration', this.s.backdropDuration + 'ms');
-        } 
+        $('body').append('<div class="lg-backdrop"></div>');
+        $('.lg-backdrop').css('transition-duration', this.s.backdropDuration + 'ms');
 
         // Create gallery items
         for (i = 0; i < this.$items.length; i++) {
@@ -296,57 +275,23 @@
                 '</div>';
         }
 
-        /*if (this.s.appendSubHtmlTo === '.lg-sub-html') {
+        if (this.s.appendSubHtmlTo === '.lg-sub-html') {
             subHtmlCont = '<div class="lg-sub-html"></div>';
-        }*/
-
-        var self = this;
-
-        var galleryHtml = '';
-        if ($('.gallery-content').length > 1) {
-            $('.gallery-content').each(function(i, gallery) {
-                galleryHtml += '<a'+($(self.el).attr('data-gallery')==$(gallery).attr('data-gallery')?' class="gallery-active"':'')+' data-gallery="'+$(gallery).attr('data-gallery')+'">'+$(gallery).attr('data-title')+'</a>';
-            });
         }
 
-        if ($('.lg-outer').length === 0) {
-            template = '<div class="lg-outer ' + this.s.addClass + ' ' + this.s.startClass + '">' +
-                '<div class="lg" style="width:' + this.s.width + '; height:' + this.s.height + '">' +
-                '<div class="lg-inner"></div>' +
-                '<div class="lg-toolbar group">' +
-                '<span class="lg-close lg-icon"></span>';
+        template = '<div class="lg-outer ' + this.s.addClass + ' ' + this.s.startClass + '">' +
+            '<div class="lg" style="width:' + this.s.width + '; height:' + this.s.height + '">' +
+            '<div class="lg-inner">' + list + '</div>' +
+            '<div class="lg-toolbar group">' +
+            '<span class="lg-close lg-icon"></span>' +
+            '</div>' +
+            controls +
+            subHtmlCont +
+            '</div>' +
+            '</div>';
 
-                if (_this.s.startOnClick) {
-                    template += '<div class="gallery-sections">' +
-                    galleryHtml +
-                    '</div>';
-                } else {
-                    $('.global-local-subnav').append('<div class="gallery-sections">' + galleryHtml + '</div>');
-                }
-                
-                template += '</div>' +
-                '<div class="lg-toolbar-bot group">' +
-                //'<div class="gallery-share"><a href=""></a></div>' +
-                '<a class="lg-counter" href=""></a>' +
-                '<div class="gallery-caption"></div>' +
-                //'<div class="gallery-download"><a id="lg-download" target="_blank" download class="lg-download lg-icon">Download image</a></div>' +
-                '</div>' +
-                controls +
-                '</div>' +
-                '</div>';
-
-            if (_this.s.startOnClick) {
-                $('body').append(template);
-            } else {
-                $('.gallery-container').append(template);
-            }
-        }
-
+        $('body').append(template);
         this.$outer = $('.lg-outer');
-
-        this.$outer.find('.lg-counter').html('<span id="lg-counter-current">' + (parseInt(this.index, 10) + 1) + '</span> / <span id="lg-counter-all">' + this.$items.length + '</span>');
-        this.$outer.find('.lg-inner').html(list);
-
         this.$slide = this.$outer.find('.lg-item');
 
         if (this.s.useLeft) {
@@ -360,7 +305,7 @@
 
         // For fixed height gallery
         _this.setTop();
-        $(window).unbind('resize.lg orientationchange.lg').on('resize.lg orientationchange.lg', function() {
+        $(window).on('resize.lg orientationchange.lg', function() {
             setTimeout(function() {
                 _this.setTop();
             }, 100);
@@ -401,36 +346,12 @@
             _this.$outer.addClass('lg-visible');
         }, this.s.backdropDuration);
 
-        /*if (this.s.download) {
+        if (this.s.download) {
             this.$outer.find('.lg-toolbar').append('<a id="lg-download" target="_blank" download class="lg-download lg-icon"></a>');
-        }*/
+        }
 
         // Store the current scroll top value to scroll back after closing the gallery..
         this.prevScrollTop = $(window).scrollTop();
-
-
-        $('.lg-counter').unbind('click.lg').on('click.lg', function(e) {
-            e.preventDefault();
-
-            _this.$outer.find('.lg-thumb-outer').toggleClass('lg-thumb-open');
-        });
-
-        $('.gallery-sections').unbind('click.lg').on('click.lg', 'a', function(e) {
-            e.preventDefault();
-
-            _this.index = 0;
-
-            if ($(this).hasClass('gallery-active')) return;
-
-            _this.destroy(false, true);
-
-            var gallery = $(this).attr('data-gallery');
-
-            $('.gallery-content[data-gallery="'+gallery+'"] a:first').trigger('click');
-
-            $('.gallery-active').removeClass('gallery-active');
-            $(this).addClass('gallery-active');
-        });
 
     };
 
@@ -556,7 +477,7 @@
             }
         }
 
-        //if (this.s.appendSubHtmlTo === '.lg-sub-html') {
+        if (this.s.appendSubHtmlTo === '.lg-sub-html') {
 
             if (subHtmlUrl) {
                 this.$outer.find(this.s.appendSubHtmlTo).load(subHtmlUrl);
@@ -564,14 +485,14 @@
                 this.$outer.find(this.s.appendSubHtmlTo).html(subHtml);
             }
 
-        /*} else {
+        } else {
 
             if (subHtmlUrl) {
                 this.$slide.eq(index).load(subHtmlUrl);
             } else {
                 this.$slide.eq(index).append(subHtml);
             }
-        }*/
+        }
 
         // Add lg-empty-html class if title doesn't exist
         if (typeof subHtml !== 'undefined' && subHtml !== null) {
@@ -741,15 +662,14 @@
                 }
             }
 
-            /*if (this.s.appendSubHtmlTo !== '.lg-sub-html') {
+            if (this.s.appendSubHtmlTo !== '.lg-sub-html') {
                 _this.addHtml(index);
-            }*/
+            }
 
             _this.$slide.eq(index).addClass('lg-loaded');
         }
 
         _this.$slide.eq(index).find('.lg-object').on('load.lg error.lg', function() {
-            //console.log('load error');
 
             // For first time add some delay for displaying the start animation.
             var _speed = 0;
@@ -810,15 +730,11 @@
         var _prevIndex = this.$outer.find('.lg-current').index();
         var _this = this;
 
-        /*console.log(_this.lGalleryOn, _prevIndex, index, _this.lGalleryOn);
-
         // Prevent if multiple call
         // Required for hsh plugin
         if (_this.lGalleryOn && (_prevIndex === index)) {
             return;
-        }*/
-
-        //console.log('slide');
+        }
 
         var _length = this.$slide.length;
         var _time = _this.lGalleryOn ? this.s.speed : 0;
@@ -851,13 +767,13 @@
             clearTimeout(_this.hideBartimeout);
 
             // Add title if this.s.appendSubHtmlTo === lg-sub-html
-            //if (this.s.appendSubHtmlTo === '.lg-sub-html') {
+            if (this.s.appendSubHtmlTo === '.lg-sub-html') {
 
                 // wait for slide animation to complete
                 setTimeout(function() {
                     _this.addHtml(index);
                 }, _time);
-            //}
+            }
 
             this.arrowDisable(index);
 
@@ -947,7 +863,6 @@
             _this.lGalleryOn = true;
 
             if (this.s.counter) {
-                //console.log('slide', index);
                 $('#lg-counter-current').text(index + 1);
             }
 
@@ -1039,11 +954,11 @@
 
     Plugin.prototype.arrow = function() {
         var _this = this;
-        this.$outer.find('.lg-prev').unbind('click.lg').on('click.lg', function() {
+        this.$outer.find('.lg-prev').on('click.lg', function() {
             _this.goToPrevSlide();
         });
 
-        this.$outer.find('.lg-next').unbind('click.lg').on('click.lg', function() {
+        this.$outer.find('.lg-next').on('click.lg', function() {
             _this.goToNextSlide();
         });
     };
@@ -1304,7 +1219,7 @@
 
     };
 
-    Plugin.prototype.destroy = function(d, changeGallery) {
+    Plugin.prototype.destroy = function(d) {
 
         var _this = this;
 
@@ -1344,20 +1259,8 @@
 
         clearTimeout(_this.hideBartimeout);
         this.hideBartimeout = false;
-
-
         $(window).off('.lg');
-        
-        if (changeGallery) {
-            //console.log('exit');
-            return;
-        }
-        
         $('body').removeClass('lg-on lg-from-hash');
-
-        if(!$('.global-header').hasClass('had-mini-header')){
-            $('.global-header').removeClass('global-header-mini no-boxshadow');
-        }
 
         if (_this.$outer) {
             _this.$outer.removeClass('lg-visible');

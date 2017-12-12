@@ -1,0 +1,223 @@
+$sub-bar-height: 55px;
+
+.sub-bar {
+  $root: &;
+  align-items: center;
+  background-color: $lightgrey;
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  // top: $header-nav-small-height;
+  top: 0;
+  width: 100%;
+  height: $sub-bar-height;
+  z-index: 12;
+  transition: transform 250ms ease-in-out;
+
+  &__title,
+  &__buttons {
+    display: none;
+    padding: ($global-padding / 2) $global-padding;
+
+    @include breakpoint(medium up) {
+      display: block;
+    }
+  }
+
+  &__title {
+    > h1 {
+      @include sub-title;
+    }
+  }
+
+  &__nav {
+    align-self: stretch;
+    position: relative;
+    overflow-x: visible;
+    overflow-y: hidden;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &__menu {
+    height: 100%;
+    white-space: nowrap;
+
+    > li {
+      display: inline-block;
+      height: 100%;
+      > a {
+        @include sub-nav;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        > span {
+          margin: $global-margin;
+        }
+      }
+    }
+  }
+
+  &--large {
+    @include breakpoint(medium up) {
+      transform: translateY(#{$header-nav-large-height - $header-nav-small-height});
+    }
+  }
+}
+
+
+// .world-rally-local-subnav {
+//   z-index: 30;
+
+//   .global-local-subnav {
+//     background-color: $yellow-background;
+
+//     a {
+//       color: $blue;
+//       @include omnes_medium;
+//     }
+
+//     ul {
+//       // @include breakpoint(small down) {
+//       display: flex;
+//       overflow-x: visible;
+//       overflow-y: hidden;
+
+//       &::-webkit-scrollbar {
+//         display: none;
+//       }
+
+//       li {
+//         flex: 0 0 auto;
+//         float: none;
+//       }
+//     }
+
+//   }
+
+//   .sub-heading {
+//     @include breakpoint(small down) {
+//       margin-left: 0;
+//     }
+
+//     > a {
+
+//       @include breakpoint(small down) {
+//         display: none;
+//       }
+
+//       padding-right: 1.5rem;
+//       @include trajan;
+//       font-size: .8rem;
+//       line-height: 4.25;
+
+//       &::after {
+//         border-right: 1px solid rgba($black, .25);
+//         content: '';
+//         height: 100%;
+//         margin-left: 1.5rem;
+//         position: absolute;
+//         top: 0;
+//       }
+//     }
+//   }
+// }
+
+// @mixin global-local-subnav {
+//   transform: translateY($header-nav-large-height - $header-nav-small-height);
+// }
+
+// .global-local-subnav {
+//   align-items: center;
+//   background-color: $lightgrey;
+//   bottom: none;
+//   box-shadow: 0 3px 2px -2px $gray;
+//   display: flex;
+//   height: $header-nav-small-height;
+//   overflow-x: visible;
+//   overflow-y: hidden;
+//   padding: 0;
+//   position: fixed;
+//   top: $header-nav-small-height;
+//   transition: transform .5s cubic-bezier(.19, 1, .22, 1);
+//   width: 100%;
+//   z-index: 30;
+
+//   @include breakpoint(large up) {
+//     @include global-local-subnav;
+//   }
+
+//   ul {
+//     display: flex;
+//     flex: 0 0 auto;
+//     height: 100%;
+//     position: relative;
+
+//     @include breakpoint(medium only) {
+//       margin-left: 55px;
+//     }
+
+//     li {
+//       flex: 0 0 auto;
+//       float: none;
+//       height: 100%;
+//       a {
+//         @include omnes_medium;
+//         color: $grey;
+//         display: table;
+//         font-size: .75em;
+//         height: 100%;
+//         line-height: 1.16666666em;
+//         padding-left: 20px;
+//         padding-right: 20px;
+//         text-decoration: none;
+//         text-transform: uppercase;
+
+//         @include breakpoint(xlarge up) {
+//           padding-left: 25px;
+//           padding-right: 25px;
+//         }
+
+//         @include breakpoint(large only) {
+//           padding-left: 15px;
+//           padding-right: 15px;
+//         }
+
+//         span {
+//           display: table-cell;
+//           height: 100%;
+//           vertical-align: middle;
+//         }
+//       }
+//     }
+
+//     .active {
+
+//       a {
+
+//         span {
+//           border-bottom: 3px solid $blue;
+//         }
+//       }
+//     }
+//   }
+//   .button-transparent {
+//       // margin-top: .5rem;
+//       margin-bottom: 0;
+//       margin-left: auto;
+//       margin-right: 1rem;
+//       position: relative;
+//   }
+//   .sub-heading {
+//     float: left;
+//     height: $header-nav-small-height;
+//     margin-left: 40px;
+//     a {
+//       line-height: 3.25;
+//     }
+//   }
+// }
+

@@ -116,7 +116,7 @@
 </head>
 
 <body>
-  <header class="global-header">
+  <header class="global-header global-header--large">
     <div class="top-header">
       <div class="fixed-message">
         <div class="fixed-message-contents"><small>We use cookies to enhance your browsing experience, please read our <a href="/legal/privacy-policy">Privacy Policy</a> to find out more.</small>
@@ -124,9 +124,10 @@
         </div>
       </div>
     </div>
-    <div class='main-header'>
+    <div class='main-header main-header--large'>
+      <div class='main-header__container'>
         <h1 class="main-header__home">
-          <a href="{site_url}" class="logo">
+          <a href="{site_url}" class="logo logo--large">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 30" preserveAspectRatio="xMinYMid" class="logo__container">
               <path class='logo__letter' d="M157.3 7.1l-.9-1.4c-1.8-2.8-4-3.3-10.6-3.4-.4 0-.6.2-.6.5-.1 2.6-.2 7.7-.2 12.5 0 5.3.1 10.2.6 11.2.6 1.2 1.7 1.5 3 1.5.7 0 .6.7 0 .7h-12.2c-.6 0-.7-.7 0-.7 1.4 0 2.5-.4 3.2-1.5.5-.9.7-6.4.7-12.1 0-4.8-.1-9.8-.1-11.6 0-.4-.2-.5-.6-.5-3.7 0-8.4 0-10.5 3.4l-.7 1.5c-.2.5-.8.4-.7 0l1.4-5.9c9.9.1 17.7.4 27.5 0l1.3 5.9c.2.4-.4.4-.6-.1"/>
               <path class='logo__letter' d="M74.9 2c-1.7.1-3.1 1.5-4.1 2.6-.4.6-.9 1.2-1.5 1.9l-6.1 7.9c-.8.9-1 1.8-1 2.8v8.1c.1.7.2 1.4.4 1.7.6.7 1.9 1.1 2.8 1.1.7.1.6.7 0 .7H54.1c-.7 0-.9-.7 0-.7 1.4 0 2.6-.9 2.9-2.1.1-.3.1-.6.2-1s.1-.8.1-1.2v-3.7c0-2.4-.5-4.2-1.9-6.3-.3-.5-.7-.9-1-1.4-.4-.7-3.8-5.2-4-5.5l-1.6-2c-.7-1-1.6-1.9-2.7-2.5-.5-.3-1-.4-1.6-.4-.5 0-.6-.7 0-.7h11.7c.5 0 .5.7 0 .7-1.6 0-2 .6-2 1.2 0 .7.4 1.4.7 1.7l3.7 5.3c1.4 2 2.7 3.9 3.2 4.6.9-1.2 5.8-7.6 6-8l.5-.7c.2-.3.3-.5.5-.8.3-.5.6-1.1.7-1.7 0-.9-.4-1.5-1.8-1.6-.6 0-.7-.7-.1-.7H76c.5 0 .5.7 0 .7-.5-.1-.8-.1-1.1 0"/>
@@ -137,22 +138,22 @@
             </svg>
           </a>
         </h1>
-      </a>
-      {if embed:page_title != ""}
-        <h2 class="main-header__title">{embed:page_title}</h2>
-      {/if}
-      <div class="main-header__menu">
-        <button class='burger'>
-          <div class='burger__wrapper'>
-            <span class='burger__piece'></span>
-            <span class='burger__piece'></span>
-            <span class='burger__piece'></span>
-          </div>
-        </button>        
+        {if embed:page_title != ""}
+          <h2 class="main-header__title">{embed:page_title}</h2>
+        {/if}
+        <div class="main-header__menu">
+          <button class='burger'>
+            <div class='burger__wrapper'>
+              <span class='burger__piece'></span>
+              <span class='burger__piece'></span>
+              <span class='burger__piece'></span>
+            </div>
+          </button>        
+        </div>
       </div>
-
     </div>
 
     {embed="site/.main_nav" page_title="{embed:page_title}"}
     </div>
   </header>
+  <main role="main"> 

@@ -1,14 +1,14 @@
 .carosel {
+  @include after-nav;
   color: $white;
+  contain: strict;
+  height: calc(100vh - #{$header-nav-large-height} - 10px);
+  overflow: hidden;
   position: relative;
   z-index: 1;
-  margin: 0 $page-margin;
-  overflow: hidden;
-  @include after-nav;
-  height: calc(100% - #{$header-nav-large-height} - 10px);
 
   @include breakpoint(medium down) {
-    height: calc(100% - #{$header-nav-small-height} - 10px);
+    height: calc(100vh - #{$header-nav-small-height} - 10px);
   }
 
   &__pagination-wrap {
@@ -64,16 +64,19 @@
       }
 
       &[data-index="0"]:after {
-        content: '01';
+        content: "01";
       }
+
       &[data-index="1"]:after {
-        content: '02';
+        content: "02";
       }
+
       &[data-index="2"]:after {
-        content: '03';
+        content: "03";
       }
+
       &[data-index="3"]:after {
-        content: '04';
+        content: "04";
       }
 
       #graphic {
@@ -142,7 +145,7 @@
         padding-right: 20px;
         
         &__icon {
-          background-image: url('/assets/images/homepage/shevron.svg');
+          background-image: url("/assets/images/homepage/shevron.svg");
           background-repeat: no-repeat;
           background-position: center;
           background-size: 40%;
@@ -207,9 +210,31 @@
   }
 
   &__image {
+    bottom: 0;
     height: 100%;
-    background-position: center;
-    background-size: cover;
+    left: 0;
+    margin: auto;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+
+    &::after {
+      background-color: black;
+      content: "";
+      height: 100%;
+      left: 0;
+      opacity: .3;
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
+
+    > img {
+      height: 100%;
+      width: 100%;
+      @include object-fit(cover)
+    }
   }  
 }
 

@@ -13,15 +13,7 @@ export default class BreakPoints {
 
   curentBreakPoint() {
     // Get Breakpoint - Breakpoints will need to be updated from CSS
-    const wW = $(window).width()
-
-    for (const key in this.breakPoints) {
-      if (this.breakPoints.hasOwnProperty(key)) {
-        if (wW > this.breakPoints[key]) {
-          return this.breakPoints[key]
-        }
-      }
-    }
+    return Object.keys(this.breakPoints).find(key => (($(window).width() > this.breakPoints[key]) && this.breakPoints[key]))
   }
 
   curentBreakPointString() {
@@ -38,42 +30,7 @@ export default class BreakPoints {
   }
 
   atLeast(sizeQuery) {
-    const atLeastBreakPoints = []
-
-    for (const key in this.breakPoints) {
-      if (this.breakPoints.hasOwnProperty(key)) {
-        if (this.breakPoints[key] <= this.curentBreakPoint()) {
-          // Add to atLeastBreakPoints array.
-          atLeastBreakPoints.push(key)
-        }
-      }
-    }
-
-    return $.each(atLeastBreakPoints, (index, element) => (sizeQuery === element))
+    return (this.breakPoints[this.curentBreakPoint()] >= this.breakPoints[sizeQuery])
+    // return Object.keys(this.breakPoints).find(key => ((this.breakPoints[key] <= this.breakPoints[this.curentBreakPoint()])))
   }
 }
-
-
-//  var BreakPoints = (function () {
-//    var breakPoints = 
-//    var curentBreakPoint = function () {
-
-//    };
-
-//    var curentBreakPointString = function () {
-
-//    };
-
-//    var atLeast = function (sizeQuery) {
-
-//    };
-//    return {
-//      atLeast: atLeast
-//    };
-
-//  })();
-
-//  return BreakPoints;
-
-// });
-

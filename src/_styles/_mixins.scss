@@ -52,6 +52,28 @@
   margin-bottom: 1.375em;
 }
 
+@mixin sub-title {
+  @include carisma-classic;
+  margin: 0;
+  font-size: rem-calc(12);
+  letter-spacing: .15em;
+}
+
+@mixin sub-nav {
+  @include omnes_medium;
+  border-bottom: 2px solid transparent;
+  color: $grey;
+  display: block;
+  font-size: rem-calc(12);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color .25s ease-out, border-color .25s ease-out;
+
+  &:hover {
+    border-color: $grey;
+  }
+}
+
 @mixin h1-styles {
   @include omnes_light;
   color: $blue;

@@ -1,0 +1,223 @@
+.filters {
+
+  padding: 30px 0;
+
+  @include breakpoint(medium down) {
+    padding: 15px 0
+  }
+
+  .filter-dropdown {
+    width: 21%;
+    height: 45px;
+
+    select {
+      font-size: 15px;
+      height: 100%;
+    }
+
+    .select2 {
+      // margin: 0 0 1rem;
+      background-color: $white;
+      border: none;
+      color: #0a0a0a;
+      font-size: 1rem;
+      height: 100%;
+      padding: .5rem;
+      width: 100% !important;
+    }
+
+    &:first-child .select2 {
+      border-bottom-left-radius: 3px;
+      border-top-left-radius: 3px;
+    }
+
+    .select2-selection__arrow {
+      background: url(/assets/images/select_down.png);
+      height: 9px;
+      position: absolute;
+      right: 20px;
+      top: 19px;
+      width: 16px;
+    }
+
+    b {
+      display: none;
+    }
+
+    .select2-selection {
+      border: none;
+      outline: none;
+    }
+
+  }
+
+  .button {
+    border-bottom-right-radius: 3px;
+    border-top-right-radius: 3px;
+    width: 16%;
+  }
+
+  #submit {
+    height: 45px;
+    margin: 0;
+  }
+
+  .filter-dropdowns {
+    background-color: $lightgrey;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border-top-right-radius: 3px;
+    border: 5px solid $lightgrey;
+    display: flex;
+    overflow: hidden;
+  }
+}
+
+.filters {
+  top: 0;
+  left: 0;
+  padding: 30px 0;
+  position: fixed;
+  width: 100%;
+  // transition: transform 250ms ease-in-out;
+  z-index: 9999;
+  will-change: transform;
+  background-color: transparent;
+
+
+
+  &::before {
+    content: "";
+    display: block;
+    height: 100%;
+    margin-top: -30px;
+    position: absolute;
+    transition: transform .5s cubic-bezier(.19, 1, .22, 1), background-color .5s cubic-bezier(0.19, 1, .22, 1);
+    width: calc(100% - 20px);
+    top: 0;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgba(0, 49, 69, .75);
+
+    // transform: translateY(-30px) scaleY(0.715);
+    transform-origin: bottom;
+    background-color: rgba(0, 49, 69, 1);
+  }
+
+  > .row {
+    z-index: 1;
+    position: relative;
+  }
+
+  .filters-container {
+    border-radius: 3px;
+    overflow: hidden;
+    transform: translateY(-15px);
+  }
+
+  .filters-container,
+  button.button-solid-cyan {
+    transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+  }
+
+  button.button-solid-cyan {
+    transform: translateY(-3px);
+  }
+
+  @include breakpoint(medium down) {
+    padding: 15px 0px
+  }
+
+  .filter-dropdown {
+    float: left;
+    height: 45px;
+    width: 21%;
+
+    select {
+      font-size: 15px;
+      height: 100%;
+    }
+
+    .select2 {
+      // margin: 0 0 1rem;
+      background-color: #fff;
+      border: none;
+      color: #0a0a0a;
+      font-size: 1rem;
+      height: 100%;
+      padding: 0.5rem;
+      width: 100% !important;
+    }
+
+    &:first-child .select2 {
+      border-bottom-left-radius: 3px;
+      border-top-left-radius: 3px;
+    }
+
+    .select2-selection__arrow {
+      background: url(/assets/images/select_down.png);
+      height: 9px;
+      position: absolute;
+      right: 20px;
+      top: 19px;
+      width: 16px;
+    }
+
+    b {
+      display: none;
+    }
+    .select2-selection {
+      border: none;
+      outline: none;
+    }
+  }
+
+  .button {
+    width: 16%;
+    float: left;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+  }
+
+  #submit {
+    margin: 0;
+    height: 45px;
+  }
+
+  &--charter {
+    &::before {
+      height: 105px;
+    }
+  }
+
+  &--unstuck {
+    position: absolute;
+    bottom: 0;
+    top: auto;
+    transition: none;
+    background-color: rgba(0, 49, 69, .75);
+
+    button.button-solid-cyan {
+      transform: translateY(0);
+    }
+
+    .filters-container {
+      transform: translateY(0);
+    }
+
+    // &.search-results-box {
+    //   @include breakpoint(medium down) {
+    //     .filters-container {
+    //       transform: translateY(-8px);
+    //     }
+    //   }
+    // }
+
+    &::before {
+      transform: translateY(0) scaleY(1);
+      background-color: transparent;
+    }
+  }
+}

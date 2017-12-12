@@ -2,7 +2,8 @@ $fa-font-path: "../../node_modules/font-awesome/fonts";
 @import "../../node_modules/font-awesome/scss/font-awesome";
 
 // Import Vendor dependencies
-@import "settings'; // Settings copied over & overrides default settin"s
+ // Settings copied over & overrides default settings
+@import "settings";
 @import "../../node_modules/foundation-sites/scss/foundation";
 @import "../../node_modules/owl.carousel2/src/scss/owl.carousel";
 @import "../../node_modules/owl.carousel2/src/scss/animate";
@@ -91,15 +92,22 @@ $fa-font-path: "../../node_modules/font-awesome/fonts";
 @import "global";
 @import "burger/burger";
 @import "global-nav/global-nav";
+@import "sub-bar/sub-bar";
 @import "logo/logo";
 @import "social-icons/social-icons";
 @import "header/header";
+
+// TODO: Remove modifcations and import this via node_modules
+@import "lightgallery";
+
+@import "gallery-modal/gallery-modal";
 @import "footer/footer";
 
 
 // // Import custom page styles
 @import "homepage/homepage";
 @import "owners-area/index";
+@import "filters/filters";
 @import "about/index";
 @import "brokerage/index";
 @import "charter/index";
@@ -114,5 +122,4 @@ $fa-font-path: "../../node_modules/font-awesome/fonts";
 @import "search/index";
 
 
-// TODO: Remove modifcations and import this via node_modules
-@import "lightgallery";
+

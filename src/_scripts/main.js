@@ -4,22 +4,25 @@ import 'babel-polyfill'
 // TODO: Break these (and their code below) into modules.
 import $ from 'jquery'
 import select2 from 'select2'
-import ScrollMagic from 'scrollmagic'
 import 'foundation-sites'
 // import { Foundation } from 'foundation-sites/js/foundation.core'
 // import 'foundation-sites/js/foundation.util.mediaQuery'
 // import 'foundation-sites/js/foundation.equalizer'
 // import 'foundation-sites/js/foundation.reveal'
-import 'lazysizes'
-import 'lazysizes/plugins/respimg/ls.respimg'
-import 'lazysizes/plugins/optimumx/ls.optimumx'
-import 'lazysizes/plugins/unveilhooks/ls.unveilhooks'
 
-// import GlobalHeader from '../_modules/header/header'
+import 'lazysizes'
+import 'lazysizes/plugins/optimumx/ls.optimumx'
+import 'lazysizes/plugins/respimg/ls.respimg'
+import 'lazysizes/plugins/parent-fit/ls.parent-fit'
+
+import GlobalHeader from '../_modules/header/header'
+import TopMessageBar from '../_modules/top-message-bar/top-message-bar'
 import GlobalNav from '../_modules/global-nav/global-nav'
+import SubBar from '../_modules/sub-bar/sub-bar'
 import Burger from '../_modules/burger/burger'
 import GlobalFooter from '../_modules/footer/footer'
 import Homepage from '../_modules/homepage/homepage'
+import Filters from '../_modules/filters/filters'
 import BrokerageFilters from '../_modules/brokerage/brokerage-filters'
 import CharterFilters from '../_modules/charter/charter-filters'
 import Shortlist from '../_modules/shortlist/shortlist'
@@ -32,17 +35,28 @@ import { quoteTestimonials } from '../_modules/quote-testimonials/quote-testimon
 
 class Main {
   constructor() {
+    this.body = document.body
+    this.homepageHero = document.getElementById('homepage')
+
+    this.globalLogo = document.querySelector('.logo')
     this.globalHeader = document.querySelector('.global-header-wrapper')
+    this.topMessageBar = document.querySelector('.top-header')
     this.burgerBtn = document.querySelector('.burger')
     this.globalNav = document.querySelector('.global-nav')
+    this.subBar = document.querySelector('.sub-bar')
     this.globalFooter = document.querySelector('.global-footer')
+    this.filters = document.getElementById('global-page-filters')
 
-    this.gallery = document.querySelector('.gallery-content')
+    this.galleryModal = document.getElementById('galleries')
     this.sideBarToStick = document.querySelector('section.about-yacht .sticky-sidebar')
     this.homeSlider = document.querySelector('.hero-home')
     this.brokerageGrid = document.querySelector('.brokerage-fleet #yacht-grid')
     this.charterGrid = document.querySelector('.charter-fleet #yacht-grid')
     this.shortlistModal = document.getElementById('shortlistModal')
+
+    this.fixedTopValue = 0
+    this.fixedTopValues = []
+    this.headerSnapPoint = 450
 
     $(document).foundation()
     this.legacyCode()
@@ -75,23 +89,59 @@ class Main {
 
     // this.maps()
 
-    // Foundation utls
-
     quoteTestimonials()
 
-    // this.header = this.globalHeader && new GlobalHeader()
-    this.nav = new GlobalNav(this.globalNav, this.burgerBtn, document.body)
-    this.burger = new Burger(this.burgerBtn, this.nav)
-    this.footer = this.globalFooter && new GlobalFooter()
-    this.gallery = this.galleryModal && new GalleryModal()
-    this.homepage = new Homepage()
-    this.brokerageFilters = this.brokerageGrid && new BrokerageFilters()
-    this.charterFilters = this.charterGrid && new CharterFilters()
-    this.shortlist = this.shortlistModal && new Shortlist()
-    this.weather = new Weather()
-    this.owenersArea = new OwnersArea()
+    const header = new GlobalHeader()
+
+    // Cookie message, pass the posistionElements method to allow it to be dismissed.
+    const topMessageBar = new TopMessageBar(this.topMessageBar, this.positionElements.bind(this))
+    const nav = new GlobalNav(this.globalNav, this.burgerBtn, document.body)
+    const subNav = new SubBar(this.subBar)
+    const filters = new Filters()
+    const burger = new Burger(this.burgerBtn, nav)
+    const footer = this.globalFooter && new GlobalFooter()
+    const gallery = new GalleryModal(this.galleryModal, header)
+    const homepage = this.homepageHero && new Homepage()
+    const brokerageFilters = this.brokerageGrid && new BrokerageFilters()
+    const charterFilters = this.charterGrid && new CharterFilters()
+    const shortlist = this.shortlistModal && new Shortlist()
+    const weather = new Weather()
+    const owenersArea = new OwnersArea()
+
+    this.scrollReativeElements = [topMessageBar, header, nav, subNav, filters]
+
+    this.scrollEvents()
+    this.positionElements(window.scrollY)
 
     this.enableSelect2()
+  }
+
+  scrollEvents() {
+    let lastKnownScrollPosition = window.scrollY
+    let ticking = false
+
+    document.addEventListener('scroll', () => {
+      lastKnownScrollPosition = window.scrollY
+
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          this.positionElements(lastKnownScrollPosition)
+          ticking = false
+        })
+        ticking = true
+      }
+    })
+  }
+
+  positionElements(lastKnownScrollPosition) {
+    let fixedTopValue = 0
+    for (let i = 0; i < this.scrollReativeElements.length; i += 1) {
+      fixedTopValue += this.scrollReativeElements[i].snapPointCheck({
+        lastKnownScrollPosition,
+        fixedTopValue,
+        headerSnapPoint: this.headerSnapPoint,
+      })
+    }
   }
 
   maps() {
@@ -150,33 +200,6 @@ class Main {
 
     //  ---- *end* SHARE BUTTON *end* -----  //
 
-    //  ---- VIEW GALLERY (lightgallery) POP UP -----  //
-    if ($('#layout-slider .cycle-slide').length > 1) {
-      const firstImage = $('#layout-slider .cycle-slide img:first')
-      firstImage.on('load').each((e) => {
-        const image = e.currentTarget
-        if (image.complete) {
-          $(image).load()
-
-          $('#layout-slider').cycle({
-            slides: '> div',
-            paused: true,
-            pager: '.slider-pager',
-            pagerTemplate: '',
-            autoHeight: 'container',
-            log: false,
-          })
-
-          $('#layout-slider').css('height', $(this).height())
-        }
-      })
-
-      firstImage.attr('src', firstImage.attr('src') + '?_=' + (new Date().getTime()))
-      firstImage.load()
-    }
-
-    // ---- VIEW GALLERY END ----  //
-
     $('.aside-header').on('click', () => {
       if ($('.overview-stuck').hasClass('overview-contents-hidden')) {
         $('.overview-download').data('closed-once', true)
@@ -196,6 +219,26 @@ class Main {
       const jumpToHash = $(e.currentTarget).attr('href')
       $(jumpToHash)[0].scrollIntoView()
     })
+
+    //  ---- VIEW GALLERY POP UP -----  //
+
+    if ($('#layout-slider .cycle-slide').length > 1) {
+      const firstImage = $('#layout-slider .cycle-slide img:first')
+      firstImage.on('load', () => {
+        $('#layout-slider').cycle({
+          slides: '> div',
+          paused: true,
+          pager: '.slider-pager',
+          pagerTemplate: '',
+          autoHeight: 'container',
+          log: false,
+        })
+
+        $('#layout-slider').css('height', $(firstImage).height())
+      })
+
+      firstImage.attr('src', `${firstImage.attr('src')}?_=${(new Date().getTime())}`)
+    }
 
     // --- Media Centre Gallery Select --- //
 

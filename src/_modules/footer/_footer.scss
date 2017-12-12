@@ -1,213 +1,198 @@
 footer {
-    background: $blue;
-    margin: 0 $page-margin $page-margin;
-    > .row {
-        position: relative;
+  background: $blue;
+  margin: 0 $page-margin $page-margin;
+  > .row {
+    position: relative;
+  }
+  .footer-contents {
+    @include breakpoint(small down) {
+      display: flex;
+      flex-direction: column-reverse;
     }
-    .footer-contents {
-        @include breakpoint(small down) {
-            display: flex;
-            flex-direction: column-reverse;
-        }
-    }
+  }
 
-    &:after {
-        content: '';
-        width: 100%;
-        height: $page-margin;
-        position: fixed;
-        z-index: 10;
-        bottom: 0;
-        background-color: $white;
-    }
-}
-
-.footer-nav, .footer-highlights {
+  &:after {
+    background-color: $white;
+    bottom: 0;
+    content: '';
+    height: $page-margin;
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+  }
 }
 
 .social-wrapper {
-    padding-top: 40px;
-    padding-bottom: 20px;
+  padding-bottom: 20px;
+  padding-top: 40px;
 
-    @include breakpoint(small down) {
-        padding-top: 20px;
-    }
+  @include breakpoint(small down) {
+    padding-top: 20px;
+  }
 
-    & > span, & > a {
-        display: block;
-        color: #fff;
-        font-size: 0.9375em;
-        line-height: 1em;
-        text-transform: uppercase;
-        margin-bottom: 15px;
+  & > span, & > a {
+    color: #fff;
+    display: block;
+    font-size: 0.9375em;
+    line-height: 1em;
+    margin-bottom: 15px;
+    text-transform: uppercase;
 
-        @include omnes_medium;
-    }
+    @include omnes_medium;
+  }
 }
 
 .footer-nav{
-    padding-top: 40px;
-    padding-bottom: 20px;
-    display: inline-block;
-    column-count: 4;
+  column-count: 4;
+  display: inline-block;
+  padding-bottom: 20px;
+  padding-top: 40px;
 
+  nav {
+    break-inside: avoid;
 
+    & > span, & > a {
+      color: #fff;
+      display: block;
+      font-size: 0.9375em;
+      line-height: 1em;
+      margin-bottom: 15px;
+      text-transform: uppercase;
 
-    nav {
-        break-inside: avoid;
-        & > span, & > a {
-            display: block;
-            color: #fff;
-            font-size: 0.9375em;
-            line-height: 1em;
-            text-transform: uppercase;
-            margin-bottom: 15px;
-
-            @include omnes_medium;
-        }
+      @include omnes_medium;
     }
+  }
 
-    ul {
-        padding-bottom: 10px;
+  ul {
+    padding-bottom: 10px;
+  }
+
+  li {
+    @include omnes-regular;
+    font-size: 0.75em;
+    line-height: 1em;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+
+    a {
+      color: $lightblue;
+      text-decoration: none;
     }
+  }
 
-    li {
-        @include omnes-regular;
-        font-size: 0.75em;
-        line-height: 1em;
-        text-transform: uppercase;
-        margin-bottom: 15px;
-
-        a {
-            color: $lightblue;
-            text-decoration: none;
-        }
+  nav {
+    @include breakpoint(small down) {
+      width: auto;
     }
-
-
-    .footer-nav-first-column {
-        // @include breakpoint( medium only ) {
-        //  margin-left: 10px;
-        // }
-
-        // @include breakpoint( large ) {
-        //  margin-left: 5%;
-        // }
-    }
-
-    nav {
-        @include breakpoint(small down) {
-            width: auto;
-        }
-    }
+  }
 }
 
 .footer-highlights-wrapper {
-    border-bottom: 1px solid $lightblue;
-    border-top: 1px solid $lightblue;
+  border-bottom: 1px solid $lightblue;
+  border-top: 1px solid $lightblue;
 
-    @include breakpoint(small down) {
-        width: 100%;
-        border-top: 0px;
-    }   
+  @include breakpoint(small down) {
+    width: 100%;
+    border-top: 0px;
+  }   
 }
 
 .social-wrapper-wrapper {
     // border-bottom: 1px solid $lightblue;
 
-    @include breakpoint(small down) {
-        width: 100%;
-    }       
+  @include breakpoint(small down) {
+    width: 100%;
+  }       
 }
 
 .footer-highlights {
-    color: #fff;
-    @include trajan;
-    // position: relative;
+  color: #fff;
+  @include trajan;
+  // position: relative;
 
-    // display: inline-block;
-    width: 100%;
+  // display: inline-block;
+  width: 100%;
 
-    text-transform: uppercase;
+  text-transform: uppercase;
 
-    padding-top: 2rem;
-    padding-bottom: 2rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 
-    @include breakpoint(small down) {
-        padding-top: 1rem;
-        padding-bottom: 1rem;
-    }
+  @include breakpoint(small down) {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
 
 
 
+  display: flex;
+  align-items: center;
+
+  > .row {
     display: flex;
     align-items: center;
+  }
 
-    > .row {
-        display: flex;
-        align-items: center;
+  ul {
+    // float: left;
+    // margin-left: -30px;
+    // padding: 5px 0 0;
+  }
+
+
+  li {
+    float: left;
+    position: relative;
+    letter-spacing: 0.5rem;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    // padding: 0 42px 0 40px;
+
+    &:after {
+      content: "|";
+      position: relative;
+      margin: 0 1.5rem;
     }
 
-    ul {
-        // float: left;
-        // margin-left: -30px;
-        // padding: 5px 0 0;
+    &:first-child {
+      // padding-left: 40px;
     }
 
+    &:last-child {
+      padding-right: 0px;
 
-    li {
-        float: left;
-        position: relative;
-        letter-spacing: 0.5rem;
-        font-size: 0.75rem;
-        line-height: 1rem;
-        // padding: 0 42px 0 40px;
-
-        &:after {
-            content: "|";
-            position: relative;
-            margin: 0 1.5rem;
-        }
-
-        &:first-child {
-            // padding-left: 40px;
-        }
-
-        &:last-child {
-            padding-right: 0px;
-
-            &:after {
-                content: "";
-            }
-        }
+      &:after {
+        content: "";
+      }
     }
+  }
 
 
-    .footer-logo-wrapper {
+  .footer-logo-wrapper {
 
-        @include breakpoint(small down) {
-            padding: 0px;
-        }
+      @include breakpoint(small down) {
+          padding: 0px;
+      }
 
-        @include breakpoint(medium) {
-            float: right;
-            // padding-right: 20px;
+      @include breakpoint(medium) {
+          float: right;
+          // padding-right: 20px;
 
-            img {
-                float: right;
-            }
-        }
-        > svg {
-            float: right;
-            width: 198px;
-            height: 1.75rem;
-            @include breakpoint(small down) {
-                float: none;
-                margin: 0 auto;
-            }
+          img {
+              float: right;
+          }
+      }
+      > svg {
+          float: right;
+          width: 198px;
+          height: 1.75rem;
+          @include breakpoint(small down) {
+              float: none;
+              margin: 0 auto;
+          }
 
-        }
-    }
+      }
+  }
 }
 
 .copyright {
@@ -416,7 +401,7 @@ footer {
     background: url('/assets/images/water-bg.jpg') no-repeat center center;
     background-size: cover;
     padding: 30px 0;
-    margin: 0 $page-margin;
+    margin: 0;
 
     .newsletter-text-wrapper {
         padding: 20px 0px;
@@ -763,206 +748,205 @@ footer {
     }
 
     .field {
+      height: 3rem;
+      zoom:1;
+      display:block;
+      background:#fff;
+      position:relative;
+      // border:1px solid $grayborder;
+      transform: translate3d(0,0,0);
+      overflow:visible;
+      margin:0;
+      padding:0 .5em;
 
-        height: 3rem;
+      * {
+        color: black;
+      }
 
-        * {
-            color: black;
+      @include breakpoint( medium down) {
+          border-bottom: 1px solid $grayborder;
+          &:last-of-type input {
+              border-bottom: 0px;
+          }
+      }
+
+      &:last-of-type input {
+        border-bottom:none;
+      }
+      &::nth-of-type(1) {
+        border-bottom:none;
+        border-radius:2px 2px 0 0;
+      }
+      &:nth-of-type(2),.field:nth-of-type(3) {
+        @include breakpoint( large up) {
+          border-top:none;
+          border-bottom:none;
+          border-radius:0;            
         }
+      }
+      // &:nth-of-type(3) input {
+      //  border-right:none;
+      // }
+      &.error:after {
+          content:"!";
+          line-height: 0.6em;
+          background: #fff;
+          border: 2px solid #d2244b;
+          color: #d2244b;
+          border-radius: 100%;
+          display: inline-block;
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          right: 1.25rem;
+          height: 1.2em;
+          width: 1.2em;
+          vertical-align: middle;
+          text-align: center;
+          animation: pop 200ms forwards cubic-bezier(0.175,.885,.32,1.275);
+          margin: auto;
+          padding: .2em;
 
-        zoom:1;
-        display:block;
-        background:#fff;
-        position:relative;
-        // border:1px solid $grayborder;
-        transform: translate3d(0,0,0);
-        overflow:visible;
-        margin:0;
-        padding:0 .5em;
+          &:nth-of-type(1):after {
+            animation-duration: 100ms;
+          }
 
-        @include breakpoint( medium down) {
-            border-bottom: 1px solid $grayborder;
-            &:last-of-type input {
-                border-bottom: 0px;
-            }
+          &:nth-of-type(2):after {
+            animation-duration:200ms;
+          }
 
-        }
+          &:nth-of-type(3):after {
+            animation-duration:300ms;
+          }
+      }
+  }
 
-        &:last-of-type input {
-            border-bottom:none;
-        }
-        &::nth-of-type(1) {
-            border-bottom:none;
-            border-radius:2px 2px 0 0;
-        }
-        &:nth-of-type(2),.field:nth-of-type(3) {
-            @include breakpoint( large up) {
-                border-top:none;
-                border-bottom:none;
-                border-radius:0;            
-            }
+  input[type=email],input[type=text] {
+    display:block;
+    border-bottom: 0px solid $grayborder;
+    line-height: 1.5em;
+    padding: 1em 0;
+  }
 
-        }
-        // &:nth-of-type(3) input {
-        //  border-right:none;
-        // }
-        &.error:after {
-            content:"!";
-            line-height:0.6em;
-            background:#fff;
-            border:2px solid #d2244b;
-            color: #d2244b;
-            border-radius:100%;
-            display:inline-block;
-            position:absolute;
-            top:0;
-            bottom:0;
-            right:1.25rem;
-            height:1.2em;
-            width:1.2em;
-            vertical-align:middle;
-            text-align:center;
-            animation: pop 200ms forwards cubic-bezier(0.175,.885,.32,1.275);
-            margin:auto;
-            padding:.2em;
-            &:nth-of-type(1):after {
-                animation-duration: 100ms;
-            }
-            &:nth-of-type(2):after {
-                animation-duration:200ms;
-            }
-            &:nth-of-type(3):after {
-                animation-duration:300ms;
-            }
-        }
+  .sign-up-btn {
+    width:100%;
+    margin: 0px;
+    overflow: hidden;
+    position: relative;
+
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+
+    &.is-loading {
+      color: rgba(255, 255, 255, 0);
+    }
+  }
+
+  .sign-up-success {
+    backface-visibility: hidden;
+    bottom:0;
+    left:0;
+    margin:auto;
+    max-width: 100%;
+    position:absolute;
+    right:0;
+    top: 0;
+    transform-style: preserve-3d;
+    transform: rotate3d(1,0,0,-180deg) translateZ(-1px);
+    width: 100%;
+  }
+
+  .flipsies {
+    position:relative;
+
+    // This won't work for child elements in IE
+    transform-style: preserve-3d;
+  }
+
+  .is-complete .flipsies {
+    animation: flip 800ms forwards;
+  }
+
+  .is-complete .sign-up-form {
+    transform: translate3d(0,0,0) translateZ(2px);
+  }
+
+  .is-complete .sign-up-success {
+    transform: rotate3d(1,0,0,-180deg) translateZ(-1px);
+
+    // Needed to at least make it visible in IE.
+    -ms-backface-visibility: visible;
+  }
+
+  @include breakpoint( large up ) {
+    .sign-up {
+      margin-bottom:1em;
+    }
+  }
+
+  @include breakpoint( large up ) {
+    .btn,button,input[type=submit] {
+      border-radius:0 2px 2px 0;
     }
 
+    .sign-up-form {
+      max-width:100%;
+      display: flex;
+      box-pack: center;
+      justify-content:center;
+      overflow:hidden;
+      transform:translate3d(0,0,0);
+      padding:0;
+    }
+    .field {
+      // border:1px solid $grayborder;
+      flex:1;
+      margin:0;
+      display: flex;
+      align-items: center;
+    }
+
+    .field:nth-of-type(1) {
+      // border-top:1px solid $grayborder;
+      border-right:none;
+      // border-bottom: 0px solid $grayborder;
+      // border-left:1px solid $grayborder;
+      border-radius:2px 0 0 2px;
+    }
+
+    .field:nth-of-type(2),.field:nth-of-type(3) {
+      // border-top:1px solid $grayborder;
+      border-right:none;
+      // border-bottom: 0px solid $grayborder;
+      border-left:none;
+      border-radius:0;
+    }
+
+    // .field:nth-of-type(3) input {
+    //  border-right:none;
+    // }
+
     input[type=email],input[type=text] {
-        display:block;
-        border-bottom: 0px solid $grayborder;
-        line-height: 1.5em;
-        padding: 1em 0;
+      display:inline-block;
+      border-top:none;
+      border-left:none;
+      border-bottom:none;
+      border-right:1px solid $grayborder;
+      border-radius:0;
+      margin: 0;
+      // padding: 0;
+      padding: 0 0.5rem;
     }
 
     .sign-up-btn {
-        width:100%;
-        margin: 0px;
-        overflow: hidden;
-        position: relative;
-
-        transform-style: preserve-3d;
-        backface-visibility: hidden;
-        &.is-loading {
-            color: rgba(255, 255, 255, 0);
-        }
+      border-left:none;
+      width:auto;
+      border-radius:0 2px 2px 0;
     }
 
     .sign-up-success {
-        position:absolute;
-        bottom:0;
-        top: 0;
-        left:0;
-        right:0;
-        transform: rotate3d(1,0,0,-180deg) translateZ(-1px);
-        transform-style: preserve-3d;
-        backface-visibility: hidden;
-        margin:auto;
-        max-width: 100%;
-        width: 100%;
+      padding:.7em 2em;
     }
-
-    .flipsies {
-      position:relative;
-
-      // This won't work for child elements in IE
-      transform-style: preserve-3d;
-    }
-
-    .is-complete .flipsies {
-      animation: flip 800ms forwards;
-    }
-
-    .is-complete .sign-up-form {
-        transform: translate3d(0,0,0) translateZ(2px);
-    }
-
-    .is-complete .sign-up-success {
-      transform: rotate3d(1,0,0,-180deg) translateZ(-1px);
-
-      // Needed to at least make it visible in IE.
-      -ms-backface-visibility: visible;
-    }
-
-    @include breakpoint( large up ) {
-      .sign-up {
-        margin-bottom:1em;
-      }
-    }
-
-    @include breakpoint( large up ) {
-        .btn,button,input[type=submit] {
-            border-radius:0 2px 2px 0;
-        }
-
-        .sign-up-form {
-
-            max-width:100%;
-            display: flex;
-            box-pack: center;
-            justify-content:center;
-            overflow:hidden;
-            transform:translate3d(0,0,0);
-            padding:0;
-        }
-        .field {
-            // border:1px solid $grayborder;
-            flex:1;
-            margin:0;
-            display: flex;
-            align-items: center;
-        }
-
-        .field:nth-of-type(1) {
-            // border-top:1px solid $grayborder;
-            border-right:none;
-            // border-bottom: 0px solid $grayborder;
-            // border-left:1px solid $grayborder;
-            border-radius:2px 0 0 2px;
-        }
-
-        .field:nth-of-type(2),.field:nth-of-type(3) {
-            // border-top:1px solid $grayborder;
-            border-right:none;
-            // border-bottom: 0px solid $grayborder;
-            border-left:none;
-            border-radius:0;
-        }
-
-        // .field:nth-of-type(3) input {
-        //  border-right:none;
-        // }
-
-        input[type=email],input[type=text] {
-            display:inline-block;
-            border-top:none;
-            border-left:none;
-            border-bottom:none;
-            border-right:1px solid $grayborder;
-            border-radius:0;
-            margin: 0;
-            // padding: 0;
-            padding: 0 0.5rem;
-        }
-
-        .sign-up-btn {
-            border-left:none;
-            width:auto;
-            border-radius:0 2px 2px 0;
-        }
-
-        .sign-up-success {
-            padding:.7em 2em;
-        }
-    }
+  }
 }
 

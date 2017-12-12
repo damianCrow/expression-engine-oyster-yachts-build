@@ -6,15 +6,21 @@ import 'lightgallery/modules/lg-thumbnail'
 import 'lightgallery/modules/lg-share'
 import 'lightgallery/modules/lg-fullscreen'
 
-/**
-* Social Grid object
-*/
+import { addClass, removeClass } from '../../_scripts/helper-functions'
+
 export default class GalleryModal {
-  /**
-  * Get a SocialItem which is not active
-  * @return {int} index of new slide
-  */
-  constructor() {
+  constructor(modal, globalHeader) {
+    if (modal) {
+      this.modal = modal
+      this.header = this.modal.querySelector('.galleries__header')
+      this.globalHeader = globalHeader
+      this.close = this.header.querySelector('.galleries__close')
+      console.log('this.close', this.close)
+      this.init()
+    }
+  }
+
+  init() {
     $('.gallery-content').each((i, el) => {
       $(el).lightGallery({
         thumbnail: true,
@@ -27,6 +33,7 @@ export default class GalleryModal {
         backdropDuration: 0,
         loadVimeoThumbnail: true,
         vimeoThumbSize: 'thumbnail_medium',
+        share: false,
         vimeoPlayerParams: {
           byline: 0,
           portrait: 0,
@@ -35,15 +42,40 @@ export default class GalleryModal {
         videoMaxWidth: '100%',
         galleryId: (i + 1),
       })
+
+      this.setEvents($(el).data('lightGallery'))
     })
 
     // trigger first slide to open in gallery
     $('.btn-gallery').on('click', (e) => {
       e.preventDefault()
-
       const gallery = $(e.currentTarget).attr('data-gallery')
 
+      this.open()
+
       $(`.gallery-content[data-gallery="${gallery}"] a:first`).trigger('click')
+    })
+
+    // ---- VIEW GALLERY END ----  //
+  }
+
+  close() {
+    removeClass(document.body, 'locked')
+    removeClass(this.modal, 'galleries--active')
+    this.globalHeader.fullScreenMode()
+  }
+
+  open() {
+    addClass(document.body, 'locked')
+    addClass(this.modal, 'galleries--active')
+    this.globalHeader.fullScreenMode(true)
+  }
+
+  setEvents(gallery) {
+    this.close.addEventListener('click', () => {
+      gallery.destroy()
+      this.close()
+      this.globalHeader.fullScreenMode(false)
     })
   }
 }

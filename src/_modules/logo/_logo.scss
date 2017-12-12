@@ -15,11 +15,7 @@
     transform-origin: center bottom;
     transition: transform 350ms $ease-out-circ 250ms;
     width: 50px;
-
-    @include breakpoint(medium up) {
-      transform: scaleY(0);
-      transition: transform 250ms $ease-in-circ;
-    }
+    will-change: transform;
   }
 
   &__container {
@@ -28,6 +24,7 @@
     position: absolute;
     width: 230px;
     z-index: 1;
+    overflow: visible !important;
   }
 
   @mixin show-all-letters() {
@@ -42,18 +39,13 @@
     }
   }
 
-  &--large {
-    #{$root}__letter{
-      @include show-all-letters();
-    }
-  }
-
   &__letter {
     fill: $blue;
     opacity: 0;
     pointer-events: none;
     transform: translateX(25px);
     transition: transform 250ms ease-out, opacity 250ms ease-out;
+    will-change: transform;
 
     &--o {
       fill: $white;
@@ -61,10 +53,20 @@
       pointer-events: auto;
       transform: none;
       transition: fill 250ms ease-in;
+      will-change: fill;
     }
+  }
 
+  &--large {
     @include breakpoint(medium up) {
-      @include show-all-letters();
+      &::before {
+        transform: scaleY(0);
+        transition: transform 250ms $ease-in-circ;
+      }
+
+      #{$root}__letter{
+        @include show-all-letters();
+      }
     }
   }
 }

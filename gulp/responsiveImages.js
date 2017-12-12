@@ -14,8 +14,8 @@ export default function (gulp, plugins, args, config, taskTarget) {
 
   gulp.task('responsiveImages', () => (
     gulp.src(path.join(dirs.source, dirs.images, 'largest-orginal-size/**/*.{jpg,jpeg,png}'))
-      .pipe(plugins.changed(dest))
-      .pipe(plugins.responsive({ stats: false }, [{
+      // .pipe(plugins.changed(dest))
+      .pipe(plugins.responsive([{
         ...imgageDefault,
         width: 40,
         qulaity: 30,
@@ -59,7 +59,7 @@ export default function (gulp, plugins, args, config, taskTarget) {
           suffix: '-x2',
         },
       },
-      ]))
+      ], { stats: true }))
       .pipe(gulp.dest(dest))
   ))
 }

@@ -1,23 +1,25 @@
 .burger {
   $root: &;
   @include button();
+  border-color: $greyborder;
   contain: strict;
+  cursor: pointer;
   display: inline-block;
   height: 40px;
+  margin: 0 10px;
   outline: none;
   position: relative;
   width: 40px;
-  cursor: pointer;
 
   &__wrapper {
     height: 100%;
     left: 0;
+    line-height: 2.2;
     position: absolute;
     top: 0;
-    transition: transform 250ms ease-in-out;
     transform: scale(1) translate(0, 0);
+    transition: transform 250ms ease-in-out;
     width: 100%;
-    line-height: 2.2;
   }
 
   &__piece {
@@ -26,8 +28,8 @@
     position: relative;
     transform: scale(1);
     transition: transform 250ms ease-in-out;
-    width: 4px;
     vertical-align: middle;
+    width: 4px;
 
     &::after {
       content: "";

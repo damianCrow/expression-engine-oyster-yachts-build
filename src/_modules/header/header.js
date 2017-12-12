@@ -1,114 +1,42 @@
 import $ from 'jquery'
 
+import { addClass, removeClass, hasClass } from '../../_scripts/helper-functions'
 import BreakPoints from '../../_scripts/breakpoints'
 
 export default class GlobalHeader {
   constructor() {
-    this.header = $('.global-header')
-    this.scrollToPoint = this.header.attr('data-snap-to-min-nav')
-    this.snapOffset = parseInt(this.header.attr('data-snap-offset'), 10) || 0
-    this.headerClass = 'global-header-mini'
-
-    // local-sidebar
-    this.localSidebar = $('[data-local-sidebar]')
-    this.stickySidebar = $('.sticky-sidebar')
-    this.expandHeaderBuffer = $(this.header).height() * 1.5
-
-    this.yachtNav = $('[data-local-subnav]')
-    this.localSubNav = $('[data-local-subnav]') ? $('[data-local-subnav]') : $('.global-local-subnav')
-
     this.breakpoints = new BreakPoints()
 
-    this.init()
+    this.topBarHeight = 0
+    this.fixedTopValue = 0
+    this.fixedHeight = this.breakpoints.atLeast('medium') ? 90 : 60
+    this.header = document.querySelector('.main-header')
+    this.title = document.querySelector('.main-header__title')
+
+    this.headerDependencies = [
+      this.header,
+      this.header.querySelector('.logo'),
+      this.header.querySelector('.main-header__menu'),
+    ]
+
+    this.largeHeaderActive = true
+
+
+    // this.legacy()
+    // this.snapPointCheck()
   }
 
-  init() {
-    // if ($('[data-local-subnav]')[0]) {
-    //   this.localSubNav = $('[data-local-subnav]')
-    // } else if ($('.global-local-subnav')[0]) {
-    //   this.localSubNav = $('.global-local-subnav')
-    // }
-
-    // COOKIE HEADER MESSAGE
-
-    const retrievedCookieMessage = JSON.parse(localStorage.getItem('oysterYachtsCookie'))
-
-    // console.log(retrievedCookieMessage)
-
-    // var oysterYachtsCookie = {value: "true", timestamp: new Date().getTime()}
-
-    const oysterYachtsCookie = { value: JSON.stringify('true'), timestamp: new Date().getTime() + 31556926000 }
-
-    if ($(retrievedCookieMessage).length > 0) {
-      if (retrievedCookieMessage.timestamp < new Date().getTime()) {
-        //expired
-        // console.log('expired', retrievedCookieMessage.timestamp)
-        // console.log('cureent date', new Date().getTime())
-        $('body').addClass('fixed-message-showing')
-      } else {
-        // console.log('retrievedCookieMessage.timestamp', retrievedCookieMessage.timestamp)
-        $('body').removeClass('fixed-message-showing')
-      }
-    } else {
-      $('body').addClass('fixed-message-showing')
-    }
-
-
-    $('.accept-message').on('click', () => {
-      $('body').removeClass('fixed-message-showing')
-      // cookieMessage = 'true'
-      localStorage.setItem('oysterYachtsCookie', JSON.stringify(oysterYachtsCookie))
-    })
-
-
-    // if the scroll point is a div id, get its index point
-    if (isNaN(parseInt(this.scrollToPoint), 10) && this.scrollToPoint !== 'undefined') this.scrollToPoint = $(this.scrollToPoint).offset().top - this.snapOffset
-
-    $(window).bind('scroll', () => {
-      const scroll = $(window).scrollTop()
-      // if the subnav and the header exists, remove the box shadow
-      if (this.localSubNav && this.header.length !== 0) this.headerClass = 'global-header-mini no-boxshadow'
-
-      if (scroll >= parseInt(this.scrollToPoint, 10)) {
-        if ($(this.header).hasClass(this.headerClass)) {
-          // $('.main-nav li ul').removeClass('hidden-animation')
-        } else {
-          $('.main-nav li ul').addClass('hidden-animation')
-          this.header.addClass(this.headerClass)
-        }
-
-        if (this.localSubNav && this.breakpoints.atLeast('medium')) {
-          this.localSubNav.addClass('global-local-subnav-mini').parent().css({ position: 'static' })
-        }
-
-        // A buffer zone for expanding the header.
-      } else {
-        this.yachtNav.removeClass('global-local-subnav-mini').parent().css({ position: 'relative' })
-      }
-
-      if (scroll <= parseInt(this.expandHeaderBuffer, 10)) {
-        if ($(this.header).hasClass(this.headerClass)) {
-          $('.main-nav li ul').addClass('hidden-animation')
-
-          this.header.removeClass(this.headerClass)
-        } else {
-          // $('.main-nav li ul').removeClass('hidden-animation')
-        }
-
-        this.localSubNav && this.localSubNav.removeClass('global-local-subnav-mini')
-      }
-    })
-
+  legacy() {
 
     /* From Modernizr */
     function whichTransitionEvent() {
       let t
       const el = document.createElement('fakeelement')
       const transitions = {
-        'transition': 'transitionend',
-        'OTransition': 'oTransitionEnd',
-        'MozTransition': 'transitionend',
-        'WebkitTransition': 'webkitTransitionEnd',
+        transition: 'transitionend',
+        OTransition: 'oTransitionEnd',
+        MozTransition: 'transitionend',
+        WebkitTransition: 'webkitTransitionEnd',
       }
 
       for (t in transitions) {
@@ -184,6 +112,73 @@ export default class GlobalHeader {
         $('.search-bar input').focus()
       }
     })
+  }
+
+  // snapPointCheck(lastKnownScrollPosition = window.scrollY) {
+  //   return this.styleExpanded(lastKnownScrollPosition)
+  // }
+
+  snapPointCheck(reactiveScrollProps) {
+    const { lastKnownScrollPosition, headerSnapPoint } = reactiveScrollProps
+
+    this.fixedTopValue = reactiveScrollProps.fixedTopValue
+
+    if (lastKnownScrollPosition > headerSnapPoint && this.largeHeaderActive) {
+      this.size()
+    } else if (lastKnownScrollPosition < headerSnapPoint && !this.largeHeaderActive) {
+      this.size(true)
+    }
+
+    return this.fixedHeight
+  }
+
+  size(large) {
+    if (large) {
+      for (let i = 0; i < this.headerDependencies.length; i += 1) {
+        if (this.headerDependencies[i]) {
+          addClass(this.headerDependencies[i], `${this.headerDependencies[i].className.split(' ')[0]}--large`)
+        }
+      }
+      this.topBarHeight = 0
+      this.header.style.transform = ''
+
+      this.largeHeaderActive = true
+
+      this.fixedHeight = this.breakpoints.atLeast('medium') ? 90 : 60
+    } else {
+      for (let i = 0; i < this.headerDependencies.length; i += 1) {
+        if (this.headerDependencies[i]) {
+          removeClass(this.headerDependencies[i], `${this.headerDependencies[i].className.split(' ')[0]}--large`)
+        }
+      }
+
+      // this.topBarHeight = fixedTopValue
+      this.largeHeaderActive = false
+
+      this.fixedHeight = 60
+    }
+    this.topPosition()
+  }
+
+  topPosition() {
+    if (this.fixedTopValue !== this.topBarHeight) {
+      this.header.style.transform = `translateY(${this.fixedTopValue}px)`
+      this.topBarHeight = this.fixedTopValue
+    } else if (this.fixedTopValue === 0) {
+      this.topBarHeight = 0
+
+      this.header.style.transform = ''
+    }
+  }
+
+  fullScreenMode(visble) {
+    if (visble) {
+      addClass(this.header, 'main-header--full-screen')
+      this.size()
+    } else {
+      removeClass(this.header, 'main-header--full-screen')
+      this.size(true)
+    }
   }
 }
 

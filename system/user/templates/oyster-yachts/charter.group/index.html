@@ -3,100 +3,105 @@
 
 {embed="site/.header" page_title="Charter" snap_to=".hero #global-page-filters" snap_offset="55"}
 
-<section style="background-image: url('{charter_header_image}{image:url}{/charter_header_image}')" class="hero after-nav global-page-hero yacht-listing-photo global-page-hero--medium">
-{embed="charter/.filters" post="true"}
-</section>
+<article>
+	{embed="site/.sub_bar" page_title="Charter"}
+	
+	<section style="background-image: url('{charter_header_image}{image:url}{/charter_header_image}')" class="hero after-nav global-page-hero yacht-listing-photo global-page-hero--medium">
+	{embed="charter/.filters" post="true"}
+	</section>
 
-<section class="page-home-about charter-home-about">
-	<div class="row padded-full-width-row">
-		<div class="small-12 medium-3 large-2 large-offset-1 column about-heading"><span class="text-uppercase">
-			{charter_intro_heading}
-		</span></div>
-		<div class="small-12 medium-9 large-8 end column intro">
-			{charter_intro_content}
+	<section class="page-home-about charter-home-about">
+		<div class="row padded-full-width-row">
+			<div class="small-12 medium-3 large-2 large-offset-1 column about-heading"><span class="text-uppercase">
+				{charter_intro_heading}
+			</span></div>
+			<div class="small-12 medium-9 large-8 end column intro">
+				{charter_intro_content}
+			</div>
 		</div>
-	</div>
-</section>
+	</section>
 
-<section id="charter-home-local-nav" class="page-home-local-nav charter-home-local-nav">
-	<div class="content row padded-full-width-row">
-		<div class="small-12 medium-4 large-4 content-col">
-			<a href="{path='charter/fleet'}" class="localnav-anchor">
-				<div class="feature-image">
-					<img src="/assets/images/sizes/Charter_Fleet_link-holder.jpg" data-img-name="Charter_Fleet_link" data-sizes="auto" data-srcset="/assets/images/sizes/Charter_Fleet_link-x05.jpg 369w, /assets/images/sizes/Charter_Fleet_link-x075.jpg 553w, /assets/images/sizes/Charter_Fleet_link-x1.jpg 737w, /assets/images/sizes/Charter_Fleet_link-x13.jpg 958w, /assets/images/sizes/Charter_Fleet_link-x2.jpg 1474w" class="lazyload blur-up">
-            	</div>
-            	<div class="feature-content">
-					<h4>charter fleet</h4>
-				</div>
-			</a>
+	<section id="charter-home-local-nav" class="page-home-local-nav charter-home-local-nav">
+		<div class="content row padded-full-width-row">
+			<div class="small-12 medium-4 large-4 content-col">
+				<a href="{path='charter/fleet'}" class="localnav-anchor">
+					<div class="feature-image">
+						<img src="/assets/images/sizes/Charter_Fleet_link-holder.jpg" data-img-name="Charter_Fleet_link" data-sizes="auto" data-srcset="/assets/images/sizes/Charter_Fleet_link-x05.jpg 369w, /assets/images/sizes/Charter_Fleet_link-x075.jpg 553w, /assets/images/sizes/Charter_Fleet_link-x1.jpg 737w, /assets/images/sizes/Charter_Fleet_link-x13.jpg 958w, /assets/images/sizes/Charter_Fleet_link-x2.jpg 1474w" class="lazyload blur-up">
+	            	</div>
+	            	<div class="feature-content">
+						<h4>charter fleet</h4>
+					</div>
+				</a>
+			</div>
+			<div class="small-12 medium-4 large-4 content-col">
+				<a href="{path='charter/guide'}" class="localnav-anchor">
+					<div class="feature-image">
+						<img src="/assets/images/sizes/charter-guide-1474-holder.jpg" data-img-name="charter-guide-1474" data-sizes="auto" data-srcset="/assets/images/sizes/charter-guide-1474-x05.jpg 369w, /assets/images/sizes/charter-guide-1474-x075.jpg 553w, /assets/images/sizes/charter-guide-1474-x1.jpg 737w, /assets/images/sizes/charter-guide-1474-x13.jpg 958w, /assets/images/sizes/charter-guide-1474-x2.jpg 1474w" class="lazyload blur-up">
+	            	</div>
+	            	<div class="feature-content">
+						<h4>Charter guide</h4>
+					</div>
+				</a>
+			</div>
+			<div class="small-12 medium-4 large-4 content-col">
+				<a href="{path='charter/destinations'}" class="localnav-anchor">
+					<div class="feature-image">
+						<img src="/assets/images/sizes/Destinations_link-holder.jpg" data-img-name="Destinations_link" data-sizes="auto" data-srcset="/assets/images/sizes/Destinations_link-x05.jpg 369w, /assets/images/sizes/Destinations_link-x075.jpg 553w, /assets/images/sizes/Destinations_link-x1.jpg 737w, /assets/images/sizes/Destinations_link-x13.jpg 958w, /assets/images/sizes/Destinations_link-x2.jpg 1474w" class="lazyload blur-up">
+	            	</div>
+	            	<div class="feature-content">
+						<h4>destinations</h4>
+					</div>
+				</a>
+			</div>
 		</div>
-		<div class="small-12 medium-4 large-4 content-col">
-			<a href="{path='charter/guide'}" class="localnav-anchor">
-				<div class="feature-image">
-					<img src="/assets/images/sizes/charter-guide-1474-holder.jpg" data-img-name="charter-guide-1474" data-sizes="auto" data-srcset="/assets/images/sizes/charter-guide-1474-x05.jpg 369w, /assets/images/sizes/charter-guide-1474-x075.jpg 553w, /assets/images/sizes/charter-guide-1474-x1.jpg 737w, /assets/images/sizes/charter-guide-1474-x13.jpg 958w, /assets/images/sizes/charter-guide-1474-x2.jpg 1474w" class="lazyload blur-up">
-            	</div>
-            	<div class="feature-content">
-					<h4>Charter guide</h4>
-				</div>
-			</a>
+	</section>
+
+
+	<section id="page-testimonials" class="quote-testimonials row">
+		{charter_testimonials}
+		<blockquote class="text-uppercase">
+			<p>{charter_testimonials:testimonial}</p>
+			<footer>
+				<cite>{charter_testimonials:by_whom}</cite>
+			</footer>
+		</blockquote>
+		{/charter_testimonials}
+		<div class="nav-points"></div>
+	</section>
+
+
+	<section class="charter-home-featured-yachts">
+		<div class="banner">featured yachts</div>
+		<div class="row padded-full-width-row content">
+			<div id="yacht-grid" class="row sys-yacht-grid">
+				<ul>
+					{embed="charter/.featured" ids="{charter_featured_yachts:entry_ids}"}
+				</ul>
+			</div>
 		</div>
-		<div class="small-12 medium-4 large-4 content-col">
-			<a href="{path='charter/destinations'}" class="localnav-anchor">
-				<div class="feature-image">
-					<img src="/assets/images/sizes/Destinations_link-holder.jpg" data-img-name="Destinations_link" data-sizes="auto" data-srcset="/assets/images/sizes/Destinations_link-x05.jpg 369w, /assets/images/sizes/Destinations_link-x075.jpg 553w, /assets/images/sizes/Destinations_link-x1.jpg 737w, /assets/images/sizes/Destinations_link-x13.jpg 958w, /assets/images/sizes/Destinations_link-x2.jpg 1474w" class="lazyload blur-up">
-            	</div>
-            	<div class="feature-content">
-					<h4>destinations</h4>
-				</div>
-			</a>
-		</div>
-	</div>
-</section>
+	</section>
 
-
-<section id="page-testimonials" class="quote-testimonials row">
-	{charter_testimonials}
-	<blockquote class="text-uppercase">
-		<p>{charter_testimonials:testimonial}</p>
-		<footer>
-			<cite>{charter_testimonials:by_whom}</cite>
-		</footer>
-	</blockquote>
-	{/charter_testimonials}
-	<div class="nav-points"></div>
-</section>
-
-
-<section class="charter-home-featured-yachts">
-	<div class="banner">featured yachts</div>
-	<div class="row padded-full-width-row content">
-		<div id="yacht-grid" class="row sys-yacht-grid">
-			<ul>
-				{embed="charter/.featured" ids="{charter_featured_yachts:entry_ids}"}
-			</ul>
-		</div>
-	</div>
-</section>
-
-<section class="charter-home-your-yacht">
-	<div class="row padded-full-width-row">
-		<div class="your-yacht-background">
-			
-			<div class="your-yacht-content medium-8 large-6 large-offset-5 medium-offset-4">
-				<h2 class="text-uppercase">{yacht_charter_heading}</h2>
-				<div class="your-yacht-contact-details">
-					<div style="background-image: url(&quot;{mollys_portrait}&quot;)" class="your-charter-contact-profile" style="height:80"></div>
-					{mollys_description}
-					<div class="contact-phone-email">
-						<span class="contact-phone"><abbr title="Telephone">T: </abbr><a href="tel:{molly_telephone}">{molly_telephone}</a></span>
-						<span class="contact-email"><abbr title="Email">E: </abbr><a href="mailto:{charter_email}">{charter_email}</a></span>
+	<section class="charter-home-your-yacht">
+		<div class="row padded-full-width-row">
+			<div class="your-yacht-background">
+				
+				<div class="your-yacht-content medium-8 large-6 large-offset-5 medium-offset-4">
+					<h2 class="text-uppercase">{yacht_charter_heading}</h2>
+					<div class="your-yacht-contact-details">
+						<div style="background-image: url(&quot;{mollys_portrait}&quot;)" class="your-charter-contact-profile" style="height:80"></div>
+						{mollys_description}
+						<div class="contact-phone-email">
+							<span class="contact-phone"><abbr title="Telephone">T: </abbr><a href="tel:{molly_telephone}">{molly_telephone}</a></span>
+							<span class="contact-email"><abbr title="Email">E: </abbr><a href="mailto:{charter_email}">{charter_email}</a></span>
+						</div>
 					</div>
 				</div>
-			</div>
 
+			</div>
 		</div>
-	</div>
-</section>
+	</section>
+</article>
+
 
 {footer}
 

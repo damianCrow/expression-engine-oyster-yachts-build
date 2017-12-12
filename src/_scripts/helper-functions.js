@@ -28,6 +28,18 @@ export function iOS() {
   return false;
 }
 
+// Get an element's distance from the top of the page
+export function getElemDistance(elem) {
+  let location = 0
+  if (elem.offsetParent) {
+    do {
+      location += elem.offsetTop
+      elem = elem.offsetParent
+    } while (elem)
+  }
+  return location >= 0 ? location : 0
+}
+
 
 /**
  * Returns a new element with a given class.

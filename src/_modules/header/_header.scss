@@ -3,33 +3,29 @@ $header-transistion-back-delay: .25;
 $logo-width: 230px;
 
 .global-header {
+  $root: &;
   left: 0;
   position: fixed;
   top: 0;
   width: 100%;
-  background-color: $white;
+  // background-color: $white;
   // TODO: Sort this out.
   z-index: 9999;
-  transform: translateY(-30px);
+  // transform: translateY(-30px);
   transition: transform 250ms ease-in-out;
-  @include breakpoint(medium up) {
-    transform: translateY(0);
+
+  &--large {
+    @include breakpoint(medium up) {
+      // transform: translateY(-20px);
+    }
   }
 }
 
 .main-header {
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
-  padding: (10px * 2) 10px;
+  $root: &;
   position: relative;
-  transform: translateY(20px);
   transition: transform 250ms ease-in-out;
   z-index: 2;
-
-  @include breakpoint(medium up) {
-    transform: translateY(0);
-  }
 
   &:before {
     background-color: $white;
@@ -38,28 +34,40 @@ $logo-width: 230px;
     left: 0;
     position: absolute;
     top: 0;
-    transform: translateY(-20px);
+    transform: translateY(-30px);
     transition: transform 250ms ease-in-out;
     width: 100%;
+  }
 
-    @include breakpoint(medium up) {
-      transform: translateY(0);
-    }
+  &__container {
+    padding: (10px * 2) 10px;
+    transform: translateY(-10px);
+    align-items: center;
+    display: flex;
+    justify-content: space-between;    
   }
 
   &__home,
   &__title,
   &__menu {
     flex: 1;
+    transform: translateY(0px);
   }
 
   &__title {
     @include h4-styles;
-    text-align: center;
+    display: inline-block;
     margin: 0;
+    opacity: 1;
+    text-align: center;
+    transform: translateX(0);
+    transition: transform 350ms ease-in-out 250ms, opacity 150ms ease-in-out 250ms;
+    pointer-events: auto;
 
     @include breakpoint(medium up) {
-      display: none;
+      pointer-events: none;
+      opacity: 0;
+      transform: translateX(-30px);
     }
   }
 
@@ -74,179 +82,38 @@ $logo-width: 230px;
     align-items: center;
     margin: 0;
   }
-}
 
-@mixin global-header-mini-mixin() {
-  height: $header-nav-small-height;
-  max-height: $header-nav-small-height;
-  transition: all .25s ease-in,
-              transform .5s cubic-bezier(.190, 1, .220, 1);
-  // with the fixed cookie message at top
-  // transform: translateY(0 - $header-owners-area-height);
+  &--large {
+    @include breakpoint(medium up) {
+      transform: translateY(0);
 
-  .fixed-message {
-    // transform: translateY($header-owners-area-height);
-    transition: all .25s ease-in, transform 250ms cubic-bezier(.190, 1, .220, 1);
-  }
+      #{$root}__container {
+        transform: translateY(0);
+      }
 
-  .logotwo {
-    background: url('/assets/images/logo_small.png') no-repeat center center;
-    left: 0;
-  }
-
-  .global-header-top-nav-large {
-    // This needs a height to prevent a max-height webkit bug still in Safari
-    height: $header-nav-small-height;
-    top: 0;
-  }
-
-  nav.navigation {
-    height: $header-nav-small-height;
-    max-height: $header-nav-small-height;
-    transition: all .2s ease-in;
-  }
-
-  // @include site-menu();
-
-  .global-header-top-nav-large {
-    .logo {
 
       &::before {
-        // transition: transform 0.25s cubic-bezier(.19, 1, .22, 1) 0.25s;
-        // transform: translateX(0);
-        border-radius: 0%;
-        opacity: 1;
-        transform: translateX(0);
-        transition: opacity .25s cubic-bezier(.190, 1, .220, 1) .25s,
-                    transform 0s cubic-bezier(.19, 1, .22, 1) 0s,
-                    border-radius 0s cubic-bezier(.19, 1, .22, 1) 0s;
+        transform: translateY(0px);
       }
 
-      svg {
-        // width: $header-nav-small-height;
-        // max-height: $header-nav-small-height;
-        // height: $header-nav-small-height;
-        cursor: pointer;
-        transform: translateX(-1.2rem);
-        transition: transform .25s ease-out .25s;
-
-        path {
-          // We want this to begin it's exit faster than it's re-entrance (thus, two transistions)
-          opacity: 0;
-          transform: translateX(0) scale(.7);
-          transition: transform .25s ease-in-out .15s,
-                      opacity .15s ease-in-out .15s;
-        }
-
-        .logo-o {
-          // HAS TO BE RGBA FOR TRANSISTION IN SAFARI
-          fill: rgba($white, .99);
-          opacity: 1;
-          transform: none;
-          transition: fill .25s ease-in-out .25s;
-        }
+      #{$root}__home,
+      #{$root}__title,
+      #{$root}__menu {
+        transform: translateY(0);
       }
     }
   }
-}
 
-.global-header-top-nav-large {
-  background-color: $white;
-  height: $header-nav-large-height;
-  left: 0;
-  position: relative;
-  top: 0;
-  transition: all .5s cubic-bezier(.190, 1, .220, 1);
-  width: 100%;
-  will-change: height, transform;
-  z-index: 10;
-
-  @include breakpoint(medium down) {
-    @include nav-border();
-  }
-
-  .logo {
-    // Width the same as child SVG for cross browser compatibility
-    height: 100%;
-    margin-left: 2rem;
-    margin-right: 2rem;
-    transition: width .5s cubic-bezier(.190, 1, .220, 1);
-    width: $logo-width;
-
-    @include breakpoint(large only) {
-      width: $logo-width - 55;
-    }
-
-    &::before {
-      // Fades out completly before the transform can kick in, pops out when collapseing, fades out when expanding.
-      transition: opacity .25s cubic-bezier(.190, 1, .220, 1) unquote( ($header-transistion-back-delay + .25) + 's'),
-                  transform 0s cubic-bezier(.190, 1, .220, 1) unquote( ($header-transistion-back-delay + .5) + 's'),
-                  border-radius 0s cubic-bezier(.190, 1, .220, 1) unquote( ($header-transistion-back-delay + .5) + 's');
-    }
-
-    svg {
-      // Width the same as parent for SVG for cross browser compatibility
-      // Width transition is purely for window resize, remove it if it's in the way.
-      height: 100%;
+  &--full-screen {
+    #{$root}__title {
+      text-align: left;
       position: absolute;
-      transition: transform .25s ease-out unquote(($header-transistion-back-delay + .25) + 's'),
-                  width .5s cubic-bezier(.190, 1, .220, 1);
-      width: $logo-width;
-      will-change: transform;
-
-      @include breakpoint(large only) {
-        width: $logo-width - 55;
-      }
-
-      path {
-        opacity: 1;
-        transform: translateX(0);
-        transform-origin: center center;
-        transition: transform .25s ease-in-out unquote(($header-transistion-back-delay + .25) + 's'),
-                    opacity .15s ease-in-out unquote(($header-transistion-back-delay + .25) + 's');
-        will-change: transform, opacity;
-      }
-
-      .logo-o {
-        // HAS TO BE RGBA FOR TRANSISTION IN SAFARI
-        fill: rgba($blue, .99);
-        opacity: 1;
-        transition: fill .25s ease-in-out unquote(($header-transistion-back-delay + .25) + 's');
-      }
+      pointer-events: auto;
+      left: 60px;
+      margin-left: $global-margin;
+      opacity: 1;
+      transform: translateX(0);
     }
-
-    img {
-      margin-top: -8px;
-      position: absolute;
-      top: 50%;
-
-      @include breakpoint(xlarge up) {
-        margin-top: -12.5px;
-      }
-    }
-  }
-
-  .logo-tiny {
-    display: none;
-  }
-
-  > h4 {
-    // position: absolute;
-    // width: 100%;
-    align-items: center;
-    bottom: 0;
-    display: inline-flex;
-    height: 100%;
-    justify-content: center;
-    left: 0;
-    margin: auto;
-    top: 0;
-    vertical-align: top;
-    width: calc(100% - 113px);
-  }
-
-  .main-nav-first {
-    transition: transform .25s cubic-bezier(.190, 1, .220, 1) unquote( ($header-transistion-back-delay + .16) + 's');
   }
 }
 
@@ -258,13 +125,18 @@ $logo-width: 230px;
 }
 
 .top-header {
-  height: 55px;
-  position: fixed;
-  top: 0;
-  transform: translateY(-100%);
-  transition: transform .5s cubic-bezier(.19, 1, .22, 1);
+  height: 65px;
   width: 100%;
+  position: fixed;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  padding: 10px 0 0 0;
+  background-color: $white;
+  top: 0;
+  transition: transform .5s cubic-bezier(.19, 1, .22, 1);
   z-index: 1052;
+
   opacity: 0;
   pointer-events: none;
 
@@ -277,6 +149,8 @@ $logo-width: 230px;
   background-color: $pictonblue;
   display: flex;
   height: 100%;
+  margin: 0 auto;
+  width: calc(100% - 20px);
   transition: transform 350ms cubic-bezier(.19, 1, .22, 1);
 
   .fixed-message-contents {
@@ -349,84 +223,12 @@ $logo-width: 230px;
   }
 }
 
-.global-header-mini {
-  @include global-header-mini-mixin;
-  height: ($header-nav-small-height) !important;
-  max-height: ($header-nav-small-height) !important;
-
-  .global-header-top-nav-large,
-  .global-header-top-nav {
-    // box-shadow: 0 3px 2px -2px gray;
-    @include nav-border();
-  }
-
-  .global-header-top-nav-large {
-    // border: none;
-    .search-bar {
-      left: 56px;
-      input {
-        padding: 0 0 0 25px;
-        font-size: 1.75em;
-        letter-spacing: .1rem;
-      }
-    }
-  }
-
-  .main-nav-first {
-    transition: transform .25s ease-out .25s;
-    transform: translateX(-230px);
-
-    @include breakpoint(large only) {
-      transform: translateX(-175px)
-    }
-
-    > li {
-      > ul {
-        transform: translateX(-4.25rem) translateY(-43px);
-      }
-    }
-  }
-}
-
 .fixed-message-showing {
 
   .top-header {
-    transform: translateY(0%);
+    // transform: translateY(0%);
     opacity: 1;
     pointer-events: auto;
-  }
-
-  .global-header {
-    transform: translateY($header-message-height);
-    // So it doesn't drop down on each page load
-    // transition: none;
-
-    @include breakpoint(medium down) {
-      // height: $header-message-height-small;
-      // transform: translateY($header-message-height - $header-owners-area-height);
-      // So it doesn't drop down on each page load
-      // transition: none;
-    }
-
-    @include breakpoint(small down) {
-      // height: $header-message-height-small;
-      // transform: translateY($header-message-height-small - $header-owners-area-height);
-      // So it doesn't drop down on each page load
-      // transition: none;
-    }
-
-    &.global-header-mini {
-      // So it doesn't drop down on each page load
-      // transition: none;
-      // transform: translateY(0 - ($header-owners-area-height - $header-message-height));
-
-      @include breakpoint(small down) {
-        // height: $header-message-height-small;
-        // So it doesn't drop down on each page load
-        // transition: none;
-        // transform: translateY($header-message-height-small - $header-owners-area-height);
-      }
-    }
   }
 
   .global-local-subnav {
@@ -468,316 +270,12 @@ $logo-width: 230px;
   }
 }
 
-.global-header-old {
-  background-color: $white;
-  left: 0;
-  position: fixed;
-  top: 0;
-  // This needs to be on every fixed elements to stop 3D animations breaking accross the site - maybe not?
-  transform-style: preserve-3d;
-  transition: all .5s cubic-bezier(.19, 1, .22, 1);
-  width: 100%;
-  z-index: 1050;
-  // EDGE ONLY HACK TO STOP HEADER JUMPING
-  @supports (-ms-accelerator: true) {
-    transform-style: flat;
-  }
-
-  nav.navigation {
-    // height: 96px;
-    // max-height: 96px;
-    height: 100%;
-    padding-left: 0;
-    padding-right: 0;
-    position: relative;
-    transition: all .2s ease-in;
-    width: 100%;
-  }
-
-  // if you're on smaller screens, by default display the header this way.
-  @include breakpoint(medium down) {
-    @include global-header-mini-mixin;
-    .global-header-top-nav-large {
-      .logo {
-        margin: 0;
-        width: 57px;
-        svg {
-          transform: translateX(.85rem);
-        }
-      }
-    }
-  }
-}
-
-.global-header-top-nav {
-  background-color: $white;
-  height: $header-nav-small-height;
-  left: 0;
-  max-height: $header-nav-small-height;
-  position: fixed;
-  top: 0;
-  transition: max-height 1s;
-  width: 100%;
-  z-index: 10;
-
-  .logo-wrapper {
-    left: 0;
-    position: absolute;
-    top: 0;
-  }
-
-  img {
-    cursor: pointer;
-    width: 55px;
-  }
-
-  h4 {
-    cursor: pointer;
-    line-height: 3em;
-    margin-bottom: 0;
-    outline: 0;
-  }
-
-  .logo-tiny {
-    display: block;
-    height: 100%;
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: 56px;
-  }
-}
-
-.owners-area {
-  // transition: transform 0.25s ease-in-out;
-  // will-change hides the entire element in FF.
-  // will-change: transform;
-  background-color: $blue;
-  // height: $header-owners-area-height;
-  overflow: hidden;
-  position: relative;
-
-  .owners-area-text,
-  .follow-oyster {
-    color: $white;
-    display: block;
-    font-size: .75em;
-    line-height: 1em;
-    padding: 9px 18px;
-    text-decoration: none;
-    @include omnes_medium; // add omnes_medium font family
-  }
-
-  $owners-area-btn-width: 130px;
-
-  .owners-area-text {
-    background-color: $cyan;
-    position: absolute;
-    right: 0;
-    width: $owners-area-btn-width;
-    z-index: 5;
-  }
-
-  .follow {
-    height: 100%;
-    margin-right: $owners-area-btn-width;
-    transform: translateX(200px);
-    transition: transform 650ms cubic-bezier(.32, .94, .6, 1);
-    will-change: transform;
-    z-index: 2;
-  }
-
-  .follow-on {
-    transform: translateX(0);
-
-    .follow-oyster {
-      background-color: $blue;
-      z-index: 2;
-    }
-
-    .back-btn {
-      opacity: 1;
-    }
-  }
-
-  .follow-oyster {
-    background-color: $blue;
-    color: $lightblue;
-    display: inline-block;
-    width: 150px;
-  }
-
-  .back-btn {
-    border-left: 1px solid $blueborder;
-    border-right: 1px solid $blueborder;
-    color: $lightblue;
-    cursor: pointer;
-    display: inline-block;
-    font-size: 1.5rem;
-    margin-top: .1rem;
-    opacity: 0;
-    padding: 0 .75rem;
-    transition: opacity 250ms ease-out;
-    will-change: opacity;
-  }
-
-  .social-links {
-    background-color: $blue;
-    display: inline-block;
-    float: right;
-    // height: $header-owners-area-height;
-  }
-
-  .social-icons {
-    float: right;
-    height: 100%;
-    justify-content: center;
-    outline: 0;
-
-    a {
-      border-right: 1px solid $blueborder;
-
-      &:first-of-type {
-        border-left: 1px solid $blueborder;
-        border-right: 1px solid $blueborder;
-      }
-
-      &:last-of-type {
-        border: 0;
-      }
-    }
-
-    .fa {
-      cursor: pointer;
-      font-size: 1.2rem;
-      width: 2rem;
-    }
-  }
-}
-
 .logotwo {
   display: block;
   height: 100%;
   padding: 0;
   transition: all .2s ease-in;
   width: 75px;
-}
-
-.site-search {
-  // background: url('/assets/images/search-open.png') no-repeat center center;
-  background-size: contain;
-  display: block;
-  height: 100%;
-  outline: none;
-  position: absolute;
-  right: 40px;
-  top: 0;
-  width: 26px;
-  z-index: 3;
-
-  .close-icon,
-  .search-icon {
-    bottom: 0;
-    height: 2rem;
-    left: 0;
-    margin: auto;
-    position: absolute;
-    right: 0;
-    top: 0;
-    transition: transform .25s ease-out,
-                opacity .25s ease-out;
-  }
-
-  .close-icon {
-    opacity: 0;
-    transform: scale(.7);
-  }
-
-  .search-icon {
-    opacity: 1;
-    transform: scale(1);
-  }
-
-  svg {
-    height: 2rem;
-    outline: none;
-    width: 2rem;
-  }
-
-  path {
-    fill: $lightishgrey;
-  }
-}
-
-.search-bar-open {
-  .search-bar {
-    opacity: 1;
-    transform: translateX(0);
-  }
-
-  .close-icon {
-    opacity: 1;
-    transform: scale(1);
-  }
-
-  .search-icon {
-    opacity: 0;
-    transform: scale(.7);
-  }
-}
-
-.search-bar {
-  // display: none;
-  bottom: 0;
-  left: 294px;
-  opacity: 0;
-  overflow: hidden;
-  position: absolute;
-  right: 0;
-  top: 0;
-  transform: translateX(100%);
-  transition: transform 1s cubic-bezier(.19, 1, .22, 1),
-              opacity .25s ease-out;
-  will-change: transform, opacity;
-  z-index: 2;
-
-  @include breakpoint(large down) {
-    left: 220px;
-  }
-
-  &::before {
-    /* For browsers that do not support gradients */
-    /*Standard*/
-    background: $white;
-    background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
-    content: '';
-    display: block;
-    height: 100%;
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: 20px;
-  }
-  input {
-    background: $white;
-    border: none;
-    color: $input-text-colour;
-    font-size: 1.875em;
-    height: 100%;
-    line-height: 1.14285714em;
-    margin: 0;
-    padding: 0 0 0 20px;
-    position: relative;
-    width: 100%;
-    @include omnes_light; // add omnes_light font family
-    letter-spacing: 0.1rem;
-    &:focus,
-    &:active,
-    &:hover,
-    &:visited {
-      border: none;
-    }
-  }
 }
 
 #global-navigation-modal {
@@ -797,7 +295,7 @@ $logo-width: 230px;
 
   .top-nav-modal {
 
-    @extend .global-header-top-nav;
+    // @extend .global-header-top-nav;
 
     .close-button-wrapper {
       background-color: $lightgrey;
@@ -999,32 +497,3 @@ $logo-width: 230px;
   }
 }
 
-// Search box (used on the search results page)
-.search-results-box {
-  form {
-    display: flex;
-
-    > input {
-      border-bottom-left-radius: 3px;
-      border-top-left-radius: 3px;
-      flex: 0 0 80%;
-      height: auto;
-      margin: 0;
-    }
-
-    .search-results-submit {
-      flex: 0 0 20%;
-    }
-
-    @include breakpoint(small down) {
-
-      > input {
-        flex: 0 0 70%;
-      }
-
-      .search-results-submit {
-        flex: 0 0 30%;
-      }
-    }
-  }
-}
