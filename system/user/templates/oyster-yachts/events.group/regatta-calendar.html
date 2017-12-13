@@ -3,8 +3,9 @@
 {embed="site/.header" page_title="Regatta Calendar" entry_id="{entry_id}" snap_to=".events-regattas-callendar" snap_offset="125"}
 
 {/exp:channel:entries}
+{embed="site/.sub_bar-events" page_title="Events"}
 <section style="background-image: url('/assets/images/oysteryachts-events-regattas.jpg'); background-position: center 95%;" class="hero after-nav global-page-hero yacht-listing-photo global-page-hero--small">
-	{back_button}
+
 </section>
 
 {exp:channel:entries channel="event" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published" orderby="event_end_date" sort="asc" search:event_start_date="<{current_time}" search:event_end_date=">{current_time}" limit="1"}
