@@ -13,10 +13,9 @@ $interiorGalleryImages = $query->num_rows();*/
 ?>
 
 {embed="site/.header" page_title="{brokerage_model} - {title}" snap_to=".full-screen #yacht-nav" snap_offset="55"}
-
 <section data-yachtid="{entry_id}" data-spec="{specification_pdf}" data-yachtsection="brokerage" class="hero full-screen">
 	<div id="full-image" class="yacht-listing-photo add-full-background-overlay" style="background-image: url('{brokerage_main_image}{image:url}{/brokerage_main_image}'); {if main_image_align =="Bottom"}background-position: bottom center;{/if}">
-		{back_button}
+		
 		<div class="yacht-name">
 			<div class="row-pad">
 				<h2 class="yacht-list-modal">{if other_model != ""}{other_model}{if:else}{brokerage_model}{/if}</h2>
