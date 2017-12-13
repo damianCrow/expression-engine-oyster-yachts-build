@@ -1,0 +1,53 @@
+{embed="site/.header" page_title="About Us" snap_to="undefined" snap_offset="undefined"}
+    <article class="blocks-on-blocks after-nav">
+      {exp:channel:entries channel="about" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published"}
+
+   
+
+          <section style="" class="block-on-block">
+            <div class="block-on-block-info">
+              <h1>Restoration</h1>
+              <p>With over 35 years of experience we understand what a yacht represents to an owner and the crew who operate her, and we go to exceptional lengths to help them achieve their aspirations whether the vessel is a 100-year old classic or a younger pride and joy.</p><a href="{about_sections:link}" class="button-solid-blue button-chubby">Discover More</a>
+            </div>
+          </section>
+
+
+          <section style="" class="block-on-block">
+            <div class="block-on-block-info">
+              <h1>Refit</h1>
+              <p>The yard has carefully blended technology, innovation, traditional skills and craftsmanship to refit a wide range of sailing and motor yachts. Dealing with annual and 5-year classification surveys is a speciality.</p><a href="{about_sections:link}" class="button-solid-blue button-chubby">Discover More</a>
+            </div>
+          </section>
+             
+      <section style="" class="block-on-block">
+            <div class="block-on-block-info">
+              <h1>New-Build</h1>
+              <p>We’ve always had the appetite for special new-build projects and exciting ideas have been flowing in the design office and in the project teams, keeping Oyster at the forefront of the industry.</p><a href="{about_sections:link}" class="button-solid-blue button-chubby">Discover More</a>
+            </div>
+          </section>
+      <section style="" class="block-on-block">
+            <div class="block-on-block-info">
+              <h1>Maintenance</h1>
+              <p>At Oyster, we believe in a lifetime of support worldwide and work hard to provide the best customer service in our industry. Led from our Palma office, the Oyster team provides a range of services from simple maintenance to more complex jobs.</p><a href="{about_sections:link}" class="button-solid-blue button-chubby">Discover More</a>
+            </div>
+          </section>
+          
+    {/exp:channel:entries}
+       
+        </article>
+        <style>
+article section:nth-child(1) {
+  background-image: url('/assets/images/about-us-why-us.jpg');
+}
+
+article section:nth-child(2) {
+  background-image: url('/assets/images/oysteryachts-projects-refit.jpg');')
+}
+article section:nth-child(3) {
+ background-image: url('/assets/images/oysteryachts-projects-newbuild.jpg');
+}
+article section:nth-child(4) {
+background-image: url('/assets/images/oysteryachts-projects-maintenance.jpg');
+}
+        </style>
+    {footer}
