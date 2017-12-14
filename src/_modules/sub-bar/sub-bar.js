@@ -75,6 +75,8 @@ export default class SubBar {
           const destinationBannerHeight = destination.querySelector('.banner').getBoundingClientRect().height
           const distance = getElemDistance(destination)
 
+          console.log('destinationBannerHeight', destinationBannerHeight)
+
           // console.log('destination.getBoundingClientRect().top', destination.getBoundingClientRect().top)
           console.log('this.topBarHeight', this.topBarHeight)
           console.log('distance', distance)
@@ -83,7 +85,7 @@ export default class SubBar {
           // scrollTo is the same
           console.log
           window.scroll({
-            top: distance - (this.topBarHeight + destinationBannerHeight),
+            top: distance - ((this.topBarHeight + destinationBannerHeight) + 3),
             left: 0,
             behavior: 'smooth',
           })

@@ -1,4 +1,5 @@
 import $ from 'jquery'
+import 'jquery-validation'
 
 export default class FormValidation {
   constructor() {
@@ -6,7 +7,7 @@ export default class FormValidation {
   }
 
   init() {
-    $.validator.addMethod('phoneno', (phone_number, element) => {
+    $.validator.addMethod('phoneno', function(phone_number, element) {
       phone_number = phone_number.replace(/\s+/g, '')
       return this.optional(element) || phone_number.length > 9 && phone_number.match(/^((\+[1-9]{1,4}[ \-]*)|(\([0-9]{2,3}\)[ \-]*)|([0-9]{2,4})[ \-]*)*?[0-9]{3,4}?[ \-]*[0-9]{3,4}?$/)
     }, 'Please specify a valid phone number')

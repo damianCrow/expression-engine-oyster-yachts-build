@@ -19663,7 +19663,7 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
 .login-page {
   background-size: cover;
   background-position: center center;
-  min-height: calc(100% - 50px);
+  min-height: calc(100vh - 50px);
   position: relative;
 }
 
@@ -19677,13 +19677,13 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
   .login-page {
     padding-top: 100px;
     padding-bottom: 25px;
-    min-height: calc(100% - 70px);
+    min-height: calc(100vh - 70px);
   }
 }
 
 @media screen and (max-width: 47.9375em) {
   .login-page .full-modal {
-    height: 100%;
+    height: 100vh;
   }
 }
 
@@ -29687,13 +29687,13 @@ body.fixed-message-showing > .lg-outer, body.fixed-message-showing .lg-backdrop 
   background-position: center 100%;
   background-repeat: no-repeat;
   background-size: cover;
-  height: calc(100% - 70px);
+  height: calc(100vh - 70px);
   padding: 4rem 3rem;
 }
 
 @media screen and (max-width: 63.9375em) {
   .error-page {
-    height: calc(100% - 50px);
+    height: calc(100vh - 50px);
     padding: 2rem 1.5rem;
   }
 }

@@ -29,6 +29,7 @@ import Shortlist from '../_modules/shortlist/shortlist'
 import GalleryModal from '../_modules/gallery-modal/gallery-modal'
 import Weather from '../_modules/weather/weather'
 import OwnersArea from '../_modules/owners-area/owners-area-modal'
+import FormValidation from '../_modules/form-validation/form-validation'
 
 import { documentReady, windowResize } from './helper-functions'
 import { quoteTestimonials } from '../_modules/quote-testimonials/quote-testimonials'
@@ -98,6 +99,7 @@ class Main {
     const nav = new GlobalNav(this.globalNav, this.burgerBtn, document.body)
     const subNav = new SubBar(this.subBar)
     const filters = new Filters()
+    const form = new FormValidation()
     const burger = new Burger(this.burgerBtn, nav)
     const footer = this.globalFooter && new GlobalFooter()
     const gallery = new GalleryModal(this.galleryModal, header)

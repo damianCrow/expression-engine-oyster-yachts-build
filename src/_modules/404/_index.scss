@@ -2,11 +2,11 @@
   background-position: center 100%;
   background-repeat: no-repeat;
   background-size: cover;
-  height: calc(100% - #{$header-nav-large-owners});
+  height: calc(100vh - #{$header-nav-large-owners});
   padding: 4rem 3rem;
 
   @include breakpoint(medium down) {
-    height: calc(100% - #{$header-nav-small-height});
+    height: calc(100vh - #{$header-nav-small-height});
     padding: 2rem 1.5rem;
   }
 
