@@ -20,15 +20,15 @@ $interiorGalleryImages = $query->num_rows();*/
   <nav class="sub-bar__nav">
     <ul class="sub-bar__menu">
 		{if brokerage_design_features:total_rows > 0}
-			<li class="active"><a href="#design-features" class="scroll"><span>Design Features</span></a></li>
+			<li class="active"><a href="#design-features" data-local-scroll-pos ><span>Design Features</span></a></li>
 			{/if}
 
 			{if brokerage_specifications:total_rows > 0}
-			<li><a href="#specifications" class="scroll"><span>Specifications</span></a></li>
+			<li><a href="#specifications" data-local-scroll-pos ><span>Specifications</span></a></li>
 			{/if}
 
 			<?php if ($layoutImages > 0): ?>
-			<li><a href="#yacht-layout" class="scroll"><span>Yacht Layout</span></a></li>
+			<li><a href="#yacht-layout" data-local-scroll-pos ><span>Yacht Layout</span></a></li>
 			<?php endif; ?>
 
 			<?php if ($exteriorGalleryImages > 0): ?>

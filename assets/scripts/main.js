@@ -41787,17 +41787,9 @@ var _createClass = function () {
   }return function (Constructor, protoProps, staticProps) {
     if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
   };
-}();
+}(); // import 'smoothscroll'
 
 var _helperFunctions = require('../../_scripts/helper-functions');
-
-var _breakpoints = require('../../_scripts/breakpoints');
-
-var _breakpoints2 = _interopRequireDefault(_breakpoints);
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
 
 function _classCallCheck(instance, Constructor) {
   if (!(instance instanceof Constructor)) {
@@ -41815,6 +41807,9 @@ var SubBar = function () {
 
     this.topBarHeight = 0;
     this.fixedHeight = 0;
+
+    this.scrollLinks = document.querySelectorAll('[data-local-scroll-pos]');
+    this.localScrollPosLinks();
 
     if (this.filterBar) {
       this.fetchSizes();
@@ -41850,7 +41845,6 @@ var SubBar = function () {
 
           this.fixedHeight = filterBar.getBoundingClientRect().height;
         }
-
         if (fixedTopValue !== this.topBarHeight) {
           filterBar.style.transform = 'translateY(' + fixedTopValue + 'px)';
           this.topBarHeight = fixedTopValue;
@@ -41863,6 +41857,60 @@ var SubBar = function () {
 
       return this.fixedHeight;
     }
+  }, {
+    key: 'localScrollPosLinks',
+    value: function localScrollPosLinks() {
+      var _this = this;
+
+      console.log('hi');
+
+      if (this.scrollLinks) {
+        var _loop = function _loop(i) {
+          console.log("this.scrollLinks[i].getAttribute('href')", _this.scrollLinks[i].getAttribute('href'));
+
+          _this.scrollLinks[i].addEventListener('click', function (e) {
+            e.preventDefault();
+            var destination = document.querySelector(_this.scrollLinks[i].getAttribute('href'));
+            var destinationBannerHeight = destination.querySelector('.banner').getBoundingClientRect().height;
+            var distance = (0, _helperFunctions.getElemDistance)(destination);
+
+            // console.log('destination.getBoundingClientRect().top', destination.getBoundingClientRect().top)
+            console.log('this.topBarHeight', _this.topBarHeight);
+            console.log('distance', distance);
+
+            // Scroll to specific values
+            // scrollTo is the same
+            console.log;
+            window.scroll({
+              top: distance - (_this.topBarHeight + destinationBannerHeight),
+              left: 0,
+              behavior: 'smooth'
+            });
+
+            // // Scroll certain amounts from current position
+            // window.scrollBy({
+            //   top: 100, // could be negative value
+            //   left: 0,
+            //   behavior: 'smooth',
+            // })
+
+            // // Scroll to a certain element
+            // document.querySelector('.hello').scrollIntoView({
+            //   behavior: 'smooth',
+            // })
+
+            // destination.scrollIntoView({
+            //   behavior: 'smooth',
+            // })
+            // window.scrollBy(0, -10) // Adjust scrolling with a negative value here
+          });
+        };
+
+        for (var i = 0; i < this.scrollLinks.length; i += 1) {
+          _loop(i);
+        }
+      }
+    }
   }]);
 
   return SubBar;
@@ -41871,7 +41919,7 @@ var SubBar = function () {
 exports.default = SubBar;
 module.exports = exports['default'];
 
-},{"../../_scripts/breakpoints":395,"../../_scripts/helper-functions":396}],391:[function(require,module,exports){
+},{"../../_scripts/helper-functions":396}],391:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -43177,42 +43225,42 @@ var Main = function () {
       var controller = new ScrollMagic.Controller();
       var lastId = null;
 
-      var locaSubNav = (0, _jquery2.default)('[data-local-subnav]') || {};
-      var locaSubNavHeight = locaSubNav.outerHeight();
-      var localSubNavItems = locaSubNav.find('.local-subnav a');
-      var localSubNavItemsMap = localSubNavItems.map(function () {
-        if ((0, _jquery2.default)(this).attr('href')) {
-          var item = (0, _jquery2.default)(this).attr('href').trim();
+      var locaSubNav = (0, _jquery2.default)('[data-local-scroll-pos]') || {};
+      // const locaSubNavHeight = locaSubNav.outerHeight()
+      // const localSubNavItems = locaSubNav.find('.local-subnav a')
+      // const localSubNavItemsMap = localSubNavItems.map(function () {
+      //   if ($(this).attr('href')) {
+      //     const item = $(this).attr('href').trim()
 
-          if (item.toString().substring(0, 1) === '#') {
-            if (item.length) return item;
-          }
-        }
-      });
+      //     if (item.toString().substring(0, 1) === '#') {
+      //       if (item.length) return item
+      //     }
+      //   }
+      // })
 
-      this.sideBarStick();
+      // this.sideBarStick()
 
-      // Simple Scroll spy for the Local SubNAV
-      (0, _jquery2.default)(window).scroll(function () {
-        // Get container scroll position
-        var fromTop = (0, _jquery2.default)(this).scrollTop() + locaSubNavHeight;
+      // // Simple Scroll spy for the Local SubNAV
+      // $(window).scroll(function () {
+      //   // Get container scroll position
+      //   const fromTop = $(this).scrollTop() + locaSubNavHeight
 
-        // Get id of current scroll item
-        var cur = localSubNavItemsMap.map(function () {
-          if ((0, _jquery2.default)(this).offset().top < fromTop) return this;
-        });
+      //   // Get id of current scroll item
+      //   let cur = localSubNavItemsMap.map(function () {
+      //     if ($(this).offset().top < fromTop) return this
+      //   })
 
-        // Get the id of the current element
-        cur = cur[cur.length - 1];
-        var id = cur && cur.length ? cur[0].id : '';
+      //   // Get the id of the current element
+      //   cur = cur[cur.length - 1]
+      //   const id = cur && cur.length ? cur[0].id : ''
 
-        if (lastId !== id) {
-          lastId = id;
+      //   if (lastId !== id) {
+      //     lastId = id
 
-          // Set/remove active class
-          localSubNavItems.parent().removeClass('active').end().filter("[href='#" + id + "']").parent().addClass('active');
-        }
-      });
+      //     // Set/remove active class
+      //     localSubNavItems.parent().removeClass('active').end().filter("[href='#" + id + "']").parent().addClass('active')
+      //   }
+      // })
 
       // Yacht nav - scroll to section
       locaSubNav.on('click', '.scroll', function (e) {

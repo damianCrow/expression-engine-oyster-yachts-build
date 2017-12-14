@@ -20757,6 +20757,7 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
 #layout-slider div {
   text-align: center;
   width: 100%;
+  z-index: auto !important;
 }
 
 .slider-pager {

@@ -331,42 +331,42 @@ class Main {
     const controller = new ScrollMagic.Controller()
     let lastId = null
 
-    const locaSubNav = $('[data-local-subnav]') || {}
-    const locaSubNavHeight = locaSubNav.outerHeight()
-    const localSubNavItems = locaSubNav.find('.local-subnav a')
-    const localSubNavItemsMap = localSubNavItems.map(function () {
-      if ($(this).attr('href')) {
-        const item = $(this).attr('href').trim()
+    const locaSubNav = $('[data-local-scroll-pos]') || {}
+    // const locaSubNavHeight = locaSubNav.outerHeight()
+    // const localSubNavItems = locaSubNav.find('.local-subnav a')
+    // const localSubNavItemsMap = localSubNavItems.map(function () {
+    //   if ($(this).attr('href')) {
+    //     const item = $(this).attr('href').trim()
 
-        if (item.toString().substring(0, 1) === '#') {
-          if (item.length) return item
-        }
-      }
-    })
+    //     if (item.toString().substring(0, 1) === '#') {
+    //       if (item.length) return item
+    //     }
+    //   }
+    // })
 
-    this.sideBarStick()
+    // this.sideBarStick()
 
-    // Simple Scroll spy for the Local SubNAV
-    $(window).scroll(function () {
-      // Get container scroll position
-      const fromTop = $(this).scrollTop() + locaSubNavHeight
+    // // Simple Scroll spy for the Local SubNAV
+    // $(window).scroll(function () {
+    //   // Get container scroll position
+    //   const fromTop = $(this).scrollTop() + locaSubNavHeight
 
-      // Get id of current scroll item
-      let cur = localSubNavItemsMap.map(function () {
-        if ($(this).offset().top < fromTop) return this
-      })
+    //   // Get id of current scroll item
+    //   let cur = localSubNavItemsMap.map(function () {
+    //     if ($(this).offset().top < fromTop) return this
+    //   })
 
-      // Get the id of the current element
-      cur = cur[cur.length - 1]
-      const id = cur && cur.length ? cur[0].id : ''
+    //   // Get the id of the current element
+    //   cur = cur[cur.length - 1]
+    //   const id = cur && cur.length ? cur[0].id : ''
 
-      if (lastId !== id) {
-        lastId = id
+    //   if (lastId !== id) {
+    //     lastId = id
 
-        // Set/remove active class
-        localSubNavItems.parent().removeClass('active').end().filter("[href='#" + id + "']").parent().addClass('active')
-      }
-    })
+    //     // Set/remove active class
+    //     localSubNavItems.parent().removeClass('active').end().filter("[href='#" + id + "']").parent().addClass('active')
+    //   }
+    // })
 
     // Yacht nav - scroll to section
     locaSubNav.on('click', '.scroll', function (e) {

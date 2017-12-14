@@ -20,23 +20,34 @@ $interiorGalleryImages = $query->num_rows();
   <nav class="sub-bar__nav">
     <ul class="sub-bar__menu">
 		{if yacht_design_features:total_rows > 0}
-			<li class="active"><a href="#design-features" class="scroll"><span>Design Features</span></a></li>
+			<li class="active">
+				<a href="#design-features" data-local-scroll-pos ><span>Design Features</span></a>
+			</li>
 			{/if}
 
-			<li><a href="#specifications" class="scroll"><span>Specifications</span></a></li>
+			<li>
+				<a href="#specifications" data-local-scroll-pos ><span>Specifications</span></a>
+			</li>
 
 			<?php if ($layoutImages > 0): ?>
-			<li><a href="#yacht-layout" class="scroll"><span>Yacht Layout</span></a></li>
+			<li>
+				<a href="#yacht-layout" data-local-scroll-pos ><span>Yacht Layout</span></a>
+			</li>
 			<?php endif; ?>
 
 			{if yacht_documents:total_rows > 0}
-			<li><a href="#download-documents" class="scroll"><span>Documents</span></a></li>
+			<li>
+				<a href="#download-documents" data-local-scroll-pos ><span>Documents</span></a>
+			</li>
 			{/if}
 
-			<li><a href="#news-thumbs" class="scroll"><span>News</span></a></li>
+			<li>
+				<a href="#news-thumbs" data-local-scroll-pos ><span>News</span></a></li>
 
 			<?php if ($exteriorGalleryImages > 0 || $interiorGalleryImages > 0): ?>
-			<li><a href="" class="gallery btn-gallery" data-gallery="<?php if ($exteriorGalleryImages > 0): ?>external<?php else: ?>internal<?php endif; ?>">Gallery</a></li>
+				<li>
+					<a href="" class="gallery btn-gallery" data-gallery="<?php if ($exteriorGalleryImages > 0): ?>external<?php else: ?>internal<?php endif; ?>"><span>Gallery</span></a>
+				</li>
 			<?php endif; ?>
 
 			{yachts_virtual_tours limit="1"}
