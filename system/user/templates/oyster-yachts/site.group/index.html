@@ -1,145 +1,118 @@
- {exp:channel:entries channel="home" dynamic="no" disable="member_data|categories|category_fields|pagination|member_data" cache="yes" refresh="60" status="published" } {embed="site/.header" page_title="" entry_id="{entry_id}" snap_to=".hero-home .scroll-message-contents-wrapper" snap_offset="100"} {/exp:channel:entries}
+{exp:channel:entries channel="home" dynamic="no" disable="member_data|categories|category_fields|pagination|member_data" cache="yes" refresh="60" status="published" }
+  {embed="site/.header" page_title="" entry_id="{entry_id}" snap_to=".hero-home .scroll-message-contents-wrapper" snap_offset="100"}
+{/exp:channel:entries}
 
 {exp:channel:entries channel="home" dynamic="no" disable="member_data|categories|category_fields|pagination|member_data" cache="yes" refresh="60" status="published" }
-
-  <section id="homepage" class="home carosel">
-    <div class="carosel__pagination-wrap">
+  <article id="homepage" class="home carosel">
+    <nav class="carosel__pagination-wrap">
       <a class="carosel__link" data-index="0">
-        {embed="site/paginator" idx="0"}
-      </a>
+          {embed="site/paginator" idx="0"}
+        </a>
       <a class="carosel__link" data-index="1">
-        {embed="site/paginator" idx="1"}
-      </a>
+          {embed="site/paginator" idx="1"}
+        </a>
       <a class="carosel__link" data-index="2">
-        {embed="site/paginator" idx="2"}
-      </a>
+          {embed="site/paginator" idx="2"}
+        </a>
       <a class="carosel__link" data-index="3">
-        {embed="site/paginator" idx="3"}
-      </a>
-    </div>
-     <div data-index="0" class="carosel__image-wrap">
-        <div class="carosel__image">
-          <img
-            src="/assets/images/sizes/001-yachts-home-x1.jpg"
-            srcset="data:image/jpeg;base64,<?php echo base64_encode(file_get_contents('./assets/images/sizes/001-yachts-home-holder.jpg')); ?>"
-            data-sizes="auto"
-            data-srcset="
-              /assets/images/sizes/001-yachts-home-x1.jpg 1500w 762h,
-              /assets/images/sizes/001-yachts-home-x05.jpg 750w,
-              /assets/images/sizes/001-yachts-home-x075.jpg 1125w,
-              /assets/images/sizes/001-yachts-home-x13.jpg 1950w,
-              /assets/images/sizes/001-yachts-home-x2.jpg 3000w 1523h"
-            class="lazyload blur-up">
-        </div>
+          {embed="site/paginator" idx="3"}
+        </a>
+    </nav>
+    <section data-index="0" class="carosel__image-wrap">
+      <div class="carosel__image">
+        <img src="/assets/images/sizes/001-yachts-home-x1.jpg" srcset="data:image/jpeg;base64,<?php echo base64_encode(file_get_contents('./assets/images/sizes/001-yachts-home-holder.jpg')); ?>" data-sizes="auto" data-srcset="
+                /assets/images/sizes/001-yachts-home-x1.jpg 1500w 762h,
+                /assets/images/sizes/001-yachts-home-x05.jpg 750w,
+                /assets/images/sizes/001-yachts-home-x075.jpg 1125w,
+                /assets/images/sizes/001-yachts-home-x13.jpg 1950w,
+                /assets/images/sizes/001-yachts-home-x2.jpg 3000w 1523h" class="lazyload blur-up">
+      </div>
       <div class="text-wrapper">
         <p class="text slide-title">
-          <span class="slide-title__number">01</span>
-          Yachts
+          <span class="slide-title__number">01</span> Yachts
         </p>
         <p class="text">
           Our yachts are proven through Ocean Adventures. We have 45 years and more than 20 million sailing miles of experience you can trust.
         </p>
         <p class="text">
           <a class="text__link" href="{path='yachts'}">
-            Explore
-            <span class="text__link__icon"></span>
-          </a>
+              Explore
+              <span class="text__link__icon"></span>
+            </a>
         </p>
       </div>
-    </div>
-    <div data-index="1" class="carosel__image-wrap">
+    </section>
+    <section data-index="1" class="carosel__image-wrap">
       <div class="carosel__image">
-        <img
-          src="/assets/images/sizes/002-events-home-x1.jpg"
-          srcset="data:image/jpeg;base64,<?php echo base64_encode(file_get_contents('./assets/images/sizes/002-events-home-holder.jpg')); ?>"
-          data-sizes="auto"
-          data-srcset="
-            /assets/images/sizes/002-events-home-x1.jpg 1500w 762h,
-            /assets/images/sizes/002-events-home-x05.jpg 750w,
-            /assets/images/sizes/002-events-home-x075.jpg 1125w,
-            /assets/images/sizes/002-events-home-x13.jpg 1950w,
-            /assets/images/sizes/002-events-home-x2.jpg 3000w 1523h"
-          class="lazyload blur-up">
+        <img src="/assets/images/sizes/002-events-home-x1.jpg" srcset="data:image/jpeg;base64,<?php echo base64_encode(file_get_contents('./assets/images/sizes/002-events-home-holder.jpg')); ?>" data-sizes="auto" data-srcset="
+              /assets/images/sizes/002-events-home-x1.jpg 1500w 762h,
+              /assets/images/sizes/002-events-home-x05.jpg 750w,
+              /assets/images/sizes/002-events-home-x075.jpg 1125w,
+              /assets/images/sizes/002-events-home-x13.jpg 1950w,
+              /assets/images/sizes/002-events-home-x2.jpg 3000w 1523h" class="lazyload blur-up">
       </div>
-
       <div class="text-wrapper">
         <p class="text slide-title">
-          <span class="slide-title__number">02</span>
-          Events
+          <span class="slide-title__number">02</span> Events
         </p>
         <p class="text">
           We look after you wherever you are sailing. Exceptional Service and brilliant exclusive events to enjoy in like-minded company.
         </p>
         <p class="text">
           <a class="text__link" href="{path='events'}">
-            Explore
-            <span class="text__link__icon"></span>
-          </a>
+              Explore
+              <span class="text__link__icon"></span>
+            </a>
         </p>
       </div>
-    </div>
-    <div data-index="2" class="carosel__image-wrap">
+    </section>
+    <section data-index="2" class="carosel__image-wrap">
       <div class="carosel__image">
-        <img
-          src="/assets/images/sizes/003-services-home-x1.jpg"
-          srcset="data:image/jpeg;base64,<?php echo base64_encode(file_get_contents('./assets/images/sizes/003-services-home-holder.jpg')); ?>"
-          data-sizes="auto"
-          data-srcset="
-            /assets/images/sizes/003-services-home-x1.jpg 1500w 762h,
-            /assets/images/sizes/003-services-home-x05.jpg 750w,
-            /assets/images/sizes/003-services-home-x075.jpg 1125w,
-            /assets/images/sizes/003-services-home-x13.jpg 1950w,
-            /assets/images/sizes/003-services-home-x2.jpg 3000w 1523h"
-          class="lazyload blur-up">
+        <img src="/assets/images/sizes/003-services-home-x1.jpg" srcset="data:image/jpeg;base64,<?php echo base64_encode(file_get_contents('./assets/images/sizes/003-services-home-holder.jpg')); ?>" data-sizes="auto" data-srcset="
+              /assets/images/sizes/003-services-home-x1.jpg 1500w 762h,
+              /assets/images/sizes/003-services-home-x05.jpg 750w,
+              /assets/images/sizes/003-services-home-x075.jpg 1125w,
+              /assets/images/sizes/003-services-home-x13.jpg 1950w,
+              /assets/images/sizes/003-services-home-x2.jpg 3000w 1523h" class="lazyload blur-up">
       </div>
-
       <div class="text-wrapper">
         <p class="text slide-title">
-          <span class="slide-title__number">03</span>
-          Services
+          <span class="slide-title__number">03</span> Services
         </p>
         <p class="text">
           Providing you with world-class professional services of Brokerage, Chartering, Crew and Support.
         </p>
         <p class="text">
           <a class="text__link" href="{path='services'}">
-            Explore
-            <span class="text__link__icon"></span>
-          </a>
+              Explore
+              <span class="text__link__icon"></span>
+            </a>
         </p>
       </div>
-    </div>
-    <div data-index="3" class="carosel__image-wrap">
+    </section>
+    <section data-index="3" class="carosel__image-wrap">
       <div class="carosel__image">
-        <img
-          src="/assets/images/sizes/004-projects-home-x1.jpg"
-          srcset="data:image/jpeg;base64,<?php echo base64_encode(file_get_contents('./assets/images/sizes/004-projects-home-holder.jpg')); ?>"
-          data-sizes="auto"
-          data-srcset="
-            /assets/images/sizes/004-projects-home-x1.jpg 1500w 762h,
-            /assets/images/sizes/004-projects-home-x05.jpg 750w,
-            /assets/images/sizes/004-projects-home-x075.jpg 1125w,
-            /assets/images/sizes/004-projects-home-x13.jpg 1950w,
-            /assets/images/sizes/004-projects-home-x2.jpg 3000w 1523h"
-          class="lazyload blur-up">
+        <img src="/assets/images/sizes/004-projects-home-x1.jpg" srcset="data:image/jpeg;base64,<?php echo base64_encode(file_get_contents('./assets/images/sizes/004-projects-home-holder.jpg')); ?>" data-sizes="auto" data-srcset="
+              /assets/images/sizes/004-projects-home-x1.jpg 1500w 762h,
+              /assets/images/sizes/004-projects-home-x05.jpg 750w,
+              /assets/images/sizes/004-projects-home-x075.jpg 1125w,
+              /assets/images/sizes/004-projects-home-x13.jpg 1950w,
+              /assets/images/sizes/004-projects-home-x2.jpg 3000w 1523h" class="lazyload blur-up">
       </div>
-
       <div class="text-wrapper">
         <p class="text slide-title">
-          <span class="slide-title__number">04</span>
-          Projects
+          <span class="slide-title__number">04</span> Projects
         </p>
         <p class="text">
           35 years of expert experience in Restoration, Refit, Custom New build and Maintenance.
         </p>
         <p class="text">
           <a class="text__link" href="{path='projects'}">
-            Explore
-            <span class="text__link__icon"></span>
-          </a>
+              Explore
+              <span class="text__link__icon"></span>
+            </a>
         </p>
       </div>
-    </div>
-  </section>
-        
+    </section>
+  </article>
 {footer}

@@ -31,6 +31,11 @@
     min-height: 300px;
     transform-style: preserve-3d;
 
+    &--dark {
+      h1 {
+        color: $blue;
+      }
+    }
 
     .inner {
       position: relative;

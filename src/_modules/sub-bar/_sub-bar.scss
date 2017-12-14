@@ -4,7 +4,7 @@
   background-color: $lightgrey;
   display: flex;
   height: $sub-bar-height;
-  justify-content: space-between;
+  justify-content: center;
   left: 0;
   margin: 0 auto;
   position: fixed;
@@ -16,13 +16,24 @@
   z-index: 12;
 
   &__title,
+  &__nav,
+  &__buttons {
+    flex: 1;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &__title,
   &__buttons {
     display: none;
     z-index: 1;
     padding: ($global-padding / 2) $global-padding;
 
     @include breakpoint(medium up) {
-      display: block;
+      display: flex;
     }
   }
 
@@ -42,11 +53,16 @@
     &::-webkit-scrollbar {
       display: none;
     }
+
+    @include breakpoint(medium up) {
+      overflow: visible;
+    }
   }
 
   &__menu {
     height: 100%;
     white-space: nowrap;
+    text-align: center;
 
     > li {
       display: inline-block;
@@ -61,6 +77,12 @@
 
         > span {
           margin: $global-margin;
+        }
+      }
+
+      &.active {
+        > a {
+          border-color: $blue;
         }
       }
     }

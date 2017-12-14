@@ -367,18 +367,17 @@
     min-height: inherit;
   }
 
-  div {
+  div,
+  section {
     height: 100%;
   }
 
-  h2 {
-    @include omnes_light;
+  h1 {
+    @include h3-styles
     color: $white;
-    font-size: 2.5em;
-    line-height: 1.5;
-
+    margin-bottom: $global-margin;
     span {
-      @include omnes_medium;
+      // @include omnes_medium;
     }
   }
 
@@ -401,7 +400,7 @@
     .inner,
     .#{$class-name}inner {
       height: auto;
-      margin-bottom: ($global-margin * 2);
+      margin-bottom: ($global-margin * 4);
       padding: 0 40px;
       z-index: 2;
 
