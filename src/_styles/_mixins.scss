@@ -1,16 +1,16 @@
 // Fonts
 @mixin omnes_light {
-  font-family: 'omnes_lightregular', sans-serif;
+  font-family: "omnes_lightregular", sans-serif;
   letter-spacing: 0.25rem;
 }
 
 @mixin omnes-regular {
-  font-family: 'omnes_regularregular', sans-serif;
+  font-family: "omnes_regularregular", sans-serif;
   letter-spacing: $letter-spacing;
 }
 
 @mixin omnes_medium {
-  font-family: 'omnes_mediumregular', sans-serif;
+  font-family: "omnes_mediumregular", sans-serif;
   letter-spacing: $letter-spacing;
 }
 
@@ -25,6 +25,7 @@
   font-family: "CarismaClassic", sans-serif;
   font-style: normal;
   font-weight: 500;
+  text-transform: uppercase;
 }
 
 @mixin quarto-medium {
@@ -55,32 +56,34 @@
 @mixin sub-title {
   @include carisma-classic;
   margin: 0;
-  font-size: rem-calc(12);
-  letter-spacing: .15em;
+  font-size: rem-calc(16);
+  color: $blue;
 }
 
 @mixin sub-nav {
   @include omnes_medium;
   border-bottom: 2px solid transparent;
-  color: $grey;
+  color: $blue;
   display: block;
   font-size: rem-calc(12);
   text-decoration: none;
   text-transform: uppercase;
   transition: color .25s ease-out, border-color .25s ease-out;
 
+  &.active,
   &:hover {
-    border-color: $grey;
+    border-color: $blue;
   }
 }
 
 @mixin h1-styles {
-  @include omnes_light;
+  @include quarto-bold;
+  text-transform: none;
   color: $blue;
-  font-size: 4.375em;
+  font-size: 60px;
+  font-size: 3.75rem;
   line-height: 1em;
   margin-bottom: 30px;
-  text-transform: uppercase;
 
   @include breakpoint(medium down) {
     font-size: 3.375rem;
@@ -93,9 +96,10 @@
 
 // Like the banners
 @mixin h2-styles {
-  @include trajan;
+  @include carisma-classic;
   color: $grey;
-  font-size: .9375em;
+  font-size: 16px;
+  font-size: 1rem;
   line-height: 1em;
   text-transform: uppercase;
 
@@ -109,12 +113,12 @@
 }
 // Essentially a smaller h1
 @mixin h3-styles {
-  @include omnes_light;
+  @include quarto-bold;
   color: $blue;
   font-size: 2.2rem;
   line-height: 1em;
   margin-bottom: 30px;
-  text-transform: uppercase;
+  text-transform: none;
 
   @include breakpoint(medium down) {
     font-size: 2rem;
@@ -302,12 +306,21 @@
   }
 }
 
-@mixin after-nav() {
+@mixin after-nav($sub: false) {
   // adjust the following elements to fit since the header is FIXED
-  margin-top: $header-nav-small-height;
+  @if $sub  {
+    margin-top: $header-nav-small-height + $page-margin + $sub-bar-height;
 
-  @include breakpoint(large up) {
-    margin-top: $header-nav-large-owners;
+    @include breakpoint(large up) {
+      margin-top: $header-nav-large-height + $page-margin + $sub-bar-height;
+    }
+
+  } @else {
+    margin-top: $header-nav-small-height + $page-margin;
+
+    @include breakpoint(large up) {
+      margin-top: $header-nav-large-height + $page-margin;
+    }
   }
 }
 
@@ -336,7 +349,7 @@
   // height: calc(100% - #{$header-nav-small-height});
 
   @include breakpoint(medium up) {
-    min-height: calc(100% - #{$header-nav-large-owners});
+    min-height: calc(100% - #{$header-nav-large-height});
   }
 }
 

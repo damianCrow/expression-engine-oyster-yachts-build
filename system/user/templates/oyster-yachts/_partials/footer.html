@@ -6,12 +6,11 @@
 {if:elseif segment_1 == 'events'}
 	{request_boarding_pass_modal}
 {/if}
-<section class="newsletter">
-  <h2></h2>
+<article class="newsletter">
   <div class="row row-pad new-sign-up small-collapse">
-    <div class="column text-center newsletter-header">
-      <h2 class="text-uppercase">Subscribe to our newsletter</h2><span>Subscribe to our email newsletter for the latest news and updates from Oyster Yachts</span>
-    </div>
+    <header class="column text-center newsletter-header">
+      <h1>Subscribe to our newsletter</h1><span>Subscribe to our email newsletter for the latest news and updates from Oyster Yachts</span>
+    </header>
     <div class="column medium-12">
       <div class="sign-up">
         <div class="flipsies">
@@ -297,13 +296,13 @@
       <div class="form-error text-center text-uppercase"><span>ERROR: Invalid Email or incomplete fields</span></div>
     </div>
   </div>
-</section>
+</article>
 </main>
 <footer class='global-footer'>
-  <div class="footer-contents">
-    <div class="social-wrapper-wrapper row row-pad small-collapse">
-      <div class="footer-nav column clearfix medium-9 large-7 show-for-medium">
-        <nav>
+  <div class="footer-contents row row-pad">
+    <div class="social-wrapper-wrapper small-12 ">
+      <div class="footer-navs show-for-medium">
+        <nav class='footer-navs__nav'>
           <a href="{path='about'}" class="text-uppercase">About</a>
           <ul class="show-for-medium">
             <li><a href="{path='about/why-oyster'}" class="text-uppercase">Why Oyster</a></li>
@@ -312,7 +311,7 @@
             <li><a href="{path='about/heritage'}" class="text-uppercase">Heritage</a></li>
           </ul>
         </nav>
-        <nav>
+        <nav class='footer-navs__nav'>
           <a href="{path='yachts/fleet'}" class="text-uppercase">New Yachts</a>
           <ul class="show-for-medium">
             <li><a href="{path='yachts/g6-fleet'}" class="text-uppercase">G6 Fleet</a></li>
@@ -322,7 +321,7 @@
 							<li><a href="{path='yachts/previous-models'}" class="text-uppercase">Previous Models</a> --></li>
           </ul>
         </nav>
-        <nav>
+        <nav class='footer-navs__nav'>
           <a href="{path='yachts/fleet'}" class="text-uppercase">Services</a>
           <ul class="show-for-medium">
             <li><a href="#" class="text-uppercase">Service Centres</a></li>
@@ -332,7 +331,7 @@
             <li><a href="{path='services/oyster-crew'}" class="text-uppercase">Oyster Crew</a></li>
           </ul>
         </nav>
-        <nav>
+        <nav class='footer-navs__nav'>
           <a href="{path='world-rally'}" class="text-uppercase">World Rally</a>
           <ul class="show-for-medium">
             <li><a href="http://www.oysterworldrally.com/" class="text-uppercase">World Rally 2017 - 19</a></li>
@@ -340,7 +339,7 @@
             <li><a href="mailto:worldrally2017@oysteryachts.com" class="text-uppercase">Contact World Rally</a></li>
           </ul>
         </nav>
-        <nav>
+        <nav class='footer-navs__nav'>
           <a href="{path='events'}" class="text-uppercase">Events</a>
           <ul class="show-for-medium">
             <li><a href="{path='events/regatta-calendar'}" class="text-uppercase">Regattas</a></li>
@@ -349,7 +348,7 @@
             <li><a href="{path='events/gallery'}" class="text-uppercase">Events Gallery</a></li>
           </ul>
         </nav>
-        <nav>
+        <nav class='footer-navs__nav'>
           <a href="{path='news'}" class="text-uppercase">News</a>
           <ul class="show-for-medium">
             <li><a href="{path='news/news-library'}" class="text-uppercase">News Library</a></li>
@@ -357,19 +356,35 @@
             <li><a href="{path='news/press-coverage'}" class="text-uppercase">Press Coverage</a></li>
           </ul>
         </nav>
-        <nav>
+        <nav class='footer-navs__nav'>
           <a href="{path='contact'}" class="text-uppercase">Contact</a>
           <ul class="show-for-medium">
             <li><a href="{path='media-centre/login'}" class="text-uppercase">Media Centre</a></li>
             <li><a href="{path='contact/recruitment'}" class="text-uppercase">Recruitment</a></li>
             <li><a href="{path='contact'}" class="text-uppercase">Our Offices</a></li>
           </ul>
-          <a href="{path='owners-area'}" class="text-uppercase">Owners' Area</a>
         </nav>
-      </div>
-      <nav class="end float-right social-wrapper">
-        <div class="social-icons"><a href="https://www.facebook.com/oystermarine" target="_blank" class="facebook-icon"><i class="fa fa-facebook-official"></i></a><a href="https://twitter.com/OysterMarine" target="_blank" class="twitter-icon"><i class="fa fa-twitter"></i></a><a href="https://www.youtube.com/user/oystermarine" target="_blank" class="youtube-icon"><i class="fa fa-youtube-play"></i></a><a href="https://www.instagram.com/oysteryachts/" target="_blank" class="instagram-icon"><i class="fa fa-instagram"></i></a></div>
-      </nav>
+        <div>
+            <nav class='footer-navs__nav'>
+              <a href="{path='owners-area'}" class="text-uppercase">Owners' Area</a>
+            </nav>
+            <nav class="end float-right social-wrapper">
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/oystermarine" target="_blank" class="facebook-icon">
+                        <i class="fa fa-facebook-official"></i>
+                    </a>
+                    <a href="https://twitter.com/OysterMarine" target="_blank" class="twitter-icon">
+                        <i class="fa fa-twitter"></i>
+                    </a>
+                    <a href="https://www.youtube.com/user/oystermarine" target="_blank" class="youtube-icon">
+                        <i class="fa fa-youtube-play"></i>
+                    </a>
+                    <a href="https://www.instagram.com/oysteryachts/" target="_blank" class="instagram-icon">
+                        <i class="fa fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
     </div>
   </div>
@@ -392,6 +407,7 @@
 
 	</script>
 {/if}
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC4Ctq_b0K3ygkut_DEJ4YFyuGkcWKvM68"></script>
 	<script type="text/javascript" src="{site_url}assets/scripts/main.js"></script>
 </body>
 

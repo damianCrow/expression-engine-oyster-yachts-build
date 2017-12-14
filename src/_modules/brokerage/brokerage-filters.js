@@ -14,7 +14,6 @@ export default class BrokerageFilters {
     if (this.form.attr('data-post') === 'true') {
       $('.filters-submit').on('click', (e) => {
         e.preventDefault()
-
         this.form.submit()
       })
     } else {

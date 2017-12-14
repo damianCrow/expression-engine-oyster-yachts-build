@@ -13,7 +13,7 @@ export default class BreakPoints {
 
   curentBreakPoint() {
     // Get Breakpoint - Breakpoints will need to be updated from CSS
-    return Object.keys(this.breakPoints).find(key => (($(window).width() > this.breakPoints[key]) && this.breakPoints[key]))
+    return Object.keys(this.breakPoints).find(key => ($(window).width() > this.breakPoints[key]))
   }
 
   curentBreakPointString() {

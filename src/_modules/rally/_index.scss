@@ -5,7 +5,7 @@
   @include breakpoint(medium up) {
     flex-wrap: wrap;
     height: 100%;
-    height: calc(100% - #{$header-nav-large-owners});
+    height: calc(100vh - #{$header-nav-large-owners});
     min-height: auto;
   }
 

@@ -9,7 +9,7 @@ export default class GlobalHeader {
 
     this.topBarHeight = 0
     this.fixedTopValue = 0
-    this.fixedHeight = this.breakpoints.atLeast('medium') ? 90 : 60
+    this.fixedHeight = this.breakpoints.atLeast('medium') ? 70 : 50
     this.header = document.querySelector('.main-header')
     this.title = document.querySelector('.main-header__title')
 
@@ -27,40 +27,6 @@ export default class GlobalHeader {
   }
 
   legacy() {
-
-    /* From Modernizr */
-    function whichTransitionEvent() {
-      let t
-      const el = document.createElement('fakeelement')
-      const transitions = {
-        transition: 'transitionend',
-        OTransition: 'oTransitionEnd',
-        MozTransition: 'transitionend',
-        WebkitTransition: 'webkitTransitionEnd',
-      }
-
-      for (t in transitions) {
-        if (el.style[t] !== undefined) {
-          return transitions[t]
-        }
-      }
-    }
-
-    /* Listen for a transition! */
-    const e = document.getElementsByClassName('logo-o')[0]
-
-    const transitionEvent = whichTransitionEvent()
-    transitionEvent && e.addEventListener(transitionEvent, () => {
-      $('.main-nav li ul').removeClass('hidden-animation')
-    })
-
-    // Hack to make sure SVG transisions work correctly inside an anchor tag
-    if (navigator.userAgent.indexOf('Safari') !== -1 && navigator.userAgent.indexOf('Chrome') === -1) {
-      const logoHref = $('.global-header .logo').attr('href')
-      $('.global-header .logo').removeAttr('href')
-      $('.global-header .logo').append('<a class="safari-logo-link" href=' + logoHref + '></a>')
-    }
-
 
     // OVVERIDE MOBILE ACCORDION TEXT TO BE LINKS
     $('#global-navigation-modal a.accordion-title span').on('click', (evt) => {
@@ -129,6 +95,8 @@ export default class GlobalHeader {
       this.size(true)
     }
 
+    this.topPosition()
+
     return this.fixedHeight
   }
 
@@ -140,11 +108,11 @@ export default class GlobalHeader {
         }
       }
       this.topBarHeight = 0
-      this.header.style.transform = ''
+      // this.header.style.transform = ''
 
       this.largeHeaderActive = true
 
-      this.fixedHeight = this.breakpoints.atLeast('medium') ? 90 : 60
+      this.fixedHeight = this.breakpoints.atLeast('medium') ? 70 : 50
     } else {
       for (let i = 0; i < this.headerDependencies.length; i += 1) {
         if (this.headerDependencies[i]) {
@@ -155,9 +123,8 @@ export default class GlobalHeader {
       // this.topBarHeight = fixedTopValue
       this.largeHeaderActive = false
 
-      this.fixedHeight = 60
+      this.fixedHeight = 50
     }
-    this.topPosition()
   }
 
   topPosition() {
@@ -171,8 +138,13 @@ export default class GlobalHeader {
     }
   }
 
-  fullScreenMode(visble) {
-    if (visble) {
+  fullScreenMode(options) {
+    const config = {
+      on: true,
+      ...options,
+    }
+
+    if (config.on) {
       addClass(this.header, 'main-header--full-screen')
       this.size()
     } else {

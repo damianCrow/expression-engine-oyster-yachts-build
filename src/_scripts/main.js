@@ -30,7 +30,7 @@ import GalleryModal from '../_modules/gallery-modal/gallery-modal'
 import Weather from '../_modules/weather/weather'
 import OwnersArea from '../_modules/owners-area/owners-area-modal'
 
-import { documentReady } from './helper-functions'
+import { documentReady, windowResize } from './helper-functions'
 import { quoteTestimonials } from '../_modules/quote-testimonials/quote-testimonials'
 
 class Main {
@@ -50,7 +50,7 @@ class Main {
     this.galleryModal = document.getElementById('galleries')
     this.sideBarToStick = document.querySelector('section.about-yacht .sticky-sidebar')
     this.homeSlider = document.querySelector('.hero-home')
-    this.brokerageGrid = document.querySelector('.brokerage-fleet #yacht-grid')
+    this.brokerageFiltersDom = document.querySelector('.filters--brokerage')
     this.charterGrid = document.querySelector('.charter-fleet #yacht-grid')
     this.shortlistModal = document.getElementById('shortlistModal')
 
@@ -87,7 +87,7 @@ class Main {
     // ownersAreaModal: '/assets/js/components/util/owners-area-modal', ✓
     // average_climate_data: '/assets/js/components/util/average-climate-data' ✓
 
-    // this.maps()
+    this.maps()
 
     quoteTestimonials()
 
@@ -102,18 +102,36 @@ class Main {
     const footer = this.globalFooter && new GlobalFooter()
     const gallery = new GalleryModal(this.galleryModal, header)
     const homepage = this.homepageHero && new Homepage()
-    const brokerageFilters = this.brokerageGrid && new BrokerageFilters()
+    const brokerageFilters = this.brokerageFiltersDom && new BrokerageFilters()
     const charterFilters = this.charterGrid && new CharterFilters()
     const shortlist = this.shortlistModal && new Shortlist()
     const weather = new Weather()
     const owenersArea = new OwnersArea()
 
-    this.scrollReativeElements = [topMessageBar, header, nav, subNav, filters]
+    this.scrollReativeElements = [topMessageBar, header, gallery, nav, subNav, filters]
 
     this.scrollEvents()
     this.positionElements(window.scrollY)
 
     this.enableSelect2()
+  }
+
+  windowReszing(tabSets) {
+    let resizeTimer
+    let windowWidth = window.innerWidth
+
+    windowResize(window, 'resize', () => {
+      clearTimeout(resizeTimer)
+
+      resizeTimer = setTimeout(() => {
+        // Run code here, resizing has "stopped"
+        if (windowWidth !== window.innerWidth) {
+          windowWidth = window.innerWidth
+
+          Array.from(tabSets).forEach(tabSet => tabSet.setSizes())
+        }
+      }, 250)
+    }, true)
   }
 
   scrollEvents() {
@@ -134,13 +152,18 @@ class Main {
   }
 
   positionElements(lastKnownScrollPosition) {
-    let fixedTopValue = 0
+    const topValues = [10]
+    let fixedTopValue = 10
     for (let i = 0; i < this.scrollReativeElements.length; i += 1) {
-      fixedTopValue += this.scrollReativeElements[i].snapPointCheck({
+      const lastModuleHeight = this.scrollReativeElements[i].snapPointCheck({
         lastKnownScrollPosition,
         fixedTopValue,
+        topValues,
         headerSnapPoint: this.headerSnapPoint,
       })
+
+      topValues.push(lastModuleHeight)
+      fixedTopValue += lastModuleHeight
     }
   }
 

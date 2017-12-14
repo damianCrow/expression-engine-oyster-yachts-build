@@ -17,9 +17,14 @@
     line-height: 2.2;
     position: absolute;
     top: 0;
-    transform: scale(1) translate(0, 0);
+    transform: scale(1) translateY(0);
     transition: transform 250ms ease-in-out;
     width: 100%;
+    will-change: transform;
+    align-items: center;
+    justify-content: space-evenly;
+    display: flex;
+    padding: 0 5px;
   }
 
   &__piece {
@@ -30,21 +35,26 @@
     transition: transform 250ms ease-in-out;
     vertical-align: middle;
     width: 4px;
+    will-change: transform;
 
     &::after {
+      background: $blue;
       content: "";
       height: 100%;
       left: 0;
       position: absolute;
       top: 0;
-      width: 100%;
-      background: $blue;
       transform: rotate(0) skew(-10deg) translate(0, 0);
+      width: 100%;
+      will-change: transform;
     }
   }
+  // 18 4
+  $cross-x-pos: 6px;
+  $cross-y-pos: 6px;
 
   @mixin cross($direction, $cross) {
-    $variable: if($cross, translate(0.25px, -2px), translate(0, 0));
+    $variable: if($cross, translateY(3px), translateY(0));
     #{$root}__wrapper {
       transform: scale($direction) $variable;
     }
@@ -57,14 +67,14 @@
       &:nth-child(1) {
         &::after {
           transform-origin: right center;
-          transform: rotate(45deg) skew(0) scaleX(.5) translate(12px, -2px);
+          transform: rotate(45deg) skew(0) scaleX(.5) translate(#{$cross-x-pos}, -#{$cross-y-pos});
         }
       }
 
       &:nth-child(3) {
         &::after {
           transform-origin: left center;
-          transform: rotate(-45deg) skew(0) scaleX(.5) translate(-12px, -2px);
+          transform: rotate(-45deg) skew(0) scaleX(.5) translate(-#{$cross-x-pos}, -#{$cross-y-pos});
         }
       }
     }
@@ -72,7 +82,7 @@
 
   &.opening {
     #{$root}__wrapper {
-      transform: scale(0) translate(0, 0);
+      transform: scale(0) translateY(0);
     }
 
     #{$root}__piece {

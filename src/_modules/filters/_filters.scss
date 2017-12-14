@@ -1,65 +1,42 @@
 .filters {
+  width: 100%;
+  padding: 15px 0;
 
-  padding: 30px 0;
+  @include breakpoint(large up) {
+    top: 0;
+    left: 0;
+    padding: 30px 0;
+    position: fixed;
+    width: 100%;
+    // transition: transform 250ms ease-in-out;
+    z-index: 9999;
+    will-change: transform;
+    background-color: transparent;
 
-  @include breakpoint(medium down) {
-    padding: 15px 0
-  }
-
-  .filter-dropdown {
-    width: 21%;
-    height: 45px;
-
-    select {
-      font-size: 15px;
+    &::before {
+      content: "";
+      display: block;
       height: 100%;
-    }
-
-    .select2 {
-      // margin: 0 0 1rem;
-      background-color: $white;
-      border: none;
-      color: #0a0a0a;
-      font-size: 1rem;
-      height: 100%;
-      padding: .5rem;
-      width: 100% !important;
-    }
-
-    &:first-child .select2 {
-      border-bottom-left-radius: 3px;
-      border-top-left-radius: 3px;
-    }
-
-    .select2-selection__arrow {
-      background: url(/assets/images/select_down.png);
-      height: 9px;
+      margin-top: -30px;
       position: absolute;
-      right: 20px;
-      top: 19px;
-      width: 16px;
-    }
+      transition: transform .5s cubic-bezier(.19, 1, .22, 1), background-color .5s cubic-bezier(0.19, 1, .22, 1);
+      width: calc(100% - 20px);
+      top: 0;
+      left: 0;
+      right: 0;
+      margin-left: auto;
+      margin-right: auto;
+      background-color: rgba(0, 49, 69, .75);
 
-    b {
-      display: none;
+      // transform: translateY(-30px) scaleY(0.715);
+      transform-origin: bottom;
+      background-color: rgba(0, 49, 69, 1);
     }
-
-    .select2-selection {
-      border: none;
-      outline: none;
-    }
-
   }
 
-  .button {
-    border-bottom-right-radius: 3px;
-    border-top-right-radius: 3px;
-    width: 16%;
-  }
-
-  #submit {
-    height: 45px;
-    margin: 0;
+  > .row {
+    z-index: 1;
+    position: relative;
   }
 
   .filter-dropdowns {
@@ -70,45 +47,6 @@
     border: 5px solid $lightgrey;
     display: flex;
     overflow: hidden;
-  }
-}
-
-.filters {
-  top: 0;
-  left: 0;
-  padding: 30px 0;
-  position: fixed;
-  width: 100%;
-  // transition: transform 250ms ease-in-out;
-  z-index: 9999;
-  will-change: transform;
-  background-color: transparent;
-
-
-
-  &::before {
-    content: "";
-    display: block;
-    height: 100%;
-    margin-top: -30px;
-    position: absolute;
-    transition: transform .5s cubic-bezier(.19, 1, .22, 1), background-color .5s cubic-bezier(0.19, 1, .22, 1);
-    width: calc(100% - 20px);
-    top: 0;
-    left: 0;
-    right: 0;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: rgba(0, 49, 69, .75);
-
-    // transform: translateY(-30px) scaleY(0.715);
-    transform-origin: bottom;
-    background-color: rgba(0, 49, 69, 1);
-  }
-
-  > .row {
-    z-index: 1;
-    position: relative;
   }
 
   .filters-container {
@@ -131,46 +69,48 @@
   }
 
   .filter-dropdown {
-    float: left;
-    height: 45px;
-    width: 21%;
+    @include breakpoint(large up) {
+      float: left;
+      height: 45px;
+      width: 21%;
 
-    select {
-      font-size: 15px;
-      height: 100%;
-    }
+      select {
+        font-size: 15px;
+        height: 100%;
+      }
 
-    .select2 {
-      // margin: 0 0 1rem;
-      background-color: #fff;
-      border: none;
-      color: #0a0a0a;
-      font-size: 1rem;
-      height: 100%;
-      padding: 0.5rem;
-      width: 100% !important;
-    }
+      .select2 {
+        // margin: 0 0 1rem;
+        background-color: #fff;
+        border: none;
+        color: #0a0a0a;
+        font-size: 1rem;
+        height: 100%;
+        padding: 0.5rem;
+        width: 100% !important;
+      }
 
-    &:first-child .select2 {
-      border-bottom-left-radius: 3px;
-      border-top-left-radius: 3px;
-    }
+      &:first-child .select2 {
+        border-bottom-left-radius: 3px;
+        border-top-left-radius: 3px;
+      }
 
-    .select2-selection__arrow {
-      background: url(/assets/images/select_down.png);
-      height: 9px;
-      position: absolute;
-      right: 20px;
-      top: 19px;
-      width: 16px;
-    }
+      .select2-selection__arrow {
+        background: url(/assets/images/select_down.png);
+        height: 9px;
+        position: absolute;
+        right: 20px;
+        top: 19px;
+        width: 16px;
+      }
 
-    b {
-      display: none;
-    }
-    .select2-selection {
-      border: none;
-      outline: none;
+      b {
+        display: none;
+      }
+      .select2-selection {
+        border: none;
+        outline: none;
+      }      
     }
   }
 
@@ -221,3 +161,99 @@
     }
   }
 }
+
+#global-navigation-modal {
+  // Just to make sure it opens above the default modal z-index
+  z-index: 1007;
+  @include breakpoint(large up) {
+    display: none !important;
+  }
+
+}
+
+#global-navigation-modal,
+#global-filters-modal {
+  outline: 0;
+  padding: $page-margin;
+  top: ($header-nav-small-height + 10px) !important;
+
+  .top-nav-modal {
+
+    @extend .global-header-top-nav;
+
+    .close-button-wrapper {
+      background-color: $lightgrey;
+      height: 100%;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 65px;
+    }
+
+    .site-search-close {
+      display: block !important;
+      margin: 0 auto;
+      position: relative;
+      right: 0;
+    }
+  }
+  // since custom scrollbar add another margin, the offset it
+  .mCSB_container {
+    .row {
+      margin-left: 30px;
+    }
+  }
+
+  // remove offset intended for Custom Scrollbar
+  .mCS_y_hidden.mCS_no_scrollbar_y {
+    .row {
+      margin-left: 0 !important;
+    }
+  }
+
+  .nav-body-modal {
+    // Doesn't need a height?
+    overflow-x: hidden;
+    overflow-y: auto;
+    z-index: 0;
+  }
+
+}
+
+// global filters
+#global-filters-modal {
+
+  ul {
+
+    .select2-container {
+      display: none;
+    }
+
+    .select2-hidden-accessible {
+      border: 1px solid $grayborder !important;
+      clip: rect(0 0 0 0) !important;
+      height: 50px !important;
+      margin: 0 0 1rem !important;
+      outline: 0;
+      overflow: visible !important;
+      padding-right: 2.5rem !important;
+      padding: 10px 20px !important;
+      position: static !important;
+      width: 100% !important;
+    }
+
+    select {
+      color: $grey;
+      @include omnes_medium;
+    }
+
+    .filter-button {
+      margin-top: 15px;
+    }
+
+    .button-solid-cyan {
+      width: 100%;
+    }
+  }
+}
+

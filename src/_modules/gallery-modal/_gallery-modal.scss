@@ -22,39 +22,93 @@
 }
 
 .galleries {
+  $root: &;
+  display: none;
+
   &--active {
     z-index: 9999;
+    display: block;
   }
 
-  &__header {
+  &__header,
+  &__footer {
     position: fixed;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
-    top: 0;
     left: 0;
-    padding-left: 50px + $page-margin;
     width: 100%;
-    height: $header-nav-small-height + 10px;
+    height: $header-nav-small-height;
+  }
+
+  &__header {
+    justify-content: center;
+    top: 0;
+    background-color: $white;
+    padding: 0 $page-margin;
+
+    @include breakpoint(medium up) {
+      padding-left: 50px + $page-margin;
+      background-color: transparent;
+      justify-content: flex-end;
+    }
+  }
+
+  &__footer {
+    bottom: 0;
+    background-color: $white;
+    padding-left: $page-margin;
+
+    @include breakpoint(medium up) {
+      margin-top: $page-margin;
+    }
+
+    &--active {
+      #{$root}__index {
+        &::before {
+          transform: rotate(-225deg);
+        }
+      }
+    }
   }
 
   &__nav {
     height: 100%;
     display: flex;
     align-items: center;
-    margin-right: $page-margin;
-    padding-right: $page-margin;
+
+    @include breakpoint(medium up) {
+      // margin-right: $page-margin;
+      padding-right: $page-margin;
+    }
     
     > ul {
       height: 100%;
       display: inline-flex;
       align-items: center;
-      margin-right: calc(#{$page-margin + 60px} + #{$global-margin});
+      @include breakpoint(medium up) {
+        margin-right: calc(#{$page-margin + 60px} + #{$global-margin});
+      }
     }
   }
 
   &__nav-item {
     display: inline;
+
+    button {
+      border-radius: 0;
+    }
+
+    &:first-child {
+      button {
+        border-radius: 2px 0 0 2px;
+      }
+    }
+
+    &:last-child {
+      button {
+        border-radius: 0 2px 2px 0;
+      }
+    }
   }
 
   &__close {
@@ -66,6 +120,9 @@
     height: 40px;
     width: 40px;
     display: inline-block;
+
+    position: fixed;
+    right: 20px;
 
     &::before,
     &::after {
@@ -81,7 +138,6 @@
       left: calc(50% - 2px);
     }
 
-
     &::after {
       transform: rotate(45deg);
     }
@@ -89,18 +145,67 @@
     &::before {
       transform: rotate(-45deg);
     }
+
+    @include breakpoint(medium up) {
+      position: relative;
+      right: 0;
+    }
+  }
+
+  &__index {
+    @include omnes-regular;
+    align-items: center;
+    border-right: 1px solid $greyborder;
+    display: flex;
+    font-size: .75rem;
+    height: 100%;
+    padding: $global-padding 2rem;
+    width: 120px;
+
+    &::before {
+      border-color: #706d6b;
+      border-style: solid;
+      border-width: .05em .05em 0 0;
+      bottom: 0;
+      contain: strict;
+      content: "";
+      display: inline-block;
+      font-size: medium;
+      height: .45em;
+      margin-top: 4px;
+      margin-left: auto;
+      margin-right: 1rem;
+      pointer-events: none;
+      right: 0;
+      transform: rotate(-45deg);
+      transition: transform .25s cubic-bezier(.4,0,.2,1);
+      vertical-align: top;
+      width: .45em;
+    }
   }
 }
 
-.lg-outer, .lg-backdrop {
+.lg-outer {
+  .lg-thumb-outer {
+    bottom: 0;
+    &.active {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+}
 
-  top: $header-nav-small-height  !important;
-  height: calc(100% - #{$header-nav-small-height});
-  margin: 10px;
+
+.lg-outer,
+.lg-backdrop {
+
+  height: calc(100% - #{(($header-nav-small-height) * 2) + $page-margin});
+  margin: 0 10px;
+  top: $header-nav-small-height + $page-margin !important;
   width: calc(100% - 20px);
 
   .lg-close {
     margin: 15px 40px !important;
+
     @include breakpoint(medium down) {
       margin: 15px 17px !important;
     }
@@ -110,15 +215,18 @@
     overflow: visible;
   }
 
-  .lg-toolbar {
-    @include breakpoint(large up) {
-      background-color: transparent;
-      top: (0px - $header-nav-small-height) !important;
-    }
-  }
+  // .lg-toolbar {
+  //   position: fixed;
+  //   bottom: 0;
+  //   z-index: 9999;
+  //   // @include breakpoint(large up) {
+  //   //   background-color: transparent;
+  //   //   top: (0px - $header-nav-small-height) !important;
+  //   // }
+  // }
 
   .lg-video-cont {
-    height: calc(100% - 110px);
+    height: 100%;
     padding: 0px;
 
     .lg-video {
@@ -127,7 +235,6 @@
     }
 
     @include breakpoint(large up) {
-      height: calc(100% - 55px);
       vertical-align: top;
     }
   }
@@ -143,6 +250,10 @@
       padding: 30px 80px;
     }
   }
+}
+
+.lg-toolbar {
+  display: none !important;
 }
 // .gallery-sections {
 //   float: right;

@@ -366,8 +366,6 @@ main {
   border-top: 1px solid $greyborder;
   display: flex;
   justify-content: center;
-  // margin-left: -1px;
-  // width: calc(100% + 2px);
   width: 100%;
 }
 
@@ -423,86 +421,102 @@ main {
 }
 
 .after-nav {
-  @include after-nav;
+  @include after-nav();
+  &--sub {
+    @include after-nav(true);
+  }
 }
 
 // aka Modal
 .reveal {
-    outline: none;
-    border-radius: 3px;
+  outline: none;
+  border-radius: 3px;
 }
 
 .social-icons {
   display: flex;
   align-items: center;
+
   a {
-      width: 3rem;
-      height: 100%;
-      position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      opacity: .375;
-      color: $white;
-      transition: color 250ms cubic-bezier(0.86, 0, .07, 1);
-      // here
-      &:hover {
-          opacity: 1;
-      }
+    align-items: center;
+    color: $white;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    opacity: .375;
+    position: relative;
+    text-align: center;
+    transition: color 250ms cubic-bezier(0.86, 0, .07, 1);
+    width: 3rem;
+
+    &:hover {
+      opacity: 1;
+    }
   }
+
   .fa {
-      font-size: 1.8rem;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    font-size: 1.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
+
   &.social-invert {
-      a {
-          color: $white;
-          opacity: .5;
-          &:hover {
-              opacity: 1;
-          }
+    a {
+      color: $white;
+      opacity: .5;
+
+      &:hover {
+        opacity: 1;
       }
+    }
   }
 }
 
 // This should be roled out as standard eventually.
 .social-background {
+
   .facebook-icon,
   .instagram-icon,
   .twitter-icon,
   .youtube-icon,
   .email-icon {
-      @include transition(background-color 150ms ease-out);
-      &:hover {
-          color: $white;
-          @include transition(color 150ms ease-out);
-          a {
-              color: $white;
-              @include transition(color 150ms ease-out);
-          }
-          .fa {
-              opacity: 1;
-          }
+    @include transition(background-color 150ms ease-out);
+
+    &:hover {
+      color: $white;
+      @include transition(color 150ms ease-out);
+
+      a {
+        color: $white;
+        @include transition(color 150ms ease-out);
       }
-  }
-  .facebook-icon:hover {
-      background-color: #3b5998;
-  }
-  .instagram-icon:hover {
-      background-color: #3f729b;
-  }
-  .twitter-icon:hover {
-      background-color: #55acee;
-  }
-  .youtube-icon:hover {
-      background-color: #cd201f;
-  }
-  .email-icon:hover {
-      background-color: $blue;
+
+      .fa {
+        opacity: 1;
+      }
     }
+  }
+
+  .facebook-icon:hover {
+    background-color: #3b5998;
+  }
+
+  .instagram-icon:hover {
+    background-color: #3f729b;
+  }
+
+  .twitter-icon:hover {
+    background-color: #55acee;
+  }
+
+  .youtube-icon:hover {
+    background-color: #cd201f;
+  }
+
+  .email-icon:hover {
+    background-color: $blue;
+  }
 }
 
 .hero {
@@ -519,17 +533,19 @@ main {
   $header-nav-small-height: $header-nav-small-height - 2;
   $header-nav-large-height: $header-nav-large-height - 2;
   height: calc(100vh - #{$header-nav-small-height});
+
   @include breakpoint(large up) {
-      height: calc(100vh - #{$header-nav-large-height});
+    height: calc(100vh - #{$header-nav-large-height});
   }
 }
 
 .full-screen-media {
   position: relative;
   background-color: $blue;
+
   video {
-      width: 100%;
-      height: 100%;
+    width: 100%;
+    height: 100%;
   }
 }
 
@@ -537,38 +553,46 @@ main {
   height: 100%;
   background-position: center center;
   background-size: cover;
+  position: relative;
+
   // Does not work on iOS, as it has a huge re-paint cost.
   @include breakpoint(xlarge up) {
-      background-attachment: fixed;
+    background-attachment: fixed;
   }
-  position: relative;
+
   .back-button {
-      z-index: 1;
-      position: absolute;
-      left: 2em;
-      top: 20px;
-      a {
-          margin: 0;
-      }
-      @include breakpoint(medium only) {
-          left: 25px;
-      }
-      @include breakpoint(small down) {
-          display: none;
-          left: 20px;
-      }
+    z-index: 1;
+    position: absolute;
+    left: 2em;
+    top: 20px;
+
+    a {
+      margin: 0;
+    }
+
+    @include breakpoint(medium only) {
+      left: 25px;
+    }
+
+    @include breakpoint(small down) {
+      display: none;
+      left: 20px;
+    }
   }
+
   .yacht-name {
-      @include breakpoint(medium only) {
-          h1 {
-              font-size: 3.5em;
-          }
+
+    @include breakpoint(medium only) {
+      h1 {
+        font-size: 3.5em;
       }
-      @include breakpoint(small only) {
-          h1 {
-              font-size: 3em;
-          }
+    }
+
+    @include breakpoint(small only) {
+      h1 {
+        font-size: 3em;
       }
+    }
   }
 }
 
@@ -577,39 +601,45 @@ main {
   float: left;
   width: 21%;
   height: 45px;
+
   select {
-      font-size: 15px;
-      height: 100%;
+    font-size: 15px;
+    height: 100%;
   }
+
   .select2 {
-      width: 225px;
-      height: 100%;
-      padding: .5rem;
-      border: none;
-      margin: 0 0 1rem;
-      font-size: 1rem;
-      color: #0a0a0a;
-      background-color: $white;
+    width: 225px;
+    height: 100%;
+    padding: .5rem;
+    border: none;
+    margin: 0 0 1rem;
+    font-size: 1rem;
+    color: #0a0a0a;
+    background-color: $white;
   }
+
   &:first-child .select2 {
       border-top-left-radius: 3px;
       border-bottom-left-radius: 3px;
   }
+
   .select2-selection__arrow {
-      height: 9px;
-      position: absolute;
-      top: 19px;
-      right: 20px;
-      width: 16px;
-      background: url(/assets/images/select_down.png);
-      background-repeat: no-repeat;
+    height: 9px;
+    position: absolute;
+    top: 19px;
+    right: 20px;
+    width: 16px;
+    background: url(/assets/images/select_down.png);
+    background-repeat: no-repeat;
   }
+
   b {
-      display: none;
+    display: none;
   }
+
   .select2-selection {
-      border: none;
-      outline: none;
+    border: none;
+    outline: none;
   }
 }
 
@@ -621,7 +651,7 @@ main {
   padding: .25rem 1rem;
 
   &:first-child {
-      border-top: 0;
+    border-top: 0;
   }
 }
 
@@ -646,86 +676,66 @@ main {
   background-size: cover;
 
   .yacht-name {
-      padding-bottom: 0;
-      position: static;
+    padding-bottom: 0;
+    position: static;
   }
 
   .row-pad {
-      @include breakpoint(large up) {
-          padding-left: 2em;
-      }
+    @include breakpoint(large up) {
+      padding-left: 2em;
+    }
   }
 
   h1.hero-title {
-      color: $white;
-      margin: 0;
-      // @include breakpoint(small only) {
-      //  font-size: 3em;
-      // }
-      // @include breakpoint(medium only) {
-      //  font-size: 3.75em;
-      // }
+    color: $white;
+    margin: 0;
+    // @include breakpoint(small only) {
+    //  font-size: 3em;
+    // }
+    // @include breakpoint(medium only) {
+    //  font-size: 3.75em;
+    // }
   }
 
   p.hero-subtext {
-      max-width: 500px;
-      color: white;
-      margin: 1rem 0;
+    max-width: 500px;
+    color: white;
+    margin: 1rem 0;
   }
 
   // Due to container being static, this exposes (shows a grey bar) the overlaying gradient
   // margin-bottom: 35px;
   .back-button {
-      z-index: 1;
-      position: absolute;
-      left: 2em;
-      top: 20px;
-      @include breakpoint(small only) {
-          left: 15px;
-      }
-      @include breakpoint(medium only) {
-          left: 20px;
-      }
-      a {
-          margin: 0;
-      }
+    z-index: 1;
+    position: absolute;
+    left: 2em;
+    top: 20px;
+
+    @include breakpoint(small only) {
+      left: 15px;
+    }
+
+    @include breakpoint(medium only) {
+      left: 20px;
+    }
+
+    a {
+      margin: 0;
+    }
   }
 
   .world-rally-logo {
-      width: 100%;
-      height: 100%;
-      img {
-          z-index: 5;
-          width: 350px;
-          margin: 0 auto;
-          display: block;
-          @include vertical-align();
-      }
+    width: 100%;
+    height: 100%;
+
+    img {
+      z-index: 5;
+      width: 350px;
+      margin: 0 auto;
+      display: block;
+      @include vertical-align();
+    }
   }
-
-  // .global-local-subnav-mini.filters {
-  //   button.button-solid-cyan {
-  //     transform: translateY(-3px);
-  //   }
-
-  //   .filters-container {
-  //     transform: translateY(-15px);
-  //   }
-
-  //   &.search-results-box {
-  //     @include breakpoint(medium down) {
-  //       .filters-container {
-  //         transform: translateY(-8px);
-  //       }
-  //     }
-  //   }
-
-  //   &:before {
-  //     transform: translateY(-30px);
-  //     background-color: rgba(0, 49, 69, 1);
-  //   }
-  // }
-
 }
 
 // Used on the brokerage filter
@@ -753,7 +763,6 @@ main {
   }
 
   label {
-    // padding-left: $global-padding * 2;
     color: $grey;
     display: inline-block;
     margin: 0;
@@ -788,26 +797,25 @@ main {
 
 // banner
 .banner {
+  @include sub-title
   background: $lightgrey;
-  @include trajan;
-  font-size: .9375em;
-  line-height: 1em;
   color: $blue;
-  text-align: center;
-  text-transform: uppercase;
-  padding: 19px 0;
+  font-size: .9375em;
   letter-spacing: .2em;
+  line-height: 1em;
+  padding: 19px 0;
+  text-align: center;
+
   h1,
   h2,
   h3,
   strong {
-    margin: 0;
-    @include trajan;
+    @include sub-title
+    color: $blue;
     font-size: .9375em;
     line-height: 1em;
-    color: $blue;
+    margin: 0;
     text-align: center;
-    text-transform: uppercase;
   }
   strong {
     font-weight: bold;
@@ -838,24 +846,30 @@ main {
     top: 50%;
     margin-top: -42px;
     right: 40px;
+
     @include breakpoint(medium only) {
         right: 20px;
     }
+
     @include breakpoint(small only) {
         right: 15px;
     }
   }
+
   .share-icon {
     position: relative;
     display: block;
   }
+
   // Not on the main class as it needs to be toggled via JS.
   .share-icon-tooltip:before {
-    content: 'Share';
+    content: "Share";
   }
+  
   .add-to-shortlist-tooltip:before {
-    content: 'Add to Shortlist'
+    content: "Add to Shortlist";
   }
+
   .share-list {
     white-space: nowrap;
     width: 200px;
@@ -867,15 +881,18 @@ main {
     opacity: 0;
     @include transform(translate(25%, 0));
     @include transition(transform 150ms ease-out, opacity 75ms cubic-bezier(0.86, 0, .07, 1));
+
     li {
       margin-bottom: 0;
       padding: .5rem 0;
       border-bottom: 1px solid $grayborder;
       display: block;
+
       &:last-of-type {
-          border-bottom: 0;
+        border-bottom: 0;
       }
     }
+
     a {
       display: block;
       margin: 0;
@@ -889,13 +906,16 @@ main {
       @include omnes_medium;
       outline: none;
     }
+
     .fa {
       font-size: 1rem;
       opacity: .5;
     }
+
     .share-list-icon {
       text-align: center;
     }
+
     &.share-list-visible {
       @include transform(translate(0%, 0));
       animation: socialList 150ms;
@@ -933,7 +953,7 @@ main {
   width: 1.85rem;
 
   &::before {
-    content: '×';
+    content: "×";
     display: block;
     margin: auto;
     padding-bottom: .25rem;
@@ -949,6 +969,7 @@ main {
   color: $white;
   display: block;
   font-size: .875em;
+  font-size: rem-calc(12);
   line-height: 1em;
   padding: 15px 0 16px;
   text-align: center;
@@ -964,12 +985,14 @@ main {
   display: inline-block;
   width: auto;
   @include omnes_medium;
+  font-size: rem-calc(12);
   color: $white;
   cursor: pointer;
   padding: .65em 1em;
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
+
   &:hover {
     text-decoration: none;
     background: $white;
@@ -980,6 +1003,7 @@ main {
 .button-clear-invert {
   @include button-base();
   @include omnes_medium;
+  font-size: rem-calc(12);
   background: rgba($white, .3);
   border-radius: 2px;
   border: solid 1px $blue;
@@ -1015,6 +1039,7 @@ main {
   border-radius: 2px;
   cursor: pointer;
   display: inline-block;
+  font-size: rem-calc(12);
   padding: .7em 1em;
   text-align: center;
   text-decoration: none;
@@ -2993,13 +3018,13 @@ input[type="checkbox"]:checked ~ label {
   }
 }
 
-.global-page-hero-adjust-subnav {
-  // adjust the following elements to fit since the header is FIXED
-  margin-top: $header-nav-small-height + $header-nav-small-height;
-  @include breakpoint(large up) {
-      margin-top: $header-nav-large-height + $header-nav-small-height;
-  }
-}
+// .global-page-hero-adjust-subnav {
+//   // adjust the following elements to fit since the header is FIXED
+//   margin-top: $header-nav-small-height + $header-nav-small-height;
+//   @include breakpoint(large up) {
+//       margin-top: $header-nav-large-height + $header-nav-small-height;
+//   }
+// }
 
 .list-entrance > li {
   opacity: 0;
