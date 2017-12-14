@@ -1,36 +1,33 @@
 {exp:channel:entries channel="world_rally_landing" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published"} {embed="site/.header" page_title="World Rally" entry_id="{entry_id}" snap_to="90" snap_offset="undefined"}
-<section class="after-nav world-rally-landing">
+<article class="after-nav world-rally-landing">
   <div class="row full-width-row">
     <div class="small-12 medium-6 large-7 float-left">
-      <div style="background-image: url('/assets/images/bg-images/world-rally-bg-1.jpg')" class="world-rally-landing-left">
+      <section style="background-image: url('/assets/images/bg-images/world-rally-bg-1.jpg')" class="world-rally-landing-left">
         <div class="inner">
-          <h2>
-                WORLD RALLY 
-                <span>2017-19</span>
-              </h2> {world_rally_2017_19_description}
+          <h1>World Rally <span>2017-19</span></h1>
+          {world_rally_2017_19_description}
           <a href="http://www.oysterworldrally.com/" target="_blank" class="button-solid-yellow">Discover More</a>
         </div>
-      </div>
+      </section>
     </div>
     <div class="small-12 medium-6 large-5 float-right">
       <div class="world-rally-landing-right">
-        <div style="background-image: url('/assets/images/bg-images/world-rally-bg-2.jpg')" class="world-rally-landing-previous-rally">
+        <section style="background-image: url('/assets/images/bg-images/world-rally-bg-2.jpg')" class="world-rally-landing-previous-rally">
           <div class="inner">
-            <h2>
-                  WORLD RALLY 
-                  <span>2013-14</span>
-                </h2> {world_rally_2013_14_description}
+            <h1>World Rally <span>2013-14</span></h1>
+            {world_rally_2013_14_description}
             <a href="{path='world-rally/world-rally-2013-14'}" class="button-solid-yellow">View Previous Rally</a>
           </div>
-        </div>
-        <div style="background-image: url('/assets/images/bg-images/world-rally-bg-3.jpg')" class="world-rally-landing-contact">
+        </section>
+        <section style="background-image: url('/assets/images/bg-images/world-rally-bg-3.jpg')" class="world-rally-landing-contact world-rally-landing-contact--dark">
           <div class="inner">
-            <h2>World Rally <span>2021-23</span></h2> {contact_description}
+            <h1>World Rally <span>2021-23</span></h1> {contact_description}
             <a href="mailto:{owr_contact_link}" class="button-transparent">Contact</a>
           </div>
-        </div>
+        </section>
       </div>
     </div>
   </div>
-</section>
+</article>
+
 {/exp:channel:entries} {footer}

@@ -10559,7 +10559,6 @@ abbr[title] {
 section {
   background: #fff;
   position: relative;
-  z-index: 10;
 }
 
 main {
@@ -15990,9 +15989,9 @@ form.request-spec {
   display: -ms-flexbox;
   display: flex;
   height: 55px;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   left: 0;
   margin: 0 auto;
   position: fixed;
@@ -16008,6 +16007,21 @@ form.request-spec {
   z-index: 12;
 }
 
+.sub-bar__title, .sub-bar__nav, .sub-bar__buttons {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.sub-bar__buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
 .sub-bar__title, .sub-bar__buttons {
   display: none;
   z-index: 1;
@@ -16016,7 +16030,9 @@ form.request-spec {
 
 @media screen and (min-width: 48em) {
   .sub-bar__title, .sub-bar__buttons {
-    display: block;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
   }
 }
 
@@ -16043,9 +16059,16 @@ form.request-spec {
   display: none;
 }
 
+@media screen and (min-width: 48em) {
+  .sub-bar__nav {
+    overflow: visible;
+  }
+}
+
 .sub-bar__menu {
   height: 100%;
   white-space: nowrap;
+  text-align: center;
 }
 
 .sub-bar__menu > li {
@@ -16083,6 +16106,10 @@ form.request-spec {
 
 .sub-bar__menu > li > a > span {
   margin: 1rem;
+}
+
+.sub-bar__menu > li.active > a {
+  border-color: #003145;
 }
 
 .sub-bar--wr {
@@ -20292,7 +20319,7 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
 }
 
 .team-stagger-section .staggered-details-contents .fa-linkedin:after {
-  content: '';
+  content: "";
   background: #7d9aaa;
   position: absolute;
   top: 0;
@@ -20305,14 +20332,15 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
   z-index: -1;
 }
 
-.team-stagger-section .staggered-details-contents h2 {
+.team-stagger-section .staggered-details-contents h1 {
   font-family: "omnes_mediumregular", sans-serif;
   letter-spacing: 0.05rem;
+  text-transform: uppercase;
   font-size: 1.25rem;
   margin-bottom: 0.25rem;
 }
 
-.team-stagger-section .staggered-details-contents h3 {
+.team-stagger-section .staggered-details-contents .job-position {
   font-family: "omnes_regularregular", sans-serif;
   letter-spacing: 0.05rem;
   text-transform: uppercase;
@@ -26965,21 +26993,37 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
   }
 }
 
-.yachts-full-spread div {
+.yachts-full-spread div,
+.yachts-full-spread section {
   height: 100%;
 }
 
-.yachts-full-spread h2 {
-  font-family: "omnes_lightregular", sans-serif;
-  letter-spacing: 0.25rem;
+.yachts-full-spread h1 {
+  font-family: "Quarto A", "Quarto B";
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: 0.05rem;
+  font-size: 30px;
+  color: #003145;
+  font-size: 2.2rem;
+  line-height: 1em;
+  margin-bottom: 30px;
+  text-transform: none;
   color: #fff;
-  font-size: 2.5em;
-  line-height: 1.5;
+  margin-bottom: 1rem;
 }
 
-.yachts-full-spread h2 span {
-  font-family: "omnes_mediumregular", sans-serif;
-  letter-spacing: 0.05rem;
+@media screen and (max-width: 63.9375em) {
+  .yachts-full-spread h1 {
+    font-size: 2rem;
+  }
+}
+
+@media screen and (max-width: 47.9375em) {
+  .yachts-full-spread h1 {
+    font-size: 1.9rem;
+  }
 }
 
 .yachts-full-spread p {
@@ -27012,7 +27056,7 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
 .yachts-full-spread .yachts-full-spread__right .inner,
 .yachts-full-spread .yachts-full-spread__right .yachts-full-spread__inner {
   height: auto;
-  margin-bottom: 2rem;
+  margin-bottom: 4rem;
   padding: 0 40px;
   z-index: 2;
 }
@@ -27894,21 +27938,37 @@ body.fixed-message-showing > .lg-outer, body.fixed-message-showing .lg-backdrop 
   }
 }
 
-.world-rally-landing div {
+.world-rally-landing div,
+.world-rally-landing section {
   height: 100%;
 }
 
-.world-rally-landing h2 {
-  font-family: "omnes_lightregular", sans-serif;
-  letter-spacing: 0.25rem;
+.world-rally-landing h1 {
+  font-family: "Quarto A", "Quarto B";
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: 0.05rem;
+  font-size: 30px;
+  color: #003145;
+  font-size: 2.2rem;
+  line-height: 1em;
+  margin-bottom: 30px;
+  text-transform: none;
   color: #fff;
-  font-size: 2.5em;
-  line-height: 1.5;
+  margin-bottom: 1rem;
 }
 
-.world-rally-landing h2 span {
-  font-family: "omnes_mediumregular", sans-serif;
-  letter-spacing: 0.05rem;
+@media screen and (max-width: 63.9375em) {
+  .world-rally-landing h1 {
+    font-size: 2rem;
+  }
+}
+
+@media screen and (max-width: 47.9375em) {
+  .world-rally-landing h1 {
+    font-size: 1.9rem;
+  }
 }
 
 .world-rally-landing p {
@@ -27941,7 +28001,7 @@ body.fixed-message-showing > .lg-outer, body.fixed-message-showing .lg-backdrop 
 .world-rally-landing .world-rally-landing-right .inner,
 .world-rally-landing .world-rally-landing-right .world-rally-landing-inner {
   height: auto;
-  margin-bottom: 2rem;
+  margin-bottom: 4rem;
   padding: 0 40px;
   z-index: 2;
 }
@@ -28037,6 +28097,11 @@ body.fixed-message-showing > .lg-outer, body.fixed-message-showing .lg-backdrop 
   min-height: 300px;
   -webkit-transform-style: preserve-3d;
           transform-style: preserve-3d;
+}
+
+.world-rally-landing .world-rally-landing-previous-rally--dark h1,
+.world-rally-landing .world-rally-landing-contact--dark h1 {
+  color: #003145;
 }
 
 .world-rally-landing .world-rally-landing-previous-rally .inner,
