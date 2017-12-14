@@ -14,11 +14,38 @@ $interiorGalleryImages = $query->num_rows();
 
 {embed="site/.header" page_title="{charter_model} - {title}"}
 <article>
-	{embed="site/.sub_bar" page_title="Charter"}
+<header class="sub-bar sub-bar--large">
+  <div class="sub-bar__title">
+    <h1>{charter_model} - {title}</h1>
+  </div>
+  <nav class="sub-bar__nav">
+    <ul class="sub-bar__menu">
+     	<?php if ($layoutImages > 0): ?>
+			<li class="active"><a href="#yacht-layout" class="scroll"><span>Yacht layout</span></a></li>
+			<?php endif; ?>
 
+			<li><a href="#charter-activities" class="scroll"><span>activities &amp; entertainment</span></a></li>
+
+			{if charter_crew:total_rows > 0}
+			<li><a href="#the-crew" class="scroll"><span>the crew</span></a></li>
+			{/if}
+
+			<?php if ($exteriorGalleryImages > 0 || $interiorGalleryImages > 0): ?>
+			<li><a href="" class="gallery btn-gallery" data-gallery="<?php if ($exteriorGalleryImages > 0): ?>external<?php else: ?>internal<?php endif; ?>"><span>Gallery</span></a></li>
+			<?php endif; ?>
+
+			{charter_virtual_tours limit="1"}
+			<li><a href="" class="gallery btn-gallery" data-gallery="vrtours">VR Tours</a></li>
+			{/charter_virtual_tours}
+    </ul>
+  </nav>
+  <div class="sub-bar__buttons">
+    <a class="button-clear-invert button-flush" href="mailto:charter@oysteryachts.com">Contact</a>
+  </div>
+</header>
 	<section class="hero hero--sub-bar full-screen yacht-listing-photo">
 		<div id="full-image" class="yacht-listing-photo add-full-background-overlay" style="background-image: url('{charter_main_image}{image:url}{/charter_main_image}');  {if charter_image_align =="Bottom"}background-position: bottom center;{/if}">
-			{back_button}
+			
 			<div class="yacht-name">
 				<div class="row-pad">
 					<h2>{charter_model}</h2>
@@ -219,7 +246,7 @@ $interiorGalleryImages = $query->num_rows();
 							<button data-gallery="external" class='button-clear button-flush'>Exterior</button>
 						</li>
 					<?php endif; ?>
-					<?php if ($exteriorGalleryImages > 0): ?>
+					<?php if ($interiorGalleryImages > 0): ?>
 						<li class='galleries__nav-item'>
 							<button data-gallery="internal" class='button-clear button-flush'>Interior</button>
 						</li>
@@ -257,6 +284,9 @@ $interiorGalleryImages = $query->num_rows();
 		</div>
 		{/if}
 		{/charter_virtual_tours}
+		<footer class="galleries__footer">
+			<div class="galleries__index"></div>
+		</footer>
 	</section>
 </article>
 {footer}

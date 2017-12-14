@@ -13,10 +13,52 @@ $interiorGalleryImages = $query->num_rows();
 ?>
 
 {embed="site/.header" page_title="{title}" snap_to=".full-screen #yacht-nav" snap_offset="55"}
+<header class="sub-bar sub-bar--large">
+  <div class="sub-bar__title">
+    <h1>{title}</h1>
+  </div>
+  <nav class="sub-bar__nav">
+    <ul class="sub-bar__menu">
+		{if yacht_design_features:total_rows > 0}
+			<li class="active"><a href="#design-features" class="scroll"><span>Design Features</span></a></li>
+			{/if}
+
+			<li><a href="#specifications" class="scroll"><span>Specifications</span></a></li>
+
+			<?php if ($layoutImages > 0): ?>
+			<li><a href="#yacht-layout" class="scroll"><span>Yacht Layout</span></a></li>
+			<?php endif; ?>
+
+			{if yacht_documents:total_rows > 0}
+			<li><a href="#download-documents" class="scroll"><span>Documents</span></a></li>
+			{/if}
+
+			<li><a href="#news-thumbs" class="scroll"><span>News</span></a></li>
+
+			<?php if ($exteriorGalleryImages > 0 || $interiorGalleryImages > 0): ?>
+			<li><a href="" class="gallery btn-gallery" data-gallery="<?php if ($exteriorGalleryImages > 0): ?>external<?php else: ?>internal<?php endif; ?>">Gallery</a></li>
+			<?php endif; ?>
+
+			{yachts_virtual_tours limit="1"}
+			<li><a href="" class="gallery btn-gallery" data-gallery="vrtours"><span>VR Tours</span></a></li>
+			{/yachts_virtual_tours}
+
+			{yacht_brochure}
+			<li><a href="{yacht_brochure:file}"><span>Download Brochure
+					</span></a></li>
+				{/yacht_brochure}
+
+	    </ul>
+  </nav>
+  <div class="sub-bar__buttons">
+    <a class="button-clear-invert button-flush contact" data-open="contactSalesModal">Contact</a>
+  </div>
+</header>
+
 
 <section class="hero full-screen">
 	<div id="full-image" class="yacht-listing-photo add-full-background-overlay" style="background-image: url('{yacht_main_image}{image:url}{/yacht_main_image}');">
-		{back_button}
+		
 		<div class="yacht-name">
 			<div class="row-pad">
 				<h2>{yacht_tagline}</h2>
@@ -29,35 +71,7 @@ $interiorGalleryImages = $query->num_rows();
 		</div>
 		{share_buttons}
 	</div>
-	<div id="yacht-nav" data-local-subnav="data-local-subnav" class="yacht-nav">
-		<ul class="local-subnav">
-			{if yacht_design_features:total_rows > 0}
-			<li class="active"><a href="#design-features" class="scroll">Design Features</a></li>
-			{/if}
-
-			<li><a href="#specifications" class="scroll">Specifications</a></li>
-
-			<?php if ($layoutImages > 0): ?>
-			<li><a href="#yacht-layout" class="scroll">Yacht Layout</a></li>
-			<?php endif; ?>
-
-			{if yacht_documents:total_rows > 0}
-			<li><a href="#download-documents" class="scroll">Documents</a></li>
-			{/if}
-
-			<li><a href="#news-thumbs" class="scroll">News</a></li>
-
-			<?php if ($exteriorGalleryImages > 0 || $interiorGalleryImages > 0): ?>
-			<li><a href="" class="gallery btn-gallery" data-gallery="<?php if ($exteriorGalleryImages > 0): ?>external<?php else: ?>internal<?php endif; ?>">Gallery</a></li>
-			<?php endif; ?>
-
-			{yachts_virtual_tours limit="1"}
-			<li><a href="" class="gallery btn-gallery" data-gallery="vrtours">VR Tours</a></li>
-			{/yachts_virtual_tours}
-
-			<li><a data-open="contactSalesModal" class="contact">Contact Sales</a></li>
-		</ul>
-	</div>
+	
 </section>
 
 <section class="about-yacht">
@@ -325,7 +339,38 @@ $interiorGalleryImages = $query->num_rows();
 </section>
 {/if}
 
-<div id="galleries" data-title="{title}">
+<section id="galleries" class='galleries' data-title="{title}">
+	<header class='galleries__header'>
+		<nav class='galleries__nav'>
+			<ul>
+				<?php if ($exteriorGalleryImages > 0): ?>
+					<li class='galleries__nav-item'>
+						<button data-gallery="external" class='button-clear button-flush'>Exterior</button>
+					</li>
+				<?php endif; ?>
+				<?php if ($interiorGalleryImages > 0): ?>
+					<li class='galleries__nav-item'>
+						<button data-gallery="internal" class='button-clear button-flush'>Interior</button>
+					</li>
+				<?php endif; ?>
+				{yacht_videos}
+					{if yacht_videos:count == 1}
+						<li class='galleries__nav-item'>
+							<button data-gallery="videos" class='button-clear button-flush'>Videos</button>
+						</li>
+					{/if}
+				{/yacht_videos}
+				{yachts_virtual_tours}
+					{if yachts_virtual_tours:count == 1}
+						<li class='galleries__nav-item'>
+							<button data-gallery="vrtours" class='button-clear button-flush'>VR Tours</button>
+						</li>
+					{/if}
+				{/yachts_virtual_tours}
+			</ul>
+			<button class='galleries__close' />
+		</nav>
+	</header>
 	<?php if ($exteriorGalleryImages > 0): ?>
 	<div class="gallery-content" data-gallery="external" data-title="Exterior">
 		{yacht_exterior_gallery}
@@ -337,7 +382,7 @@ $interiorGalleryImages = $query->num_rows();
 	<?php endif; ?>
 
 	<?php if ($interiorGalleryImages > 0): ?>
-	<div class="gallery-content" data-gallery="interior" data-title="Interior">
+	<div class="gallery-content" data-gallery="internal" data-title="Interior">
 		{yacht_interior_gallery}
 		<a href="{image:url}" data-sub-html="{image:description}">
 			<img src="{image:url:gallery_thumb}" />
@@ -348,11 +393,11 @@ $interiorGalleryImages = $query->num_rows();
 
 	{yacht_videos}
 	{if yacht_videos:count == 1}
-	<div class="gallery-content" data-gallery="videos" data-title="Videos">
+		<div class="gallery-content" data-gallery="videos" data-title="Videos">
 	{/if}
 		<a href="{yacht_videos:video}" data-sub-html="{yacht_videos:caption}"></a>
 	{if yacht_videos:count == yacht_videos:total_rows}
-	</div>
+		</div>
 	{/if}
 	{/yacht_videos}
 
@@ -365,7 +410,10 @@ $interiorGalleryImages = $query->num_rows();
 	</div>
 	{/if}
 	{/yachts_virtual_tours}
-</div>
+	<footer class="galleries__footer">
+		<div class="galleries__index"></div>
+	</footer>
+</section>
 <style>
 section, .global-padding-top-only--small {    padding-top: 11px !important;}
 section.hero {padding-top: 0 !important;}

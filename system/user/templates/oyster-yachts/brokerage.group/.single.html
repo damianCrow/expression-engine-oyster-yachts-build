@@ -13,6 +13,38 @@ $interiorGalleryImages = $query->num_rows();*/
 ?>
 
 {embed="site/.header" page_title="{brokerage_model} - {title}" snap_to=".full-screen #yacht-nav" snap_offset="55"}
+<header class="sub-bar sub-bar--large">
+  <div class="sub-bar__title">
+    <h1>{brokerage_model} - {title}</h1>
+  </div>
+  <nav class="sub-bar__nav">
+    <ul class="sub-bar__menu">
+		{if brokerage_design_features:total_rows > 0}
+			<li class="active"><a href="#design-features" class="scroll"><span>Design Features</span></a></li>
+			{/if}
+
+			{if brokerage_specifications:total_rows > 0}
+			<li><a href="#specifications" class="scroll"><span>Specifications</span></a></li>
+			{/if}
+
+			<?php if ($layoutImages > 0): ?>
+			<li><a href="#yacht-layout" class="scroll"><span>Yacht Layout</span></a></li>
+			<?php endif; ?>
+
+			<?php if ($exteriorGalleryImages > 0): ?>
+			<li><a href="" class="gallery btn-gallery" data-gallery="external"><span>Gallery</span></a></li>
+			<?php endif; ?>
+
+			{brokerage_virtual_tours limit="1"}
+			<li><a href="" class="gallery btn-gallery" data-gallery="vrtours"><span>VR Tours</span></a></li>
+			{/brokerage_virtual_tours}
+	    </ul>
+  </nav>
+  <div class="sub-bar__buttons">
+    <a class="button-clear-invert button-flush" href="mailto:brokerage@oysteryachts.com">Contact</a>
+  </div>
+</header>
+
 <section data-yachtid="{entry_id}" data-spec="{specification_pdf}" data-yachtsection="brokerage" class="hero full-screen">
 	<div id="full-image" class="yacht-listing-photo add-full-background-overlay" style="background-image: url('{brokerage_main_image}{image:url}{/brokerage_main_image}'); {if main_image_align =="Bottom"}background-position: bottom center;{/if}">
 		
@@ -27,31 +59,7 @@ $interiorGalleryImages = $query->num_rows();*/
 		</div>
 		{share_buttons}
 	</div>
-	<div id="yacht-nav" data-local-subnav="data-local-subnav" class="yacht-nav">
-		<ul class="local-subnav">
-			{if brokerage_design_features:total_rows > 0}
-			<li class="active"><a href="#design-features" class="scroll">Design Features</a></li>
-			{/if}
 
-			{if brokerage_specifications:total_rows > 0}
-			<li><a href="#specifications" class="scroll">Specifications</a></li>
-			{/if}
-
-			<?php if ($layoutImages > 0): ?>
-			<li><a href="#yacht-layout" class="scroll">Yacht Layout</a></li>
-			<?php endif; ?>
-
-			<?php if ($exteriorGalleryImages > 0): ?>
-			<li><a href="" class="gallery btn-gallery" data-gallery="external">Gallery</a></li>
-			<?php endif; ?>
-
-			{brokerage_virtual_tours limit="1"}
-			<li><a href="" class="gallery btn-gallery" data-gallery="vrtours">VR Tours</a></li>
-			{/brokerage_virtual_tours}
-
-			<li><a href="{path='contact'}#oyster-brokerage" class="contact" >Contact Brokerage</a></li>
-		</ul>
-	</div>
 </section>
 
 <section class="about-yacht">
@@ -278,36 +286,61 @@ $interiorGalleryImages = $query->num_rows();*/
 </section>
 <?php endif; ?>
 
-<div id="galleries" data-title="{title}">
-<?php if ($exteriorGalleryImages > 0): ?>
-	<div class="gallery-content" data-gallery="external" data-title="Images">
-		{brokerage_gallery_exterior}
-		<a href="{image:url}" data-sub-html="{image:description}">
-			<img src="{image:url:gallery_thumb}" />
-		</a>
-		{/brokerage_gallery_exterior}
-	</div>
-	{brokerage_videos}
-	{if brokerage_videos:count == 1}
-	<div class="gallery-content" data-gallery="videos" data-title="Videos">
-	{/if}
-		<a href="{brokerage_videos:video}" data-sub-html="{brokerage_videos:caption}"></a>
-	{if brokerage_videos:count == brokerage_videos:total_rows}
-	</div>
-	{/if}
-	{/brokerage_videos}
+<section id="galleries" class='galleries' data-title="{title}">
+	<header class='galleries__header'>
+		<nav class='galleries__nav'>
+			<ul>
+				<?php if ($exteriorGalleryImages > 0): ?>
+					<li class='galleries__nav-item'>
+						<button data-gallery="external" class='button-clear button-flush'>Exterior</button>
+					</li>
+				<?php endif; ?>
+				{brokerage_videos}
+					{if brokerage_videos:count == 1}
+						<button data-gallery="videos" class='button-clear button-flush'>Videos</button>
+					{/if}
+				{/brokerage_videos}
+				{brokerage_virtual_tours}
+					{if brokerage_virtual_tours:count == 1}
+						<button data-gallery="vrtours" class='button-clear button-flush'>VR Tours</button>
+					{/if}
+				{/brokerage_virtual_tours}
+			</ul>
+			<button class='galleries__close' />
+		</nav>
+	</header>
+	<?php if ($exteriorGalleryImages > 0): ?>
+		<div class="gallery-content" data-gallery="external" data-title="Images">
+			{brokerage_gallery_exterior}
+			<a href="{image:url}" data-sub-html="{image:description}">
+				<img src="{image:url:gallery_thumb}" />
+			</a>
+			{/brokerage_gallery_exterior}
+		</div>
+		{brokerage_videos}
+		{if brokerage_videos:count == 1}
+		<div class="gallery-content" data-gallery="videos" data-title="Videos">
+		{/if}
+			<a href="{brokerage_videos:video}" data-sub-html="{brokerage_videos:caption}"></a>
+		{if brokerage_videos:count == brokerage_videos:total_rows}
+		</div>
+		{/if}
+		{/brokerage_videos}
 
-	{brokerage_virtual_tours}
-	{if brokerage_virtual_tours:count == 1}
-	<div class="gallery-content" data-gallery="vrtours" data-title="VR Tours">
-	{/if}
-		<a href="{brokerage_virtual_tours:url}" data-iframe="true"><img src="{site_url}images/static/oyster_360_thumbnail.jpg"></a>
-	{if brokerage_virtual_tours:count == brokerage_virtual_tours:total_rows}
-	</div>
-	{/if}
-	{/brokerage_virtual_tours}
-<?php endif; ?>
-</div>
+		{brokerage_virtual_tours}
+		{if brokerage_virtual_tours:count == 1}
+		<div class="gallery-content" data-gallery="vrtours" data-title="VR Tours">
+		{/if}
+			<a href="{brokerage_virtual_tours:url}" data-iframe="true"><img src="{site_url}images/static/oyster_360_thumbnail.jpg"></a>
+		{if brokerage_virtual_tours:count == brokerage_virtual_tours:total_rows}
+		</div>
+		{/if}
+		{/brokerage_virtual_tours}
+	<?php endif; ?>
+	<footer class="galleries__footer">
+		<div class="galleries__index"></div>
+	</footer>
+</section>
 <style>
 section, .global-padding-top-only--small {padding-top: 11px !important;}
 section.hero {padding-top: 0px !important;}
