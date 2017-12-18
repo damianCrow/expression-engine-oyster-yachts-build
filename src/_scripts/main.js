@@ -42,7 +42,7 @@ class Main {
     this.globalLogo = document.querySelector('.logo')
     this.globalHeader = document.querySelector('.global-header-wrapper')
     this.topMessageBar = document.querySelector('.top-header')
-    this.burgerBtn = document.querySelector('.burger')
+    this.burgerBtn = document.querySelector('.burger-container')
     this.globalNav = document.querySelector('.global-nav')
     this.subBar = document.querySelector('.sub-bar')
     this.globalFooter = document.querySelector('.global-footer')
@@ -116,21 +116,20 @@ class Main {
     this.positionElements(window.scrollY)
 
     this.enableSelect2()
+
+    this.windowReszing()
   }
 
-  windowReszing(tabSets) {
+  windowReszing() {
     let resizeTimer
     let windowWidth = window.innerWidth
-
     windowResize(window, 'resize', () => {
       clearTimeout(resizeTimer)
-
       resizeTimer = setTimeout(() => {
         // Run code here, resizing has "stopped"
         if (windowWidth !== window.innerWidth) {
           windowWidth = window.innerWidth
-
-          Array.from(tabSets).forEach(tabSet => tabSet.setSizes())
+          this.positionElements(window.scrollY)
         }
       }, 250)
     }, true)
@@ -156,6 +155,7 @@ class Main {
   positionElements(lastKnownScrollPosition) {
     const topValues = [10]
     let fixedTopValue = 10
+
     for (let i = 0; i < this.scrollReativeElements.length; i += 1) {
       const lastModuleHeight = this.scrollReativeElements[i].snapPointCheck({
         lastKnownScrollPosition,
@@ -334,41 +334,6 @@ class Main {
     let lastId = null
 
     const locaSubNav = $('[data-local-scroll-pos]') || {}
-    // const locaSubNavHeight = locaSubNav.outerHeight()
-    // const localSubNavItems = locaSubNav.find('.local-subnav a')
-    // const localSubNavItemsMap = localSubNavItems.map(function () {
-    //   if ($(this).attr('href')) {
-    //     const item = $(this).attr('href').trim()
-
-    //     if (item.toString().substring(0, 1) === '#') {
-    //       if (item.length) return item
-    //     }
-    //   }
-    // })
-
-    // this.sideBarStick()
-
-    // // Simple Scroll spy for the Local SubNAV
-    // $(window).scroll(function () {
-    //   // Get container scroll position
-    //   const fromTop = $(this).scrollTop() + locaSubNavHeight
-
-    //   // Get id of current scroll item
-    //   let cur = localSubNavItemsMap.map(function () {
-    //     if ($(this).offset().top < fromTop) return this
-    //   })
-
-    //   // Get the id of the current element
-    //   cur = cur[cur.length - 1]
-    //   const id = cur && cur.length ? cur[0].id : ''
-
-    //   if (lastId !== id) {
-    //     lastId = id
-
-    //     // Set/remove active class
-    //     localSubNavItems.parent().removeClass('active').end().filter("[href='#" + id + "']").parent().addClass('active')
-    //   }
-    // })
 
     // Yacht nav - scroll to section
     locaSubNav.on('click', '.scroll', function (e) {

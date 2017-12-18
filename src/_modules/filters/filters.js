@@ -13,7 +13,7 @@ export default class Filters {
 
     if (this.filterBar) {
       this.fetchSizes()
-      this.distFromTop = getElemDistance(this.filterBar)
+      this.distFromTop = getElemDistance(this.filterBar) + 15
     }
   }
 
@@ -45,7 +45,7 @@ export default class Filters {
       }
 
       if (fixedTopValue !== this.topBarHeight && this.activeBar) {
-        filterBar.style.transform = `translateY(${fixedTopValue}px)`
+        filterBar.style.transform = `translateY(${fixedTopValue}px) translateX(10px)`
         this.topBarHeight = fixedTopValue
       } else if (fixedTopValue === 0) {
         this.topBarHeight = 0

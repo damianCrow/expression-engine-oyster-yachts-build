@@ -2,24 +2,15 @@
 	background-size: cover;
 	background-position: center center;
 	min-height: calc(100vh - #{$header-nav-small-height});
-
-
-	// padding-bottom: 10px;
 	$login-page-bottom-padding: 25px;
 	
 	@include breakpoint(medium up) {
 		padding-top: 50px;
 	}
 
-
-
 	@include breakpoint(large up) {
-
 		padding-top: 100px;
 		padding-bottom: $login-page-bottom-padding;
-
-		// padding-bottom: 100px;
-
 		min-height: calc(100vh - #{$header-nav-large-owners});
 	}
 
@@ -39,15 +30,6 @@
 
 
 	position: relative;
-	// &:before{
-	// 	content: '';
-	// 	width: 100%;
-	// 	height: 100%;
-	// 	position: absolute;
-	// 	top: 0;
-	// 	left: 0;
-	// 	background-color: rgba($blue, 0.75);
-	// }
 	.full-modal {
 		// Overiding the modal settings so it shows
 		min-height: auto;
@@ -57,46 +39,33 @@
 		z-index: 2;
 		top: 0;
 	}
+
 	.tabs-panel {
 		padding: 0px;
 	}
-
-
 }
-
-
 
 // MODAL
 .tabs-panel {
 	@include breakpoint(small down) {
 		padding: 0.25rem 0.5rem;
 	}
+
 	padding: 0.5rem 2rem;
-	// .modal-footer {
-	// 	margin: -0.5rem -2rem;
-	// 	@include breakpoint(small down) {
-	// 		margin: -0.25rem -0.5rem;
-	// 	}
-	// }
 }
 
-
-
 #login-panel {
-	// padding: 1rem 3.5rem;
-	
-	label {
-
-	}
 	.login-forgot-password {
 		color: $grey;
 	}
+
 	.login-remember-me {
 		color: $grey;
 		float: right;
 		margin: 0px;
 		position: relative;
 	}
+
 	.extra-login-content {
 		display: flex;
 		justify-content: space-between;
@@ -113,24 +82,11 @@
 
 .login-tabs-content {
 	position: relative;
-	// overflow: hidden;
 }
 
 #new-account {
-
-	// position: absolute;
-	// top: 0;
-	// right: 0;
-	// left: 100%;
-	// width: 100%;
-	// transform: translatex(0%);
-	// transition: transform 250ms;
-	// &.is-active {
-	// 	transform: translatex(-100%);
-	// }
-	// transform: translatex(-100%);
 	.request-spec {
-		border: none;
+		border: 0;
 		padding: 0;
 	}
 

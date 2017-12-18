@@ -42,7 +42,7 @@
   font-style: normal;
   font-weight: 700;
   letter-spacing: 0.05rem;
-  font-size: 30px;
+  font-size: rem-calc(30);
 }
 
 @mixin general-text {
@@ -121,11 +121,11 @@
   text-transform: none;
 
   @include breakpoint(medium down) {
-    font-size: 2rem;
+    font-size: 1.75rem;
   }
 
   @include breakpoint(small down) {
-    font-size: 1.9rem;
+    font-size: 1.5rem;
   }
 }
 

@@ -1,6 +1,6 @@
 import $ from 'jquery'
 
-import { addClass, removeClass, hasClass } from '../../_scripts/helper-functions'
+import { addClass, removeClass } from '../../_scripts/helper-functions'
 import BreakPoints from '../../_scripts/breakpoints'
 
 export default class GlobalHeader {
@@ -9,7 +9,7 @@ export default class GlobalHeader {
 
     this.topBarHeight = 0
     this.fixedTopValue = 0
-    this.fixedHeight = this.breakpoints.atLeast('medium') ? 70 : 50
+    this.fixedHeight = this.currentHeight()
     this.header = document.querySelector('.main-header')
     this.title = document.querySelector('.main-header__title')
 
@@ -20,14 +20,13 @@ export default class GlobalHeader {
     ]
 
     this.largeHeaderActive = true
+  }
 
-
-    // this.legacy()
-    // this.snapPointCheck()
+  currentHeight() {
+    return this.breakpoints.atLeast('medium') ? 70 : 50
   }
 
   legacy() {
-
     // OVVERIDE MOBILE ACCORDION TEXT TO BE LINKS
     $('#global-navigation-modal a.accordion-title span').on('click', (evt) => {
       evt.preventDefault()
@@ -80,16 +79,12 @@ export default class GlobalHeader {
     })
   }
 
-  // snapPointCheck(lastKnownScrollPosition = window.scrollY) {
-  //   return this.styleExpanded(lastKnownScrollPosition)
-  // }
-
   snapPointCheck(reactiveScrollProps) {
     const { lastKnownScrollPosition, headerSnapPoint } = reactiveScrollProps
 
     this.fixedTopValue = reactiveScrollProps.fixedTopValue
 
-    if (lastKnownScrollPosition > headerSnapPoint && this.largeHeaderActive) {
+    if (this.largeHeaderActive && (this.currentHeight() === 50 || lastKnownScrollPosition > headerSnapPoint)) {
       this.size()
     } else if (lastKnownScrollPosition < headerSnapPoint && !this.largeHeaderActive) {
       this.size(true)
@@ -108,11 +103,10 @@ export default class GlobalHeader {
         }
       }
       this.topBarHeight = 0
-      // this.header.style.transform = ''
 
       this.largeHeaderActive = true
 
-      this.fixedHeight = this.breakpoints.atLeast('medium') ? 70 : 50
+      this.fixedHeight = this.currentHeight()
     } else {
       for (let i = 0; i < this.headerDependencies.length; i += 1) {
         if (this.headerDependencies[i]) {
@@ -120,7 +114,6 @@ export default class GlobalHeader {
         }
       }
 
-      // this.topBarHeight = fixedTopValue
       this.largeHeaderActive = false
 
       this.fixedHeight = 50

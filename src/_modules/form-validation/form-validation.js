@@ -12,14 +12,10 @@ export default class FormValidation {
       return this.optional(element) || phone_number.length > 9 && phone_number.match(/^((\+[1-9]{1,4}[ \-]*)|(\([0-9]{2,3}\)[ \-]*)|([0-9]{2,4})[ \-]*)*?[0-9]{3,4}?[ \-]*[0-9]{3,4}?$/)
     }, 'Please specify a valid phone number')
 
-    $('.address-fill-out').on('click', '.add-address-line', function() {
-      const thisAddressContainer = $(this).parents('.address-fill-out')
+    $('.address-fill-out').on('click', '.add-address-line', (e) => {
+      const thisAddressContainer = $(e.target).parents('.address-fill-out')
       const addressLineLength = $('.address-line', thisAddressContainer).length
       const newAddressLineNum = addressLineLength + 1
-
-      console.log('this', this)
-
-      console.log('newAddressLineNum', newAddressLineNum)
 
       if (addressLineLength < 5) {
         const $lastLine = $('.address-line:last', thisAddressContainer)
@@ -47,12 +43,11 @@ export default class FormValidation {
 
     // signup-home-footer is handled differently.
     $('form').not('#signup-home-footer').each((index, element) => {
-
       const formId = $(element).attr('id')
       const currentForm = $(element)
 
-      if ($('[type="submit"][data-form-id="' + formId + '"]').length) {
-        $('[type="submit"][data-form-id="' + formId + '"]').on('click', () => {
+      if ($(`[type="submit"][data-form-id="${formId}"]`).length) {
+        $(`[type="submit"][data-form-id="${formId}"]`).on('click', () => {
           $(element).submit()
         })
       } else {
@@ -79,7 +74,7 @@ export default class FormValidation {
             $('li', currentForm).removeClass('error')
           } else {
             $('.form-error', currentForm).addClass('visible')
-            $('.form-error > span', currentForm).html('Your form contains ' + this.numberOfInvalids() + ' errors, see highlighted fields below.')
+            $('.form-error > span', currentForm).html(`Your form contains ${this.numberOfInvalids()} errors, see highlighted fields below.`)
             this.defaultShowErrors()
 
             // console.log('errorList', errorList)
@@ -95,7 +90,7 @@ export default class FormValidation {
           }
 
           addErrorClassTo.addClass('error').removeClass(validClass)
-          $(element.form).find("label[for=" + element.id + "]").not('.checkbox-label').addClass(errorClass)
+          $(element.form).find(`label[for=${element.id}]`).not('.checkbox-label').addClass(errorClass)
         },
         unhighlight: (element, errorClass, validClass) => {
           let addErrorClassTo
@@ -107,7 +102,7 @@ export default class FormValidation {
           }
 
           addErrorClassTo.removeClass('error').addClass(validClass)
-          $(element.form).find("label[for=" + element.id + "]").removeClass(errorClass)
+          $(element.form).find(`label[for=${element.id}]`).removeClass(errorClass)
         },
         submitHandler: function submitHandler(form) {
           if ($(form).is('form')) {
@@ -159,22 +154,21 @@ export default class FormValidation {
         },
       })
 
-      $('select', element).change(function() {
-        if ($(this).find(':selected').data('available-times')) {
-          console.log($(this).find(':selected').data('available-times'))
-          limitTimesBasedOnDay($(this).find(':selected').data('available-times'))
-        }
-        $(this).valid()
-      })
-
       function limitTimesBasedOnDay(selectedTimes) {
         $('#viewing-time').empty()
         $("<option value=''>Select</option>").appendTo('#viewing-time')
         $.each(selectedTimes, (key, element) => {
-          const addAsOption = "<option value='" + element + "'>" + element + "</option>"
+          const addAsOption = `<option value='${element}'>${element}</option>`
           $(addAsOption).appendTo('#viewing-time')
         })
       }
+
+      $('select', element).change((e) => {
+        if ($(e.target).find(':selected').data('available-times')) {
+          limitTimesBasedOnDay($(e.target).find(':selected').data('available-times'))
+        }
+        $(e.target).valid()
+      })
     })
   }
 }

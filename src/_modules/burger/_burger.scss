@@ -1,4 +1,4 @@
-.burger {
+.burger-old {
   $root: &;
   @include button();
   border-color: $greyborder;
@@ -111,3 +111,176 @@
     }
   }
 }
+
+
+// We have to interpolate variable to get ability to make selectors like
+// .b--modifier1.b--modifier2
+// In libsass there is no way to use `&` to create this kind of selectors.
+// Only interpolation of variable works.
+$st-burger-class: ".burger";
+$st-burger-color: $blue;
+$st-burger-bar-height: 4px;
+$st-burger-animation-time: .5s;
+$st-burger-icon-sizes: (
+  small: 12px,
+  medium: 24px,
+  large: 24px
+);
+
+@mixin st-burger-size($size-name, $icon-size) {
+  // Hardcore math.
+  // Let's draw this burger icon
+  //
+  //
+  //     1 |========|
+  //     2 |        |
+  //     3 |========|`
+  //     4 |        |
+  //     5 |========|
+  //
+  // You can see that we have TWO gaps (numbers: 2,4) and THREE bars (numbers: 1, 3, 5).
+
+  // $icon-size is a height of icon
+  // $st-burger-bar-height is a height of bars
+  // We want to know how much big is gap between bars.
+  $gap-size: ($icon-size - 3 * $st-burger-bar-height) / 3;
+  $spacing: $gap-size + $st-burger-bar-height;
+
+  #{$st-burger-class} {
+    &--#{$size-name} {
+      width: $icon-size * 1.2;
+      height: $icon-size;
+
+      span,
+      span:before,
+      span:after {
+        height: $st-burger-bar-height;
+        // transform: rotate(0) skew(-10deg) translate(0, 0);
+      }
+
+      span {
+        margin: $spacing 0 0;
+        transform: scaleX(.5);
+      }
+
+      span:before {
+        top: -($spacing);
+      }
+
+      span:after {
+        top: $spacing;
+      }
+    }
+  }
+
+  &.open #{$st-burger-class}--#{$size-name},
+  &.closing #{$st-burger-class}--#{$size-name} {
+
+    span {
+      transform: scaleX(1);
+    }
+    
+    span:before {
+      transition: none;
+      transform: translate(0, ($spacing)) rotate(-45deg);
+    }
+    
+    span:after  {
+      transition: none;
+      transform: translate(0, -($spacing)) rotate(45deg);
+    }
+  }
+}
+
+#{$st-burger-class}-container {
+  display: inline-block;
+  margin: 4px;
+  font-size: 0; // for better spacing
+  vertical-align: middle;
+  transition: transform 250ms ease-in-out;
+  transform: scale(1);
+
+  // Transformed to X
+  // We will animate only pseudo elements, the middle bar will be invisible
+  // Animation transformations are defined in @mixin st-burger-size() because
+  // they depend on size of icon
+  &.open,
+  &.closing {
+    #{$st-burger-class} {
+      span {
+        background: transparent;
+      }
+    }
+  }
+
+  &.open {
+    transform: scale(1);
+
+    #{$st-burger-class} {
+      transform: rotate(0deg) skew(0deg) translate(-2.5px, 3px);
+    }
+  }
+
+  &.closing {
+    transform: scale(0);
+
+    #{$st-burger-class} {
+      transform: rotate(0deg) skew(0deg) translate(-2.5px, 3px);
+    }
+  }
+
+  &.opening {
+    transform: scale(0);
+
+    #{$st-burger-class} {
+      transform: rotate(100deg) skew(10deg) translate(0, 4.5px);
+    }
+  }
+
+
+}
+
+#{$st-burger-class} {
+  display: inline-block;
+  cursor: pointer;
+  // transform: scale(1);
+  transform: rotate(100deg) skew(10deg) translate(0, 4.5px);
+
+  span, span:before, span:after {
+    backface-visibility: hidden;
+    background: $st-burger-color;
+    display: block;
+    // transition: all $st-burger-animation-time;
+    width: 100%;
+  }
+
+  span {
+    position: relative;
+  }
+
+  span:before,
+  span:after {
+    position: absolute;
+    content: "";
+    // transition: transform 250ms ease-in-out;
+  }
+
+  // Make bigger space between lines on hover
+  // &:hover {
+  //   span:before {
+  //     transform: translateY(-2px);
+  //   }
+
+  //   span:after  {
+  //     transform: translateY(2px);
+  //   }
+  // }
+
+
+
+}
+
+@each $size-name, $icon-size in $st-burger-icon-sizes {
+  @include st-burger-size($size-name, $icon-size);
+}
+

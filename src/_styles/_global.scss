@@ -520,7 +520,9 @@ main {
 
 .hero {
   position: relative;
-  z-index: 11;
+  // z-index: 11;
+    // Over 100 because of cycle2
+  z-index: 100;
 
   &--sub-bar {
     padding-top: $sub-bar-height;
@@ -2817,75 +2819,84 @@ $locaiton-image-height: 250px;
   h2 {
       background-color: $lightblue;
   }
+
   legend {
       float: left;
   }
+
   small {
       padding: 0;
   }
+
   .oyster-delivery-form,
   .form-interested-in {
-      margin: 2rem 0;
+    margin: 2rem 0;
   }
+
   .oyster-delivery-form {
-      @include breakpoint(medium up) {
-          display: flex;
-          > .select2-container {
-              margin-left: auto;
-          }
+    @include breakpoint(medium up) {
+      display: flex;
+
+      > .select2-container {
+        margin-left: auto;
       }
-      &:after {
-          display: none;
-      }
+    }
+
+    &:after {
+      display: none;
+    }
   }
 }
 
 .form-interested-in,
 .form-type-interested-in {
   legend {
-      width: 100%;
+    width: 100%;
   }
+
   > ol {
+    clear: both;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+
+    li {
+      align-items: center;
       display: flex;
-      clear: both;
-      flex-wrap: wrap;
-      justify-content: flex-start;
-      li {
-          padding: 0;
-          position: relative;
-          flex: 0 1 33%;
-          text-transform: uppercase;
-          margin-top: .75rem;
-          display: flex;
-          align-items: center;
-          @include breakpoint(small down) {
-              flex: 1 0 50%;
-          }
+      flex: 0 1 33%;
+      margin-top: .75rem;
+      padding: 0;
+      position: relative;
+      text-transform: uppercase;
+
+      @include breakpoint(small down) {
+        flex: 1 0 50%;
       }
+    }
   }
   &.error {
-      input[type="checkbox"] ~ label:before {
-          border: 1px solid red;
-      }
+    input[type="checkbox"] ~ label:before {
+      border: 1px solid red;
+    }
   }
 }
 
 .form-type-interested-in {
   > ol {
-      li {
-          flex: 1 1 33% !important;
-      }
+    li {
+      flex: 1 1 33% !important;
+    }
   }
 }
 
 .form-viewing-details {
   .select2-container {
-      width: 52% !important;
-      // margin-top: 1rem;
-      @include breakpoint(small down) {
-          margin-top: 1rem;
-          width: 100% !important;
-      }
+    width: 52% !important;
+
+    @include breakpoint(small down) {
+      margin-top: 1rem;
+      width: 100% !important;
+    }
   }
 }
 
@@ -2906,7 +2917,7 @@ $locaiton-image-height: 250px;
 
 #login-page {
   h2 {
-      background-color: $blue;
+    background-color: $blue;
   }
 }
 
@@ -2963,7 +2974,7 @@ $locaiton-image-height: 250px;
 //  background-color: $lightgrey;
 // }
 .tabs-title > a:focus,
-.tabs-title > a[aria-selected='true'] {
+.tabs-title > a[aria-selected="true"] {
   color: $blue;
   &:hover,
   &:active {
@@ -2974,18 +2985,19 @@ $locaiton-image-height: 250px;
 input,
 textarea {
   &::placeholder {
-      /* WebKit, Blink, Edge */
-      color: $input-text-colour;
+    /* WebKit, Blink, Edge */
+    color: $input-text-colour;
   }
 }
 
 input[type="checkbox"] ~ label {
   cursor: pointer;
   padding-left: 1.25rem;
+
   &:before,
   &:after {
     bottom: 0;
-    content: '';
+    content: "";
     height: 1.25rem;
     left: 0;
     margin: auto;
@@ -2993,15 +3005,17 @@ input[type="checkbox"] ~ label {
     top: 0;
     width: 1.25rem;
   }
+
   &:after {
     // Transform transistion is long to try and ignore transform altogether
-    background: url('/bower_components/material-design-icons/navigation/svg/production/ic_check_18px.svg');
+    background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 18 18'><path d='M6.61 11.89L3.5 8.78 2.44 9.84 6.61 14l8.95-8.95L14.5 4z'/></svg>");
     left: .06rem;
     opacity: 0;
     top: .15rem;
     transform: rotate(-30deg);
     transition: transform 2s ease-in, opacity 250ms;
   }
+
   &:before {
     border-radius: 2px;
     border: 1px solid $greyborder;
@@ -3035,10 +3049,10 @@ input[type="checkbox"]:checked ~ label {
 
 @keyframes listingFadeIn {
   0% {
-      opacity: 0;
+    opacity: 0;
   }
   100% {
-      opacity: 1;
+    opacity: 1;
   }
 }
 
@@ -3053,23 +3067,28 @@ fieldset {
       position: absolute;
     }
   }
+
   li {
     padding: 0;
     position: relative;
   }
+
   .error {
     // Select2 really is just, yeah.
     input,
     .select2-selection {
       border-color: red !important;
+
       &:placeholder {
-          color: red !important;
+        color: red !important;
       }
     }
+
     .select2-selection__rendered {
       color: red !important;
     }
-    &:after {
+
+    &::after {
       content: "!";
       line-height: .6em;
       background: $white;
@@ -3088,16 +3107,20 @@ fieldset {
       animation: pop 200ms forwards cubic-bezier(.175, .885, .32, 1.275);
       margin: auto;
       padding: .2em;
+
       &:nth-of-type(1):after {
-          animation-duration: 100ms;
+        animation-duration: 100ms;
       }
+
       &:nth-of-type(2):after {
-          animation-duration: 200ms;
+        animation-duration: 200ms;
       }
+
       &:nth-of-type(3):after {
-          animation-duration: 300ms;
+        animation-duration: 300ms;
       }
     }
+
     &:before {
       color: red;
     }
@@ -3105,7 +3128,7 @@ fieldset {
 }
 
 .g-recaptcha {
-    margin-bottom: 1rem;
+  margin-bottom: 1rem;
 }
 
 legend,
@@ -3129,140 +3152,168 @@ form.request-spec {
   legend {
       margin-bottom: 1rem;
   }
+
   @include breakpoint(medium down) {
       padding: 0;
   }
+
   .spec-additional-yacht {
-      li {
-          &.error:after {
-              top: 2.2em;
-              bottom: 0;
-              right: -1.5em;
-              @include breakpoint(medium down) {
-                  top: 1.6em;
-              }
-          }
+    li {
+      &.error:after {
+        top: 2.2em;
+        bottom: 0;
+        right: -1.5em;
+
+        @include breakpoint(medium down) {
+          top: 1.6em;
+        }
       }
+    }
   }
   .address-fill-out {
-      .country-selection {
-          &.error:after {
-              top: 0em;
-              bottom: 0;
-              right: -1.5em;
-              @include breakpoint(medium down) {
-                  top: .6em;
-              }
-          }
+    .country-selection {
+      &.error:after {
+        top: 0em;
+        bottom: 0;
+        right: -1.5em;
+
+        @include breakpoint(medium down) {
+          top: .6em;
+        }
       }
+    }
   }
+
   textarea {
-      resize: vertical;
+    resize: vertical;
   }
+
   fieldset {
-      margin-top: 0;
-      &:first-child {
-          margin-top: 1rem;
-      }
-      &:last-child {
-          margin-bottom: 0;
-          padding-bottom: 1rem;
-      }
+    margin-top: 0;
+
+    &:first-child {
+      margin-top: 1rem;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+      padding-bottom: 1rem;
+    }
   }
+
   .request-more-info-confirmation {
-      display: block;
-      padding: 0;
-      margin: 0;
-      @include breakpoint(small down) {
-          margin-bottom: $global-margin;
-      }
+    display: block;
+    padding: 0;
+    margin: 0;
+
+    @include breakpoint(small down) {
+      margin-bottom: $global-margin;
+    }
   }
+
   .last-address-line {
-      .add-address-line {
-          color: $blue;
-          // margin-right: .75rem;
-          position: absolute;
-          top: 0;
-          bottom: 0;
-          right: -2rem;
-          .add-line {
-              display: none;
-          }
-          .add {
-              font-size: .8rem;
-              width: 1.4rem;
-              text-align: center;
-              border-radius: 1.6em;
-              border: 1px solid black;
-              height: 1.4rem;
-              line-height: 1.4rem;
-          }
-          @include breakpoint(medium down) {
-              position: relative;
-              display: block;
-              right: 0;
-              margin: 1rem 0;
-              .add-line {
-                  display: inline-block;
-                  margin-left: .25rem;
-              }
-          }
+    .add-address-line {
+      color: $blue;
+      // margin-right: .75rem;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: -2rem;
+
+      .add-line {
+        display: none;
       }
+
+      .add {
+        font-size: .8rem;
+        width: 1.4rem;
+        text-align: center;
+        border-radius: 1.6em;
+        border: 1px solid black;
+        height: 1.4rem;
+        line-height: 1.4rem;
+      }
+
+      @include breakpoint(medium down) {
+        position: relative;
+        display: block;
+        right: 0;
+        margin: 1rem 0;
+
+        .add-line {
+          display: inline-block;
+          margin-left: .25rem;
+        }
+      }
+    }
   }
+
   .spec-current-yacht,
   .spec-additional-yacht,
   .password-update,
   .save-changes-btn {
-      border-top: 1px solid $grayborder;
-      padding: 2.5rem 0;
+    border-top: 1px solid $grayborder;
+    padding: 2.5rem 0;
   }
+
   .password-update {
       padding-bottom: 0;
   }
+
   .spec-current-yacht {
       padding-bottom: 0;
   }
+
   #request-information,
   #member_receive_updates {
-      // Select2 is hella buggy, and fails to convert % to px.
+    // Select2 is hella buggy, and fails to convert % to px.
+    width: 20% !important;
+
+    + .select2-container {
       width: 20% !important;
+      float: right;
+    }
+
+    @include breakpoint(medium down) {
+      margin-top: 1rem;
+      width: 100% !important;
+
       + .select2-container {
-          width: 20% !important;
-          float: right;
+        width: 100% !important;
+        float: none;
       }
-      @include breakpoint(medium down) {
-          margin-top: 1rem;
-          width: 100% !important;
-          + .select2-container {
-              width: 100% !important;
-              float: none;
-          }
-      }
+    }
   }
+
   .form-account-type {
-      ol {
-          width: 100%;
-          justify-content: space-between;
-          display: flex;
-          margin: .5rem 0;
-          li {
-              display: inline-block;
-          }
+    ol {
+      width: 100%;
+      justify-content: space-between;
+      display: flex;
+      margin: .5rem 0;
+
+      li {
+        display: inline-block;
       }
+    }
   }
   .address-fill-out li {
-      padding: 0;
+    padding: 0;
   }
+
   .spec-postcode {
-      width: 45%;
-      input {
-          margin-bottom: 0;
-      }
-      @include breakpoint(medium down) {
-          width: 100%;
-          margin-top: 1rem;
-      }
+    width: 45%;
+
+    input {
+      margin-bottom: 0;
+    }
+
+    @include breakpoint(medium down) {
+      width: 100%;
+      margin-top: 1rem;
+    }
   }
+
   #country-slection,
   #member_country {
       width: 100% !important;

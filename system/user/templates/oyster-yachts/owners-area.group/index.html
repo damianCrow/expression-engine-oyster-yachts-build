@@ -1,170 +1,158 @@
-{owners_area_auth}
-
-{embed="site/.header" page_title="Oyster Owners Area" snap_to=".owners-area-landing" snap_offset="55"}
-
-{owners_area_subnav}
-
-<section style="background-image: url('/assets/images/oysteryachts-owners_area-banner.jpg'); " class="hero after-nav global-page-hero yacht-listing-photo global-page-hero--small global-page-hero-adjust-subnav">
-</section>
-
-<article class="owners-area-landing global-padding-top-only--large">
-	<section class="row row-pad">
-		<div class="large-offset-1 large-7 float">
-			<h2>Welcome to Oyster Yachts</h2>
-			{exp:channel:entries channel="owners_area" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published" sort="desc"}
-			<h1>{title}</h1>
-			{introduction}
-			{/exp:channel:entries}
-		</div>
-		<div class="large-offset-1 large-3 small-12 float-left">
-			<aside class="overview-download columns owners-area-aside">
-				<div class="block-section-header aside-header">
-					<h3 class="text-uppercase">My Profile</h3>
-					<svg id="svg-arrow" version="1.1" baseprofile="tiny" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewbox="0 -20 100 100" xml:space="preserve">
-						<g>
-							<line x1="10" y1="10" x2="53" y2="53" stroke="#454646" stroke-width="10"></line>
-							<line x1="90" y1="10" x2="47" y2="53" stroke="#454646" stroke-width="10"></line>
-						</g>
-					</svg>
-				</div>
-				{exp:member:custom_profile_data}
-				<?php ob_start(); ?>{member_first_name}<?php $firstName = ob_get_contents(); ob_end_clean(); ?>
-				<?php ob_start(); ?>{member_last_name}<?php $lastName = ob_get_contents(); ob_end_clean(); ?>
-				
-				<div class="overview-contents prev-models">
-					<div class="overview columns small-12">
-						<div class="side-profile">
-							<div class="side-profile-image"><span><?php echo substr($firstName, 0, 1).substr($lastName, 0, 1); ?></span></div>
-							<div class="side-profile-details"><span class="side-profile-name">{member_first_name} {member_last_name}</span><a href="/owners-area/my-profile" class="side-profile-view">View Profile</a></div>
-						</div>
-						<table class="table definition-table">
-							<tbody>
-								<tr>
-									<td>Account:</td>
-									<td>{member_account_type}</td>
-								</tr>
-								<tr>
-									<td>Yacht Model:</td>
-									<td>{member_current_yacht_make}</td>
-								</tr>
-								<tr>
-									<td>Boat Name:</td>
-									<td>{member_current_yacht_model}</td>
-								</tr>
-								
-							</tbody>
-						</table>
-						{exp:channel:entries channel="world_rally_accounts" disable="member_data|category_fields|pagination" search:account_member="={member_id}" status="published"}
-                        <div class="owners-balance">
-                        	<span class="owners-balance__account-label">Account</br> Balance </span>
-                        	<span class="owners-balance__value"><abbr title="GBP">&pound;</abbr><?php echo number_format({account_balance}, 2); ?></span>
-                        	<a href="/owners-area/account" class="owners-balance__view-statement button-solid-blue button-full-width">View Account Statement</a>
-                        	<a href="mailto:customerservice@oysteryachts.com" class="owners-balance__view-statement button-solid-blue button-full-width" style="background-color:#fff;color:#003145 !important;">Contact Customer Service</a>
-                        </div>	{/exp:channel:entries}
-					</div>
-				</div>
-				{/exp:member:custom_profile_data}
-			</aside>
-		</div>
-	</section>
-	<div class="row row-pad" data-equalizer>
-		<section class="large-6 small-12 float-left global-padding-top-only--small">
-			<div class="block-section large-11 large-centered small-12">
-				<div class="block-section-header">
-					<h3 class="text-uppercase">Upcoming Events</h3>
-				</div>
-				<ul class="upcoming-events--small text-uppercase" data-equalizer-watch>
-					{exp:channel:entries channel="event" disable="member_data|category_fields|pagination" limit="3" cache="yes" refresh="60" status="published" orderby="event_end_date" sort="asc" search:event_end_date=">{current_time}"}
-					<li class="upcoming-event--small">
-						<div class="date-preview"><span class="month" style="font-size: 0.750em;">{event_start_date format="%F"}</span><span class="date" style="font-size: 2em;">{event_start_date format="%d"}</span></div>
-						<div class="event-details"><a href="" class="event-title">{title}</a>
-						<h5 class="sub-title text-uppercase">{exp:date_range start_date="{event_start_date format='%d %F %Y'}" end_date="{event_end_date format='%d %F %Y'}"}</h5>
-						</div><a href="{url_title_path='events/regattas'}" class="button-solid-white button-chubby">View Event</a>
-					</li>
-					{/exp:channel:entries}
-				</ul>
-			</div>
-		</section>
-		{exp:channel:entries channel="owners_area" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published" sort="desc"}
-
-		<section class="large-6 small-12 float-left global-padding-top-only--small">
-			<div class="block-section large-11 large-centered small-12">
-				<div class="block-section-header">
-					<h3 class="text-uppercase">My Contacts</h3>
-				</div>
-				<address>
-					<ul class="contacts-list" data-equalizer-watch>
-						{my_contacts}
-						<li>
-							<div class="contact-detail">
-								<div class="contact-picture"><img src="{my_contacts:portrait}"></div>
-								<div class="contact-information"><span class="contact-name text-uppercase">{my_contacts:name}</span><span class="contact-role text-uppercase">{my_contacts:department}</span>
-									<div class="contact-phone-email"><span class="contact-phone"><abbr title="Telephone">T: </abbr><a href="tel:{my_contacts:telephone}">{my_contacts:telephone}</a></span><span class="contact-email"><abbr title="Email">E: </abbr><a href="mailto:{my_contacts:email}">{my_contacts:email}</a></span></div>
-								</div>
-							</div>
-						</li>
-						{/my_contacts}
-						
-					</ul>
-				</address>
-			</div>
-		</section>
-	</div>
-	{/exp:channel:entries}
-	<div class="row row-pad">
-		<section class="medium-6 small-12 float-left global-padding-top-only--small advice-notes">
-			<div class="block-section medium-11 medium-centered small-12">
-				{exp:channel:entries channel="owners_area_advisory_notes" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published" sort="desc" limit="1"}
-				<div class="block-section-header">
-					<h3 class="text-uppercase">Advisory Notes</h3>
-				</div>
-				<figure class="download-pdf clearfix">
-					<div class="download-thumb column small-3"><img src="/assets/images/oyster-event-pdf.png">
-					</div>
-					<figcaption class="description-download column small-9">{title}
-					<div class="external-file-btns">
- 	{embed="site/.download_simple" title="" file="{document_pdf}" filesize="{document_pdf}{file_size}{/document_pdf}" label="Download"}
- <a href="{path='owners-area/advisory-notes'}" class="external-file-btn button-solid-white text-uppercase ">View Archive</a></div>
-					</figcaption>
-				</figure>
-				{/exp:channel:entries}
-			</div>
-		</section>
-		{exp:channel:entries channel="owners_area" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published" sort="desc"}
-		<section class="medium-6 small-12 float-left global-padding-top-only--small owners-documents-preview">
-			<div class="block-section medium-11 medium-centered small-12">
-				<div class="block-section-header">
-					<h3 class="text-uppercase">Featured Documents</h3>
-				</div>
-				<ul class="clearfix">
-						{featured_documents}
-					<li class="small-12 float-left">
-						<figure class="download-pdf clearfix">
-							<div class="download-thumb column small-3"><img src="/assets/images/oyster-event-pdf.png">
-							</div>
-							<figcaption class="description-download column small-9">{featured_documents:title}
-							<!-- <a href="" class="external-file-btn button-solid-white text-uppercase">Download <span class="size text-uppercase">(2.3MB)</span></a> -->
-							{embed="site/.download_simple" title="" file="{featured_documents:file}" filesize="{featured_documents:file}{file_size}{/featured_documents:file}" label="Download"}
-							</figcaption>
-						</figure>
-					</li>
-						{/featured_documents}
-				</ul>
-			</div>
-		</section>
-	</div>
-	<section class="row global-padding-top-only--small">
-		<div style="background-image:url('/assets/images/owners-area-feature.jpg')" class="wide-image-feature add-full-background-overlay">
-			<div class="wide-image-feature-content">
-				<h3 class="text-uppercase">Oyster Yachts Merchandise</h3>
-				{merchandise_introduction}
-				<div class="contact-phone-email"><span class="contact-phone"><abbr title="Telephone">T: </abbr><a href="tel:{merchandise_department_telephone}">{merchandise_department_telephone}</a></span><span class="contact-email"><abbr title="Email">E: </abbr><a href="mailto:{merchandise_department_email}">{merchandise_department_email}</a></span></div>
-			</div>
-		</div>
-	</section>
-	{/exp:channel:entries}
-						
-<!-- 	<section>
+{owners_area_auth} {embed="site/.header" page_title="Oyster Owners Area" snap_to=".owners-area-landing" snap_offset="55"}
+<article class="owners-area-landing">
+  {owners_area_subnav}
+  <section style="background-image: url('/assets/images/oysteryachts-owners_area-banner.jpg'); " class="hero after-nav after-nav--sub global-page-hero yacht-listing-photo global-page-hero--small">
+  </section>
+  <section class="row row-pad global-padding-top-only--medium">
+    <div class="large-offset-1 large-7 float">
+      <h2>Welcome to Oyster Yachts</h2> {exp:channel:entries channel="owners_area" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published" sort="desc"}
+      <h1>{title}</h1> {introduction} {/exp:channel:entries}
+    </div>
+    <div class="large-offset-1 large-3 small-12 float-left">
+      <aside class="overview-download columns owners-area-aside">
+        <div class="block-section-header aside-header">
+          <h3 class="text-uppercase">My Profile</h3>
+          <svg id="svg-arrow" version="1.1" baseprofile="tiny" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewbox="0 -20 100 100" xml:space="preserve">
+            <g>
+              <line x1="10" y1="10" x2="53" y2="53" stroke="#454646" stroke-width="10"></line>
+              <line x1="90" y1="10" x2="47" y2="53" stroke="#454646" stroke-width="10"></line>
+            </g>
+          </svg>
+        </div>
+        {exp:member:custom_profile_data}
+        <?php ob_start(); ?>{member_first_name}
+        <?php $firstName = ob_get_contents(); ob_end_clean(); ?>
+        <?php ob_start(); ?>{member_last_name}
+        <?php $lastName = ob_get_contents(); ob_end_clean(); ?>
+        <div class="overview-contents prev-models">
+          <div class="overview columns small-12">
+            <div class="side-profile">
+              <div class="side-profile-image"><span><?php echo substr($firstName, 0, 1).substr($lastName, 0, 1); ?></span></div>
+              <div class="side-profile-details"><span class="side-profile-name">{member_first_name} {member_last_name}</span><a href="/owners-area/my-profile" class="side-profile-view">View Profile</a></div>
+            </div>
+            <table class="table definition-table">
+              <tbody>
+                <tr>
+                  <td>Account:</td>
+                  <td>{member_account_type}</td>
+                </tr>
+                <tr>
+                  <td>Yacht Model:</td>
+                  <td>{member_current_yacht_make}</td>
+                </tr>
+                <tr>
+                  <td>Boat Name:</td>
+                  <td>{member_current_yacht_model}</td>
+                </tr>
+              </tbody>
+            </table>
+            {exp:channel:entries channel="world_rally_accounts" disable="member_data|category_fields|pagination" search:account_member="={member_id}" status="published"}
+            <div class="owners-balance">
+              <span class="owners-balance__account-label">Account</br> Balance </span>
+              <span class="owners-balance__value"><abbr title="GBP">&pound;</abbr><?php echo number_format({account_balance}, 2); ?></span>
+              <a href="/owners-area/account" class="owners-balance__view-statement button-solid-blue button-full-width">View Account Statement</a>
+              <a href="mailto:customerservice@oysteryachts.com" class="owners-balance__view-statement button-solid-blue button-full-width" style="background-color:#fff;color:#003145 !important;">Contact Customer Service</a>
+            </div> {/exp:channel:entries}
+          </div>
+        </div>
+        {/exp:member:custom_profile_data}
+      </aside>
+    </div>
+  </section>
+  <div class="row row-pad">
+    <section class="large-6 small-12 float-left global-padding-top-only--small">
+      <div class="block-section large-11 large-centered small-12">
+        <div class="block-section-header">
+          <h3 class="text-uppercase">Upcoming Events</h3>
+        </div>
+        <ul class="upcoming-events--small text-uppercase">
+          {exp:channel:entries channel="event" disable="member_data|category_fields|pagination" limit="3" cache="yes" refresh="60" status="published" orderby="event_end_date" sort="asc" search:event_end_date=">{current_time}"}
+          <li class="upcoming-event--small">
+            <div class="date-preview"><span class="month" style="font-size: 0.750em;">{event_start_date format="%F"}</span><span class="date" style="font-size: 2em;">{event_start_date format="%d"}</span></div>
+            <div class="event-details"><a href="" class="event-title">{title}</a>
+              <h5 class="sub-title text-uppercase">{exp:date_range start_date="{event_start_date format='%d %F %Y'}" end_date="{event_end_date format='%d %F %Y'}"}</h5>
+            </div><a href="{url_title_path='events/regattas'}" class="button-solid-white button-chubby">View Event</a>
+          </li>
+          {/exp:channel:entries}
+        </ul>
+      </div>
+    </section>
+    {exp:channel:entries channel="owners_area" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published" sort="desc"}
+    <section class="large-6 small-12 float-left global-padding-top-only--small">
+      <div class="block-section large-11 large-centered small-12">
+        <div class="block-section-header">
+          <h3 class="text-uppercase">My Contacts</h3>
+        </div>
+        <address>
+          <ul class="contacts-list">
+            {my_contacts}
+            <li>
+              <div class="contact-detail">
+                <div class="contact-picture"><img src="{my_contacts:portrait}"></div>
+                <div class="contact-information"><span class="contact-name text-uppercase">{my_contacts:name}</span><span class="contact-role text-uppercase">{my_contacts:department}</span>
+                  <div class="contact-phone-email"><span class="contact-phone"><abbr title="Telephone">T: </abbr><a href="tel:{my_contacts:telephone}">{my_contacts:telephone}</a></span><span class="contact-email"><abbr title="Email">E: </abbr><a href="mailto:{my_contacts:email}">{my_contacts:email}</a></span></div>
+                </div>
+              </div>
+            </li>
+            {/my_contacts}
+          </ul>
+        </address>
+      </div>
+    </section>
+  </div>
+  {/exp:channel:entries}
+  <div class="row row-pad">
+    <section class="medium-6 small-12 float-left global-padding-top-only--small advice-notes">
+      <div class="block-section medium-11 medium-centered small-12">
+        {exp:channel:entries channel="owners_area_advisory_notes" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published" sort="desc" limit="1"}
+        <div class="block-section-header">
+          <h3 class="text-uppercase">Advisory Notes</h3>
+        </div>
+        <figure class="download-pdf clearfix">
+          <div class="download-thumb column small-3"><img src="/assets/images/oyster-event-pdf.png">
+          </div>
+          <figcaption class="description-download column small-9">{title}
+            <div class="external-file-btns">
+              {embed="site/.download_simple" title="" file="{document_pdf}" filesize="{document_pdf}{file_size}{/document_pdf}" label="Download"}
+              <a href="{path='owners-area/advisory-notes'}" class="external-file-btn button-solid-white text-uppercase ">View Archive</a></div>
+          </figcaption>
+        </figure>
+        {/exp:channel:entries}
+      </div>
+    </section>
+    {exp:channel:entries channel="owners_area" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published" sort="desc"}
+    <section class="medium-6 small-12 float-left global-padding-top-only--small owners-documents-preview">
+      <div class="block-section medium-11 medium-centered small-12">
+        <div class="block-section-header">
+          <h3 class="text-uppercase">Featured Documents</h3>
+        </div>
+        <ul class="clearfix">
+          {featured_documents}
+          <li class="small-12 float-left">
+            <figure class="download-pdf clearfix">
+              <div class="download-thumb column small-3"><img src="/assets/images/oyster-event-pdf.png">
+              </div>
+              <figcaption class="description-download column small-9">{featured_documents:title}
+                <!-- <a href="" class="external-file-btn button-solid-white text-uppercase">Download <span class="size text-uppercase">(2.3MB)</span></a> -->
+                {embed="site/.download_simple" title="" file="{featured_documents:file}" filesize="{featured_documents:file}{file_size}{/featured_documents:file}" label="Download"}
+              </figcaption>
+            </figure>
+          </li>
+          {/featured_documents}
+        </ul>
+      </div>
+    </section>
+  </div>
+  <section class="row global-padding--small">
+    <div style="background-image:url('/assets/images/owners-area-feature.jpg')" class="wide-image-feature add-full-background-overlay">
+      <div class="wide-image-feature-content">
+        <h3 class="text-uppercase">Oyster Yachts Merchandise</h3> {merchandise_introduction}
+        <div class="contact-phone-email"><span class="contact-phone"><abbr title="Telephone">T: </abbr><a href="tel:{merchandise_department_telephone}">{merchandise_department_telephone}</a></span><span class="contact-email"><abbr title="Email">E: </abbr><a href="mailto:{merchandise_department_email}">{merchandise_department_email}</a></span></div>
+      </div>
+    </div>
+  </section>
+  {/exp:channel:entries}
+  <!-- 	<section>
 	Files:<br />
 	
 	{exp:channel:entries channel="owners_area_files" dynamic="no" disable="category_fields|pagination" status="published" search:owner_member="{logged_in_member_id}"}
@@ -173,7 +161,5 @@
 		{/owner_files}
 	{/exp:channel:entries}
 	</section> -->
-	
 </article>
-
 {footer}

@@ -40,6 +40,10 @@ export function getElemDistance(elem) {
   return location >= 0 ? location : 0
 }
 
+export function findAncestor(el, cls) {
+  while ((el = el.parentNode) && el.className.indexOf(cls) < 0)
+  return el
+}
 
 /**
  * Returns a new element with a given class.

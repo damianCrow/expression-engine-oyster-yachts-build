@@ -22,11 +22,6 @@
     white-space: nowrap;
   }
 
-  #search_form {
-    width: 100%;
-    height: 100%;
-  }
-
   .news-thumb-image {
     background-image: url("/assets/images/oysteryachts-news-default_image_sml.jpg");
   }
@@ -39,43 +34,6 @@
 
   .fadein {
     opacity: 1 !important;
-  }
-
-  {
-    if segment_1==""
-  }
-
-  .hero-home .hero-slide .hero-contents h1 {
-    font-family: 'omnes_lightregular', sans-serif;
-    letter-spacing: 0.25rem;
-    font-size: 3rem;
-    line-height: 1em;
-    color: white;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-  }
-
-  .hero-home .hero-slide .hero-contents h1 strong {
-    font-family: 'omnes_regularregular', sans-serif;
-    letter-spacing: .05rem;
-  }
-
-  .hero-home .hero-slide .hero-contents p {
-    font-size: .9375em;
-    line-height: 1.73333333em;
-    margin-bottom: 1.73333333em;
-    letter-spacing: .05rem;
-    color: white;
-  }
-
-  .hero-home .hero-slide .hero-contents a {
-    background-color: #fff;
-    border-color: #fff;
-    color: #003145;
-  }
-
-  {
-    /if
   }
 
   </style>
@@ -142,13 +100,18 @@
           <h2 class="main-header__title">{embed:page_title}</h2>
         {/if}
         <div class="main-header__menu">
-          <button class='burger'>
+{!--           <button class='burger'>
             <div class='burger__wrapper'>
               <span class='burger__piece'></span>
               <span class='burger__piece'></span>
               <span class='burger__piece'></span>
             </div>
-          </button>        
+          </button> --}
+          <div class="burger-container">
+            <div class="burger burger--large">
+              <span></span>
+            </div>
+          </div>
         </div>
       </div>
     </div>

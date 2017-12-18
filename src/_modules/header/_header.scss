@@ -84,7 +84,10 @@ $logo-width: 230px;
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    flex: 0 0 auto;
+    flex: 0 0 45px;
+    height: 45px;
+    border: 1px solid $greyborder;
+    border-radius: 50%;
   }
 
   &__home {

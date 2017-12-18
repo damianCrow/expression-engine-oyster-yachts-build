@@ -1,583 +1,542 @@
 <section id="request-boarding-pass" data-reveal-id="request-boarding-pass" data-reveal-ajax="true" role="dialog" aria-labelledby="" aria-describedby="" data-reveal="" data-hide-delay="650" class="full-modal reveal">
-    <h2>Request Boarding Pass</h2>
-    <div class="modal-content sign-up-modal-form">
-        <p id="dialog1Desc" class="modal-instructions">If you would like to book an appointment to see Oyster at {title} please do so by completing the form below. We will acknowledge your request and confirm the date and time of your appointment. We look forward to seeing you at the {title}.</p>
-       {!-- <form id="request-boarding-pass-form" class="sign-up-modal-form"> --}
-           {exp:freeform:form
-                   form:id="request-boarding-pass-form"
-                    form:class="sign-up-modal-form"
-                    required="first_name|email|last_name|addressline1|tel"
-                    return="events/thankyou"
-                    form_id="3"
-                    require_captcha="yes"
-                }
-
-                {if freeform:general_errors}
-          <div data-form-id="request-boarding-pass-form" class="form-error text-center text-uppercase">
-            <span>ERROR: Invalid or incomplete fields</span><span class="error-messages">
+  <h2>Request Boarding Pass</h2>
+  <div class="modal-content sign-up-modal-form">
+    <p id="dialog1Desc" class="modal-instructions">If you would like to book an appointment to see Oyster at {title} please do so by completing the form below. We will acknowledge your request and confirm the date and time of your appointment. We look forward to seeing you at the {title}.</p>
+    {!--
+    <form id="request-boarding-pass-form" class="sign-up-modal-form"> --} {exp:freeform:form form:id="request-boarding-pass-form" form:class="sign-up-modal-form" required="first_name|email|last_name|addressline1|tel" return="events/thankyou" form_id="3" require_captcha="yes" } {if freeform:general_errors}
+      <div data-form-id="request-boarding-pass-form" class="form-error text-center text-uppercase">
+        <span>ERROR: Invalid or incomplete fields</span><span class="error-messages">
               {freeform:general_errors}
                           {freeform:error_message}<br />
                       {/freeform:general_errors}</span>
+      </div>
+      {/if}
+      <div class="form-error text-center text-uppercase "><span>Your form contains 8 errors, see highlighted fields below.</span><span class="error-messages">Your form contains 8 errors, see highlighted fields below.</span></div>
+      <fieldset class="spec-current-yacht">
+        <div class="form-interested-in required-input require-one">
+          <legend>I would like to view the following Oyster model(s)</legend>
+          <ol>
+            {models_available} {if item =="Oyster 45"}
+            <li>
+              <input id="oyster-45-check" type="checkbox" required name="oyster-model[]" value="Oyster 45" class="show-for-sr">
+              <label for="oyster-45-check" class="checkbox-label">Oyster <b>45</b></label>
+            </li>
+            {/if} {if item =="Oyster 46"}
+            <li>
+              <input id="oyster-46-check" type="checkbox" required name="oyster-model[]" value="Oyster 46" class="show-for-sr">
+              <label for="oyster-46-check" class="checkbox-label">Oyster <b>46</b></label>
+            </li>
+            {/if} {if item =="Oyster 47"}
+            <li>
+              <input id="oyster-47-check" type="checkbox" required name="oyster-model[]" value="Oyster 47" class="show-for-sr">
+              <label for="oyster-47-check" class="checkbox-label">Oyster <b>47</b></label>
+            </li>
+            {/if} {if item =="Oyster 48"}
+            <li>
+              <input id="oyster-48-check" type="checkbox" required name="oyster-model[]" value="Oyster 48" class="show-for-sr">
+              <label for="oyster-48-check" class="checkbox-label">Oyster <b>48</b></label>
+            </li>
+            {/if} {if item =="Oyster 485"}
+            <li>
+              <input id="oyster-485-check" type="checkbox" required name="oyster-model[]" value="Oyster 485" class="show-for-sr">
+              <label for="oyster-485-check" class="checkbox-label">Oyster <b>485</b></label>
+            </li>
+            {/if} {if item =="Oyster 49"}
+            <li>
+              <input id="oyster-49-check" type="checkbox" required name="oyster-model[]" value="Oyster 49" class="show-for-sr">
+              <label for="oyster-49-check" class="checkbox-label">Oyster <b>49</b></label>
+            </li>
+            {/if} {if item =="Oyster 53"}
+            <li>
+              <input id="oyster-53-check" type="checkbox" required name="oyster-model[]" value="Oyster 53" class="show-for-sr">
+              <label for="oyster-53-check" class="checkbox-label">Oyster <b>53</b></label>
+            </li>
+            {/if} {if item =="Oyster 54"}
+            <li>
+              <input id="oyster-54-check" type="checkbox" required name="oyster-model[]" value="Oyster 54" class="show-for-sr">
+              <label for="oyster-54-check" class="checkbox-label">Oyster <b>54</b></label>
+            </li>
+            {/if} {if item =="Oyster 55"}
+            <li>
+              <input id="oyster-55-check" type="checkbox" required name="oyster-model[]" value="Oyster 55" class="show-for-sr">
+              <label for="oyster-55-check" class="checkbox-label">Oyster <b>55</b></label>
+            </li>
+            {/if} {if item =="Oyster 56"}
+            <li>
+              <input id="oyster-56-check" type="checkbox" required name="oyster-model[]" value="Oyster 56" class="show-for-sr">
+              <label for="oyster-56-check" class="checkbox-label">Oyster <b>56</b></label>
+            </li>
+            {/if} {if item =="Oyster 61"}
+            <li>
+              <input id="oyster-61-check" type="checkbox" required name="oyster-model[]" value="Oyster 61" class="show-for-sr">
+              <label for="oyster-61-check" class="checkbox-label">Oyster <b>61</b></label>
+            </li>
+            {/if} {if item =="Oyster 62"}
+            <li>
+              <input id="oyster-62-check" type="checkbox" required name="oyster-model[]" value="Oyster 62" class="show-for-sr">
+              <label for="oyster-62-check" class="checkbox-label">Oyster <b>62</b></label>
+            </li>
+            {/if} {if item =="Oyster 66"}
+            <li>
+              <input id="oyster-66-check" type="checkbox" required name="oyster-model[]" value="Oyster 66" class="show-for-sr">
+              <label for="oyster-66-check" class="checkbox-label">Oyster <b>66</b></label>
+            </li>
+            {/if} {if item =="Oyster 655"}
+            <li>
+              <input id="oyster-655-check" type="checkbox" required name="oyster-model[]" value="Oyster 655" class="show-for-sr">
+              <label for="oyster-655-check" class="checkbox-label">Oyster <b>655</b></label>
+            </li>
+            {/if} {if item =="Oyster 82"}
+            <li>
+              <input id="oyster-82-check" type="checkbox" required name="oyster-model[]" value="Oyster 82" class="show-for-sr">
+              <label for="oyster-82-check" class="checkbox-label">Oyster <b>82</b></label>
+            </li>
+            {/if} {if item =="Oyster 70"}
+            <li>
+              <input id="oyster-70-check" type="checkbox" required name="oyster-model[]" value="Oyster 70" class="show-for-sr">
+              <label for="oyster-70-check" class="checkbox-label">Oyster <b>70</b></label>
+            </li>
+            {/if} {if item =="Oyster 72"}
+            <li>
+              <input id="oyster-72-check" type="checkbox" required name="oyster-model[]" value="Oyster 72" class="show-for-sr">
+              <label for="oyster-72-check" class="checkbox-label">Oyster <b>72</b></label>
+            </li>
+            {/if} {if item =="Oyster 725"}
+            <li>
+              <input id="oyster-725-check" type="checkbox" required name="oyster-model[]" value="Oyster 725" class="show-for-sr">
+              <label for="oyster-725-check" class="checkbox-label">Oyster <b>725</b></label>
+            </li>
+            {/if} {if item =="Oyster 80"}
+            <li>
+              <input id="oyster-80-check" type="checkbox" required name="oyster-model[]" value="Oyster 80" class="show-for-sr">
+              <label for="oyster-80-check" class="checkbox-label">Oyster <b>80</b></label>
+            </li>
+            {/if} {if item =="Oyster 475"}
+            <li>
+              <input id="oyster-475-check" type="checkbox" required name="oyster-model[]" value="Oyster 475" class="show-for-sr">
+              <label for="oyster-475-check" class="checkbox-label">Oyster <b>475</b></label>
+            </li>
+            {/if} {if item =="Oyster 545"}
+            <li>
+              <input id="oyster-545-check" type="checkbox" required name="oyster-model[]" value="Oyster 545" class="show-for-sr">
+              <label for="oyster-545-check" class="checkbox-label">Oyster <b>545</b></label>
+            </li>
+            {/if} {if item =="Oyster 575"}
+            <li>
+              <input id="oyster-575-check" type="checkbox" required name="oyster-model[]" value="Oyster 575" class="show-for-sr">
+              <label for="oyster-575-check" class="checkbox-label">Oyster <b>575</b></label>
+            </li>
+            {/if} {if item =="Oyster 625"}
+            <li>
+              <input id="oyster-625-check" type="checkbox" required name="oyster-model[]" value="Oyster 625" class="show-for-sr">
+              <label for="oyster-625-check" class="checkbox-label">Oyster <b>625</b></label>
+            </li>
+            {/if} {if item =="Oyster 675"}
+            <li>
+              <input id="oyster-675-check" type="checkbox" required name="oyster-model[]" value="Oyster 675" class="show-for-sr">
+              <label for="oyster-675-check" class="checkbox-label">Oyster <b>675</b></label>
+            </li>
+            {/if} {if item =="Oyster 745"}
+            <li>
+              <input id="oyster-745-check" type="checkbox" required name="oyster-model[]" value="Oyster 745" class="show-for-sr">
+              <label for="oyster-745-check" class="checkbox-label">Oyster <b>745</b></label>
+            </li>
+            {/if} {if item =="Oyster 825"}
+            <li>
+              <input id="oyster-825-check" type="checkbox" required name="oyster-model[]" value="Oyster 825" class="show-for-sr">
+              <label for="oyster-825-check" class="checkbox-label">Oyster <b>825</b></label>
+            </li>
+            {/if} {if item =="Oyster 885"}
+            <li>
+              <input id="oyster-885-check" type="checkbox" required name="oyster-model[]" value="Oyster 885" class="show-for-sr">
+              <label for="oyster-885-check" class="checkbox-label">Oyster <b>885</b></label>
+            </li>
+            {/if} {if item =="Oyster 118"}
+            <li>
+              <input id="oyster-118-check" type="checkbox" required name="oyster-model[]" value="Oyster 118" class="show-for-sr">
+              <label for="oyster-118-check" class="checkbox-label">Oyster <b>118</b></label>
+            </li>
+            {/if} {/models_available}
+          </ol>
+        </div>
+        <div class="form-type-interested-in required-input require-one">
+          <legend>I am interested in</legend>
+          <ol>
+            <li>
+              <input id="interested-new-oysters-check" type="checkbox" name="models_interested_in[]" required value="New Oysters" class="show-for-sr">
+              <label for="interested-new-oysters-check" class="checkbox-label">New Oysters</label>
+            </li>
+            <li>
+              <input id="interested-brokerage-check" type="checkbox" name="models_interested_in[]" required value="Brokerage Yachts" class="show-for-sr">
+              <label for="interested-brokerage-check" class="checkbox-label">Brokerage Yachts</label>
+            </li>
+          </ol>
+        </div>
+        <div class="vist-details-container">
+          <div class="form-viewing-details required-input">
+            <label for="viewing-day" class="viewing-day column large-5">Select viewing day: </label>
+            <select id="viewing-day" name="viewing_day" required class="column large-5 float-right">
+              <option value="">Select</option>
+              {viewing_day2}
+              <option value="{viewing_day2:day} {viewing_day2:day_number} {viewing_day2:month}" data-available-times="[{viewing_day2:time_availability backspace=" 1 "}&quot;{item}&quot;,{/viewing_day2:time_availability}]">{viewing_day2:day} {viewing_day2:day_number} {viewing_day2:month}</option>
+              <!--                   <option  value="{viewing_day2:day}  {viewing_day2:day_number} {viewing_day2:month}">{viewing_day2:day} {viewing_day2:day_number} {viewing_day2:month}</option> -->
+              {/viewing_day2}
+            </select>
           </div>
-           {/if}
-           <div class="form-error text-center text-uppercase "><span>Your form contains 8 errors, see highlighted fields below.</span><span class="error-messages" >Your form contains 8 errors, see highlighted fields below.</span></div>
-          <fieldset class="spec-current-yacht">
-            <div class="form-interested-in required-input require-one">
-              <legend>I would like to view the following Oyster model(s)</legend>
-              <ol>
-              {models_available}
-                  {if item =="Oyster 45"}
-                    <li>
-                    <input id="oyster-45-check" type="checkbox" required name="oyster-model[]" value="Oyster 45" class="show-for-sr">
-                    <label for="oyster-45-check" class="checkbox-label">Oyster <b>45</b></label>
-                    </li>
-                  {/if}
-                  {if item =="Oyster 46"}
-                    <li>
-                    <input id="oyster-46-check" type="checkbox" required name="oyster-model[]" value="Oyster 46" class="show-for-sr">
-                    <label for="oyster-46-check" class="checkbox-label">Oyster <b>46</b></label>
-                    </li>
-                  {/if}
-                  {if item =="Oyster 47"}
-                    <li>
-                    <input id="oyster-47-check" type="checkbox" required name="oyster-model[]" value="Oyster 47" class="show-for-sr">
-                    <label for="oyster-47-check" class="checkbox-label">Oyster <b>47</b></label>
-                    </li>
-                  {/if}
-                    {if item =="Oyster 48"}
-                    <li>
-                    <input id="oyster-48-check" type="checkbox" required name="oyster-model[]" value="Oyster 48" class="show-for-sr">
-                    <label for="oyster-48-check" class="checkbox-label">Oyster <b>48</b></label>
-                    </li>
-                  {/if}
-                  {if item =="Oyster 485"}
-                    <li>
-                    <input id="oyster-485-check" type="checkbox" required name="oyster-model[]" value="Oyster 485" class="show-for-sr">
-                    <label for="oyster-485-check" class="checkbox-label">Oyster <b>485</b></label>
-                    </li>
-                  {/if}
-                  {if item =="Oyster 49"}
-                    <li>
-                    <input id="oyster-49-check" type="checkbox" required name="oyster-model[]" value="Oyster 49" class="show-for-sr">
-                    <label for="oyster-49-check" class="checkbox-label">Oyster <b>49</b></label>
-                    </li>
-                  {/if}
-                  {if item =="Oyster 53"}
-                    <li>
-                    <input id="oyster-53-check" type="checkbox" required name="oyster-model[]" value="Oyster 53" class="show-for-sr">
-                    <label for="oyster-53-check" class="checkbox-label">Oyster <b>53</b></label>
-                    </li>
-                  {/if}
-                  {if item =="Oyster 54"}
-                    <li>
-                    <input id="oyster-54-check" type="checkbox" required name="oyster-model[]" value="Oyster 54" class="show-for-sr">
-                    <label for="oyster-54-check" class="checkbox-label">Oyster <b>54</b></label>
-                    </li>
-                  {/if}
-                  {if item =="Oyster 55"}
-                    <li>
-                    <input id="oyster-55-check" type="checkbox" required name="oyster-model[]" value="Oyster 55" class="show-for-sr">
-                    <label for="oyster-55-check" class="checkbox-label">Oyster <b>55</b></label>
-                    </li>
-                  {/if}
-                  {if item =="Oyster 56"}
-                    <li>
-                    <input id="oyster-56-check" type="checkbox" required name="oyster-model[]" value="Oyster 56" class="show-for-sr">
-                    <label for="oyster-56-check" class="checkbox-label">Oyster <b>56</b></label>
-                    </li>
-                  {/if}
-                  {if item =="Oyster 61"}
-                    <li>
-                    <input id="oyster-61-check" type="checkbox" required name="oyster-model[]" value="Oyster 61" class="show-for-sr">
-                    <label for="oyster-61-check" class="checkbox-label">Oyster <b>61</b></label>
-                    </li>
-                  {/if}
-                  {if item =="Oyster 62"}
-                    <li>
-                    <input id="oyster-62-check" type="checkbox" required name="oyster-model[]" value="Oyster 62" class="show-for-sr">
-                    <label for="oyster-62-check" class="checkbox-label">Oyster <b>62</b></label>
-                    </li>
-                  {/if}
-                  {if item =="Oyster 66"}
-                    <li>
-                    <input id="oyster-66-check" type="checkbox" required name="oyster-model[]" value="Oyster 66" class="show-for-sr">
-                    <label for="oyster-66-check" class="checkbox-label">Oyster <b>66</b></label>
-                    </li>
-                  {/if}
-                  {if item =="Oyster 655"}
-                    <li>
-                    <input id="oyster-655-check" type="checkbox" required name="oyster-model[]" value="Oyster 655" class="show-for-sr">
-                    <label for="oyster-655-check" class="checkbox-label">Oyster <b>655</b></label>
-                    </li>
-                  {/if}
-                  {if item =="Oyster 82"}
-                    <li>
-                    <input id="oyster-82-check" type="checkbox" required name="oyster-model[]" value="Oyster 82" class="show-for-sr">
-                    <label for="oyster-82-check" class="checkbox-label">Oyster <b>82</b></label>
-                    </li>
-                  {/if}
-                  {if item =="Oyster 70"}
-                    <li>
-                    <input id="oyster-70-check" type="checkbox" required name="oyster-model[]" value="Oyster 70" class="show-for-sr">
-                    <label for="oyster-70-check" class="checkbox-label">Oyster <b>70</b></label>
-                    </li>
-                  {/if}
-                  {if item =="Oyster 72"}
-                    <li>
-                    <input id="oyster-72-check" type="checkbox" required name="oyster-model[]" value="Oyster 72" class="show-for-sr">
-                    <label for="oyster-72-check" class="checkbox-label">Oyster <b>72</b></label>
-                    </li>
-                  {/if}
-                  {if item =="Oyster 725"}
-                    <li>
-                    <input id="oyster-725-check" type="checkbox" required name="oyster-model[]" value="Oyster 725" class="show-for-sr">
-                    <label for="oyster-725-check" class="checkbox-label">Oyster <b>725</b></label>
-                    </li>
-                  {/if}
-                  {if item =="Oyster 80"}
-                    <li>
-                    <input id="oyster-80-check" type="checkbox" required name="oyster-model[]" value="Oyster 80" class="show-for-sr">
-                    <label for="oyster-80-check" class="checkbox-label">Oyster <b>80</b></label>
-                    </li>
-                  {/if}
-                  {if item =="Oyster 475"}
-                    <li>
-                    <input id="oyster-475-check" type="checkbox" required name="oyster-model[]" value="Oyster 475" class="show-for-sr">
-                    <label for="oyster-475-check" class="checkbox-label">Oyster <b>475</b></label>
-                    </li>
-                  {/if}
-                  {if item =="Oyster 545"}
-                    <li>
-                      <input id="oyster-545-check" type="checkbox" required name="oyster-model[]" value="Oyster 545" class="show-for-sr">
-                      <label for="oyster-545-check" class="checkbox-label">Oyster <b>545</b></label>
-                    </li>
-                  {/if}
-                {if item =="Oyster 575"}
-                    <li>
-                      <input id="oyster-575-check" type="checkbox" required name="oyster-model[]" value="Oyster 575" class="show-for-sr">
-                      <label for="oyster-575-check" class="checkbox-label">Oyster <b>575</b></label>
-                    </li>
-                  {/if}
-                  {if item =="Oyster 625"}
-                    <li>
-                      <input id="oyster-625-check" type="checkbox" required name="oyster-model[]" value="Oyster 625" class="show-for-sr">
-                      <label for="oyster-625-check" class="checkbox-label">Oyster <b>625</b></label>
-                    </li>
-                  {/if}
-                  {if item =="Oyster 675"}
-                <li>
-                  <input id="oyster-675-check" type="checkbox" required name="oyster-model[]" value="Oyster 675" class="show-for-sr">
-                  <label for="oyster-675-check" class="checkbox-label">Oyster <b>675</b></label>
-                </li>
-                  {/if}
-                {if item =="Oyster 745"}
-                <li>
-                  <input id="oyster-745-check" type="checkbox" required name="oyster-model[]" value="Oyster 745" class="show-for-sr">
-                  <label for="oyster-745-check" class="checkbox-label">Oyster <b>745</b></label>
-                </li>
-                  {/if}
-                  {if item =="Oyster 825"}
-
-                <li>
-                  <input id="oyster-825-check" type="checkbox" required name="oyster-model[]" value="Oyster 825" class="show-for-sr">
-                  <label for="oyster-825-check" class="checkbox-label">Oyster <b>825</b></label>
-                </li>
-                  {/if}
-                {if item =="Oyster 885"}
-                <li>
-                  <input id="oyster-885-check" type="checkbox" required name="oyster-model[]" value="Oyster 885" class="show-for-sr">
-                  <label for="oyster-885-check" class="checkbox-label">Oyster <b>885</b></label>
-                </li>
-                  {/if}
-                  {if item =="Oyster 118"}
-                    <li>
-                      <input id="oyster-118-check" type="checkbox" required name="oyster-model[]" value="Oyster 118" class="show-for-sr">
-                      <label for="oyster-118-check" class="checkbox-label">Oyster <b>118</b></label>
-                    </li>
-                  {/if}
-                {/models_available}
-              </ol>
-            </div>
-            <div class="form-type-interested-in required-input require-one">
-              <legend>I am interested in</legend>
-              <ol>
-                <li>
-                  <input id="interested-new-oysters-check" type="checkbox" name="models_interested_in[]" required value="New Oysters" class="show-for-sr">
-                  <label for="interested-new-oysters-check" class="checkbox-label">New Oysters</label>
-                </li>
-                <li>
-                  <input id="interested-brokerage-check" type="checkbox" name="models_interested_in[]" required value="Brokerage Yachts" class="show-for-sr">
-                  <label for="interested-brokerage-check" class="checkbox-label">Brokerage Yachts</label>
-                </li>
-              </ol>
-            </div>
-            <div class="vist-details-container">
-              <div class="form-viewing-details required-input">
-                <label for="viewing-day" class="viewing-day column large-5">Select viewing day: </label>
-                <select id="viewing-day" name="viewing_day" required class="column large-5 float-right">
-                  <option value="">Select</option>
-                     {viewing_day2}
-                  <option value="{viewing_day2:day} {viewing_day2:day_number} {viewing_day2:month}" data-available-times="[{viewing_day2:time_availability backspace="1"}&quot;{item}&quot;,{/viewing_day2:time_availability}]">{viewing_day2:day}  {viewing_day2:day_number} {viewing_day2:month}</option>
-               
-<!--                   <option  value="{viewing_day2:day}  {viewing_day2:day_number} {viewing_day2:month}">{viewing_day2:day} {viewing_day2:day_number} {viewing_day2:month}</option> -->
-                  {/viewing_day2}
-                </select>
-              </div>
-              <div class="form-viewing-details required-input">
-                <label for="viewing-time" class="viewing-time column large-5">Select viewing time: </label>
-                <select id="viewing-time" name="viewing_time" required class="column large-5 float-right">
-                  <option value="">Select</option>
-<!--                   {viewing_time2}
+          <div class="form-viewing-details required-input">
+            <label for="viewing-time" class="viewing-time column large-5">Select viewing time: </label>
+            <select id="viewing-time" name="viewing_time" required class="column large-5 float-right">
+              <option value="">Select</option>
+              <!--                   {viewing_time2}
                   <option value="{item}">{item}</option>
                   {/viewing_time2} -->
-                </select>
-              </div>
-              <div class="form-viewing-details required-input">
-                <label for="group-size" class="group-size column large-5">Group size: </label>
-                <select id="group-size" name="group_size" required class="column large-5 float-right">
-                  <option value="">Select</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                  <option value="6">6</option>
-                  <option value="8">7</option>
-                  <option value="9">9</option>
-                  <option value="10">10</option>
-                </select>
-              </div>
-            </div>
-          </fieldset>
-          <fieldset class="spec-current-yacht">
-                <fieldset>
-                  <ol>
-                    <li class="required-input">
-                      <label for="titlename" class="show-for-sr">Title *</label>
-                      <input id="titlename" type="text" name="title" placeholder="Title" required="">
-                    </li>
-                    <li class="required-input">
-                      <label for="firstname" class="show-for-sr">First Name *</label>
-                      <input id="firstname" type="text" name="first_name" placeholder="First Name" required="">
-                    </li>
-                    <li class="required-input">
-                      <label for="lastname" class="show-for-sr">Last Name *</label>
-                      <input id="firstname" type="text" name="last_name" placeholder="Last Name" required="">
-                    </li>
-                  </ol>
-                </fieldset>
-                <fieldset>
-                <fieldset class="address-fill-out">
-                  <ol>
-                    <li class="address-line first-address-line">
-                      <label for="addressline1" class="show-for-sr">Address Line 1 *</label>
-                      <input id="addressline1" type="text" name="addressline1" placeholder="Address Line 1" required="">
-                    </li>
-                    <li class="address-line last-address-line">
-                      <label for="addressline2" class="show-for-sr">Address Line 2 *</label>
-                      <input id="addressline2" type="text" name="addressline2" placeholder="Address Line 2">
-                      <button type="button" class="add-address-line"><i class="add fa fa-plus"></i><span class="add-line">Add Address Line</span></button>
-                    </li>
-                    <li class="country-selection required-input column large-5">
-                      <label for="country-slection" class="show-for-sr">Country</label>
-                      <select id="country-slection" name="country-slection" required>
-                        <option value="">Select</option>
-                        <option value="Afghanistan">Afghanistan</option>
-                        <option value="Albania">Albania</option>
-                        <option value="Algeria">Algeria</option>
-                        <option value="American Samoa">American Samoa</option>
-                        <option value="Andorra">Andorra</option>
-                        <option value="Angola">Angola</option>
-                        <option value="Anguilla">Anguilla</option>
-                        <option value="Antartica">Antarctica</option>
-                        <option value="Antigua and Barbuda">Antigua and Barbuda</option>
-                        <option value="Argentina">Argentina</option>
-                        <option value="Armenia">Armenia</option>
-                        <option value="Aruba">Aruba</option>
-                        <option value="Australia">Australia</option>
-                        <option value="Austria">Austria</option>
-                        <option value="Azerbaijan">Azerbaijan</option>
-                        <option value="Bahamas">Bahamas</option>
-                        <option value="Bahrain">Bahrain</option>
-                        <option value="Bangladesh">Bangladesh</option>
-                        <option value="Barbados">Barbados</option>
-                        <option value="Belarus">Belarus</option>
-                        <option value="Belgium">Belgium</option>
-                        <option value="Belize">Belize</option>
-                        <option value="Benin">Benin</option>
-                        <option value="Bermuda">Bermuda</option>
-                        <option value="Bhutan">Bhutan</option>
-                        <option value="Bolivia">Bolivia</option>
-                        <option value="Bosnia and Herzegowina">Bosnia and Herzegowina</option>
-                        <option value="Botswana">Botswana</option>
-                        <option value="Bouvet Island">Bouvet Island</option>
-                        <option value="Brazil">Brazil</option>
-                        <option value="British Indian Ocean Territory">British Indian Ocean Territory</option>
-                        <option value="Brunei Darussalam">Brunei Darussalam</option>
-                        <option value="Bulgaria">Bulgaria</option>
-                        <option value="Burkina Faso">Burkina Faso</option>
-                        <option value="Burundi">Burundi</option>
-                        <option value="Cambodia">Cambodia</option>
-                        <option value="Cameroon">Cameroon</option>
-                        <option value="Canada">Canada</option>
-                        <option value="Cape Verde">Cape Verde</option>
-                        <option value="Cayman Islands">Cayman Islands</option>
-                        <option value="Central African Republic">Central African Republic</option>
-                        <option value="Chad">Chad</option>
-                        <option value="Chile">Chile</option>
-                        <option value="China">China</option>
-                        <option value="Christmas Island">Christmas Island</option>
-                        <option value="Cocos Islands">Cocos (Keeling) Islands</option>
-                        <option value="Colombia">Colombia</option>
-                        <option value="Comoros">Comoros</option>
-                        <option value="Congo">Congo</option>
-                        <option value="Congo">Congo, the Democratic Republic of the</option>
-                        <option value="Cook Islands">Cook Islands</option>
-                        <option value="Costa Rica">Costa Rica</option>
-                        <option value="Cota D'Ivoire">Cote d'Ivoire</option>
-                        <option value="Croatia">Croatia (Hrvatska)</option>
-                        <option value="Cuba">Cuba</option>
-                        <option value="Cyprus">Cyprus</option>
-                        <option value="Czech Republic">Czech Republic</option>
-                        <option value="Denmark">Denmark</option>
-                        <option value="Djibouti">Djibouti</option>
-                        <option value="Dominica">Dominica</option>
-                        <option value="Dominican Republic">Dominican Republic</option>
-                        <option value="East Timor">East Timor</option>
-                        <option value="Ecuador">Ecuador</option>
-                        <option value="Egypt">Egypt</option>
-                        <option value="El Salvador">El Salvador</option>
-                        <option value="Equatorial Guinea">Equatorial Guinea</option>
-                        <option value="Eritrea">Eritrea</option>
-                        <option value="Estonia">Estonia</option>
-                        <option value="Ethiopia">Ethiopia</option>
-                        <option value="Falkland Islands">Falkland Islands (Malvinas)</option>
-                        <option value="Faroe Islands">Faroe Islands</option>
-                        <option value="Fiji">Fiji</option>
-                        <option value="Finland">Finland</option>
-                        <option value="France">France</option>
-                        <option value="France Metropolitan">France, Metropolitan</option>
-                        <option value="French Guiana">French Guiana</option>
-                        <option value="French Polynesia">French Polynesia</option>
-                        <option value="French Southern Territories">French Southern Territories</option>
-                        <option value="Gabon">Gabon</option>
-                        <option value="Gambia">Gambia</option>
-                        <option value="Georgia">Georgia</option>
-                        <option value="Germany">Germany</option>
-                        <option value="Ghana">Ghana</option>
-                        <option value="Gibraltar">Gibraltar</option>
-                        <option value="Greece">Greece</option>
-                        <option value="Greenland">Greenland</option>
-                        <option value="Grenada">Grenada</option>
-                        <option value="Guadeloupe">Guadeloupe</option>
-                        <option value="Guam">Guam</option>
-                        <option value="Guatemala">Guatemala</option>
-                        <option value="Guinea">Guinea</option>
-                        <option value="Guinea-Bissau">Guinea-Bissau</option>
-                        <option value="Guyana">Guyana</option>
-                        <option value="Haiti">Haiti</option>
-                        <option value="Heard and McDonald Islands">Heard and Mc Donald Islands</option>
-                        <option value="Holy See">Holy See (Vatican City State)</option>
-                        <option value="Honduras">Honduras</option>
-                        <option value="Hong Kong">Hong Kong</option>
-                        <option value="Hungary">Hungary</option>
-                        <option value="Iceland">Iceland</option>
-                        <option value="India">India</option>
-                        <option value="Indonesia">Indonesia</option>
-                        <option value="Iran">Iran (Islamic Republic of)</option>
-                        <option value="Iraq">Iraq</option>
-                        <option value="Ireland">Ireland</option>
-                        <option value="Israel">Israel</option>
-                        <option value="Italy">Italy</option>
-                        <option value="Jamaica">Jamaica</option>
-                        <option value="Japan">Japan</option>
-                        <option value="Jordan">Jordan</option>
-                        <option value="Kazakhstan">Kazakhstan</option>
-                        <option value="Kenya">Kenya</option>
-                        <option value="Kiribati">Kiribati</option>
-                        <option value="Democratic People's Republic of Korea">Korea, Democratic People's Republic of</option>
-                        <option value="Korea">Korea, Republic of</option>
-                        <option value="Kuwait">Kuwait</option>
-                        <option value="Kyrgyzstan">Kyrgyzstan</option>
-                        <option value="Lao">Lao People's Democratic Republic</option>
-                        <option value="Latvia">Latvia</option>
-                        <option value="Lebanon" >Lebanon</option>
-                        <option value="Lesotho">Lesotho</option>
-                        <option value="Liberia">Liberia</option>
-                        <option value="Libyan Arab Jamahiriya">Libyan Arab Jamahiriya</option>
-                        <option value="Liechtenstein">Liechtenstein</option>
-                        <option value="Lithuania">Lithuania</option>
-                        <option value="Luxembourg">Luxembourg</option>
-                        <option value="Macau">Macau</option>
-                        <option value="Macedonia">Macedonia, The Former Yugoslav Republic of</option>
-                        <option value="Madagascar">Madagascar</option>
-                        <option value="Malawi">Malawi</option>
-                        <option value="Malaysia">Malaysia</option>
-                        <option value="Maldives">Maldives</option>
-                        <option value="Mali">Mali</option>
-                        <option value="Malta">Malta</option>
-                        <option value="Marshall Islands">Marshall Islands</option>
-                        <option value="Martinique">Martinique</option>
-                        <option value="Mauritania">Mauritania</option>
-                        <option value="Mauritius">Mauritius</option>
-                        <option value="Mayotte">Mayotte</option>
-                        <option value="Mexico">Mexico</option>
-                        <option value="Micronesia">Micronesia, Federated States of</option>
-                        <option value="Moldova">Moldova, Republic of</option>
-                        <option value="Monaco">Monaco</option>
-                        <option value="Mongolia">Mongolia</option>
-                        <option value="Montserrat">Montserrat</option>
-                        <option value="Morocco">Morocco</option>
-                        <option value="Mozambique">Mozambique</option>
-                        <option value="Myanmar">Myanmar</option>
-                        <option value="Namibia">Namibia</option>
-                        <option value="Nauru">Nauru</option>
-                        <option value="Nepal">Nepal</option>
-                        <option value="Netherlands">Netherlands</option>
-                        <option value="Netherlands Antilles">Netherlands Antilles</option>
-                        <option value="New Caledonia">New Caledonia</option>
-                        <option value="New Zealand">New Zealand</option>
-                        <option value="Nicaragua">Nicaragua</option>
-                        <option value="Niger">Niger</option>
-                        <option value="Nigeria">Nigeria</option>
-                        <option value="Niue">Niue</option>
-                        <option value="Norfolk Island">Norfolk Island</option>
-                        <option value="Northern Mariana Islands">Northern Mariana Islands</option>
-                        <option value="Norway">Norway</option>
-                        <option value="Oman">Oman</option>
-                        <option value="Pakistan">Pakistan</option>
-                        <option value="Palau">Palau</option>
-                        <option value="Panama">Panama</option>
-                        <option value="Papua New Guinea">Papua New Guinea</option>
-                        <option value="Paraguay">Paraguay</option>
-                        <option value="Peru">Peru</option>
-                        <option value="Philippines">Philippines</option>
-                        <option value="Pitcairn">Pitcairn</option>
-                        <option value="Poland">Poland</option>
-                        <option value="Portugal">Portugal</option>
-                        <option value="Puerto Rico">Puerto Rico</option>
-                        <option value="Qatar">Qatar</option>
-                        <option value="Reunion">Reunion</option>
-                        <option value="Romania">Romania</option>
-                        <option value="Russia">Russian Federation</option>
-                        <option value="Rwanda">Rwanda</option>
-                        <option value="Saint Kitts and Nevis">Saint Kitts and Nevis</option> 
-                        <option value="Saint LUCIA">Saint LUCIA</option>
-                        <option value="Saint Vincent">Saint Vincent and the Grenadines</option>
-                        <option value="Samoa">Samoa</option>
-                        <option value="San Marino">San Marino</option>
-                        <option value="Sao Tome and Principe">Sao Tome and Principe</option> 
-                        <option value="Saudi Arabia">Saudi Arabia</option>
-                        <option value="Senegal">Senegal</option>
-                        <option value="Seychelles">Seychelles</option>
-                        <option value="Sierra">Sierra Leone</option>
-                        <option value="Singapore">Singapore</option>
-                        <option value="Slovakia">Slovakia (Slovak Republic)</option>
-                        <option value="Slovenia">Slovenia</option>
-                        <option value="Solomon Islands">Solomon Islands</option>
-                        <option value="Somalia">Somalia</option>
-                        <option value="South Africa">South Africa</option>
-                        <option value="South Georgia">South Georgia and the South Sandwich Islands</option>
-                        <option value="Span">Spain</option>
-                        <option value="SriLanka">Sri Lanka</option>
-                        <option value="St. Helena">St. Helena</option>
-                        <option value="St. Pierre and Miguelon">St. Pierre and Miquelon</option>
-                        <option value="Sudan">Sudan</option>
-                        <option value="Suriname">Suriname</option>
-                        <option value="Svalbard">Svalbard and Jan Mayen Islands</option>
-                        <option value="Swaziland">Swaziland</option>
-                        <option value="Sweden">Sweden</option>
-                        <option value="Switzerland">Switzerland</option>
-                        <option value="Syria">Syrian Arab Republic</option>
-                        <option value="Taiwan">Taiwan, Province of China</option>
-                        <option value="Tajikistan">Tajikistan</option>
-                        <option value="Tanzania">Tanzania, United Republic of</option>
-                        <option value="Thailand">Thailand</option>
-                        <option value="Togo">Togo</option>
-                        <option value="Tokelau">Tokelau</option>
-                        <option value="Tonga">Tonga</option>
-                        <option value="Trinidad and Tobago">Trinidad and Tobago</option>
-                        <option value="Tunisia">Tunisia</option>
-                        <option value="Turkey">Turkey</option>
-                        <option value="Turkmenistan">Turkmenistan</option>
-                        <option value="Turks and Caicos">Turks and Caicos Islands</option>
-                        <option value="Tuvalu">Tuvalu</option>
-                        <option value="Uganda">Uganda</option>
-                        <option value="Ukraine">Ukraine</option>
-                        <option value="United Arab Emirates">United Arab Emirates</option>
-                        <option value="United Kingdom" selected>United Kingdom</option>
-                        <option value="United States">United States</option>
-                        <option value="United States Minor Outlying Islands">United States Minor Outlying Islands</option>
-                        <option value="Uruguay">Uruguay</option>
-                        <option value="Uzbekistan">Uzbekistan</option>
-                        <option value="Vanuatu">Vanuatu</option>
-                        <option value="Venezuela">Venezuela</option>
-                        <option value="Vietnam">Viet Nam</option>
-                        <option value="Virgin Islands (British)">Virgin Islands (British)</option>
-                        <option value="Virgin Islands (U.S)">Virgin Islands (U.S.)</option>
-                        <option value="Wallis and Futana Islands">Wallis and Futuna Islands</option>
-                        <option value="Western Sahara">Western Sahara</option>
-                        <option value="Yemen">Yemen</option>
-                        <option value="Yugoslavia">Yugoslavia</option>
-                        <option value="Zambia">Zambia</option>
-                        <option value="Zimbabwe">Zimbabwe</option>
-                      </select>
-                    </li>
-                    <li class="spec-postcode required-input column float-right">
-                      <label for="postcode" class="show-for-sr">Postcode / Zip code*</label>
-                      <input id="postcode" name="postcode" required="" placeholder="Postcode / Zip code" type="text" class="column">
-                    </li>
-                  </ol>
-                </fieldset>
-                <fieldset>
-                  <ol>
-                    <li class="required-input">
-                      <label for="email" class="show-for-sr">Email *</label>
-                      <input id="email" type="email" name="email" placeholder="Email Address" title="Please enter a valid email" required="" class="required-input">
-                    </li>
-                    <li class="required-input">
-                      <label for="tel" class="show-for-sr">Phone Number *</label>
-                      <input id="tel" type="tel" name="tel" pattern="d{10}" placeholder="Phone Number" required="" class="required-input">
-                    </li>
-                  </ol>
-                </fieldset>
-                <fieldset class="spec-additional-yacht">
-                  <ol>
-                    <li>
-                      <label for="more-information" class="show-for-sr">More Information *</label>
-                      <textarea id="more-information" name="more-information" type="text" placeholder="Additional Information"></textarea>
-                    </li>
-                    <li class="row">
-                      <label for="allow-more-information" class="request-more-info-confirmation required-input column large-8">Would you like to receive information and updates from Oyster Yachts via email?*</label>
-                      <select id="request-information" name="request-information-2" required="" class="column large-2 float-right">
-                        <option value="">Select</option>
-                        <option value="Yes">Yes</option>
-                        <option value="No">No</option>
-                      </select>
-                      <input type="hidden" name="event_name" value="{title}">
-                    </li>
-                  </ol>
-                </fieldset>
-                <fieldset class="spec-additional-yacht">
-                  <ol>
-                    <li class="required-input">
-                    <p>Please tick the checkbox below:</p>
-                    <p>{freeform:captcha}</p>
-                    <input id="hiddenRecaptcha" type="hidden" name="hiddenRecaptcha" class="hiddenRecaptcha required">
-                    </li>
-                  </ol>
-              </fieldset>
-                <small>Your information will never be sold to any other company. Your data will be treated in accordance with the Data Protection Act 1998. Please see our Privacy Policy for more details. If you wish to update or delete the data you have voluntarily given us please contact us on +44 23 8083 1010 or email sales@oysteryachts.com.
-                </small>
-          </fieldset>
-     {!--   </form> --}
-      {/exp:freeform:form}
-    </div>
-    <div class="modal-footer">
-        <div class="float-right">
-          <button data-close aria-label="Close modal" type="button" class="button-solid-lightgrey">Cancel</button>
-          <button aria-controls="formModal" aria-haspopup="true" tabindex="0" type="submit" value="Submit" class="button-solid-blue">Request Boarding Pass</button>
+            </select>
+          </div>
+          <div class="form-viewing-details required-input">
+            <label for="group-size" class="group-size column large-5">Group size: </label>
+            <select id="group-size" name="group_size" required class="column large-5 float-right">
+              <option value="">Select</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="8">7</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+            </select>
+          </div>
         </div>
-      </div>
+      </fieldset>
+      <fieldset class="spec-current-yacht">
+        <fieldset>
+          <ol>
+            <li class="required-input">
+              <label for="titlename" class="show-for-sr">Title *</label>
+              <input id="titlename" type="text" name="title" placeholder="Title" required="">
+            </li>
+            <li class="required-input">
+              <label for="firstname" class="show-for-sr">First Name *</label>
+              <input id="firstname" type="text" name="first_name" placeholder="First Name" required="">
+            </li>
+            <li class="required-input">
+              <label for="lastname" class="show-for-sr">Last Name *</label>
+              <input id="lastname" type="text" name="last_name" placeholder="Last Name" required="">
+            </li>
+          </ol>
+        </fieldset>
+        <fieldset>
+          <fieldset class="address-fill-out">
+            <ol>
+              <li class="address-line first-address-line">
+                <label for="addressline1" class="show-for-sr">Address Line 1 *</label>
+                <input id="addressline1" type="text" name="addressline1" placeholder="Address Line 1" required="">
+              </li>
+              <li class="address-line last-address-line">
+                <label for="addressline2" class="show-for-sr">Address Line 2 *</label>
+                <input id="addressline2" type="text" name="addressline2" placeholder="Address Line 2">
+                <button type="button" class="add-address-line"><i class="add fa fa-plus"></i><span class="add-line">Add Address Line</span></button>
+              </li>
+              <li class="country-selection required-input column large-5">
+                <label for="country-slection" class="show-for-sr">Country</label>
+                <select id="country-slection" name="country-slection" required>
+                  <option value="">Select</option>
+                  <option value="Afghanistan">Afghanistan</option>
+                  <option value="Albania">Albania</option>
+                  <option value="Algeria">Algeria</option>
+                  <option value="American Samoa">American Samoa</option>
+                  <option value="Andorra">Andorra</option>
+                  <option value="Angola">Angola</option>
+                  <option value="Anguilla">Anguilla</option>
+                  <option value="Antartica">Antarctica</option>
+                  <option value="Antigua and Barbuda">Antigua and Barbuda</option>
+                  <option value="Argentina">Argentina</option>
+                  <option value="Armenia">Armenia</option>
+                  <option value="Aruba">Aruba</option>
+                  <option value="Australia">Australia</option>
+                  <option value="Austria">Austria</option>
+                  <option value="Azerbaijan">Azerbaijan</option>
+                  <option value="Bahamas">Bahamas</option>
+                  <option value="Bahrain">Bahrain</option>
+                  <option value="Bangladesh">Bangladesh</option>
+                  <option value="Barbados">Barbados</option>
+                  <option value="Belarus">Belarus</option>
+                  <option value="Belgium">Belgium</option>
+                  <option value="Belize">Belize</option>
+                  <option value="Benin">Benin</option>
+                  <option value="Bermuda">Bermuda</option>
+                  <option value="Bhutan">Bhutan</option>
+                  <option value="Bolivia">Bolivia</option>
+                  <option value="Bosnia and Herzegowina">Bosnia and Herzegowina</option>
+                  <option value="Botswana">Botswana</option>
+                  <option value="Bouvet Island">Bouvet Island</option>
+                  <option value="Brazil">Brazil</option>
+                  <option value="British Indian Ocean Territory">British Indian Ocean Territory</option>
+                  <option value="Brunei Darussalam">Brunei Darussalam</option>
+                  <option value="Bulgaria">Bulgaria</option>
+                  <option value="Burkina Faso">Burkina Faso</option>
+                  <option value="Burundi">Burundi</option>
+                  <option value="Cambodia">Cambodia</option>
+                  <option value="Cameroon">Cameroon</option>
+                  <option value="Canada">Canada</option>
+                  <option value="Cape Verde">Cape Verde</option>
+                  <option value="Cayman Islands">Cayman Islands</option>
+                  <option value="Central African Republic">Central African Republic</option>
+                  <option value="Chad">Chad</option>
+                  <option value="Chile">Chile</option>
+                  <option value="China">China</option>
+                  <option value="Christmas Island">Christmas Island</option>
+                  <option value="Cocos Islands">Cocos (Keeling) Islands</option>
+                  <option value="Colombia">Colombia</option>
+                  <option value="Comoros">Comoros</option>
+                  <option value="Congo">Congo</option>
+                  <option value="Congo">Congo, the Democratic Republic of the</option>
+                  <option value="Cook Islands">Cook Islands</option>
+                  <option value="Costa Rica">Costa Rica</option>
+                  <option value="Cota D'Ivoire">Cote d'Ivoire</option>
+                  <option value="Croatia">Croatia (Hrvatska)</option>
+                  <option value="Cuba">Cuba</option>
+                  <option value="Cyprus">Cyprus</option>
+                  <option value="Czech Republic">Czech Republic</option>
+                  <option value="Denmark">Denmark</option>
+                  <option value="Djibouti">Djibouti</option>
+                  <option value="Dominica">Dominica</option>
+                  <option value="Dominican Republic">Dominican Republic</option>
+                  <option value="East Timor">East Timor</option>
+                  <option value="Ecuador">Ecuador</option>
+                  <option value="Egypt">Egypt</option>
+                  <option value="El Salvador">El Salvador</option>
+                  <option value="Equatorial Guinea">Equatorial Guinea</option>
+                  <option value="Eritrea">Eritrea</option>
+                  <option value="Estonia">Estonia</option>
+                  <option value="Ethiopia">Ethiopia</option>
+                  <option value="Falkland Islands">Falkland Islands (Malvinas)</option>
+                  <option value="Faroe Islands">Faroe Islands</option>
+                  <option value="Fiji">Fiji</option>
+                  <option value="Finland">Finland</option>
+                  <option value="France">France</option>
+                  <option value="France Metropolitan">France, Metropolitan</option>
+                  <option value="French Guiana">French Guiana</option>
+                  <option value="French Polynesia">French Polynesia</option>
+                  <option value="French Southern Territories">French Southern Territories</option>
+                  <option value="Gabon">Gabon</option>
+                  <option value="Gambia">Gambia</option>
+                  <option value="Georgia">Georgia</option>
+                  <option value="Germany">Germany</option>
+                  <option value="Ghana">Ghana</option>
+                  <option value="Gibraltar">Gibraltar</option>
+                  <option value="Greece">Greece</option>
+                  <option value="Greenland">Greenland</option>
+                  <option value="Grenada">Grenada</option>
+                  <option value="Guadeloupe">Guadeloupe</option>
+                  <option value="Guam">Guam</option>
+                  <option value="Guatemala">Guatemala</option>
+                  <option value="Guinea">Guinea</option>
+                  <option value="Guinea-Bissau">Guinea-Bissau</option>
+                  <option value="Guyana">Guyana</option>
+                  <option value="Haiti">Haiti</option>
+                  <option value="Heard and McDonald Islands">Heard and Mc Donald Islands</option>
+                  <option value="Holy See">Holy See (Vatican City State)</option>
+                  <option value="Honduras">Honduras</option>
+                  <option value="Hong Kong">Hong Kong</option>
+                  <option value="Hungary">Hungary</option>
+                  <option value="Iceland">Iceland</option>
+                  <option value="India">India</option>
+                  <option value="Indonesia">Indonesia</option>
+                  <option value="Iran">Iran (Islamic Republic of)</option>
+                  <option value="Iraq">Iraq</option>
+                  <option value="Ireland">Ireland</option>
+                  <option value="Israel">Israel</option>
+                  <option value="Italy">Italy</option>
+                  <option value="Jamaica">Jamaica</option>
+                  <option value="Japan">Japan</option>
+                  <option value="Jordan">Jordan</option>
+                  <option value="Kazakhstan">Kazakhstan</option>
+                  <option value="Kenya">Kenya</option>
+                  <option value="Kiribati">Kiribati</option>
+                  <option value="Democratic People's Republic of Korea">Korea, Democratic People's Republic of</option>
+                  <option value="Korea">Korea, Republic of</option>
+                  <option value="Kuwait">Kuwait</option>
+                  <option value="Kyrgyzstan">Kyrgyzstan</option>
+                  <option value="Lao">Lao People's Democratic Republic</option>
+                  <option value="Latvia">Latvia</option>
+                  <option value="Lebanon">Lebanon</option>
+                  <option value="Lesotho">Lesotho</option>
+                  <option value="Liberia">Liberia</option>
+                  <option value="Libyan Arab Jamahiriya">Libyan Arab Jamahiriya</option>
+                  <option value="Liechtenstein">Liechtenstein</option>
+                  <option value="Lithuania">Lithuania</option>
+                  <option value="Luxembourg">Luxembourg</option>
+                  <option value="Macau">Macau</option>
+                  <option value="Macedonia">Macedonia, The Former Yugoslav Republic of</option>
+                  <option value="Madagascar">Madagascar</option>
+                  <option value="Malawi">Malawi</option>
+                  <option value="Malaysia">Malaysia</option>
+                  <option value="Maldives">Maldives</option>
+                  <option value="Mali">Mali</option>
+                  <option value="Malta">Malta</option>
+                  <option value="Marshall Islands">Marshall Islands</option>
+                  <option value="Martinique">Martinique</option>
+                  <option value="Mauritania">Mauritania</option>
+                  <option value="Mauritius">Mauritius</option>
+                  <option value="Mayotte">Mayotte</option>
+                  <option value="Mexico">Mexico</option>
+                  <option value="Micronesia">Micronesia, Federated States of</option>
+                  <option value="Moldova">Moldova, Republic of</option>
+                  <option value="Monaco">Monaco</option>
+                  <option value="Mongolia">Mongolia</option>
+                  <option value="Montserrat">Montserrat</option>
+                  <option value="Morocco">Morocco</option>
+                  <option value="Mozambique">Mozambique</option>
+                  <option value="Myanmar">Myanmar</option>
+                  <option value="Namibia">Namibia</option>
+                  <option value="Nauru">Nauru</option>
+                  <option value="Nepal">Nepal</option>
+                  <option value="Netherlands">Netherlands</option>
+                  <option value="Netherlands Antilles">Netherlands Antilles</option>
+                  <option value="New Caledonia">New Caledonia</option>
+                  <option value="New Zealand">New Zealand</option>
+                  <option value="Nicaragua">Nicaragua</option>
+                  <option value="Niger">Niger</option>
+                  <option value="Nigeria">Nigeria</option>
+                  <option value="Niue">Niue</option>
+                  <option value="Norfolk Island">Norfolk Island</option>
+                  <option value="Northern Mariana Islands">Northern Mariana Islands</option>
+                  <option value="Norway">Norway</option>
+                  <option value="Oman">Oman</option>
+                  <option value="Pakistan">Pakistan</option>
+                  <option value="Palau">Palau</option>
+                  <option value="Panama">Panama</option>
+                  <option value="Papua New Guinea">Papua New Guinea</option>
+                  <option value="Paraguay">Paraguay</option>
+                  <option value="Peru">Peru</option>
+                  <option value="Philippines">Philippines</option>
+                  <option value="Pitcairn">Pitcairn</option>
+                  <option value="Poland">Poland</option>
+                  <option value="Portugal">Portugal</option>
+                  <option value="Puerto Rico">Puerto Rico</option>
+                  <option value="Qatar">Qatar</option>
+                  <option value="Reunion">Reunion</option>
+                  <option value="Romania">Romania</option>
+                  <option value="Russia">Russian Federation</option>
+                  <option value="Rwanda">Rwanda</option>
+                  <option value="Saint Kitts and Nevis">Saint Kitts and Nevis</option>
+                  <option value="Saint LUCIA">Saint LUCIA</option>
+                  <option value="Saint Vincent">Saint Vincent and the Grenadines</option>
+                  <option value="Samoa">Samoa</option>
+                  <option value="San Marino">San Marino</option>
+                  <option value="Sao Tome and Principe">Sao Tome and Principe</option>
+                  <option value="Saudi Arabia">Saudi Arabia</option>
+                  <option value="Senegal">Senegal</option>
+                  <option value="Seychelles">Seychelles</option>
+                  <option value="Sierra">Sierra Leone</option>
+                  <option value="Singapore">Singapore</option>
+                  <option value="Slovakia">Slovakia (Slovak Republic)</option>
+                  <option value="Slovenia">Slovenia</option>
+                  <option value="Solomon Islands">Solomon Islands</option>
+                  <option value="Somalia">Somalia</option>
+                  <option value="South Africa">South Africa</option>
+                  <option value="South Georgia">South Georgia and the South Sandwich Islands</option>
+                  <option value="Span">Spain</option>
+                  <option value="SriLanka">Sri Lanka</option>
+                  <option value="St. Helena">St. Helena</option>
+                  <option value="St. Pierre and Miguelon">St. Pierre and Miquelon</option>
+                  <option value="Sudan">Sudan</option>
+                  <option value="Suriname">Suriname</option>
+                  <option value="Svalbard">Svalbard and Jan Mayen Islands</option>
+                  <option value="Swaziland">Swaziland</option>
+                  <option value="Sweden">Sweden</option>
+                  <option value="Switzerland">Switzerland</option>
+                  <option value="Syria">Syrian Arab Republic</option>
+                  <option value="Taiwan">Taiwan, Province of China</option>
+                  <option value="Tajikistan">Tajikistan</option>
+                  <option value="Tanzania">Tanzania, United Republic of</option>
+                  <option value="Thailand">Thailand</option>
+                  <option value="Togo">Togo</option>
+                  <option value="Tokelau">Tokelau</option>
+                  <option value="Tonga">Tonga</option>
+                  <option value="Trinidad and Tobago">Trinidad and Tobago</option>
+                  <option value="Tunisia">Tunisia</option>
+                  <option value="Turkey">Turkey</option>
+                  <option value="Turkmenistan">Turkmenistan</option>
+                  <option value="Turks and Caicos">Turks and Caicos Islands</option>
+                  <option value="Tuvalu">Tuvalu</option>
+                  <option value="Uganda">Uganda</option>
+                  <option value="Ukraine">Ukraine</option>
+                  <option value="United Arab Emirates">United Arab Emirates</option>
+                  <option value="United Kingdom" selected>United Kingdom</option>
+                  <option value="United States">United States</option>
+                  <option value="United States Minor Outlying Islands">United States Minor Outlying Islands</option>
+                  <option value="Uruguay">Uruguay</option>
+                  <option value="Uzbekistan">Uzbekistan</option>
+                  <option value="Vanuatu">Vanuatu</option>
+                  <option value="Venezuela">Venezuela</option>
+                  <option value="Vietnam">Viet Nam</option>
+                  <option value="Virgin Islands (British)">Virgin Islands (British)</option>
+                  <option value="Virgin Islands (U.S)">Virgin Islands (U.S.)</option>
+                  <option value="Wallis and Futana Islands">Wallis and Futuna Islands</option>
+                  <option value="Western Sahara">Western Sahara</option>
+                  <option value="Yemen">Yemen</option>
+                  <option value="Yugoslavia">Yugoslavia</option>
+                  <option value="Zambia">Zambia</option>
+                  <option value="Zimbabwe">Zimbabwe</option>
+                </select>
+              </li>
+              <li class="spec-postcode required-input column float-right">
+                <label for="postcode" class="show-for-sr">Postcode / Zip code*</label>
+                <input id="postcode" name="postcode" required="" placeholder="Postcode / Zip code" type="text" class="column">
+              </li>
+            </ol>
+          </fieldset>
+          <fieldset>
+            <ol>
+              <li class="required-input">
+                <label for="email" class="show-for-sr">Email *</label>
+                <input id="email" type="email" name="email" placeholder="Email Address" title="Please enter a valid email" required="" class="required-input">
+              </li>
+              <li class="required-input">
+                <label for="tel" class="show-for-sr">Phone Number *</label>
+                <input id="tel" type="tel" name="tel" pattern="d{10}" placeholder="Phone Number" required="" class="required-input">
+              </li>
+            </ol>
+          </fieldset>
+          <fieldset class="spec-additional-yacht">
+            <ol>
+              <li>
+                <label for="more-information" class="show-for-sr">More Information *</label>
+                <textarea id="more-information" name="more-information" type="text" placeholder="Additional Information"></textarea>
+              </li>
+              <li class="row">
+                <label for="allow-more-information" class="request-more-info-confirmation required-input column large-8">Would you like to receive information and updates from Oyster Yachts via email?*</label>
+                <select id="request-information" name="request-information-2" required="" class="column large-2 float-right">
+                  <option value="">Select</option>
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
+                </select>
+                <input type="hidden" name="event_name" value="{title}">
+              </li>
+            </ol>
+          </fieldset>
+          <fieldset class="spec-additional-yacht">
+            <ol>
+              <li class="required-input">
+                <p>Please tick the checkbox below:</p>
+                <p>{freeform:captcha}</p>
+                <input id="hiddenRecaptcha" type="hidden" name="hiddenRecaptcha" class="hiddenRecaptcha required">
+              </li>
+            </ol>
+          </fieldset>
+          <small>Your information will never be sold to any other company. Your data will be treated in accordance with the Data Protection Act 1998. Please see our Privacy Policy for more details. If you wish to update or delete the data you have voluntarily given us please contact us on +44 23 8083 1010 or email sales@oysteryachts.com.
+                </small>
+        </fieldset>
+        {!-- </form> --} {/exp:freeform:form}
+  </div>
+  <div class="modal-footer">
+    <div class="float-right">
+      <button data-close aria-label="Close modal" type="button" class="button-solid-lightgrey">Cancel</button>
+      <button aria-controls="formModal" aria-haspopup="true" tabindex="0" type="submit" value="Submit" class="button-solid-blue">Request Boarding Pass</button>
+    </div>
+  </div>
   <button data-close aria-label="Close modal" type="button" class="close-button"><span aria-hidden="true">× </span></button>
 </section>

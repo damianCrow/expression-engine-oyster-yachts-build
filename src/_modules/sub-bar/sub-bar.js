@@ -43,9 +43,6 @@ export default class SubBar {
 
         this.activeBar = false
 
-        // this.topBarHeight = 0
-        // filterBar.style.transform = ''
-
         this.fixedHeight = filterBar.getBoundingClientRect().height
       }
       if (fixedTopValue !== this.topBarHeight) {
@@ -57,7 +54,6 @@ export default class SubBar {
         filterBar.style.transform = ''
       }
     }
-
 
     return this.fixedHeight
   }

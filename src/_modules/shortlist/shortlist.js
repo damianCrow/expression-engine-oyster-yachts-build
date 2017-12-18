@@ -159,24 +159,6 @@ export default class Shortlist {
       })
     }
 
-    function removeFromList(yachtToRemoveId) {
-      const yachtToRemove = $('.yachts-shortlist [data-yachtid="' + yachtToRemoveId + '"]')
-
-      const refinedList = $.grep(shortlistYachts, e => e.yachtid !== yachtToRemoveId)
-
-      shortlistYachts = refinedList
-
-      localStorage.setItem('localShortlist', JSON.stringify(shortlistYachts))
-
-      toggleEmptyShortlistMessage(shortlistYachts)
-
-      console.log('yachtToRemove', yachtToRemove)
-
-      $(yachtToRemove).parent('.column').css('display', 'none')
-      // $(yachtToRemove).parent().html('test')
-      addYachtsToFreeform()
-    }
-
     function toggleEmptyShortlistMessage(shortlistYachts) {
       const shortlistCont = 'user-shortlist'
       const hiddenClass = '--hide-message'
@@ -194,6 +176,30 @@ export default class Shortlist {
         requestBtn.removeAttribute('disabled')
         requestBtn.style.opacity = 1
       }
+    }
+
+    function removeFromList(yachtToRemoveId) {
+      const yachtToRemove = $('.yachts-shortlist [data-yachtid="' + yachtToRemoveId + '"]')
+
+      console.log('yachtToRemoveId', yachtToRemoveId)
+
+      const refinedList = $.grep(shortlistYachts, e => e.yachtId !== yachtToRemoveId)
+
+      console.log('removeFromList()')
+      console.log('shortlistYachts', shortlistYachts)
+      console.log('refinedList', refinedList)
+
+      shortlistYachts = refinedList
+
+      localStorage.setItem('localShortlist', JSON.stringify(shortlistYachts))
+
+      toggleEmptyShortlistMessage(shortlistYachts)
+
+      console.log('yachtToRemove', yachtToRemove)
+
+      $(yachtToRemove).parent('.column').css('display', 'none')
+      // $(yachtToRemove).parent().html('test')
+      addYachtsToFreeform()
     }
 
     $('.add-to-shortlist').on('click', (e) => {

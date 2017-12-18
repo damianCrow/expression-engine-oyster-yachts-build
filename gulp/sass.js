@@ -1,8 +1,9 @@
 'use strict';
 
-import path from 'path';
-import autoprefixer from 'autoprefixer';
-import gulpif from 'gulp-if';
+import path from 'path'
+import autoprefixer from 'autoprefixer'
+import gulpif from 'gulp-if'
+import flexbugs from 'postcss-flexbugs-fixes'
 
 export default function(gulp, plugins, args, config, taskTarget, browserSync) {
   const dirs = config.directories;
@@ -26,7 +27,7 @@ export default function(gulp, plugins, args, config, taskTarget, browserSync) {
         plugins.util.log(err);
       })
       .on('error', plugins.notify.onError(config.defaultNotification))
-      .pipe(plugins.postcss([autoprefixer({ browsers: ['last 4 version', '> 5%'] })]))
+      .pipe(plugins.postcss([autoprefixer({ browsers: ['last 4 version', '> 5%'] }), flexbugs]))
       .pipe(plugins.rename((path) => {
         // Remove 'source' directory as well as prefixed folder underscores
         // Ex: 'src/_styles' --> '/styles'

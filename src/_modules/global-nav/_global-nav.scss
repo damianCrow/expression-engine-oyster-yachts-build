@@ -46,8 +46,8 @@
       margin: ($global-margin / 2) 0;
 
       a {
-        @include quarto-bold;
-      }      
+        @include h3-styles;
+      }
     }
   }
 
@@ -68,19 +68,22 @@
 
     @include breakpoint(medium up) {
       flex-direction: row;
+      align-items: center;
     }
   }
 
   &__owners {
+    margin: $global-margin 0;
     @include breakpoint(medium up) {
       flex: 1;
+      margin: 0;
     }
   }
 
   &__social {
     display: flex;
     height: 25px;
-    justify-content: space-between;
+    // justify-content: space-between;
     width: 100%;
 
     @include breakpoint(medium up) {
@@ -89,6 +92,7 @@
 
     > li {
       flex: 0 0 auto;
+      margin-right: $global-margin;
 
       > a {
         display: block;

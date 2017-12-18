@@ -1,210 +1,207 @@
 {exp:channel:entries channel="brokerage_landing" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published" limit="1"}
 {embed="site/.header" page_title="Brokerage Fleet" entry_id="{entry_id}" snap_to=".hero #global-page-filters" snap_offset="55"}
 {/exp:channel:entries}
-{embed="site/.sub_bar-brokerage" page_title="Brokerage" page="fleet"}
-<section style="background-image: url('/images/static/brokerage_header.jpg')" class="hero after-nav global-page-hero global-page-hero--small">
-	
-	{embed="brokerage/.filters"}
-</section>
-<section class="page-fleet brokerage-fleet global-padding-top-only--small">
-	<div class="banner">Brokerage Fleet</div>
-	<div class="row row-pad content global-padding-top-only--small">
-		<div id="yacht-grid" class="row">
-			<div class="no-results"><h2><strong>No Results</strong></h2><p>Sorry there doesn’t appear to be anything that matches your search criteria. Please select another option or contact us direct on <a href="mailto:info@oysteryachts.com">info@oysteryachts.com</a>.</p></div>
-			<ul>
-				{exp:channel:entries channel="brokerage" dynamic="no" disable="member_data|pagination|member_data" cache="yes" refresh="60" status="published" search:brokerage_listing_size="=Large" orderby="brokerage_model|brokerage_price" sort="desc|desc"}
-				<li class="column large-12 size-large hide" data-model="{if other_model != ""}{other_model}{if:else}{brokerage_model}{/if}" {if brokerage_feature_text != ""} data-listing-hightlight="{brokerage_feature_text}"" {/if} data-price="{brokerage_price}" data-location="{categories show_group='2' backspace='1'}{category_url_title}|{/categories}" data-status="{brokerage_status}"{categories show_group='4' show='17'} data-non-oyster="true"{/categories}>
-					<div data-yachtid="{entry_id}" data-spec="{specification_pdf}" data-yachttype="brokerage" class="yacht-list-item<?php if (time() - (int) '{brokerage_status_changed}' < 60*60*24*30): ?> updated-listing<?php endif; ?>">
-						<div class="listing-header">
-							<div class="listing-image-container">
-								<a href="{url_title_path='brokerage/fleet'}">
-									<div class="listing-images">
+<article>
+	{embed="site/.sub_bar-brokerage" page_title="Brokerage" page="fleet"}
+	<section style="background-image: url('/images/static/brokerage_header.jpg')" class="hero after-nav after-nav--sub global-page-hero global-page-hero--small">
+		
+		{embed="brokerage/.filters"}
+	</section>
+	<section class="page-fleet brokerage-fleet global-padding-top-only--small">
+		<div class="banner">Brokerage Fleet</div>
+		<div class="row row-pad content global-padding-top-only--small">
+			<div id="yacht-grid" class="row">
+				<div class="no-results"><h2><strong>No Results</strong></h2><p>Sorry there doesn’t appear to be anything that matches your search criteria. Please select another option or contact us direct on <a href="mailto:info@oysteryachts.com">info@oysteryachts.com</a>.</p></div>
+				<ul>
+					{exp:channel:entries channel="brokerage" dynamic="no" disable="member_data|pagination|member_data" cache="yes" refresh="60" status="published" search:brokerage_listing_size="=Large" orderby="brokerage_model|brokerage_price" sort="desc|desc"}
+					<li class="column large-12 size-large hide" data-model="{if other_model != ""}{other_model}{if:else}{brokerage_model}{/if}" {if brokerage_feature_text != ""} data-listing-hightlight="{brokerage_feature_text}"" {/if} data-price="{brokerage_price}" data-location="{categories show_group='2' backspace='1'}{category_url_title}|{/categories}" data-status="{brokerage_status}"{categories show_group='4' show='17'} data-non-oyster="true"{/categories}>
+						<div data-yachtid="{entry_id}" data-spec="{specification_pdf}" data-yachttype="brokerage" class="yacht-list-item<?php if (time() - (int) '{brokerage_status_changed}' < 60*60*24*30): ?> updated-listing<?php endif; ?>">
+							<div class="listing-header">
+								<div class="listing-image-container">
+									<a href="{url_title_path='brokerage/fleet'}">
+										<div class="listing-images">
 
-										{brokerage_listing_images}
-										<div class="yacht-listing-photo"><img src="{image:url:blur}" data-img-name="{image:title}" data-sizes="auto" data-srcset="{image:url:w_215} 215w, {image:url:w_322} 322w, {image:url:w_430} 430w" class="lazyload blur-up"></div>
-										{/brokerage_listing_images}
-				
-									</div>
-								</a>
-								{share_buttons}
-							</div>
-						</div>
+											{brokerage_listing_images}
+											<div class="yacht-listing-photo"><img src="{image:url:blur}" data-img-name="{image:title}" data-sizes="auto" data-srcset="{image:url:w_215} 215w, {image:url:w_322} 322w, {image:url:w_430} 430w" class="lazyload blur-up"></div>
+											{/brokerage_listing_images}
 					
-						<div class="listing-content">
-							<a class="yacht-listing-title yacht-listing-title--without-side-borders" href="{url_title_path='brokerage/fleet'}">
-								<span class="yacht-list-modal">{if other_model != ""}{other_model}{if:else}{brokerage_model}{/if}</span>
-								<span class="yacht-list-name double-slash">{title}</span>
-							</a>
-							<table class="table listing-table{if brokerage_feature_text != ""} feature-col{/if}">
-								<tbody>
-									<tr>
-										<td>Located: <span>{brokerage_location}</span></td>
-										<td>Year Built: <span>{brokerage_year_built}</span></td>
-									</tr>
-									<tr>
-										<td>Price: <span>
-											{if brokerage_price != ""}
-											{brokerage_currency}<?php echo number_format({brokerage_price}); ?> <span>{brokerage_vat}</span>
-											{if:else}
-												POA
-											{/if}
-										</td>
-										<td>Status: <span>{brokerage_status}</span></td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
+										</div>
+									</a>
+									{share_buttons}
+								</div>
+							</div>
 						
-					</div>
-				</li>
-				{/exp:channel:entries}
-			</ul>
-			<ul>
-				{exp:channel:entries channel="brokerage" dynamic="no" disable="member_data|pagination|member_data" cache="yes" refresh="60" status="published" search:brokerage_listing_size="=Medium" orderby="brokerage_model|brokerage_price" sort="desc|desc"}
-				<li class="column large-6 size-medium hide{if count == total_results} end{/if}" data-model="{if other_model != ""}{other_model}{if:else}{brokerage_model}{/if}" {if brokerage_feature_text != ""} data-listing-hightlight="{brokerage_feature_text}"" {/if} data-price="{brokerage_price}" data-location="{categories show_group='2' backspace='1'}{category_url_title}|{/categories}" data-status="{brokerage_status}"{categories show_group='4' show='17'} data-non-oyster="true"{/categories}>
-					<div data-yachtid="{entry_id}" data-spec="{specification_pdf}" data-yachttype="brokerage" class="yacht-list-item<?php if (time() - (int) '{brokerage_status_changed}' < 60*60*24*30): ?> updated-listing<?php endif; ?>">
-						<div class="listing-header">
-							<div class="listing-image-container">
-								<a href="{url_title_path='brokerage/fleet'}">
-									<div class="listing-images">
-										
-										{brokerage_main_image}
-										<div class="yacht-listing-photo"><img src="{image:url:blur}" data-img-name="{image:title}" data-sizes="auto" data-srcset="{image:url:w_416} 416w, {image:url:w_633} 633w, {image:url:w_983} 983w" class="lazyload blur-up"></div>
-										{/brokerage_main_image}
-
-									</div>
-								</a>
-								{share_buttons}
-							</div>
-						</div>
-						<div class="listing-content">
-							<a class="yacht-listing-title yacht-listing-title--without-side-borders" href="{url_title_path='brokerage/fleet'}">
-								<span class="yacht-list-modal">{if other_model != ""}{other_model}{if:else}{brokerage_model}{/if}</span>
-								<span class="yacht-list-name double-slash">{title}</span>
-							</a>
-							<table class="table listing-table{if brokerage_feature_text != ""} feature-col{/if}">
-								<tbody>
-									<tr>
-										<td>Located: <span>{brokerage_location}</span></td>
-										<td>Year Built: <span>{brokerage_year_built}</span></td>
-									</tr>
-									<tr>
-										<td>Price: <span>
-											{if brokerage_price != ""}
-											{brokerage_currency}<?php echo number_format({brokerage_price}); ?> <span>{brokerage_vat}</span>
-											{if:else}
-												POA
-											{/if}
-										</td>
-										<td>Status: <span>{brokerage_status}</span></td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-				</li>
-				{/exp:channel:entries}
-			</ul>
-			<ul>
-				{exp:channel:entries channel="brokerage" dynamic="no" disable="member_data|pagination|member_data" cache="yes" refresh="60" status="published" search:brokerage_listing_size="=Small" search:brokerage_model="not Oyster LD" orderby="brokerage_model|brokerage_price" sort="desc|desc"}
-				<li class="column large-4 size-small hide{if count == total_results} end{/if}" data-model="{if other_model != ""}{other_model}{if:else}{brokerage_model}{/if}" {if brokerage_feature_text != ""} data-listing-hightlight="{brokerage_feature_text}"" {/if} data-price="{brokerage_price}" data-location="{categories show_group='2' backspace='1'}{category_url_title}|{/categories}" data-status="{brokerage_status}"{categories show_group='4' show='17'} data-non-oyster="true"{/categories}>
-					<div data-yachtid="{entry_id}" data-spec="{specification_pdf}" data-yachttype="brokerage" class="yacht-list-item<?php if (time() - (int) '{brokerage_status_changed}' < 60*60*24*30): ?> updated-listing<?php endif; ?>">
-						<div class="listing-header">
-							<div class="listing-image-container">
-								<a href="{url_title_path='brokerage/fleet'}">
-									<div class="listing-images">
-									
-										{brokerage_main_image}
-										<div class="yacht-listing-photo"><img src="{image:url:blur}" data-img-name="{image:title}" data-sizes="auto" data-srcset="{image:url:w_416} 416w, {image:url:w_633} 633w, {image:url:w_983} 983w" class="lazyload blur-up"></div>
-										{/brokerage_main_image}
-
-									</div>
-								</a>
-								{share_buttons}
-							</div>
-						</div>
-						<div class="listing-content">
-							<a class="yacht-listing-title yacht-listing-title--without-side-borders" href="{url_title_path='brokerage/fleet'}">
-								<span class="yacht-list-modal">{if other_model != ""}{other_model}{if:else}{brokerage_model}{/if}</span>
-								<span class="yacht-list-name double-slash">{title}</span>
-							</a>
-							<table class="table listing-table{if brokerage_feature_text != ""} feature-col{/if}">
-								<tbody>
-									<tr>
-										<td>Located: <span>{brokerage_location}</span></td>
-										<td>Year Built: <span>{brokerage_year_built}</span></td>
-									</tr>
-									<tr>
-										<td>Price: <span>
-											{if brokerage_price != ""}
-											{brokerage_currency}<?php echo number_format({brokerage_price}); ?> <span>{brokerage_vat}</span>
-											{if:else}
-												POA
-											{/if}
-										</td>
-										<td>Status: <span>{brokerage_status}</span></td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-
-					</div>
-				</li>
-				{/exp:channel:entries}
-				{exp:channel:entries channel="brokerage" dynamic="no" disable="member_data|pagination|member_data" cache="yes" refresh="60" status="published" search:brokerage_listing_size="=Small" search:brokerage_model="Oyster LD" orderby="brokerage_model|brokerage_price" sort="desc|desc"}
-				<li class="column large-4 size-small hide{if count == total_results} end{/if}" data-model="{if other_model != ""}{other_model}{if:else}{brokerage_model}{/if}" {if brokerage_feature_text != ""} data-listing-hightlight="{brokerage_feature_text}"" {/if} data-price="{brokerage_price}" data-location="{categories show_group='2' backspace='1'}{category_url_title}|{/categories}" data-status="{brokerage_status}"{categories show_group='4' show='17'} data-non-oyster="true"{/categories}>
-					<div data-yachtid="{entry_id}" data-spec="{specification_pdf}" data-yachttype="brokerage" class="yacht-list-item<?php if (time() - (int) '{brokerage_status_changed}' < 60*60*24*30): ?> updated-listing<?php endif; ?>">
-						<div class="listing-header">
-							<div class="listing-image-container">
-								<a href="{url_title_path='brokerage/fleet'}">
-									<div class="listing-images">
-									
-										{brokerage_main_image}
-										<div class="yacht-listing-photo"><img src="{image:url:blur}" data-img-name="{image:title}" data-sizes="auto" data-srcset="{image:url:w_416} 416w, {image:url:w_633} 633w, {image:url:w_983} 983w" class="lazyload blur-up"></div>
-										{/brokerage_main_image}
-
-									</div>
-								</a>
-								{share_buttons}
-							</div>
-							<a href="{url_title_path='brokerage/fleet'}">
-								<div class="yacht-listing-title">
+							<div class="listing-content">
+								<a class="yacht-listing-title yacht-listing-title--without-side-borders" href="{url_title_path='brokerage/fleet'}">
 									<span class="yacht-list-modal">{if other_model != ""}{other_model}{if:else}{brokerage_model}{/if}</span>
 									<span class="yacht-list-name double-slash">{title}</span>
-								</div>
-							</a>
+								</a>
+								<table class="table listing-table{if brokerage_feature_text != ""} feature-col{/if}">
+									<tbody>
+										<tr>
+											<td>Located: <span>{brokerage_location}</span></td>
+											<td>Year Built: <span>{brokerage_year_built}</span></td>
+										</tr>
+										<tr>
+											<td>Price: <span>
+												{if brokerage_price != ""}
+												{brokerage_currency}<?php echo number_format({brokerage_price}); ?> <span>{brokerage_vat}</span>
+												{if:else}
+													POA
+												{/if}
+											</td>
+											<td>Status: <span>{brokerage_status}</span></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							
 						</div>
-						<div class="listing-content">
-							<table class="table listing-table{if brokerage_feature_text != ""} feature-col{/if}">
-								<tbody>
-									<tr>
-										<td>Located: <span>{brokerage_location}</span></td>
-										<td>Year Built: <span>{brokerage_year_built}</span></td>
-									</tr>
-									<tr>
-										<td>Price: <span>
-											{if brokerage_price != ""}
-											{brokerage_currency}<?php echo number_format({brokerage_price}); ?> <span>{brokerage_vat}</span>
-											{if:else}
-												POA
-											{/if}
-										</td>
-										<td>Status: <span>{brokerage_status}</span></td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
+					</li>
+					{/exp:channel:entries}
+				</ul>
+				<ul>
+					{exp:channel:entries channel="brokerage" dynamic="no" disable="member_data|pagination|member_data" cache="yes" refresh="60" status="published" search:brokerage_listing_size="=Medium" orderby="brokerage_model|brokerage_price" sort="desc|desc"}
+					<li class="column large-6 size-medium hide{if count == total_results} end{/if}" data-model="{if other_model != ""}{other_model}{if:else}{brokerage_model}{/if}" {if brokerage_feature_text != ""} data-listing-hightlight="{brokerage_feature_text}"" {/if} data-price="{brokerage_price}" data-location="{categories show_group='2' backspace='1'}{category_url_title}|{/categories}" data-status="{brokerage_status}"{categories show_group='4' show='17'} data-non-oyster="true"{/categories}>
+						<div data-yachtid="{entry_id}" data-spec="{specification_pdf}" data-yachttype="brokerage" class="yacht-list-item<?php if (time() - (int) '{brokerage_status_changed}' < 60*60*24*30): ?> updated-listing<?php endif; ?>">
+							<div class="listing-header">
+								<div class="listing-image-container">
+									<a href="{url_title_path='brokerage/fleet'}">
+										<div class="listing-images">
+											
+											{brokerage_main_image}
+											<div class="yacht-listing-photo"><img src="{image:url:blur}" data-img-name="{image:title}" data-sizes="auto" data-srcset="{image:url:w_416} 416w, {image:url:w_633} 633w, {image:url:w_983} 983w" class="lazyload blur-up"></div>
+											{/brokerage_main_image}
 
-					</div>
-				</li>
-				{/exp:channel:entries}
-			</ul>
+										</div>
+									</a>
+									{share_buttons}
+								</div>
+							</div>
+							<div class="listing-content">
+								<a class="yacht-listing-title yacht-listing-title--without-side-borders" href="{url_title_path='brokerage/fleet'}">
+									<span class="yacht-list-modal">{if other_model != ""}{other_model}{if:else}{brokerage_model}{/if}</span>
+									<span class="yacht-list-name double-slash">{title}</span>
+								</a>
+								<table class="table listing-table{if brokerage_feature_text != ""} feature-col{/if}">
+									<tbody>
+										<tr>
+											<td>Located: <span>{brokerage_location}</span></td>
+											<td>Year Built: <span>{brokerage_year_built}</span></td>
+										</tr>
+										<tr>
+											<td>Price: <span>
+												{if brokerage_price != ""}
+												{brokerage_currency}<?php echo number_format({brokerage_price}); ?> <span>{brokerage_vat}</span>
+												{if:else}
+													POA
+												{/if}
+											</td>
+											<td>Status: <span>{brokerage_status}</span></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</li>
+					{/exp:channel:entries}
+				</ul>
+				<ul>
+					{exp:channel:entries channel="brokerage" dynamic="no" disable="member_data|pagination|member_data" cache="yes" refresh="60" status="published" search:brokerage_listing_size="=Small" search:brokerage_model="not Oyster LD" orderby="brokerage_model|brokerage_price" sort="desc|desc"}
+					<li class="column large-4 size-small hide{if count == total_results} end{/if}" data-model="{if other_model != ""}{other_model}{if:else}{brokerage_model}{/if}" {if brokerage_feature_text != ""} data-listing-hightlight="{brokerage_feature_text}"" {/if} data-price="{brokerage_price}" data-location="{categories show_group='2' backspace='1'}{category_url_title}|{/categories}" data-status="{brokerage_status}"{categories show_group='4' show='17'} data-non-oyster="true"{/categories}>
+						<div data-yachtid="{entry_id}" data-spec="{specification_pdf}" data-yachttype="brokerage" class="yacht-list-item<?php if (time() - (int) '{brokerage_status_changed}' < 60*60*24*30): ?> updated-listing<?php endif; ?>">
+							<div class="listing-header">
+								<div class="listing-image-container">
+									<a href="{url_title_path='brokerage/fleet'}">
+										<div class="listing-images">
+										
+											{brokerage_main_image}
+											<div class="yacht-listing-photo"><img src="{image:url:blur}" data-img-name="{image:title}" data-sizes="auto" data-srcset="{image:url:w_416} 416w, {image:url:w_633} 633w, {image:url:w_983} 983w" class="lazyload blur-up"></div>
+											{/brokerage_main_image}
+
+										</div>
+									</a>
+									{share_buttons}
+								</div>
+							</div>
+							<div class="listing-content">
+								<a class="yacht-listing-title yacht-listing-title--without-side-borders" href="{url_title_path='brokerage/fleet'}">
+									<span class="yacht-list-modal">{if other_model != ""}{other_model}{if:else}{brokerage_model}{/if}</span>
+									<span class="yacht-list-name double-slash">{title}</span>
+								</a>
+								<table class="table listing-table{if brokerage_feature_text != ""} feature-col{/if}">
+									<tbody>
+										<tr>
+											<td>Located: <span>{brokerage_location}</span></td>
+											<td>Year Built: <span>{brokerage_year_built}</span></td>
+										</tr>
+										<tr>
+											<td>Price: <span>
+												{if brokerage_price != ""}
+												{brokerage_currency}<?php echo number_format({brokerage_price}); ?> <span>{brokerage_vat}</span>
+												{if:else}
+													POA
+												{/if}
+											</td>
+											<td>Status: <span>{brokerage_status}</span></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+
+						</div>
+					</li>
+					{/exp:channel:entries}
+					{exp:channel:entries channel="brokerage" dynamic="no" disable="member_data|pagination|member_data" cache="yes" refresh="60" status="published" search:brokerage_listing_size="=Small" search:brokerage_model="Oyster LD" orderby="brokerage_model|brokerage_price" sort="desc|desc"}
+					<li class="column large-4 size-small hide{if count == total_results} end{/if}" data-model="{if other_model != ""}{other_model}{if:else}{brokerage_model}{/if}" {if brokerage_feature_text != ""} data-listing-hightlight="{brokerage_feature_text}"" {/if} data-price="{brokerage_price}" data-location="{categories show_group='2' backspace='1'}{category_url_title}|{/categories}" data-status="{brokerage_status}"{categories show_group='4' show='17'} data-non-oyster="true"{/categories}>
+						<div data-yachtid="{entry_id}" data-spec="{specification_pdf}" data-yachttype="brokerage" class="yacht-list-item<?php if (time() - (int) '{brokerage_status_changed}' < 60*60*24*30): ?> updated-listing<?php endif; ?>">
+							<div class="listing-header">
+								<div class="listing-image-container">
+									<a href="{url_title_path='brokerage/fleet'}">
+										<div class="listing-images">
+										
+											{brokerage_main_image}
+											<div class="yacht-listing-photo"><img src="{image:url:blur}" data-img-name="{image:title}" data-sizes="auto" data-srcset="{image:url:w_416} 416w, {image:url:w_633} 633w, {image:url:w_983} 983w" class="lazyload blur-up"></div>
+											{/brokerage_main_image}
+
+										</div>
+									</a>
+									{share_buttons}
+								</div>
+								<a href="{url_title_path='brokerage/fleet'}">
+									<div class="yacht-listing-title">
+										<span class="yacht-list-modal">{if other_model != ""}{other_model}{if:else}{brokerage_model}{/if}</span>
+										<span class="yacht-list-name double-slash">{title}</span>
+									</div>
+								</a>
+							</div>
+							<div class="listing-content">
+								<table class="table listing-table{if brokerage_feature_text != ""} feature-col{/if}">
+									<tbody>
+										<tr>
+											<td>Located: <span>{brokerage_location}</span></td>
+											<td>Year Built: <span>{brokerage_year_built}</span></td>
+										</tr>
+										<tr>
+											<td>Price: <span>
+												{if brokerage_price != ""}
+												{brokerage_currency}<?php echo number_format({brokerage_price}); ?> <span>{brokerage_vat}</span>
+												{if:else}
+													POA
+												{/if}
+											</td>
+											<td>Status: <span>{brokerage_status}</span></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+
+						</div>
+					</li>
+					{/exp:channel:entries}
+				</ul>
+			</div>
 		</div>
-	</div>
-</section>
-<style>
-.table span span {
-	display:block;
-}    
-</style>
+	</section>
+</article>
 {footer}

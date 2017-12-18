@@ -41652,8 +41652,7 @@ var Burger = function () {
     _classCallCheck(this, Burger);
 
     this.button = button;
-    this.burgerPiece = button.querySelector('.burger__wrapper');
-    console.log('this.burgerPiece', this.burgerPiece);
+    this.burgerPiece = button;
     this.navControls = navControls;
     this.buttonTrans = 'close';
 
@@ -41666,7 +41665,7 @@ var Burger = function () {
       var _this = this;
 
       this.button.addEventListener('click', function () {
-        if ((0, _helperFunctions.hasClass)(_this.button, 'open')) {
+        if ((0, _helperFunctions.hasClass)(_this.burgerPiece, 'open')) {
           _this.navControls.close();
           _this.close();
         } else {
@@ -41677,9 +41676,9 @@ var Burger = function () {
 
       this.burgerPiece.addEventListener('transitionend', function () {
         var action = _this.buttonTrans === 'close' ? 'closing' : 'opening';
-        if ((0, _helperFunctions.hasClass)(_this.button, action)) {
-          (0, _helperFunctions.removeClass)(_this.button, action);
-          (0, _helperFunctions.addClass)(_this.button, _this.buttonTrans);
+        if ((0, _helperFunctions.hasClass)(_this.burgerPiece, action)) {
+          (0, _helperFunctions.removeClass)(_this.burgerPiece, action);
+          (0, _helperFunctions.addClass)(_this.burgerPiece, _this.buttonTrans);
         }
       });
     }
@@ -41687,18 +41686,18 @@ var Burger = function () {
     key: 'close',
     value: function close() {
       this.buttonTrans = 'close';
-      if ((0, _helperFunctions.hasClass)(this.button, 'open')) {
-        (0, _helperFunctions.removeClass)(this.button, 'open');
-        (0, _helperFunctions.addClass)(this.button, 'closing');
+      if ((0, _helperFunctions.hasClass)(this.burgerPiece, 'open')) {
+        (0, _helperFunctions.removeClass)(this.burgerPiece, 'open');
+        (0, _helperFunctions.addClass)(this.burgerPiece, 'closing');
       }
     }
   }, {
     key: 'open',
     value: function open() {
       this.buttonTrans = 'open';
-      if (!(0, _helperFunctions.hasClass)(this.button, 'open') && !(0, _helperFunctions.hasClass)(this.button, 'opening') && !(0, _helperFunctions.hasClass)(this.button, 'closing')) {
-        (0, _helperFunctions.removeClass)(this.button, 'close');
-        (0, _helperFunctions.addClass)(this.button, 'opening');
+      if (!(0, _helperFunctions.hasClass)(this.burgerPiece, 'open') && !(0, _helperFunctions.hasClass)(this.burgerPiece, 'opening') && !(0, _helperFunctions.hasClass)(this.burgerPiece, 'closing')) {
+        (0, _helperFunctions.removeClass)(this.burgerPiece, 'close');
+        (0, _helperFunctions.addClass)(this.burgerPiece, 'opening');
       }
     }
   }]);
@@ -41873,7 +41872,7 @@ var Filters = function () {
 
     if (this.filterBar) {
       this.fetchSizes();
-      this.distFromTop = (0, _helperFunctions.getElemDistance)(this.filterBar);
+      this.distFromTop = (0, _helperFunctions.getElemDistance)(this.filterBar) + 15;
     }
   }
 
@@ -41909,7 +41908,7 @@ var Filters = function () {
         }
 
         if (fixedTopValue !== this.topBarHeight && this.activeBar) {
-          filterBar.style.transform = 'translateY(' + fixedTopValue + 'px)';
+          filterBar.style.transform = 'translateY(' + fixedTopValue + 'px) translateX(10px)';
           this.topBarHeight = fixedTopValue;
         } else if (fixedTopValue === 0) {
           this.topBarHeight = 0;
@@ -42080,14 +42079,10 @@ var FormValidation = function () {
         return this.optional(element) || phone_number.length > 9 && phone_number.match(/^((\+[1-9]{1,4}[ \-]*)|(\([0-9]{2,3}\)[ \-]*)|([0-9]{2,4})[ \-]*)*?[0-9]{3,4}?[ \-]*[0-9]{3,4}?$/);
       }, 'Please specify a valid phone number');
 
-      (0, _jquery2.default)('.address-fill-out').on('click', '.add-address-line', function () {
-        var thisAddressContainer = (0, _jquery2.default)(this).parents('.address-fill-out');
+      (0, _jquery2.default)('.address-fill-out').on('click', '.add-address-line', function (e) {
+        var thisAddressContainer = (0, _jquery2.default)(e.target).parents('.address-fill-out');
         var addressLineLength = (0, _jquery2.default)('.address-line', thisAddressContainer).length;
         var newAddressLineNum = addressLineLength + 1;
-
-        console.log('this', this);
-
-        console.log('newAddressLineNum', newAddressLineNum);
 
         if (addressLineLength < 5) {
           var $lastLine = (0, _jquery2.default)('.address-line:last', thisAddressContainer);
@@ -42115,7 +42110,6 @@ var FormValidation = function () {
 
       // signup-home-footer is handled differently.
       (0, _jquery2.default)('form').not('#signup-home-footer').each(function (index, element) {
-
         var formId = (0, _jquery2.default)(element).attr('id');
         var currentForm = (0, _jquery2.default)(element);
 
@@ -42161,7 +42155,7 @@ var FormValidation = function () {
             }
 
             addErrorClassTo.addClass('error').removeClass(validClass);
-            (0, _jquery2.default)(element.form).find("label[for=" + element.id + "]").not('.checkbox-label').addClass(errorClass);
+            (0, _jquery2.default)(element.form).find('label[for=' + element.id + ']').not('.checkbox-label').addClass(errorClass);
           },
           unhighlight: function unhighlight(element, errorClass, validClass) {
             var addErrorClassTo = void 0;
@@ -42173,7 +42167,7 @@ var FormValidation = function () {
             }
 
             addErrorClassTo.removeClass('error').addClass(validClass);
-            (0, _jquery2.default)(element.form).find("label[for=" + element.id + "]").removeClass(errorClass);
+            (0, _jquery2.default)(element.form).find('label[for=' + element.id + ']').removeClass(errorClass);
           },
           submitHandler: function submitHandler(form) {
             if ((0, _jquery2.default)(form).is('form')) {
@@ -42225,22 +42219,21 @@ var FormValidation = function () {
           }
         });
 
-        (0, _jquery2.default)('select', element).change(function () {
-          if ((0, _jquery2.default)(this).find(':selected').data('available-times')) {
-            console.log((0, _jquery2.default)(this).find(':selected').data('available-times'));
-            limitTimesBasedOnDay((0, _jquery2.default)(this).find(':selected').data('available-times'));
-          }
-          (0, _jquery2.default)(this).valid();
-        });
-
         function limitTimesBasedOnDay(selectedTimes) {
           (0, _jquery2.default)('#viewing-time').empty();
           (0, _jquery2.default)("<option value=''>Select</option>").appendTo('#viewing-time');
           _jquery2.default.each(selectedTimes, function (key, element) {
-            var addAsOption = "<option value='" + element + "'>" + element + "</option>";
+            var addAsOption = '<option value=\'' + element + '\'>' + element + '</option>';
             (0, _jquery2.default)(addAsOption).appendTo('#viewing-time');
           });
         }
+
+        (0, _jquery2.default)('select', element).change(function (e) {
+          if ((0, _jquery2.default)(e.target).find(':selected').data('available-times')) {
+            limitTimesBasedOnDay((0, _jquery2.default)(e.target).find(':selected').data('available-times'));
+          }
+          (0, _jquery2.default)(e.target).valid();
+        });
       });
     }
   }]);
@@ -42631,22 +42624,23 @@ var GlobalHeader = function () {
 
     this.topBarHeight = 0;
     this.fixedTopValue = 0;
-    this.fixedHeight = this.breakpoints.atLeast('medium') ? 70 : 50;
+    this.fixedHeight = this.currentHeight();
     this.header = document.querySelector('.main-header');
     this.title = document.querySelector('.main-header__title');
 
     this.headerDependencies = [this.header, this.header.querySelector('.logo'), this.header.querySelector('.main-header__menu')];
 
     this.largeHeaderActive = true;
-
-    // this.legacy()
-    // this.snapPointCheck()
   }
 
   _createClass(GlobalHeader, [{
+    key: 'currentHeight',
+    value: function currentHeight() {
+      return this.breakpoints.atLeast('medium') ? 70 : 50;
+    }
+  }, {
     key: 'legacy',
     value: function legacy() {
-
       // OVVERIDE MOBILE ACCORDION TEXT TO BE LINKS
       (0, _jquery2.default)('#global-navigation-modal a.accordion-title span').on('click', function (evt) {
         evt.preventDefault();
@@ -42698,11 +42692,6 @@ var GlobalHeader = function () {
         }
       });
     }
-
-    // snapPointCheck(lastKnownScrollPosition = window.scrollY) {
-    //   return this.styleExpanded(lastKnownScrollPosition)
-    // }
-
   }, {
     key: 'snapPointCheck',
     value: function snapPointCheck(reactiveScrollProps) {
@@ -42711,7 +42700,7 @@ var GlobalHeader = function () {
 
       this.fixedTopValue = reactiveScrollProps.fixedTopValue;
 
-      if (lastKnownScrollPosition > headerSnapPoint && this.largeHeaderActive) {
+      if (this.largeHeaderActive && (this.currentHeight() === 50 || lastKnownScrollPosition > headerSnapPoint)) {
         this.size();
       } else if (lastKnownScrollPosition < headerSnapPoint && !this.largeHeaderActive) {
         this.size(true);
@@ -42731,11 +42720,10 @@ var GlobalHeader = function () {
           }
         }
         this.topBarHeight = 0;
-        // this.header.style.transform = ''
 
         this.largeHeaderActive = true;
 
-        this.fixedHeight = this.breakpoints.atLeast('medium') ? 70 : 50;
+        this.fixedHeight = this.currentHeight();
       } else {
         for (var _i = 0; _i < this.headerDependencies.length; _i += 1) {
           if (this.headerDependencies[_i]) {
@@ -42743,7 +42731,6 @@ var GlobalHeader = function () {
           }
         }
 
-        // this.topBarHeight = fixedTopValue
         this.largeHeaderActive = false;
 
         this.fixedHeight = 50;
@@ -43096,6 +43083,7 @@ function _interopRequireDefault(obj) {
 }
 
 function quoteTestimonials() {
+  // if ($('.quote-testimonials blockquote').length > 1) {
   (0, _jquery2.default)('.quote-testimonials').cycle({
     autoHeight: 'calc',
     pager: '.nav-points',
@@ -43105,6 +43093,7 @@ function quoteTestimonials() {
     log: false,
     timeout: 4000
   });
+  // }
 }
 
 },{"jquery":363,"jquery.cycle2":362}],390:[function(require,module,exports){
@@ -43307,26 +43296,6 @@ var Shortlist = function () {
         });
       }
 
-      function removeFromList(yachtToRemoveId) {
-        var yachtToRemove = (0, _jquery2.default)('.yachts-shortlist [data-yachtid="' + yachtToRemoveId + '"]');
-
-        var refinedList = _jquery2.default.grep(shortlistYachts, function (e) {
-          return e.yachtid !== yachtToRemoveId;
-        });
-
-        shortlistYachts = refinedList;
-
-        localStorage.setItem('localShortlist', JSON.stringify(shortlistYachts));
-
-        toggleEmptyShortlistMessage(shortlistYachts);
-
-        console.log('yachtToRemove', yachtToRemove);
-
-        (0, _jquery2.default)(yachtToRemove).parent('.column').css('display', 'none');
-        // $(yachtToRemove).parent().html('test')
-        addYachtsToFreeform();
-      }
-
       function toggleEmptyShortlistMessage(shortlistYachts) {
         var shortlistCont = 'user-shortlist';
         var hiddenClass = '--hide-message';
@@ -43344,6 +43313,32 @@ var Shortlist = function () {
           requestBtn.removeAttribute('disabled');
           requestBtn.style.opacity = 1;
         }
+      }
+
+      function removeFromList(yachtToRemoveId) {
+        var yachtToRemove = (0, _jquery2.default)('.yachts-shortlist [data-yachtid="' + yachtToRemoveId + '"]');
+
+        console.log('yachtToRemoveId', yachtToRemoveId);
+
+        var refinedList = _jquery2.default.grep(shortlistYachts, function (e) {
+          return e.yachtId !== yachtToRemoveId;
+        });
+
+        console.log('removeFromList()');
+        console.log('shortlistYachts', shortlistYachts);
+        console.log('refinedList', refinedList);
+
+        shortlistYachts = refinedList;
+
+        localStorage.setItem('localShortlist', JSON.stringify(shortlistYachts));
+
+        toggleEmptyShortlistMessage(shortlistYachts);
+
+        console.log('yachtToRemove', yachtToRemove);
+
+        (0, _jquery2.default)(yachtToRemove).parent('.column').css('display', 'none');
+        // $(yachtToRemove).parent().html('test')
+        addYachtsToFreeform();
       }
 
       (0, _jquery2.default)('.add-to-shortlist').on('click', function (e) {
@@ -43441,9 +43436,6 @@ var SubBar = function () {
           (0, _helperFunctions.addClass)(filterBar, filterBar.className.split(' ')[0] + '--large');
 
           this.activeBar = false;
-
-          // this.topBarHeight = 0
-          // filterBar.style.transform = ''
 
           this.fixedHeight = filterBar.getBoundingClientRect().height;
         }
@@ -44120,6 +44112,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.iOS = iOS;
 exports.getElemDistance = getElemDistance;
+exports.findAncestor = findAncestor;
 exports.newEl = newEl;
 exports.randomInt = randomInt;
 exports.addEventListener = addEventListener;
@@ -44166,6 +44159,12 @@ function getElemDistance(elem) {
     } while (elem);
   }
   return location >= 0 ? location : 0;
+}
+
+function findAncestor(el, cls) {
+  while ((el = el.parentNode) && el.className.indexOf(cls) < 0) {
+    return el;
+  }
 }
 
 /**
@@ -44523,7 +44522,7 @@ var Main = function () {
     this.globalLogo = document.querySelector('.logo');
     this.globalHeader = document.querySelector('.global-header-wrapper');
     this.topMessageBar = document.querySelector('.top-header');
-    this.burgerBtn = document.querySelector('.burger');
+    this.burgerBtn = document.querySelector('.burger-container');
     this.globalNav = document.querySelector('.global-nav');
     this.subBar = document.querySelector('.sub-bar');
     this.globalFooter = document.querySelector('.global-footer');
@@ -44599,24 +44598,23 @@ var Main = function () {
       this.positionElements(window.scrollY);
 
       this.enableSelect2();
+
+      this.windowReszing();
     }
   }, {
     key: 'windowReszing',
-    value: function windowReszing(tabSets) {
+    value: function windowReszing() {
+      var _this = this;
+
       var resizeTimer = void 0;
       var windowWidth = window.innerWidth;
-
       (0, _helperFunctions.windowResize)(window, 'resize', function () {
         clearTimeout(resizeTimer);
-
         resizeTimer = setTimeout(function () {
           // Run code here, resizing has "stopped"
           if (windowWidth !== window.innerWidth) {
             windowWidth = window.innerWidth;
-
-            Array.from(tabSets).forEach(function (tabSet) {
-              return tabSet.setSizes();
-            });
+            _this.positionElements(window.scrollY);
           }
         }, 250);
       }, true);
@@ -44624,7 +44622,7 @@ var Main = function () {
   }, {
     key: 'scrollEvents',
     value: function scrollEvents() {
-      var _this = this;
+      var _this2 = this;
 
       var lastKnownScrollPosition = window.scrollY;
       var ticking = false;
@@ -44634,7 +44632,7 @@ var Main = function () {
 
         if (!ticking) {
           window.requestAnimationFrame(function () {
-            _this.positionElements(lastKnownScrollPosition);
+            _this2.positionElements(lastKnownScrollPosition);
             ticking = false;
           });
           ticking = true;
@@ -44646,6 +44644,7 @@ var Main = function () {
     value: function positionElements(lastKnownScrollPosition) {
       var topValues = [10];
       var fixedTopValue = 10;
+
       for (var i = 0; i < this.scrollReativeElements.length; i += 1) {
         var lastModuleHeight = this.scrollReativeElements[i].snapPointCheck({
           lastKnownScrollPosition: lastKnownScrollPosition,
@@ -44674,7 +44673,7 @@ var Main = function () {
   }, {
     key: 'legacyCode',
     value: function legacyCode() {
-      var _this2 = this;
+      var _this3 = this;
 
       document.addEventListener('lazybeforeunveil', function (e) {
         var bg = e.target.getAttribute('data-bg');
@@ -44733,7 +44732,7 @@ var Main = function () {
 
       // opens and closes the the table when snapped on the header
       (0, _jquery2.default)('.sticky-sidebar-header .header').on('click', function () {
-        (0, _jquery2.default)(_this2).next().toggle(0);
+        (0, _jquery2.default)(_this3).next().toggle(0);
       });
 
       (0, _jquery2.default)('.slider-pager a').on('click', function (e) {
@@ -44772,7 +44771,7 @@ var Main = function () {
   }, {
     key: 'windowResize',
     value: function windowResize() {
-      var _this3 = this;
+      var _this4 = this;
 
       var resizeTimer = {};
 
@@ -44780,12 +44779,12 @@ var Main = function () {
         clearTimeout(resizeTimer);
         resizeTimer = setTimeout(function () {
           // Run code here, resizing has "stopped"
-          _this3.sideBarStick();
-          _this3.checkForTabs();
-          _this3.enableSelect2();
-          _this3.stackedBlocks();
+          _this4.sideBarStick();
+          _this4.checkForTabs();
+          _this4.enableSelect2();
+          _this4.stackedBlocks();
           Foundation.Equalizer;
-          _this3.yachtHeroSlideHeight();
+          _this4.yachtHeroSlideHeight();
         }, 250);
       });
     }
@@ -44835,41 +44834,6 @@ var Main = function () {
       var lastId = null;
 
       var locaSubNav = (0, _jquery2.default)('[data-local-scroll-pos]') || {};
-      // const locaSubNavHeight = locaSubNav.outerHeight()
-      // const localSubNavItems = locaSubNav.find('.local-subnav a')
-      // const localSubNavItemsMap = localSubNavItems.map(function () {
-      //   if ($(this).attr('href')) {
-      //     const item = $(this).attr('href').trim()
-
-      //     if (item.toString().substring(0, 1) === '#') {
-      //       if (item.length) return item
-      //     }
-      //   }
-      // })
-
-      // this.sideBarStick()
-
-      // // Simple Scroll spy for the Local SubNAV
-      // $(window).scroll(function () {
-      //   // Get container scroll position
-      //   const fromTop = $(this).scrollTop() + locaSubNavHeight
-
-      //   // Get id of current scroll item
-      //   let cur = localSubNavItemsMap.map(function () {
-      //     if ($(this).offset().top < fromTop) return this
-      //   })
-
-      //   // Get the id of the current element
-      //   cur = cur[cur.length - 1]
-      //   const id = cur && cur.length ? cur[0].id : ''
-
-      //   if (lastId !== id) {
-      //     lastId = id
-
-      //     // Set/remove active class
-      //     localSubNavItems.parent().removeClass('active').end().filter("[href='#" + id + "']").parent().addClass('active')
-      //   }
-      // })
 
       // Yacht nav - scroll to section
       locaSubNav.on('click', '.scroll', function (e) {
@@ -44883,12 +44847,12 @@ var Main = function () {
   }, {
     key: 'checkForTabs',
     value: function checkForTabs() {
-      var _this4 = this;
+      var _this5 = this;
 
       if ((0, _jquery2.default)('.sliding-tabs').length >= 1) {
         this.slidingTabs();
         (0, _jquery2.default)('.sliding-tabs').each(function (index, element) {
-          _this4.slidingTabs(element);
+          _this5.slidingTabs(element);
         });
       }
     }
