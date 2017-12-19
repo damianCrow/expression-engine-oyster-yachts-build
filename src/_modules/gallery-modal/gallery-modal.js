@@ -18,7 +18,7 @@ export default class GalleryModal {
       this.modal = modal
       this.header = this.modal.querySelector('.galleries__header')
       this.globalHeader = globalHeader
-      this.closeBtn = this.header.querySelector('.galleries__close')
+      this.closeBtn = this.header.querySelector('.galleries__close') ? this.header.querySelector('.galleries__close') : 0 
       this.footer = this.modal.querySelector('.galleries__footer')
       this.thumbnailBar = this.modal.querySelector('.galleries__footer')
       this.gallerySwitchers = this.modal.querySelector('.galleries__nav')
@@ -34,6 +34,8 @@ export default class GalleryModal {
 
       this.topBarHeight = 0
 
+      this.autoOpen = false
+
       this.init()
     }
   }
@@ -46,8 +48,6 @@ export default class GalleryModal {
         this.currentGalleryName = gallery
         $(`.gallery-content[data-gallery="${gallery}"] a:first`).trigger('click')
       })
-
-      // this.setEvents($(el))
 
       $(el)
         // .on('onBeforeOpen.lg', () => this.open())
@@ -80,6 +80,15 @@ export default class GalleryModal {
           color: '003145',
         },
       })
+
+      if ($(el).is('[data-auto-open]') && this.autoOpen === false) {
+        this.autoOpen = true
+        console.log('auto opening gallery')
+        const gallery = $(el).attr('data-gallery')
+        this.currentGalleryName = gallery
+        $(`.gallery-content[data-gallery="${gallery}"] a:first`).trigger('click')
+      }
+
     })
 
     this.globalGalleryEvents()
@@ -94,13 +103,19 @@ export default class GalleryModal {
 
       if (fixedTopValue !== this.topBarHeight && this.activeBar) {
         activeBar.style.transform = `translateY(${fixedTopValue}px)`
-        this.closeBtn.style.transform = !this.breakpoints.atLeast('medium') ? `translateY(-${lastModuleHeight}px)` : ''
+
+        if (this.closeBtn) {
+          this.closeBtn.style.transform = !this.breakpoints.atLeast('medium') ? `translateY(-${lastModuleHeight}px)` : ''
+        }
 
         this.topBarHeight = fixedTopValue
       } else if (fixedTopValue === 0) {
         this.topBarHeight = 0
 
-        this.closeBtn.style.transform = ''
+        if (this.closeBtn) {
+          this.closeBtn.style.transform = ''
+        }
+
         activeBar.style.transform = ''
       }
     }
@@ -111,9 +126,13 @@ export default class GalleryModal {
   }
 
   globalGalleryEvents() {
-    this.closeBtn.addEventListener('click', () => {
-      this.currentGallery.data('lightGallery').destroy()
-    })
+    console.log(this.closeBtn)
+    if (this.closeBtn) {
+      console.log('closeBtn click')
+      this.closeBtn.addEventListener('click', () => {
+        this.currentGallery.data('lightGallery').destroy()
+      })
+    }
 
     this.footer.addEventListener('click', () => {
       // This gets created via the plugin later, so needs to be addressed here.
@@ -150,7 +169,7 @@ export default class GalleryModal {
     if (!this.switchingGaleries) {
       this.currentGallery = {}
       console.log('GalleryModal, close')
-      removeClass(document.body, 'locked')
+      removeClass(document.body, 'locked--gallery')
       removeClass(this.modal, 'galleries--active')
       this.globalHeader.fullScreenMode({ on: false })
     }
@@ -167,13 +186,13 @@ export default class GalleryModal {
     const galleryType = $gallery.attr('data-gallery')
     const activeGalleryBtn = this.gallerySwitchers.querySelector(`button[data-gallery="${galleryType}"]`)
 
-    $(this.galleryBtns).removeClass('button-clear-invert')
-    $(activeGalleryBtn).addClass('button-clear-invert')
+    $(this.galleryBtns).removeClass('button-clear')
+    $(activeGalleryBtn).addClass('button-clear')
 
     console.log('GalleryModal, open, galleryType: ', galleryType)
     console.log('$gallery', $gallery)
 
-    $(document.body).addClass('locked')
+    $(document.body).addClass('locked--gallery')
     $(this.modal).addClass('galleries--active')
     this.globalHeader.fullScreenMode()
   }

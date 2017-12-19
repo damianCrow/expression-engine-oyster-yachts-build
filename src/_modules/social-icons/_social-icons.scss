@@ -1,6 +1,7 @@
 .social-icon {
   $root: &;
   height: 25px;
+  max-width: 30px;
   position: relative;
 
   &__colour {

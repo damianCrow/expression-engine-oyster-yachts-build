@@ -293,7 +293,7 @@ $interiorGalleryImages = $query->num_rows();
           <div class="cycle-slide"><img src="{image:url}"></div>
           {/yacht_layout}
         </div>
-        <ul class="slider-pager<?php if ($layoutImages === 1): ?> hide<?php endif; ?>">{yacht_layout}<li><a><span style="background-image:url('{image:url:small}');"></span></a></li>{/yacht_layout}</ul>
+        <ul class="slider-pager<?php if ($layoutImages === 1): ?> hide<?php endif; ?>">{yacht_layout}<li><a href="#yacht-layout"><span style="background-image:url('{image:url:small}');"></span></a></li>{/yacht_layout}</ul>
       </div>
     </div>
   </section>
@@ -354,33 +354,35 @@ $interiorGalleryImages = $query->num_rows();
   <section id="galleries" class='galleries' data-title="{title}">
     <header class='galleries__header'>
       <nav class='galleries__nav'>
-        <ul>
+        <ul class="button-group">
           <?php if ($exteriorGalleryImages > 0): ?>
             <li class='galleries__nav-item'>
-              <button data-gallery="external" class='button-clear button-flush'>Exterior</button>
+              <button data-gallery="external" class='button-solid-white button-flush'>Exterior</button>
             </li>
           <?php endif; ?>
           <?php if ($interiorGalleryImages > 0): ?>
             <li class='galleries__nav-item'>
-              <button data-gallery="internal" class='button-clear button-flush'>Interior</button>
+              <button data-gallery="internal" class='button-solid-white button-flush'>Interior</button>
             </li>
           <?php endif; ?>
           {yacht_videos}
             {if yacht_videos:count == 1}
               <li class='galleries__nav-item'>
-                <button data-gallery="videos" class='button-clear button-flush'>Videos</button>
+                <button data-gallery="videos" class='button-solid-white button-flush'>Videos</button>
               </li>
             {/if}
           {/yacht_videos}
           {yachts_virtual_tours}
             {if yachts_virtual_tours:count == 1}
               <li class='galleries__nav-item'>
-                <button data-gallery="vrtours" class='button-clear button-flush'>VR Tours</button>
+                <button data-gallery="vrtours" class='button-solid-white button-flush'>VR Tours</button>
               </li>
             {/if}
           {/yachts_virtual_tours}
         </ul>
-        <button class='galleries__close' />
+        <div class='galleries__close-container'>
+          <button class='galleries__close' />
+        </div>
       </nav>
     </header>
     <?php if ($exteriorGalleryImages > 0): ?>

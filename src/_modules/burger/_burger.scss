@@ -124,7 +124,7 @@ $st-burger-animation-time: .5s;
 $st-burger-icon-sizes: (
   small: 12px,
   medium: 24px,
-  large: 24px
+  large: 20px
 );
 
 @mixin st-burger-size($size-name, $icon-size) {
@@ -217,7 +217,7 @@ $st-burger-icon-sizes: (
     transform: scale(1);
 
     #{$st-burger-class} {
-      transform: rotate(0deg) skew(0deg) translate(-2.5px, 3px);
+      transform: rotate(0deg) skew(0deg) translate(0, 2px);
     }
   }
 
@@ -225,7 +225,7 @@ $st-burger-icon-sizes: (
     transform: scale(0);
 
     #{$st-burger-class} {
-      transform: rotate(0deg) skew(0deg) translate(-2.5px, 3px);
+      transform: rotate(0deg) skew(0deg) translate(0, 2px);
     }
   }
 
@@ -233,7 +233,7 @@ $st-burger-icon-sizes: (
     transform: scale(0);
 
     #{$st-burger-class} {
-      transform: rotate(100deg) skew(10deg) translate(0, 4.5px);
+      transform: rotate(100deg) skew(10deg) translate(0, 1px);
     }
   }
 
@@ -244,7 +244,7 @@ $st-burger-icon-sizes: (
   display: inline-block;
   cursor: pointer;
   // transform: scale(1);
-  transform: rotate(100deg) skew(10deg) translate(0, 4.5px);
+  transform: rotate(100deg) skew(10deg) translate(0, 1px);
 
   span, span:before, span:after {
     backface-visibility: hidden;

@@ -4,8 +4,10 @@ import { addClass, removeClass } from '../../_scripts/helper-functions'
 import BreakPoints from '../../_scripts/breakpoints'
 
 export default class GlobalHeader {
-  constructor() {
+  constructor(rePosTopLevels) {
     this.breakpoints = new BreakPoints()
+
+    this.rePosTopLevels = rePosTopLevels
 
     this.topBarHeight = 0
     this.fixedTopValue = 0
@@ -144,6 +146,8 @@ export default class GlobalHeader {
       removeClass(this.header, 'main-header--full-screen')
       this.size(true)
     }
+
+    this.rePosTopLevels()
   }
 }
 

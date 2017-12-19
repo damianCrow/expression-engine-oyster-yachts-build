@@ -64,34 +64,32 @@
   &__social-n-owners {
     display: flex;
     flex-direction: column;
-    padding: $global-padding 0;
 
     @include breakpoint(medium up) {
       flex-direction: row;
       align-items: center;
+      padding: $global-padding 0;
     }
   }
 
   &__owners {
     margin: $global-margin 0;
     @include breakpoint(medium up) {
-      flex: 1;
+      flex: 1 0 auto;
       margin: 0;
     }
   }
 
   &__social {
-    display: flex;
     height: 25px;
-    // justify-content: space-between;
     width: 100%;
-
+    
     @include breakpoint(medium up) {
-      flex: 1;
+      margin: 0 $global-margin;
     }
 
     > li {
-      flex: 0 0 auto;
+      display: inline-block;
       margin-right: $global-margin;
 
       > a {
@@ -113,7 +111,11 @@
   }
 
   &__contact-info {
-    padding: $global-padding 0;
+    padding: 0;
+
+    @include breakpoint(medium up) {
+      padding: $global-padding 0;
+    }
 
     > a {
       @include omnes-regular;

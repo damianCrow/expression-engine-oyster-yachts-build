@@ -1,6 +1,4 @@
-'use strict';
-
-export default function(gulp, plugins, args, config, taskTarget, browserSync) {
+export default function (gulp, plugins, args, config, taskTarget, browserSync) {
   // BrowserSync
   gulp.task('browserSync', () => {
     browserSync.init({
@@ -10,14 +8,14 @@ export default function(gulp, plugins, args, config, taskTarget, browserSync) {
       server: {
         baseDir: taskTarget,
         routes: (() => {
-          let routes = {};
+          const routes = {}
 
           // Map base URL to routes
-          routes[config.baseUrl] = taskTarget;
+          routes[config.baseUrl] = taskTarget
 
-          return routes;
-        })()
-      }
-    });
-  });
+          return routes
+        })(),
+      },
+    })
+  })
 }

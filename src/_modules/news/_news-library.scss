@@ -44,12 +44,12 @@
     position: relative;
 
     .title {
-      @include omnes_medium;
+      @include omnes-medium;
     }
 
     .date {
       font-size: 12px;
-      @include omnes_medium;
+      @include omnes-medium;
       color: rgb(125, 154, 170);
     }
 

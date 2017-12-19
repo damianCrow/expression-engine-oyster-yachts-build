@@ -3,7 +3,7 @@ import { addClass, removeClass, hasClass } from '../../_scripts/helper-functions
 export default class Burger {
   constructor(button, navControls) {
     this.button = button
-    this.burgerPiece = button
+    this.burgerPiece = button.querySelector('.burger-container')
     this.navControls = navControls
     this.buttonTrans = 'close'
 

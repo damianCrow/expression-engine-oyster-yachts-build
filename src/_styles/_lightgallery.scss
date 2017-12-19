@@ -174,7 +174,7 @@
   height: 100%;
   font-size: 0.75em;
   line-height: 1em;
-  @include omnes_medium;
+  @include omnes-medium;
   color: $grey;
   border-right: 1px solid $lightgrey;
   margin-right: 40px;
@@ -803,7 +803,7 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
 .gallery-yacht {
   float: left;
   display: block;
-  @include omnes_light;
+  @include omnes-light;
   line-height: 1em;
   text-transform: uppercase;
   padding: 19px 0 0 70px;
@@ -842,7 +842,7 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
     padding: 22px 40px 22px 72px;
     background: url('/assets/images/download.png') no-repeat 39px center;
     height: 100%;
-    @include omnes_medium;
+    @include omnes-medium;
     font-size: 0.75em;
     line-height: 1em;
     text-transform: uppercase;
@@ -878,7 +878,7 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
     line-height: 1em;
     text-transform: uppercase;
     color: $blue;
-    @include omnes_medium;
+    @include omnes-medium;
     display: inline-block;
     padding: 11px 20px 10px;
     border: 1px solid $blue;

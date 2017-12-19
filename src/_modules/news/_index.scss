@@ -49,9 +49,9 @@
 	h2 {
 		font-size: 1.6em;
 		padding: 1em 0em;
-		@include omnes_light;
+		@include omnes-light;
 		span{
-			@include omnes_medium;
+			@include omnes-medium;
 		}
 	}
 

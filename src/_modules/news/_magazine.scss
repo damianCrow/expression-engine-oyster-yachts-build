@@ -10,7 +10,7 @@
         margin: 2rem 0;
         // font-size: 3.5rem;
         span {
-            @include omnes_light;
+            @include omnes-light;
             &:after{
                 content: ' // ';
                 vertical-align: text-top;           
@@ -21,7 +21,7 @@
     h2 {
         display: block;
         width: 100%;
-        @include omnes_medium;
+        @include omnes-medium;
         background-color: $lightgrey;
         font-size: 0.9375em;
         line-height: 1em;

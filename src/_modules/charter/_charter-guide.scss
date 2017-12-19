@@ -1,6 +1,5 @@
 .terms-extras, .conditions {
 	margin-bottom: 40px;
-	padding: 1rem;
 
 	.banner {
 		margin-bottom: 40px;
@@ -10,7 +9,7 @@
 	table {
 		h3 {
 			@include general-text;
-			@include omnes_medium;
+			@include omnes-medium;
 			margin: 0px;
 		}
 
@@ -49,6 +48,9 @@
 		}
 
 		&.stack-override {
+			width: calc(100% - #{$global-margin * 2});
+			margin: 0 auto;
+
 			@include breakpoint(small down) {
 				thead, tfoot {
 					display: none;

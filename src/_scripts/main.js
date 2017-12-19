@@ -10,10 +10,11 @@ import 'foundation-sites'
 // import 'foundation-sites/js/foundation.equalizer'
 // import 'foundation-sites/js/foundation.reveal'
 
-import 'lazysizes'
 import 'lazysizes/plugins/optimumx/ls.optimumx'
 import 'lazysizes/plugins/respimg/ls.respimg'
 import 'lazysizes/plugins/parent-fit/ls.parent-fit'
+import 'lazysizes'
+import 'lazysizes/plugins/object-fit/ls.object-fit'
 
 import GlobalHeader from '../_modules/header/header'
 import TopMessageBar from '../_modules/top-message-bar/top-message-bar'
@@ -31,35 +32,36 @@ import Weather from '../_modules/weather/weather'
 import OwnersArea from '../_modules/owners-area/owners-area-modal'
 import FormValidation from '../_modules/form-validation/form-validation'
 
-import { documentReady, windowResize } from './helper-functions'
+import { documentReady, windowResize, getElemDistance } from './helper-functions'
 import { quoteTestimonials } from '../_modules/quote-testimonials/quote-testimonials'
 
 class Main {
   constructor() {
-    this.body = document.body
-    this.homepageHero = document.getElementById('homepage')
+    const d = document
+    this.body = d.body
+    this.homepageHero = d.getElementById('homepage')
 
-    this.globalLogo = document.querySelector('.logo')
-    this.globalHeader = document.querySelector('.global-header-wrapper')
-    this.topMessageBar = document.querySelector('.top-header')
-    this.burgerBtn = document.querySelector('.burger-container')
-    this.globalNav = document.querySelector('.global-nav')
-    this.subBar = document.querySelector('.sub-bar')
-    this.globalFooter = document.querySelector('.global-footer')
-    this.filters = document.getElementById('global-page-filters')
+    this.globalLogo = d.querySelector('.logo')
+    this.globalHeader = d.querySelector('.global-header-wrapper')
+    this.topMessageBar = d.querySelector('.top-header')
+    this.burgerBtn = d.querySelector('.main-header__menu')
+    this.globalNav = d.querySelector('.global-nav')
+    this.subBar = d.querySelector('.sub-bar')
+    this.globalFooter = d.querySelector('.global-footer')
+    this.filters = d.getElementById('global-page-filters')
 
-    this.galleryModal = document.getElementById('galleries')
-    this.sideBarToStick = document.querySelector('section.about-yacht .sticky-sidebar')
-    this.homeSlider = document.querySelector('.hero-home')
-    this.brokerageFiltersDom = document.querySelector('.filters--brokerage')
-    this.charterGrid = document.querySelector('.charter-fleet #yacht-grid')
-    this.shortlistModal = document.getElementById('shortlistModal')
+    this.galleryModal = d.getElementById('galleries')
+    this.sideBarToStick = d.querySelector('section.about-yacht .sticky-sidebar')
+    this.homeSlider = d.querySelector('.hero-home')
+    this.brokerageFiltersDom = d.querySelector('.filters--brokerage')
+    this.charterGrid = d.querySelector('.charter-fleet #yacht-grid')
+    this.shortlistModal = d.getElementById('shortlistModal')
 
-    this.fixedTopValue = 0
+    this.fixedTopValue = 10
     this.fixedTopValues = []
     this.headerSnapPoint = 450
 
-    $(document).foundation()
+    $(d).foundation()
     this.legacyCode()
     this.init()
   }
@@ -92,17 +94,17 @@ class Main {
 
     quoteTestimonials()
 
-    const header = new GlobalHeader()
+    const header = new GlobalHeader(this.positionElements.bind(this))
 
     // Cookie message, pass the posistionElements method to allow it to be dismissed.
     const topMessageBar = new TopMessageBar(this.topMessageBar, this.positionElements.bind(this))
     const nav = new GlobalNav(this.globalNav, this.burgerBtn, document.body)
-    const subNav = new SubBar(this.subBar)
+    const subNav = new SubBar(this.subBar, this.scrollToBannerSection.bind(this))
     const filters = new Filters()
     const form = new FormValidation()
     const burger = new Burger(this.burgerBtn, nav)
     const footer = this.globalFooter && new GlobalFooter()
-    const gallery = new GalleryModal(this.galleryModal, header)
+    const gallery = new GalleryModal(this.galleryModal, header, this.positionElements.bind(this))
     const homepage = this.homepageHero && new Homepage()
     const brokerageFilters = this.brokerageFiltersDom && new BrokerageFilters()
     const charterFilters = this.charterGrid && new CharterFilters()
@@ -154,18 +156,18 @@ class Main {
 
   positionElements(lastKnownScrollPosition) {
     const topValues = [10]
-    let fixedTopValue = 10
+    this.fixedTopValue = 10
 
     for (let i = 0; i < this.scrollReativeElements.length; i += 1) {
       const lastModuleHeight = this.scrollReativeElements[i].snapPointCheck({
         lastKnownScrollPosition,
-        fixedTopValue,
+        fixedTopValue: this.fixedTopValue,
         topValues,
         headerSnapPoint: this.headerSnapPoint,
       })
 
       topValues.push(lastModuleHeight)
-      fixedTopValue += lastModuleHeight
+      this.fixedTopValue += lastModuleHeight
     }
   }
 
@@ -241,14 +243,17 @@ class Main {
     })
 
     $('.slider-pager a').on('click', (e) => {
+      e.preventDefault()
       const jumpToHash = $(e.currentTarget).attr('href')
-      $(jumpToHash)[0].scrollIntoView()
+      this.scrollToBannerSection(document.querySelector(jumpToHash))
+      // $(jumpToHash)[0].scrollIntoView()
     })
 
     //  ---- VIEW GALLERY POP UP -----  //
 
     if ($('#layout-slider .cycle-slide').length > 1) {
       const firstImage = $('#layout-slider .cycle-slide img:first')
+
       firstImage.on('load', () => {
         $('#layout-slider').cycle({
           slides: '> div',
@@ -259,6 +264,7 @@ class Main {
           log: false,
         })
 
+        console.log('height thing about to run')
         $('#layout-slider').css('height', $(firstImage).height())
       })
 
@@ -266,7 +272,6 @@ class Main {
     }
 
     // --- Media Centre Gallery Select --- //
-
     $('.select-gallery-wrapper select').each((index, element) => {
       $(element).on('change', (e) => {
         $(element).siblings('a').attr('href', e.currentTarget.value)
@@ -274,6 +279,20 @@ class Main {
     })
   }
 
+  scrollToBannerSection(section) {
+    // const destinationBannerHeight = section.querySelector('.banner').getBoundingClientRect().height
+    const distance = getElemDistance(section)
+
+    // Scroll to specific values
+    window.scroll({
+      top: distance - (this.fixedTopValue + 3),
+      left: 0,
+      behavior: 'smooth',
+    })
+  }
+
+
+  // TODO: Move this over to the new method.
   windowResize() {
     let resizeTimer = {}
 
@@ -329,22 +348,6 @@ class Main {
     }
   }
 
-  scroller() {
-    const controller = new ScrollMagic.Controller()
-    let lastId = null
-
-    const locaSubNav = $('[data-local-scroll-pos]') || {}
-
-    // Yacht nav - scroll to section
-    locaSubNav.on('click', '.scroll', function (e) {
-      e.preventDefault()
-
-      $('html, body').animate({
-        scrollTop: ($($(this).attr('href')).position().top) - 100,
-      }, 700)
-    })
-  }
-
   checkForTabs() {
     if ($('.sliding-tabs').length >= 1) {
       this.slidingTabs()
@@ -355,7 +358,7 @@ class Main {
   slidingTabs(tabSet) {
     const tabs = $(tabSet).find('li')
     const numOfTabs = $(tabs).length
-    const tabWidth = 100 / numOfTabs + '%'
+    const tabWidth = `${100 / numOfTabs}%`
     let firstPositionUnderTab
     const tabContainer = $(tabSet).find('.tab-slider-container')
     const tabSlider = $(tabSet).find('.tab-slider')
@@ -369,7 +372,7 @@ class Main {
     $(tabSet).find('ul').css({ width: $(tabs).width() * $(tabs).length })
 
     $(tabs).each((index, element) => {
-      const positionUnderTab = 100 * index + '%'
+      const positionUnderTab = `${100 * index}%`
       $(element).data('transform-pos', positionUnderTab)
       if ($(element).hasClass('is-active')) {
         if (index !== 0) {
@@ -382,10 +385,10 @@ class Main {
 
     $(tabSlider).css({ transform: `translateX(${firstPositionUnderTab})` })
 
-    $(tabs).on('click', function () {
-      const moveHere = $(this).data('transform-pos')
+    $(tabs).on('click', (e) => {
+      const moveHere = $(e.target).data('transform-pos')
       $(tabSlider).css({ transform: `translateX(${moveHere})` })
-      $(this).data('transform-pos')
+      $(e.target).data('transform-pos')
     })
   }
 

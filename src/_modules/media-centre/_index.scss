@@ -14,7 +14,7 @@ $media-theme-color: $blue;
 
             a {
                 color: $blue;
-                @include omnes_medium;  
+                @include omnes-medium;  
             }               
         }
     }
@@ -192,7 +192,7 @@ $media-theme-color: $blue;
         h4 {
             color: #fff;
             margin: 1.5rem 0px;
-            @include omnes_light;
+            @include omnes-light;
             font-size: 2rem;
         }
 
@@ -274,7 +274,7 @@ $media-theme-color: $blue;
             font-size: 14px;
             color: $blue !important;
             text-transform: uppercase;
-            font-family: 'omnes_mediumregular', sans-serif !important;
+            font-family: 'omnes-mediumregular', sans-serif !important;
         }
 
         .select2-selection__arrow {

@@ -41,7 +41,7 @@
     margin-bottom: 15px;
     text-transform: uppercase;
 
-    @include omnes_medium;
+    @include omnes-medium;
   }
 }
 
@@ -65,7 +65,7 @@
       margin-bottom: 15px;
       text-transform: uppercase;
 
-      @include omnes_medium;
+      @include omnes-medium;
     }
   }
 
@@ -200,7 +200,7 @@
     font-size: 0.75rem;
     line-height: 2rem;      
     text-transform: uppercase;
-    @include omnes_medium; // add omnes_medium font family
+    @include omnes-medium; // add omnes-medium font family
   }
 
   li {

@@ -1,5 +1,5 @@
 // Fonts
-@mixin omnes_light {
+@mixin omnes-light {
   font-family: "omnes_lightregular", sans-serif;
   letter-spacing: 0.25rem;
 }
@@ -9,7 +9,7 @@
   letter-spacing: $letter-spacing;
 }
 
-@mixin omnes_medium {
+@mixin omnes-medium {
   font-family: "omnes_mediumregular", sans-serif;
   letter-spacing: $letter-spacing;
 }
@@ -61,7 +61,7 @@
 }
 
 @mixin sub-nav {
-  @include omnes_medium;
+  @include omnes-medium;
   border-bottom: 2px solid transparent;
   color: $blue;
   display: block;
@@ -130,7 +130,7 @@
 }
 
 @mixin h4-styles {
-  @include omnes_medium;
+  @include omnes-medium;
   color: $blue;
   font-size: 1.125em;
   line-height: 1.16666666em;
@@ -270,7 +270,7 @@
       &:not(.image) {
 
         &::before {
-          @include omnes_medium;
+          @include omnes-medium;
           align-items: center;
           background-color: $blue;
           color: $white;
@@ -377,7 +377,7 @@
     color: $white;
     margin-bottom: $global-margin;
     span {
-      // @include omnes_medium;
+      // @include omnes-medium;
     }
   }
 
