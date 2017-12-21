@@ -20,7 +20,7 @@ p {
 
   // For custom user CMS posts
   strong {
-    @include omnes_medium;
+    @include omnes-medium;
   }
 
   // For custom user CMS posts
@@ -44,7 +44,7 @@ h4 {
 
 b,
 strong {
-  @include omnes_medium;
+  @include omnes-medium;
   font-weight: normal;
 }
 
@@ -104,10 +104,10 @@ main {
 
 .tooltip-left {
   &::before {
-    @include omnes_medium;
+    @include omnes-medium;
     background-color: $white;
     border-radius: 2px;
-    font-family: "omnes_mediumregular", sans-serif;
+    font-family: "omnes-mediumregular", sans-serif;
     margin: auto;
     opacity: 0;
     padding: .5rem .75rem;
@@ -184,7 +184,7 @@ main {
 
   .contact-name,
   .contact-role {
-    @include omnes_medium;
+    @include omnes-medium;
     align-self: flex-end;
     color: $blue;
   }
@@ -237,7 +237,7 @@ main {
   }
 
   a {
-    @include omnes_medium;
+    @include omnes-medium;
     color: $blue;
   }
 }
@@ -282,7 +282,7 @@ main {
 }
 
 @mixin listing-hightlight() {
-  @include omnes_medium;
+  @include omnes-medium;
   background: $lightgrey;
   border-bottom: none;
   color: $blue;
@@ -320,7 +320,7 @@ main {
     text-align: left;
   }
   th {
-    @include omnes_medium;
+    @include omnes-medium;
     background: #f6f8f9;
     color: $lightblue;
     text-transform: uppercase;
@@ -331,7 +331,7 @@ main {
   th.heading,
   td.heading {
     background: $blue;
-    @include omnes_medium;
+    @include omnes-medium;
     font-size: .8rem;
     line-height: 1em;
     color: $white;
@@ -349,7 +349,7 @@ main {
   }
   span {
     color: $blue;
-    @include omnes_medium;
+    @include omnes-medium;
     span {
         @include omnes-regular;
     }
@@ -381,7 +381,7 @@ main {
     }
 
     td:nth-child(2) {
-      @include omnes_medium;
+      @include omnes-medium;
       color: $blue;
       width: 56%;
     }
@@ -667,7 +667,7 @@ main {
 
 .select2-container--default .select2-selection--single .select2-selection__rendered {
   color: $grey;
-  @include omnes_medium;
+  @include omnes-medium;
 }
 
 // ---- OVERRIDE FILTERS -----
@@ -770,7 +770,7 @@ main {
     padding: $global-padding;
     padding-right: $global-padding * 2;
     transition: background-color .25s ease-out;
-    @include omnes_medium;
+    @include omnes-medium;
     @include breakpoint(large up) {
       background-color: $grayborder;
     }
@@ -904,7 +904,7 @@ main {
       color: $blue;
       border: 0 !important;
       user-select: none;
-      @include omnes_medium;
+      @include omnes-medium;
       outline: none;
     }
 
@@ -965,7 +965,7 @@ main {
 
 // Old button styles - these need removing
 .button {
-  @include omnes_medium;
+  @include omnes-medium;
   background: $cyan;
   color: $white;
   display: block;
@@ -979,31 +979,9 @@ main {
   width: 100%;
 }
 
-.button-clear {
-  @include button-base();
-  background: #003145;
-  border-radius: 2px;
-  display: inline-block;
-  width: auto;
-  @include omnes_medium;
-  font-size: rem-calc(12);
-  color: $white;
-  cursor: pointer;
-  padding: .65em 1em;
-  text-align: center;
-  text-decoration: none;
-  text-transform: uppercase;
-
-  &:hover {
-    text-decoration: none;
-    background: $white;
-    color: $blue;
-  }
-}
-
 .button-clear-invert {
   @include button-base();
-  @include omnes_medium;
+  @include omnes-medium;
   font-size: rem-calc(12);
   background: rgba($white, .3);
   border-radius: 2px;
@@ -1036,7 +1014,7 @@ main {
   @include button-base();
   // @include button();
   // Speed up foundation's transistion
-  @include omnes_medium;
+  @include omnes-medium;
   border-radius: 2px;
   cursor: pointer;
   display: inline-block;
@@ -1060,13 +1038,41 @@ main {
   @include button-core();
 }
 
+.button-group {
+  border: solid 1px $blue;
+  border-radius: 2px;
+  margin: 0;
+
+  > li {
+    button,
+    a {
+      border-radius: 0;
+      border: 0;
+      border-right: 1px solid $blue;
+      outline: 0;
+
+      &:hover,
+      &:focus {
+        border: 0;
+        border-right: 1px solid $blue;
+      }
+    }
+
+    &:last-child {
+      button,
+      a {
+        border-right: 0;
+      }
+    }
+  }
+}
+
 .button-solid-cyan {
   @include button-core();
   background-color: $cyan;
   color: $white;
 
-  &:hover,
-  &:focus {
+  &:hover {
     background-color: $daker-cyan;
   }
 }
@@ -1077,8 +1083,7 @@ main {
   border: solid 1px $white;
   color: $white;
 
-  &:hover,
-  &:focus {
+  &:hover {
     background-color: $white;
     border: solid 1px $blue;
     color: $blue;
@@ -1091,10 +1096,31 @@ main {
   border: solid 1px $blue;
   color: $blue;
 
-  &:hover,
-  &:focus {
+  &:hover {
     background-color: $blue;
     color: $white;
+  }
+}
+
+.button-clear {
+  @include button-base();
+  background: #003145;
+  border-radius: 2px;
+  display: inline-block;
+  width: auto;
+  @include omnes-medium;
+  font-size: rem-calc(12);
+  color: $white;
+  cursor: pointer;
+  padding: .65em 1em;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+
+  &:hover {
+    text-decoration: none;
+    background: $white;
+    color: $blue;
   }
 }
 
@@ -1103,8 +1129,7 @@ main {
   background-color: $yellow;
   color: $blue;
 
-  &:hover,
-  &:focus {
+  &:hover {
     background-color: $blue;
     border: solid 1px $blue;
     color: $white;
@@ -1117,8 +1142,7 @@ main {
   border: solid 1px $lightblue;
   color: $lightblue;
 
-  &:hover,
-  &:focus {
+  &:hover {
     background-color: $lightblue;
     border: solid 1px $lightgrey;
     color: $lightgrey;
@@ -1131,8 +1155,7 @@ main {
   border: solid 1px $blue;
   color: $blue;
 
-  &:hover,
-  &:focus {
+  &:hover {
     background-color: transparent;
     border: solid 1px $white;
     color: $white;
@@ -1145,8 +1168,7 @@ main {
   border: solid 1px $white;
   color: $white;
 
-  &:hover,
-  &:focus {
+  &:hover {
     background-color: transparent;
     border: solid 1px $blue;
     color: $blue;
@@ -1158,8 +1180,7 @@ main {
   background-color: $yellow;
   color: $blue;
 
-  &:hover,
-  &:focus {
+  &:hover {
     background-color: transparent;
     color: $blue;
   }
@@ -1171,8 +1192,7 @@ main {
   border: solid 1px $blue;
   color: $blue;
 
-  &:hover,
-  &:focus {
+  &:hover {
     background-color: $blue;
     color: $white;
   }
@@ -1190,7 +1210,7 @@ main {
   text-align: center;
   text-decoration: none;
   width: 200px;
-  @include omnes_medium;
+  @include omnes-medium;
 
   .fa {
     display: inline-block;
@@ -1215,8 +1235,7 @@ main {
   color: $white;
   outline: none;
 
-  &:hover,
-  &:focus {
+  &:hover {
     color: $white;
     // background-color: $blue;
     // color: $white;
@@ -1371,7 +1390,7 @@ main {
     }
 
     .date {
-      @include omnes_light;
+      @include omnes-light;
       font-size: 3.5rem;
     }
   }
@@ -1399,7 +1418,7 @@ main {
       }
   }
   .event-title {
-      @include omnes_medium;
+      @include omnes-medium;
       flex: 0 0 100%;
       align-self: flex-end;
   }
@@ -1460,7 +1479,7 @@ main {
         }
         .disclaimer {
             small {
-                @include omnes_light;
+                @include omnes-light;
                 letter-spacing: .05rem;
                 font-size: .8rem;
                 line-height: 1.5;
@@ -1670,7 +1689,7 @@ main {
       color: $white;
       font-size: 1.75rem;
       margin-bottom: 1rem;
-      @include omnes_light;
+      @include omnes-light;
     }
 
     .contact-phone {
@@ -1705,7 +1724,7 @@ main {
     // margin-top: 1em;
     font-size: 1.2em;
     margin-bottom: .25rem;
-    @include omnes_medium;
+    @include omnes-medium;
   }
 
   .external-file-info {
@@ -2039,7 +2058,7 @@ $locaiton-image-height: 250px;
           abbr {
               color: $blue;
               font-size: 1.2rem;
-              @include omnes_medium;
+              @include omnes-medium;
           }
       }
   }
@@ -2056,7 +2075,7 @@ $locaiton-image-height: 250px;
               margin-bottom: 0;
           }
           &:not(abbr) {
-              @include omnes_medium;
+              @include omnes-medium;
           }
           abbr {
               @include omnes-regular;
@@ -2065,7 +2084,7 @@ $locaiton-image-height: 250px;
   }
   .google-map-link {
       margin-top: 1rem;
-      @include omnes_medium;
+      @include omnes-medium;
       color: $blue;
       text-decoration: underline;
       .fa {
@@ -2192,7 +2211,7 @@ $locaiton-image-height: 250px;
     position: relative;
 
     span {
-      @include omnes_medium;
+      @include omnes-medium;
       color: rgb(0, 49, 69);
       font-size: 1.25em;
       line-height: 1.25em;
@@ -2382,7 +2401,7 @@ $locaiton-image-height: 250px;
 
 // These lists change there colours in different places.
 .yacht-featured-list-header {
-  @include omnes_medium;
+  @include omnes-medium;
   align-items: center;
   color: $white;
   display: flex;
@@ -2401,7 +2420,7 @@ $locaiton-image-height: 250px;
   }
 
   .yacht-featured-list-sub-header {
-    @include omnes_medium;
+    @include omnes-medium;
 
     align-items: flex-start;
     background-color: $lightgrey;
@@ -2939,7 +2958,7 @@ $locaiton-image-height: 250px;
           padding: 1.2rem 1rem;
           flex: 1 0 100%;
           // height: 100%;
-          @include omnes_medium;
+          @include omnes-medium;
           &:hover,
           &:active {
               background-color: $lightgrey;
@@ -3413,7 +3432,7 @@ form.request-spec {
 
   &.updated-listing {
     &:before {
-      @include omnes_medium;
+      @include omnes-medium;
       background-color: $cyan;
       color: $white;
       content: 'Updated Listing';
@@ -3431,7 +3450,7 @@ form.request-spec {
   //  display: block;
   //  text-transform: uppercase;
   //  .yacht-list-second-name {
-  //    @include omnes_medium;
+  //    @include omnes-medium;
   //    &:before {
   //      content: '//';
   //      margin: 0 .25rem;
@@ -3494,7 +3513,7 @@ form.request-spec {
   }  
 
   .yacht-list-modal {
-    @include omnes_medium;
+    @include omnes-medium;
     margin: 0 .25rem;
 
     &.double-slash {
@@ -3678,7 +3697,7 @@ form.request-spec {
       float: none;
       height: 100%;
       a {
-        @include omnes_medium;
+        @include omnes-medium;
         color: $grey;
         display: table;
         font-size: .75em;

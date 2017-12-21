@@ -240,19 +240,21 @@ $interiorGalleryImages = $query->num_rows();
 	<section id="galleries" class='galleries' data-title="{title}">
 		<header class='galleries__header'>
 			<nav class='galleries__nav'>
-				<ul>
+				<ul class='button-group'>
 					<?php if ($exteriorGalleryImages > 0): ?>
 						<li class='galleries__nav-item'>
-							<button data-gallery="external" class='button-clear button-flush'>Exterior</button>
+							<button data-gallery="external" class='button-solid-blue button-flush'>Exterior</button>
 						</li>
 					<?php endif; ?>
 					<?php if ($interiorGalleryImages > 0): ?>
 						<li class='galleries__nav-item'>
-							<button data-gallery="internal" class='button-clear button-flush'>Interior</button>
+							<button data-gallery="internal" class='button-solid-blue button-flush'>Interior</button>
 						</li>
 					<?php endif; ?>
 				</ul>
-				<button class='galleries__close' />
+				<div class='galleries__close-container'>
+					<button class='galleries__close' />
+				</div>
 			</nav>
 		</header>
 		<?php if ($exteriorGalleryImages > 0): ?>

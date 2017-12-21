@@ -1,3 +1,9 @@
+.locked {
+  &--gallery {
+    overflow: hidden;
+  }
+}
+
 .gallery-sections {
   margin: 10px 40px !important;
   @include breakpoint(medium down) {
@@ -45,6 +51,7 @@
     top: 0;
     background-color: $white;
     padding: 0 $page-margin;
+    pointer-events: none;
 
     @include breakpoint(medium up) {
       padding-left: 50px + $page-margin;
@@ -77,42 +84,44 @@
     align-items: center;
 
     @include breakpoint(medium up) {
-      // margin-right: $page-margin;
       padding-right: $page-margin;
     }
     
     > ul {
-      height: 100%;
       display: inline-flex;
       align-items: center;
+
       @include breakpoint(medium up) {
-        margin-right: calc(#{$page-margin + 60px} + #{$global-margin});
+        margin-right: $global-margin;
+        margin-bottom: 0;
       }
     }
   }
 
   &__nav-item {
     display: inline;
+    pointer-events: auto;
+  }
 
-    button {
-      border-radius: 0;
-    }
+  &__close-container,
+  &__close {
+    height: 40px;
+    width: 40px;
+  }
 
-    &:first-child {
-      button {
-        border-radius: 2px 0 0 2px;
-      }
-    }
+  &__close-container {
+    position: fixed;
+    right: 20px;
 
-    &:last-child {
-      button {
-        border-radius: 0 2px 2px 0;
-      }
+    @include breakpoint(medium up) {
+      position: relative;
+      right: 0;
     }
   }
 
   &__close {
     @include button();
+    pointer-events: auto;
     border-color: $greyborder;
     background-color: $white;
     contain: strict;
@@ -120,9 +129,7 @@
     height: 40px;
     width: 40px;
     display: inline-block;
-
-    position: fixed;
-    right: 20px;
+    position: relative;
 
     &::before,
     &::after {
@@ -145,11 +152,6 @@
     &::before {
       transform: rotate(-45deg);
     }
-
-    @include breakpoint(medium up) {
-      position: relative;
-      right: 0;
-    }
   }
 
   &__index {
@@ -160,7 +162,8 @@
     font-size: .75rem;
     height: 100%;
     padding: $global-padding 2rem;
-    width: 120px;
+    width: 125px;
+    cursor: pointer;
 
     &::before {
       border-color: #706d6b;
@@ -264,7 +267,7 @@
 //     line-height: 1em;
 //     text-transform: uppercase;
 //     color: $blue;
-//     @include omnes_medium;
+//     @include omnes-medium;
 //     display: inline-block;
 //     padding: 11px 40px 10px;
 //     border: 1px solid $blue;

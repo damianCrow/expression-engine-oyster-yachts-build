@@ -35,6 +35,7 @@ $logo-width: 230px;
   position: relative;
   transition: transform 250ms ease-in-out;
   z-index: 2;
+  transform: translateY(10px);
 
   &:before {
     background-color: $white;
@@ -83,11 +84,14 @@ $logo-width: 230px;
   &__menu {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
-    flex: 0 0 45px;
-    height: 45px;
+    justify-content: center;
+    flex: 0 0 40px;
+    height: 40px;
     border: 1px solid $greyborder;
     border-radius: 50%;
+    cursor: pointer;
+    outline: none;
+    margin-right: $page-margin;
   }
 
   &__home {
@@ -99,15 +103,14 @@ $logo-width: 230px;
 
   &--large {
     @include breakpoint(medium up) {
-      transform: translateY(0);
+      // transform: translateY(0);
 
       #{$root}__container {
         transform: translateY(0);
       }
 
-
       &::before {
-        transform: translateY(0px);
+        transform: translateY(0);
       }
 
       #{$root}__home,
@@ -139,23 +142,22 @@ $logo-width: 230px;
 }
 
 .top-header {
-  height: 65px;
-  width: 100%;
-  position: fixed;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
-  padding: 0;
   background-color: $white;
-  top: 0;
-  transition: transform .5s cubic-bezier(.19, 1, .22, 1);
-  z-index: 1052;
-
+  height: $header-message-height-small;
+  left: 0;
+  margin: 0 auto;
   opacity: 0;
+  padding: 0;
   pointer-events: none;
+  position: fixed;
+  right: 0;
+  top: 0;
+  transition: transform .5s $ease-out-expo;
+  width: 100%;
+  z-index: 1;
 
-  @include breakpoint(small down) {
-    height: $header-message-height-small;
+  @include breakpoint(medium up) {
+    height: $header-message-height;
   }
 }
 
@@ -165,7 +167,7 @@ $logo-width: 230px;
   height: 100%;
   margin: 0 auto;
   width: calc(100% - 20px);
-  transition: transform 350ms cubic-bezier(.19, 1, .22, 1);
+  transition: transform 350ms $ease-out-expo;
 
   .fixed-message-contents {
     align-items: center;
@@ -173,11 +175,14 @@ $logo-width: 230px;
     flex: 1 1 auto;
     margin: 0 auto;
     max-width: $global-width;
-    padding: $global-padding;
+    padding: $global-padding / 2;
+    flex-direction: column;
+
     width: 100%;
 
-    @include breakpoint(small down) {
-      flex-direction: column;
+    @include breakpoint(medium up) {
+      flex-direction: row;
+      padding: $global-padding;
     }
   }
 
@@ -186,7 +191,7 @@ $logo-width: 230px;
   }
 
   a {
-    @include omnes_medium;
+    @include omnes-medium;
     color: $white;
     text-decoration: underline;
   }
@@ -243,6 +248,7 @@ $logo-width: 230px;
     // transform: translateY(0%);
     opacity: 1;
     pointer-events: auto;
+    z-index: 3;
   }
 
   .global-local-subnav {

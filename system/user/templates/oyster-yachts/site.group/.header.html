@@ -10,7 +10,6 @@
   <title>{site_name}</title>
   {/if} {if embed:entry_id != ""} {exp:seo_lite entry_id="{embed:entry_id}"} {if:else} {exp:seo_lite use_last_segment="yes"} {/if}
   <title>Oyster Yachts</title>
-  <link rel="stylesheet" type="text/css" href="https://cloud.typography.com/6172892/7627392/css/fonts.css" />
   <link rel="stylesheet" href="{site_url}assets/styles/main.css?091017">
   <style>
   .yachts-fleet .column {
@@ -99,7 +98,7 @@
         {if embed:page_title != ""}
           <h2 class="main-header__title">{embed:page_title}</h2>
         {/if}
-        <div class="main-header__menu">
+        <button class="main-header__menu">
 {!--           <button class='burger'>
             <div class='burger__wrapper'>
               <span class='burger__piece'></span>
@@ -112,11 +111,12 @@
               <span></span>
             </div>
           </div>
-        </div>
+        </button>
       </div>
     </div>
 
     {embed="site/.main_nav" page_title="{embed:page_title}"}
+    <link rel="stylesheet" type="text/css" href="https://cloud.typography.com/6172892/7627392/css/fonts.css" media="none" onload="if(media!='all')media='all'" />
     </div>
   </header>
   <main role="main"> 

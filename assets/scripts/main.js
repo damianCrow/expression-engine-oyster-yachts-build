@@ -30,7 +30,7 @@ define(String.prototype, "padRight", "".padEnd);
 });
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"core-js/fn/regexp/escape":2,"core-js/shim":325,"regenerator-runtime/runtime":375}],2:[function(require,module,exports){
+},{"core-js/fn/regexp/escape":2,"core-js/shim":325,"regenerator-runtime/runtime":376}],2:[function(require,module,exports){
 require('../../modules/core.regexp.escape');
 module.exports = require('../../modules/_core').RegExp.escape;
 
@@ -31342,6 +31342,157 @@ return jQuery;
 }));
 
 },{"lazysizes":364}],366:[function(require,module,exports){
+(function(window, factory) {
+	var globalInstall = function(initialEvent){
+		factory(window.lazySizes, initialEvent);
+		window.removeEventListener('lazyunveilread', globalInstall, true);
+	};
+
+	factory = factory.bind(null, window, window.document);
+
+	if(typeof module == 'object' && module.exports){
+		factory(require('lazysizes'));
+	} else if(window.lazySizes) {
+		globalInstall();
+	} else {
+		window.addEventListener('lazyunveilread', globalInstall, true);
+	}
+}(window, function(window, document, lazySizes, initialEvent) {
+	'use strict';
+	var style = document.createElement('a').style;
+	var fitSupport = 'objectFit' in style;
+	var positionSupport = fitSupport && 'objectPosition' in style;
+	var regCssFit = /object-fit["']*\s*:\s*["']*(contain|cover)/;
+	var regCssPosition = /object-position["']*\s*:\s*["']*(.+?)(?=($|,|'|"|;))/;
+	var blankSrc = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
+	var regBgUrlEscape = /\(|\)|'/;
+	var positionDefaults = {
+		center: 'center',
+		'50% 50%': 'center',
+	};
+
+	function getObject(element){
+		var css = (getComputedStyle(element, null) || {});
+		var content = css.fontFamily || '';
+		var objectFit = content.match(regCssFit) || '';
+		var objectPosition = objectFit && content.match(regCssPosition) || '';
+
+		if(objectPosition){
+			objectPosition = objectPosition[1];
+		}
+
+		return {
+			fit: objectFit && objectFit[1] || '',
+			position: positionDefaults[objectPosition] || objectPosition || 'center',
+		};
+	}
+
+	function initFix(element, config){
+		var switchClassesAdded, addedSrc;
+		var lazysizesCfg = lazySizes.cfg;
+		var styleElement = element.cloneNode(false);
+		var styleElementStyle = styleElement.style;
+
+		var onChange = function(){
+			var src = element.currentSrc || element.src;
+
+			if(src && addedSrc !== src){
+				addedSrc = src;
+				styleElementStyle.backgroundImage = 'url(' + (regBgUrlEscape.test(src) ? JSON.stringify(src) : src ) + ')';
+
+				if(!switchClassesAdded){
+					switchClassesAdded = true;
+					lazySizes.rC(styleElement, lazysizesCfg.loadingClass);
+					lazySizes.aC(styleElement, lazysizesCfg.loadedClass);
+				}
+			}
+		};
+		var rafedOnChange = function(){
+			lazySizes.rAF(onChange);
+		};
+
+		element._lazysizesParentFit = config.fit;
+
+		element.addEventListener('lazyloaded', rafedOnChange, true);
+		element.addEventListener('load', rafedOnChange, true);
+
+		styleElement.addEventListener('load', function(){
+			var curSrc = styleElement.currentSrc || styleElement.src;
+
+			if(curSrc && curSrc != blankSrc){
+				styleElement.src = blankSrc;
+				styleElement.srcset = '';
+			}
+		});
+
+		lazySizes.rAF(function(){
+
+			var hideElement = element;
+			var container = element.parentNode;
+
+			if(container.nodeName.toUpperCase() == 'PICTURE'){
+				hideElement = container;
+				container = container.parentNode;
+			}
+
+			lazySizes.rC(styleElement, lazysizesCfg.loadedClass);
+			lazySizes.rC(styleElement, lazysizesCfg.lazyClass);
+			lazySizes.aC(styleElement, lazysizesCfg.loadingClass);
+			lazySizes.aC(styleElement, lazysizesCfg.objectFitClass || 'lazysizes-display-clone');
+
+			if(styleElement.getAttribute(lazysizesCfg.srcsetAttr)){
+				styleElement.setAttribute(lazysizesCfg.srcsetAttr, '');
+			}
+
+			if(styleElement.getAttribute(lazysizesCfg.srcAttr)){
+				styleElement.setAttribute(lazysizesCfg.srcAttr, '');
+			}
+
+			styleElement.src = blankSrc;
+			styleElement.srcset = '';
+
+			styleElementStyle.backgroundRepeat = 'no-repeat';
+			styleElementStyle.backgroundPosition = config.position;
+			styleElementStyle.backgroundSize = config.fit;
+
+			hideElement.style.display = 'none';
+
+			element.setAttribute('data-parent-fit', config.fit);
+			element.setAttribute('data-parent-container', 'prev');
+
+			container.insertBefore(styleElement, hideElement);
+
+			if(element._lazysizesParentFit){
+				delete element._lazysizesParentFit;
+			}
+
+			if(element.complete){
+				onChange();
+			}
+		});
+	}
+
+	if(!fitSupport || !positionSupport){
+		var onRead = function(e){
+			if(e.detail.instance != lazySizes){return;}
+
+			var element = e.target;
+			var obj = getObject(element);
+
+			if(obj.fit && (!fitSupport || (obj.position != 'center'))){
+				initFix(element, obj);
+			}
+		};
+
+		window.addEventListener('lazyunveilread', onRead, true);
+
+		if(initialEvent && initialEvent.detail){
+			onRead(initialEvent);
+		}
+	}
+}));
+
+},{"lazysizes":364}],367:[function(require,module,exports){
 /*
  This lazySizes extension helps to use responsive images, but to opt-out from too high retina support in case the w descriptor is used (for x descriptor this is not needed!),
  - data-sizes="auto" has to be used in conjunction
@@ -31616,7 +31767,7 @@ return jQuery;
 
 }));
 
-},{"lazysizes":364}],367:[function(require,module,exports){
+},{"lazysizes":364}],368:[function(require,module,exports){
 (function(window, factory) {
 	var globalInstall = function(){
 		factory(window.lazySizes);
@@ -31775,7 +31926,7 @@ return jQuery;
 	});
 }));
 
-},{"lazysizes":364}],368:[function(require,module,exports){
+},{"lazysizes":364}],369:[function(require,module,exports){
 (function(window, factory) {
 	var globalInstall = function(){
 		factory(window.lazySizes);
@@ -32095,7 +32246,7 @@ return jQuery;
 	}
 }));
 
-},{"../fix-ios-sizes/fix-ios-sizes":365,"lazysizes":364}],369:[function(require,module,exports){
+},{"../fix-ios-sizes/fix-ios-sizes":365,"lazysizes":364}],370:[function(require,module,exports){
 /*! lightgallery - v1.6.5 - 2017-11-16
 * http://sachinchoolur.github.io/lightGallery/
 * Copyright (c) 2017 Sachin N; Licensed GPLv3 */
@@ -33461,7 +33612,7 @@ return jQuery;
 
 }));
 
-},{"jquery":363}],370:[function(require,module,exports){
+},{"jquery":363}],371:[function(require,module,exports){
 /*! lg-fullscreen - v1.0.1 - 2016-09-30
 * http://sachinchoolur.github.io/lightGallery
 * Copyright (c) 2016 Sachin N; Licensed GPLv3 */
@@ -33579,7 +33730,7 @@ return jQuery;
 
 }));
 
-},{"jquery":363}],371:[function(require,module,exports){
+},{"jquery":363}],372:[function(require,module,exports){
 /*! lg-hash - v1.0.3 - 2017-10-19
 * http://sachinchoolur.github.io/lightGallery
 * Copyright (c) 2017 Sachin N; Licensed GPLv3 */
@@ -33682,7 +33833,7 @@ return jQuery;
 
 }));
 
-},{"jquery":363}],372:[function(require,module,exports){
+},{"jquery":363}],373:[function(require,module,exports){
 /*! lg-pager - v1.0.2 - 2017-01-22
 * http://sachinchoolur.github.io/lightGallery
 * Copyright (c) 2017 Sachin N; Licensed GPLv3 */
@@ -33789,7 +33940,7 @@ return jQuery;
 
 }));
 
-},{"jquery":363}],373:[function(require,module,exports){
+},{"jquery":363}],374:[function(require,module,exports){
 /*! lg-thumbnail - v1.1.0 - 2017-08-08
 * http://sachinchoolur.github.io/lightGallery
 * Copyright (c) 2017 Sachin N; Licensed GPLv3 */
@@ -34269,7 +34420,7 @@ return jQuery;
 
 }));
 
-},{"jquery":363}],374:[function(require,module,exports){
+},{"jquery":363}],375:[function(require,module,exports){
 /*! lg-zoom - v1.1.0 - 2017-08-08
 * http://sachinchoolur.github.io/lightGallery
 * Copyright (c) 2017 Sachin N; Licensed GPLv3 */
@@ -34798,7 +34949,7 @@ return jQuery;
 
 }));
 
-},{"jquery":363}],375:[function(require,module,exports){
+},{"jquery":363}],376:[function(require,module,exports){
 (function (global){
 /**
  * Copyright (c) 2014, Facebook, Inc.
@@ -35539,7 +35690,7 @@ return jQuery;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{}],376:[function(require,module,exports){
+},{}],377:[function(require,module,exports){
 /*!
  * Select2 4.0.5
  * https://select2.github.io
@@ -41287,7 +41438,7 @@ S2.define('jquery.select2',[
   return select2;
 }));
 
-},{"jquery":363}],377:[function(require,module,exports){
+},{"jquery":363}],378:[function(require,module,exports){
 (function (global){
 
 ; jQuery = global.jQuery = require("jquery");
@@ -41419,7 +41570,7 @@ S2.define('jquery.select2',[
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"jquery":363}],378:[function(require,module,exports){
+},{"jquery":363}],379:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -41622,7 +41773,7 @@ var BrokerageFilters = function () {
 exports.default = BrokerageFilters;
 module.exports = exports['default'];
 
-},{"jquery":363}],379:[function(require,module,exports){
+},{"jquery":363}],380:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -41652,7 +41803,7 @@ var Burger = function () {
     _classCallCheck(this, Burger);
 
     this.button = button;
-    this.burgerPiece = button;
+    this.burgerPiece = button.querySelector('.burger-container');
     this.navControls = navControls;
     this.buttonTrans = 'close';
 
@@ -41708,7 +41859,7 @@ var Burger = function () {
 exports.default = Burger;
 module.exports = exports['default'];
 
-},{"../../_scripts/helper-functions":397}],380:[function(require,module,exports){
+},{"../../_scripts/helper-functions":398}],381:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -41825,7 +41976,7 @@ var CharterFilters = function () {
 exports.default = CharterFilters;
 module.exports = exports['default'];
 
-},{"jquery":363}],381:[function(require,module,exports){
+},{"jquery":363}],382:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -41927,7 +42078,7 @@ var Filters = function () {
 exports.default = Filters;
 module.exports = exports['default'];
 
-},{"../../_scripts/breakpoints":396,"../../_scripts/helper-functions":397}],382:[function(require,module,exports){
+},{"../../_scripts/breakpoints":397,"../../_scripts/helper-functions":398}],383:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -42031,7 +42182,7 @@ var GlobalFooter = function () {
 exports.default = GlobalFooter;
 module.exports = exports['default'];
 
-},{"jquery":363}],383:[function(require,module,exports){
+},{"jquery":363}],384:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -42244,7 +42395,7 @@ var FormValidation = function () {
 exports.default = FormValidation;
 module.exports = exports['default'];
 
-},{"jquery":363,"jquery-validation":361}],384:[function(require,module,exports){
+},{"jquery":363,"jquery-validation":361}],385:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -42315,7 +42466,7 @@ var GalleryModal = function () {
       this.modal = modal;
       this.header = this.modal.querySelector('.galleries__header');
       this.globalHeader = globalHeader;
-      this.closeBtn = this.header.querySelector('.galleries__close');
+      this.closeBtn = this.header.querySelector('.galleries__close') ? this.header.querySelector('.galleries__close') : 0;
       this.footer = this.modal.querySelector('.galleries__footer');
       this.thumbnailBar = this.modal.querySelector('.galleries__footer');
       this.gallerySwitchers = this.modal.querySelector('.galleries__nav');
@@ -42330,6 +42481,8 @@ var GalleryModal = function () {
       this.currentGalleryName = '';
 
       this.topBarHeight = 0;
+
+      this.autoOpen = false;
 
       this.init();
     }
@@ -42347,8 +42500,6 @@ var GalleryModal = function () {
           _this.currentGalleryName = gallery;
           (0, _jquery2.default)('.gallery-content[data-gallery="' + gallery + '"] a:first').trigger('click');
         });
-
-        // this.setEvents($(el))
 
         (0, _jquery2.default)(el)
         // .on('onBeforeOpen.lg', () => this.open())
@@ -42383,6 +42534,14 @@ var GalleryModal = function () {
             color: '003145'
           }
         });
+
+        if ((0, _jquery2.default)(el).is('[data-auto-open]') && _this.autoOpen === false) {
+          _this.autoOpen = true;
+          console.log('auto opening gallery');
+          var gallery = (0, _jquery2.default)(el).attr('data-gallery');
+          _this.currentGalleryName = gallery;
+          (0, _jquery2.default)('.gallery-content[data-gallery="' + gallery + '"] a:first').trigger('click');
+        }
       });
 
       this.globalGalleryEvents();
@@ -42398,13 +42557,19 @@ var GalleryModal = function () {
 
         if (fixedTopValue !== this.topBarHeight && this.activeBar) {
           activeBar.style.transform = 'translateY(' + fixedTopValue + 'px)';
-          this.closeBtn.style.transform = !this.breakpoints.atLeast('medium') ? 'translateY(-' + lastModuleHeight + 'px)' : '';
+
+          if (this.closeBtn) {
+            this.closeBtn.style.transform = !this.breakpoints.atLeast('medium') ? 'translateY(-' + lastModuleHeight + 'px)' : '';
+          }
 
           this.topBarHeight = fixedTopValue;
         } else if (fixedTopValue === 0) {
           this.topBarHeight = 0;
 
-          this.closeBtn.style.transform = '';
+          if (this.closeBtn) {
+            this.closeBtn.style.transform = '';
+          }
+
           activeBar.style.transform = '';
         }
       }
@@ -42418,9 +42583,13 @@ var GalleryModal = function () {
     value: function globalGalleryEvents() {
       var _this2 = this;
 
-      this.closeBtn.addEventListener('click', function () {
-        _this2.currentGallery.data('lightGallery').destroy();
-      });
+      console.log(this.closeBtn);
+      if (this.closeBtn) {
+        console.log('closeBtn click');
+        this.closeBtn.addEventListener('click', function () {
+          _this2.currentGallery.data('lightGallery').destroy();
+        });
+      }
 
       this.footer.addEventListener('click', function () {
         // This gets created via the plugin later, so needs to be addressed here.
@@ -42459,7 +42628,7 @@ var GalleryModal = function () {
       if (!this.switchingGaleries) {
         this.currentGallery = {};
         console.log('GalleryModal, close');
-        (0, _helperFunctions.removeClass)(document.body, 'locked');
+        (0, _helperFunctions.removeClass)(document.body, 'locked--gallery');
         (0, _helperFunctions.removeClass)(this.modal, 'galleries--active');
         this.globalHeader.fullScreenMode({ on: false });
       }
@@ -42478,13 +42647,13 @@ var GalleryModal = function () {
       var galleryType = $gallery.attr('data-gallery');
       var activeGalleryBtn = this.gallerySwitchers.querySelector('button[data-gallery="' + galleryType + '"]');
 
-      (0, _jquery2.default)(this.galleryBtns).removeClass('button-clear-invert');
-      (0, _jquery2.default)(activeGalleryBtn).addClass('button-clear-invert');
+      (0, _jquery2.default)(this.galleryBtns).removeClass('button-clear');
+      (0, _jquery2.default)(activeGalleryBtn).addClass('button-clear');
 
       console.log('GalleryModal, open, galleryType: ', galleryType);
       console.log('$gallery', $gallery);
 
-      (0, _jquery2.default)(document.body).addClass('locked');
+      (0, _jquery2.default)(document.body).addClass('locked--gallery');
       (0, _jquery2.default)(this.modal).addClass('galleries--active');
       this.globalHeader.fullScreenMode();
     }
@@ -42496,7 +42665,7 @@ var GalleryModal = function () {
 exports.default = GalleryModal;
 module.exports = exports['default'];
 
-},{"../../_scripts/breakpoints":396,"../../_scripts/helper-functions":397,"jquery":363,"lightgallery":369,"lightgallery/modules/lg-fullscreen":370,"lightgallery/modules/lg-hash":371,"lightgallery/modules/lg-pager":372,"lightgallery/modules/lg-thumbnail":373,"lightgallery/modules/lg-zoom":374}],385:[function(require,module,exports){
+},{"../../_scripts/breakpoints":397,"../../_scripts/helper-functions":398,"jquery":363,"lightgallery":370,"lightgallery/modules/lg-fullscreen":371,"lightgallery/modules/lg-hash":372,"lightgallery/modules/lg-pager":373,"lightgallery/modules/lg-thumbnail":374,"lightgallery/modules/lg-zoom":375}],386:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -42569,7 +42738,7 @@ var GlobalNav = function () {
 exports.default = GlobalNav;
 module.exports = exports['default'];
 
-},{"../../_scripts/helper-functions":397}],386:[function(require,module,exports){
+},{"../../_scripts/helper-functions":398}],387:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -42617,10 +42786,12 @@ function _classCallCheck(instance, Constructor) {
 }
 
 var GlobalHeader = function () {
-  function GlobalHeader() {
+  function GlobalHeader(rePosTopLevels) {
     _classCallCheck(this, GlobalHeader);
 
     this.breakpoints = new _breakpoints2.default();
+
+    this.rePosTopLevels = rePosTopLevels;
 
     this.topBarHeight = 0;
     this.fixedTopValue = 0;
@@ -42762,6 +42933,8 @@ var GlobalHeader = function () {
         (0, _helperFunctions.removeClass)(this.header, 'main-header--full-screen');
         this.size(true);
       }
+
+      this.rePosTopLevels();
     }
   }]);
 
@@ -42771,7 +42944,7 @@ var GlobalHeader = function () {
 exports.default = GlobalHeader;
 module.exports = exports['default'];
 
-},{"../../_scripts/breakpoints":396,"../../_scripts/helper-functions":397,"jquery":363}],387:[function(require,module,exports){
+},{"../../_scripts/breakpoints":397,"../../_scripts/helper-functions":398,"jquery":363}],388:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -42934,7 +43107,7 @@ var Homepage = function Homepage() {
 exports.default = Homepage;
 module.exports = exports['default'];
 
-},{"../../_scripts/breakpoints":396,"jquery":363}],388:[function(require,module,exports){
+},{"../../_scripts/breakpoints":397,"jquery":363}],389:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -43064,7 +43237,7 @@ var OwnersArea = function () {
 exports.default = OwnersArea;
 module.exports = exports['default'];
 
-},{"../form-validation/form-validation":383,"jquery":363}],389:[function(require,module,exports){
+},{"../form-validation/form-validation":384,"jquery":363}],390:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -43096,7 +43269,7 @@ function quoteTestimonials() {
   // }
 }
 
-},{"jquery":363,"jquery.cycle2":362}],390:[function(require,module,exports){
+},{"jquery":363,"jquery.cycle2":362}],391:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -43369,7 +43542,7 @@ var Shortlist = function () {
 exports.default = Shortlist;
 module.exports = exports['default'];
 
-},{"jquery":363}],391:[function(require,module,exports){
+},{"jquery":363}],392:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -43395,9 +43568,10 @@ function _classCallCheck(instance, Constructor) {
 }
 
 var SubBar = function () {
-  function SubBar(element) {
+  function SubBar(element, scrollTo) {
     _classCallCheck(this, SubBar);
 
+    this.scrollTo = scrollTo;
     this.filterBar = element;
 
     this.activeBar = false;
@@ -43456,32 +43630,14 @@ var SubBar = function () {
     value: function localScrollPosLinks() {
       var _this = this;
 
-      console.log('hi');
-
       if (this.scrollLinks) {
         var _loop = function _loop(i) {
-          console.log("this.scrollLinks[i].getAttribute('href')", _this.scrollLinks[i].getAttribute('href'));
-
           _this.scrollLinks[i].addEventListener('click', function (e) {
             e.preventDefault();
+
             var destination = document.querySelector(_this.scrollLinks[i].getAttribute('href'));
-            var destinationBannerHeight = destination.querySelector('.banner').getBoundingClientRect().height;
-            var distance = (0, _helperFunctions.getElemDistance)(destination);
 
-            console.log('destinationBannerHeight', destinationBannerHeight);
-
-            // console.log('destination.getBoundingClientRect().top', destination.getBoundingClientRect().top)
-            console.log('this.topBarHeight', _this.topBarHeight);
-            console.log('distance', distance);
-
-            // Scroll to specific values
-            // scrollTo is the same
-            console.log;
-            window.scroll({
-              top: distance - (_this.topBarHeight + destinationBannerHeight + 3),
-              left: 0,
-              behavior: 'smooth'
-            });
+            _this.scrollTo(destination);
 
             // // Scroll certain amounts from current position
             // window.scrollBy({
@@ -43515,7 +43671,7 @@ var SubBar = function () {
 exports.default = SubBar;
 module.exports = exports['default'];
 
-},{"../../_scripts/helper-functions":397}],392:[function(require,module,exports){
+},{"../../_scripts/helper-functions":398}],393:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -43632,7 +43788,7 @@ var TopMessageBar = function () {
 exports.default = TopMessageBar;
 module.exports = exports['default'];
 
-},{"../../_scripts/breakpoints":396,"../../_scripts/helper-functions":397,"jquery":363}],393:[function(require,module,exports){
+},{"../../_scripts/breakpoints":397,"../../_scripts/helper-functions":398,"jquery":363}],394:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -43741,7 +43897,7 @@ var averageClimate = exports.averageClimate = {
   }
 };
 
-},{}],394:[function(require,module,exports){
+},{}],395:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -43869,7 +44025,7 @@ var weatherIconIds = exports.weatherIconIds = {
   3200: weatherIcon['Sun']
 };
 
-},{}],395:[function(require,module,exports){
+},{}],396:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -44022,7 +44178,7 @@ var Weather = function () {
 exports.default = Weather;
 module.exports = exports['default'];
 
-},{"./average-climate-data":393,"./weather-icons":394,"jquery":363,"simpleweather":377}],396:[function(require,module,exports){
+},{"./average-climate-data":394,"./weather-icons":395,"jquery":363,"simpleweather":378}],397:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -44104,7 +44260,7 @@ var BreakPoints = function () {
 exports.default = BreakPoints;
 module.exports = exports['default'];
 
-},{"jquery":363}],397:[function(require,module,exports){
+},{"jquery":363}],398:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -44397,7 +44553,7 @@ function documentReady() {
   });
 }
 
-},{}],398:[function(require,module,exports){
+},{}],399:[function(require,module,exports){
 'use strict';
 
 var _createClass = function () {
@@ -44430,13 +44586,15 @@ var _select2 = _interopRequireDefault(_select);
 
 require('foundation-sites');
 
-require('lazysizes');
-
 require('lazysizes/plugins/optimumx/ls.optimumx');
 
 require('lazysizes/plugins/respimg/ls.respimg');
 
 require('lazysizes/plugins/parent-fit/ls.parent-fit');
+
+require('lazysizes');
+
+require('lazysizes/plugins/object-fit/ls.object-fit');
 
 var _header = require('../_modules/header/header');
 
@@ -44516,30 +44674,31 @@ var Main = function () {
   function Main() {
     _classCallCheck(this, Main);
 
-    this.body = document.body;
-    this.homepageHero = document.getElementById('homepage');
+    var d = document;
+    this.body = d.body;
+    this.homepageHero = d.getElementById('homepage');
 
-    this.globalLogo = document.querySelector('.logo');
-    this.globalHeader = document.querySelector('.global-header-wrapper');
-    this.topMessageBar = document.querySelector('.top-header');
-    this.burgerBtn = document.querySelector('.burger-container');
-    this.globalNav = document.querySelector('.global-nav');
-    this.subBar = document.querySelector('.sub-bar');
-    this.globalFooter = document.querySelector('.global-footer');
-    this.filters = document.getElementById('global-page-filters');
+    this.globalLogo = d.querySelector('.logo');
+    this.globalHeader = d.querySelector('.global-header-wrapper');
+    this.topMessageBar = d.querySelector('.top-header');
+    this.burgerBtn = d.querySelector('.main-header__menu');
+    this.globalNav = d.querySelector('.global-nav');
+    this.subBar = d.querySelector('.sub-bar');
+    this.globalFooter = d.querySelector('.global-footer');
+    this.filters = d.getElementById('global-page-filters');
 
-    this.galleryModal = document.getElementById('galleries');
-    this.sideBarToStick = document.querySelector('section.about-yacht .sticky-sidebar');
-    this.homeSlider = document.querySelector('.hero-home');
-    this.brokerageFiltersDom = document.querySelector('.filters--brokerage');
-    this.charterGrid = document.querySelector('.charter-fleet #yacht-grid');
-    this.shortlistModal = document.getElementById('shortlistModal');
+    this.galleryModal = d.getElementById('galleries');
+    this.sideBarToStick = d.querySelector('section.about-yacht .sticky-sidebar');
+    this.homeSlider = d.querySelector('.hero-home');
+    this.brokerageFiltersDom = d.querySelector('.filters--brokerage');
+    this.charterGrid = d.querySelector('.charter-fleet #yacht-grid');
+    this.shortlistModal = d.getElementById('shortlistModal');
 
-    this.fixedTopValue = 0;
+    this.fixedTopValue = 10;
     this.fixedTopValues = [];
     this.headerSnapPoint = 450;
 
-    (0, _jquery2.default)(document).foundation();
+    (0, _jquery2.default)(d).foundation();
     this.legacyCode();
     this.init();
   }
@@ -44574,17 +44733,17 @@ var Main = function () {
 
       (0, _quoteTestimonials.quoteTestimonials)();
 
-      var header = new _header2.default();
+      var header = new _header2.default(this.positionElements.bind(this));
 
       // Cookie message, pass the posistionElements method to allow it to be dismissed.
       var topMessageBar = new _topMessageBar2.default(this.topMessageBar, this.positionElements.bind(this));
       var nav = new _globalNav2.default(this.globalNav, this.burgerBtn, document.body);
-      var subNav = new _subBar2.default(this.subBar);
+      var subNav = new _subBar2.default(this.subBar, this.scrollToBannerSection.bind(this));
       var filters = new _filters2.default();
       var form = new _formValidation2.default();
       var burger = new _burger2.default(this.burgerBtn, nav);
       var footer = this.globalFooter && new _footer2.default();
-      var gallery = new _galleryModal2.default(this.galleryModal, header);
+      var gallery = new _galleryModal2.default(this.galleryModal, header, this.positionElements.bind(this));
       var homepage = this.homepageHero && new _homepage2.default();
       var brokerageFilters = this.brokerageFiltersDom && new _brokerageFilters2.default();
       var charterFilters = this.charterGrid && new _charterFilters2.default();
@@ -44643,18 +44802,18 @@ var Main = function () {
     key: 'positionElements',
     value: function positionElements(lastKnownScrollPosition) {
       var topValues = [10];
-      var fixedTopValue = 10;
+      this.fixedTopValue = 10;
 
       for (var i = 0; i < this.scrollReativeElements.length; i += 1) {
         var lastModuleHeight = this.scrollReativeElements[i].snapPointCheck({
           lastKnownScrollPosition: lastKnownScrollPosition,
-          fixedTopValue: fixedTopValue,
+          fixedTopValue: this.fixedTopValue,
           topValues: topValues,
           headerSnapPoint: this.headerSnapPoint
         });
 
         topValues.push(lastModuleHeight);
-        fixedTopValue += lastModuleHeight;
+        this.fixedTopValue += lastModuleHeight;
       }
     }
   }, {
@@ -44736,14 +44895,17 @@ var Main = function () {
       });
 
       (0, _jquery2.default)('.slider-pager a').on('click', function (e) {
+        e.preventDefault();
         var jumpToHash = (0, _jquery2.default)(e.currentTarget).attr('href');
-        (0, _jquery2.default)(jumpToHash)[0].scrollIntoView();
+        _this3.scrollToBannerSection(document.querySelector(jumpToHash));
+        // $(jumpToHash)[0].scrollIntoView()
       });
 
       //  ---- VIEW GALLERY POP UP -----  //
 
       if ((0, _jquery2.default)('#layout-slider .cycle-slide').length > 1) {
         var firstImage = (0, _jquery2.default)('#layout-slider .cycle-slide img:first');
+
         firstImage.on('load', function () {
           (0, _jquery2.default)('#layout-slider').cycle({
             slides: '> div',
@@ -44754,6 +44916,7 @@ var Main = function () {
             log: false
           });
 
+          console.log('height thing about to run');
           (0, _jquery2.default)('#layout-slider').css('height', (0, _jquery2.default)(firstImage).height());
         });
 
@@ -44761,13 +44924,28 @@ var Main = function () {
       }
 
       // --- Media Centre Gallery Select --- //
-
       (0, _jquery2.default)('.select-gallery-wrapper select').each(function (index, element) {
         (0, _jquery2.default)(element).on('change', function (e) {
           (0, _jquery2.default)(element).siblings('a').attr('href', e.currentTarget.value);
         });
       });
     }
+  }, {
+    key: 'scrollToBannerSection',
+    value: function scrollToBannerSection(section) {
+      // const destinationBannerHeight = section.querySelector('.banner').getBoundingClientRect().height
+      var distance = (0, _helperFunctions.getElemDistance)(section);
+
+      // Scroll to specific values
+      window.scroll({
+        top: distance - (this.fixedTopValue + 3),
+        left: 0,
+        behavior: 'smooth'
+      });
+    }
+
+    // TODO: Move this over to the new method.
+
   }, {
     key: 'windowResize',
     value: function windowResize() {
@@ -44828,23 +45006,6 @@ var Main = function () {
       }
     }
   }, {
-    key: 'scroller',
-    value: function scroller() {
-      var controller = new ScrollMagic.Controller();
-      var lastId = null;
-
-      var locaSubNav = (0, _jquery2.default)('[data-local-scroll-pos]') || {};
-
-      // Yacht nav - scroll to section
-      locaSubNav.on('click', '.scroll', function (e) {
-        e.preventDefault();
-
-        (0, _jquery2.default)('html, body').animate({
-          scrollTop: (0, _jquery2.default)((0, _jquery2.default)(this).attr('href')).position().top - 100
-        }, 700);
-      });
-    }
-  }, {
     key: 'checkForTabs',
     value: function checkForTabs() {
       var _this5 = this;
@@ -44888,10 +45049,10 @@ var Main = function () {
 
       (0, _jquery2.default)(tabSlider).css({ transform: 'translateX(' + firstPositionUnderTab + ')' });
 
-      (0, _jquery2.default)(tabs).on('click', function () {
-        var moveHere = (0, _jquery2.default)(this).data('transform-pos');
+      (0, _jquery2.default)(tabs).on('click', function (e) {
+        var moveHere = (0, _jquery2.default)(e.target).data('transform-pos');
         (0, _jquery2.default)(tabSlider).css({ transform: 'translateX(' + moveHere + ')' });
-        (0, _jquery2.default)(this).data('transform-pos');
+        (0, _jquery2.default)(e.target).data('transform-pos');
       });
     }
   }, {
@@ -44935,6 +45096,6 @@ var Main = function () {
   new Main();
 });
 
-},{"../_modules/brokerage/brokerage-filters":378,"../_modules/burger/burger":379,"../_modules/charter/charter-filters":380,"../_modules/filters/filters":381,"../_modules/footer/footer":382,"../_modules/form-validation/form-validation":383,"../_modules/gallery-modal/gallery-modal":384,"../_modules/global-nav/global-nav":385,"../_modules/header/header":386,"../_modules/homepage/homepage":387,"../_modules/owners-area/owners-area-modal":388,"../_modules/quote-testimonials/quote-testimonials":389,"../_modules/shortlist/shortlist":390,"../_modules/sub-bar/sub-bar":391,"../_modules/top-message-bar/top-message-bar":392,"../_modules/weather/weather":395,"./helper-functions":397,"babel-polyfill":1,"foundation-sites":326,"jquery":363,"lazysizes":364,"lazysizes/plugins/optimumx/ls.optimumx":366,"lazysizes/plugins/parent-fit/ls.parent-fit":367,"lazysizes/plugins/respimg/ls.respimg":368,"select2":376}]},{},[398])
+},{"../_modules/brokerage/brokerage-filters":379,"../_modules/burger/burger":380,"../_modules/charter/charter-filters":381,"../_modules/filters/filters":382,"../_modules/footer/footer":383,"../_modules/form-validation/form-validation":384,"../_modules/gallery-modal/gallery-modal":385,"../_modules/global-nav/global-nav":386,"../_modules/header/header":387,"../_modules/homepage/homepage":388,"../_modules/owners-area/owners-area-modal":389,"../_modules/quote-testimonials/quote-testimonials":390,"../_modules/shortlist/shortlist":391,"../_modules/sub-bar/sub-bar":392,"../_modules/top-message-bar/top-message-bar":393,"../_modules/weather/weather":396,"./helper-functions":398,"babel-polyfill":1,"foundation-sites":326,"jquery":363,"lazysizes":364,"lazysizes/plugins/object-fit/ls.object-fit":366,"lazysizes/plugins/optimumx/ls.optimumx":367,"lazysizes/plugins/parent-fit/ls.parent-fit":368,"lazysizes/plugins/respimg/ls.respimg":369,"select2":377}]},{},[399])
 
 //# sourceMappingURL=main.js.map

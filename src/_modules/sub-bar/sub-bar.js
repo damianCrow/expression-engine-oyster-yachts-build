@@ -3,7 +3,8 @@
 import { addClass, removeClass, getElemDistance } from '../../_scripts/helper-functions'
 
 export default class SubBar {
-  constructor(element) {
+  constructor(element, scrollTo) {
+    this.scrollTo = scrollTo
     this.filterBar = element
 
     this.activeBar = false
@@ -59,32 +60,14 @@ export default class SubBar {
   }
 
   localScrollPosLinks() {
-    console.log('hi')
-
     if (this.scrollLinks) {
       for (let i = 0; i < this.scrollLinks.length; i += 1) {
-        console.log("this.scrollLinks[i].getAttribute('href')", this.scrollLinks[i].getAttribute('href'))
-
         this.scrollLinks[i].addEventListener('click', (e) => {
           e.preventDefault()
+
           const destination = document.querySelector(this.scrollLinks[i].getAttribute('href'))
-          const destinationBannerHeight = destination.querySelector('.banner').getBoundingClientRect().height
-          const distance = getElemDistance(destination)
 
-          console.log('destinationBannerHeight', destinationBannerHeight)
-
-          // console.log('destination.getBoundingClientRect().top', destination.getBoundingClientRect().top)
-          console.log('this.topBarHeight', this.topBarHeight)
-          console.log('distance', distance)
-
-          // Scroll to specific values
-          // scrollTo is the same
-          console.log
-          window.scroll({
-            top: distance - ((this.topBarHeight + destinationBannerHeight) + 3),
-            left: 0,
-            behavior: 'smooth',
-          })
+          this.scrollTo(destination)
 
           // // Scroll certain amounts from current position
           // window.scrollBy({

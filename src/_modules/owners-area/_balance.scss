@@ -24,7 +24,7 @@
         th {
             font-size: 0.75rem;
             line-height: 1.2rem;
-            @include omnes_medium;
+            @include omnes-medium;
             border-right: 1px solid $greyborder;
             border-left: 1px solid $greyborder;
         }
@@ -157,7 +157,7 @@
     }
 
     tbody {
-        @include omnes_medium;
+        @include omnes-medium;
     }
 }
 

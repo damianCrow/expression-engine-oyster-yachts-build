@@ -14,14 +14,14 @@
     }
     .crew-member-name {
         color: $blue;
-        @include omnes_medium;
+        @include omnes-medium;
         margin-bottom: 0.5rem;
     }
 
     .contact-phone-email {
         display: flex;
         flex-direction: column;
-        @include omnes_medium;
+        @include omnes-medium;
         abbr {
             @include omnes-regular;
         }

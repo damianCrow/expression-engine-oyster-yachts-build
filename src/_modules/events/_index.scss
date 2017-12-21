@@ -23,7 +23,7 @@
       line-height: 1;
       text-align: center;
       width: 100%;
-			@include omnes_light;
+			@include omnes-light;
 
 			@include breakpoint(large down) {
 				font-size: 3.75rem;
@@ -41,7 +41,7 @@
 			font-size: 15px;
 			line-height: 1;
 			text-align: center;
-			@include omnes_medium;
+			@include omnes-medium;
 
 			@include breakpoint(medium down) {
 				font-size: .85rem;
@@ -227,7 +227,7 @@
     }
 
     h2 {
-      @include omnes_medium;
+      @include omnes-medium;
       color: $white;
       font-size: 1.75rem;
       font-weight: normal;
@@ -259,7 +259,7 @@
       }
 
       a {
-        @include omnes_medium;
+        @include omnes-medium;
       }
 
     }
