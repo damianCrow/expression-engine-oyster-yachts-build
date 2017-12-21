@@ -1,0 +1,110 @@
+{exp:channel:entries channel="team_page" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published" limit="1"}
+
+{embed="site/.header" page_title="Team" snap_to="undefined" snap_offset="undefined"}
+  {embed="site/.sub_bar-projects" page_title="Projects" page="team"}
+
+<section style="background-image: url('/assets/images/oysteryachts-about_landing-our_team.jpg'); " class="hero after-nav global-page-hero yacht-listing-photo global-page-hero--small">
+	</div>
+</section>
+  {embed="site/.sub_bar-yachts" page_title="Yachts" page="team"}
+
+
+<div data-tabs-content="team-tabs" class="tabs-content team-tab-contents row-pad global-padding-top-only--medium">
+
+	
+
+	<article id="customer-service-panel" class="staggered-features stagger-split">
+		{team_customer_service}
+
+		{if team_customer_service:count % 2 == 0}
+
+		<section class="row staggered-row-reverse team-stagger-section">      
+			<div class="staggered-details medium-8 small-12 columns">
+				<div class="staggered-details-contents">
+					<div class="person-details">
+						<div class="person-name-pos">
+							<h2>{team_customer_service:name}</h2>
+							<h3>{team_customer_service:job_title}</h3>
+						</div>
+						{if team_customer_service:linkedin != ""}
+						<a href="{team_customer_service:linkedin}" target="_blank">
+							<div aria-hidden="true" class="fa fa-linkedin"></div>
+						</a>
+						{/if}
+					</div>
+					{team_customer_service:description}
+					        <ul class="contact-details">
+          {if team_customer_service:email_address != ""}
+          <li class="contact-detail">
+            <abbr title="Email">E: </abbr><a href="mailto:{email_address}">{team_customer_service:email_address}</a></li>
+          {/if} {if team_customer_service:phone_number != ""}
+          <li class="contact-detail">
+            <abbr title="Telephone">T: </abbr><a href="tel:{phone_number}">{team_customer_service:phone_number}</a></li>
+          {/if}
+        </ul>
+				</div>
+			</div>
+			<div class="staggered-image medium-4 small-12 columns"><img src="{team_customer_service:image}"></div>
+		</section>
+
+		{if:else}
+
+		<section class="row team-stagger-section">
+			<div class="staggered-image medium-4 small-12 columns"><img src="{team_customer_service:image}"></div>
+			<div class="staggered-details medium-8 small-12 columns">
+				<div class="staggered-details-contents">
+					<div class="person-details">
+						<div class="person-name-pos">
+							<h2>{team_customer_service:name}</h2>
+							<h3>{team_customer_service:job_title}</h3>
+						</div>
+						{if team_customer_service:linkedin != ""}
+						<a href="{team_customer_service:linkedin}" target="_blank">
+							<div aria-hidden="true" class="fa fa-linkedin"></div>
+						</a>
+						{/if}
+					</div>
+					{team_customer_service:description}
+					 <ul class="contact-details">
+          {if team_customer_service:email_address != ""}
+          <li class="contact-detail">
+            <abbr title="Email">E: </abbr><a href="mailto:{email_address}">{team_customer_service:email_address}</a></li>
+          {/if} {if team_customer_service:phone_number != ""}
+          <li class="contact-detail">
+            <abbr title="Telephone">T: </abbr><a href="tel:{phone_number}">{team_customer_service:phone_number}</a></li>
+          {/if}
+        </ul>
+				</div>
+			</div>
+		</section>
+
+		{/if}
+
+		{/team_customer_service}
+	</article>
+
+
+	
+</div>
+<style>
+.about-heading {height:100px;padding-top:30px;}
+.about-heading span {font-family: 'omnes_mediumregular', sans-serif;
+    letter-spacing: .05rem;
+    font-size: 1.25em;
+    line-height: 1.25em;
+    position: relative;
+    color: #003145;}
+.about-heading span:after {
+    content: "";
+    display: block;
+    width: 38px;
+    height: 2px;
+    background: #003145;
+    position: absolute;
+    left: 0;
+    bottom: -20px;
+}
+</style>
+{footer}
+
+{/exp:channel:entries}
