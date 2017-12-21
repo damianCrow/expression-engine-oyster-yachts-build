@@ -8,9 +8,9 @@
 
 <div class="row-pad sliding-tabs team-tab-container">
 	<ul id="team-tabs" data-tabs="" class="tabs">
-		<li class="tabs-title"><a href="#yards">Our Yards</a></li>
+		<li class="tabs-title is-active"><a href="#yards" aria-selected="true">Our Yards</a></li>
 		<li class="tabs-title "><a href="#management-panel">Management</a></li>
-		<li class="tabs-title is-active"><a href="#new-yachts-panel" aria-selected="true">New Yachts</a></li>
+		<li class="tabs-title"><a href="#new-yachts-panel">New Yachts</a></li>
 		<li class="tabs-title"><a href="#brokerage-panel">Brokerage</a></li>
 		<li class="tabs-title"><a href="#charter-panel">Charter</a></li>
 		<li class="tabs-title"><a href="#customer-service-panel">Service Centres</a></li>
@@ -21,7 +21,7 @@
 </div>
 
 <div data-tabs-content="team-tabs" class="tabs-content team-tab-contents row-pad global-padding-top-only--medium">
-	<article id="yards" class="tabs-panel">
+	<article id="yards" class="tabs-panel is-active">
 		<section class="row"><img src="/assets/images/oyster_southampton.jpg">
 <div>
 <div class="small-12 medium-12 large-12 large-offset-1 column about-heading"><span class="text-uppercase">
@@ -87,7 +87,7 @@ Oyster Wroxham
 		{/team_management}
 	</article>
 
-	<article id="new-yachts-panel" class="staggered-features stagger-split tabs-panel is-active">
+	<article id="new-yachts-panel" class="staggered-features stagger-split tabs-panel">
 		{team_new_yachts}
 
 		{if team_new_yachts:count % 2 == 0}
