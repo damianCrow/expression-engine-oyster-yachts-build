@@ -1,34 +1,35 @@
 // Specfics to yachts/yacht page.
-	// Avoid modifying component structure here.
+// Avoid modifying component structure here.
 
 .yachts-yacht-spec {
-	td.heading{
-		background: $lightblue;
-	}
+  td.heading{
+    background: $lightblue;
+  }
 }
 
-.overview-contents.prev-models {
-	padding: 0em;
-	a:not(.button-solid-blue) {
-		color: $lightblue;
-	}
+// .overview-contents.prev-models {
+//   padding: 0em;
 
- 	.overview {
-		padding: 0px;
-	}
+//   a:not(.button-solid-blue):not(.button) {
+//     color: $lightblue;
+//   }
 
-	li {
-		padding: 1em 1em;
-		border-bottom: 1px solid $grayborder;
+//   .overview {
+//     padding: 0px;
+//   }
 
-		&:last-child {
-			border-bottom: 0px;
-		}
+//   li {
+//     padding: 1em 1em;
+//     border-bottom: 1px solid $grayborder;
 
-		&.active-page {
-			a {
-				color: $blue;
-			}
-		}
-	}
-}
+//     &:last-child {
+//       border-bottom: 0px;
+//     }
+
+//     &.active-page {
+//       a {
+//         color: $blue;
+//       }
+//     }
+//   }
+// }

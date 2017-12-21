@@ -163,6 +163,14 @@
   }
 }
 
+@mixin small-legal {
+  @include omnes-light;
+  letter-spacing: .05rem;
+  font-size: .8rem;
+  line-height: 1.5;
+  color: $blue;
+}
+
 @mixin bg-cover {
   background-size: cover;
   background-position: center;

@@ -24,7 +24,7 @@
         <?php $firstName = ob_get_contents(); ob_end_clean(); ?>
         <?php ob_start(); ?>{member_last_name}
         <?php $lastName = ob_get_contents(); ob_end_clean(); ?>
-        <div class="overview-contents prev-models">
+        <div class="overview-contents">
           <div class="overview columns small-12">
             <div class="side-profile">
               <div class="side-profile-image"><span><?php echo substr($firstName, 0, 1).substr($lastName, 0, 1); ?></span></div>

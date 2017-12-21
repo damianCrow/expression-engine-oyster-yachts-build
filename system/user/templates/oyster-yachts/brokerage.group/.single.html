@@ -1,6 +1,4 @@
-{exp:channel:entries channel="brokerage" disable="member_data|category_fields|pagination" cache="yes" refresh="60" require_entry="yes" status="published" limit="1"}
-{if no_results}{redirect="404"}{/if}
-
+{exp:channel:entries channel="brokerage" disable="member_data|category_fields|pagination" cache="yes" refresh="60" require_entry="yes" status="published" limit="1"} {if no_results}{redirect="404"}{/if}
 <?php
 $query = ee()->db->query('SELECT * FROM exp_channel_images WHERE entry_id={entry_id} AND field_id=14');
 $layoutImages = $query->num_rows();
@@ -11,347 +9,275 @@ $exteriorGalleryImages = $query->num_rows();
 /*$query = ee()->db->query('SELECT * FROM exp_channel_images WHERE entry_id={entry_id} AND field_id=15');
 $interiorGalleryImages = $query->num_rows();*/
 ?>
+  {embed="site/.header" page_title="{brokerage_model} - {title}" snap_to=".full-screen #yacht-nav" snap_offset="55"}
+  <header class="sub-bar sub-bar--large">
+    <div class="sub-bar__title">
+      <h1>{brokerage_model} - {title}</h1>
+    </div>
+    <nav class="sub-bar__nav">
+      <ul class="sub-bar__menu">
+        {if brokerage_design_features:total_rows > 0}
+        <li class="active"><a href="#design-features" data-local-scroll-pos><span>Design Features</span></a></li>
+        {/if} {if brokerage_specifications:total_rows > 0}
+        <li><a href="#specifications" data-local-scroll-pos><span>Specifications</span></a></li>
+        {/if}
+        <?php if ($layoutImages > 0): ?>
+        <li><a href="#yacht-layout" data-local-scroll-pos><span>Yacht Layout</span></a></li>
+        <?php endif; ?>
+        <?php if ($exteriorGalleryImages > 0): ?>
+        <li><a href="" class="gallery btn-gallery" data-gallery="external"><span>Gallery</span></a></li>
+        <?php endif; ?> {brokerage_virtual_tours limit="1"}
+        <li><a href="" class="gallery btn-gallery" data-gallery="vrtours"><span>VR Tours</span></a></li>
+        {/brokerage_virtual_tours}
+      </ul>
+    </nav>
+    <div class="sub-bar__buttons">
+      <a class="button-clear-invert button-flush" href="mailto:brokerage@oysteryachts.com">Contact</a>
+    </div>
+  </header>
+  <section data-yachtid="{entry_id}" data-spec="{specification_pdf}" data-yachtsection="brokerage" class="hero full-screen">
+    <div id="full-image" class="yacht-listing-photo add-full-background-overlay" style="background-image: url('{brokerage_main_image}{image:url}{/brokerage_main_image}'); {if main_image_align ==" Bottom "}background-position: bottom center;{/if}">
+      <div class="yacht-name">
+        <div class="row-pad">
+          <h2 class="yacht-list-modal">{if other_model != ""}{other_model}{if:else}{brokerage_model}{/if}</h2>
+          <h1 class="yacht-list-name">{title}</h1>
+          <?php if ($exteriorGalleryImages > 0): ?>
+          <a class="gallery button-view-gallery btn-gallery" href="" data-gallery="external">View Gallery</a>
+          <?php endif; ?>
+        </div>
+      </div>
+      {share_buttons}
+    </div>
+  </section>
+  <section class="about-yacht">
+    <div class="row row-pad">
+      <div class="large-offset-1 large-7 float">
+        <h2>{if other_model != ""}{other_model}{if:else}{brokerage_model}{/if}</h2>
+        <h1>{title}</h1> {brokerage_about} {if brokerage_further_information != ""}
+        <div class="further-info">
+          {brokerage_further_information}
+        </div>
+        {/if}
+      </div>
+      <div class="large-offset-1 large-3 medium-12 float-left">
+        <aside class="overview-download columns sticky-sidebar brokerage-style">
+          <div class="aside-header">
+            <h3 class="text-uppercase">{title} Overview</h3>
+            <svg id="svg-arrow" version="1.1" baseprofile="tiny" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewbox="0 -20 100 100" xml:space="preserve">
+              <g>
+                <line x1="10" y1="10" x2="53" y2="53" stroke="#454646" stroke-width="10"></line>
+                <line x1="90" y1="10" x2="47" y2="53" stroke="#454646" stroke-width="10"></line>
+              </g>
+            </svg>
+          </div>
+          <div class="overview-contents">
+            <div class="overview columns small-12">
+              <table class="table definition-table">
+                <tbody>
+                  {if brokerage_location != ""}
+                  <tr>
+                    <td>Location:</td>
+                    <td>{brokerage_location}</td>
+                  </tr>
+                  {/if} {if brokerage_year_built != ""}
+                  <tr>
+                    <td>Year:</td>
+                    <td>{brokerage_year_built}</td>
+                  </tr>
+                  {/if} {if brokerage_rig != ""}
+                  <tr>
+                    <td>Rig:</td>
+                    <td>{brokerage_rig}</td>
+                  </tr>
+                  {/if} {if brokerage_joinery != ""}
+                  <tr>
+                    <td>Joinery:</td>
+                    <td>{brokerage_joinery}</td>
+                  </tr>
+                  {/if} {if brokerage_cabins != ""}
+                  <tr>
+                    <td>Cabins:</td>
+                    <td>{brokerage_cabins}</td>
+                  </tr>
+                  {/if} {if brokerage_status != ""}
+                  <tr>
+                    <td>Status:</td>
+                    <td>{brokerage_status}</td>
+                  </tr>
+                  {/if}
+                  <tr>
+                    <td>Price:</td>
+                    <td>{if brokerage_price != ""} {brokerage_currency}
+                      <?php echo number_format({brokerage_price}); ?> <span>{brokerage_vat}</span> {if:else} POA {/if}
+                    </td>
+                  </tr>
+                  {if brokerage_feature_text != ""}
+                  <tr>
+                    <td colspan="2" class="highlight">{brokerage_feature_text}</td>
+                  </tr>
+                  {/if}
+                </tbody>
+              </table>
+              <div class="disclaimer">
+                <small>The above price is given as an indication only and may be subject to exchange rate fluctuation , VAT or local taxes. Also please note that all dimensions are approximates.</small>
+                <div data-open="shortlistModal" class="button button--hover button--cyan button--full-width add-to-shortlist">Request Specifications</div>
+              </div>
+            </div>
+        </aside>
+        </div>
+      </div>
+    </div>
+  </section>
+  {if brokerage_design_features:total_rows > 0}
+  <section id="design-features" class="design-features">
+    <div class="banner">Design features</div>
+    <div class="content row row-pad">
+      {brokerage_design_features}
+      <div class="large-4 small-6 content-col">
+        <div style="background-image:url('{brokerage_design_features:feature_image}')" class="feature-image"></div>
+        <div class="feature-content">
+          <h4>{brokerage_design_features:feature_title}</h4> {brokerage_design_features:feature_description}
+        </div>
+      </div>
+      {/brokerage_design_features}
+    </div>
+  </section>
+  {/if} {if brokerage_specifications:total_rows > 0}
+  <section id="specifications" class="specifications yachts-yacht-spec brokerage-yacht-specifications">
+    <div class="banner">Specifications</div>
+    <div class="content row row-pad">
+      <h2 class="yacht-featured-list-header">Key Specifications</h2>
+      <div data-equalizer class="yacht-featured-lists">
+        {brokerage_specifications limit="1"}
+        <div class="yacht-featured-list">
+          <h3 data-equalizer-watch class="yacht-featured-list-sub-header">LOA</h3> {embed="brokerage/.table-column" field="loa"}
+        </div>
+        <div class="yacht-featured-list">
+          <h3 data-equalizer-watch class="yacht-featured-list-sub-header">LWL</h3> {embed="brokerage/.table-column" field="lwl"}
+        </div>
+        <div class="yacht-featured-list">
+          <h3 data-equalizer-watch class="yacht-featured-list-sub-header">BEAM</h3> {embed="brokerage/.table-column" field="beam"}
+        </div>
+        {if brokerage_specifications:draft_standard != ""}
+        <div class="yacht-featured-list">
+          <h3 data-equalizer-watch class="yacht-featured-list-sub-header">Draft Standard</h3> {embed="brokerage/.table-column" field="draft_standard"}
+        </div>
+        {/if} {if brokerage_specifications:draft_shoal != ""}
+        <div class="yacht-featured-list">
+          <h3 data-equalizer-watch class="yacht-featured-list-sub-header">Draft Shoal</h3> {embed="brokerage/.table-column" field="draft_shoal"}
+        </div>
+        {/if} {if brokerage_specifications:draft_centreboard_up != ""}
+        <div class="yacht-featured-list">
+          <h3 data-equalizer-watch class="yacht-featured-list-sub-header">Draft Centreboard Up</h3> {embed="brokerage/.table-column" field="draft_centreboard_up"}
+        </div>
+        {/if} {if brokerage_specifications:draft_centreboard_down != ""}
+        <div class="yacht-featured-list">
+          <h3 data-equalizer-watch class="yacht-featured-list-sub-header">Draft Centreboard Down</h3> {embed="brokerage/.table-column" field="draft_centreboard_down"}
+        </div>
+        {/if} {if brokerage_specifications:displacement != ""}
+        <div class="yacht-featured-list">
+          <h3 data-equalizer-watch class="yacht-featured-list-sub-header">DISPLACEMENT</h3> {embed="brokerage/.table-column" field="displacement"}
+        </div>
+        {/if} {if brokerage_specifications:brokerage_rig != ""}
+        <div class="yacht-featured-list">
+          <h3 data-equalizer-watch class="yacht-featured-list-sub-header">Rig</h3> {embed="brokerage/.table-column" field="brokerage_rig"}
+        </div>
+        {/if} {if brokerage_specifications:brokerage_joinery != ""}
+        <div class="yacht-featured-list">
+          <h3 data-equalizer-watch class="yacht-featured-list-sub-header">JOINERY</h3> {embed="brokerage/.table-column" field="brokerage_joinery"}
+        </div>
+        {/if} {if brokerage_specifications:brokerage_cabins != ""}
+        <div class="yacht-featured-list">
+          <h3 data-equalizer-watch class="yacht-featured-list-sub-header">Cabins</h3> {embed="brokerage/.table-column" field="brokerage_cabins"}
+        </div>
+        {/if} {/brokerage_specifications}
+      </div>
+    </div>
+  </section>
+  {/if}
+  <?php if ($layoutImages > 0): ?>
+  <section id="yacht-layout" class="yacht-layout">
+    <div class="banner">Yacht Layout</div>
+    <div class="content row row-pad">
+      <div class="large-10 large-offset-1 end">
+        <div id="layout-slider">
+          {brokerage_layout}
+          <div class="cycle-slide"><img src="{image:url}"></div>
+          {/brokerage_layout}
+        </div>
+        <ul class="slider-pager<?php if ($layoutImages === 1): ?> hide<?php endif; ?>">
+          {brokerage_layout}
+          <li><a><span style="background-image:url('{image:url:small}');"></span></a></li>
+          {/brokerage_layout}
+      </div>
+    </div>
+  </section>
+  <?php endif; ?>
+  <section id="galleries" class='galleries' data-title="{title}">
+    <header class='galleries__header'>
+      <nav class='galleries__nav'>
+        <ul class="button-group">
+          <?php if ($exteriorGalleryImages > 0): ?>
+          <li class='galleries__nav-item'>
+            <button data-gallery="external" class='button button--solid-white button--flush'>Exterior</button>
+          </li>
+          <?php endif; ?> {brokerage_videos} {if brokerage_videos:count == 1}
+          <li class='galleries__nav-item'>
+            <button data-gallery="videos" class='button button--solid-white button--flush'>Videos</button>
+          </li>
+          {/if} {/brokerage_videos} {brokerage_virtual_tours} {if brokerage_virtual_tours:count == 1}
+          <li class='galleries__nav-item'>
+            <button data-gallery="vrtours" class='button button--solid-white button--flush'>VR Tours</button>
+          </li>
+          {/if} {/brokerage_virtual_tours}
+        </ul>
+        <button class='galleries__close' />
+      </nav>
+    </header>
+    <?php if ($exteriorGalleryImages > 0): ?>
+    <div class="gallery-content" data-gallery="external" data-title="Images">
+      {brokerage_gallery_exterior}
+      <a href="{image:url}" data-sub-html="{image:description}">
+					<img src="{image:url:gallery_thumb}" />
+				</a> {/brokerage_gallery_exterior}
+    </div>
+    {brokerage_videos} {if brokerage_videos:count == 1}
+    <div class="gallery-content" data-gallery="videos" data-title="Videos">
+      {/if}
+      <a href="{brokerage_videos:video}" data-sub-html="{brokerage_videos:caption}"></a> {if brokerage_videos:count == brokerage_videos:total_rows}
+    </div>
+    {/if} {/brokerage_videos} {brokerage_virtual_tours} {if brokerage_virtual_tours:count == 1}
+    <div class="gallery-content" data-gallery="vrtours" data-title="VR Tours">
+      {/if}
+      <a href="{brokerage_virtual_tours:url}" data-iframe="true"><img src="{site_url}images/static/oyster_360_thumbnail.jpg"></a> {if brokerage_virtual_tours:count == brokerage_virtual_tours:total_rows}
+    </div>
+    {/if} {/brokerage_virtual_tours}
+    <?php endif; ?>
+    <footer class="galleries__footer">
+      <div class="galleries__index"></div>
+    </footer>
+  </section>
+  <style>
+  section,
+  .global-padding-top-only--small {
+    padding-top: 11px !important;
+  }
 
-{embed="site/.header" page_title="{brokerage_model} - {title}" snap_to=".full-screen #yacht-nav" snap_offset="55"}
-<header class="sub-bar sub-bar--large">
-  <div class="sub-bar__title">
-    <h1>{brokerage_model} - {title}</h1>
-  </div>
-  <nav class="sub-bar__nav">
-    <ul class="sub-bar__menu">
-		{if brokerage_design_features:total_rows > 0}
-			<li class="active"><a href="#design-features" data-local-scroll-pos ><span>Design Features</span></a></li>
-			{/if}
+  section.hero {
+    padding-top: 0px !important;
+  }
 
-			{if brokerage_specifications:total_rows > 0}
-			<li><a href="#specifications" data-local-scroll-pos ><span>Specifications</span></a></li>
-			{/if}
+  .definition-table tbody td span {
+    display: block;
+  }
 
-			<?php if ($layoutImages > 0): ?>
-			<li><a href="#yacht-layout" data-local-scroll-pos ><span>Yacht Layout</span></a></li>
-			<?php endif; ?>
+  .definition-table {
+    height: 45px;
+  }
 
-			<?php if ($exteriorGalleryImages > 0): ?>
-			<li><a href="" class="gallery btn-gallery" data-gallery="external"><span>Gallery</span></a></li>
-			<?php endif; ?>
+  .brokerage-nonoyster h2 {
+    display: none;
+  }
 
-			{brokerage_virtual_tours limit="1"}
-			<li><a href="" class="gallery btn-gallery" data-gallery="vrtours"><span>VR Tours</span></a></li>
-			{/brokerage_virtual_tours}
-	    </ul>
-  </nav>
-  <div class="sub-bar__buttons">
-    <a class="button-clear-invert button-flush" href="mailto:brokerage@oysteryachts.com">Contact</a>
-  </div>
-</header>
-
-<section data-yachtid="{entry_id}" data-spec="{specification_pdf}" data-yachtsection="brokerage" class="hero full-screen">
-	<div id="full-image" class="yacht-listing-photo add-full-background-overlay" style="background-image: url('{brokerage_main_image}{image:url}{/brokerage_main_image}'); {if main_image_align =="Bottom"}background-position: bottom center;{/if}">
-		
-		<div class="yacht-name">
-			<div class="row-pad">
-				<h2 class="yacht-list-modal">{if other_model != ""}{other_model}{if:else}{brokerage_model}{/if}</h2>
-				<h1 class="yacht-list-name">{title}</h1>
-				<?php if ($exteriorGalleryImages > 0): ?>
-				<a class="gallery button-view-gallery btn-gallery" href="" data-gallery="external">View Gallery</a>
-				<?php endif; ?>
-			</div>
-		</div>
-		{share_buttons}
-	</div>
-
-</section>
-
-<section class="about-yacht">
-	<div class="row row-pad">
-		<div class="large-offset-1 large-7 float">
-			<h2>{if other_model != ""}{other_model}{if:else}{brokerage_model}{/if}</h2>
-			<h1>{title}</h1>
-			{brokerage_about}
-			{if brokerage_further_information != ""}
-			<div class="further-info">
-				{brokerage_further_information}
-			</div>
-			{/if}
-		</div>
-		<div class="large-offset-1 large-3 medium-12 float-left">
-			<aside class="overview-download columns sticky-sidebar brokerage-style">
-                <div class="aside-header">
-                	<h3 class="text-uppercase">{title} Overview</h3>
-					<svg id="svg-arrow" version="1.1" baseprofile="tiny" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewbox="0 -20 100 100" xml:space="preserve">
-						<g>
-							<line x1="10" y1="10" x2="53" y2="53" stroke="#454646" stroke-width="10"></line>
-							<line x1="90" y1="10" x2="47" y2="53" stroke="#454646" stroke-width="10"></line>
-						</g>
-					</svg>
-				</div>
-				<div class="overview-contents prev-models">
-					<div class="overview columns small-12">
-						<table class="table definition-table">
-							<tbody>
-
-								{if brokerage_location != ""}
-								<tr>
-									<td>Location:</td>
-									<td>{brokerage_location}</td>
-								</tr>
-								{/if}
-
-								{if brokerage_year_built != ""}
-								<tr>
-									<td>Year:</td>
-									<td>{brokerage_year_built}</td>
-								</tr>
-								{/if}
-
-								{if brokerage_rig != ""}
-								<tr>
-									<td>Rig:</td>
-									<td>{brokerage_rig}</td>
-								</tr>
-								{/if}
-
-								{if brokerage_joinery != ""}
-								<tr>
-									<td>Joinery:</td>
-									<td>{brokerage_joinery}</td>
-								</tr>
-								{/if}
-
-								{if brokerage_cabins != ""}
-								<tr>
-									<td>Cabins:</td>
-									<td>{brokerage_cabins}</td>
-								</tr>
-								{/if}
-
-								{if brokerage_status != ""}
-								<tr>
-									<td>Status:</td>
-									<td>{brokerage_status}</td>
-								</tr>
-								{/if}
-
-								
-								<tr>
-									<td>Price:</td>
-									<td>{if brokerage_price != ""}
-											{brokerage_currency}<?php echo number_format({brokerage_price}); ?> <span>{brokerage_vat}</span>
-										{if:else}
-											POA
-										{/if}
-									</td>
-								</tr>
-								
-
-								{if brokerage_feature_text != ""}
-								<tr>
-									<td colspan="2" class="highlight">{brokerage_feature_text}</td>
-								</tr>
-								{/if}
-							</tbody>
-						</table>
-						<div class="disclaimer">
-							<small>The above price is given as an indication only and may be subject to exchange rate fluctuation , VAT or local taxes. Also please note that all dimensions are approximates.</small>
-                      		<div data-open="shortlistModal" class="button-solid-cyan button-full-width add-to-shortlist">Request Specifications</div>
-                    	</div>
-					</div>
-            	</aside>
-			</div>
-		</div>
-	</div>
-</section>
-
-
-{if brokerage_design_features:total_rows > 0}
-<section id="design-features" class="design-features">
-	<div class="banner">Design features</div>
-	<div class="content row row-pad">
-
-		{brokerage_design_features}
-		<div class="large-4 small-6 content-col">
-			<div style="background-image:url('{brokerage_design_features:feature_image}')" class="feature-image"></div>
-			<div class="feature-content">
-				<h4>{brokerage_design_features:feature_title}</h4>
-				{brokerage_design_features:feature_description}
-			</div>
-		</div>
-		{/brokerage_design_features}
-
-	</div>
-</section>
-{/if}
-
-{if brokerage_specifications:total_rows > 0}
-<section id="specifications" class="specifications yachts-yacht-spec brokerage-yacht-specifications">
-	<div class="banner">Specifications</div>
-	
-	<div class="content row row-pad">
-		<h2 class="yacht-featured-list-header">Key Specifications</h2>
-		<div data-equalizer class="yacht-featured-lists">
-			{brokerage_specifications limit="1"}
-
-			<div class="yacht-featured-list">
-				<h3 data-equalizer-watch class="yacht-featured-list-sub-header">LOA</h3>
-				{embed="brokerage/.table-column" field="loa"}
-			</div>
-			<div class="yacht-featured-list">
-				<h3 data-equalizer-watch class="yacht-featured-list-sub-header">LWL</h3>
-				{embed="brokerage/.table-column" field="lwl"}
-			</div>
-			<div class="yacht-featured-list">
-				<h3 data-equalizer-watch class="yacht-featured-list-sub-header">BEAM</h3>
-				{embed="brokerage/.table-column" field="beam"}
-			</div>
-
-			{if brokerage_specifications:draft_standard != ""}
-			<div class="yacht-featured-list">
-				<h3 data-equalizer-watch class="yacht-featured-list-sub-header">Draft Standard</h3>
-				{embed="brokerage/.table-column" field="draft_standard"}
-			</div>
-			{/if}
-
-			{if brokerage_specifications:draft_shoal != ""}
-			<div class="yacht-featured-list">
-				<h3 data-equalizer-watch class="yacht-featured-list-sub-header">Draft Shoal</h3>
-				{embed="brokerage/.table-column" field="draft_shoal"}
-			</div>
-			{/if}
-
-			{if brokerage_specifications:draft_centreboard_up != ""}
-			<div class="yacht-featured-list">
-				<h3 data-equalizer-watch class="yacht-featured-list-sub-header">Draft Centreboard Up</h3>
-				{embed="brokerage/.table-column" field="draft_centreboard_up"}
-			</div>
-			{/if}
-
-			{if brokerage_specifications:draft_centreboard_down != ""}
-			<div class="yacht-featured-list">
-				<h3 data-equalizer-watch class="yacht-featured-list-sub-header">Draft Centreboard Down</h3>
-				{embed="brokerage/.table-column" field="draft_centreboard_down"}
-			</div>
-			{/if}
-
-			{if brokerage_specifications:displacement != ""}
-			<div class="yacht-featured-list">
-				<h3 data-equalizer-watch class="yacht-featured-list-sub-header">DISPLACEMENT</h3>
-				{embed="brokerage/.table-column" field="displacement"}
-			</div>
-			{/if}
-
-			{if brokerage_specifications:brokerage_rig != ""}
-			<div class="yacht-featured-list">
-				<h3 data-equalizer-watch class="yacht-featured-list-sub-header">Rig</h3>
-				{embed="brokerage/.table-column" field="brokerage_rig"}
-			</div>
-			{/if}
-
-			{if brokerage_specifications:brokerage_joinery != ""}
-			<div class="yacht-featured-list">
-				<h3 data-equalizer-watch class="yacht-featured-list-sub-header">JOINERY</h3>
-				{embed="brokerage/.table-column" field="brokerage_joinery"}
-			</div>
-			{/if}
-
-			{if brokerage_specifications:brokerage_cabins != ""}
-			<div class="yacht-featured-list">
-				<h3 data-equalizer-watch class="yacht-featured-list-sub-header">Cabins</h3>
-				{embed="brokerage/.table-column" field="brokerage_cabins"}
-			</div>
-			{/if}
-
-			{/brokerage_specifications}
-		</div>
-	</div>
-
-</section>
-{/if}
-
-<?php if ($layoutImages > 0): ?>
-<section id="yacht-layout" class="yacht-layout">
-	<div class="banner">Yacht Layout</div>
-	<div class="content row row-pad">
-		<div class="large-10 large-offset-1 end">
-			<div id="layout-slider">
-				{brokerage_layout}
-				<div class="cycle-slide"><img src="{image:url}"></div>
-				{/brokerage_layout}
-			</div>
-			<ul class="slider-pager<?php if ($layoutImages === 1): ?> hide<?php endif; ?>">
-				{brokerage_layout}
-				<li><a><span style="background-image:url('{image:url:small}');"></span></a></li>
-				{/brokerage_layout} 
-		</div>
-	</div>
-</section>
-<?php endif; ?>
-
-<section id="galleries" class='galleries' data-title="{title}">
-	<header class='galleries__header'>
-		<nav class='galleries__nav'>
-			<ul>
-				<?php if ($exteriorGalleryImages > 0): ?>
-					<li class='galleries__nav-item'>
-						<button data-gallery="external" class='button-clear button-flush'>Exterior</button>
-					</li>
-				<?php endif; ?>
-				{brokerage_videos}
-					{if brokerage_videos:count == 1}
-						<button data-gallery="videos" class='button-clear button-flush'>Videos</button>
-					{/if}
-				{/brokerage_videos}
-				{brokerage_virtual_tours}
-					{if brokerage_virtual_tours:count == 1}
-						<button data-gallery="vrtours" class='button-clear button-flush'>VR Tours</button>
-					{/if}
-				{/brokerage_virtual_tours}
-			</ul>
-			<button class='galleries__close' />
-		</nav>
-	</header>
-	<?php if ($exteriorGalleryImages > 0): ?>
-		<div class="gallery-content" data-gallery="external" data-title="Images">
-			{brokerage_gallery_exterior}
-			<a href="{image:url}" data-sub-html="{image:description}">
-				<img src="{image:url:gallery_thumb}" />
-			</a>
-			{/brokerage_gallery_exterior}
-		</div>
-		{brokerage_videos}
-		{if brokerage_videos:count == 1}
-		<div class="gallery-content" data-gallery="videos" data-title="Videos">
-		{/if}
-			<a href="{brokerage_videos:video}" data-sub-html="{brokerage_videos:caption}"></a>
-		{if brokerage_videos:count == brokerage_videos:total_rows}
-		</div>
-		{/if}
-		{/brokerage_videos}
-
-		{brokerage_virtual_tours}
-		{if brokerage_virtual_tours:count == 1}
-		<div class="gallery-content" data-gallery="vrtours" data-title="VR Tours">
-		{/if}
-			<a href="{brokerage_virtual_tours:url}" data-iframe="true"><img src="{site_url}images/static/oyster_360_thumbnail.jpg"></a>
-		{if brokerage_virtual_tours:count == brokerage_virtual_tours:total_rows}
-		</div>
-		{/if}
-		{/brokerage_virtual_tours}
-	<?php endif; ?>
-	<footer class="galleries__footer">
-		<div class="galleries__index"></div>
-	</footer>
-</section>
-<style>
-section, .global-padding-top-only--small {padding-top: 11px !important;}
-section.hero {padding-top: 0px !important;}
-.definition-table tbody td span {
-	display:block;
-}
-.definition-table {height:45px;}
-.brokerage-nonoyster h2 {
-	display: none;
-}
-</style>
-{footer}
-
-{/exp:channel:entries}
+  </style>
+  {footer} {/exp:channel:entries}

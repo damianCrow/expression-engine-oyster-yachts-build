@@ -106,7 +106,7 @@ $interiorGalleryImages = $query->num_rows();
               </g>
             </svg>
           </div>
-          <div class="overview-contents prev-models">
+          <div class="overview-contents">
             <div class="overview columns small-12">
               <p>To find out more about the {title} model, you can download the {title} Brochure below.</p>
               <p>If you would like more information, please complete the Contact Sales form or alternatively call us on <a href="tel:+442380831010" class="phone-number">+44 (0)23 8083 1010</a></p>
@@ -357,25 +357,25 @@ $interiorGalleryImages = $query->num_rows();
         <ul class="button-group">
           <?php if ($exteriorGalleryImages > 0): ?>
             <li class='galleries__nav-item'>
-              <button data-gallery="external" class='button-solid-white button-flush'>Exterior</button>
+              <button data-gallery="external" class='button button--solid-white button-flush'>Exterior</button>
             </li>
           <?php endif; ?>
           <?php if ($interiorGalleryImages > 0): ?>
             <li class='galleries__nav-item'>
-              <button data-gallery="internal" class='button-solid-white button-flush'>Interior</button>
+              <button data-gallery="internal" class='button button--solid-white button-flush'>Interior</button>
             </li>
           <?php endif; ?>
           {yacht_videos}
             {if yacht_videos:count == 1}
               <li class='galleries__nav-item'>
-                <button data-gallery="videos" class='button-solid-white button-flush'>Videos</button>
+                <button data-gallery="videos" class='button button--solid-white button-flush'>Videos</button>
               </li>
             {/if}
           {/yacht_videos}
           {yachts_virtual_tours}
             {if yachts_virtual_tours:count == 1}
               <li class='galleries__nav-item'>
-                <button data-gallery="vrtours" class='button-solid-white button-flush'>VR Tours</button>
+                <button data-gallery="vrtours" class='button button--solid-white button-flush'>VR Tours</button>
               </li>
             {/if}
           {/yachts_virtual_tours}

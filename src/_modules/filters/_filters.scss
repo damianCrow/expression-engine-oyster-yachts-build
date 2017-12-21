@@ -3,7 +3,6 @@
   padding: 15px 0;
 
   @include breakpoint(large up) {
-    // transition: transform 250ms ease-in-out;
     background-color: transparent;
     left: 0;
     padding: 30px 0;
@@ -68,9 +67,10 @@
 
   .filter-dropdown {
     @include breakpoint(large up) {
-      float: left;
-      height: 45px;
-      width: 21%;
+      // float: left;
+      // height: 45px;
+      // width: 21%;
+      flex: 1;
 
       select {
         font-size: 15px;
@@ -113,15 +113,8 @@
   }
 
   .button {
-    width: 16%;
-    float: left;
     border-top-right-radius: 3px;
     border-bottom-right-radius: 3px;
-  }
-
-  #submit {
-    margin: 0;
-    height: 45px;
   }
 
   &--charter {
@@ -224,7 +217,6 @@
 #global-filters-modal {
 
   ul {
-
     .select2-container {
       display: none;
     }

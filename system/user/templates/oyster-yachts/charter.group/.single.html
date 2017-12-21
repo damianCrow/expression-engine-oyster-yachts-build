@@ -77,7 +77,7 @@ $interiorGalleryImages = $query->num_rows();
 							</g>
 						</svg>
 					</div>
-					<div class="overview-contents prev-models">
+					<div class="overview-contents">
 						<div class="overview columns small-12">
 							<table class="table definition-table">
 								<tbody>
@@ -243,12 +243,12 @@ $interiorGalleryImages = $query->num_rows();
 				<ul class='button-group'>
 					<?php if ($exteriorGalleryImages > 0): ?>
 						<li class='galleries__nav-item'>
-							<button data-gallery="external" class='button-solid-blue button-flush'>Exterior</button>
+							<button data-gallery="external" class='button button--solid-white button-flush'>Exterior</button>
 						</li>
 					<?php endif; ?>
 					<?php if ($interiorGalleryImages > 0): ?>
 						<li class='galleries__nav-item'>
-							<button data-gallery="internal" class='button-solid-blue button-flush'>Interior</button>
+							<button data-gallery="internal" class='button button--solid-white button-flush'>Interior</button>
 						</li>
 					<?php endif; ?>
 				</ul>

@@ -6,6 +6,7 @@ import 'lightgallery/modules/lg-thumbnail'
 // import 'lightgallery/modules/lg-share'
 import 'lightgallery/modules/lg-fullscreen'
 import 'lightgallery/modules/lg-hash'
+import 'lightgallery/modules/lg-video'
 
 import { addClass, removeClass, hasClass } from '../../_scripts/helper-functions'
 import BreakPoints from '../../_scripts/breakpoints'
@@ -18,7 +19,7 @@ export default class GalleryModal {
       this.modal = modal
       this.header = this.modal.querySelector('.galleries__header')
       this.globalHeader = globalHeader
-      this.closeBtn = this.header.querySelector('.galleries__close') ? this.header.querySelector('.galleries__close') : 0 
+      this.closeBtn = this.header.querySelector('.galleries__close') ? this.header.querySelector('.galleries__close') : 0
       this.footer = this.modal.querySelector('.galleries__footer')
       this.thumbnailBar = this.modal.querySelector('.galleries__footer')
       this.gallerySwitchers = this.modal.querySelector('.galleries__nav')
@@ -73,6 +74,7 @@ export default class GalleryModal {
         thumbWidth: 197,
         toogleThumb: false,
         videoMaxWidth: '100%',
+        download: false,
         vimeoThumbSize: 'thumbnail_medium',
         vimeoPlayerParams: {
           byline: 0,
@@ -88,7 +90,6 @@ export default class GalleryModal {
         this.currentGalleryName = gallery
         $(`.gallery-content[data-gallery="${gallery}"] a:first`).trigger('click')
       }
-
     })
 
     this.globalGalleryEvents()
@@ -126,9 +127,7 @@ export default class GalleryModal {
   }
 
   globalGalleryEvents() {
-    console.log(this.closeBtn)
     if (this.closeBtn) {
-      console.log('closeBtn click')
       this.closeBtn.addEventListener('click', () => {
         this.currentGallery.data('lightGallery').destroy()
       })
@@ -138,14 +137,16 @@ export default class GalleryModal {
       // This gets created via the plugin later, so needs to be addressed here.
       const thumbnailContainer = document.querySelector('.lg-thumb-outer')
 
-      if (this.activeThumbnailBar) {
-        removeClass(thumbnailContainer, 'active')
-        removeClass(this.thumbnailBar, 'galleries__footer--active')
-        this.activeThumbnailBar = false
-      } else {
-        addClass(thumbnailContainer, 'active')
-        addClass(this.thumbnailBar, 'galleries__footer--active')
-        this.activeThumbnailBar = true
+      if (thumbnailContainer) {
+        if (this.activeThumbnailBar) {
+          removeClass(thumbnailContainer, 'active')
+          removeClass(this.thumbnailBar, 'galleries__footer--active')
+          this.activeThumbnailBar = false
+        } else {
+          addClass(thumbnailContainer, 'active')
+          addClass(this.thumbnailBar, 'galleries__footer--active')
+          this.activeThumbnailBar = true
+        }
       }
     })
 
@@ -156,12 +157,12 @@ export default class GalleryModal {
     })
   }
 
-  setEvents($gallery) {
-    const galleryType = $gallery.attr('data-gallery')
-    // const galleryTrigger = this.gallerySwitchers.querySelector(`button[data-gallery="${galleryType}"]`)
+  // setEvents($gallery) {
+  //   const galleryType = $gallery.attr('data-gallery')
+  //   // const galleryTrigger = this.gallerySwitchers.querySelector(`button[data-gallery="${galleryType}"]`)
 
-    // trigger first slide to open in gallery
-  }
+  //   // trigger first slide to open in gallery
+  // }
 
   close() {
     $(this.index).empty()
@@ -186,8 +187,8 @@ export default class GalleryModal {
     const galleryType = $gallery.attr('data-gallery')
     const activeGalleryBtn = this.gallerySwitchers.querySelector(`button[data-gallery="${galleryType}"]`)
 
-    $(this.galleryBtns).removeClass('button-clear')
-    $(activeGalleryBtn).addClass('button-clear')
+    $(this.galleryBtns).removeClass('button--clear')
+    $(activeGalleryBtn).addClass('button--clear')
 
     console.log('GalleryModal, open, galleryType: ', galleryType)
     console.log('$gallery', $gallery)

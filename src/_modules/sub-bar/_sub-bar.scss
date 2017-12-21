@@ -27,7 +27,7 @@
   &__buttons {
     display: none;
     z-index: 1;
-    flex: 1 0 auto;
+    flex: 1;
     padding: ($global-padding / 2) $global-padding;
 
     @include breakpoint(medium up) {
@@ -43,7 +43,7 @@
 
   &__nav {
     align-self: stretch;
-    flex: 1;
+    flex: 1 0;
 
     position: relative;
     z-index: 1;

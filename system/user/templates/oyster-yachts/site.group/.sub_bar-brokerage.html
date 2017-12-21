@@ -4,9 +4,21 @@
   </div>
   <nav class="sub-bar__nav">
     <ul class="sub-bar__menu">
-      <li{if embed:page == "fleet"} class="active"{/if}><a href="{path='brokerage/fleet'}" class="text-uppercase"><span>Fleet</span></a></li>
-      <li{if embed:page == "team"} class="active"{/if}><a href="{path='brokerage/team'}" class="text-uppercase"><span>Team</span></a></li>
-      <li{if embed:page == "boat-shows"} class="active"{/if}><a href="{path='events'}" class="text-uppercase"><span>Events</span></a></li>
+      <li{if embed:page == "fleet"} class="active"{/if}>
+        <a href="{path='brokerage/fleet'}">
+          <span>Fleet</span>
+        </a>
+      </li>
+      <li{if embed:page == "team"} class="active"{/if}>
+        <a href="{path='brokerage/team'}">
+          <span>Team</span>
+        </a>
+      </li>
+      <li{if embed:page == "boat-shows"} class="active"{/if}>
+        <a href="{path='events'}">
+          <span>Events</span>
+        </a>
+      </li>
     </ul>
   </nav>
   <div class="sub-bar__buttons">

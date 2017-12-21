@@ -21,6 +21,7 @@ export default class GlobalHeader {
       this.header.querySelector('.main-header__menu'),
     ]
 
+    this.pastScrollPoint = true
     this.largeHeaderActive = true
   }
 
@@ -86,10 +87,12 @@ export default class GlobalHeader {
 
     this.fixedTopValue = reactiveScrollProps.fixedTopValue
 
-    if (this.largeHeaderActive && (this.currentHeight() === 50 || lastKnownScrollPosition > headerSnapPoint)) {
+    if (this.pastScrollPoint && (this.currentHeight() === 50 || lastKnownScrollPosition > headerSnapPoint)) {
       this.size()
-    } else if (lastKnownScrollPosition < headerSnapPoint && !this.largeHeaderActive) {
+      this.pastScrollPoint = false
+    } else if (lastKnownScrollPosition < headerSnapPoint && !this.pastScrollPoint) {
       this.size(true)
+      this.pastScrollPoint = true
     }
 
     this.topPosition()
@@ -107,7 +110,6 @@ export default class GlobalHeader {
       this.topBarHeight = 0
 
       this.largeHeaderActive = true
-
       this.fixedHeight = this.currentHeight()
     } else {
       for (let i = 0; i < this.headerDependencies.length; i += 1) {
@@ -117,7 +119,6 @@ export default class GlobalHeader {
       }
 
       this.largeHeaderActive = false
-
       this.fixedHeight = 50
     }
   }
@@ -128,23 +129,19 @@ export default class GlobalHeader {
       this.topBarHeight = this.fixedTopValue
     } else if (this.fixedTopValue === 0) {
       this.topBarHeight = 0
-
       this.header.style.transform = ''
     }
   }
 
   fullScreenMode(options) {
-    const config = {
-      on: true,
-      ...options,
-    }
+    const config = { on: true, ...options }
 
     if (config.on) {
       addClass(this.header, 'main-header--full-screen')
       this.size()
     } else {
       removeClass(this.header, 'main-header--full-screen')
-      this.size(true)
+      this.size(this.pastScrollPoint)
     }
 
     this.rePosTopLevels()
