@@ -48,9 +48,9 @@ strong {
   font-weight: normal;
 }
 
-// a {
-//   color: $blue;
-// }
+a {
+  color: $blue;
+}
 
 small {
   color: $grey;
@@ -2503,6 +2503,11 @@ $locaiton-image-height: 250px;
 }
 
 #yacht-grid {
+  ul {
+    display: flex;
+    flex-wrap: wrap;    
+  }
+
   li {
     position: relative;
     display: flex;
@@ -2519,21 +2524,20 @@ $locaiton-image-height: 250px;
       display: flex;
       justify-content: center;
       position: absolute;
-      width: calc(100% - 1.25rem);
+      width: calc(100% - (#{rem-calc(10)} * 2));
       bottom: -65px;
       left: 0;
       right: 0;
       margin: auto;
+
+      @include breakpoint(medium up) {
+        width: calc(100% - (#{rem-calc(15)} * 2));
+      }
     }
   }
 }
 
 #yacht-grid {
-  ul {
-    display: flex;
-    flex-wrap: wrap;    
-  }
-
   li[data-listing-hightlight] {
     margin-bottom: 85px;
     &:after {
