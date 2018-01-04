@@ -13,6 +13,7 @@
 		<li class="tabs-title"><a href="#new-yachts-panel">New Yachts</a></li>
 		<li class="tabs-title"><a href="#brokerage-panel">Brokerage</a></li>
 		<li class="tabs-title"><a href="#charter-panel">Charter</a></li>
+		<li class="tabs-title"><a href="#crew-panel">Crew</a></li>
 		<li class="tabs-title"><a href="#customer-service-panel">Service Centres</a></li>
 	</ul>
 	<div class="tab-slider-container">
@@ -107,6 +108,15 @@ Oyster Wroxham
 						{/if}
 					</div>
 					{team_new_yachts:description}
+					<ul class="contact-details">
+          {if team_new_yachts:email_address != ""}
+          <li class="contact-detail">
+            <abbr title="Email">E: </abbr><a href="mailto:{team_new_yachts:email_address}">{team_new_yachts:email_address}</a></li>
+          {/if} {if team_new_yachts:phone_number != ""}
+          <li class="contact-detail">
+            <abbr title="Telephone">T: </abbr><a href="tel:{team_new_yachts:phone_number}">{team_new_yachts:phone_number}</a></li>
+          {/if}
+        </ul>
 				</div>
 			</div>
 			<div class="staggered-image medium-4 small-12 columns"><img src="{team_new_yachts:image}"></div>
@@ -130,6 +140,15 @@ Oyster Wroxham
 						{/if}
 					</div>
 					{team_new_yachts:description}
+					<ul class="contact-details">
+          {if team_new_yachts:email_address != ""}
+          <li class="contact-detail">
+            <abbr title="Email">E: </abbr><a href="mailto:{team_new_yachts:email_address}">{team_new_yachts:email_address}</a></li>
+          {/if} {if team_new_yachts:phone_number != ""}
+          <li class="contact-detail">
+            <abbr title="Telephone">T: </abbr><a href="tel:{team_new_yachts:phone_number}">{team_new_yachts:phone_number}</a></li>
+          {/if}
+        </ul>
 				</div>
 			</div>
 		</section>
@@ -293,6 +312,58 @@ Oyster Wroxham
 		{/if}
 
 		{/team_charter}
+	</article>
+	
+	<article id="crew-panel" class="staggered-features stagger-split tabs-panel">
+		{team_crew}
+
+		{if team_crew:count % 2 == 0}
+
+		<section class="row staggered-row-reverse team-stagger-section">      
+			<div class="staggered-details medium-8 small-12 columns">
+				<div class="staggered-details-contents">
+					<div class="person-details">
+						<div class="person-name-pos">
+							<h2>{team_crew:name}</h2>
+							<h3>{team_crew:job_title}</h3>
+						</div>
+						{if team_crew:linkedin != ""}
+						<a href="{team_crew:linkedin}" target="_blank">
+							<div aria-hidden="true" class="fa fa-linkedin"></div>
+						</a>
+						{/if}
+					</div>
+					{team_crew:description}
+				</div>
+			</div>
+			<div class="staggered-image medium-4 small-12 columns"><img src="{team_crew:image}"></div>
+		</section>
+
+		{if:else}
+
+		<section class="row team-stagger-section">
+			<div class="staggered-image medium-4 small-12 columns"><img src="{team_crew:image}"></div>
+			<div class="staggered-details medium-8 small-12 columns">
+				<div class="staggered-details-contents">
+					<div class="person-details">
+						<div class="person-name-pos">
+							<h2>{team_crew:name}</h2>
+							<h3>{team_crew:job_title}</h3>
+						</div>
+						{if team_crew:linkedin != ""}
+						<a href="{team_crew:linkedin}" target="_blank">
+							<div aria-hidden="true" class="fa fa-linkedin"></div>
+						</a>
+						{/if}
+					</div>
+					{team_crew:description}
+				</div>
+			</div>
+		</section>
+
+		{/if}
+
+		{/team_crew}
 	</article>
 </div>
 <style>
