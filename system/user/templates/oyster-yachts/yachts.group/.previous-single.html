@@ -54,17 +54,55 @@ $galleryImages = $query->num_rows();
 	</div>
 </section>
 
-<div id="galleries" data-title="{title}">
-	<?php if ($galleryImages > 0): ?>
-	<div class="gallery-content" data-gallery="external" data-title="External">
+<section id="galleries" class='galleries' data-title="{title}">
+  <header class='galleries__header'>
+    <nav class='galleries__nav'>
+      <ul class="button-group">
+        <?php if ($exteriorGalleryImages > 0): ?>
+          <li class='galleries__nav-item'>
+            <button data-gallery="external" class='button button--solid-white button-flush'>Exterior</button>
+          </li>
+        <?php endif; ?>
+        <?php if ($interiorGalleryImages > 0): ?>
+          <li class='galleries__nav-item'>
+            <button data-gallery="internal" class='button button--solid-white button-flush'>Interior</button>
+          </li>
+        <?php endif; ?>
+        {yacht_videos}
+          {if yacht_videos:count == 1}
+            <li class='galleries__nav-item'>
+              <button data-gallery="videos" class='button button--solid-white button-flush'>Videos</button>
+            </li>
+          {/if}
+        {/yacht_videos}
+        {yachts_virtual_tours}
+          {if yachts_virtual_tours:count == 1}
+            <li class='galleries__nav-item'>
+              <button data-gallery="vrtours" class='button button--solid-white button-flush'>VR Tours</button>
+            </li>
+          {/if}
+        {/yachts_virtual_tours}
+      </ul>
+      <div class='galleries__close-container'>
+        <button class='galleries__close' />
+      </div>
+    </nav>
+  </header>
+  <?php if ($galleryImages > 0): ?>
+  <div class="gallery-content" data-gallery="external" data-title="Exterior">
 		{yacht_prev_gallery}
-		<a href="{image:url}" data-sub-html="{image:description}">
-			<img src="{image:url:gallery_thumb}" />
-		</a>
+    <a href="{image:url}" data-sub-html="{image:description}">
+      <img src="{image:url:gallery_thumb}" />
+    </a>
 		{/yacht_prev_gallery}
-	</div>
-	<?php endif; ?>
-</div>
+  </div>
+  <?php endif; ?>
+
+  <footer class="galleries__footer">
+    <div class="galleries__index"></div>
+  </footer>
+</section>
+
 <style>
     .global-page-hero h1.hero-title{margin-bottom: 15px;}</style>
 {footer}

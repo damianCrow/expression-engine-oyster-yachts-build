@@ -1,9 +1,5 @@
 <?php 
   $imgExt = 'jpg';
-
-  if( strpos( $_SERVER['HTTP_ACCEPT'], 'image/webp' ) !== false ) {
-    $imgExt = 'webp';
-  }
 ?> {exp:channel:entries channel="home" dynamic="no" disable="member_data|categories|category_fields|pagination|member_data" cache="yes" refresh="60" status="published" } {embed="site/.header" page_title="" entry_id="{entry_id}" snap_to=".hero-home .scroll-message-contents-wrapper" snap_offset="100"} {/exp:channel:entries} {exp:channel:entries channel="home" dynamic="no" disable="member_data|categories|category_fields|pagination|member_data" cache="yes" refresh="60" status="published" }
 <article id="homepage" class="home carosel">
   <nav class="carosel__pagination-wrap">

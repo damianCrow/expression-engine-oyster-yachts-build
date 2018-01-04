@@ -8,6 +8,7 @@ export default class SubBar {
     this.filterBar = element
 
     this.activeBar = false
+    this.transition = false
 
     this.topBarHeight = 0
     this.fixedHeight = 0
@@ -48,6 +49,15 @@ export default class SubBar {
       }
       if (fixedTopValue !== this.topBarHeight) {
         filterBar.style.transform = `translateY(${fixedTopValue}px)`
+
+        // Make sure the first time the page is launched the bar doesn't drop down.
+        if (!this.transition) {
+          filterBar.style.transition = 'none'
+          this.transition = true
+        } else {
+          filterBar.style.transition = ''
+        }
+
         this.topBarHeight = fixedTopValue
       } else if (fixedTopValue === 0) {
         this.topBarHeight = 0

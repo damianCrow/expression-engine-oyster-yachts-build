@@ -23,6 +23,7 @@ export default class GlobalHeader {
 
     this.pastScrollPoint = true
     this.largeHeaderActive = true
+    this.transition = false
   }
 
   currentHeight() {
@@ -126,6 +127,12 @@ export default class GlobalHeader {
   topPosition() {
     if (this.fixedTopValue !== this.topBarHeight) {
       this.header.style.transform = `translateY(${this.fixedTopValue}px)`
+
+      if (!this.transition) {
+        addClass(this.header, 'main-header--transition')
+        this.transition = true
+      }
+
       this.topBarHeight = this.fixedTopValue
     } else if (this.fixedTopValue === 0) {
       this.topBarHeight = 0

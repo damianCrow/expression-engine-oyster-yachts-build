@@ -8,17 +8,16 @@ import 'lightgallery/modules/lg-fullscreen'
 import 'lightgallery/modules/lg-hash'
 import 'lightgallery/modules/lg-video'
 
-import { addClass, removeClass, hasClass } from '../../_scripts/helper-functions'
+import { addClass, removeClass } from '../../_scripts/helper-functions'
 import BreakPoints from '../../_scripts/breakpoints'
 
 export default class GalleryModal {
-  constructor(modal, globalHeader) {
+  constructor(modal) {
     if (modal) {
       this.breakpoints = new BreakPoints()
 
       this.modal = modal
       this.header = this.modal.querySelector('.galleries__header')
-      this.globalHeader = globalHeader
       this.closeBtn = this.header.querySelector('.galleries__close') ? this.header.querySelector('.galleries__close') : 0
       this.footer = this.modal.querySelector('.galleries__footer')
       this.thumbnailBar = this.modal.querySelector('.galleries__footer')
@@ -36,12 +35,12 @@ export default class GalleryModal {
       this.topBarHeight = 0
 
       this.autoOpen = false
-
-      this.init()
     }
   }
 
-  init() {
+  init(globalHeader) {
+    this.globalHeader = globalHeader
+
     $('.gallery-content').each((i, el) => {
       $('.btn-gallery').on('click', (e) => {
         e.preventDefault()
@@ -92,7 +91,17 @@ export default class GalleryModal {
       }
     })
 
-    this.globalGalleryEvents()
+    if (this.modal) {
+      this.globalGalleryEvents()
+      this.removeGalleryBtn()
+    }
+  }
+
+  removeGalleryBtn() {
+    // TODO: Temp fix to remove just one button.
+    if ($('.galleries__nav-item').length < 2) {
+      $('.button-group').remove()
+    }
   }
 
   snapPointCheck(reactiveScrollProps) {
@@ -132,6 +141,8 @@ export default class GalleryModal {
         this.currentGallery.data('lightGallery').destroy()
       })
     }
+
+    console.log('this.modal', this.modal)
 
     this.footer.addEventListener('click', () => {
       // This gets created via the plugin later, so needs to be addressed here.
@@ -195,6 +206,7 @@ export default class GalleryModal {
 
     $(document.body).addClass('locked--gallery')
     $(this.modal).addClass('galleries--active')
+    console.log('this.globalHeader.fullScreenMode', this.globalHeader.fullScreenMode)
     this.globalHeader.fullScreenMode()
   }
 }

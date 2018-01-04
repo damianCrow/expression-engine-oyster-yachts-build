@@ -54,7 +54,8 @@ class Main {
     this.sideBarToStick = d.querySelector('section.about-yacht .sticky-sidebar')
     this.homeSlider = d.querySelector('.hero-home')
     this.brokerageFiltersDom = d.querySelector('.filters--brokerage')
-    this.charterGrid = d.querySelector('.charter-fleet #yacht-grid')
+    // this.charterGrid = d.querySelector('.charter-fleet #yacht-grid')
+    this.charterGrid = d.querySelector('.filters--charter')
     this.shortlistModal = d.getElementById('shortlistModal')
 
     this.fixedTopValue = 10
@@ -90,7 +91,6 @@ class Main {
     // ownersAreaModal: '/assets/js/components/util/owners-area-modal', ✓
     // average_climate_data: '/assets/js/components/util/average-climate-data' ✓
 
-    this.maps()
 
     quoteTestimonials()
 
@@ -104,7 +104,7 @@ class Main {
     const form = new FormValidation()
     const burger = new Burger(this.burgerBtn, nav)
     const footer = this.globalFooter && new GlobalFooter()
-    const gallery = new GalleryModal(this.galleryModal, header, this.positionElements.bind(this))
+    const gallery = new GalleryModal(this.galleryModal)
     const homepage = this.homepageHero && new Homepage()
     const brokerageFilters = this.brokerageFiltersDom && new BrokerageFilters()
     const charterFilters = this.charterGrid && new CharterFilters()
@@ -113,6 +113,8 @@ class Main {
     const owenersArea = new OwnersArea()
 
     this.scrollReativeElements = [topMessageBar, header, gallery, nav, subNav, filters]
+
+    gallery.init(header)
 
     this.scrollEvents()
     this.positionElements(window.scrollY)
@@ -171,15 +173,6 @@ class Main {
     }
   }
 
-  maps() {
-    // load googleMaps
-    try {
-      googleMaps.load({ async: true })
-    } catch (e) {
-      console.log('google maps error: ', e)
-    }
-  }
-
   // TODO: Break this up into modules.
   legacyCode() {
     document.addEventListener('lazybeforeunveil', (e) => {
@@ -204,6 +197,7 @@ class Main {
       $('.share-list').removeClass('share-list-visible')
       setTimeout(() => {
         $('.share-list').addClass('hide')
+
         // Remove the tooltip while the share-list is open.
         $(shareListBtn).addClass('tooltip-left share-icon-tooltip')
       }, 250)
@@ -264,7 +258,6 @@ class Main {
           log: false,
         })
 
-        console.log('height thing about to run')
         $('#layout-slider').css('height', $(firstImage).height())
       })
 

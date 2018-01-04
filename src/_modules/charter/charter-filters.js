@@ -11,8 +11,8 @@ export default class CharterFilters {
   }
 
   init() {
-    if (this.form.attr('data-post') === "true") {
-      $('.filters-submit').on('click', function (e) {
+    if (this.form.attr('data-post') === 'true') {
+      $('.filters-submit').on('click', (e) => {
         e.preventDefault()
 
         this.form.submit()
@@ -35,18 +35,18 @@ export default class CharterFilters {
 
     // filter model
     if (model !== '') {
-      this.grid.find("li[data-model!='" + model + "']").addClass('hide')
+      this.grid.find(`li[data-model!='${model}']`).addClass('hide')
     }
 
     // filter guests
     if (guests !== '') {
-      //this.grid.find("li[data-guests!='" + guests + "']").addClass('hide')
+      // this.grid.find("li[data-guests!='" + guests + "']").addClass('hide')
       this.grid.find('li').filter(yacht => parseInt($(yacht).data('guests')) < parseInt(guests)).addClass('hide')
     }
 
     // filter season
     if (season !== '') {
-      this.grid.find("li[data-" + season + "='']").addClass('hide')
+      this.grid.find(`li[data-${season}='']`).addClass('hide')
     }
 
     // filter destination
