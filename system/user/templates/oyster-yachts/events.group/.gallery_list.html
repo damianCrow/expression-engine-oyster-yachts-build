@@ -4,7 +4,7 @@
 {embed="site/.header" page_title="Events Gallery" entry_id="{entry_id}" snap_to=".events-regattas-callendar" snap_offset="125"}
 {/exp:channel:entries}
 {embed="site/.sub_bar-events" page_title="Events" page="gallery"}
-<section style="background-image: url('/assets/images/oysteryachts-events-regatta_galleries.jpg'); background-position: center 95%;" class="hero after-nav global-page-hero yacht-listing-photo global-page-hero--small">
+<section style="background-image: url('/assets/images/oysteryachts-events-regatta_galleries.jpg'); background-position: center 95%;" class="hero after-nav after-nav--sub global-page-hero yacht-listing-photo global-page-hero--small">
 </section>
 
 <section id="events-regattas-callendar" class="events-view-events-mixin events-home-upcoming-events events-regattas-callendar">
@@ -12,6 +12,10 @@
 	<div data-equalizer data-equalize-by-row="true" class="row padded-full-width-row small-up-1 medium-up-2 large-up-3">
 		
 		{exp:channel:entries channel="event" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published" sort="desc" search:event_end_date="<{current_time}"}
+		   {parents field="event_day_event" status="published" orderby="date" sort="ASC" limit="1"}
+           {parents:event_day_gallery}
+            {if image:count == 1}
+			
 		<div class="small-12 medium-6 large-4 columns">
 			<div class="gallery-pane">
 				<div class="gallery-pane-header images" {event_main_image}style="background-image: url('{image:url:w_472}');"{/event_main_image}>
@@ -32,6 +36,9 @@
 				</div>
 			</div>
 		</div>
+		  {/if}
+         {/parents:event_day_gallery}
+       {/parents}
 		{/exp:channel:entries}
 
 	</div>
