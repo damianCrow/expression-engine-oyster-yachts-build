@@ -10,8 +10,6 @@ $exteriorGalleryImages = $query->num_rows();
 $interiorGalleryImages = $query->num_rows();*/
 ?>
 
-{assign_variable:foo="<?php echo $exteriorGalleryImages ?>"}
-
   {embed="site/.header" page_title="{brokerage_model} - {title}" snap_to=".full-screen #yacht-nav" snap_offset="55"}
   <header class="sub-bar sub-bar--large">
     <div class="sub-bar__title">
@@ -222,26 +220,25 @@ $interiorGalleryImages = $query->num_rows();*/
     <header class='galleries__header'>
       <nav class='galleries__nav'>
         <ul class="button-group">
-          <?php if (($exteriorGalleryImages + embed:brokerage_videos:count + embed:brokerage_virtual_tours:count) > 1): ?>
-          
-            <?php if ($exteriorGalleryImages > 0): ?>
-              <li class='galleries__nav-item'>
-                <button data-gallery="external" class='button button--solid-white button--flush'>Images</button>
-              </li>
-            <?php endif; ?>
+          <?php if ($exteriorGalleryImages > 0): ?>
+            <li class='galleries__nav-item'>
+              <button data-gallery="external" class='button button--solid-white button--flush'>Images</button>
+            </li>
+          <?php endif; ?>
 
-            {if embed:brokerage_videos:count == 1}
+          {brokerage_videos}
+            {if brokerage_videos:count == 1}
               <li class='galleries__nav-item'>
                 <button data-gallery="videos" class='button button--solid-white button--flush'>Videos</button>
               </li>
             {/if}
+          {/brokerage_videos}
 
-            {if embed:brokerage_virtual_tours:count == 1}
-              <li class='galleries__nav-item'>
-                <button data-gallery="vrtours" class='button button--solid-white button--flush'>VR Tours</button>
-              </li>
-            {/if}
-          <?php endif; ?>
+          {if embed:brokerage_virtual_tours:count == 1}
+            <li class='galleries__nav-item'>
+              <button data-gallery="vrtours" class='button button--solid-white button--flush'>VR Tours</button>
+            </li>
+          {/if}
         </ul>
         <button class='galleries__close' />
       </nav>
@@ -271,6 +268,7 @@ $interiorGalleryImages = $query->num_rows();*/
       <div class="galleries__index"></div>
     </footer>
   </section>
+  {footer}
   <style>
   section,
   .global-padding-top-only--small {
@@ -294,4 +292,4 @@ $interiorGalleryImages = $query->num_rows();*/
   }
 
   </style>
-  {footer} {/exp:channel:entries}
+   {/exp:channel:entries}
