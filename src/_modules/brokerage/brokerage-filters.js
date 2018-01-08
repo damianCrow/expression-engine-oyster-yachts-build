@@ -32,8 +32,8 @@ export default class BrokerageFilters {
 
       this.doFilter()
 
-      $('input[name=oyster-yacht-or-not]').change(function () {
-        if (this.value === 'true') {
+      $('input[name=oyster-yacht-or-not]').change((e) => {
+        if (e.target.value === 'true') {
           $('.filter-model').show()
           $('.filter-model-other').hide()
         } else {
@@ -71,6 +71,8 @@ export default class BrokerageFilters {
   filter(model, otherType, price, location, status) {
     this.grid.find('li').removeClass('hide')
 
+    console.log('filter: ', model, otherType, price, location, status)
+
     if (otherType === true) {
       this.grid.find('li').addClass('hide')
       this.grid.find("li[data-non-oyster='true']").removeClass('hide')
@@ -82,35 +84,32 @@ export default class BrokerageFilters {
     if (price !== '') {
       const priceRange = price.split('-')
 
-      priceRange[0] = parseInt(priceRange[0])
-      priceRange[1] = parseInt(priceRange[1])
+      priceRange[0] = Number(priceRange[0])
+      priceRange[1] = Number(priceRange[1])
 
-      if (priceRange[0] > 0) {
-        this.grid.find('li').filter(() => parseInt($(this).data('price')) < priceRange[0]).addClass('hide')
-      }
-
-      if (priceRange[1] > 0) {
-        this.grid.find('li').filter(() => parseInt($(this).data('price')) > priceRange[1]).addClass('hide')
-      }
+      const yachts = Array.from(this.grid[0].getElementsByTagName('li')).filter(li => !(Number($(li).data('price')) >= priceRange[0] && Number($(li).data('price')) <= priceRange[1]))
+      $(yachts).addClass('hide')
     }
 
     // filter model
     if (model !== '') {
-      this.grid.find("li[data-model!='" + model + "']").addClass('hide')
+      this.grid.find(`li[data-model!='${model}']`).addClass('hide')
     }
 
     // filter location
     if (location !== '') {
+      console.log('location, hi')
+
       const locationList = location.split('|')
 
       $.each(locationList, (i, loc) => {
-        this.grid.find('li').not("[data-location*='" + loc + "']").addClass('hide')
+        this.grid.find('li').not(`[data-location*='${loc}']`).addClass('hide')
       })
     }
 
     // filter status
     if (status !== '') {
-      this.grid.find("li[data-status!='" + status + "']").addClass('hide')
+      this.grid.find(`li[data-status!='${status}']`).addClass('hide')
     }
 
     if (this.grid.find('li').length === this.grid.find('li.hide').length) {
@@ -142,28 +141,29 @@ export default class BrokerageFilters {
     if (history.pushState) {
       const query = []
       if (model !== '') {
-        query.push('model=' + encodeURIComponent(model))
+        query.push(`model=${encodeURIComponent(model)}`)
       }
       if (otherType !== '') {
-        query.push('otherType=' + encodeURIComponent(otherType))
+        query.push(`otherType=${encodeURIComponent(otherType)}`)
       }
       if (price !== '') {
-        query.push('price=' + encodeURIComponent(price))
+        query.push(`price=${encodeURIComponent(price)}`)
       }
       if (location !== '') {
-        query.push('location=' + encodeURIComponent(location))
+        query.push(`location=${encodeURIComponent(location)}`)
       }
       if (status !== '') {
-        query.push('status=' + encodeURIComponent(status))
+        query.push(`status=${encodeURIComponent(status)}`)
       }
 
       if (query.length > 0) {
-        const qs = "?" + query.join('&').replace(/%20/g, '+')
+        // const qs = "?" + query.join('&').replace(/%20/g, '+')
+        const qs = `?${query.join('&').replace(/%20/g, '+')}`
 
-        const newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + qs
+        const newurl = `${window.location.protocol}//${window.location.host}${window.location.pathname}${qs}`
         window.history.pushState({
           model, otherType, price, location, status,
-        },'',newurl)
+        }, '', newurl)
       }
     }
   }
