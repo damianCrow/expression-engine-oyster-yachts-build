@@ -5,6 +5,7 @@
     "babel-polyfill": "^6.26.0",
     "font-awesome": "^4.7.0",
     "foundation-sites": "~6.4.4-rc1",
+    "google-maps": "^3.2.1",
     "gsap": "^1.18.2",
     "jquery": "~3.2.1",
     "jquery-ui": "^1.12.1",

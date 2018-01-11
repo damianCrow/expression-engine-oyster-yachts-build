@@ -31,6 +31,7 @@ import GalleryModal from '../_modules/gallery-modal/gallery-modal'
 import Weather from '../_modules/weather/weather'
 import OwnersArea from '../_modules/owners-area/owners-area-modal'
 import FormValidation from '../_modules/form-validation/form-validation'
+import Maps from '../_modules/maps/maps'
 
 import { documentReady, windowResize, getElemDistance } from './helper-functions'
 import { quoteTestimonials } from '../_modules/quote-testimonials/quote-testimonials'
@@ -111,6 +112,7 @@ class Main {
     const shortlist = this.shortlistModal && new Shortlist()
     const weather = new Weather()
     const owenersArea = new OwnersArea()
+    // const maps = new Maps()
 
     this.scrollReativeElements = [topMessageBar, header, gallery, nav, subNav, filters]
 
