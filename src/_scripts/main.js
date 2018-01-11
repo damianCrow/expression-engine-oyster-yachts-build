@@ -112,7 +112,7 @@ class Main {
     const shortlist = this.shortlistModal && new Shortlist()
     const weather = new Weather()
     const owenersArea = new OwnersArea()
-    // const maps = new Maps()
+    const maps = new Maps()
 
     this.scrollReativeElements = [topMessageBar, header, gallery, nav, subNav, filters]
 

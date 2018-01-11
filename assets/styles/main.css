@@ -27547,6 +27547,10 @@ body.fixed-message-showing > .lg-outer, body.fixed-message-showing .lg-backdrop 
   top: 0;
 }
 
+.world-rally-route {
+  height: 100vh;
+}
+
 .world-rally-entries .content {
   margin-top: 40px;
   margin-bottom: 80px;

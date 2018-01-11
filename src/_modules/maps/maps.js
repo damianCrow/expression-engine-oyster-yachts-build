@@ -1,9 +1,11 @@
 import $ from 'jquery'
 import GoogleMapsLoader from 'google-maps'
+import BreakPoints from '../../_scripts/breakpoints'
+
 
 export default class Maps {
   constructor() {
-    this.legacy()
+    this.breakpoints = new BreakPoints()
 
     GoogleMapsLoader.KEY = 'AIzaSyC4Ctq_b0K3ygkut_DEJ4YFyuGkcWKvM68'
 
@@ -38,12 +40,16 @@ export default class Maps {
         color: '#53636b',
       }],
     }]
+
+    this.legacy()
+    this.initDestinaionMap()
+
+    if ($('#map').length > 0) {
+      this.worldRallyMap()
+    }
   }
 
   legacy() {
-    const customMapType = new google.maps.StyledMapType(this.mapStyle)
-    const customMapTypeId = 'custom_style'
-    console.log('hi')
     $('.destination-map-container').each((index, element) => {
       const lat = $(element).data('lat')
       const lng = $(element).data('lng')
@@ -55,6 +61,9 @@ export default class Maps {
       }
 
       GoogleMapsLoader.load((google) => {
+        const customMapType = new google.maps.StyledMapType(this.mapStyle)
+        const customMapTypeId = 'custom_style'
+
         const map = new google.maps.Map(element, {
           zoom: defaultZoom,
           center: { lat, lng },
@@ -67,9 +76,10 @@ export default class Maps {
         map.setMapTypeId(customMapTypeId)
       })
     })
+  }
 
-    // WORLD RALLY MAP
-    if ($('#map').length > 0) {
+  worldRallyMap() {
+    GoogleMapsLoader.load((google) => {
       // Basic options for a simple Google Map
       // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
       const mapOptions = {
@@ -117,11 +127,11 @@ export default class Maps {
 
       // Let's also add a marker while we're at it
       const ctaLayer = new google.maps.KmlLayer({ url: 'http://www.oysteryachts.com/route.kmz', map, preserveViewport: true })
-    }
+    })
+  }
 
-    //  ---- GOOGLE MAPS EMBEDS -----  //
-
-    function initDestinationMap() {
+  initDestinaionMap() {
+    GoogleMapsLoader.load((google) => {
       const customMapType = new google.maps.StyledMapType(this.mapStyle)
       const customMapTypeId = 'custom_style'
 
@@ -135,16 +145,12 @@ export default class Maps {
           defaultZoom = $(element).data('default-zoom')
         }
 
-        let singleDestinationMap
-
-        GoogleMapsLoader.load((google) => {
-          singleDestinationMap = new google.maps.Map(element, {
-            zoom: defaultZoom,
-            center: { lat, lng },
-            streetViewControl: false,
-            mapTypeControl: false,
-            scrollwheel: false,
-          })
+        const singleDestinationMap = new google.maps.Map(element, {
+          zoom: defaultZoom,
+          center: { lat, lng },
+          streetViewControl: false,
+          mapTypeControl: false,
+          scrollwheel: false,
         })
 
         const marker = []
@@ -154,37 +160,20 @@ export default class Maps {
         let openWindow
 
         // Check to make sure that MediaQuery will report something.
-        if (typeof Foundation !== 'undefined') {
-          if (Foundation.MediaQuery.current === 'small') {
-            $('.single-destination .destination-list').cycle({
-              autoHeight: 'calc',
-              swipe: true,
-              pager: '.nav-points',
-              pagerActiveClass: 'active',
-              pagerTemplate: '<div class="nav-point"></div>',
-              slides: '> .destination-box',
-              log: false,
-              timeout: 6000,
-            })
-          }
-        } else {
-          if (Foundation.MediaQuery.current === 'small') {
-            $('.single-destination .destination-list').cycle({
-              autoHeight: 'calc',
-              swipe: true,
-              pager: '.nav-points',
-              pagerActiveClass: 'active',
-              pagerTemplate: '<div class="nav-point"></div>',
-              slides: '> .destination-box',
-              log: false,
-              timeout: 6000,
-            })
-          }
+        if (this.breakpoints.curentBreakPoint() === 'small') {
+          $('.single-destination .destination-list').cycle({
+            autoHeight: 'calc',
+            swipe: true,
+            pager: '.nav-points',
+            pagerActiveClass: 'active',
+            pagerTemplate: '<div class="nav-point"></div>',
+            slides: '> .destination-box',
+            log: false,
+            timeout: 6000,
+          })
         }
 
-
         $('.destination-box').each((index, element) => {
-
           const iconImage = {
             url: `/assets/images/charter/destination-marker-${(index + 1)}.png`,
             // This marker is 20 pixels wide by 32 pixels high.
@@ -207,11 +196,8 @@ export default class Maps {
             icon: iconImage,
           })
 
-          console.log('marker[index]', marker[index])
-
-          marker[index].addListener('click', function() {
-            if (Foundation.MediaQuery.atLeast("medium")){
-              
+          marker[index].addListener('click', () => {
+            if (this.breakpoints.atLeast('medium')) {
               if (openWindow) {
                 openWindow.close()
               }
@@ -232,14 +218,11 @@ export default class Maps {
               highlightIcon(index)
             }
 
-            highlightedIcon =  index
-
+            highlightedIcon = index
           });
 
-          $(element).on('click', function() {
-            
-            if (Foundation.MediaQuery.atLeast('medium')){
-
+          $(element).on('click', () => {
+            if (this.breakpoints.atLeast('medium')) {
               if (openWindow) {
                 openWindow.close()
               }
@@ -248,13 +231,13 @@ export default class Maps {
               openWindow = infoWindows[index]
             }
 
-            if(highlightedIcon) {
+            if (highlightedIcon) {
               highlightIcon(index, highlightedIcon)
-            }else {
+            } else {
               highlightIcon(index)
             }
 
-            highlightedIcon =  index
+            highlightedIcon = index
 
             //
             $('.destination-box').removeClass('destination-active')
@@ -270,18 +253,17 @@ export default class Maps {
           // }
         })
 
-        $('.single-destination .destination-list').on('cycle-after', function(event, optionHash) {
+        $('.single-destination .destination-list').on('cycle-after', (event, optionHash) => {
           if (highlightedIcon) {
             highlightIcon((optionHash.slideNum - 1), highlightedIcon)
           } else {
             highlightIcon((optionHash.slideNum - 1))
           }
-          highlightedIcon =  (optionHash.slideNum - 1)
+          highlightedIcon = (optionHash.slideNum - 1)
         })
 
-        function highlightIcon(newIcon, oldIcon){
+        function highlightIcon(newIcon, oldIcon) {
           // Change the old one back.
-
           if (!oldIcon) {
             oldIcon = 0
           }
@@ -311,9 +293,7 @@ export default class Maps {
         singleDestinationMap.mapTypes.set(customMapTypeId, customMapType)
         singleDestinationMap.setMapTypeId(customMapTypeId)
       })
-    }
-
-    initDestinationMap()
+    })
   }
 }
 

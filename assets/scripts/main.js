@@ -43705,6 +43705,10 @@ var _googleMaps = require('google-maps');
 
 var _googleMaps2 = _interopRequireDefault(_googleMaps);
 
+var _breakpoints = require('../../_scripts/breakpoints');
+
+var _breakpoints2 = _interopRequireDefault(_breakpoints);
+
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
 }
@@ -43719,7 +43723,7 @@ var Maps = function () {
   function Maps() {
     _classCallCheck(this, Maps);
 
-    this.legacy();
+    this.breakpoints = new _breakpoints2.default();
 
     _googleMaps2.default.KEY = 'AIzaSyC4Ctq_b0K3ygkut_DEJ4YFyuGkcWKvM68';
 
@@ -43754,14 +43758,20 @@ var Maps = function () {
         color: '#53636b'
       }]
     }];
+
+    this.legacy();
+    this.initDestinaionMap();
+
+    if ((0, _jquery2.default)('#map').length > 0) {
+      this.worldRallyMap();
+    }
   }
 
   _createClass(Maps, [{
     key: 'legacy',
     value: function legacy() {
-      var customMapType = new google.maps.StyledMapType(this.mapStyle);
-      var customMapTypeId = 'custom_style';
-      console.log('hi');
+      var _this = this;
+
       (0, _jquery2.default)('.destination-map-container').each(function (index, element) {
         var lat = (0, _jquery2.default)(element).data('lat');
         var lng = (0, _jquery2.default)(element).data('lng');
@@ -43773,6 +43783,9 @@ var Maps = function () {
         }
 
         _googleMaps2.default.load(function (google) {
+          var customMapType = new google.maps.StyledMapType(_this.mapStyle);
+          var customMapTypeId = 'custom_style';
+
           var map = new google.maps.Map(element, {
             zoom: defaultZoom,
             center: { lat: lat, lng: lng },
@@ -43785,9 +43798,11 @@ var Maps = function () {
           map.setMapTypeId(customMapTypeId);
         });
       });
-
-      // WORLD RALLY MAP
-      if ((0, _jquery2.default)('#map').length > 0) {
+    }
+  }, {
+    key: 'worldRallyMap',
+    value: function worldRallyMap() {
+      _googleMaps2.default.load(function (google) {
         // Basic options for a simple Google Map
         // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
         var mapOptions = {
@@ -43834,12 +43849,15 @@ var Maps = function () {
 
         // Let's also add a marker while we're at it
         var ctaLayer = new google.maps.KmlLayer({ url: 'http://www.oysteryachts.com/route.kmz', map: map, preserveViewport: true });
-      }
+      });
+    }
+  }, {
+    key: 'initDestinaionMap',
+    value: function initDestinaionMap() {
+      var _this2 = this;
 
-      //  ---- GOOGLE MAPS EMBEDS -----  //
-
-      function initDestinationMap() {
-        var customMapType = new google.maps.StyledMapType(this.mapStyle);
+      _googleMaps2.default.load(function (google) {
+        var customMapType = new google.maps.StyledMapType(_this2.mapStyle);
         var customMapTypeId = 'custom_style';
 
         (0, _jquery2.default)('.single-destination-map-container').each(function (index, element) {
@@ -43852,16 +43870,12 @@ var Maps = function () {
             defaultZoom = (0, _jquery2.default)(element).data('default-zoom');
           }
 
-          var singleDestinationMap = void 0;
-
-          _googleMaps2.default.load(function (google) {
-            singleDestinationMap = new google.maps.Map(element, {
-              zoom: defaultZoom,
-              center: { lat: lat, lng: lng },
-              streetViewControl: false,
-              mapTypeControl: false,
-              scrollwheel: false
-            });
+          var singleDestinationMap = new google.maps.Map(element, {
+            zoom: defaultZoom,
+            center: { lat: lat, lng: lng },
+            streetViewControl: false,
+            mapTypeControl: false,
+            scrollwheel: false
           });
 
           var marker = [];
@@ -43871,36 +43885,20 @@ var Maps = function () {
           var openWindow = void 0;
 
           // Check to make sure that MediaQuery will report something.
-          if (typeof Foundation !== 'undefined') {
-            if (Foundation.MediaQuery.current === 'small') {
-              (0, _jquery2.default)('.single-destination .destination-list').cycle({
-                autoHeight: 'calc',
-                swipe: true,
-                pager: '.nav-points',
-                pagerActiveClass: 'active',
-                pagerTemplate: '<div class="nav-point"></div>',
-                slides: '> .destination-box',
-                log: false,
-                timeout: 6000
-              });
-            }
-          } else {
-            if (Foundation.MediaQuery.current === 'small') {
-              (0, _jquery2.default)('.single-destination .destination-list').cycle({
-                autoHeight: 'calc',
-                swipe: true,
-                pager: '.nav-points',
-                pagerActiveClass: 'active',
-                pagerTemplate: '<div class="nav-point"></div>',
-                slides: '> .destination-box',
-                log: false,
-                timeout: 6000
-              });
-            }
+          if (_this2.breakpoints.curentBreakPoint() === 'small') {
+            (0, _jquery2.default)('.single-destination .destination-list').cycle({
+              autoHeight: 'calc',
+              swipe: true,
+              pager: '.nav-points',
+              pagerActiveClass: 'active',
+              pagerTemplate: '<div class="nav-point"></div>',
+              slides: '> .destination-box',
+              log: false,
+              timeout: 6000
+            });
           }
 
           (0, _jquery2.default)('.destination-box').each(function (index, element) {
-
             var iconImage = {
               url: '/assets/images/charter/destination-marker-' + (index + 1) + '.png',
               // This marker is 20 pixels wide by 32 pixels high.
@@ -43923,11 +43921,8 @@ var Maps = function () {
               icon: iconImage
             });
 
-            console.log('marker[index]', marker[index]);
-
             marker[index].addListener('click', function () {
-              if (Foundation.MediaQuery.atLeast("medium")) {
-
+              if (_this2.breakpoints.atLeast('medium')) {
                 if (openWindow) {
                   openWindow.close();
                 }
@@ -43952,9 +43947,7 @@ var Maps = function () {
             });
 
             (0, _jquery2.default)(element).on('click', function () {
-
-              if (Foundation.MediaQuery.atLeast('medium')) {
-
+              if (_this2.breakpoints.atLeast('medium')) {
                 if (openWindow) {
                   openWindow.close();
                 }
@@ -43996,7 +43989,6 @@ var Maps = function () {
 
           function highlightIcon(newIcon, oldIcon) {
             // Change the old one back.
-
             if (!oldIcon) {
               oldIcon = 0;
             }
@@ -44026,9 +44018,7 @@ var Maps = function () {
           singleDestinationMap.mapTypes.set(customMapTypeId, customMapType);
           singleDestinationMap.setMapTypeId(customMapTypeId);
         });
-      }
-
-      initDestinationMap();
+      });
     }
   }]);
 
@@ -44038,7 +44028,7 @@ var Maps = function () {
 exports.default = Maps;
 module.exports = exports['default'];
 
-},{"google-maps":361,"jquery":364}],392:[function(require,module,exports){
+},{"../../_scripts/breakpoints":400,"google-maps":361,"jquery":364}],392:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -45709,7 +45699,7 @@ var Main = function () {
       var shortlist = this.shortlistModal && new _shortlist2.default();
       var weather = new _weather2.default();
       var owenersArea = new _ownersAreaModal2.default();
-      // const maps = new Maps()
+      var maps = new _maps2.default();
 
       this.scrollReativeElements = [topMessageBar, header, gallery, nav, subNav, filters];
 
