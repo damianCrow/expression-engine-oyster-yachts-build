@@ -1301,6 +1301,7 @@ main {
   text-align: center;
   text-decoration: none;
   width: 200px;
+  margin-top: $global-margin;
   @include omnes-medium;
 
   .fa {

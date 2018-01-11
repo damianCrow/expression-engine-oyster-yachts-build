@@ -12,7 +12,7 @@ $galleryImages = $query->num_rows();
 	
 	<div class="yacht-name">
 		<div class="row-pad">
-			<h1 class="hero-title yacht-list-name text-uppercase">{title}</h1>
+			<h1 class="hero-title yacht-list-name">{title}</h1>
 
 			<?php if ($galleryImages > 0): ?>
 			<a href="" class="gallery button-view-gallery btn-gallery" data-gallery="external">View Gallery</a>
@@ -54,17 +54,25 @@ $galleryImages = $query->num_rows();
 	</div>
 </section>
 
-<div id="galleries" data-title="{title}">
-	<?php if ($galleryImages > 0): ?>
-	<div class="gallery-content" data-gallery="external" data-title="External">
-		{yacht_prev_gallery}
-		<a href="{image:url}" data-sub-html="{image:description}">
-			<img src="{image:url:gallery_thumb}" />
-		</a>
-		{/yacht_prev_gallery}
-	</div>
-	<?php endif; ?>
-</div>
+<section id="galleries" class='galleries' data-title="{title}">
+  <header class='galleries__header'>
+    <nav class='galleries__nav'>
+      <button class='galleries__close' />
+    </nav>
+  </header>
+  <?php if ($galleryImages > 0): ?>
+    <div class="gallery-content" data-gallery="external" data-title="External">
+      {yacht_prev_gallery}}
+        <a href="{image:url}" data-sub-html="{image:description}">
+          <img src="{image:url:gallery_thumb}" />
+        </a>
+      {/yacht_prev_gallery}}
+    </div>
+  <?php endif; ?>
+  <footer class="galleries__footer">
+    <div class="galleries__index"></div>
+  </footer>
+</section>
 
 {footer}
 
