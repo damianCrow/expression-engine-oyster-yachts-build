@@ -47,7 +47,7 @@
   }
 
   &__header {
-    justify-content: center;
+    justify-content: flex-end;
     top: 0;
     background-color: $white;
     padding: 0 $page-margin;
@@ -56,7 +56,14 @@
     @include breakpoint(medium up) {
       padding-left: 50px + $page-margin;
       background-color: transparent;
-      justify-content: flex-end;
+    }
+
+    &--invisible-back {
+      background-color: transparent;
+      pointer-events: none;
+      > * {
+        pointer-events: auto;
+      }
     }
   }
 

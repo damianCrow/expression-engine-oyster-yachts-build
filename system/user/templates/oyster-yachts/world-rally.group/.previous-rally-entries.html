@@ -1,44 +1,42 @@
 {embed="site/.header" page_title="World Rally 2013/14 Entries" snap_to=".world-rally-entries" snap_offset="55"}
+<article>
+  {embed="site/.sub_bar-wr" page_title="World Rally 2013/14 Entries" page="entries"}
+  <section style="background-image: url('/assets/images/bg-images/world-rally-previous-entries-bg.jpg'); " class="hero after-nav after-nav--sub global-page-hero global-page-hero--small">
+  </section>
+  <section id="world-rally-entries" class="world-rally-entries global-padding-top-only--small">
+    <div class="banner">world rally 2013/14 entries</div>
+    <div class="content row padded-full-width-row"> 
+      <table class="table specs-table">
+        <tbody>
+          <tr class="heading">
+            <th class="text-uppercase">entry name</th>
+            <th class="text-uppercase">yacht image</th>
+            <th class="text-uppercase">model</th>
+            <th class="text-uppercase">hull number</th>
+            <th class="text-uppercase">owner</th>
+            <th class="text-uppercase">nationality</th>
+            <th class="text-uppercase">blog</th>
+          </tr>
 
-{embed="world-rally/.previous-rally-subnav" page="entries"}
+          {exp:low_reorder:entries set="world_rally_entries" dynamic="no" disable="member_data|category_fields|pagination" cache="yes" refresh="60"}
+          <tr>
+            <td data-th='entry name'>{title}</td>
+            <td {prev_entry_image}style="background-image:url('{image:url}')"{/prev_entry_image} class="image"> </td>
+            <td data-th='model'>{prev_entry_model}</td>
+            <td data-th='hull number'>{prev_entry_hull_number}</td>
+            <td data-th='owner'>{prev_entry_owner}</td>
+            <td data-th='nationality'>{prev_entry_nationality}</td>
+            <td data-th='blog' class="link">
+              {if prev_entry_website_link != ""}
+              <a href="{prev_entry_website_link}" target="_blank">{prev_entry_website_link_label}</a>
+              {/if}
+            </td>
+          </tr>
+          {/exp:low_reorder:entries}
 
-<section style="background-image: url('/assets/images/bg-images/world-rally-previous-entries-bg.jpg'); " class="hero after-nav global-page-hero global-page-hero--small global-page-hero-adjust-subnav">
-	
-</section>
-<section id="world-rally-entries" class="world-rally-entries global-padding-top-only--small">
-	<div class="banner">world rally 2013/14 entries</div>
-	<div class="content row padded-full-width-row"> 
-		<table class="table specs-table">
-			<tbody>
-				<tr class="heading">
-					<th class="text-uppercase">entry name</th>
-					<th class="text-uppercase">yacht image</th>
-					<th class="text-uppercase">model</th>
-					<th class="text-uppercase">hull number</th>
-					<th class="text-uppercase">owner</th>
-					<th class="text-uppercase">nationality</th>
-					<th class="text-uppercase">blog</th>
-				</tr>
-
-				{exp:low_reorder:entries set="world_rally_entries" dynamic="no" disable="member_data|category_fields|pagination" cache="yes" refresh="60"}
-				<tr>
-					<td data-th='entry name'>{title}</td>
-					<td {prev_entry_image}style="background-image:url('{image:url}')"{/prev_entry_image} class="image"> </td>
-					<td data-th='model'>{prev_entry_model}</td>
-					<td data-th='hull number'>{prev_entry_hull_number}</td>
-					<td data-th='owner'>{prev_entry_owner}</td>
-					<td data-th='nationality'>{prev_entry_nationality}</td>
-					<td data-th='blog' class="link">
-						{if prev_entry_website_link != ""}
-						<a href="{prev_entry_website_link}" target="_blank">{prev_entry_website_link_label}</a>
-						{/if}
-					</td>
-				</tr>
-				{/exp:low_reorder:entries}
-
-			</tbody>
-		</table>
-	</div>
-</section>
-
+        </tbody>
+      </table>
+    </div>
+  </section>
+</article>
 {footer}

@@ -530,13 +530,12 @@ main {
 
 .full-screen {
   width: 100%;
-  $header-nav-small-height: $header-nav-small-height - 2;
-  $header-nav-large-height: $header-nav-large-height - 2;
-  height: calc(100vh - #{$header-nav-small-height});
+  height: calc(100vh - #{$header-nav-small-height + $page-margin});
 
   @include breakpoint(large up) {
-    height: calc(100vh - #{$header-nav-large-height});
+    height: calc(100vh - #{$header-nav-large-height + $page-margin});
   }
+
 }
 
 .full-screen-media {

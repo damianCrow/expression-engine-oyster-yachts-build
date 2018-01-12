@@ -91,7 +91,9 @@ $logo-width: 230px;
     border-radius: 50%;
     cursor: pointer;
     outline: none;
-    margin-right: $page-margin;
+    @include breakpoint(medium up) {
+      margin-right: $page-margin;
+    }
   }
 
   &__home {

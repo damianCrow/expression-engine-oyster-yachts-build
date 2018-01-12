@@ -17,13 +17,14 @@ export default class GalleryModal {
       this.breakpoints = new BreakPoints()
 
       this.modal = modal
-      this.header = this.modal.querySelector('.galleries__header')
-      this.closeBtn = this.header.querySelector('.galleries__close') ? this.header.querySelector('.galleries__close') : 0
-      this.footer = this.modal.querySelector('.galleries__footer')
-      this.thumbnailBar = this.modal.querySelector('.galleries__footer')
-      this.gallerySwitchers = this.modal.querySelector('.galleries__nav')
-      this.index = this.modal.querySelector('.galleries__index')
-      this.galleryBtns = this.gallerySwitchers.querySelectorAll('button[data-gallery]')
+      // this.header = this.modal.querySelector('.galleries__header')
+      this.header = modal.querySelector('.galleries__header') ? modal.querySelector('.galleries__header') : 0
+      this.closeBtn = modal.querySelector('.galleries__close') ? modal.querySelector('.galleries__close') : 0
+      this.footer = modal.querySelector('.galleries__footer')
+      this.thumbnailBar = modal.querySelector('.galleries__footer')
+      this.gallerySwitchers = modal.querySelector('.galleries__nav')
+      this.index = modal.querySelector('.galleries__index')
+      this.galleryBtns = modal.querySelectorAll('button[data-gallery]')
 
       this.activeBar = document.querySelector('.galleries__header')
 
@@ -42,11 +43,11 @@ export default class GalleryModal {
     this.globalHeader = globalHeader
 
     $('.gallery-content').each((i, el) => {
+      const autoOpen = $(el).is('[data-auto-open]') && this.autoOpen === false
+
       $('.btn-gallery').on('click', (e) => {
         e.preventDefault()
-        const gallery = $(e.currentTarget).attr('data-gallery')
-        this.currentGalleryName = gallery
-        $(`.gallery-content[data-gallery="${gallery}"] a:first`).trigger('click')
+        this.triggerGalleryOpen(e.currentTarget)
       })
 
       $(el)
@@ -62,6 +63,8 @@ export default class GalleryModal {
         appendCounterTo: '.galleries__index',
         backdropDuration: 0,
         closable: false,
+        download: false,
+        escKey: !autoOpen,
         galleryId: (i + 1),
         hash: true,
         loadVimeoThumbnail: true,
@@ -73,7 +76,6 @@ export default class GalleryModal {
         thumbWidth: 197,
         toogleThumb: false,
         videoMaxWidth: '100%',
-        download: false,
         vimeoThumbSize: 'thumbnail_medium',
         vimeoPlayerParams: {
           byline: 0,
@@ -82,25 +84,29 @@ export default class GalleryModal {
         },
       })
 
-      if ($(el).is('[data-auto-open]') && this.autoOpen === false) {
+      if (autoOpen) {
         this.autoOpen = true
-        console.log('auto opening gallery')
-        const gallery = $(el).attr('data-gallery')
-        this.currentGalleryName = gallery
-        $(`.gallery-content[data-gallery="${gallery}"] a:first`).trigger('click')
+        this.triggerGalleryOpen(el)
       }
     })
 
     if (this.modal) {
       this.globalGalleryEvents()
-      this.removeGalleryBtn()
+      this.removeSingleGalleryBtn()
     }
   }
 
-  removeGalleryBtn() {
+  triggerGalleryOpen(container) {
+    const gallery = $(container).attr('data-gallery')
+    this.currentGalleryName = gallery
+    $(`.gallery-content[data-gallery="${gallery}"] a:first`).trigger('click')
+  }
+
+  removeSingleGalleryBtn() {
     // TODO: Temp fix to remove just one button.
     if ($('.galleries__nav-item').length < 2) {
-      $('.button-group').remove()
+      $(this.header.querySelector('.button-group')).remove()
+      addClass(this.header, 'galleries__header--invisible-back')
     }
   }
 
@@ -142,8 +148,6 @@ export default class GalleryModal {
       })
     }
 
-    console.log('this.modal', this.modal)
-
     this.footer.addEventListener('click', () => {
       // This gets created via the plugin later, so needs to be addressed here.
       const thumbnailContainer = document.querySelector('.lg-thumb-outer')
@@ -168,19 +172,11 @@ export default class GalleryModal {
     })
   }
 
-  // setEvents($gallery) {
-  //   const galleryType = $gallery.attr('data-gallery')
-  //   // const galleryTrigger = this.gallerySwitchers.querySelector(`button[data-gallery="${galleryType}"]`)
-
-  //   // trigger first slide to open in gallery
-  // }
-
   close() {
     $(this.index).empty()
 
     if (!this.switchingGaleries) {
       this.currentGallery = {}
-      console.log('GalleryModal, close')
       removeClass(document.body, 'locked--gallery')
       removeClass(this.modal, 'galleries--active')
       this.globalHeader.fullScreenMode({ on: false })
@@ -196,17 +192,16 @@ export default class GalleryModal {
 
   open($gallery) {
     const galleryType = $gallery.attr('data-gallery')
-    const activeGalleryBtn = this.gallerySwitchers.querySelector(`button[data-gallery="${galleryType}"]`)
+
+    if (this.gallerySwitchers) {
+      const activeGalleryBtn = this.gallerySwitchers.querySelector(`button[data-gallery="${galleryType}"]`)
+      $(activeGalleryBtn).addClass('button--clear')
+    }
 
     $(this.galleryBtns).removeClass('button--clear')
-    $(activeGalleryBtn).addClass('button--clear')
-
-    console.log('GalleryModal, open, galleryType: ', galleryType)
-    console.log('$gallery', $gallery)
 
     $(document.body).addClass('locked--gallery')
     $(this.modal).addClass('galleries--active')
-    console.log('this.globalHeader.fullScreenMode', this.globalHeader.fullScreenMode)
     this.globalHeader.fullScreenMode()
   }
 }
