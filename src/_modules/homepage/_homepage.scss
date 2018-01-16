@@ -82,6 +82,9 @@
       &[data-index="3"]:after {
         content: "04";
       }
+      &[data-index="4"]:after {
+        content: "05";
+      }
 
       #graphic {
         position:relative;

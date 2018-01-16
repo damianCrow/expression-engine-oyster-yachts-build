@@ -35,7 +35,7 @@ $config['cookie_prefix'] = '';
 $config['cookie_httponly'] = 'y';
 
 $config['multiple_sites_enabled'] = 'n';
-$config['index_page'] = '';
+$config['index_page'] = 'http://oysteryachts.test/index.php';
 
 $config['marksmin_enabled'] = true;
 
