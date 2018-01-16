@@ -18385,6 +18385,26 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
   content: "05";
 }
 
+.carosel__link .graphic-wrapper[data-index="5"]:after {
+  content: "06";
+}
+
+.carosel__link .graphic-wrapper[data-index="6"]:after {
+  content: "07";
+}
+
+.carosel__link .graphic-wrapper[data-index="7"]:after {
+  content: "08";
+}
+
+.carosel__link .graphic-wrapper[data-index="8"]:after {
+  content: "09";
+}
+
+.carosel__link .graphic-wrapper[data-index="9"]:after {
+  content: "10";
+}
+
 .carosel__link .graphic-wrapper #graphic {
   position: relative;
   padding-left: 6px;
