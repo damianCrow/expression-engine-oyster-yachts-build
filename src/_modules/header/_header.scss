@@ -356,5 +356,20 @@ $logo-width: 230px;
     max-height: $header-nav-small-height + 20;
     padding: 15px 0;
   }
+
+  &--filter {
+    &::after {
+      background-color: black;
+      content: "";
+      height: 100%;
+      left: 0;
+      opacity: .3;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      z-index: -1;
+    }
+  }
+
 }
 
