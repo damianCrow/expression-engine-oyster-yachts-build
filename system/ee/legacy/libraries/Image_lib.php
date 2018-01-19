@@ -33,7 +33,7 @@ class EE_Image_lib {
 	var $new_image			= '';
 	var $width				= '';
 	var $height				= '';
-	var $quality			= '90';
+	var $quality			= '75';
 	var $create_thumb		= FALSE;
 	var $thumb_marker		= '_thumb';
 	var $maintain_ratio		= TRUE;		// Whether to maintain aspect ratio when resizing or use hard values
@@ -299,7 +299,7 @@ class EE_Image_lib {
 
 		if ($this->quality == '' OR $this->quality == 0 OR ! is_numeric($this->quality))
 		{
-			$this->quality = 90;
+			$this->quality = 75;
 		}
 
 		// Set the x/y coordinates

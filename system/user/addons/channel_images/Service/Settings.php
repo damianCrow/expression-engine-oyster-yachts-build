@@ -107,8 +107,10 @@ class Settings
         if (!isset($this->fieldSettingsCache[$field_id])) {
 
             $field = ee('Model')->get('ChannelField')->filter('field_id', $field_id)->first();
-            $settings = $field->getSettingsValues();
-
+            if ($field) {
+                $settings = $field->getSettingsValues();
+            }
+            
             // Empty? Let's make it then
             if (!$settings || !is_array($settings)) {
                 $settings = array();

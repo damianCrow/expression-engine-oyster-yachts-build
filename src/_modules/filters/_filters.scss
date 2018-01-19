@@ -1,0 +1,256 @@
+.filters {
+  width: 100%;
+  padding: 15px 0;
+
+  @include breakpoint(large up) {
+    background-color: transparent;
+    left: 0;
+    padding: 30px 0;
+    position: fixed;
+    top: 0;
+    transform: translateX(-10px);
+    width: calc(100vw - 20px);
+    will-change: transform;
+    z-index: 9999;
+
+    &::before {
+      background-color: rgb(0, 49, 69);
+      opacity: 1;
+      content: "";
+      display: block;
+      height: 100%;
+      left: 0;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: -30px;
+      position: absolute;
+      right: 0;
+      top: 0;
+      transform-origin: bottom;
+      transition: transform .5s cubic-bezier(.19, 1, .22, 1), opacity .5s cubic-bezier(.19, 1, .22, 1);
+      width: 100%;
+    }
+  }
+
+  > .row {
+    z-index: 1;
+    position: relative;
+  }
+
+  .filter-dropdowns {
+    background-color: $lightgrey;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border-top-right-radius: 3px;
+    border: 5px solid $lightgrey;
+    display: flex;
+    overflow: hidden;
+  }
+
+  .filters-container {
+    border-radius: 3px;
+    overflow: hidden;
+    transform: translateY(-15px);
+  }
+
+  button.button-solid-cyan {
+    transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+  }
+
+  button.button-solid-cyan {
+    transform: translateY(-3px);
+  }
+
+  @include breakpoint(medium down) {
+    padding: 15px 0px
+  }
+
+  .filter-dropdown {
+    @include breakpoint(large up) {
+      // float: left;
+      // height: 45px;
+      // width: 21%;
+      flex: 1;
+
+      select {
+        font-size: 15px;
+        height: 100%;
+      }
+
+      .select2 {
+        // margin: 0 0 1rem;
+        background-color: #fff;
+        border: none;
+        color: #0a0a0a;
+        font-size: 1rem;
+        height: 100%;
+        padding: 0.5rem;
+        width: 100% !important;
+      }
+
+      &:first-child .select2 {
+        border-bottom-left-radius: 3px;
+        border-top-left-radius: 3px;
+      }
+
+      .select2-selection__arrow {
+        background: url(/assets/images/select_down.png);
+        height: 9px;
+        position: absolute;
+        right: 20px;
+        top: 19px;
+        width: 16px;
+      }
+
+      b {
+        display: none;
+      }
+      .select2-selection {
+        border: none;
+        outline: none;
+      }      
+    }
+  }
+
+  .button {
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+  }
+
+  &--charter {
+    &::before {
+      height: 105px;
+    }
+  }
+
+  &--unstuck {
+    background-color: rgba(0, 49, 69, .75);
+    bottom: 0;
+    position: absolute;
+    top: auto;
+    transform: translateX(0);
+    transition: none;
+
+    button.button-solid-cyan {
+      transform: translateY(0);
+    }
+
+    .filters-container {
+      transform: translateY(0);
+    }
+
+    // &.search-results-box {
+    //   @include breakpoint(medium down) {
+    //     .filters-container {
+    //       transform: translateY(-8px);
+    //     }
+    //   }
+    // }
+
+    &::before {
+      transform: translateY(0) scaleY(1);
+      opacity: 0;
+    }
+  }
+
+  &--charter {
+    .filter-dropdowns {
+      border: 0; 
+    }
+  }
+}
+
+#global-navigation-modal {
+  // Just to make sure it opens above the default modal z-index
+  z-index: 1007;
+  @include breakpoint(large up) {
+    display: none !important;
+  }
+
+}
+
+#global-navigation-modal,
+#global-filters-modal {
+  outline: 0;
+  padding: $page-margin;
+  top: ($header-nav-small-height + 10px) !important;
+
+  .top-nav-modal {
+
+    @extend .global-header-top-nav;
+
+    .close-button-wrapper {
+      background-color: $lightgrey;
+      height: 100%;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 65px;
+    }
+
+    .site-search-close {
+      display: block !important;
+      margin: 0 auto;
+      position: relative;
+      right: 0;
+    }
+  }
+  // since custom scrollbar add another margin, the offset it
+  .mCSB_container {
+    .row {
+      margin-left: 30px;
+    }
+  }
+
+  // remove offset intended for Custom Scrollbar
+  .mCS_y_hidden.mCS_no_scrollbar_y {
+    .row {
+      margin-left: 0 !important;
+    }
+  }
+
+  .nav-body-modal {
+    // Doesn't need a height?
+    overflow-x: hidden;
+    overflow-y: auto;
+    z-index: 0;
+  }
+
+}
+
+// global filters
+#global-filters-modal {
+
+  ul {
+    .select2-container {
+      display: none;
+    }
+
+    .select2-hidden-accessible {
+      border: 1px solid $grayborder !important;
+      clip: rect(0 0 0 0) !important;
+      height: 50px !important;
+      margin: 0 0 1rem !important;
+      outline: 0;
+      overflow: visible !important;
+      padding-right: 2.5rem !important;
+      padding: 10px 20px !important;
+      position: static !important;
+      width: 100% !important;
+    }
+
+    select {
+      color: $grey;
+      @include omnes-medium;
+    }
+
+    .filter-button {
+      margin-top: 15px;
+    }
+
+    .button-solid-cyan {
+      width: 100%;
+    }
+  }
+}
+

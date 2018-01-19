@@ -1,0 +1,49 @@
+// Specfics to yachts/yacht page.
+	// Avoid modifying component structure here.
+
+.yachts-yacht-spec {
+	.yacht-featured-list-header {
+		background: $lightblue;
+	}	
+}
+
+.yachts-yacht-theme {
+	.aside-header {
+		background: $lightblue;
+	}
+}
+
+// Light Gallery Overides
+
+.lg-close {
+	@include breakpoint(small down) {
+		margin: 0;
+	}
+}
+
+// .lg-backdrop {
+// 	z-index: 98;
+// }
+
+body {
+
+	&.fixed-message-showing {
+		> .lg-outer, .lg-backdrop {
+			top: $header-nav-small-height + $header-message-height  !important;
+			height: calc(100% - #{$header-nav-small-height + $header-message-height});
+			@include breakpoint(small down) {
+				top: $header-nav-small-height + $header-message-height-small  !important;
+				height: calc(100% - #{$header-nav-small-height + $header-message-height-small});
+			}	
+		}
+	}
+}
+
+.lg-toolbar {
+	@include breakpoint(medium down) {
+		display: flex;
+		align-items: center;
+		flex-direction: row-reverse;
+		justify-content: space-between;
+	}
+}

@@ -1,0 +1,63 @@
+{exp:channel:entries channel="event|boat_show|other_events" entry_id="{embed:ids}" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published" dynamic="no" fixed_order="{embed:ids}"}
+		{if channel_short_name == "boat_show"}
+		<div class="small-12 medium-6 large-4 columns">
+			<div class="gallery-pane">
+				<div class="gallery-pane-header images" {boatshow_main_image}style="background-image: url('{image:url}');"{/boatshow_main_image}>
+					{share_buttons}
+				</div>
+				<div class="gallery-pane-content">
+					<div data-equalizer-watch class="row small-collapse medium-collapse large-collapse">
+						<div class="left small-4 large-4 columns">
+							<h2 class="month text-uppercase">{boatshow_start_date format="%F"}</h2><span class="date">{boatshow_start_date format="%d"}</span>
+						</div>
+						<div class="right small-8 large-8 columns">
+							<h2 class="title text-uppercase">{title}</h2>
+							<h5 class="sub-title text-uppercase">{exp:date_range start_date="{boatshow_start_date format='%d %F %Y'}" end_date="{boatshow_end_date format='%d %F %Y'}"}</h5>
+							<a href="{url_title_path='events/boat-shows'}" class="text-uppercase button-transparent">view event</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		{if:elseif channel_short_name == "event"}
+		<div class="small-12 medium-6 large-4 columns">
+			<div class="gallery-pane">
+				<div class="gallery-pane-header images" {event_main_image}style="background-image: url('{image:url}');"{/event_main_image}>
+					{share_buttons}
+				</div>
+				<div class="gallery-pane-content">
+					<div data-equalizer-watch class="row small-collapse medium-collapse large-collapse">
+						<div class="left small-4 large-4 columns">
+							<h2 class="month text-uppercase">{event_start_date format="%F"}</h2><span class="date">{event_start_date format="%d"}</span>
+						</div>
+						<div class="right small-8 large-8 columns">
+							<h2 class="title text-uppercase">{title}</h2>
+							<h5 class="sub-title text-uppercase">{exp:date_range start_date="{event_start_date format='%d %F %Y'}" end_date="{event_end_date format='%d %F %Y'}"}</h5>
+							<a href="{url_title_path='events/regattas'}" class="text-uppercase button-transparent">view event</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		{if:elseif channel_short_name == "other_events"}
+		<div class="small-12 medium-6 large-4 columns">
+			<div class="gallery-pane">
+				<div class="gallery-pane-header images" {otherevent_main_image}style="background-image: url('{image:url}');"{/otherevent_main_image}>
+					{share_buttons}
+				</div>
+				<div class="gallery-pane-content">
+					<div data-equalizer-watch class="row small-collapse medium-collapse large-collapse">
+						<div class="left small-4 large-4 columns">
+							<h2 class="month text-uppercase">{otherevent_start_date format="%F"}</h2><span class="date">{otherevent_start_date format="%d"}</span>
+						</div>
+						<div class="right small-8 large-8 columns">
+							<h2 class="title text-uppercase">{title}</h2>
+							<h5 class="sub-title text-uppercase">{exp:date_range start_date="{otherevent_start_date format='%d %F %Y'}" end_date="{otherevent_end_date format='%d %F %Y'}"}</h5>
+							<a href="{url_title_path='events/other-events'}" class="text-uppercase button-transparent">view event</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		{/if}
+		{/exp:channel:entries}

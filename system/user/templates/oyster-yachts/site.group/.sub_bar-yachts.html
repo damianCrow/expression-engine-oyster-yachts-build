@@ -1,0 +1,20 @@
+<header class="sub-bar sub-bar--large">
+  <div class="sub-bar__title">
+    <h1>{embed:page_title}</h1>
+  </div>
+  <nav class="sub-bar__nav">
+    <ul class="sub-bar__menu">
+      <li{if embed:page == "superyachts-fleet"} class="active"{/if}><a href="{path='yachts/superyachts-fleet'}"><span>Yachts</span></a></li>
+      <li{if embed:page == "why-oyster"} class="active"{/if}><a href="{path='yachts/why-oyster'}"><span>Why Oyster</span></a></li>
+      {if embed:page == "superyachts-fleet"}
+      <li{if embed:page == "team"} class="active"{/if}><a href="{path='yachts/sales-team'}"><span>New Yachts Team</span></a></li>
+      {if:else}
+       <li{if embed:page == "team"} class="active"{/if}><a href="{path='yachts/team'}"><span>Team</span></a></li>
+      {/if}
+      <li{if embed:page == "heritage-previous-models"} class="active"{/if}><a href="{path='yachts/heritage-previous-models'}"><span>Our Heritage</span></a></li>
+    </ul>
+  </nav>
+  <div class="sub-bar__buttons">
+    <a class="button-clear-invert button-flush" href="mailto:sales@oysteryachts.com">Contact</a>
+  </div>
+</header>

@@ -34,6 +34,9 @@ $lang = array(
 'ed:disabled'         =>  'DISABLED',
 'ed:upload_url'       =>  'Upload URL',
 
+'ed:file_browse'  => 'Enable File Browsing',
+'ed:image_browse' => 'Enable Image Browsing',
+
 'ed:s3:bucket_file'    =>  'S3 Bucket (Files)',
 'ed:s3:bucket_image'   =>  'S3 Bucket (Images)',
 'ed:s3:region_file'    =>  'S3 Region (Files)',

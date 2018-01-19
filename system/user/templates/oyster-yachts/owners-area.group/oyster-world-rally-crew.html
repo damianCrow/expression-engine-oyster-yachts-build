@@ -1,0 +1,58 @@
+{owners_area_auth}
+
+{embed="site/.header" page_title="Oyster World Rally" snap_to=".owners-world-rally" snap_offset="55"}
+
+{owners_area_subnav}
+
+<section style="background-image: url('/assets/images/owners-world-rally.jpg'); " class="hero after-nav global-page-hero yacht-listing-photo global-page-hero--small global-page-hero-adjust-subnav">
+    </section>
+     
+    <article class="owners-world-rally global-padding-top-only--large">
+      <section>
+        <div class="row row-pad">
+          <div class="large-offset-1 large-7 float">
+            <h2>Oyster Owners Area</h2>
+            <h1>CREW DIRECTORY</h1>
+            {exp:channel:entries channel="owners_area_owr_crew" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published" sort="desc"}
+
+  {owr_crew_introduction}
+  <div class="further-info" style="margin-bottom: 1.73333333em;">{owr_crew_disclaimer}</div>
+           
+          </div>
+{embed="owners-area/sidebar"}
+        </div>
+      </section>
+
+              
+
+
+ {if owr_crew:total_rows > 0}
+<section id="the-crew" class="charter-yacht-crew charter-activities">
+  <div class="banner" style="margin-bottom:40px;">Available crew</div>
+  <div data-equalizer data-equalize-by-row="true" class="row row-pad charter-activities-crew small-up-1 medium-up-2 large-up-3">
+
+    {owr_crew}
+    <div data-equalizer-watch class="column">
+      <div class="feature-content">
+        {if owr_crew:image}
+        <img src="{owr_crew:image}" class="crew-member-img">
+        {/if}
+        <h4>{owr_crew:name}</h4>
+        {owr_crew:about}
+        {if owr_crew:cv != ""}<a href="{owr_crew:cv}" class="text-uppercase button-transparent" style="margin:0;">Download CV</a>{/if}
+      </div>
+    </div>
+    {/owr_crew}
+
+  </div>
+</section>
+{/if}
+  {/exp:channel:entries}
+    </article>
+<style>
+.download-pdf .title {
+    margin-top: 0px;
+    margin-bottom: .5rem;
+    font-weight: bold;
+}</style>
+{footer}

@@ -1,0 +1,26 @@
+{exp:channel:entries channel="owners_area_private_documents" dynamic="no" disable="category_fields|pagination" status="published" sort="desc"}
+<section id="download-documents" class="download-documents">
+            <div class="banner">{title}</div>
+            <div class="row content">
+              <ul>
+{private_docs1}
+
+<li class="columns medium-4 small-12">
+                      <figure class="download-pdf clearfix">
+                        <div class="download-thumb column small-3">
+
+                           <img src="/assets/images/brochure-preview2.jpg">
+                          
+                        </div>
+                       <figcaption class="description-download column small-9"><a href="{private_docs1:document}" class="title text-uppercase">{private_docs1:title}</a>
+                      {private_docs1:seminar}
+                         {embed="site/.download_simple" title="" file="{private_docs1:document}" filesize="{private_docs1:document}{file_size}{/private_docs1:document}" label="Download"}
+
+                        </figcaption>
+                      </figure>
+                </li>
+{/private_docs1}
+  </ul>
+            </div>
+          </section>
+ {/exp:channel:entries}

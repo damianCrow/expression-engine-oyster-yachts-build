@@ -71,7 +71,7 @@ function R(e){B.allowResize?e?ie.enableOnly():ie.enableHandles():ie.disableHandl
 // Sanitize some options {{{
 var t=t,n=n;"object"!=typeof t&&(t=e(t)[0]),"object"!=typeof n&&(n={}),
 // Some on-the-fly fixes for MSIE...sigh
-"trackDocument"in n||(n.trackDocument=e.browser.msie?!1:!0,e.browser.msie&&"8"==e.browser.version.split(".")[0]&&(n.trackDocument=!0)),"keySupport"in n||(n.keySupport=e.browser.msie?!1:!0);
+"trackDocument"in n||(n.trackDocument=!e.browser.msie,e.browser.msie&&"8"==e.browser.version.split(".")[0]&&(n.trackDocument=!0)),"keySupport"in n||(n.keySupport=!e.browser.msie);
 // }}}
 // Extend the default options {{{
 var j={
@@ -141,7 +141,7 @@ function o(e,n){return L=!0,a=e,u=n,t(),!1}/* }}} */
 function i(e){re.css("cursor",e)}var a=function(){},u=function(){},d=B.trackDocument;return d||re.mousemove(r).mouseup(s).mouseout(s),W.before(re),{activateHandlers:o,setCursor:i}}(),ce=function(){function t(){B.keySupport&&(o.show(),o.focus())}/*}}}*/
 function n(e){o.hide()}/*}}}*/
 function r(e,t,n){B.allowMove&&(oe.moveOffset([t,n]),ie.updateVisible()),e.preventDefault(),e.stopPropagation()}/*}}}*/
-function s(e){if(e.ctrlKey)return!0;Z=e.shiftKey?!0:!1;var t=Z?10:1;switch(e.keyCode){case 37:r(e,-t,0);break;case 39:r(e,t,0);break;case 38:r(e,0,-t);break;case 40:r(e,0,t);break;case 27:ie.release();break;case 9:return!0}return nothing(e)}var o=e('<input type="radio" />').css({position:"absolute",left:"-30px"}).keypress(s).blur(n),i=e("<div />").css({position:"absolute",overflow:"hidden"}).append(o);/*}}}*/
+function s(e){if(e.ctrlKey)return!0;Z=!!e.shiftKey;var t=Z?10:1;switch(e.keyCode){case 37:r(e,-t,0);break;case 39:r(e,t,0);break;case 38:r(e,0,-t);break;case 40:r(e,0,t);break;case 27:ie.release();break;case 9:return!0}return nothing(e)}var o=e('<input type="radio" />').css({position:"absolute",left:"-30px"}).keypress(s).blur(n),i=e("<div />").css({position:"absolute",overflow:"hidden"}).append(o);/*}}}*/
 return B.keySupport&&i.insertBefore(W),{watchKeys:t}}();
 //}}}
 // }}}

@@ -1423,7 +1423,15 @@ class Channel {
 			$stime = ee()->localize->string_to_timestamp($year.'-'.$smonth.'-'.$sday.' 00:00');
 			$etime = ee()->localize->string_to_timestamp($year.'-'.$emonth.'-'.$eday.' 23:59');
 
-			$sql .= " AND t.entry_date >= ".$stime." AND t.entry_date <= ".$etime." ";
+			if ($stime && $etime)
+			{
+				$sql .= " AND t.entry_date >= ".$stime." AND t.entry_date <= ".$etime." ";
+			}
+			else
+			{
+				// Log invalid date to notify the user.
+				ee()->TMPL->log_item('WARNING: Invalid date parameter, limiting by year/month/day skipped.');
+			}
 		}
 		else
 		{
@@ -1447,7 +1455,15 @@ class Channel {
 				$stime = ee()->localize->string_to_timestamp($year.'-'.$month.'-'.$sday.' 00:00:00');
 				$etime = ee()->localize->string_to_timestamp($year.'-'.$month.'-'.$eday.' 23:59:59');
 
-				$sql .= " AND t.entry_date >= ".$stime." AND t.entry_date <= ".$etime." ";
+				if ($stime && $etime)
+				{
+					$sql .= " AND t.entry_date >= ".$stime." AND t.entry_date <= ".$etime." ";
+				}
+				else
+				{
+					// Log invalid date to notify the user.
+					ee()->TMPL->log_item('WARNING: Invalid date URI, limiting by year/month/day skipped.');
+				}
 			}
 			else
 			{
@@ -4219,7 +4235,8 @@ class Channel {
 				// contain a '/'.  So we'll try to get the category the correct way first, and if
 				// it fails, we'll try the whole $qstring
 
-				$cut_qstring = array_shift($temp = explode('/', $qstring));
+				$temp = explode('/', $qstring);
+				$cut_qstring = array_shift($temp);
 
 				$result = ee()->db->query("SELECT cat_id FROM exp_categories
 									  WHERE cat_url_title='".ee()->db->escape_str($cut_qstring)."'
@@ -4697,7 +4714,9 @@ class Channel {
 		ee()->load->helper('date');
 		$zones = timezones();
 
-		$offset = ( ! isset($zones[ee()->session->userdata['timezone']]) OR $zones[ee()->session->userdata['timezone']] == '') ? 0 : ($zones[ee()->session->userdata['timezone']]*60*60);
+		$timezone = ee()->session->userdata('timezone', ee()->config->item('default_site_timezone'));
+
+		$offset = ( ! isset($zones[$timezone]) OR $zones[$timezone] == '') ? 0 : ($zones[$timezone]*60*60);
 
 		if (substr($offset, 0, 1) == '-')
 		{

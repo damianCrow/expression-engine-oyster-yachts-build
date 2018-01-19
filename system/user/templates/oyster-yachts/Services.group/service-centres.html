@@ -1,0 +1,58 @@
+{embed="site/.header" page_title="About Oyster Service Centres" snap_to="undefined" snap_offset="undefined"}
+<section style="background-image: url('/images/content/oysteryachts-servicecentres.jpg'); " class="hero after-nav global-page-hero yacht-listing-photo global-page-hero--small">
+	</div>
+</section>
+
+<article class="why-oyster">
+	<div class="banner">
+		<h1>Oyster Service Centres</h1>
+	</div>
+
+	<section class="staggered-features stagger-split">
+		{exp:channel:entries channel="service_centres" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published"}
+
+		{service_centres_sections}
+
+			{if service_centres_sections:count % 2 == 0}
+
+			<div class="row row-pad">
+				<div class="staggered-image medium-7 small-12 columns"><img src="{service_centres_sections:image}"></div>
+				<div class="staggered-details medium-5 small-12 columns">
+					<div class="staggered-details-contents">
+						<h2>{service_centres_sections:title}</h2>
+						{service_centres_sections:description}
+						              {if service_centres_sections:link != ""}
+              <div class="staggered-button-group">
+                 <a href="{service_centres_sections:link}"class="button-solid-white button-chubby">{service_centres_sections:link_label}</a>
+              </div>
+              	{/if}
+					</div>
+				</div>
+			</div>
+
+			{if:else}
+
+			<div class="row staggered-row-reverse row-pad">
+				<div class="staggered-details medium-7 small-12 columns">
+					<div class="staggered-details-contents">
+						<h2>{service_centres_sections:title}</h2>
+						{service_centres_sections:description}
+						  {if service_centres_sections:link != ""}
+              <div class="staggered-button-group">
+                 <a href="{service_centres_sections:link}"class="button-solid-white button-chubby">{service_centres_sections:link_label}</a>
+              </div>
+              	{/if}
+					</div>
+				</div>
+				<div class="staggered-image medium-5 small-12 columns"><img src="{service_centres_sections:image}"></div>
+			</div>
+
+			{/if}
+
+		{/service_centres_sections}
+
+		{/exp:channel:entries}
+
+	</section>
+</article>
+{footer}

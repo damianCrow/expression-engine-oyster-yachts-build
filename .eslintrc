@@ -1,0 +1,23 @@
+{
+  "parser": "babel-eslint",
+  "extends": [
+    "airbnb"
+  ],
+  "env": {
+    "browser": true
+  },
+  "rules": {
+    "semi": [2, "never"],
+    "comma-dangle": [2, "always-multiline"],
+    "max-len": 0,
+    "no-shadow": 0,
+    "arrow-body-style": 0,
+    "global-require": 0,
+    "no-unused-expressions": 0,
+    "no-confusing-arrow": 0,
+    "no-unused-vars": ["error", {"ignoreRestSiblings": false}],
+    "import/no-dynamic-require": 0,
+    "import/no-extraneous-dependencies": 0,
+    "import/prefer-default-export": 0
+  }
+}

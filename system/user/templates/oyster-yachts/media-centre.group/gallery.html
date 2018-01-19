@@ -1,0 +1,36 @@
+{media_centre_auth}
+       {exp:channel:entries channel="media_centre" disable="member_data|category_fields|pagination" cache="yes" refresh="60" require_entry="yes" status="published"}
+       {embed="site/.header" page_title="{title}" snap_to="undefined" snap_offset="undefined"}
+{media_centre_subnav}
+    <section style="background-image: url('/assets/images/bg-images/media-centre-press-images-bg.jpg'); background-position: center 40%;" class="hero after-nav global-page-hero yacht-listing-photo global-page-hero--small add-full-background-overlay">
+<!--       </div>
+ -->      <div class="yacht-name">
+        <div class="row-pad">
+          <h1 class="hero-title yacht-list-name text-uppercase">{title}</h1>
+        </div>
+      </div>
+    </section>
+    <section id="media-press-exterior" class="world-rally-gallery media-press-exterior">
+      <div class="row padded-full-width-row small-up-1 medium-up-3 large-up-4">
+
+{media}
+          <div class="small-12 medium-4 large-3 columns">
+            <div class="gallery-pane">
+              <div{if media:image} style="background-image: url('{exp:resizer:path src="{media:image}" width="740" height="494" crop="yes"}')"{/if} class="gallery-pane-header"></div>
+              <div data-equalizer-watch="data-equalizer-watch" class="gallery-pane-content">
+                <p>
+                  &copy; {media:copyright} <br/>{media:author}
+                  
+                </p><a href="{media:image}" target="_blank" download="" class="text-uppercase button-transparent">download</a>
+              </div>
+            </div>
+          </div>
+          {/media}
+    {/exp:channel:entries}
+
+        </div>
+      </div>
+    </section>
+
+
+   {footer}

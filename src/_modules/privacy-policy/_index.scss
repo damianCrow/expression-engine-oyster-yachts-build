@@ -1,0 +1,11 @@
+.privacy-policy {
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+	.banner {
+		margin-top: 1rem;
+		margin-bottom: 1rem;
+	}
+	ul {
+		@include general-text;
+	}
+}

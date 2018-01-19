@@ -1,0 +1,109 @@
+{owners_area_auth}
+
+{embed="site/.header" page_title="Account" snap_to=".owners-statement" snap_offset="55"}
+
+{owners_area_subnav}
+
+<section style="background-image: url('/assets/images/owners-world-rally.jpg'); " class="hero after-nav global-page-hero yacht-listing-photo global-page-hero--small global-page-hero-adjust-subnav">
+    </section>
+    <article class="owners-world-rally global-padding-top-only--large">
+      <section>
+        <div class="row row-pad">
+
+          <div class="large-7 large-offset-1 float">
+            <h2>Oyster Owners' Area</h2>
+            <h1>Account</h1>
+          </div>
+          <div class="large-offset-1 large-3 small-12 float-right">
+            <aside class="overview-download columns balance-aside" style="margin-bottom: 40px;">
+              <div class="block-section-header aside-header">
+                <h3 class="text-uppercase">My Profile</h3>
+              </div>
+              {exp:member:custom_profile_data}
+              <?php ob_start(); ?>{member_first_name}<?php $firstName = ob_get_contents(); ob_end_clean(); ?>
+              <?php ob_start(); ?>{member_last_name}<?php $lastName = ob_get_contents(); ob_end_clean(); ?>
+              
+              <div class="overview-contents">
+                <div class="overview columns small-12">
+                  <div class="side-profile">
+                    <div class="side-profile-image"><span><?php echo substr($firstName, 0, 1).substr($lastName, 0, 1); ?></span></div>
+                    <div class="side-profile-details"><span class="side-profile-name">{member_first_name} {member_last_name}</span><a href="/owners-area/my-profile" class="side-profile-view">View Profile</a></div>
+                  </div>
+                  <table class="table definition-table">
+                    <tbody>
+                      <tr>
+                        <td>Account:</td>
+                        <td>{member_account_type}</td>
+                      </tr>
+                      <tr>
+                        <td>Yacht Model:</td>
+                        <td>{member_current_yacht_make}</td>
+                      </tr>
+                      <tr>
+                        <td>Boat Name:</td>
+                        <td>{member_current_yacht_model}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  {exp:channel:entries channel="world_rally_accounts" disable="member_data|category_fields|pagination" search:account_member="={member_id}" status="published"}
+                  <div class="owners-balance">
+                    <span class="owners-balance__account-label">Account</br> Balance </span>
+                    <span class="owners-balance__value"><abbr title="GBP">&pound;</abbr><?php echo number_format({account_balance}, 2); ?></span>
+                  </div>
+                     {/exp:channel:entries}
+                </div>
+              </div>
+             
+            </aside>
+          </div>
+          <div class="large-7 large-offset-1 small-12 float-left global-padding-top-only--small">
+            <table class="table owners-statement">
+              <thead>
+                <tr>
+                  <th colspan="4" class="heading">Statement of Account</th>
+                </tr>
+                <tr class="sub-headings">
+                  <th style="width:150px">Date</th>
+                  <th>Description</th>
+                  <th style="width:150px">Withdrawals</th>
+                  <th style="width:150px">Deposits</th>
+                </tr>
+              </thead>
+                  {exp:channel:entries channel="world_rally_accounts" disable="member_data|category_fields|pagination" search:account_member="={member_id}" status="published" }
+
+              <tbody class="table-contents">
+
+                {account_transactions orderby="account_transactions:date" sort="desc"}
+   
+                <tr>
+                  <td>{account_transactions:date format="%d %F %Y"}</td>
+                  <td data-date="{account_transactions:date format="%d %F %Y"}" class="inoice-reference">{account_transactions:description_line_1}<span class="invoice-details">{account_transactions:description_line_2}</span></td>
+                  <td data-balance="£{account_transactions:amount}" class="withdrawals">{if account_transactions:type =="Withdrawal"}£{account_transactions:amount}{/if}</td>
+                  <td>{if account_transactions:type =="Deposit"}£{account_transactions:amount}{/if}</td>
+                </tr> 
+                {/account_transactions}
+                <tr class="footer">
+                  <td></td>
+                  <td></td>
+                  <td class="balance-label">Account Balance:</td>
+                  <td>&pound;<?php echo number_format({account_balance}, 2); ?></td>
+                </tr>
+              </tbody>
+              {/exp:channel:entries}
+            </table>
+           {/exp:member:custom_profile_data}
+          </div>
+        </div>
+      </section>
+    </article>
+    <style>
+    @media screen and (max-width: 63.9375em)
+{.balance-aside {
+    margin-bottom: 0 !important;
+}
+.global-padding-top-only--small {
+    padding-top: 0 !important;
+}
+}
+</style>
+{footer}

@@ -1,0 +1,56 @@
+{exp:channel:entries channel="event" disable="member_data|category_fields|pagination" cache="yes" refresh="60" require_entry="yes" status="published"}
+
+{if no_results}
+  {redirect="404"}
+{/if}
+
+{embed="site/.header" page_title="{title}" snap_to="undefined" snap_offset="undefined"}
+
+<section class="world-rally-local-subnav event-gallery-local-subnav">
+  <div class="global-local-subnav">
+    <div class="sub-heading">
+      <a class="text-uppercase">{title}</a>
+      <!-- <span>Final Chapter - Antigua</span> -->
+    </div>
+  </div>
+</section>
+
+<section id="galleries" class="galleries" data-title="{title}">
+  <header class="galleries__header">
+    <nav class="galleries__nav">
+      <ul class="button-group">
+        {parents field="event_day_event" status="published" orderby="date" sort="ASC"}
+          {parents:event_day_gallery}
+            {if image:count == 1}
+              <li class="galleries__nav-item">
+                <button data-gallery="{parents:url_title}" class="button-solid-white button-flush">{parents:event_day_numberr}</button>
+              </li>
+            {/if}
+          {/parents:event_day_gallery}
+        {/parents}
+      </ul>
+      <div class="galleries__close-container"></div>
+    </nav>
+  </header>
+  {parents field="event_day_event" status="published" orderby="date" sort="ASC"}
+    {parents:event_day_gallery}
+      {if image:count == 1}
+        <div class="gallery-content" data-gallery="{parents:url_title}" data-title="{parents:event_day_numberr}" data-auto-open>
+      {/if}
+        <a href="{image:url}" data-sub-html="{image:description}">
+          <img src="{image:url:gallery_thumb}" />
+        </a>
+      {if image:count == image:total}
+        </div>
+      {/if}
+    {/parents:event_day_gallery}
+  {/parents}
+  <footer class="galleries__footer">
+    <div class="galleries__index"></div>
+  </footer>
+</section>
+
+
+{footer}
+
+{/exp:channel:entries}

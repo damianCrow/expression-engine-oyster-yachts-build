@@ -38,7 +38,7 @@
 								thumbtitle = val.title;
 							}
 
-							var img = $('<img src="' + val.thumb + '" rel="' + val.image + '" title="' + thumbtitle + '" style="width: 100px; height: 75px; cursor: pointer;" />');
+							var img = $('<img src="' + val.thumb + '"  data-params="' + encodeURI(JSON.stringify(val)) + '" style="width: 100px; height: 75px; cursor: pointer;" />');
 							$box.append(img);
 							$(img).click($.proxy(this.imagemanager.insert, this));
 
@@ -52,13 +52,9 @@
 			insert: function(e)
 			{
 				var $el = $(e.target);
+				var json = $.parseJSON(decodeURI($el.attr('data-params')));
 
-				var img = document.createElement('img');
-				img.src = $el.attr('rel');
-				img.alt = $el.attr('title');
-				img.title = $el.attr('title');
-
-				this.image.insert(img);
+				this.image.insert(json, null);
 			}
 		};
 	};

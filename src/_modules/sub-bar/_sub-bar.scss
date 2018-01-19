@@ -1,0 +1,95 @@
+.sub-bar {
+  $root: &;
+  align-items: center;
+  background-color: $lightgrey;
+  display: flex;
+  height: $sub-bar-height;
+  left: 0;
+  margin: 0 auto;
+  // overflow: hidden;
+  position: fixed;
+  right: 0;
+  top: 0;
+  transition: transform 250ms ease-in-out, background-color 250ms ease-in-out;
+  width: calc(100% - 20px);
+  will-change: transform;
+  // Over 100 because of cycle2
+  z-index: 101;
+  overflow-x: visible;
+  overflow-y: hidden;
+
+  &__buttons {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &__title,
+  &__buttons {
+    display: none;
+    z-index: 1;
+    flex: 1;
+    padding: ($global-padding / 2) $global-padding;
+
+    @include breakpoint(medium up) {
+      display: flex;
+    }
+  }
+
+  &__title {
+    > h1 {
+      @include sub-title;
+    }
+  }
+
+  &__nav {
+    align-self: stretch;
+    flex: 1 0;
+
+    position: relative;
+    z-index: 1;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    // @include breakpoint(medium up) {
+    //   overflow: visible;
+    // }
+  }
+
+  &__menu {
+    height: 100%;
+    white-space: nowrap;
+    text-align: center;
+
+    > li {
+      display: inline-block;
+      height: 100%;
+
+      > a {
+        @include sub-nav;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        > span {
+          margin: $global-margin;
+        }
+      }
+
+      &.active {
+        > a {
+          border-color: $blue;
+        }
+      }
+    }
+  }
+
+  &--large {
+  }
+
+  &--wr {
+    background-color: $yellow;
+  }
+}

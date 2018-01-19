@@ -1,0 +1,260 @@
+.world-rally-landing {
+  // @include full-page-feature($class-name: 'world-rally-landing-');
+  // @include full-page-half-n-half($class-name: 'world-rally-landing-');
+  $root: &;
+
+  min-height: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  @include breakpoint(medium up) {
+    min-height: inherit;
+    flex-direction: row;
+  }
+
+  h1 {
+    @include h3-styles
+    color: $white;
+    margin-bottom: $global-margin;
+    span {
+      // @include omnes-medium;
+    }
+  }
+
+  p {
+    @include omnes-regular;
+    color: $white;
+  }
+
+  &__left,
+  &__right {
+    @include bg-cover;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-height: 275px;
+    position: relative;
+
+    > section {
+      flex: 1;
+    }
+  }
+
+  &__inner {
+    height: auto;
+    margin-bottom: ($global-margin * 4);
+    padding: 0 40px;
+    z-index: 2;
+
+    @include breakpoint(medium only) {
+      padding: 0 20px;
+
+      h2 {
+        font-size: 2em;
+      }
+    }
+
+    @include breakpoint(small only) {
+      padding: 0 15px;
+
+      h2 {
+        font-size: 2em;
+        line-height: 1;
+      }
+
+      p {
+        margin-top: 10px;
+      }
+
+    }
+  }
+
+
+  @include breakpoint(medium up) {
+    flex-wrap: wrap;
+    height: 100%;
+    height: calc(100vh - #{$header-nav-large-owners});
+    min-height: auto;
+  }
+
+  // style buttons
+  a {
+    line-height: 2.5;
+    margin: 0;
+    padding: 0;
+    width: 200px;
+  }
+
+  .world-rally-landing-left {
+    &::before {
+      @include feature-gradient;
+    }
+  }
+
+  .world-rally-landing-previous-rally,
+  .world-rally-landing-contact {
+    @include bg-cover;
+    align-items: flex-end;
+    display: flex;
+    min-height: 300px;
+    transform-style: preserve-3d;
+
+    &--dark {
+      h1 {
+        color: $blue;
+      }
+    }
+
+    .inner {
+      position: relative;
+
+      @include breakpoint(medium only) {
+        padding: 0 20px;
+
+        h2 {
+          font-size: 2em;
+        }
+      }
+    }
+  }
+
+  .world-rally-landing-previous-rally {
+
+    &::before {
+      @include feature-gradient;
+    }
+
+    .inner {
+      @include breakpoint(small down) {
+        h2 {
+          font-size: 2em;
+          line-height: 1;
+        }
+
+        p {
+          margin-top: 10px;
+        }
+
+        padding: 0 15px;
+      }
+    }
+  }
+
+  .world-rally-landing-contact {
+    h2,
+    p {
+      color: $blue;
+    }
+
+    &::before {
+      @include feature-gradient($grad-color: $white, $transparency: .25);
+    }
+
+    @include breakpoint(small down) {
+      h2 {
+        font-size: 2em;
+        line-height: 1;
+      }
+
+      p {
+        margin-top: 10px;
+      }
+    }
+  }
+
+  div {
+    @include breakpoint(small down) {
+      height: auto;
+    }
+  }
+}
+
+
+.world-rally-staggered-features {
+  .staggered-details-contents {
+    a {
+      margin: 0;
+      width: 200px;
+    }
+  }
+}
+
+
+.world-rally-local-subnav {
+  z-index: 30;
+
+  .global-local-subnav {
+    background-color: $yellow-background;
+
+    a {
+      color: $blue;
+      @include omnes-medium;
+    }
+
+    ul {
+      // @include breakpoint(small down) {
+      display: flex;
+      overflow-x: visible;
+      overflow-y: hidden;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+
+      li {
+        flex: 0 0 auto;
+        float: none;
+      }
+    }
+
+  }
+
+  .sub-heading {
+    @include breakpoint(small down) {
+      margin-left: 0;
+    }
+
+    > a {
+
+      @include breakpoint(small down) {
+        display: none;
+      }
+
+      padding-right: 1.5rem;
+      @include trajan;
+      font-size: .8rem;
+      line-height: 4.25;
+
+      &::after {
+        border-right: 1px solid rgba($black, .25);
+        content: "";
+        height: 100%;
+        margin-left: 1.5rem;
+        position: absolute;
+        top: 0;
+      }
+    }
+  }
+}
+
+.world-rally-route {
+  height: 100vh;
+}
+
+
+// import entries page
+@import "entries";
+
+// import gallery page
+@import "gallery";
+
+// import video page
+@import "video";
+
+// import news page
+@import "news";
+
+// import gallery-sample page
+@import "gallery-sample";

@@ -1,0 +1,48 @@
+{exp:channel:entries disable="member_data|category_fields|pagination" cache="yes" refresh="60" require_entry="yes" status="published"}
+{if no_results}{redirect="404"}{/if}
+
+{embed="site/.header" page_title="{title}" snap_to="undefined" snap_offset="undefined"}
+
+<section {article_main_image}style="background-image:url('{image:url}')"{/article_main_image} class="hero after-nav global-page-hero yacht-listing-photo global-page-hero--medium news-article-hero">
+</section>
+
+<article class="news-item global-padding-top-only--medium">
+	<header class="row row-pad">
+		<div class="large-7">
+			<h2>
+				<time datetime="{entry_date format="%Y-%m-%d %H:%i"}">{entry_date format="%d %F %Y"}</time>
+			</h2>
+			<h1>{title}</h1>
+		</div>
+	</header>
+
+	{article_content}
+
+	{if article_content:content != ""}
+	<section class="row row-pad">
+		<div class="large-7">
+			{article_content:content}
+		</div>
+	</section>
+	{/if}
+
+	{if article_content:media != ""}
+	<div class="featured-media row row-pad">
+		<?php ob_start(); ?>{article_content:media}<?php $content = ob_get_contents(); ob_end_clean(); ?>
+		<?php if (strpos($content, 'iframe')): ?>
+		<div class="video-embed-container">
+			{article_content:media}
+		</div>
+		<?php else: ?>
+		{article_content:media}
+		<?php endif; ?>
+	</div>
+	{/if}
+
+	{/article_content}
+
+</article>
+
+{footer}
+
+{/exp:channel:entries}

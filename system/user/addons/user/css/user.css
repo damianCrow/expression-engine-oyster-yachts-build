@@ -1,0 +1,82 @@
+
+/*
+It makes all of 0 sense that they do this to begin with
+but its messing with our dropdowns.
+*/
+
+#mainContent .pageContents {
+	overflow: visible;
+}
+
+#roles-content {
+	margin-left		: 150px;
+	border-left		: 1px solid #ccc;
+	padding-left	: 20px;
+	padding-top		: 20px;
+	margin-top		: 20px;
+	border-top		: 1px solid #ccc;
+}
+
+#roles-content select {
+	padding: 5px 30px;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+
+#roles-content a:hover {
+	text-decoration: none;
+}
+
+#roles-content .chosen-container {
+	margin-top: -4px;
+}
+
+#roles-content hr {
+	border			: 0;
+	height			: 0;
+	border-top		: 1px solid rgba(0, 0, 0, 0.1);
+	border-bottom	: 1px solid rgba(255, 255, 255, 0.3);
+	margin			: 20px 0;
+}
+
+#member_search_form,
+#group_select {
+	display:inline-block;
+}
+
+#member_search_form {
+	margin-top: -4px;
+}
+
+#member_search_form ul.ui-autocomplete {
+    list-style-type: none;
+	border:1px solid lightgrey;
+	background:none;
+	background-color:#fff;
+}
+
+#member_search_form ul.ui-autocomplete li {
+	padding: 5px;
+}
+
+#member_search_form .ui-state-focus {
+	color: white;
+    background: blue;
+}
+
+#member_search_form a {
+	font-weight: bold;
+}
+
+.ui-autocomplete-loading {
+}
+
+#assign_permissions_box {
+	margin: 10px 0 0 0;
+}
+
+/*autocomplete*/
+.ui-helper-hidden-accessible {
+	display: none;
+}

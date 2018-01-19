@@ -1,0 +1,62 @@
+{exp:channel:entries channel="contact_page" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published" limit="1"}
+
+{embed="site/.header" page_title="Offices" entry_id="{entry_id}" snap_to="#yacht-nav" snap_offset="55"}
+<article >
+	<section style="background-image: url('/assets/images/oysteryachts-contact.jpg'); " class="hero after-nav global-page-hero yacht-listing-photo global-page-hero--small">
+		
+	</section>
+	 <section class="contact-recruitment global-padding-top-only--large">
+        <div class="row padded-full-width-row">
+        	 <div class="row padded-full-width-row">
+          <div class="large-offset-1 large-7 float-left">
+            <h2 class="text-uppercase">Contact</h2>
+            <h1 class="">Our Offices</h1>
+           </div>
+           </div> 
+           </div> 
+       </section>
+	<section id="oyster-sales" class="contact-group">
+		
+		<div class="row row-pad small-collapse">
+			{sales_contacts}
+
+			<div class="location-contents column large-6 small-12">
+				<div class="location-box">
+					<div style="background-image:url('{sales_contacts:image}')" class="location-image medium-6 small-12 column"></div>
+						<address class="location-details medium-6 small-12 column"><strong class="text-uppercase">{sales_contacts:office}<abbr title="{sales_contacts:office}"></abbr> </strong> 
+						<div class="written-address" style="color:#003145;">
+						{sales_contacts:address}
+						{if sales_contacts:map != ""}
+							<br/><a class="google-map-link text-uppercase" href="{sales_contacts:map}" target="_blank">
+							View&nbsp;Map</a>
+						{/if}
+						</div>
+						<div class="contact-phone-email">
+							{if sales_contacts:telephone != ""}
+								<span class="contact-phone">T: <abbr title="Telephone">{sales_contacts:telephone}</abbr></span>
+							{/if}
+							{if sales_contacts:fax != ""}
+								<span class="contact-fax">F: <abbr title="Fax"> {sales_contacts:fax}</abbr></span>
+							{/if}
+						</div>
+						{if sales_contacts:email != ""}
+							<a href="mailto:{sales_contacts:email}" class="text-uppercase button-transparent" style="margin:1rem 0 0 0;">Contact via email</a>
+						{/if}
+						</address>
+					</div>
+			</div>
+
+			{/sales_contacts}
+		</div>
+	</section>
+	
+</article>
+<style>
+.location-box abbr, .contact-phone, .contact-fax {
+	color:#003145; !important;
+}
+.contact-group {padding-top:11px !important;}
+</style>
+{footer}
+
+{/exp:channel:entries}

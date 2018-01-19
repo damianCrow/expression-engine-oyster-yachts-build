@@ -1,0 +1,105 @@
+{exp:channel:entries channel="event" disable="member_data|category_fields|pagination" cache="yes" refresh="60" require_entry="yes" status="published"}
+{if no_results}{redirect="404"}{/if}
+
+{embed="site/.header" page_title="{title}" snap_to=".events-home-about" snap_offset="125"}
+{embed="site/.sub_bar-events" page_title="Events" page="regatta-calendar"}
+<section {event_main_image}style="background-image: url('{image:url}');"{/event_main_image} class="hero after-nav global-page-hero yacht-listing-photo global-page-hero--medium">
+
+</section>
+
+<section class="page-home-about events-home-about">
+	<div class="row padded-full-width-row">
+		<div class="large-offset-1 large-7 float-left">
+			<h2 class="yacht-list-modal">{exp:date_range start_date="{event_start_date format='%d %F %Y'}" end_date="{event_end_date format='%d %F %Y'}"}</h2>
+			<h1 class="text-uppercase">{title}</h1>
+			{event_description}
+		</div>
+		<div class="large-offset-1 large-3 small-12 float-left">
+<aside class="overview-download columns">
+				<div class="block-section-header aside-header">
+					<h3 class="text-uppercase">Events Types</h3>
+					<div class="dropdown-arrow"></div>
+				</div>
+				<div class="overview-contents">
+					<div class="overview">
+						{embed="events/.event_nav" id="{categories}{category_id}{/categories}"}
+					</div>
+				</div>
+			</aside>
+		</div>
+	</div>
+</section>
+
+{if event_signup_and_registration:total_rows > 0}
+<section id="events-upcoming-regattas-signup-info" class="events-upcoming-regattas-signup-info download-documents">
+	<div class="banner">Event signup &amp; information</div>
+	<div class="row padded-full-width-row content">
+		<ul>
+			{event_signup_and_registration}
+			<li class="columns large-4 medium-6 small-12">
+				<figure class="download-pdf clearfix">
+					<div class="download-thumb column small-3">
+						<img src="/assets/images/oyster-event-pdf.png">
+					</div>
+
+					{embed="site/.download_file" title="{event_signup_and_registration:title}" file="{event_signup_and_registration:file}" filesize="{event_signup_and_registration:file}{file_size}{/event_signup_and_registration:file}" label="View"}
+				</figure>
+			</li>
+			{/event_signup_and_registration}
+		</ul>
+	</div>
+</section>
+{/if}
+
+{if event_documentation:total_rows > 0}
+<section id="events-upcoming-regattas-documentation" class="events-upcoming-regattas-documentation download-documents">
+	<div class="banner">documentation</div>
+	<div class="row padded-full-width-row content">
+		<ul>
+			{event_documentation}
+			<li class="columns large-4 medium-6 small-12">
+				<figure class="download-pdf clearfix">
+					<div class="download-thumb column small-3">
+						<img src="/assets/images/oyster-event-pdf.png">
+					</div>
+					<figcaption class="description-download column small-9">
+						<a href="{event_documentation:file}" class="title text-uppercase">{event_documentation:title}</a>
+					{embed="site/.download_simple" title="{event_documentation:title}" file="{event_documentation:file}" filesize="{event_documentation:file}{file_size}{/event_documentation:file}" label="View"}
+				</figcaption>
+				</figure>
+			</li>
+			{/event_documentation}
+		</ul>
+	</div>
+</section>
+{/if}
+
+{if event_additional_information:total_rows > 0}
+<section id="events-upcoming-regattas-additional-info" class="events-upcoming-regattas-additional-info download-documents">
+	<div class="banner">additional information</div>
+	<div class="row padded-full-width-row content">
+		<ul>
+			{event_additional_information}
+			<li class="columns large-4 medium-6 small-12">
+				<figure class="download-pdf clearfix">
+					<div class="download-thumb column small-3">
+						<img src="/assets/images/oyster-event-pdf.png">
+					</div>
+
+	
+
+										<figcaption class="description-download column small-9">
+						<a href="{event_additional_information:file}" class="title text-uppercase">{event_additional_information:title}</a>
+					{embed="site/.download_simple" title="{event_documentation:title}" file="{event_additional_information:file}" filesize="{event_additional_information:file}{file_size}{/event_additional_information:file}" label="View"}
+				</figcaption>
+				</figure>
+			</li>
+			{/event_additional_information}
+		</ul>
+	</div>
+</section>
+{/if}
+
+{footer}
+
+{/exp:channel:entries}

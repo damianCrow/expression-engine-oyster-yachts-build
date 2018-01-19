@@ -1,0 +1,21 @@
+.job-spec-list {
+	@include general-text;
+	list-style-type: none;
+	> li {
+		&:before {
+			content: "-";
+			margin-right: 5px;			
+		}
+	}
+}
+
+.contact-job-specfic h3 {
+	color: $gray;
+	line-height: 2rem;
+	@include omnes-medium;
+}
+
+.job-specfic-aside {
+	margin-bottom: 2rem;
+	margin-top: 1rem;
+}

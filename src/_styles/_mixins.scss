@@ -1,0 +1,447 @@
+// Fonts
+@mixin omnes-light {
+  font-family: "omnes_lightregular", sans-serif;
+  letter-spacing: 0.25rem;
+}
+
+@mixin omnes-regular {
+  font-family: "omnes_regularregular", sans-serif;
+  letter-spacing: $letter-spacing;
+}
+
+@mixin omnes-medium {
+  font-family: "omnes_mediumregular", sans-serif;
+  letter-spacing: $letter-spacing;
+}
+
+@mixin trajan {
+  font-family: "trajan-pro-3", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: $letter-spacing;
+}
+
+@mixin carisma-classic {
+  font-family: "CarismaClassic", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+@mixin quarto-medium {
+  font-family: "Quarto A", "Quarto B";
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0.05rem;
+  font-size: 20px;
+}
+
+@mixin quarto-bold {
+  font-family: "Quarto A", "Quarto B";
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: 0.05rem;
+  font-size: rem-calc(30);
+}
+
+@mixin general-text {
+  color: $grey;
+  font-size: $general-font-size;
+  letter-spacing: $letter-spacing;
+  line-height: 1.375em;
+  margin-bottom: 1.375em;
+}
+
+@mixin sub-title {
+  @include carisma-classic;
+  margin: 0;
+  font-size: rem-calc(16);
+  color: $blue;
+}
+
+@mixin sub-nav {
+  @include omnes-medium;
+  border-bottom: 2px solid transparent;
+  color: $blue;
+  display: block;
+  font-size: rem-calc(12);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color .25s ease-out, border-color .25s ease-out;
+
+  &.active,
+  &:hover {
+    border-color: $blue;
+  }
+}
+
+@mixin h1-styles {
+  @include quarto-bold;
+  text-transform: none;
+  color: $blue;
+  font-size: 60px;
+  font-size: 3.75rem;
+  line-height: 1em;
+  margin-bottom: 30px;
+
+  @include breakpoint(medium down) {
+    font-size: 3.375rem;
+  }
+
+  @include breakpoint(small down) {
+    font-size: 2.375rem;
+  }
+}
+
+// Like the banners
+@mixin h2-styles {
+  @include carisma-classic;
+  color: $grey;
+  font-size: 16px;
+  font-size: 1rem;
+  line-height: 1em;
+  text-transform: uppercase;
+
+  @include breakpoint(medium down) {
+    font-size: .8375em;
+  }
+
+  @include breakpoint(small down) {
+    font-size: .7375em;
+  }
+}
+// Essentially a smaller h1
+@mixin h3-styles {
+  @include quarto-bold;
+  color: $blue;
+  font-size: 2.2rem;
+  line-height: 1em;
+  margin-bottom: 30px;
+  text-transform: none;
+
+  @include breakpoint(medium down) {
+    font-size: 1.75rem;
+  }
+
+  @include breakpoint(small down) {
+    font-size: 1.5rem;
+  }
+}
+
+@mixin h4-styles {
+  @include omnes-medium;
+  color: $blue;
+  font-size: 1.125em;
+  line-height: 1.16666666em;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+
+  @include breakpoint(medium down) {
+    font-size: 1em;
+  }
+
+  @include breakpoint(small down) {
+    font-size: .9em;
+  }
+}
+
+@mixin hero-title {
+  @include omnes_light;
+  color: $white;
+  font-size: 3rem;
+  line-height: 1em;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+
+  @include breakpoint(medium down) {
+    font-size: 2rem;
+  }
+
+  @include breakpoint(small down) {
+    font-size: 1.9rem;
+  }
+}
+
+@mixin small-legal {
+  @include omnes-light;
+  letter-spacing: .05rem;
+  font-size: .8rem;
+  line-height: 1.5;
+  color: $blue;
+}
+
+@mixin bg-cover {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+@mixin feature-gradient($grad-color: $black, $transparency: .5) {
+  background-color: transparent;
+  background-image: linear-gradient(transparent 0%, transparent 40%, rgba($grad-color, $transparency) 100%);
+  content: '';
+  height: 100%;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+
+  @include breakpoint(small only) {
+    background-image: linear-gradient(transparent 0%, transparent 0%, rgba($grad-color, $transparency) 100%);
+  }
+}
+
+/* Mixin for aligning elements vertically */
+@mixin vertical-align($position: relative) {
+  transform: translateY(-50%);
+  position: $position;
+  top: 50%;
+}
+
+@mixin three-columns-padding($paddingBottom: 20px) {
+  padding-bottom: $paddingBottom;
+
+  @include breakpoint(medium only) {
+    &:nth-child(odd) {
+      padding-left: 0;
+    }
+
+    &:nth-child(even) {
+      padding-right: 0;
+    }
+  }
+
+  @include breakpoint(small only) {
+    padding-bottom: $paddingBottom;
+    padding: 0;
+  }
+
+  @include breakpoint(large up) {
+    &:nth-child(3n+1) {
+      padding-left: 0;
+    }
+
+    &:nth-child(3n+3) {
+      padding-right: 0;
+    }
+  }
+}
+
+@mixin responsive-table() {
+  tbody {
+    td.image {
+      background-position: center;
+      background-size: cover;
+      height: 80px;
+
+      @include breakpoint(medium up) {
+        border: none;
+      }
+
+      @include breakpoint(small down) {
+        min-height: 175px;
+      }
+    }
+
+    tr {
+      @include breakpoint(small down) {
+        display: block;
+        margin-bottom: 1rem;
+        &:nth-child(even) {
+          background: $lightgrey;
+        }
+      }
+    }
+
+    td {
+      display: block;
+
+      @include breakpoint(medium up) {
+        border: 1px solid $greyborder;
+        &:last-child {
+
+        }
+      }
+
+      @include breakpoint(small down) {
+        border-bottom: 0;
+        padding-left: 0;
+        padding-top: 0;
+        width: 100% !important;
+
+        &:last-child {
+          border-bottom: 1px solid $greyborder;
+        }
+      }
+
+      &:not(.image) {
+
+        &::before {
+          @include omnes-medium;
+          align-items: center;
+          background-color: $blue;
+          color: $white;
+          content: attr(data-th)": "; // who knew you could do this? The internet, that's who.
+          display: inline-flex;
+          height: 100%;
+          margin-right: 1rem;
+          padding: .5em;
+          text-transform: uppercase;
+          width: 7rem; // magic number :( adjust according to your own content
+
+          // end options
+
+          @include breakpoint(medium up) {
+            display: none;
+          }
+        }
+      }
+    }
+
+
+    th {
+      display: none; // for accessibility, use a visually hidden method here instead! Thanks, reddit!
+    }
+
+    th, td {
+      text-align: left;
+
+      @include breakpoint(medium up) {
+        display: table-cell;
+      }
+    }
+  }
+}
+
+@mixin after-nav($sub: false) {
+  // adjust the following elements to fit since the header is FIXED
+  @if $sub  {
+    margin-top: $header-nav-small-height + $page-margin + $sub-bar-height;
+
+    @include breakpoint(large up) {
+      margin-top: $header-nav-large-height + $page-margin + $sub-bar-height;
+    }
+
+  } @else {
+    margin-top: $header-nav-small-height + $page-margin;
+
+    @include breakpoint(large up) {
+      margin-top: $header-nav-large-height + $page-margin;
+    }
+  }
+}
+
+@mixin row-padding() {
+  padding-left: 2.5em;
+  padding-right: 2.5em;
+
+  @include breakpoint(medium only) {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  @include breakpoint(small only) {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
+@mixin nav-border() {
+  border-bottom: 2px solid #f1f1f1;
+}
+
+/* Split features, full height and width (excluding header) */
+@mixin full-page-feature($class-name: 'feature') {
+
+  // height: calc(100% - #{$header-nav-small-height});
+
+  @include breakpoint(medium up) {
+    min-height: calc(100% - #{$header-nav-large-height});
+  }
+}
+
+@mixin full-page-half-n-half($class-name: 'feature') {
+  // $landing-height-small: 350px;
+
+  min-height: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  @include breakpoint(medium up) {
+    // flex-wrap: wrap;
+    // height: 100%;
+    min-height: inherit;
+  }
+
+  div,
+  section {
+    height: 100%;
+  }
+
+  h1 {
+    @include h3-styles
+    color: $white;
+    margin-bottom: $global-margin;
+    span {
+      // @include omnes-medium;
+    }
+  }
+
+  p {
+    @include omnes-regular;
+    color: $white;
+  }
+
+  .#{$class-name}left,
+  .#{$class-name}right {
+    @include bg-cover;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-height: 275px;
+    position: relative;
+
+    // Normal class left for world-rally classes
+    .inner,
+    .#{$class-name}inner {
+      height: auto;
+      margin-bottom: ($global-margin * 4);
+      padding: 0 40px;
+      z-index: 2;
+
+      @include breakpoint(medium only) {
+        padding: 0 20px;
+
+        h2 {
+          font-size: 2em;
+        }
+      }
+
+      @include breakpoint(small only) {
+        padding: 0 15px;
+
+        h2 {
+          font-size: 2em;
+          line-height: 1;
+        }
+
+        p {
+          margin-top: 10px;
+        }
+
+      }
+    }
+  }
+
+  .#{$class-name}right {
+
+  }
+}
+
+@mixin button() {
+  border-radius: 50%;
+  border: 1px solid $lightgrey;
+}

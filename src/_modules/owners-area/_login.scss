@@ -1,0 +1,118 @@
+.login-page {
+	background-size: cover;
+	background-position: center center;
+	min-height: calc(100vh - #{$header-nav-small-height});
+	$login-page-bottom-padding: 25px;
+	
+	@include breakpoint(medium up) {
+		padding-top: 50px;
+	}
+
+	@include breakpoint(large up) {
+		padding-top: 100px;
+		padding-bottom: $login-page-bottom-padding;
+		min-height: calc(100vh - #{$header-nav-large-owners});
+	}
+
+	.full-modal {
+		@include breakpoint(small down) {
+			height: 100vh;
+		}
+
+		.modal-content {
+			max-height: calc(60vh - #{$header-nav-small-height});
+
+			@include breakpoint(large up) {
+				max-height: calc(60vh - #{$header-nav-large-owners + $login-page-bottom-padding});
+			}
+		}
+	}
+
+
+	position: relative;
+	.full-modal {
+		// Overiding the modal settings so it shows
+		min-height: auto;
+		display: block;
+		transform: none;
+		opacity: 1 !important;
+		z-index: 2;
+		top: 0;
+	}
+
+	.tabs-panel {
+		padding: 0px;
+	}
+}
+
+// MODAL
+.tabs-panel {
+	@include breakpoint(small down) {
+		padding: 0.25rem 0.5rem;
+	}
+
+	padding: 0.5rem 2rem;
+}
+
+#login-panel {
+	.login-forgot-password {
+		color: $grey;
+	}
+
+	.login-remember-me {
+		color: $grey;
+		float: right;
+		margin: 0px;
+		position: relative;
+	}
+
+	.extra-login-content {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		@include breakpoint(small down) {
+			flex-direction: column-reverse;
+			align-items: flex-start;
+		}
+		> * {
+			margin: 1rem 0rem;
+		}	
+	}
+}
+
+.login-tabs-content {
+	position: relative;
+}
+
+#new-account {
+	.request-spec {
+		border: 0;
+		padding: 0;
+	}
+
+	.form-account-type > legend {
+		padding-top: 1rem;
+		width: 100%;
+		border-top: 1px solid $grayborder;
+	}
+
+	.spec-current-yacht {
+		border: 0px;
+		padding: 1rem 0;
+	}
+
+	small {
+		padding: 0px;
+		margin-bottom: 1.5rem;
+	}
+}
+
+.owners-area-landing {
+	.owners-documents-preview {
+		@include breakpoint(medium up) {
+			.download-pdf {
+				border-right: 0px;
+			}
+		}
+	}
+}

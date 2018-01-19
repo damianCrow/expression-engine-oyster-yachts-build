@@ -1,0 +1,26 @@
+.login-media-message {
+
+	.modal-instructions {
+		margin-top: 1.5rem;
+	}
+
+	h1 {
+		@include h4-styles;
+	}
+	span {
+		color: green;
+	}
+
+	.sign-up-success {
+		margin-bottom: 1rem;
+	}
+
+	.modal-instructions {
+		@include breakpoint(small down) {
+			margin: 0.5rem 3.5rem;
+			margin-bottom: 2rem;	
+			margin-top: 1.5rem;	
+		}
+	}
+
+}

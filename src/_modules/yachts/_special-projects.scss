@@ -1,0 +1,39 @@
+// Specfics to yachts/yacht page.
+	// Avoid modifying component structure here.
+
+.special-fleet {
+	padding-top: 35px;
+
+	.content {
+		> li {
+			margin-bottom: 70px;
+		}
+
+		.listing-images {
+			// height: 245px;
+		}
+
+		.listing-content {
+			padding: 1em 0em;
+
+			a {
+				color: $blue;
+				@include omnes-regular;
+				font-size: 1.125em;
+				line-height: 1em;
+				padding: 1em 0em;
+				text-transform: uppercase;
+
+				span {
+					@include omnes-medium;
+				}
+			}
+		}
+	}
+
+	.yacht-listing-title {
+		border-bottom: 1px solid $grayborder;
+	}
+
+}
+

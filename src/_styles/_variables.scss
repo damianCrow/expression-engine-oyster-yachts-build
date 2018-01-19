@@ -1,0 +1,90 @@
+// Colors
+
+// Blues
+$blue: #003145;
+$blueborder: #0d3c4e;
+$lightblue: #7d9aaa;
+
+// Errors
+$red: #d2244b;
+
+// Speical
+$bluecerulean: #00a0e1;
+// currently used for top fixed header message only.
+$pictonblue: #3ca6e0;
+
+$general-font-size: .9375em;
+
+// Gre[a]ys
+$white: #fff;
+$black: #000;
+
+$grey: #747678;
+$gray: $grey;
+
+$lightgrey: #f2f5f6;
+$lightishgrey: #d1d3d4;
+$grayborder: #dfe2e3;
+$graydarkborder: #f1f2f2;
+$lightishgrey: #dadcdd;
+
+$input-text-colour: #a7a9ac;
+
+$greyborder: #c7c8ca;
+$grayborder: $greyborder;
+
+// Yellows
+$yellow: #ffc521;
+$yellow-background: #fc3;
+
+
+// Others
+$green: #3cc850;
+$cyan: #00b2a9;
+$daker-cyan: #009a92;
+
+// Social
+$twitter-color: #55acee;
+$facebook-color: #3c5a99;
+$youtube-color: red;
+
+$charter-theme-color: $cyan;
+
+// Dimentions
+$page-margin: 10px;
+$header-nav-small-height: 50px;
+$header-nav-large-height: 70px;
+// $header-owners-area-height: 30px;
+$header-message-height: 55px;
+$header-message-height-small: 95px;
+// $header-nav-large-owners: $header-nav-large-height + $header-owners-area-height;
+$header-nav-large-owners: $header-nav-large-height;
+$sub-bar-height: 55px;
+
+
+// Default letter spacing
+$letter-spacing: .05rem;
+
+$omnes-line-height: 1.375em;
+
+// Cubic Beziers
+$ease-in-quad: cubic-bezier(.55, .085, .68, .53);
+$ease-in-cubic: cubic-bezier(.55, .055, .675, .19);
+$ease-in-quart: cubic-bezier(.895, .03, .685, .22);
+$ease-in-quint: cubic-bezier(.755, .05, .855, .06);
+$ease-in-expo: cubic-bezier(.95, .05, .795, .035);
+$ease-in-circ: cubic-bezier(.6, .04, .98, .335);
+
+$ease-out-quad: cubic-bezier(.25, .46, .45, .94);
+$ease-out-cubic: cubic-bezier(.215, .61, .355, 1);
+$ease-out-quart: cubic-bezier(.165, .84, .44, 1);
+$ease-out-quint: cubic-bezier(.23, 1, .32, 1);
+$ease-out-expo: cubic-bezier(.19, 1, .22, 1);
+$ease-out-circ: cubic-bezier(.075, .82, .165, 1);
+
+$ease-in-out-quad: cubic-bezier(.455, .03, .515, .955);
+$ease-in-out-cubic: cubic-bezier(.645, .045, .355, 1);
+$ease-in-out-quart: cubic-bezier(.77, 0, .175, 1);
+$ease-in-out-quint: cubic-bezier(.86, 0, .07, 1);
+$ease-in-out-expo: cubic-bezier(1, 0, 0, 1);
+$ease-in-out-circ: cubic-bezier(.785, .135, .15, .86);

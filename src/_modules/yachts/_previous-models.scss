@@ -1,0 +1,35 @@
+// Specfics to yachts/yacht page.
+// Avoid modifying component structure here.
+
+.yachts-yacht-spec {
+  td.heading{
+    background: $lightblue;
+  }
+}
+
+// .overview-contents.prev-models {
+//   padding: 0em;
+
+//   a:not(.button-solid-blue):not(.button) {
+//     color: $lightblue;
+//   }
+
+//   .overview {
+//     padding: 0px;
+//   }
+
+//   li {
+//     padding: 1em 1em;
+//     border-bottom: 1px solid $grayborder;
+
+//     &:last-child {
+//       border-bottom: 0px;
+//     }
+
+//     &.active-page {
+//       a {
+//         color: $blue;
+//       }
+//     }
+//   }
+// }
