@@ -1,0 +1,33 @@
+{embed="site/.header" page_title="About Us" snap_to="undefined" snap_offset="undefined"}
+    <article class="blocks-on-blocks after-nav">
+      {exp:channel:entries channel="about" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published"}
+
+    {about_sections}
+
+          <section style="" class="block-on-block">
+            <div class="block-on-block-info">
+              <h1>{about_sections:title}</h1>
+              {about_sections:description}<a href="{about_sections:link}" class="button-solid-blue button-chubby">{about_sections:link_label}</a>
+            </div>
+          </section>
+              {/about_sections}
+
+    {/exp:channel:entries}
+       
+        </article>
+        <style>
+article section:nth-child(1) {
+  background-image: url('/assets/images/about-us-why-us.jpg');
+}
+
+article section:nth-child(2) {
+  background-image: url('/assets/images/oysteryachts-about-what_weoffer.jpg');')
+}
+article section:nth-child(3) {
+ background-image: url('/assets/images/oysteryachts-about_landing-our_team.jpg');
+}
+article section:nth-child(4) {
+background-image: url('/assets/images/bg-images/oysteryachts-about-heritage.jpg');
+}
+        </style>
+    {footer}

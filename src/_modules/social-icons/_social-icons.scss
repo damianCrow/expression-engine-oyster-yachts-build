@@ -1,0 +1,47 @@
+.social-icon {
+  $root: &;
+  height: 25px;
+  max-width: 30px;
+  position: relative;
+
+  &__colour {
+    fill: $lightishgrey;
+    transition: fill 250ms $ease-in-out-expo;
+  }
+
+  &--facebook {
+    &:hover,
+    &:active {
+      #{$root}__colour{
+        fill: $facebook-color;
+      }      
+    }
+  }
+
+  &--instagram {
+    &:hover,
+    &:active {
+      #{$root}__colour{
+        fill: black;
+      }      
+    }
+  }
+
+  &--youtube {
+    &:hover,
+    &:active {
+      #{$root}__colour{
+        fill: $youtube-color;
+      }      
+    }
+  }
+
+  &--twitter {
+    &:hover,
+    &:active {
+      #{$root}__colour{
+        fill: $twitter-color;
+      }      
+    }
+  }
+}

@@ -1,0 +1,52 @@
+{exp:channel:entries channel="charter_yachts_landing_page" disable="member_data|category_fields|pagination" limit="1" cache="yes" refresh="60" status="published" sort="asc"}
+
+{embed="site/.header" page_title="Charter Fleet" entry_id="{entry_id}" snap_to=".hero #global-page-filters" snap_offset="55"}
+{/exp:channel:entries}
+<section style="background-image: url('/assets/images/bg-images/charter-fleet-bg.jpg')" class="hero after-nav global-page-hero global-page-hero--small">
+	
+	{embed="charter/.filters"}
+</section>
+
+<section class="page-fleet charter-fleet">
+	<div class="banner">Charter Fleet</div>
+	<div class="row row-pad content">
+		<div id="yacht-grid" class="row">
+			<ul>
+				{exp:low_reorder:entries set="charter" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published"}
+				<li class="column large-4 size-small{if count == total_results} end{/if}{embed="charter/.filter_hide" model="{charter_model}" guests="{charter_guests}" summer="{charter_summer}" winter="{charter_winter}"}" data-model="{charter_model}" data-guests="{charter_guests}" data-winter="{charter_winter}" data-summer="{charter_summer}">
+					<div class="yacht-list-item">
+						<a href="{url_title_path='charter/fleet'}">
+							{charter_main_image}
+							<div class="yacht-listing-photo"><img src="{image:url:blur}" data-img-name="{image:title}" data-sizes="auto" data-srcset="{image:url:w_416} 416w, {image:url:w_633} 633w, {image:url:w_983} 983w" class="lazyload blur-up"></div>
+							{/charter_main_image}
+							<div class="yacht-listing-title">
+								<span class="yacht-list-modal">{charter_model}</span>
+								<span class="yacht-list-name double-slash">{title}	</span>
+							</div>
+						</a>
+
+						<div class="listing-content">
+							<table class="table listing-table feature-col">
+								<tbody>
+									<tr>
+										<td>Year: <span>{charter_year}</span></td>
+										<td>Number of Guests: <span>{charter_guests}</span></td>
+									</tr>
+									<tr>
+										<td>Summer: <span>{charter_summer}</span></td>
+										<td>Winter: <span>{charter_winter}</span></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						{share_buttons}
+					</div>
+					
+				</li>
+				{/exp:low_reorder:entries}
+			</ul>
+		</div>
+	</div>
+</section>
+
+{footer}

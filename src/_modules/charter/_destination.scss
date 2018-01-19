@@ -1,0 +1,234 @@
+.destination-map-and-index {
+    display: flex;
+    flex-direction: row-reverse;
+
+    @include breakpoint(small down) {
+        display: flex;
+        flex-direction: column-reverse;
+        // flex-direction: row-reverse;
+        // flex-wrap: wrap;
+    }
+
+}
+
+
+.single-destination {
+    .destination-overview {
+        h1 {
+            @include h3-styles;
+        }
+    }
+    .destination-map-and-index {
+        h2 {
+            @include h4-styles;
+            font-size: 0.9rem;
+            margin-bottom: 0px;
+        }
+        .day-text {
+            transform: rotate(-90deg) translateY(-1rem);
+            transform-origin: center right;
+            @include general-text;
+            color: $lightblue;
+            margin-bottom: 1.8rem;
+            text-transform: uppercase;
+
+            @include breakpoint(small down) {
+                display: inline-block;
+                transform: rotate(-90deg) translateY(-1rem) translateX(0.95rem);
+            }
+
+        }
+
+        .day-number {
+            margin-right: 0.75rem;
+            border-radius: 50%;
+            border: 1px solid $blue;
+            padding: 0.5rem;
+            width: 2.5rem;
+            height: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            @include h4-styles;
+            font-size: 1.125em !important;
+            margin-bottom: 0px;
+            line-height: 3;
+            font-size: 1.25rem;
+            background-color: #fff;
+            transition: background-color 350ms cubic-bezier(0.190, 1.000, 0.220, 1.000), color 350ms cubic-bezier(0.190, 1.000, 0.220, 1.000), border-color 350ms cubic-bezier(0.190, 1.000, 0.220, 1.000);
+        }
+        
+        .destination-list {
+            max-height: 500px;
+            overflow: auto;
+
+            &.row-pad {
+                @include breakpoint(medium up) {
+                    padding: 0px;
+                }
+            }
+
+            @include breakpoint(small down) {
+                margin-top: 35px;
+                
+                // Just so when cycle2 loads it doesn't look like poop
+                display: flex;
+            }
+
+        }
+        .single-destination-map-container {
+            min-height: 300px;
+        }
+    }
+
+    .destination-box {
+        display: flex;
+        // flex-wrap: wrap;
+        border-bottom: 1px solid $greyborder;
+        padding: 0.5rem 1rem;
+        text-align: left;
+        width: 100%;
+        align-items: center;
+        outline: none;
+        background-color: #fff;
+        cursor: pointer;
+        transition: background-color 350ms cubic-bezier(0.190, 1.000, 0.220, 1.000);
+        
+        @include breakpoint(small down) {
+            border: solid 1px $greyborder;
+            // border-bottom: 0px;
+            width: calc(100% - 30px);
+            margin: auto;
+            left: 0;
+            right: 0;
+
+            // Just for when cycle2 loads it doesn't look like poop
+            flex: 1 0 100%;
+        }
+
+        @include breakpoint(medium up) {
+
+            &.destination-active {
+                .day-number {
+                    background-color: $charter-theme-color;
+                    color: white;
+                    border-color: transparent;
+                }
+            }
+
+            .destination-day-index {
+                flex: 0 0 75px;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+
+            }
+            .destination-details {
+                > p {
+                    margin-bottom: 0px;
+                }
+            }
+
+        }
+
+        .destination-details, .destination-day-index {
+            @include breakpoint(small down) {
+                display: none;
+            }
+        }
+
+        &:hover{
+            background-color: $lightgrey;
+ 
+            .day-number {
+            }
+        }
+    }
+
+    .nav-points {
+        display: block;
+        margin: 0 auto;
+        @include breakpoint(small down) {
+            margin-top: 35px;
+        }
+    }
+
+    .destination-info-box-wrapper {
+        @include breakpoint(medium up) {
+            position: absolute !important;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);     
+        }       
+    }
+
+    .destination-info-box{
+
+        padding: 0.5rem;
+
+        @include breakpoint(small down) {
+            pointer-events: none;
+        }
+
+
+        .destination-info-box-image {
+            display: block;
+            margin: 0 auto;
+            width: 100%;
+        }
+        .day-number {
+            display: inline-flex;
+            width: 2rem;
+            height: 2rem;
+
+            background-color: $charter-theme-color;
+            color: white;
+            border-color: transparent;
+
+            @include breakpoint(medium up) {
+                display: inline;
+                border: 0px;
+                margin-right: 0px;
+                background-color: transparent;
+                // @include general-text;
+                @include omnes-regular;
+                font-size: 0.9375rem;
+                color: $lightblue;
+                &:after {
+                    content: ':';
+                    display: inline-block;
+                }
+
+            }
+
+
+        }
+
+        > p {
+            margin-bottom: 0px;
+            @include breakpoint(medium up) {
+                color: $blue;
+            }           
+        }
+
+        .destination-title {
+            @include h4-styles;
+        }
+
+        .destination-info-box-image {
+            @include breakpoint(small down) {
+                display: none;
+            }
+        }
+
+    }
+
+    // .gm-style-iw {
+    //  & + div {
+    //      display: none;
+    //  }
+    // }
+}
+

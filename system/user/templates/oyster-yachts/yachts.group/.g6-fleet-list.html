@@ -1,0 +1,61 @@
+{exp:channel:entries channel="yachts_landing" disable="member_data|category_fields|pagination" limit="2" cache="yes" refresh="60" status="published" sort="desc"}
+
+{embed="site/.header" page_title="G6 Fleet" entry_id="{entry_id}" snap_to="90" snap_offset="undefined"}
+{/exp:channel:entries}
+   <section style="background-image: url('/assets/images/g-fleet-header-min.jpg'); background-position: center 95%;" class="hero after-nav global-page-hero yacht-listing-photo global-page-hero--medium">
+    </section>
+ <article class="yacht-category-page">
+      <section class="page-home-about">
+        <div class="row padded-full-width-row">
+          <div class="small-12 medium-3 large-2 large-offset-1 column about-heading"><span class="text-uppercase">
+              Oyster Yachts </br> G6 Fleet
+              </span></div>
+          <div class="small-12 medium-9 large-8 end column intro">
+            <p>
+              First developed with the Oyster 885 hull in 2011, the 'G6’ fleet now offers seven models from the new Oyster 565 and Oyster 595 to the Oyster 118.              
+            </p>
+            <p>
+              The ‘G6’ fleet all have benefitted from Oyster's experience in the Superyacht sector over 24m. Extensively tank-tested to refine the hull shapes, the twin rudders and the simple yet powerful rig configurations.
+            </p>
+            <p>
+              They all feature powerful hulls, flush decks, sleek styling and flexibility in the interior design.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section class="brokerage-home-featured-yachts">
+        <div class="banner">G6 Fleet</div>
+        <div class="row padded-full-width-row content">
+          <div id="yacht-grid" class="row">
+            <ul>
+              {exp:low_reorder:entries set="yachts" disable="member_data|pagination" cache="yes" refresh="60" status="published" category="15"}
+              <li class="column small-12 medium-6 size-small">
+                    <div data-yachtsection="brokerage" class="yacht-list-item">
+                         {yacht_listing_image}
+              <div class="yacht-listing-photo"><img src="{image:url:blur}" data-img-name="{image:title}" data-sizes="auto" data-srcset="{image:url:w_228} 228w, {image:url:w_340} 340w, {image:url:w_454} 454w, {image:url:w_592} 592w, {image:url:w_770} 385w" class="lazyload blur-up"></div>
+              {/yacht_listing_image}
+                          <div class="yacht-listing-title"><span class="yacht-list-name">{title}</span>
+                          </div>
+                      <div class="listing-content listing-content--padded">
+                       
+                         {yacht_excerpt}
+                        <a href="{url_title_path='yachts/fleet'}" class="button-transparent">View Yacht Overview</a>
+                      </div>
+                    </div>
+              </li>
+            {/exp:low_reorder:entries}
+            </ul>
+          </div>
+        </div>
+      </section>
+      <section class="row global-padding-top-only--small">
+            <div style="background-image:url('/assets/images/g5-banner.jpg')" class="wide-image-feature add-full-background-overlay">
+              <div class="wide-image-feature-content">
+                <h3 class="text-uppercase">G5 Fleet</h3>
+                <p>Our range of classic Oyster models,</br> ranging from 475 to the 625.</p><a href="/yachts/g5-fleet" class="text-uppercase button-solid-white">Explore the G5 Fleet</a>
+              </div>
+            </div>
+      </section>
+    </article>
+
+{footer}

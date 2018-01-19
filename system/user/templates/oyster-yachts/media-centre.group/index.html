@@ -1,0 +1,154 @@
+{media_centre_auth}
+
+{embed="site/.header" page_title="Media Centre" snap_to=".media-centre-home-about" snap_offset="10"}
+
+{media_centre_subnav}
+
+    <section style="background-image: url('/assets/images/media-centre/media-centre-bg.jpg'); background-position: center 45%;" class="hero after-nav global-page-hero yacht-listing-photo global-page-hero--medium">
+    </section>
+    <section class="page-home-about media-centre-home-about global-padding">
+      <div class="row padded-full-width-row">
+        <div class="large-offset-1 large-7 float-left">
+          <h2 class="text-uppercase">Welcome to Oyster Yachts</h2>
+           {exp:channel:entries channel="media_centre_landing" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published"}
+          <h1 class="text-uppercase">{title}</h1>
+
+          {mc_description}
+           {/exp:channel:entries}
+        </div>
+        <div class="large-offset-1 large-3 small-12 float-left">
+              <aside class="overview-download columns media-centre-aside">
+                    <div class="block-section-header aside-header">
+                      <h3 class="text-uppercase">Contact Marketing</h3>
+                      <svg id="svg-arrow" version="1.1" baseprofile="tiny" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewbox="0 -20 100 100" xml:space="preserve">
+                        <g>
+                          <line x1="10" y1="10" x2="53" y2="53" stroke="#454646" stroke-width="10"></line>
+                          <line x1="90" y1="10" x2="47" y2="53" stroke="#454646" stroke-width="10"></line>
+                        </g>
+                      </svg>
+                    </div>
+                <div class="overview-contents">
+                  <div class="overview columns small-12">
+                    <ul>
+                      <li><abbr title="Telephone">T: </abbr><a href="tel:+442380831012">+44 (0)23 8083 1012</a></li>
+                      <li><abbr title="Email">E: </abbr><a href="mailto:marketing@oysteryachts.com">marketing@oysteryachts.com</a></li>
+                    </ul>
+                
+                  </div>
+                </div>
+              </aside>
+        </div>
+      </div>
+    </section>
+    <section id="media-centre-gallery" class="global-padding-top-only--small">
+      <div class="row padded-full-width-row media-home-gallery-container">
+        <div style="background-image: url('/assets/images/media-centre/mc-yacht.jpg')" class="gallery-banner">
+          <div class="gallery-banner-inner select2-override">
+            <h4 class="text-uppercase">Yacht Gallery</h4>
+             {exp:channel:entries channel="media_centre_landing" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published"}
+          
+                        
+
+          {yacht_gallery}
+         
+          
+              {/exp:channel:entries}
+            <div class="select-gallery-wrapper">
+              <select id="select-gallery" tabindex="-1" aria-hidden="true">
+                <option value="" class="text-uppercase">Select yacht gallery</option>
+                {exp:channel:entries channel="media_centre_yachts" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published" sort="desc" dynamic="no"}
+                <option value="{url_title_path='media-centre/yachts'}">{title}</option>
+                {/exp:channel:entries}
+              </select><a class="button-transparent button-chubby text-uppercase">view gallery</a>
+            </div>
+          </div>
+        </div>
+        <div style="background-image: url('/assets/images/media-centre/mc-regatta.jpg')" class="gallery-banner">
+          <div class="gallery-banner-inner select2-override">
+            <h4 class="text-uppercase">Regatta Gallery</h4>
+                        {exp:channel:entries channel="media_centre_landing" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published"}
+
+          {regatta_gallery}
+         
+          
+              {/exp:channel:entries}
+            <div class="select-gallery-wrapper">
+              <select id="select-gallery" tabindex="-1" aria-hidden="true">
+                <option value="" class="text-uppercase">Select regatta gallery</option>
+                {exp:channel:entries channel="media_centre_regattas" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published" sort="desc" dynamic="no"}
+                <option value="{url_title_path='media-centre/regattas'}">{title}</option>
+                {/exp:channel:entries}
+              </select><a class="button-transparent button-chubby text-uppercase">view gallery</a>
+            </div>
+          </div>
+        </div>
+        <div style="background-image: url('/assets/images/media-centre/mc-world-rally-17-19.jpg');" class="gallery-banner">
+          <div class="gallery-banner-inner select2-override">
+            <h4 class="text-uppercase">World Rally 2017-2019 Gallery</h4>
+                                   {exp:channel:entries channel="media_centre_landing" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published"}
+
+          {world_rally_2013_14_gallery}
+         
+              {/exp:channel:entries}
+            <div class="select-gallery-wrapper"><a href="{path='media-centre/gallery/world-rally-2017-2019'}" class="button-transparent button-chubby text-uppercase">view gallery</a></div>
+          </div>
+        </div>
+
+        <div style="background-image: url('/assets/images/media-centre/mc-cambria-refit.jpg')" class="gallery-banner">
+          <div class="gallery-banner-inner select2-override">
+            <h4 class="text-uppercase">World Rally 2013-14 Gallery</h4>
+                                   {exp:channel:entries channel="media_centre_landing" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published"}
+
+          {world_rally_2013_14_gallery}
+         
+              {/exp:channel:entries}
+            <div class="select-gallery-wrapper"><a href="{path='media-centre/gallery/worldrally2013-14'}" class="button-transparent button-chubby text-uppercase">view gallery</a></div>
+          </div>
+        </div>
+        <div style="background-image: url('/assets/images/media-centre/mc-world-rally.jpg')" class="gallery-banner">
+          <div class="gallery-banner-inner select2-override">
+            <h4 class="text-uppercase">Cambria Refit</h4>
+                                             {exp:channel:entries channel="media_centre_landing" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published"}
+
+          {cambria_refit}
+         
+          
+              {/exp:channel:entries}
+            <div class="select-gallery-wrapper"><a href="{path='media-centre/gallery/cambria-refit'}" class="button-transparent button-chubby text-uppercase">view gallery</a></div>
+          </div>
+        </div>
+        <div style="background-image: url('/assets/images/media-centre/mc-southampton.jpg')" class="gallery-banner">
+          <div class="gallery-banner-inner select2-override">
+            <h4 class="text-uppercase">Southampton Yacht Services</h4>
+                                                        {exp:channel:entries channel="media_centre_landing" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published"}
+
+          {southampton_yacht_services}
+         
+          
+              {/exp:channel:entries}
+            <div class="view-gallery-wrapper"><a href="{path='media-centre/gallery/southampton-yacht-services'}" class="button-transparent button-chubby text-uppercase">view gallery</a></div>
+          </div>
+        </div>
+<!--         <div style="background-image: url('/assets/images/media-centre/mediacentre_worldrallygallery.jpg')" class="gallery-banner">
+          <div class="gallery-banner-inner select2-override">
+            <h4 class="text-uppercase">Southampton Yacht Services</h4>
+                                                        {exp:channel:entries channel="media_centre_landing" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published"}
+
+          {southampton_yacht_services}
+              {/exp:channel:entries}
+            <div class="view-gallery-wrapper"><a href="{path='media-centre/gallery/world-rally-2017-2019'}" class="button-transparent button-chubby text-uppercase">view gallery</a></div>
+          </div>
+        </div> -->
+      </div>
+    </section>
+    <style>
+.owners-area-sub-nav .sub-heading>a:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    border-right: 1px solid rgba(0,0,0,0.25);
+    height: 100%;
+    margin-left: 1.5rem;
+}
+    </style>
+   {footer}

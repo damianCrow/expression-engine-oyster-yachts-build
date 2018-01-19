@@ -1,0 +1,152 @@
+// Brokerage Listing page
+
+$brokerage-theme-color: $blue;
+
+.brokerage-fleet {
+	padding-top: 35px;
+	#yacht-grid {
+		> ul {
+			display: flex;
+			flex-wrap: wrap;
+			flex-direction: row;
+		}
+
+	}
+
+}
+
+.brokerage-hero {
+	@extend .global-page-hero;
+}
+
+.brokerage-team {
+	.staggered-image {
+		img {
+			// object-fit: contain;
+			@include object-fit(contain);
+			top: 0;
+			bottom: 0;
+			margin: auto;
+		}
+	}
+}
+
+// Patch for grey bar showing just after nav snap
+.brokerage-home-about, .page-home-about{
+	padding: 60px 0px;
+}
+
+.listing-table {
+	td {
+		width: 50%;
+		height: auto;
+		vertical-align: top;
+	}
+	span {
+		display: block;
+	}
+	td, th {
+		padding: 10px;
+
+		@include breakpoint(medium up) {
+			padding: 10px 10px 10px 20px;
+		}
+	}
+}
+
+.feature-col {
+	td {
+		width: 33.33333333%;
+	}
+}
+
+.listing-images {
+	// height: 192px;
+	display: flex;
+	a {
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+
+	span {
+		display: block;
+		width: 100%;
+		height: 100%;
+		float: left;
+
+		background-position: center center;
+		background-size: cover;
+	}
+
+	.yacht-listing-photo, .yacht-listing-photo-extra {
+		// height: 192px;
+		flex: 1;
+		// width: 33.33333333%;
+		display: block;
+		float: left;
+		overflow: hidden;
+
+		> img {
+			// object-fit: cover;
+			@include object-fit(cover);
+      display: block;
+      height: auto;
+      position: relative;
+      width: 100%;
+		}
+
+		.share {
+			z-index: 1;
+		}
+	}
+
+	.large-12 & span {
+		width: 33.33333333%;
+	}
+}
+
+
+
+.brokerage-home-featured-yachts {
+	#yacht-grid {
+		margin: 30px 0px;
+
+		> ul {
+			display: flex;
+			flex-wrap: wrap;
+		}
+
+		li.column {
+			padding-bottom: 20px;
+
+
+			@include breakpoint(small only) {
+				padding: 0px 0px 20px 0px;
+			}
+
+		}
+	}
+}
+
+.brokerage-modal{
+	h2{
+		background-color: $brokerage-theme-color;
+	}
+}
+
+.brokerage-home-about {
+	@include breakpoint(large up) {
+		.padded-full-width-row {
+			padding-left: 0;
+			padding-right: 0;
+		}
+	}
+}
+
+
+
+
+// import fleet page
+@import 'yacht';
+@import 'team';

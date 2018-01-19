@@ -1,13 +1,127 @@
 {
-  "name": "oyster-yachts",
-  "version": "1.0.0",
-  "description": "",
+  "name": "Oyster-Yachts",
+  "version": "2.5.0",
+  "dependencies": {
+    "babel-polyfill": "^6.26.0",
+    "font-awesome": "^4.7.0",
+    "foundation-sites": "~6.4.4-rc1",
+    "google-maps": "^3.2.1",
+    "gsap": "^1.18.2",
+    "jquery": "~3.2.1",
+    "jquery-ui": "^1.12.1",
+    "jquery-validation": "^1.15.0",
+    "jquery.cycle2": "^2.1.7",
+    "lazysizes": "^4.0.1",
+    "lightgallery": "^1.2.14",
+    "motion-ui": "^1.2.2",
+    "normalize.css": "~7.0.0",
+    "object-fit-images": "^3.2.3",
+    "owl.carousel2": "^2.2.1",
+    "salvattore": "^1.0.9",
+    "select2": "^4.0.2",
+    "simpleweather": "^3.1.0",
+    "underscore": "^1.8.3"
+  },
   "devDependencies": {
-    "gulp": "^3.9.1",
-    "gulp-concat": "^2.6.0",
-    "gulp-cssnano": "^2.1.1",
-    "gulp-sass": "^2.2.0",
-    "gulp-sourcemaps": "^1.6.0",
-    "gulp-uglify": "^1.5.2"
+    "autoprefixer": "~7.2.2",
+    "babel-core": "~6.26.0",
+    "babel-eslint": "~8.0.1",
+    "babel-plugin-add-module-exports": "~0.2.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-es2015": "~6.24.1",
+    "babel-preset-es2016": "^6.24.1",
+    "babel-preset-es2017": "^6.24.1",
+    "babel-preset-latest": "^6.24.1",
+    "babelify": "~7.3.0",
+    "browser-sync": "~2.18.0",
+    "browserify": "~14.5.0",
+    "browserify-shim": "^3.8.14",
+    "del": "~3.0.0",
+    "envify": "~4.1.0",
+    "eslint": "^4.13.0",
+    "eslint-config-airbnb": "^16.0.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-react": "^7.4.0",
+    "foldero": "~0.1.1",
+    "glob": "~7.1.1",
+    "gulp": "~3.9.1",
+    "gulp-cached": "^1.1.1",
+    "gulp-changed": "~3.1.0",
+    "gulp-cssnano": "~2.1.2",
+    "gulp-data": "~1.2.1",
+    "gulp-eslint": "~4.0.0",
+    "gulp-htmlmin": "~3.0.0",
+    "gulp-if": "~2.0.2",
+    "gulp-imagemin": "~4.0.0",
+    "gulp-load-plugins": "~1.5.0",
+    "gulp-notify": "~3.0.0",
+    "gulp-plumber": "~1.1.0",
+    "gulp-postcss": "~7.0.0",
+    "gulp-rename": "~1.2.2",
+    "gulp-responsive": "^2.8.0",
+    "gulp-sass": "~3.1.0",
+    "gulp-sourcemaps": "~2.6.1",
+    "gulp-uglify": "~3.0.0",
+    "gulp-util": "~3.0.8",
+    "imagemin-pngquant": "~5.0.0",
+    "imagemin-svgo": "~5.2.0",
+    "js-yaml": "~3.10.0",
+    "lodash": "~4.17.4",
+    "minimist": "~1.2.0",
+    "postcss-flexbugs-fixes": "^3.2.0",
+    "rimraf": "~2.6.1",
+    "vinyl-buffer": "~1.0.0",
+    "vinyl-source-stream": "~1.1.0",
+    "watchify": "~3.9.0 "
+  },
+  "scripts": {
+    "clean-deps": "rimraf node_modules"
+  },
+  "engines": {
+    "node": ">=0.12.0"
+  },
+  "//": "CUSTOM CONFIGURATION",
+  "config": {
+    "//": "Entry files",
+    "host": "127.0.0.1",
+    "port": "3000",
+    "baseUrl": "./",
+    "directories": {
+      "source": "src",
+      "destination": "assets",
+      "temporary": "assets",
+      "//": "Directories relative to `source` directory",
+      "modules": "_modules",
+      "layouts": "_layouts",
+      "images": "_images",
+      "fonts": "_fonts",
+      "styles": "_styles",
+      "scripts": "_scripts",
+      "data": "_data"
+    },
+    "entries": {
+      "js": "main**.js",
+      "css": "main**.{sass,scss}"
+    }
+  },
+  "browserify": {
+    "transform": [
+      "browserify-shim"
+    ]
+  },
+  "browser": {
+    "simpleweather": "./node_modules/simpleweather/jquery.simpleWeather.js",
+    "owl.carousel2": "./node_modules/owl.carousel2/dist/owl.carousel.js"
+  },
+  "browserify-shim": {
+    "simpleweather": {
+      "exports": null,
+      "depends": "jquery:jQuery"
+    },
+    "owl.carousel2": {
+      "exports": null,
+      "depends": "jquery:jQuery"
+    }
   }
 }

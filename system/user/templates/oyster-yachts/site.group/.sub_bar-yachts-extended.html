@@ -1,0 +1,15 @@
+<header class="sub-bar sub-bar--large">
+  <div class="sub-bar__title">
+    <h1>{embed:page_title}</h1>
+  </div>
+  <nav class="sub-bar__nav">
+    <ul class="sub-bar__menu">
+      <li{if embed:page == "decksaloons"} class="active"{/if}><a href="{path='yachts/decksaloons'}"><span>Deck Saloons</span></a></li>
+      <li{if embed:page == "superyachts-fleet"} class="active"{/if}><a href="{path='yachts/superyachts-fleet'}"><span>Superyachts</span></a></li>
+      <li{if embed:page == "team"} class="active"{/if}><a href="{path='yachts/sales-team'}"><span>Our Team</span></a></li>
+    </ul>
+  </nav>
+  <div class="sub-bar__buttons">
+    <a class="button-clear-invert button-flush" href="mailto:sales@oysteryachts.com">Contact</a>
+  </div>
+</header>

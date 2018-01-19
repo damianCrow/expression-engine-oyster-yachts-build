@@ -1,0 +1,37 @@
+{exp:channel:entries channel="special_projects_landing" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published" limit="1"}
+
+{embed="site/.header" page_title="Projects" entry_id="{entry_id}" snap_to="90" snap_offset="undefined"}
+{/exp:channel:entries}
+<section style="background-image: url('/images/content/oysteryachts-fleet-special_projects.jpg'); " class="hero after-nav global-page-hero global-page-hero--small">
+	
+	
+</section>
+<section class="page-fleet special-fleet">
+	<div class="row row-pad content">
+		<div id="yacht-grid" class="row sys-yacht-grid">
+			<ul>
+				{exp:channel:entries channel="yacht_special_projects" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published" sort="desc"}
+				<li class="column large-4 size-small">
+					<div class="yacht-list-item">
+						<a href="{url_title_path='yachts/special-projects'}">
+							{yacht_prev_main_image}
+							<div class="yacht-listing-photo"><img src="{image:url:blur}" data-img-name="{image:title}" data-sizes="auto" data-srcset="{image:url:w_416} 416w, {image:url:w_633} 633w, {image:url:w_983} 983w" class="lazyload blur-up"></div>
+							{/yacht_prev_main_image}
+							<div class="yacht-listing-title"><span class="yacht-list-modal">{title}</span></div>
+						</a>
+						{share_buttons}
+					</div>
+				</li>
+				{/exp:channel:entries}
+
+			</ul>
+		</div>
+	</div>
+</section>
+<style>
+
+.column:last-child:not(:first-child), .columns:last-child:not(:first-child) {
+     float: left; 
+}
+</style>
+{footer}

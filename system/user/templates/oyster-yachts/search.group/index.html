@@ -1,0 +1,146 @@
+{embed="site/.header" page_title="Search Results" snap_to="undefined" snap_offset="undefined"}
+
+    <section style="background-image: url('/assets/images/oysteryachts-brokerage-brokerage_landing-banner.jpg'); " class="hero after-nav global-page-hero global-page-hero--small">
+      <div id="global-page-filters" data-local-subnav="data-local-subnav" class="filters search-results-box">
+        <div class="row padded-full-width-row filters-container">
+            {exp:super_search:form return="search/index"}
+            <input type="text" placeholder="Help me find..." name="keywords">
+             <button id="submit" href="#" class="button search-results-submit">Search</button>
+            {/exp:super_search:form}
+
+           
+      
+        </div>
+      </div>
+    </section>
+
+    <article class="search-results">
+      <section class="global-padding--small">
+        <div class="banner">
+          <h1><strong>{super_search_total_results}</strong> Search Results</h1>
+        </div>
+        <div class="global-padding-top-only--medium">
+
+{exp:super_search:results
+	status="published"
+    limit="30"
+    highlight_keywords="strong"
+}
+
+    <div class="entry">
+        {if channel_short_name == "brokerage"}
+            <div class="search-result row row-pad">
+                <div class="small-12 medium-10 large-8">
+                  <h2><strong>Brokerage</strong> - {title}</h2>
+                   <p>{excerpt}</p>
+                   <a href="{url_title_path='brokerage/fleet'}" class="button-solid-blue button-chubby">View More</a>
+                </div>
+              </div>
+        {if:elseif channel_short_name == "yacht"}
+            <div class="search-result row row-pad">
+                <div class="small-12 medium-10 large-8">
+                  <h2><strong>Yachts</strong> - {title}</h2>
+                   <p>{excerpt}</p>
+                   <a href="{url_title_path='yachts/fleet'}" class="button-solid-blue button-chubby">View More</a>
+                </div>
+              </div>
+        {if:elseif channel_short_name == "charter"}
+            <div class="search-result row row-pad">
+                <div class="small-12 medium-10 large-8">
+                  <h2><strong>Charter</strong> - {title}</h2>
+                   <p>{excerpt}</p>
+                   <a href="{url_title_path='charter/fleet'}" class="button-solid-blue button-chubby">View More</a>
+                </div>
+              </div>
+        {if:elseif channel_short_name == "news"}
+            <div class="search-result row row-pad">
+                <div class="small-12 medium-10 large-8">
+                  <h2><strong>News</strong> - {title}</h2>
+                   <p>{excerpt}</p>
+                   <a href="{url_title_path='news/article'}" class="button-solid-blue button-chubby">View More</a>
+                </div>
+              </div>
+        {if:elseif channel_short_name == "yacht_previous_models"}
+            <div class="search-result row row-pad">
+                <div class="small-12 medium-10 large-8">
+                  <h2><strong>Previous Models</strong> - {title}</h2>
+                   <p>{excerpt}</p>
+                   <a href="{url_title_path='yachts/previous-models'}" class="button-solid-blue button-chubby">View More</a>
+                </div>
+              </div>
+        {if:elseif channel_short_name == "yacht_special_projects"}
+            <div class="search-result row row-pad">
+                <div class="small-12 medium-10 large-8">
+                  <h2><strong>Special Projects</strong> - {title}</h2>
+                   <p>{excerpt}</p>
+                   <a href="{url_title_path='yachts/special-projects'}" class="button-solid-blue button-chubby">View More</a>
+                </div>
+              </div>
+        {if:elseif channel_short_name == "previous_rally_news"}
+            <div class="search-result row row-pad">
+                <div class="small-12 medium-10 large-8">
+                  <h2><strong>World Rally 2013-14</strong> - {title}</h2>
+                   <p>{excerpt}</p>
+                   <a href="{url_title_path='world-rally/world-rally-2013-14/news'}" class="button-solid-blue button-chubby">View More</a>
+                </div>
+              </div>
+        {if:elseif channel_short_name == "event"}
+            <div class="search-result row row-pad">
+                <div class="small-12 medium-10 large-8">
+                  <h2><strong>Events</strong> - {title}</h2>
+                   <p>{excerpt}</p>
+                   <a href="{url_title_path='events/regattas'}" class="button-solid-blue button-chubby">View More</a>
+                </div>
+              </div>
+        {if:elseif channel_short_name == "event_day_report"}
+			{event_day_event status="published"}
+            <div class="search-result row row-pad">
+                <div class="small-12 medium-10 large-8">
+                  <h2><strong>Regatta Reports</strong> - {title}</h2>
+                   <p>{excerpt}</p>
+                   <a href="{path='events/regattas/{event_day_event:url_title}'}" class="button-solid-blue button-chubby">View More</a>
+                </div>
+              </div>
+			{/event_day_event}
+        {if:elseif channel_short_name == "boat_show"}
+            <div class="search-result row row-pad">
+                <div class="small-12 medium-10 large-8">
+                  <h2><strong>Boat Shows</strong> - {title}</h2>
+                   <p>{excerpt}</p>
+                   <a href="{url_title_path='events/boat-shows'}" class="button-solid-blue button-chubby">View More</a>
+                </div>
+              </div>
+        {if:elseif channel_short_name == "heritage"}
+        	<a href="{path='about/heritage'}">{title}</a>
+        {if:elseif page_url != ""}
+         <div class="search-result row row-pad">
+                <div class="small-12 medium-10 large-8">
+                  <h2>{title}</h2>
+                   <p>{excerpt}</p>
+                   <a href="{page_url}" class="button-solid-blue button-chubby">View More</a>
+                </div>
+              </div>
+        {/if}
+
+
+    {if super_search_no_results}
+       <div class="search-result row row-pad">
+                <div class="small-12 medium-10 large-8">
+                 
+                   <p>No results matched your query.</p>
+                  
+                </div>
+              </div>
+      
+    {/if}
+{/exp:super_search:results}
+
+
+
+
+ 
+             
+        </div>
+      </section>
+    </article>
+{footer}

@@ -11,23 +11,23 @@
 |
 */
 
-$config['app_version'] = '3.2.1';
+$config['app_version'] = '3.3.1';
 $config['debug'] = '1';
-$config['cp_url'] = 'http://192.168.254.17/oyster/admin.php';
-$config['doc_url'] = 'https://ellislab.com/expressionengine/user-guide/';
+$config['cp_url'] = 'http://oysteryachts.test/admin.php';
+$config['doc_url'] = 'http://ellislab.com/expressionengine/user-guide/';
 $config['is_system_on'] = 'y';
 $config['allow_extensions'] = 'y';
 $config['cache_driver'] = 'file';
 $config['database'] = array (
-	'expressionengine' => array (
-		'hostname' => 'localhost',
-		'username' => 'root',
-		'password' => 'root',
-		'database' => 'oysteryachts',
-		'dbdriver' => 'mysqli',
-		'dbprefix' => 'exp_',
-		'pconnect' => FALSE
-	),
+  'expressionengine' => array (
+    'hostname' => 'localhost',
+    'username' => 'root',
+    'password' => 'root',
+    'database' => 'oyster_yachts',
+    'dbdriver' => 'mysqli',
+    'dbprefix' => 'exp_',
+    'pconnect' => FALSE
+  ),
 );
 $config['db_port'] = '';
 $config['site_label'] = '';
@@ -35,7 +35,13 @@ $config['cookie_prefix'] = '';
 $config['cookie_httponly'] = 'y';
 
 $config['multiple_sites_enabled'] = 'n';
-$config['index_page'] = '';
+$config['index_page'] = 'http://oysteryachts.test/index.php';
+
+$config['marksmin_enabled'] = true;
+
+$config['resizer_memory_limit'] = 512;
+
+$config['disable_csrf_protection'] = 'y';
 
 // END EE config items
 
@@ -50,14 +56,14 @@ $config['index_page'] = '';
 | URI string.  The default setting of "AUTO" works for most servers.
 | If your links do not seem to work, try one of the other delicious flavors:
 |
-| 'AUTO'			Default - auto detects
-| 'PATH_INFO'		Uses the PATH_INFO
-| 'QUERY_STRING'	Uses the QUERY_STRING
-| 'REQUEST_URI'		Uses the REQUEST_URI
-| 'ORIG_PATH_INFO'	Uses the ORIG_PATH_INFO
+| 'AUTO'      Default - auto detects
+| 'PATH_INFO'   Uses the PATH_INFO
+| 'QUERY_STRING'  Uses the QUERY_STRING
+| 'REQUEST_URI'   Uses the REQUEST_URI
+| 'ORIG_PATH_INFO'  Uses the ORIG_PATH_INFO
 |
 */
-$config['uri_protocol']	= 'AUTO';
+$config['uri_protocol'] = 'AUTO';
 
 /*
 |--------------------------------------------------------------------------
@@ -93,11 +99,11 @@ $config['subclass_prefix'] = 'EE_';
 | If you have enabled error logging, you can set an error threshold to
 | determine what gets logged. Threshold options are:
 |
-|	0 = Disables logging, Error logging TURNED OFF
-|	1 = Error Messages (including PHP errors)
-|	2 = Debug Messages
-|	3 = Informational Messages
-|	4 = All Messages
+| 0 = Disables logging, Error logging TURNED OFF
+| 1 = Error Messages (including PHP errors)
+| 2 = Debug Messages
+| 3 = Informational Messages
+| 4 = All Messages
 |
 | For a live site you'll usually only enable Errors (1) to be logged otherwise
 | your log files will fill up very fast.
@@ -126,7 +132,7 @@ $config['log_date_format'] = 'Y-m-d H:i:s';
 | enabled you MUST set an encryption key.  See the user guide for info.
 |
 */
-$config['encryption_key'] = '';
+$config['encryption_key'] = '876ce28db87754af75c47e8b29e08da9387d9d0f';
 
 
 /*

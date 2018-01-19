@@ -1,0 +1,170 @@
+.owners-statement {
+    margin-bottom: $global-margin;
+
+    @include breakpoint(medium down) {
+        border-collapse: separate;
+    }
+
+    th.heading{
+        @include omnes-regular;
+        border: 1px solid $blue;
+        font-weight: normal;
+        font-size: 0.75rem;
+        line-height: 1.16666666em;
+        padding: 21px 20px 20px;
+        
+        @include breakpoint(medium down) {
+            padding: 10px;
+        }
+    }
+
+    tr.sub-headings{
+        // border-right: 1px solid $greyborder;
+        // border-left: 1px solid $greyborder;
+        th {
+            font-size: 0.75rem;
+            line-height: 1.2rem;
+            @include omnes-medium;
+            border-right: 1px solid $greyborder;
+            border-left: 1px solid $greyborder;
+        }
+        @include breakpoint(medium down) {
+            display: none;
+        }
+    }
+
+
+
+    tr.footer td {
+        &:first-child {
+
+        }
+        color: white;
+        text-transform: uppercase;
+
+        border-left: 0px;
+        border-right: 0px;
+
+
+        &:first-child {
+            border-left: 1px solid $greyborder;
+        }
+
+        &:last-child{
+            border-right: 1px solid $greyborder;
+        }
+
+        // font-size: 0.75rem;
+    }
+
+    .invoice-details {
+        @include omnes-regular;
+        // border-left: 1px solid $greyborder;
+        display: block;
+        color: $lightblue;
+        text-transform: uppercase;
+        // border-left: 0px;
+        @include breakpoint(medium down) {
+            color: $blue;
+        }
+    }
+
+    .table-contents{
+        @include breakpoint(medium down) {
+            border: 1px solid $greyborder;
+            td {
+                // display: inline-flex;
+
+                width: 65%;
+                flex-direction: column;
+                border-width: 0px;
+                padding: 0.5rem;
+
+                // margin-bottom: 0.5rem;
+                // padding-bottom: 0.5rem;
+
+                &:before {
+                }
+                &.inoice-reference {
+                    color: $blue;
+                    border-left: 1px solid $greyborder;
+
+                    &:after {
+                        content: attr(data-date);
+                        color: $lightblue;
+                    }
+                }
+
+                &.withdrawals {
+                    width: 35%;
+                    position: relative;
+                    border-right: 1px solid $greyborder;
+
+                    &:before {
+                        position: absolute;
+                        display: flex;
+                        padding-top: 0.5rem;
+                        padding-bottom: 0.5rem;
+                        padding-right: 0.5rem;
+                        padding-left: 0.5rem;
+                        // align-items: center;
+                        justify-content: flex-end;
+                        top: 0;
+                        width: 100%;
+                        height: 100%;
+                        left: 0;
+                        background-color: white;
+                        content: attr(data-balance);
+                        color: $lightblue;
+                    }                   
+                }
+                // width: 100%;
+            }
+            tr{
+                td:first-child{
+                    display: none;
+                }
+                &:not(.footer){
+                    border-bottom: 1px solid $greyborder;
+                    td:last-child {
+                        display: none;
+                    }
+                }
+                &.footer{
+                    display: none;
+                    td:nth-child(2){
+                        display: none;
+                    }
+                }
+                // aka not the footer
+                td {
+                    border-bottom: 1px solid $greyborder;
+                }
+            }
+        }
+
+        td {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+
+        }       
+    }
+
+
+
+    .balance-label {
+        @include omnes-regular;
+    }
+
+    tbody {
+        @include omnes-medium;
+    }
+}
+
+.balance-aside {
+    @include breakpoint(medium down) {
+        .side-profile, .definition-table, .aside-header {
+            display: none;
+        }
+    }
+}

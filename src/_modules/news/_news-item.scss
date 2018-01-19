@@ -1,0 +1,22 @@
+.news-item {
+    margin-bottom: 2rem;
+    h1 {
+        @include omnes-regular;
+        font-size: 3rem;
+    }
+    h2 {
+        margin: 0.5rem 0rem;
+    }
+    .featured-media {
+        margin-bottom: 1.5rem;
+    }
+    footer {
+        background: transparent;
+        color: $grey;
+        @include trajan;
+    }
+}
+
+.news-article-hero {
+    background-image: url('/assets/images/oysteryachts-news-default_image.jpg');
+}

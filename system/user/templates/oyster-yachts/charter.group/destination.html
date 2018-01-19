@@ -1,0 +1,44 @@
+{embed="site/.header" page_title="Charter Guide" snap_to=".destination-overview" snap_offset="undefined"}
+{exp:channel:entries channel="destination" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published" sort="desc"}
+    <article class="single-destination after-nav" id="go">
+      <div class="destination-map-and-index row small-collapse">
+        <section class="small-12 medium-4 column">
+          <div class="banner">
+            <h1>{title}</h1>
+          
+          </div>
+          <div class="nav-points"></div>
+          <div class="destination-list row-pad">
+              {day_itinerary}
+            <div data-lat="{day_itinerary:latitude}" data-lng="{day_itinerary:longitude}" destination-name="{day_itinerary:name}" class="destination-box">
+              <div class="destination-day-index"><span class="day-text">Day</span><span class="day-number">{day_itinerary:field_row_count}</span></div>
+              <div class="destination-details">
+                <h2>{day_itinerary:name}</h2>
+              </div>
+              <div class="destination-info-box-wrapper">
+                <div class="destination-info-box">{if day_itinerary:image !=""}<img src="{day_itinerary:image}" class="destination-info-box-image"/>{/if}<span class="day-text">Day</span><span class="day-number">{day_itinerary:field_row_count}</span><span class="destination-title">{day_itinerary:name}			</span>
+                  <p class="destination-info-box-description">{day_itinerary:description}
+                  </p>
+                </div>
+              </div>
+            </div>
+            {/day_itinerary}
+          </div>
+        </section>
+        <section data-lat="{destination_latitude}" data-lng="{destination_longitude}" data-default-zoom="{if mapzoom != ""}{mapzoom}{if:else}10{/if}" class="small-12 medium-8 column single-destination-map-container"></section>
+      </div>
+      <section class="destination-overview global-padding--small">
+        <div class="row row-pad">
+          <div class="large-offset-1 large-7 float">
+            <h1>{title}</h1>
+           {destination_description}
+            <div class="further-info">
+              {sample_itinerary}
+            </div>
+          </div>
+          <div class="large-offset-1 large-3 small-12 float-left"></div>
+        </div>
+      </section>
+    </article>
+    {/exp:channel:entries}
+  {footer}

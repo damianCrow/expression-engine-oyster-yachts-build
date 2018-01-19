@@ -1,0 +1,17 @@
+<header class="sub-bar sub-bar--large">
+  <div class="sub-bar__title">
+    <h1>{embed:page_title}</h1>
+  </div>
+  <nav class="sub-bar__nav">
+    <ul class="sub-bar__menu">
+      <li{if embed:page == "fleet"} class="active"{/if}><a href="{path='charter/fleet'}" class="text-uppercase"><span>Fleet</span></a></li>
+      <li{if embed:page == "guide"} class="active"{/if}><a href="{path='charter/guide'}" class="text-uppercase"><span>Guide</span></a></li>
+      <li{if embed:page == "destinations"} class="active"{/if}><a href="{path='charter/destinations'}" class="text-uppercase"><span>Destinations</span></a></li>
+      <li{if embed:page == "team"} class="active"{/if}><a href="{path='charter/charter-team'}" class="text-uppercase"><span>Team</span></a></li>
+
+</ul>
+  </nav>
+  <div class="sub-bar__buttons">
+    <a class="button-clear-invert button-flush" href="mailto:charter@oysteryachts.com">Contact</a>
+  </div>
+</header>

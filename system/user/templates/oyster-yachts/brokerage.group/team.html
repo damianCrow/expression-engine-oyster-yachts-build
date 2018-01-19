@@ -1,0 +1,69 @@
+{exp:channel:entries channel="brokerage_team_landing" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published" limit="1"} {embed="site/.header" page_title="Brokerage Team" entry_id="{entry_id}" snap_to="undefined" snap_offset="undefined"} {/exp:channel:entries} {embed="site/.sub_bar-brokerage" page_title="Brokerage" page="team"}
+<article class="staggered-features stagger-split brokerage-team">
+  <section style="background-image: url('/assets/images/brokerage-team.jpg'); " class="hero after-nav after-nav--sub global-page-hero yacht-listing-photo global-page-hero--small">
+    </div>
+  </section>
+  <div class="banner">
+    <h1>Brokerage Team</h1>
+  </div>
+  {exp:channel:entries channel="brokerage_team" disable="member_data|category_fields|pagination" cache="yes" refresh="60" status="published" sort="desc"} {if count % 2 == 0}
+  <section class="row staggered-row-reverse team-stagger-section">
+    <div class="staggered-details medium-8 small-12 columns">
+      <div class="staggered-details-contents">
+        <div class="person-details">
+          <div class="person-name-pos">
+            <h1>{title}</h1>
+            <span class='job-position'>{position}</span>
+          </div>
+          {if linkedin != ""}
+          <a href="{linkedin}" target="_blank">
+            <div aria-hidden="true" class="fa fa-linkedin"></div>
+          </a>
+          {/if}
+        </div>
+        {description}
+        <ul class="contact-details">
+          {if email_address != ""}
+          <li class="contact-detail">
+            <abbr title="Email">E: </abbr><a href="mailto:{email_address}">{email_address}</a></li>
+          {/if} {if phone_number != ""}
+          <li class="contact-detail">
+            <abbr title="Telephone">T: </abbr><a href="tel:{phone_number}">{phone_number}</a></li>
+          {/if}
+        </ul>
+      </div>
+    </div>
+    <div class="staggered-image medium-4 small-12 columns"><img src="{portrait}"></div>
+  </section>
+  {if:else}
+  <section class="row team-stagger-section">
+    <div class="staggered-image medium-4 small-12 columns"><img src="{portrait}"></div>
+    <div class="staggered-details medium-8 small-12 columns">
+      <div class="staggered-details-contents">
+        <div class="person-details">
+          <div class="person-name-pos">
+            <h1>{title}</h1>
+            <span class='job-position'>{position}</span>
+          </div>
+          {if linkedin != ""}
+          <a href="{linkedin}" target="_blank">
+            <div aria-hidden="true" class="fa fa-linkedin"></div>
+          </a>
+          {/if}
+        </div>
+        {description}
+        <ul class="contact-details">
+          {if email_address != ""}
+          <li class="contact-detail">
+            <abbr title="Email">E: </abbr><a href="mailto:{email_address}">{email_address}</a></li>
+          {/if} {if phone_number != ""}
+          <li class="contact-detail">
+            <abbr title="Telephone">T: </abbr><a href="tel:{phone_number}">{phone_number}</a></li>
+          {/if}
+        </ul>
+      </div>
+    </div>
+  </section>
+  {/if} {/exp:channel:entries}
+</article>
+{footer}

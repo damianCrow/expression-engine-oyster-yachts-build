@@ -1,228 +1,35 @@
-<nav class="navigation row">
-  <div class="global-header-top-nav hide-for-large"><a href="{site_url}" class="logo-tiny"><img src="/assets/images/logo_small.png" alt="logo mini"></a>
-    <div class="small-8 small-centered columns">
-      <h4 data-open="global-navigation-modal" class="text-center">Brokerage</h4>
-    </div><a data-open="global-navigation-modal" class="site-menu"><i class="fa fa-bars"></i></a>
-  </div>
-  <div class="global-header-top-nav-large show-for-large"><a href="/oyster" class="logo-large"><img src="/assets/images/logo.png" alt="logo mini"></a><a href="/oyster" class="logo-tiny"><img src="/assets/images/logo_small.png" alt="logo mini"></a>
-    <ul id="main-nav" class="main-nav small-8">
-      <li><a href="" class="text-uppercase">about us</a>
-        <ul>
-          <li><a href="">
-              <div style="background-position: 0px 0px" class="sub-nav-image"></div><span class="text-uppercase">Why buy</span></a></li>
-          <li><a href="">
-              <div style="background-position: 0px 315px" class="sub-nav-image"></div><span class="text-uppercase">Heritage</span></a></li>
-          <li><a href="">
-              <div style="background-position: 0px 630px" class="sub-nav-image"></div><span class="text-uppercase">Locations</span></a></li>
-          <li><a href="">
-              <div style="background-position: 0px 945px" class="sub-nav-image"></div><span class="text-uppercase">Our team</span></a></li>
-        </ul>
-      </li>
-      <li><a href="{path='yachts'}" class="text-uppercase">yachts</a>
-        <ul>
-          <li><a href="">
-              <div style="background-position: 0px 14.25%" class="sub-nav-image"></div><span class="text-uppercase">our fleet</span></a></li>
-          <li><a href="">
-              <div style="background-position: 0px 315px" class="sub-nav-image"></div><span class="text-uppercase">previous models</span></a></li>
-          <li><a href="">
-              <div style="background-position: 0px 630px" class="sub-nav-image"></div><span class="text-uppercase">special projects</span></a></li>
-          <li><a href="">
-              <div style="background-position: 0px 945px" class="sub-nav-image"></div><span class="text-uppercase">contact sales</span></a></li>
-        </ul>
-      </li>
-      <li{if segment_1 == "brokerage"} class="active is-active"{/if}><a href="{path='brokerage'}" class="text-uppercase">brokerage</a>
-        <ul>
-          <li><a href="{path='brokerage'}">
-              <div style="background-position: 0px 28.5%" class="sub-nav-image"></div><span class="text-uppercase">brokerage fleet</span></a></li>
-          <li><a href="">
-              <div style="background-position: 0px 315px" class="sub-nav-image"></div><span class="text-uppercase">shortlisted yachts</span></a></li>
-          <li><a href="">
-              <div style="background-position: 0px 630px" class="sub-nav-image"></div><span class="text-uppercase">brokerage team</span></a></li>
-          <li><a href="">
-              <div style="background-position: 0px 945px" class="sub-nav-image"></div><span class="text-uppercase">contact brokerage</span></a></li>
-        </ul>
-      </li>
-      <li{if segment_1 == "charter"} class="active is-active"{/if}><a href="{path='charter'}" class="text-uppercase">charter</a>
-        <ul class="five">
-          <li><a href="{path='charter/fleet'}">
-              <div style="background-position: 0px 43%" class="sub-nav-image"></div><span class="text-uppercase">charter fleet</span></a></li>
-          <li><a href="">
-              <div style="background-position: 0px 315px" class="sub-nav-image"></div><span class="text-uppercase">how to charter</span></a></li>
-          <li><a href="">
-              <div style="background-position: 0px 630px" class="sub-nav-image"></div><span class="text-uppercase">destinations</span></a></li>
-          <li><a href="">
-              <div style="background-position: 0px 945px" class="sub-nav-image"></div><span class="text-uppercase">charter management</span></a></li>
-          <li><a href="">
-              <div style="background-position: 0px 945px" class="sub-nav-image"></div><span class="text-uppercase">contact charter</span></a></li>
-        </ul>
-      </li>
-      <li><a href="" class="text-uppercase">world rally</a>
-        <ul class="five">
-          <li><a href="">
-              <div style="background-position: 0px 57.25%" class="sub-nav-image"></div><span class="text-uppercase">label 001</span></a></li>
-          <li><a href="">
-              <div style="background-position: 0px 315px" class="sub-nav-image"></div><span class="text-uppercase">label 002</span></a></li>
-          <li><a href="">
-              <div style="background-position: 0px 630px" class="sub-nav-image"></div><span class="text-uppercase">label 003</span></a></li>
-          <li><a href="">
-              <div style="background-position: 0px 945px" class="sub-nav-image"></div><span class="text-uppercase">label 004</span></a></li>
-          <li><a href="">
-              <div style="background-position: 0px 945px" class="sub-nav-image"></div><span class="text-uppercase">label 005</span></a></li>
-        </ul>
-      </li>
-      <li><a href="" class="text-uppercase">events</a>
-        <ul>
-          <li><a href="">
-              <div style="background-position: 0px 71.5%" class="sub-nav-image"></div><span class="text-uppercase">regatta calendar</span></a></li>
-          <li><a href="">
-              <div style="background-position: 0px 315px" class="sub-nav-image"></div><span class="text-uppercase">boat shows</span></a></li>
-          <li><a href="">
-              <div style="background-position: 0px 630px" class="sub-nav-image"></div><span class="text-uppercase">owners' dinners</span></a></li>
-          <li><a href="">
-              <div style="background-position: 0px 945px" class="sub-nav-image"></div><span class="text-uppercase">events gallery</span></a></li>
-        </ul>
-      </li>
-      <li><a href="" class="text-uppercase">news</a>
-        <ul class="three">
-          <li><a href="">
-              <div style="background-position: 0px 86%" class="sub-nav-image"></div><span class="text-uppercase">news library</span></a></li>
-          <li><a href="">
-              <div style="background-position: 0px 315px" class="sub-nav-image"></div><span class="text-uppercase">oyster magazine</span></a></li>
-          <li><a href="">
-              <div style="background-position: 0px 630px" class="sub-nav-image"></div><span class="text-uppercase">press coverage</span></a></li>
-        </ul>
-      </li>
-      <li><a href="" class="text-uppercase">contact</a>
-        <ul class="three">
-          <li><a href="">
-              <div style="background-position: 0px 100%" class="sub-nav-image"></div><span class="text-uppercase">our offices</span></a></li>
-          <li><a href="">
-              <div style="background-position: 0px 315px" class="sub-nav-image"></div><span class="text-uppercase">sales team</span></a></li>
-          <li><a href="">
-              <div style="background-position: 0px 630px" class="sub-nav-image"></div><span class="text-uppercase">recruitment</span></a></li>
-        </ul>
-      </li>
-    </ul><a href="" class="site-search-open"></a><a href="" class="site-search-close"></a>
-    <div class="search-bar">
-      <input type="text" placeholder="What are you looking for?">
-    </div>
-  </div>
+<nav class="global-nav">
+  <ul class="global-nav__main">
+    <li>
+      <a href="{path='yachts'}">Yachts</a>
+    </li>
+    <li>
+      <a href="/world-rally">World Rally</a>
+    </li>
+    <li>
+      <a href="/world-rally">Events</a>
+    </li>
+    <li>
+      <a href="/brokerage">Brokerage</a>
+    </li>
+    <li>
+      <a href="/charter">Charter</a>
+    </li>
+    <li>
+      <a href="/contact#oyster-custom">Crew</a>
+    </li>
+    <li>
+      <a href="/projects">Projects</a>
+    </li>
+    <li>
+      <a href="/news">News</a>
+    </li>
+  </ul>
+  <ul class="global-nav__extra">
+
+  </ul>
+  <a class='button button--hover button--cyan'>Owners' Area</a>
+  <ul class="global-nav__social">
+
+  </ul>
 </nav>
-<div id="global-navigation-modal" data-reveal class="full reveal">
-  <header class="top-nav-modal"><a href="/" class="logo-wrapper"><img src="/assets/images/logo_small.png" alt="logo mini"></a>
-    <div class="small-8 small-centered columns">
-      <h4 class="text-center">Brokerage</h4>
-    </div>
-    <div data-close aria-label="Close modal" class="close-button-wrapper"><a class="site-search-close"></a></div>
-  </header>
-  <section class="nav-body-modal">
-    <div class="row">
-      <div class="small-11 small-centered">
-        <form class="input-group search-box"><span class="input-group-label"><i class="fa fa-search"></i></span>
-          <input type="text" placeholder="Help me find..." class="input-group-field">
-        </form>
-      </div>
-    </div>
-    <div class="row">
-      <div class="small-12 small-centered navigation-links">
-        <ul data-accordion data-allow-all-closed="true" class="accordion">
-          <li data-accordion-item class="accordion-item"><a class="text-uppercase accordion-title">About Us<i class="fa fa-angle-up float-right"></i><i class="fa fa-angle-down float-right"></i></a>
-            <div data-tab-content class="accordion-content">
-              <ul class="sub-navigation">
-                <li class="sub-navigation-item"><a href="#" class="text-uppercase">Why Buy</a></li>
-                <li class="sub-navigation-item"><a href="#" class="text-uppercase">Heritage</a></li>
-                <li class="sub-navigation-item"><a href="#" class="text-uppercase">Locations</a></li>
-                <li class="sub-navigation-item"><a href="#" class="text-uppercase">Our team</a></li>
-              </ul>
-            </div>
-          </li>
-          <li data-accordion-item class="accordion-item"><a class="text-uppercase accordion-title">Yachts<i class="fa fa-angle-up float-right"></i><i class="fa fa-angle-down float-right"></i></a>
-            <div data-tab-content class="accordion-content">
-              <ul class="sub-navigation">
-                <li class="sub-navigation-item"><a href="#" class="text-uppercase">our fleet</a></li>
-                <li class="sub-navigation-item"><a href="#" class="text-uppercase">Previous models</a></li>
-                <li class="sub-navigation-item"><a href="#" class="text-uppercase">special projects</a></li>
-                <li class="sub-navigation-item"><a href="#" class="text-uppercase">contact sales</a></li>
-              </ul>
-            </div>
-          </li>
-          <li data-accordion-item class="accordion-item active is-active"><a class="text-uppercase accordion-title">Brokerage<i class="fa fa-angle-up float-right"></i><i class="fa fa-angle-down float-right"></i></a>
-            <div data-tab-content class="accordion-content">
-              <ul class="sub-navigation">
-                <li class="sub-navigation-item"><a href="/oyster/brokerage" class="text-uppercase">Brokerage fleet</a></li>
-                <li class="sub-navigation-item"><a href="#" class="text-uppercase">shortlisted yachts</a></li>
-                <li class="sub-navigation-item"><a href="#" class="text-uppercase">brokerage team</a></li>
-                <li class="sub-navigation-item"><a href="#" class="text-uppercase">contact brokerage</a></li>
-              </ul>
-            </div>
-          </li>
-          <li data-accordion-item class="accordion-item"><a class="text-uppercase accordion-title">charter<i class="fa fa-angle-up float-right"></i><i class="fa fa-angle-down float-right"></i></a>
-            <div data-tab-content class="accordion-content">
-              <ul class="sub-navigation">
-                <li class="sub-navigation-item"><a href="#" class="text-uppercase">charter fleet</a></li>
-                <li class="sub-navigation-item"><a href="#" class="text-uppercase">how to charter</a></li>
-                <li class="sub-navigation-item"><a href="#" class="text-uppercase">Destinations</a></li>
-                <li class="sub-navigation-item"><a href="#" class="text-uppercase">charter management</a></li>
-                <li class="sub-navigation-item"><a href="#" class="text-uppercase">contact charter</a></li>
-              </ul>
-            </div>
-          </li>
-          <li data-accordion-item class="accordion-item"><a class="text-uppercase accordion-title">world rally<i class="fa fa-angle-up float-right"></i><i class="fa fa-angle-down float-right"></i></a>
-            <div data-tab-content class="accordion-content">
-              <ul class="sub-navigation">
-                <li class="sub-navigation-item"><a href="#" class="text-uppercase">Label 001</a></li>
-                <li class="sub-navigation-item"><a href="#" class="text-uppercase">Label 002</a></li>
-                <li class="sub-navigation-item"><a href="#" class="text-uppercase">Label 003</a></li>
-                <li class="sub-navigation-item"><a href="#" class="text-uppercase">Label 004</a></li>
-                <li class="sub-navigation-item"><a href="#" class="text-uppercase">Label 005</a></li>
-              </ul>
-            </div>
-          </li>
-          <li data-accordion-item class="accordion-item"><a class="text-uppercase accordion-title">events<i class="fa fa-angle-up float-right"></i><i class="fa fa-angle-down float-right"></i></a>
-            <div data-tab-content class="accordion-content">
-              <ul class="sub-navigation">
-                <li class="sub-navigation-item"><a href="#" class="text-uppercase">regatta calendar</a></li>
-                <li class="sub-navigation-item"><a href="#" class="text-uppercase">boat shows</a></li>
-                <li class="sub-navigation-item"><a href="#" class="text-uppercase">owners' dinners</a></li>
-                <li class="sub-navigation-item"><a href="#" class="text-uppercase">events gallery</a></li>
-              </ul>
-            </div>
-          </li>
-          <li data-accordion-item class="accordion-item"><a class="text-uppercase accordion-title">news<i class="fa fa-angle-up float-right"></i><i class="fa fa-angle-down float-right"></i></a>
-            <div data-tab-content class="accordion-content">
-              <ul class="sub-navigation">
-                <li class="sub-navigation-item"><a href="#" class="text-uppercase">news library</a></li>
-                <li class="sub-navigation-item"><a href="#" class="text-uppercase">oyster magazine</a></li>
-                <li class="sub-navigation-item"><a href="#" class="text-uppercase">press coverage</a></li>
-              </ul>
-            </div>
-          </li>
-          <li data-accordion-item class="accordion-item"><a class="text-uppercase accordion-title">contact<i class="fa fa-angle-up float-right"></i><i class="fa fa-angle-down float-right"></i></a>
-            <div data-tab-content class="accordion-content">
-              <ul class="sub-navigation">
-                <li class="sub-navigation-item"><a href="#" class="text-uppercase">our offices</a></li>
-                <li class="sub-navigation-item"><a href="#" class="text-uppercase">sales team</a></li>
-                <li class="sub-navigation-item"><a href="#" class="text-uppercase">recruitment</a></li>
-              </ul>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </section>
-  <footer class="nav-footer-modal">
-    <div class="row small-collapse">
-      <div class="small-6 columns show-for-small-only">
-        <button type="button" class="button follow-btn text-uppercase">Follow oyster</button>
-      </div>
-      <div class="medium-9 columns show-for-medium">
-            <div class="social-icons"><i class="fa fa-facebook"> </i><i class="fa fa-twitter"></i><i class="fa fa-youtube-play"></i><i class="fa fa-instagram"></i></div>
-      </div>
-      <div class="small-6 medium-3 columns"><a href="#" class="button text-uppercase">owners' area</a></div>
-      <div class="small-12 columns social-links end">
-        <div class="back-btn"><img src="/assets/images/arrow_left.png"></div>
-            <div class="social-icons"><i class="fa fa-facebook"> </i><i class="fa fa-twitter"></i><i class="fa fa-youtube-play"></i><i class="fa fa-instagram"></i></div>
-      </div>
-    </div>
-  </footer>
-</div>

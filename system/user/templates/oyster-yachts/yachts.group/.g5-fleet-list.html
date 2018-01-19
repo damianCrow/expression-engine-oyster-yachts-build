@@ -1,0 +1,54 @@
+{exp:channel:entries channel="yachts_landing" disable="member_data|category_fields|pagination" limit="2" cache="yes" refresh="60" status="published" sort="desc"}
+
+{embed="site/.header" page_title="G5 Fleet" entry_id="{entry_id}" snap_to="90" snap_offset="undefined"}
+{/exp:channel:entries}
+   <section style="background-image: url('/assets/images/'); background-position: center 95%;" class="hero after-nav global-page-hero yacht-listing-photo global-page-hero--medium">
+    </section>
+ <article class="yacht-category-page">
+      <section class="page-home-about">
+        <div class="row padded-full-width-row">
+          <div class="small-12 medium-3 large-2 large-offset-1 column about-heading"><span class="text-uppercase">
+              Oyster Yachts </br> G5 Fleet
+              </span></div>
+          <div class="small-12 medium-9 large-8 end column intro">
+            <p>
+              The ‘G5’ styling focused on the deck saloon area with over 125 of the four models – 475, 545, 575 and 625, built to date. These yachts focus on the owner without crew.  Built for family and friends sailing, easily handled and a generous proportion of the interior reserved for the owner.              
+            </p>
+          </div>
+        </div>
+      </section>
+      <section class="brokerage-home-featured-yachts">
+        <div class="banner">G5 Fleet</div>
+        <div class="row padded-full-width-row content">
+          <div id="yacht-grid" class="row">
+            <ul>
+              {exp:low_reorder:entries set="yachts" disable="member_data|pagination" cache="yes" refresh="60" status="published" category="14"}
+              <li class="column small-12 medium-6 size-small">
+                    <div data-yachtsection="brokerage" class="yacht-list-item">
+                         {yacht_listing_image}
+              <div class="yacht-listing-photo"><img src="{image:url:blur}" data-img-name="{image:title}" data-sizes="auto" data-srcset="{image:url:w_228} 228w, {image:url:w_340} 340w, {image:url:w_454} 454w, {image:url:w_592} 592w, {image:url:w_770} 385w" class="lazyload blur-up"></div>
+              {/yacht_listing_image}
+                          <div class="yacht-listing-title"><span class="yacht-list-name">{title}</span>
+                          </div>
+                      <div class="listing-content listing-content--padded">
+                         {yacht_excerpt}
+                        <a href="{url_title_path='yachts/fleet'}" class="button-transparent">View Yacht Overview</a>
+                      </div>
+                    </div>
+              </li>
+            {/exp:low_reorder:entries}
+            </ul>
+          </div>
+        </div>
+      </section>
+      <section class="row global-padding-top-only--small">
+            <div style="background-image:url('/assets/images/g6-banner.jpg')" class="wide-image-feature add-full-background-overlay">
+              <div class="wide-image-feature-content">
+                <h3 class="text-uppercase">G6 Fleet</h3>
+                <p>Our new generation of Oyster models</br> - introducing the new 565 and 595 to the stunning 118.</p><a href="/yachts/g6-fleet" class="text-uppercase button-solid-white">Explore the G6 Fleet</a>
+              </div>
+            </div>
+      </section>
+    </article>
+
+{footer}

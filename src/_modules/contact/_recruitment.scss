@@ -1,0 +1,27 @@
+.contact-recruitment {
+	// margin: 2rem 0;
+}
+
+.recruitment-tables {
+
+}
+
+.recruitment-table {
+	margin-top: 2rem;
+	margin-bottom: 2rem;
+	tbody th {
+		background-color: $lightgrey;
+		border-left: 1px solid $greyborder;
+		border-right: 1px solid $greyborder;
+	}
+	a {
+		text-decoration: underline;
+	}
+}
+
+.recruitment-aside {
+	// Probably something that needs to be rolled out to all side sections.
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+	hyphens: auto;
+}

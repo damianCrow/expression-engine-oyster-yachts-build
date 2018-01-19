@@ -1,0 +1,29 @@
+{exp:channel:entries channel="previous_rally_gallery|previous_rally_video" dynamic="no" url_title="{segment_4}" disable="member_data|category_fields|pagination" cache="yes" refresh="60" require_entry="yes" status="published"}
+	{if no_results}
+		{redirect="404"}
+	{/if}
+	{embed="site/.header" page_title="{title}" snap_to="undefined" snap_offset="undefined"}
+<article>
+	{if channel_short_name == "previous_rally_video"}
+	<section class="full-screen-media--video after-nav full-screen">
+	  <div class="video-embed-container">
+	    {prev_video}
+	  </div>
+	</section>
+	{if:elseif channel_short_name == "previous_rally_gallery"}
+	<section id="galleries" data-full-screen="true" data-title="{title}" class="galleries">
+	  {prev_gallery} {if image:count == 1}
+	  <div class="gallery-content" data-auto-open data-gallery="{url_title}" data-title="{event_day_number}">
+	    {/if}
+	    <a href="{image:url}" data-sub-html="{image:description}">
+				<img src="{image:url:gallery_thumb}" />
+			</a> {if image:count == image:total}
+	  </div>
+	  {/if} {/prev_gallery}
+	  <footer class="galleries__footer">
+	    <div class="galleries__index"></div>
+	  </footer>
+	</section>	
+</article>
+
+{/if} {footer} {/exp:channel:entries}

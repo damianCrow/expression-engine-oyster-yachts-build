@@ -1,0 +1,226 @@
+.owners-area-sub-nav {
+
+    z-index: 30;
+
+    .global-local-subnav {
+
+        @include breakpoint(small down) {
+            flex-direction: row-reverse;
+            justify-content: flex-end;
+        }
+
+        ul {
+            margin-left: 0.5rem;
+        }
+    }
+    .active {
+        a {
+            color: $blue;
+        }
+
+    }
+}
+
+.owners-area-aside {
+    tbody {
+        border: none;
+        tr:last-of-type {
+            td {
+                border-bottom: 0;
+            }
+        }
+    }
+}
+
+.side-profile {
+  display: flex;
+  flex-direction: row;
+  border-bottom: solid 1px $greyborder;
+  .side-profile-image {
+    width: 65px;
+    height: 65px;
+    color: $lightblue;
+    background-color: $lightgrey;
+    text-align: center;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem;
+    @include trajan;
+  }
+
+  .side-profile-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .side-profile-name,
+    .side-profile-view {
+      color: $blue;
+      display: block;
+      margin-bottom: 0.15rem;
+      margin-left: 1rem;
+      margin-top: 0.15rem;
+    }
+
+    .side-profile-name {
+      @include omnes-medium;
+      font-size: 1.2rem;
+    }
+
+    .side-profile-view {
+      text-decoration: underline;
+
+      // This will currently (16-5-16) only work for FF users, but here it is anyway.
+      text-decoration-color: $gray;
+    }
+  }
+}
+
+.owners-area-landing {
+  .description-download {
+      font-size: $general-font-size;
+  }
+  .upcoming-events--small {
+      display: flex;
+      flex-direction: column;
+      .upcoming-event--small {
+          flex: 1 1 auto;
+      }
+  }
+
+}
+
+.owners-documents-preview {
+    .block-section {
+        @include breakpoint(medium down) {
+            float: right;
+        }
+    }
+
+    float: right;
+
+    figure {
+        &:nth-child(even) {
+            border-right: 0;
+        }
+    }
+    .download-pdf {
+
+        @include breakpoint(medium up) {
+            border-right: 1px solid $greyborder;
+            &:nth-child(even) {
+                border-right: 0;
+            }
+        }
+
+
+    }
+    .download-thumb {
+        width: 35%;
+    }
+
+    .description-download {
+        // font-size: 1rem;
+    }
+
+
+}
+
+.advice-notes {
+    .block-section {
+        @include breakpoint(medium down) {
+            float: left;
+        }
+    }
+
+    .external-file-btn {
+        @include breakpoint(small down) {
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+        }
+    }
+}
+
+
+
+.owners-balance {
+    background-color: $cyan;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: $global-padding;
+
+    @include breakpoint(medium down) {
+        background-color: darken($cyan, 5%);
+        flex-direction: column;
+        text-align: center;
+        text-transform: uppercase;
+        padding: 0;
+    }
+
+    br {
+        @include breakpoint(medium down) {
+            display: none;
+        }
+    }
+
+    &__account-label {
+        color: white;
+        @include breakpoint(large up) {
+            display: flex;
+            align-items: center;
+        }
+
+        @include omnes-regular;
+        @include breakpoint(medium down) {
+            padding: ($global-padding / 2);
+            text-align: center;
+        }
+    }
+
+    &__value {
+        font-size: 2rem;
+        padding: 0.5rem 0.75rem;
+        background-color: darken($cyan, 5%);
+        border-radius: 3px;
+        color: white;
+
+        @include breakpoint(medium down) {
+            background-color: $cyan;
+            font-size: 3rem;
+        }
+
+        abbr{
+            color: white;
+        }
+    }
+
+    &__view-statement {
+        color: white !important;
+        border: solid 0 $blue;
+        margin-top: 1rem;
+        margin-bottom: 0;
+        flex: 1 0 100%;
+
+        &:hover, &:focus {
+            background-color: #fff;
+            color: $blue !important;
+            border: solid 0 $blue;
+        }
+    }
+}
+
+
+
+
+// .owners-area-landing {
+//  border
+// }
+@import 'my-profile';
+@import 'crew-directory';
+
+@import 'login';
+@import 'balance';

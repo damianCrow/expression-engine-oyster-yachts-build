@@ -1,0 +1,71 @@
+{embed="%prefix%inc/index" page_title="Update Avatar"}
+	</head>
+
+	<body role="document">
+
+{embed="%prefix%inc/header" page="account"}
+
+		<div class="container">
+
+			<div class="page-header">
+				<h1>Update Avatar</h1>
+				<p class="lead">This page allows the currently logged in user to add/change/remove their avatar.</p>
+			</div>
+
+			<div class="row">
+				<div class="col-xs-12">
+				{if segment_3 == "avatar_updated"}
+					<div class="alert alert-success" role="alert">
+						<p class="lead">You've successfully updated your avatar!</p>
+					</div>
+				{/if}
+				</div>
+			</div>
+
+			<div class="row">
+{if logged_in} {!-- START - Make sure the user is logged in for updating account --}
+				<div class="col-xs-12">
+					{exp:user:edit
+						return="%prefix%main/update_avatar/avatar_updated"
+						override_return="%prefix%main/update_avatar/avatar_updated"
+						screen_name_password_required="no"
+						error_page="%prefix%inc/error_template"
+					}
+					<h4>Avatar</h4>
+					<p>
+						{if avatar_filename}
+							<label>Current Avatar</label>
+							<img src="{avatar_url}{avatar_filename}" width="{avatar_width}" height="{avatar_height}" class="img-responsive img-rounded" style="display:block;" />
+						{if:else}
+							You currently do not have an avatar uploaded.
+						{/if}
+					</p>
+					<p>
+						<label for="avatar_filename">Upload a New Avatar</label>
+						<input type="file" name="avatar_filename" id="avatar_filename" />
+					</p>
+					<p>
+						<button type="submit" class="btn btn-md btn-success" style="margin-right:10px;">Update</button>
+						<input type="submit" name="remove_avatar" value="Remove" class="btn btn-md btn-danger" />
+					</p>
+					{/exp:user:edit}
+				</div>
+
+{/if} {!-- END - Make sure the user is logged in for updating account --}
+{if logged_out} {!-- START - If logged out, show the Login form --}
+				<div class="col-xs-12">
+					{embed="%prefix%inc/login"}
+				</div>
+{/if} {!-- END - If logged out, show the Login form --}
+      		</div>
+
+			<div class="well ss-pageinfo">
+				<h2>About This Page</h2>
+				<p>The "Update Avatar/Photo" page allows the currently logged in user to add/change/remove their avatar.</p>
+				<p>It makes use of the following tags:</p>
+				<ul>
+					<li><a href="https://solspace.com/expressionengine/user/docs/edit">User:Edit</a> to edit profile information.</li>
+				</ul>
+			</div>
+
+{embed="%prefix%inc/footer"}

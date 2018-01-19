@@ -1,0 +1,304 @@
+.events-home-about {
+	padding-bottom: 75px;
+
+	h1 {
+		@include h1-styles;
+	}
+
+}
+
+.events-home-upcoming-events {
+
+	.gallery-pane {
+
+		.gallery-pane-content {
+      border: none;
+      padding: 0;
+		}
+
+		.date {
+      color: $blue;
+      display: table;
+      font-size: 80px;
+      line-height: 1;
+      text-align: center;
+      width: 100%;
+			@include omnes-light;
+
+			@include breakpoint(large down) {
+				font-size: 3.75rem;
+				line-height: 1.25;
+			}
+
+			@include breakpoint(small down) {
+				font-size: 65px;
+				line-height: 1.25;
+			}
+		}
+
+		.month {
+			color: $blue;
+			font-size: 15px;
+			line-height: 1;
+			text-align: center;
+			@include omnes-medium;
+
+			@include breakpoint(medium down) {
+				font-size: .85rem;
+			}
+		}
+
+		.sub-title {
+			text-align: left;
+		}
+
+		.left,
+    .right {
+			height: 100%;
+			padding: 20px;
+			position: relative;
+		}
+
+		.left {
+			padding: 20px 0;
+
+			@include breakpoint(small only) {
+				border-right: 1px solid $grayborder;
+			}
+		}
+
+		.right {
+      // padding-bottom: 55px;
+      border-left: 1px solid $grayborder;
+      display: flex;
+      flex-direction: column;
+
+			@include breakpoint(small only) {
+        border-left: none;
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-top: 15px;
+			}
+
+			.title {
+				@extend .month;
+				text-align: left;
+			}
+
+			.sub-title {
+				@extend .month;
+        color: $grey;
+        font-size: 14px;
+        line-height: 1.2;
+        margin-bottom: 1rem;
+        margin-top: 8px;
+        text-align: left;
+			}
+		}
+
+		.row {
+      border-top: none;
+      border: 1px solid $grayborder;
+      margin: 0;
+		}
+	}
+
+
+	> .columns {
+		margin: 0;
+		@include three-columns-padding(50px);
+	}
+}
+
+.event-gallery-local-subnav {
+	.global-local-subnav {
+		background: $lightgrey;
+	}
+}
+
+
+.events-home-sidetable {
+  display: block;
+  width: 100%;
+
+	tbody {
+    // accomdate for clearfix before pesudo element not letting it strech to 100%
+    width: calc(100% + 0.5px);
+    border: 0;
+    display: table;
+
+		td {
+			border-width: 0 0 1px !important;
+		}
+
+		tr {
+			&:last-child {
+				td {
+					border-width: 0 !important;
+				}
+			}
+		}
+
+	}
+}
+
+.events-notice {
+  background-color: $yellow-background;
+  padding: ($global-padding / 2) ($global-padding * 2);
+  width: 100%;
+
+  > p {
+    color: $blue;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .button-solid-blue {
+    border: 0;
+  }
+}
+
+.events-full-feature {
+  padding: 90px 0;
+  padding-top: 50px;
+  position: relative;
+
+  @include breakpoint(medium down) {
+    padding: 40px 0;
+    padding-top: 0;
+  }
+
+  > .row {
+    @include breakpoint(small down) {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+
+  &__background {
+    align-items: center;
+    background-image: url('/assets/images/oyster-events-wr-feature.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    // Height to keep IE10 flex happy, will default to min-height
+    height: 100px;
+    min-height: 396px;
+    position: relative;
+    transition: all 1s ease-in;
+
+    .column {
+      position: absolute;
+    }
+
+    &::before {
+      background-color: transparent;
+      background-image: linear-gradient(transparent 0%, transparent 0%, rgba($black, .5) 100%);
+      content: '';
+      height: 100%;
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
+  }
+
+  &__content {
+
+    color: $white;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    padding: $global-padding;
+    position: relative;
+    z-index: 2;
+
+    @include breakpoint(medium up) {
+      padding: $global-padding ($global-padding * 4);
+    }
+
+    @include breakpoint(medium only) {
+      width: auto;
+    }
+
+    .button-solid-yellow {
+      align-self: flex-start;
+    }
+
+    h2 {
+      @include omnes-medium;
+      color: $white;
+      font-size: 1.75rem;
+      font-weight: normal;
+      letter-spacing: $letter-spacing;
+      line-height: 1.75rem;
+      margin-bottom: $global-margin;
+    }
+
+    .contact-phone-email {
+      @include breakpoint(xxlarge up) {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      span,
+      abbr,
+      a {
+        color: $white;
+      }
+
+      span {
+        display: block;
+        margin-bottom: .5rem;
+        margin-top: .5rem;
+      }
+
+      abbr {
+        @include omnes-regular;
+      }
+
+      a {
+        @include omnes-medium;
+      }
+
+    }
+
+    p {
+      @include omnes-regular;
+      color: $white;
+      font-size: .9375em;
+      line-height: 1.33333333em;
+      margin-bottom: 2rem;
+    }
+  }
+}
+
+// GALLERY - ALSO SERVER STYLING IN MODIFIED PLUGIN PRESENT
+
+.world-rally-local-subnav {
+	.gallery-sections {
+		a {
+			border-right: 0;
+
+			&:last-child {
+        border-bottom-right-radius: 3px;
+        border-right: 1px solid $blue;
+        border-top-right-radius: 3px;
+			}
+		}
+	}
+}
+
+
+
+
+
+// import upcoming regattas page
+@import 'upcoming-regattas';
+
+// import previous regattas page
+@import 'previous-regattas';
+
+// import regattas calendar page
+// @import 'regattas-calendar';

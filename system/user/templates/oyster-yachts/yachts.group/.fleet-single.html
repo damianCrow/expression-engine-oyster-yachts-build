@@ -1,0 +1,445 @@
+{exp:channel:entries disable="member_data|category_fields|pagination" cache="yes" refresh="60" require_entry="yes" status="published" channel="yacht"}
+{if no_results}{redirect="404"}{/if}
+
+<?php
+$query = ee()->db->query('SELECT * FROM exp_channel_images WHERE entry_id={entry_id} AND field_id=70');
+$layoutImages = $query->num_rows();
+
+$query = ee()->db->query('SELECT * FROM exp_channel_images WHERE entry_id={entry_id} AND field_id=69');
+$exteriorGalleryImages = $query->num_rows();
+
+$query = ee()->db->query('SELECT * FROM exp_channel_images WHERE entry_id={entry_id} AND field_id=68');
+$interiorGalleryImages = $query->num_rows();
+?>
+
+{embed="site/.header" page_title="{title}" snap_to=".full-screen #yacht-nav" snap_offset="55"}
+<article>
+  <header class="sub-bar sub-bar--large">
+    <div class="sub-bar__title">
+      <h1>{title}</h1>
+    </div>
+    <nav class="sub-bar__nav">
+      <ul class="sub-bar__menu">
+      {if yacht_design_features:total_rows > 0}
+        <li class="active">
+          <a href="#design-features" data-local-scroll-pos ><span>Design Features</span></a>
+        </li>
+        {/if}
+
+        <li>
+          <a href="#specifications" data-local-scroll-pos ><span>Specifications</span></a>
+        </li>
+
+        <?php if ($layoutImages > 0): ?>
+        <li>
+          <a href="#yacht-layout" data-local-scroll-pos ><span>Yacht Layout</span></a>
+        </li>
+        <?php endif; ?>
+
+        {if yacht_documents:total_rows > 0}
+        <li>
+          <a href="#download-documents" data-local-scroll-pos ><span>Documents</span></a>
+        </li>
+        {/if}
+
+        <li>
+          <a href="#news-thumbs" data-local-scroll-pos ><span>News</span></a></li>
+
+        <?php if ($exteriorGalleryImages > 0 || $interiorGalleryImages > 0): ?>
+          <li>
+            <a href="" class="gallery btn-gallery" data-gallery="<?php if ($exteriorGalleryImages > 0): ?>external<?php else: ?>internal<?php endif; ?>"><span>Gallery</span></a>
+          </li>
+        <?php endif; ?>
+
+        {yachts_virtual_tours limit="1"}
+        <li><a href="" class="gallery btn-gallery" data-gallery="vrtours"><span>VR Tours</span></a></li>
+        {/yachts_virtual_tours}
+
+        {yacht_brochure}
+        <li><a href="{yacht_brochure:file}"><span>Download Brochure
+            </span></a></li>
+          {/yacht_brochure}
+
+        </ul>
+    </nav>
+    <div class="sub-bar__buttons">
+      <a class="button-clear-invert button-flush contact" data-open="contactSalesModal">Contact</a>
+    </div>
+  </header>
+
+
+  <section class="hero full-screen after-nav after-nav--sub">
+    <div id="full-image" class="yacht-listing-photo add-full-background-overlay" style="background-image: url('{yacht_main_image}{image:url}{/yacht_main_image}');">
+      
+      <div class="yacht-name">
+        <div class="row-pad">
+          <h2>{yacht_tagline}</h2>
+          <h1>{title}</h1>
+
+          <?php if ($exteriorGalleryImages > 0 || $interiorGalleryImages > 0): ?>
+          <a class="gallery button-view-gallery btn-gallery" href="" data-gallery="<?php if ($exteriorGalleryImages > 0): ?>external<?php else: ?>internal<?php endif; ?>">View Gallery</a>
+          <?php endif; ?>
+        </div>
+      </div>
+      {share_buttons}
+    </div>
+    
+  </section>
+
+  <section class="about-yacht">
+    <div class="row row-pad">
+      <div class="large-offset-1 large-7 float">
+  <!--      <h2>{yacht_tagline}</h2>
+   -->      <h1>{title}</h1>
+        {yacht_about}
+        {if awards !=""}<img src="{awards}" style="max-height:80px;">{/if}
+      </div>
+      <div class="large-offset-1 large-3 medium-12 float-left">
+
+        <aside class="overview-download columns sticky-sidebar yachts-yacht-theme">
+          <div class="aside-header">
+            <h3 class="text-uppercase">{title} Overview</h3>
+            <svg id="svg-arrow" version="1.1" baseprofile="tiny" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewbox="0 -20 100 100" xml:space="preserve">
+              <g>
+                <line x1="10" y1="10" x2="53" y2="53" stroke="#454646" stroke-width="10"></line>
+                <line x1="90" y1="10" x2="47" y2="53" stroke="#454646" stroke-width="10"></line>
+              </g>
+            </svg>
+          </div>
+          <div class="overview-contents">
+            <div class="overview columns small-12">
+              <p>To find out more about the {title} model, you can download the {title} Brochure below.</p>
+              <p>If you would like more information, please complete the Contact Sales form or alternatively call us on <a href="tel:+442380831010" class="phone-number">+44 (0)23 8083 1010</a></p>
+              {yacht_brochure}
+              <figure class="download-pdf clearfix">
+                <div class="download-thumb column small-3">
+                  <img src="{yacht_brochure:thumbnail}">
+                </div>
+                {embed="site/.download_file" title="{yacht_brochure:title}" file="{yacht_brochure:file}" filesize="{yacht_brochure:file}{file_size}{/yacht_brochure:file}" label="Download"}
+              </figure>
+              {/yacht_brochure}
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+
+  {if yacht_testimonials:total_rows > 0}
+  <section class="quote-testimonials row">
+    {yacht_testimonials}
+    <blockquote>
+      <p>{yacht_testimonials:testimonial}</p>
+      <footer>
+        <cite>{yacht_testimonials:by_whom}</cite>
+      </footer>
+    </blockquote>
+    {/yacht_testimonials}
+    <div class="nav-points"></div>
+  </section>
+  {/if}
+
+
+  {if yacht_design_features:total_rows > 0}
+  <section id="design-features" class="design-features">
+    <div class="banner">Design features</div>
+    <div class="content row row-pad">
+
+      {yacht_design_features}
+      <div class="large-4 small-6 content-col">
+        <div style="background-image:url('{yacht_design_features:feature_image}')" class="feature-image"></div>
+        <div class="feature-content">
+          <h4>{yacht_design_features:feature_title}</h4>
+          {yacht_design_features:feature_description}
+        </div>
+      </div>
+      {/yacht_design_features}
+
+    </div>
+  </section>
+  {/if}
+
+
+  {if yacht_dimensions:total_rows > 0 OR yacht_performance_features:total_rows > 0}
+  <section id="specifications" class="specifications yachts-yacht-spec">
+    <div class="banner">Specifications</div>
+
+    {if yacht_dimensions:total_rows > 0}
+    <div class="content row row-pad">
+      <h2 class="yacht-featured-list-header">Dimensions</h2>
+      <div data-equalizer class="yacht-featured-lists">
+        {yacht_dimensions limit="1"}
+        {if yacht_dimensions:length_overall}
+        <div class="yacht-featured-list">
+          <h3 data-equalizer-watch class="yacht-featured-list-sub-header">Length Overall - Inc. Pulpit</h3>
+          {embed="yachts/.table-column" field="length_overall"}
+        </div>
+        {/if}
+        {if yacht_dimensions:length_overall_stemhead}
+        <div class="yacht-featured-list">
+          <h3 data-equalizer-watch class="yacht-featured-list-sub-header">Length Overall - Inc. Stemhead</h3>
+          {embed="yachts/.table-column" field="length_overall_stemhead"}
+        </div>
+        {/if}
+        {if yacht_dimensions:length_of_hull}
+        <div class="yacht-featured-list">
+          <h3 data-equalizer-watch class="yacht-featured-list-sub-header">Length of Hull</h3>
+          {embed="yachts/.table-column" field="length_of_hull"}
+        </div>
+        {/if}
+        {if yacht_dimensions:length_of_waterline}
+        <div class="yacht-featured-list">
+          <h3 data-equalizer-watch class="yacht-featured-list-sub-header">Length of Waterline</h3>
+          {embed="yachts/.table-column" field="length_of_waterline"}
+        </div>
+        {/if}
+        {if yacht_dimensions:beam}
+        <div class="yacht-featured-list">
+          <h3 data-equalizer-watch class="yacht-featured-list-sub-header">Beam</h3>
+          {embed="yachts/.table-column" field="beam"}
+        </div>
+        {/if}
+        {if yacht_dimensions:draft_standard}
+        <div class="yacht-featured-list">
+          <h3 data-equalizer-watch class="yacht-featured-list-sub-header">Draft Standard</h3>
+          {embed="yachts/.table-column" field="draft_standard"}
+        </div>
+        {/if}
+        {if yacht_dimensions:draft_shoal}
+        <div class="yacht-featured-list">
+          <h3 data-equalizer-watch class="yacht-featured-list-sub-header">Draft Shoal</h3>
+          {embed="yachts/.table-column" field="draft_shoal"}
+        </div>
+        {/if}
+        {if yacht_dimensions:draft_centreboard_up}
+        <div class="yacht-featured-list">
+          <h3 data-equalizer-watch class="yacht-featured-list-sub-header">Draft Centreboard Up</h3>
+          {embed="yachts/.table-column" field="draft_centreboard_up"}
+        </div>
+        {/if}
+        {if yacht_dimensions:draft_centreboard_down}
+        <div class="yacht-featured-list">
+          <h3 data-equalizer-watch class="yacht-featured-list-sub-header">Draft Centreboard Down</h3>
+          {embed="yachts/.table-column" field="draft_centreboard_down"}
+        </div>
+        {/if}
+        {/yacht_dimensions}
+      </div>
+    </div>
+    {/if}
+
+    {if yacht_performance_features:total_rows > 0}
+    <div class="content row row-pad">
+      <h2 class="yacht-featured-list-header">Performance Features</h2>
+      <div data-equalizer class="yacht-featured-lists">
+        <div class="yacht-featured-list">
+          <h3 data-equalizer-watch class="yacht-featured-list-sub-header">Displacement - Standard Keel</h3>
+          {yacht_performance_features}
+          <span>{yacht_performance_features:displacement_standard_keel}</span>
+          {/yacht_performance_features}
+        </div>
+        <div class="yacht-featured-list">
+          <h3 data-equalizer-watch class="yacht-featured-list-sub-header">Typical Engine</h3>
+          {yacht_performance_features}
+          <span>{yacht_performance_features:typical_engine}</span>
+          {/yacht_performance_features}
+        </div>
+        <div class="yacht-featured-list">
+          <h3 data-equalizer-watch class="yacht-featured-list-sub-header">Tanks - Fuel</h3>
+          {yacht_performance_features}
+          <span>{yacht_performance_features:tanks_fuel}</span>
+          {/yacht_performance_features}
+        </div>
+        <div class="yacht-featured-list">
+          <h3 data-equalizer-watch class="yacht-featured-list-sub-header">Tanks - Water</h3>
+          {yacht_performance_features}
+          <span>{yacht_performance_features:tanks_water}</span>
+          {/yacht_performance_features}
+        </div>
+        {yacht_performance_features limit="1"}
+          {if yacht_performance_features:sail_area}
+          <div class="yacht-featured-list">
+            <h3 data-equalizer-watch class="yacht-featured-list-sub-header">Sail Area - Inc. 150% Foretriangle</h3>
+            {embed="yachts/.table-column" field="sail_area" table="performance"}
+          </div>
+          {/if}
+          {if yacht_performance_features:sail_area_100}
+          <div class="yacht-featured-list">
+            <h3 data-equalizer-watch class="yacht-featured-list-sub-header">Sail Area - Inc. 100% Foretriangle</h3>
+            {embed="yachts/.table-column" field="sail_area_100" table="performance"}
+          </div>
+          {/if}
+        {/yacht_performance_features}
+        <div class="yacht-featured-list">
+          <h3 data-equalizer-watch class="yacht-featured-list-sub-header">Air Draft Approx - exc. Antennae</h3>
+          {yacht_performance_features}
+          <span>{yacht_performance_features:air_draft}</span>
+          {/yacht_performance_features}
+        </div>
+      </div>
+    </div>
+    {/if}
+  </section>
+  {/if}
+
+  <?php if ($layoutImages > 0): ?>
+  <section id="yacht-layout" class="yacht-layout">
+    <div class="banner">Yacht Layout</div>
+    <div class="content row row-pad">
+      <div class="large-10 large-offset-1 end">
+        <div id="layout-slider">
+          {yacht_layout}
+          <div class="cycle-slide"><img src="{image:url}"></div>
+          {/yacht_layout}
+        </div>
+        <ul class="slider-pager<?php if ($layoutImages === 1): ?> hide<?php endif; ?>">{yacht_layout}<li><a href="#yacht-layout"><span style="background-image:url('{image:url:small}');"></span></a></li>{/yacht_layout}</ul>
+      </div>
+    </div>
+  </section>
+  <?php endif; ?>
+
+
+  {if yacht_documents:total_rows > 0}
+  <section id="download-documents" class="download-documents">
+    <div class="banner">Documents</div>
+    <div class="row content row-pad">
+      <ul>
+        {yacht_documents}
+        <li class="columns large-4 medium-6 small-12">
+          <figure class="download-pdf clearfix">
+            <div class="download-thumb column small-3">
+              <img src="{yacht_documents:thumbnail}">
+            </div>
+            <figcaption class="description-download column small-9">
+              <a class="title text-uppercase" href="{yacht_documents:file}">{yacht_documents:title}</a>
+              <a class="external-file-btn button-solid-white text-uppercase" href="{yacht_documents:file}" target="_blank">Download &nbsp;{yacht_documents:file}<span class="size text-uppercase">(<?php echo number_format({file_size} / (1024*1024), 1); ?>MB)</span>{/yacht_documents:file}</a>
+            </figcaption>
+          </figure>
+        </li>
+        {/yacht_documents}
+      </ul>
+    </div>
+  </section>
+  {/if}
+   
+
+  {if "{parents:entry_ids}" != ""}
+  <section id="news-thumbs" class="news-thumbs global-padding-top-only--small">
+    <div class="banner">News</div>
+    <div data-equalizer data-equalize-on="medium" class="row wrapper row-pad">
+      <ul style="display:block;">
+
+        {parents field="article_yacht" status="published" orderby="date" sort="desc" limit="3"}
+        <li class="columns medium-4 small-6 small-12">
+          <div class="content">
+            <div {parents:article_main_image}style="background-image:url('{image:url:small}')"{/parents:article_main_image} class="news-thumb-image">
+              {share_buttons}
+            </div>
+            <div data-equalizer-watch class="news-details">
+              <time datetime="{parents:entry_date format="%Y-%m-%d %H:%i"}" class="text-uppercase">{parents:entry_date format="%d %F %Y"}</time>
+              <h3 class="text-uppercase"><a href="{parents:url_title_path='news/article'}">{parents:title}</a></h3>
+  <!--            {parents:article_excerpt}
+   -->            <a href="{parents:url_title_path='news/article'}" class="read-more">READ MORE</a>
+            </div>
+          </div>
+        </li>
+        {/parents}
+
+      </ul>
+    </div>
+  </section>
+  {/if}
+
+  <section id="galleries" class='galleries' data-title="{title}">
+    <header class='galleries__header'>
+      <nav class='galleries__nav'>
+        <ul class="button-group">
+          <?php if ($exteriorGalleryImages > 0): ?>
+            <li class='galleries__nav-item'>
+              <button data-gallery="external" class='button button--solid-white button-flush'>Exterior</button>
+            </li>
+          <?php endif; ?>
+          <?php if ($interiorGalleryImages > 0): ?>
+            <li class='galleries__nav-item'>
+              <button data-gallery="internal" class='button button--solid-white button-flush'>Interior</button>
+            </li>
+          <?php endif; ?>
+          {yacht_videos}
+            {if yacht_videos:count == 1}
+              <li class='galleries__nav-item'>
+                <button data-gallery="videos" class='button button--solid-white button-flush'>Videos</button>
+              </li>
+            {/if}
+          {/yacht_videos}
+          {yachts_virtual_tours}
+            {if yachts_virtual_tours:count == 1}
+              <li class='galleries__nav-item'>
+                <button data-gallery="vrtours" class='button button--solid-white button-flush'>VR Tours</button>
+              </li>
+            {/if}
+          {/yachts_virtual_tours}
+        </ul>
+        <div class='galleries__close-container'>
+          <button class='galleries__close' />
+        </div>
+      </nav>
+    </header>
+    <?php if ($exteriorGalleryImages > 0): ?>
+    <div class="gallery-content" data-gallery="external" data-title="Exterior">
+      {yacht_exterior_gallery}
+      <a href="{image:url}" data-sub-html="{image:description}">
+        <img src="{image:url:gallery_thumb}" />
+      </a>
+      {/yacht_exterior_gallery}
+    </div>
+    <?php endif; ?>
+
+    <?php if ($interiorGalleryImages > 0): ?>
+    <div class="gallery-content" data-gallery="internal" data-title="Interior">
+      {yacht_interior_gallery}
+      <a href="{image:url}" data-sub-html="{image:description}">
+        <img src="{image:url:gallery_thumb}" />
+      </a>
+      {/yacht_interior_gallery}
+    </div>
+    <?php endif; ?>
+
+    {yacht_videos}
+    {if yacht_videos:count == 1}
+      <div class="gallery-content" data-gallery="videos" data-title="Videos">
+    {/if}
+      <a href="{yacht_videos:video}" data-sub-html="{yacht_videos:caption}"></a>
+    {if yacht_videos:count == yacht_videos:total_rows}
+      </div>
+    {/if}
+    {/yacht_videos}
+
+    {yachts_virtual_tours}
+    {if yachts_virtual_tours:count == 1}
+    <div class="gallery-content" data-gallery="vrtours" data-title="VR Tours">
+    {/if}
+      <a href="{yachts_virtual_tours:url}" data-iframe="true"><img src="{site_url}images/static/oyster_360_thumbnail.jpg"></a>
+    {if yachts_virtual_tours:count == yachts_virtual_tours:total_rows}
+    </div>
+    {/if}
+    {/yachts_virtual_tours}
+    <footer class="galleries__footer">
+      <div class="galleries__index"></div>
+    </footer>
+  </section>
+</article>
+
+<style>
+  section.hero {
+    padding-top: 0 !important;
+  }
+  
+  .lg-image {
+    padding: 30px 50px;
+  }
+</style>
+
+{footer}
+
+{/exp:channel:entries}

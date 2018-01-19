@@ -1,0 +1,75 @@
+.event-previous-regattas-about {
+	padding-top: 70px;
+
+	.event-gallery {
+		li {
+			display: block;
+			background-size: cover;
+			background-repeat: no-repeat;
+			background-position: center;
+			height: 175px;
+			width: 100%;
+			margin-bottom: 20px;
+		}
+
+		li.view-gallery-btn {
+			height: 40px;
+			margin: 30px 0px 0px 0px;
+		}
+
+		.button-view-gallery {
+			background: $blue;
+			color: #fff;
+			margin: 0 auto;
+			display: block;
+		}
+	}
+
+	table {
+		td.heading {
+			border: 1px solid $blue;
+		}
+
+		th, td {
+			border: 1px solid $greyborder;
+		}
+		
+		@include responsive-table;
+
+	}
+
+
+	.day-header {
+		.regatta-bvi-logo {
+			width: 100px;
+			margin-right: 40px;
+		}
+
+		.header-text {
+			// padding-left: 40px;
+		}
+	}
+
+
+	.row.padded-full-width-row.content {
+		margin-top: 40px;
+	}
+
+
+	& > .row.padded-full-width-row:first-child + .row {
+		margin-top: 70px;
+	}
+
+	.cyan-background {
+		background-color: $cyan !important;
+	}
+
+}
+
+#events-previous-regattas-overall-results {
+	padding-bottom: 70px;
+
+	.row.padded-full-width-row.content {
+		margin-top: 40px;
+	}
+}

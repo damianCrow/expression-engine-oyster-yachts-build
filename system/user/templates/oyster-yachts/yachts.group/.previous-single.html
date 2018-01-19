@@ -1,0 +1,108 @@
+{exp:channel:entries channel="yacht_previous_models" disable="member_data|category_fields|pagination" cache="yes" refresh="60" require_entry="yes" status="published"}
+{if no_results}{redirect="404"}{/if}
+
+<?php
+$query = ee()->db->query('SELECT * FROM exp_channel_images WHERE entry_id={entry_id} AND field_id=76');
+$galleryImages = $query->num_rows();
+?>
+
+{embed="site/.header" page_title="{title}" snap_to="undefined" snap_offset="undefined"}
+
+<section {yacht_prev_main_image}style="background-image: url('{image:url}');"{/yacht_prev_main_image} class="hero after-nav global-page-hero yacht-listing-photo global-page-hero--medium">
+	
+	<div class="yacht-name">
+		<div class="row-pad">
+			<h1 class="hero-title yacht-list-name">{title}</h1>
+
+			<?php if ($galleryImages > 0): ?>
+			<a href="" class="gallery button-view-gallery btn-gallery" data-gallery="external">View Gallery</a>
+			<?php endif; ?>
+		</div>
+	</div>
+	<div id="yacht-nav" data-local-subnav="data-local-subnav" class="yacht-nav"></div>
+</section>
+
+<section class="about-yacht">
+	<div class="row row-pad">
+		<div class="large-offset-1 large-7 float">
+			<h2>Previous Models</h2>
+			<h1>{title}</h1>
+			{yacht_prev_about}
+		</div>
+		<div class="large-offset-1 large-3 float-left">
+			<aside class="overview-download columns">
+				<div class="aside-header">
+					<h3 class="text-uppercase">Yachts</h3>
+					<svg id="svg-arrow" version="1.1" baseprofile="tiny" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewbox="0 -20 100 100" xml:space="preserve">
+						<g>
+							<line x1="10" y1="10" x2="53" y2="53" stroke="#454646" stroke-width="10"></line>
+							<line x1="90" y1="10" x2="47" y2="53" stroke="#454646" stroke-width="10"></line>
+						</g>
+					</svg>
+				</div>
+				<div class="overview-contents">
+										<div class="overview columns small-12">
+						<ul>
+							<li class="active-page"><a href="{path='yachts/previous-models'}">Our Heritage &amp; Previous Models</a></li>
+						</ul>
+					</div>
+				</div>
+			</aside>
+		</div>
+	</div>
+</section>
+
+<section id="galleries" class='galleries' data-title="{title}">
+  <header class='galleries__header'>
+    <nav class='galleries__nav'>
+      <ul class="button-group">
+        <?php if ($exteriorGalleryImages > 0): ?>
+          <li class='galleries__nav-item'>
+            <button data-gallery="external" class='button button--solid-white button-flush'>Exterior</button>
+          </li>
+        <?php endif; ?>
+        <?php if ($interiorGalleryImages > 0): ?>
+          <li class='galleries__nav-item'>
+            <button data-gallery="internal" class='button button--solid-white button-flush'>Interior</button>
+          </li>
+        <?php endif; ?>
+        {yacht_videos}
+          {if yacht_videos:count == 1}
+            <li class='galleries__nav-item'>
+              <button data-gallery="videos" class='button button--solid-white button-flush'>Videos</button>
+            </li>
+          {/if}
+        {/yacht_videos}
+        {yachts_virtual_tours}
+          {if yachts_virtual_tours:count == 1}
+            <li class='galleries__nav-item'>
+              <button data-gallery="vrtours" class='button button--solid-white button-flush'>VR Tours</button>
+            </li>
+          {/if}
+        {/yachts_virtual_tours}
+      </ul>
+      <div class='galleries__close-container'>
+        <button class='galleries__close' />
+      </div>
+    </nav>
+  </header>
+  <?php if ($galleryImages > 0): ?>
+  <div class="gallery-content" data-gallery="external" data-title="Exterior">
+		{yacht_prev_gallery}
+    <a href="{image:url}" data-sub-html="{image:description}">
+      <img src="{image:url:gallery_thumb}" />
+    </a>
+		{/yacht_prev_gallery}
+  </div>
+  <?php endif; ?>
+
+  <footer class="galleries__footer">
+    <div class="galleries__index"></div>
+  </footer>
+</section>
+
+<style>
+    .global-page-hero h1.hero-title{margin-bottom: 15px;}</style>
+{footer}
+
+{/exp:channel:entries}

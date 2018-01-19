@@ -3,7 +3,7 @@
 if (!defined('EDITOR_NAME')){
     define('EDITOR_NAME',         'Editor');
     define('EDITOR_CLASS_NAME',   'editor');
-    define('EDITOR_VERSION',      '4.0.1');
+    define('EDITOR_VERSION',      '4.0.3');
 }
 
 if ( ! function_exists('dd')) {
@@ -66,6 +66,8 @@ return array(
         'upload_service' => 'local',
         'files_upload_location'  => 0,
         'images_upload_location' => 0,
+        'files_browse'  => 'no',
+        'images_browse' => 'no',
         's3' => array(
             'files' => array('bucket' => '', 'region' => 'us-east-1'),
             'images' => array('bucket' => '', 'region' => 'us-east-1'),

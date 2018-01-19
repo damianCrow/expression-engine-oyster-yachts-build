@@ -1,0 +1,12 @@
+.search-result {
+	border-top: 1px solid $greyborder;
+	padding-top: 2rem;
+	padding-bottom: 1rem;
+	h2 {
+		@include h4-styles;
+		@include omnes-regular;
+		strong {
+
+		}
+	}
+}

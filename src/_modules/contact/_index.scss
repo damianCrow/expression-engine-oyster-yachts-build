@@ -1,0 +1,101 @@
+.contact-group{
+	// Patch for grey bar showing just after nav snap
+	padding-top: 35px;
+	margin-bottom: 35px;
+	.banner{
+		margin-bottom: 40px;
+	}
+	> .row {
+		display: flex;
+		flex-wrap: wrap;
+		&:before {
+			display: none;
+		}
+	}
+}
+
+.location-contents{
+	margin: 1em 0;
+	display: flex;
+
+	@include breakpoint(large up) {
+		&:nth-of-type(odd) {
+			padding-right: 10px;
+		}
+		&:nth-of-type(even) {
+			padding-left: 10px;
+		}
+	}
+
+	// Makes sure the last doesn't float to the right.
+	@include grid-column-end;
+	.location-box{
+
+		flex: 1 1 0%;
+		// height also the same in the mixin, needed for the border.
+		// @include breakpoint(medium up) {
+		// 	height: $locaiton-image-height;	
+		// }
+
+		.location-details {
+			@include breakpoint(small down) {
+				// Weird safari bug ignores height: 100%, auto seems to bring it to it's natural height.
+				height: auto;
+			}
+
+		}
+
+		.written-address {
+			margin: 0 0 1rem 0;
+			line-height: 20px;
+		}
+
+		.contact-phone-email {
+			margin: 0 0 1rem 0;
+			> span {
+				display: block;
+				margin-bottom: 0;
+				line-height: 20px;		
+			}
+			.google-map-link {
+				margin-top: 0;
+			}
+		}
+
+		.button-transparent {
+			margin:1rem 0 0 0;
+		}
+
+	}
+}
+
+
+
+.news-thumbs {
+	.wrapper {
+		padding-bottom: 40px;
+	}
+	.news-list{
+
+	}
+}
+
+.press-articles{
+	padding-top: 40px;
+	padding-bottom: 40px;
+	.banner{
+		margin-bottom: 40px;
+	}
+
+	.press-list{
+		padding-bottom: 40px;
+	}
+
+	.column:last-child:not(:first-child), .columns:last-child:not(:first-child){
+		float: left;
+	}
+}
+
+@import 'recruitment';
+@import 'job-specfic';
+@import 'boat-yard';

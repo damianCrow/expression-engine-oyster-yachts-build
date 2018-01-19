@@ -1,0 +1,70 @@
+.team-stagger-section {
+    .staggered-details-contents {
+        .person-details {
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+        .fa-linkedin {
+            margin: 1rem 3rem;
+            position: relative;
+            color: #fff;
+            &:after {
+                content: '';
+                background: $lightblue;
+                position: absolute;
+                top: 0;
+                left: 0;
+                padding: 1rem;
+                margin: -0.5rem -0.6rem;
+                width: 100%;
+                height: 100%;
+                border-radius: 50%;
+                z-index: -1;
+            }
+        }
+        h2 {
+            @include omnes-medium;
+            font-size: 1.25rem;
+            margin-bottom: 0.25rem;
+        }
+
+        h3 {
+            @include omnes-regular;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            color: $lightblue;
+        }
+    }
+}
+
+.team-tab-contents {
+
+    article {
+        section:first-child {
+            margin-top: 1rem
+        }
+    }
+    > .staggered-features {
+        margin: 1rem 0;
+
+    }
+}
+
+.team-tab-container {
+    margin-top: 4rem;
+
+    @include breakpoint(medium down) {
+        margin-top: 2rem;
+    }
+
+    @include breakpoint(small down) {
+        margin-top: 1rem;
+        overflow-x: scroll;
+    }
+}
+
+#team-tabs {
+    overflow: hidden;
+}

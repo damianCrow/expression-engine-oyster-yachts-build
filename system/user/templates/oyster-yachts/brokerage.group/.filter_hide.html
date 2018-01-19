@@ -1,0 +1,180 @@
+<?php 
+
+$filter = false;
+
+if (isset($_POST['otherType'])) {
+	if ($_POST['otherType'] === true) {
+		if (isset($_POST['model_other'])) {
+			if ($_POST['model_other'] !== "" && "{embed:model}" !== $_POST['model_other']) {
+				$filter = true;
+			}
+		}
+	} else {
+		if (isset($_POST['model'])) {
+			if ($_POST['model'] !== "" && "{embed:model}" !== $_POST['model']) {
+				$filter = true;
+			}
+		}
+	}
+} else if (isset($_GET['otherType'])) {
+	if ($_GET['otherType'] === true) {
+		if (isset($_GET['model_other'])) {
+			if ($_GET['model_other'] !== "" && "{embed:model}" !== $_GET['model_other']) {
+				$filter = true;
+			}
+		}
+	} else {
+		if (isset($_GET['model'])) {
+			if ($_GET['model'] !== "" && "{embed:model}" !== $_GET['model']) {
+				$filter = true;
+			}
+		}
+	}
+}
+
+if (isset($_POST['oyster-yacht-or-not'])) {
+	if ($_POST['oyster-yacht-or-not'] === true) {
+		if (isset($_POST['model'])) {
+			if ($_POST['model'] !== "" && "{embed:model}" !== $_POST['model']) {
+				$filter = true;
+			}
+		}
+	} else {
+		if (isset($_POST['model_other'])) {
+			if ($_POST['model_other'] !== "" && "{embed:model}" !== $_POST['model_other']) {
+				$filter = true;
+			}
+		}
+	}
+} else if (isset($_GET['oyster-yacht-or-not'])) {
+	if ($_GET['oyster-yacht-or-not'] === true) {
+		if (isset($_GET['model'])) {
+			if ($_GET['model'] !== "" && "{embed:model}" !== $_GET['model']) {
+				$filter = true;
+			}
+		}
+	} else {
+		if (isset($_GET['model_other'])) {
+			if ($_GET['model_other'] !== "" && "{embed:model}" !== $_GET['model_other']) {
+				$filter = true;
+			}
+		}
+	}
+}
+
+/*if (isset($_POST['model'])) {
+	if ($_POST['model'] !== "" && "{embed:model}" !== $_POST['model']) {
+		$filter = true;
+	}
+} else if (isset($_GET['model'])) {
+	if ($_GET['model'] !== "" && "{embed:model}" !== $_GET['model']) {
+		$filter = true;
+	}
+}*/
+
+if (isset($_POST['location'])) {
+	if ($_POST['location'] !== "") {
+
+		$locations = explode("|","{embed:location}");
+
+		//var_dump("{embed:location}");
+		//die();
+
+		$locationFilter = false;
+
+		foreach ($locations as $location) {
+			if ($location === $_POST['location']) {
+				$locationFilter = true;
+			}
+		}
+
+		if (!$locationFilter) {
+			$filter = true;
+		}
+	}
+} else if (isset($_GET['location'])) {
+	if ($_GET['location'] !== "") {
+
+		$locations = explode("|","{embed:location}");
+
+		$locationFilter = false;
+
+		foreach ($locations as $location) {
+			if ($location === $_GET['location']) {
+				$locationFilter = true;
+			}
+		}
+
+		if (!$locationFilter) {
+			$filter = true;
+		}
+	}
+}
+
+if (isset($_POST['status'])) {
+	if ($_POST['status'] !== "" && "{embed:status}" !== $_POST['status']) {
+		$filter = true;
+	}
+} else if (isset($_GET['status'])) {
+	if ($_GET['status'] !== "" && "{embed:status}" !== $_GET['status']) {
+		$filter = true;
+	}
+}
+
+if (isset($_POST['price'])) {
+	if ($_POST['price'] != "") {
+		$priceRange = explode('-', $_POST['price']);
+		$priceRange[0] = (int) $priceRange[0];
+		$priceRange[1] = (int) $priceRange[1];
+		
+		if ("{embed:price}" == "") {
+			$price = -1;
+		} else {
+			$price = (int) '{embed:price}';
+		}
+
+		if (($priceRange[0] >= 0 && $price < $priceRange[0]) || ($priceRange[1] >= 0 && $price > $priceRange[1])) {
+			$filter = true;
+		}
+	}
+} else if (isset($_GET['price'])) {
+	if ($_GET['price'] != "") {
+		$priceRange = explode('-', $_GET['price']);
+		$priceRange[0] = (int) $priceRange[0];
+		$priceRange[1] = (int) $priceRange[1];
+
+		if ("{embed:price}" == "") {
+			$price = -1;
+		} else {
+			$price = (int) '{embed:price}';
+		}
+
+		if (($priceRange[0] >= 0 && $price < $priceRange[0]) || ($priceRange[1] >= 0 && $price > $priceRange[1])) {
+			$filter = true;
+		}
+	}
+}
+
+$oystertype = true;
+
+if (isset($_POST['otherType'])) {
+	$oystertype = false;
+
+	if (($_POST['otherType'] === "true" && "{embed:nonoyster}" === "true") || ($_POST['otherType'] === "false" && "{embed:nonoyster}" === "")) {
+		$oystertype = true;
+	}
+} else if (isset($_GET['otherType'])) {
+	$oystertype = false;
+
+	if (($_GET['otherType'] === "true" && "{embed:nonoyster}" === "true") || ($_GET['otherType'] === "false" && "{embed:nonoyster}" === "")) {
+		$oystertype = true;
+	}
+}
+
+if ($oystertype === false) $filter = true;
+
+if ($filter) {
+	echo ' hide';
+}
+
+?>

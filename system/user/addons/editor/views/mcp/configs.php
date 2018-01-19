@@ -24,7 +24,7 @@
 <?php
 $modal_vars = array(
     'name'      => 'modal-confirm-remove',
-    'form_url'  => $baseUrl.'/remove-config',
+    'form_url'  => ee('CP/URL', $baseUri . 'remove-config')->compile(),
     'hidden'    => array(
         'bulk_action'   => 'remove'
     )

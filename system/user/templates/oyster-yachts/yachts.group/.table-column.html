@@ -1,0 +1,11 @@
+{exp:channel:entries disable="member_data|category_fields|pagination" cache="yes" refresh="60" require_entry="yes" status="published"}
+{if "{embed:table}" == "performance"}
+{yacht_performance_features}
+<span>{yacht_performance_features:{embed:field}}</span>
+{/yacht_performance_features}
+{if:else}
+{yacht_dimensions}
+<span>{yacht_dimensions:{embed:field}}</span>
+{/yacht_dimensions}
+{/if}
+{/exp:channel:entries}

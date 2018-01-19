@@ -1,0 +1,7 @@
+{exp:channel:entries channel="home" dynamic="no" disable="member_data|categories|category_fields|pagination|member_data" cache="yes" refresh="60" status="published" }
+{yacht_carousel row_id="{embed:row_id}"}
+	{yacht_carousel:small_image_{embed:image}}
+		<div style="background-image: url('{url:Tiny}')" class="slide slide-image owl-item"><img src="{url:Tiny}" data-sizes="auto" data-srcset="{url:228w} 228w, {url:341w} 341w, {url:455w} 455w, {url:592w} 592w, {url:910w} 910w" class="lazyload blur-up"></div>
+	{/yacht_carousel:small_image_{embed:image}}
+{/yacht_carousel}
+{/exp:channel:entries}

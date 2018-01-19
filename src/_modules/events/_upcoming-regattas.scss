@@ -1,0 +1,59 @@
+// .events-upcoming-regattas-signup-info, .events-upcoming-regattas-additional-info , .events-upcoming-regattas-documentation {
+
+// 	.download-pdf {
+// 		position: relative;
+
+// 		figcaption {
+// 			padding-bottom: 40px;
+// 		}
+
+// 		.description-download {
+// 			@include calc(width, "100% - 110px");
+
+// 			vertical-align: top;
+
+// 			a {
+// 				display: block;
+// 				margin: 0;
+// 			}
+
+// 			a.title {
+
+// 			}
+// 		}
+
+// 		a.button-clear-invert {
+// 			width: 100px;
+// 			position: absolute;
+// 			bottom: 15px;
+// 		}
+// 	}
+// }
+
+.events-upcoming-regattas-additional-info {
+	padding-bottom: 40px;
+}
+
+.events-home-upcoming-events {
+	padding-top: 35px;
+}
+
+#events-previous-regattas-overall-results {
+	table {
+		td.heading {
+			border: 1px solid $cyan;
+		}
+	}
+}
+
+.events-boarding-pass {
+	flex-direction: column;
+	margin-bottom: 1rem;
+	.aside-header {
+		background: $cyan;
+	}
+	button {
+		margin: 1rem;
+		width: calc(100% - 2rem);
+	}
+}

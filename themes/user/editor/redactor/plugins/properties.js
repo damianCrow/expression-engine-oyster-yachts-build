@@ -176,7 +176,7 @@
 					e.preventDefault();
 				}
 
-				var zindex = (typeof this.fullscreen === 'undefined') ? 99 : 1052;
+				var zindex = (typeof this.fullscreen !== 'undefined' && this.fullscreen.isOpen) ? 1052 : 99;
 
 				this.properties.block = this.selection.block();
 				if (!this.properties.block || !this.utils.isRedactorParent(this.properties.block) || this.utils.isCurrentOrParent(['figure', 'li']))
