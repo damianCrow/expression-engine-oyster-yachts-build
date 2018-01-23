@@ -7,7 +7,7 @@
     "foundation-sites": "~6.4.4-rc1",
     "google-maps": "^3.2.1",
     "gsap": "^1.18.2",
-    "jquery": "~3.2.1",
+    "jquery": "~3.3.1",
     "jquery-ui": "^1.12.1",
     "jquery-validation": "^1.15.0",
     "jquery.cycle2": "^2.1.7",
