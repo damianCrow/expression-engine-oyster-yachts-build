@@ -14,13 +14,13 @@ export default class GlobalFooter {
     $('.sign-up-btn').on('click', () => {
       let nope = false
 
-      $('.new-sign-up :input[required]').each((input) => {
-        if (!$(input).val()) {
+      $('.new-sign-up :input[required]').each((input, value) => {
+        if (!$(value).val()) {
           nope = true
-          $(input).parent('.field').addClass('error')
+          $(value).parent('.field').addClass('error')
           $('.new-sign-up .form-error').addClass('visible')
         } else {
-          $(input).parent('.field').removeClass('error')
+          $(value).parent('.field').removeClass('error')
           $('.new-sign-up .form-error').removeClass('visible')
         }
       })
